@@ -6,6 +6,7 @@ import (
 	"github.com/goplus/lib/c"
 	"github.com/goplus/lib/c/os"
 	"github.com/goplus/lib/c/time"
+	"syscall"
 	"unsafe"
 )
 
@@ -2173,6 +2174,11 @@ func SSL_CTXGetNumTickets(ctx *SSL_CTX) c.SizeT
 //go:linkname SSLHandleEvents C.SSL_handle_events
 func SSLHandleEvents(s *SSL) c.Int
 
+type Timeval = syscall.Timeval
+
+//go:linkname SSLGetEventTimeout C.SSL_get_event_timeout
+func SSLGetEventTimeout(s *SSL, tv *Timeval, is_infinite *c.Int) c.Int
+
 //go:linkname SSLGetPeerAddr C.SSL_get_peer_addr
 func SSLGetPeerAddr(ssl *SSL, peer_addr *BIO_ADDR) c.Int
 
@@ -2301,6 +2307,9 @@ func SSLGetValueUint(s *SSL, class_ c.Uint32T, id c.Uint32T, v *c.Uint64T) c.Int
 
 //go:linkname SSLSetValueUint C.SSL_set_value_uint
 func SSLSetValueUint(s *SSL, class_ c.Uint32T, id c.Uint32T, v c.Uint64T) c.Int
+
+//go:linkname SSLPoll C.SSL_poll
+func SSLPoll(items *SSL_POLL_ITEM, num_items c.SizeT, stride c.SizeT, timeout *Timeval, flags c.Uint64T, result_count *c.SizeT) c.Int
 
 //go:linkname SSLSessionReused C.SSL_session_reused
 func SSLSessionReused(s *SSL) c.Int
