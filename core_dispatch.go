@@ -7,6 +7,7 @@ import (
 	"unsafe"
 )
 
+// Functions provided by the Core to the provider, reserved numbers 1-1023
 const OSSL_FUNC_CORE_GETTABLE_PARAMS = 1
 const OSSL_FUNC_CORE_GET_PARAMS = 2
 const OSSL_FUNC_CORE_THREAD_START = 3
@@ -17,8 +18,12 @@ const OSSL_FUNC_CORE_VSET_ERROR = 7
 const OSSL_FUNC_CORE_SET_ERROR_MARK = 8
 const OSSL_FUNC_CORE_CLEAR_LAST_ERROR_MARK = 9
 const OSSL_FUNC_CORE_POP_ERROR_TO_MARK = 10
-const OSSL_FUNC_CORE_OBJ_ADD_SIGID = 11
-const OSSL_FUNC_CORE_OBJ_CREATE = 12
+const (
+	OSSL_FUNC_CORE_OBJ_ADD_SIGID = 11
+	OSSL_FUNC_CORE_OBJ_CREATE    = 12
+)
+
+// Memory allocation, freeing, clearing.
 const OSSL_FUNC_CRYPTO_MALLOC = 20
 const OSSL_FUNC_CRYPTO_ZALLOC = 21
 const OSSL_FUNC_CRYPTO_FREE = 22
@@ -31,35 +36,55 @@ const OSSL_FUNC_CRYPTO_SECURE_FREE = 28
 const OSSL_FUNC_CRYPTO_SECURE_CLEAR_FREE = 29
 const OSSL_FUNC_CRYPTO_SECURE_ALLOCATED = 30
 const OSSL_FUNC_OPENSSL_CLEANSE = 31
-const OSSL_FUNC_BIO_NEW_FILE = 40
-const OSSL_FUNC_BIO_NEW_MEMBUF = 41
-const OSSL_FUNC_BIO_READ_EX = 42
-const OSSL_FUNC_BIO_WRITE_EX = 43
-const OSSL_FUNC_BIO_UP_REF = 44
-const OSSL_FUNC_BIO_FREE = 45
-const OSSL_FUNC_BIO_VPRINTF = 46
-const OSSL_FUNC_BIO_VSNPRINTF = 47
-const OSSL_FUNC_BIO_PUTS = 48
-const OSSL_FUNC_BIO_GETS = 49
-const OSSL_FUNC_BIO_CTRL = 50
-const OSSL_FUNC_CLEANUP_USER_ENTROPY = 96
-const OSSL_FUNC_CLEANUP_USER_NONCE = 97
-const OSSL_FUNC_GET_USER_ENTROPY = 98
-const OSSL_FUNC_GET_USER_NONCE = 99
+
+// Bio functions provided by the core
+const (
+	OSSL_FUNC_BIO_NEW_FILE   = 40
+	OSSL_FUNC_BIO_NEW_MEMBUF = 41
+	OSSL_FUNC_BIO_READ_EX    = 42
+	OSSL_FUNC_BIO_WRITE_EX   = 43
+	OSSL_FUNC_BIO_UP_REF     = 44
+	OSSL_FUNC_BIO_FREE       = 45
+	OSSL_FUNC_BIO_VPRINTF    = 46
+	OSSL_FUNC_BIO_VSNPRINTF  = 47
+	OSSL_FUNC_BIO_PUTS       = 48
+	OSSL_FUNC_BIO_GETS       = 49
+	OSSL_FUNC_BIO_CTRL       = 50
+)
+
+// New seeding functions prototypes with the 101-104 series
+const (
+	OSSL_FUNC_CLEANUP_USER_ENTROPY = 96
+	OSSL_FUNC_CLEANUP_USER_NONCE   = 97
+	OSSL_FUNC_GET_USER_ENTROPY     = 98
+	OSSL_FUNC_GET_USER_NONCE       = 99
+)
 const OSSL_FUNC_INDICATOR_CB = 95
 const OSSL_FUNC_SELF_TEST_CB = 100
-const OSSL_FUNC_GET_ENTROPY = 101
-const OSSL_FUNC_CLEANUP_ENTROPY = 102
-const OSSL_FUNC_GET_NONCE = 103
-const OSSL_FUNC_CLEANUP_NONCE = 104
-const OSSL_FUNC_PROVIDER_REGISTER_CHILD_CB = 105
-const OSSL_FUNC_PROVIDER_DEREGISTER_CHILD_CB = 106
-const OSSL_FUNC_PROVIDER_NAME = 107
-const OSSL_FUNC_PROVIDER_GET0_PROVIDER_CTX = 108
-const OSSL_FUNC_PROVIDER_GET0_DISPATCH = 109
-const OSSL_FUNC_PROVIDER_UP_REF = 110
-const OSSL_FUNC_PROVIDER_FREE = 111
+
+// Functions to get seed material from the operating system
+const (
+	OSSL_FUNC_GET_ENTROPY     = 101
+	OSSL_FUNC_CLEANUP_ENTROPY = 102
+	OSSL_FUNC_GET_NONCE       = 103
+	OSSL_FUNC_CLEANUP_NONCE   = 104
+)
+
+// Functions to access the core's providers
+const (
+	OSSL_FUNC_PROVIDER_REGISTER_CHILD_CB   = 105
+	OSSL_FUNC_PROVIDER_DEREGISTER_CHILD_CB = 106
+	OSSL_FUNC_PROVIDER_NAME                = 107
+	OSSL_FUNC_PROVIDER_GET0_PROVIDER_CTX   = 108
+	OSSL_FUNC_PROVIDER_GET0_DISPATCH       = 109
+	OSSL_FUNC_PROVIDER_UP_REF              = 110
+	OSSL_FUNC_PROVIDER_FREE                = 111
+)
+
+// Additional error functions provided by the core
 const OSSL_FUNC_CORE_COUNT_TO_MARK = 120
+
+// Functions provided by the provider to the Core, reserved numbers 1024-1535
 const OSSL_FUNC_PROVIDER_TEARDOWN = 1024
 const OSSL_FUNC_PROVIDER_GETTABLE_PARAMS = 1025
 const OSSL_FUNC_PROVIDER_GET_PARAMS = 1026
@@ -69,251 +94,345 @@ const OSSL_FUNC_PROVIDER_GET_REASON_STRINGS = 1029
 const OSSL_FUNC_PROVIDER_GET_CAPABILITIES = 1030
 const OSSL_FUNC_PROVIDER_SELF_TEST = 1031
 const OSSL_FUNC_PROVIDER_RANDOM_BYTES = 1032
+
+// Libssl related functions
 const OSSL_FUNC_SSL_QUIC_TLS_CRYPTO_SEND = 2001
 const OSSL_FUNC_SSL_QUIC_TLS_CRYPTO_RECV_RCD = 2002
 const OSSL_FUNC_SSL_QUIC_TLS_CRYPTO_RELEASE_RCD = 2003
 const OSSL_FUNC_SSL_QUIC_TLS_YIELD_SECRET = 2004
 const OSSL_FUNC_SSL_QUIC_TLS_GOT_TRANSPORT_PARAMS = 2005
 const OSSL_FUNC_SSL_QUIC_TLS_ALERT = 2006
-const OSSL_OP_DIGEST = 1
-const OSSL_OP_CIPHER = 2
-const OSSL_OP_MAC = 3
-const OSSL_OP_KDF = 4
-const OSSL_OP_RAND = 5
-const OSSL_OP_KEYMGMT = 10
-const OSSL_OP_KEYEXCH = 11
-const OSSL_OP_SIGNATURE = 12
-const OSSL_OP_ASYM_CIPHER = 13
-const OSSL_OP_KEM = 14
-const OSSL_OP_SKEYMGMT = 15
-const OSSL_OP_ENCODER = 20
-const OSSL_OP_DECODER = 21
-const OSSL_OP_STORE = 22
+
+// New section for non-EVP operations
+const (
+	OSSL_OP_DIGEST = 1
+	// Symmetric Ciphers
+	OSSL_OP_CIPHER      = 2
+	OSSL_OP_MAC         = 3
+	OSSL_OP_KDF         = 4
+	OSSL_OP_RAND        = 5
+	OSSL_OP_KEYMGMT     = 10
+	OSSL_OP_KEYEXCH     = 11
+	OSSL_OP_SIGNATURE   = 12
+	OSSL_OP_ASYM_CIPHER = 13
+	OSSL_OP_KEM         = 14
+	OSSL_OP_SKEYMGMT    = 15
+)
+
+// New section for non-EVP operations
+const (
+	OSSL_OP_ENCODER = 20
+	OSSL_OP_DECODER = 21
+	// Highest known operation number
+	OSSL_OP_STORE = 22
+)
+
+// Highest known operation number
 const OSSL_OP__HIGHEST = 22
-const OSSL_FUNC_DIGEST_NEWCTX = 1
-const OSSL_FUNC_DIGEST_INIT = 2
-const OSSL_FUNC_DIGEST_UPDATE = 3
-const OSSL_FUNC_DIGEST_FINAL = 4
-const OSSL_FUNC_DIGEST_DIGEST = 5
-const OSSL_FUNC_DIGEST_FREECTX = 6
-const OSSL_FUNC_DIGEST_DUPCTX = 7
-const OSSL_FUNC_DIGEST_GET_PARAMS = 8
-const OSSL_FUNC_DIGEST_SET_CTX_PARAMS = 9
-const OSSL_FUNC_DIGEST_GET_CTX_PARAMS = 10
-const OSSL_FUNC_DIGEST_GETTABLE_PARAMS = 11
-const OSSL_FUNC_DIGEST_SETTABLE_CTX_PARAMS = 12
-const OSSL_FUNC_DIGEST_GETTABLE_CTX_PARAMS = 13
-const OSSL_FUNC_DIGEST_SQUEEZE = 14
-const OSSL_FUNC_DIGEST_COPYCTX = 15
-const OSSL_FUNC_DIGEST_SERIALIZE = 16
-const OSSL_FUNC_DIGEST_DESERIALIZE = 17
-const OSSL_FUNC_CIPHER_NEWCTX = 1
-const OSSL_FUNC_CIPHER_ENCRYPT_INIT = 2
-const OSSL_FUNC_CIPHER_DECRYPT_INIT = 3
-const OSSL_FUNC_CIPHER_UPDATE = 4
-const OSSL_FUNC_CIPHER_FINAL = 5
-const OSSL_FUNC_CIPHER_CIPHER = 6
-const OSSL_FUNC_CIPHER_FREECTX = 7
-const OSSL_FUNC_CIPHER_DUPCTX = 8
-const OSSL_FUNC_CIPHER_GET_PARAMS = 9
-const OSSL_FUNC_CIPHER_GET_CTX_PARAMS = 10
-const OSSL_FUNC_CIPHER_SET_CTX_PARAMS = 11
-const OSSL_FUNC_CIPHER_GETTABLE_PARAMS = 12
-const OSSL_FUNC_CIPHER_GETTABLE_CTX_PARAMS = 13
-const OSSL_FUNC_CIPHER_SETTABLE_CTX_PARAMS = 14
-const OSSL_FUNC_CIPHER_PIPELINE_ENCRYPT_INIT = 15
-const OSSL_FUNC_CIPHER_PIPELINE_DECRYPT_INIT = 16
-const OSSL_FUNC_CIPHER_PIPELINE_UPDATE = 17
-const OSSL_FUNC_CIPHER_PIPELINE_FINAL = 18
-const OSSL_FUNC_CIPHER_ENCRYPT_SKEY_INIT = 19
-const OSSL_FUNC_CIPHER_DECRYPT_SKEY_INIT = 20
-const OSSL_FUNC_MAC_NEWCTX = 1
-const OSSL_FUNC_MAC_DUPCTX = 2
-const OSSL_FUNC_MAC_FREECTX = 3
-const OSSL_FUNC_MAC_INIT = 4
-const OSSL_FUNC_MAC_UPDATE = 5
-const OSSL_FUNC_MAC_FINAL = 6
-const OSSL_FUNC_MAC_GET_PARAMS = 7
-const OSSL_FUNC_MAC_GET_CTX_PARAMS = 8
-const OSSL_FUNC_MAC_SET_CTX_PARAMS = 9
-const OSSL_FUNC_MAC_GETTABLE_PARAMS = 10
-const OSSL_FUNC_MAC_GETTABLE_CTX_PARAMS = 11
-const OSSL_FUNC_MAC_SETTABLE_CTX_PARAMS = 12
-const OSSL_FUNC_MAC_INIT_SKEY = 13
-const OSSL_SKEYMGMT_SELECT_PARAMETERS = 1
-const OSSL_SKEYMGMT_SELECT_SECRET_KEY = 2
+const (
+	OSSL_FUNC_DIGEST_NEWCTX              = 1
+	OSSL_FUNC_DIGEST_INIT                = 2
+	OSSL_FUNC_DIGEST_UPDATE              = 3
+	OSSL_FUNC_DIGEST_FINAL               = 4
+	OSSL_FUNC_DIGEST_DIGEST              = 5
+	OSSL_FUNC_DIGEST_FREECTX             = 6
+	OSSL_FUNC_DIGEST_DUPCTX              = 7
+	OSSL_FUNC_DIGEST_GET_PARAMS          = 8
+	OSSL_FUNC_DIGEST_SET_CTX_PARAMS      = 9
+	OSSL_FUNC_DIGEST_GET_CTX_PARAMS      = 10
+	OSSL_FUNC_DIGEST_GETTABLE_PARAMS     = 11
+	OSSL_FUNC_DIGEST_SETTABLE_CTX_PARAMS = 12
+	OSSL_FUNC_DIGEST_GETTABLE_CTX_PARAMS = 13
+	OSSL_FUNC_DIGEST_SQUEEZE             = 14
+	OSSL_FUNC_DIGEST_COPYCTX             = 15
+	OSSL_FUNC_DIGEST_SERIALIZE           = 16
+	OSSL_FUNC_DIGEST_DESERIALIZE         = 17
+)
+const (
+	OSSL_FUNC_CIPHER_NEWCTX                = 1
+	OSSL_FUNC_CIPHER_ENCRYPT_INIT          = 2
+	OSSL_FUNC_CIPHER_DECRYPT_INIT          = 3
+	OSSL_FUNC_CIPHER_UPDATE                = 4
+	OSSL_FUNC_CIPHER_FINAL                 = 5
+	OSSL_FUNC_CIPHER_CIPHER                = 6
+	OSSL_FUNC_CIPHER_FREECTX               = 7
+	OSSL_FUNC_CIPHER_DUPCTX                = 8
+	OSSL_FUNC_CIPHER_GET_PARAMS            = 9
+	OSSL_FUNC_CIPHER_GET_CTX_PARAMS        = 10
+	OSSL_FUNC_CIPHER_SET_CTX_PARAMS        = 11
+	OSSL_FUNC_CIPHER_GETTABLE_PARAMS       = 12
+	OSSL_FUNC_CIPHER_GETTABLE_CTX_PARAMS   = 13
+	OSSL_FUNC_CIPHER_SETTABLE_CTX_PARAMS   = 14
+	OSSL_FUNC_CIPHER_PIPELINE_ENCRYPT_INIT = 15
+	OSSL_FUNC_CIPHER_PIPELINE_DECRYPT_INIT = 16
+	OSSL_FUNC_CIPHER_PIPELINE_UPDATE       = 17
+	OSSL_FUNC_CIPHER_PIPELINE_FINAL        = 18
+	OSSL_FUNC_CIPHER_ENCRYPT_SKEY_INIT     = 19
+	OSSL_FUNC_CIPHER_DECRYPT_SKEY_INIT     = 20
+)
+const (
+	OSSL_FUNC_MAC_NEWCTX              = 1
+	OSSL_FUNC_MAC_DUPCTX              = 2
+	OSSL_FUNC_MAC_FREECTX             = 3
+	OSSL_FUNC_MAC_INIT                = 4
+	OSSL_FUNC_MAC_UPDATE              = 5
+	OSSL_FUNC_MAC_FINAL               = 6
+	OSSL_FUNC_MAC_GET_PARAMS          = 7
+	OSSL_FUNC_MAC_GET_CTX_PARAMS      = 8
+	OSSL_FUNC_MAC_SET_CTX_PARAMS      = 9
+	OSSL_FUNC_MAC_GETTABLE_PARAMS     = 10
+	OSSL_FUNC_MAC_GETTABLE_CTX_PARAMS = 11
+	OSSL_FUNC_MAC_SETTABLE_CTX_PARAMS = 12
+	OSSL_FUNC_MAC_INIT_SKEY           = 13
+)
+
+// Key data subset selection - individual bits
+const (
+	OSSL_SKEYMGMT_SELECT_PARAMETERS = 1
+	OSSL_SKEYMGMT_SELECT_SECRET_KEY = 2
+)
+
+// Key data subset selection - combinations
 const OSSL_SKEYMGMT_SELECT_ALL = 3
-const OSSL_FUNC_SKEYMGMT_FREE = 1
-const OSSL_FUNC_SKEYMGMT_IMPORT = 2
-const OSSL_FUNC_SKEYMGMT_EXPORT = 3
-const OSSL_FUNC_SKEYMGMT_GENERATE = 4
-const OSSL_FUNC_SKEYMGMT_GET_KEY_ID = 5
-const OSSL_FUNC_SKEYMGMT_IMP_SETTABLE_PARAMS = 6
-const OSSL_FUNC_SKEYMGMT_GEN_SETTABLE_PARAMS = 7
-const OSSL_FUNC_KDF_NEWCTX = 1
-const OSSL_FUNC_KDF_DUPCTX = 2
-const OSSL_FUNC_KDF_FREECTX = 3
-const OSSL_FUNC_KDF_RESET = 4
-const OSSL_FUNC_KDF_DERIVE = 5
-const OSSL_FUNC_KDF_GETTABLE_PARAMS = 6
-const OSSL_FUNC_KDF_GETTABLE_CTX_PARAMS = 7
-const OSSL_FUNC_KDF_SETTABLE_CTX_PARAMS = 8
-const OSSL_FUNC_KDF_GET_PARAMS = 9
-const OSSL_FUNC_KDF_GET_CTX_PARAMS = 10
-const OSSL_FUNC_KDF_SET_CTX_PARAMS = 11
-const OSSL_FUNC_KDF_SET_SKEY = 12
-const OSSL_FUNC_KDF_DERIVE_SKEY = 13
-const OSSL_FUNC_RAND_NEWCTX = 1
-const OSSL_FUNC_RAND_FREECTX = 2
-const OSSL_FUNC_RAND_INSTANTIATE = 3
-const OSSL_FUNC_RAND_UNINSTANTIATE = 4
-const OSSL_FUNC_RAND_GENERATE = 5
-const OSSL_FUNC_RAND_RESEED = 6
-const OSSL_FUNC_RAND_NONCE = 7
-const OSSL_FUNC_RAND_ENABLE_LOCKING = 8
-const OSSL_FUNC_RAND_LOCK = 9
-const OSSL_FUNC_RAND_UNLOCK = 10
-const OSSL_FUNC_RAND_GETTABLE_PARAMS = 11
-const OSSL_FUNC_RAND_GETTABLE_CTX_PARAMS = 12
-const OSSL_FUNC_RAND_SETTABLE_CTX_PARAMS = 13
-const OSSL_FUNC_RAND_GET_PARAMS = 14
-const OSSL_FUNC_RAND_GET_CTX_PARAMS = 15
-const OSSL_FUNC_RAND_SET_CTX_PARAMS = 16
-const OSSL_FUNC_RAND_VERIFY_ZEROIZATION = 17
-const OSSL_FUNC_RAND_GET_SEED = 18
-const OSSL_FUNC_RAND_CLEAR_SEED = 19
-const OSSL_KEYMGMT_SELECT_PRIVATE_KEY = 1
-const OSSL_KEYMGMT_SELECT_PUBLIC_KEY = 2
-const OSSL_KEYMGMT_SELECT_DOMAIN_PARAMETERS = 4
-const OSSL_KEYMGMT_SELECT_OTHER_PARAMETERS = 128
-const OSSL_KEYMGMT_SELECT_ALL_PARAMETERS = 132
-const OSSL_KEYMGMT_SELECT_KEYPAIR = 3
-const OSSL_KEYMGMT_SELECT_ALL = 135
-const OSSL_KEYMGMT_VALIDATE_FULL_CHECK = 0
-const OSSL_KEYMGMT_VALIDATE_QUICK_CHECK = 1
+const (
+	OSSL_FUNC_SKEYMGMT_FREE                = 1
+	OSSL_FUNC_SKEYMGMT_IMPORT              = 2
+	OSSL_FUNC_SKEYMGMT_EXPORT              = 3
+	OSSL_FUNC_SKEYMGMT_GENERATE            = 4
+	OSSL_FUNC_SKEYMGMT_GET_KEY_ID          = 5
+	OSSL_FUNC_SKEYMGMT_IMP_SETTABLE_PARAMS = 6
+	OSSL_FUNC_SKEYMGMT_GEN_SETTABLE_PARAMS = 7
+)
+const (
+	OSSL_FUNC_KDF_NEWCTX              = 1
+	OSSL_FUNC_KDF_DUPCTX              = 2
+	OSSL_FUNC_KDF_FREECTX             = 3
+	OSSL_FUNC_KDF_RESET               = 4
+	OSSL_FUNC_KDF_DERIVE              = 5
+	OSSL_FUNC_KDF_GETTABLE_PARAMS     = 6
+	OSSL_FUNC_KDF_GETTABLE_CTX_PARAMS = 7
+	OSSL_FUNC_KDF_SETTABLE_CTX_PARAMS = 8
+	OSSL_FUNC_KDF_GET_PARAMS          = 9
+	OSSL_FUNC_KDF_GET_CTX_PARAMS      = 10
+	OSSL_FUNC_KDF_SET_CTX_PARAMS      = 11
+	OSSL_FUNC_KDF_SET_SKEY            = 12
+	OSSL_FUNC_KDF_DERIVE_SKEY         = 13
+)
+const (
+	OSSL_FUNC_RAND_NEWCTX              = 1
+	OSSL_FUNC_RAND_FREECTX             = 2
+	OSSL_FUNC_RAND_INSTANTIATE         = 3
+	OSSL_FUNC_RAND_UNINSTANTIATE       = 4
+	OSSL_FUNC_RAND_GENERATE            = 5
+	OSSL_FUNC_RAND_RESEED              = 6
+	OSSL_FUNC_RAND_NONCE               = 7
+	OSSL_FUNC_RAND_ENABLE_LOCKING      = 8
+	OSSL_FUNC_RAND_LOCK                = 9
+	OSSL_FUNC_RAND_UNLOCK              = 10
+	OSSL_FUNC_RAND_GETTABLE_PARAMS     = 11
+	OSSL_FUNC_RAND_GETTABLE_CTX_PARAMS = 12
+	OSSL_FUNC_RAND_SETTABLE_CTX_PARAMS = 13
+	OSSL_FUNC_RAND_GET_PARAMS          = 14
+	OSSL_FUNC_RAND_GET_CTX_PARAMS      = 15
+	OSSL_FUNC_RAND_SET_CTX_PARAMS      = 16
+	OSSL_FUNC_RAND_VERIFY_ZEROIZATION  = 17
+	OSSL_FUNC_RAND_GET_SEED            = 18
+	OSSL_FUNC_RAND_CLEAR_SEED          = 19
+)
+
+// Key data subset selection - individual bits
+const (
+	OSSL_KEYMGMT_SELECT_PRIVATE_KEY       = 1
+	OSSL_KEYMGMT_SELECT_PUBLIC_KEY        = 2
+	OSSL_KEYMGMT_SELECT_DOMAIN_PARAMETERS = 4
+	OSSL_KEYMGMT_SELECT_OTHER_PARAMETERS  = 128
+)
+
+// Key data subset selection - combinations
+const (
+	OSSL_KEYMGMT_SELECT_ALL_PARAMETERS = 132
+	OSSL_KEYMGMT_SELECT_KEYPAIR        = 3
+	OSSL_KEYMGMT_SELECT_ALL            = 135
+)
+const (
+	OSSL_KEYMGMT_VALIDATE_FULL_CHECK  = 0
+	OSSL_KEYMGMT_VALIDATE_QUICK_CHECK = 1
+)
+
+// Basic key object creation
 const OSSL_FUNC_KEYMGMT_NEW = 1
 const OSSL_FUNC_KEYMGMT_NEW_EX = 17
-const OSSL_FUNC_KEYMGMT_GEN_INIT = 2
-const OSSL_FUNC_KEYMGMT_GEN_SET_TEMPLATE = 3
-const OSSL_FUNC_KEYMGMT_GEN_SET_PARAMS = 4
-const OSSL_FUNC_KEYMGMT_GEN_SETTABLE_PARAMS = 5
-const OSSL_FUNC_KEYMGMT_GEN = 6
-const OSSL_FUNC_KEYMGMT_GEN_CLEANUP = 7
-const OSSL_FUNC_KEYMGMT_GEN_GET_PARAMS = 15
-const OSSL_FUNC_KEYMGMT_GEN_GETTABLE_PARAMS = 16
+
+// Generation, a more complex constructor
+const (
+	OSSL_FUNC_KEYMGMT_GEN_INIT            = 2
+	OSSL_FUNC_KEYMGMT_GEN_SET_TEMPLATE    = 3
+	OSSL_FUNC_KEYMGMT_GEN_SET_PARAMS      = 4
+	OSSL_FUNC_KEYMGMT_GEN_SETTABLE_PARAMS = 5
+	OSSL_FUNC_KEYMGMT_GEN                 = 6
+	OSSL_FUNC_KEYMGMT_GEN_CLEANUP         = 7
+	OSSL_FUNC_KEYMGMT_GEN_GET_PARAMS      = 15
+	OSSL_FUNC_KEYMGMT_GEN_GETTABLE_PARAMS = 16
+)
+
+// Key loading by object reference
 const OSSL_FUNC_KEYMGMT_LOAD = 8
+
+// Basic key object destruction
 const OSSL_FUNC_KEYMGMT_FREE = 10
-const OSSL_FUNC_KEYMGMT_GET_PARAMS = 11
-const OSSL_FUNC_KEYMGMT_GETTABLE_PARAMS = 12
-const OSSL_FUNC_KEYMGMT_SET_PARAMS = 13
-const OSSL_FUNC_KEYMGMT_SETTABLE_PARAMS = 14
+
+// Key object information, with discovery
+const (
+	OSSL_FUNC_KEYMGMT_GET_PARAMS      = 11
+	OSSL_FUNC_KEYMGMT_GETTABLE_PARAMS = 12
+)
+const (
+	OSSL_FUNC_KEYMGMT_SET_PARAMS      = 13
+	OSSL_FUNC_KEYMGMT_SETTABLE_PARAMS = 14
+)
+
+// Key checks - discovery of supported operations
 const OSSL_FUNC_KEYMGMT_QUERY_OPERATION_NAME = 20
+
+// Key checks - key data content checks
 const OSSL_FUNC_KEYMGMT_HAS = 21
+
+// Key checks - validation
 const OSSL_FUNC_KEYMGMT_VALIDATE = 22
+
+// Key checks - matching
 const OSSL_FUNC_KEYMGMT_MATCH = 23
-const OSSL_FUNC_KEYMGMT_IMPORT = 40
-const OSSL_FUNC_KEYMGMT_IMPORT_TYPES = 41
-const OSSL_FUNC_KEYMGMT_EXPORT = 42
-const OSSL_FUNC_KEYMGMT_EXPORT_TYPES = 43
+
+// Import and export functions, with discovery
+const (
+	OSSL_FUNC_KEYMGMT_IMPORT       = 40
+	OSSL_FUNC_KEYMGMT_IMPORT_TYPES = 41
+	OSSL_FUNC_KEYMGMT_EXPORT       = 42
+	OSSL_FUNC_KEYMGMT_EXPORT_TYPES = 43
+)
+
+// Dup function, constructor
 const OSSL_FUNC_KEYMGMT_DUP = 44
-const OSSL_FUNC_KEYMGMT_IMPORT_TYPES_EX = 45
-const OSSL_FUNC_KEYMGMT_EXPORT_TYPES_EX = 46
-const OSSL_FUNC_KEYEXCH_NEWCTX = 1
-const OSSL_FUNC_KEYEXCH_INIT = 2
-const OSSL_FUNC_KEYEXCH_DERIVE = 3
-const OSSL_FUNC_KEYEXCH_SET_PEER = 4
-const OSSL_FUNC_KEYEXCH_FREECTX = 5
-const OSSL_FUNC_KEYEXCH_DUPCTX = 6
-const OSSL_FUNC_KEYEXCH_SET_CTX_PARAMS = 7
-const OSSL_FUNC_KEYEXCH_SETTABLE_CTX_PARAMS = 8
-const OSSL_FUNC_KEYEXCH_GET_CTX_PARAMS = 9
-const OSSL_FUNC_KEYEXCH_GETTABLE_CTX_PARAMS = 10
-const OSSL_FUNC_KEYEXCH_DERIVE_SKEY = 11
-const OSSL_FUNC_SIGNATURE_NEWCTX = 1
-const OSSL_FUNC_SIGNATURE_SIGN_INIT = 2
-const OSSL_FUNC_SIGNATURE_SIGN = 3
-const OSSL_FUNC_SIGNATURE_VERIFY_INIT = 4
-const OSSL_FUNC_SIGNATURE_VERIFY = 5
-const OSSL_FUNC_SIGNATURE_VERIFY_RECOVER_INIT = 6
-const OSSL_FUNC_SIGNATURE_VERIFY_RECOVER = 7
-const OSSL_FUNC_SIGNATURE_DIGEST_SIGN_INIT = 8
-const OSSL_FUNC_SIGNATURE_DIGEST_SIGN_UPDATE = 9
-const OSSL_FUNC_SIGNATURE_DIGEST_SIGN_FINAL = 10
-const OSSL_FUNC_SIGNATURE_DIGEST_SIGN = 11
-const OSSL_FUNC_SIGNATURE_DIGEST_VERIFY_INIT = 12
-const OSSL_FUNC_SIGNATURE_DIGEST_VERIFY_UPDATE = 13
-const OSSL_FUNC_SIGNATURE_DIGEST_VERIFY_FINAL = 14
-const OSSL_FUNC_SIGNATURE_DIGEST_VERIFY = 15
-const OSSL_FUNC_SIGNATURE_FREECTX = 16
-const OSSL_FUNC_SIGNATURE_DUPCTX = 17
-const OSSL_FUNC_SIGNATURE_GET_CTX_PARAMS = 18
-const OSSL_FUNC_SIGNATURE_GETTABLE_CTX_PARAMS = 19
-const OSSL_FUNC_SIGNATURE_SET_CTX_PARAMS = 20
-const OSSL_FUNC_SIGNATURE_SETTABLE_CTX_PARAMS = 21
-const OSSL_FUNC_SIGNATURE_GET_CTX_MD_PARAMS = 22
-const OSSL_FUNC_SIGNATURE_GETTABLE_CTX_MD_PARAMS = 23
-const OSSL_FUNC_SIGNATURE_SET_CTX_MD_PARAMS = 24
-const OSSL_FUNC_SIGNATURE_SETTABLE_CTX_MD_PARAMS = 25
-const OSSL_FUNC_SIGNATURE_QUERY_KEY_TYPES = 26
-const OSSL_FUNC_SIGNATURE_SIGN_MESSAGE_INIT = 27
-const OSSL_FUNC_SIGNATURE_SIGN_MESSAGE_UPDATE = 28
-const OSSL_FUNC_SIGNATURE_SIGN_MESSAGE_FINAL = 29
-const OSSL_FUNC_SIGNATURE_VERIFY_MESSAGE_INIT = 30
-const OSSL_FUNC_SIGNATURE_VERIFY_MESSAGE_UPDATE = 31
-const OSSL_FUNC_SIGNATURE_VERIFY_MESSAGE_FINAL = 32
-const OSSL_FUNC_ASYM_CIPHER_NEWCTX = 1
-const OSSL_FUNC_ASYM_CIPHER_ENCRYPT_INIT = 2
-const OSSL_FUNC_ASYM_CIPHER_ENCRYPT = 3
-const OSSL_FUNC_ASYM_CIPHER_DECRYPT_INIT = 4
-const OSSL_FUNC_ASYM_CIPHER_DECRYPT = 5
-const OSSL_FUNC_ASYM_CIPHER_FREECTX = 6
-const OSSL_FUNC_ASYM_CIPHER_DUPCTX = 7
-const OSSL_FUNC_ASYM_CIPHER_GET_CTX_PARAMS = 8
-const OSSL_FUNC_ASYM_CIPHER_GETTABLE_CTX_PARAMS = 9
-const OSSL_FUNC_ASYM_CIPHER_SET_CTX_PARAMS = 10
-const OSSL_FUNC_ASYM_CIPHER_SETTABLE_CTX_PARAMS = 11
-const OSSL_FUNC_KEM_NEWCTX = 1
-const OSSL_FUNC_KEM_ENCAPSULATE_INIT = 2
-const OSSL_FUNC_KEM_ENCAPSULATE = 3
-const OSSL_FUNC_KEM_DECAPSULATE_INIT = 4
-const OSSL_FUNC_KEM_DECAPSULATE = 5
-const OSSL_FUNC_KEM_FREECTX = 6
-const OSSL_FUNC_KEM_DUPCTX = 7
-const OSSL_FUNC_KEM_GET_CTX_PARAMS = 8
-const OSSL_FUNC_KEM_GETTABLE_CTX_PARAMS = 9
-const OSSL_FUNC_KEM_SET_CTX_PARAMS = 10
-const OSSL_FUNC_KEM_SETTABLE_CTX_PARAMS = 11
-const OSSL_FUNC_KEM_AUTH_ENCAPSULATE_INIT = 12
-const OSSL_FUNC_KEM_AUTH_DECAPSULATE_INIT = 13
-const OSSL_FUNC_ENCODER_NEWCTX = 1
-const OSSL_FUNC_ENCODER_FREECTX = 2
-const OSSL_FUNC_ENCODER_GET_PARAMS = 3
-const OSSL_FUNC_ENCODER_GETTABLE_PARAMS = 4
-const OSSL_FUNC_ENCODER_SET_CTX_PARAMS = 5
-const OSSL_FUNC_ENCODER_SETTABLE_CTX_PARAMS = 6
-const OSSL_FUNC_ENCODER_DOES_SELECTION = 10
-const OSSL_FUNC_ENCODER_ENCODE = 11
-const OSSL_FUNC_ENCODER_IMPORT_OBJECT = 20
-const OSSL_FUNC_ENCODER_FREE_OBJECT = 21
-const OSSL_FUNC_DECODER_NEWCTX = 1
-const OSSL_FUNC_DECODER_FREECTX = 2
-const OSSL_FUNC_DECODER_GET_PARAMS = 3
-const OSSL_FUNC_DECODER_GETTABLE_PARAMS = 4
-const OSSL_FUNC_DECODER_SET_CTX_PARAMS = 5
-const OSSL_FUNC_DECODER_SETTABLE_CTX_PARAMS = 6
-const OSSL_FUNC_DECODER_DOES_SELECTION = 10
-const OSSL_FUNC_DECODER_DECODE = 11
-const OSSL_FUNC_DECODER_EXPORT_OBJECT = 20
-const OSSL_FUNC_STORE_OPEN = 1
-const OSSL_FUNC_STORE_ATTACH = 2
-const OSSL_FUNC_STORE_SETTABLE_CTX_PARAMS = 3
-const OSSL_FUNC_STORE_SET_CTX_PARAMS = 4
-const OSSL_FUNC_STORE_LOAD = 5
-const OSSL_FUNC_STORE_EOF = 6
-const OSSL_FUNC_STORE_CLOSE = 7
-const OSSL_FUNC_STORE_EXPORT_OBJECT = 8
-const OSSL_FUNC_STORE_DELETE = 9
-const OSSL_FUNC_STORE_OPEN_EX = 10
+
+// Extended import and export functions
+const (
+	OSSL_FUNC_KEYMGMT_IMPORT_TYPES_EX = 45
+	OSSL_FUNC_KEYMGMT_EXPORT_TYPES_EX = 46
+)
+const (
+	OSSL_FUNC_KEYEXCH_NEWCTX              = 1
+	OSSL_FUNC_KEYEXCH_INIT                = 2
+	OSSL_FUNC_KEYEXCH_DERIVE              = 3
+	OSSL_FUNC_KEYEXCH_SET_PEER            = 4
+	OSSL_FUNC_KEYEXCH_FREECTX             = 5
+	OSSL_FUNC_KEYEXCH_DUPCTX              = 6
+	OSSL_FUNC_KEYEXCH_SET_CTX_PARAMS      = 7
+	OSSL_FUNC_KEYEXCH_SETTABLE_CTX_PARAMS = 8
+	OSSL_FUNC_KEYEXCH_GET_CTX_PARAMS      = 9
+	OSSL_FUNC_KEYEXCH_GETTABLE_CTX_PARAMS = 10
+	OSSL_FUNC_KEYEXCH_DERIVE_SKEY         = 11
+)
+const (
+	OSSL_FUNC_SIGNATURE_NEWCTX                 = 1
+	OSSL_FUNC_SIGNATURE_SIGN_INIT              = 2
+	OSSL_FUNC_SIGNATURE_SIGN                   = 3
+	OSSL_FUNC_SIGNATURE_VERIFY_INIT            = 4
+	OSSL_FUNC_SIGNATURE_VERIFY                 = 5
+	OSSL_FUNC_SIGNATURE_VERIFY_RECOVER_INIT    = 6
+	OSSL_FUNC_SIGNATURE_VERIFY_RECOVER         = 7
+	OSSL_FUNC_SIGNATURE_DIGEST_SIGN_INIT       = 8
+	OSSL_FUNC_SIGNATURE_DIGEST_SIGN_UPDATE     = 9
+	OSSL_FUNC_SIGNATURE_DIGEST_SIGN_FINAL      = 10
+	OSSL_FUNC_SIGNATURE_DIGEST_SIGN            = 11
+	OSSL_FUNC_SIGNATURE_DIGEST_VERIFY_INIT     = 12
+	OSSL_FUNC_SIGNATURE_DIGEST_VERIFY_UPDATE   = 13
+	OSSL_FUNC_SIGNATURE_DIGEST_VERIFY_FINAL    = 14
+	OSSL_FUNC_SIGNATURE_DIGEST_VERIFY          = 15
+	OSSL_FUNC_SIGNATURE_FREECTX                = 16
+	OSSL_FUNC_SIGNATURE_DUPCTX                 = 17
+	OSSL_FUNC_SIGNATURE_GET_CTX_PARAMS         = 18
+	OSSL_FUNC_SIGNATURE_GETTABLE_CTX_PARAMS    = 19
+	OSSL_FUNC_SIGNATURE_SET_CTX_PARAMS         = 20
+	OSSL_FUNC_SIGNATURE_SETTABLE_CTX_PARAMS    = 21
+	OSSL_FUNC_SIGNATURE_GET_CTX_MD_PARAMS      = 22
+	OSSL_FUNC_SIGNATURE_GETTABLE_CTX_MD_PARAMS = 23
+	OSSL_FUNC_SIGNATURE_SET_CTX_MD_PARAMS      = 24
+	OSSL_FUNC_SIGNATURE_SETTABLE_CTX_MD_PARAMS = 25
+	OSSL_FUNC_SIGNATURE_QUERY_KEY_TYPES        = 26
+	OSSL_FUNC_SIGNATURE_SIGN_MESSAGE_INIT      = 27
+	OSSL_FUNC_SIGNATURE_SIGN_MESSAGE_UPDATE    = 28
+	OSSL_FUNC_SIGNATURE_SIGN_MESSAGE_FINAL     = 29
+	OSSL_FUNC_SIGNATURE_VERIFY_MESSAGE_INIT    = 30
+	OSSL_FUNC_SIGNATURE_VERIFY_MESSAGE_UPDATE  = 31
+	OSSL_FUNC_SIGNATURE_VERIFY_MESSAGE_FINAL   = 32
+)
+const (
+	OSSL_FUNC_ASYM_CIPHER_NEWCTX              = 1
+	OSSL_FUNC_ASYM_CIPHER_ENCRYPT_INIT        = 2
+	OSSL_FUNC_ASYM_CIPHER_ENCRYPT             = 3
+	OSSL_FUNC_ASYM_CIPHER_DECRYPT_INIT        = 4
+	OSSL_FUNC_ASYM_CIPHER_DECRYPT             = 5
+	OSSL_FUNC_ASYM_CIPHER_FREECTX             = 6
+	OSSL_FUNC_ASYM_CIPHER_DUPCTX              = 7
+	OSSL_FUNC_ASYM_CIPHER_GET_CTX_PARAMS      = 8
+	OSSL_FUNC_ASYM_CIPHER_GETTABLE_CTX_PARAMS = 9
+	OSSL_FUNC_ASYM_CIPHER_SET_CTX_PARAMS      = 10
+	OSSL_FUNC_ASYM_CIPHER_SETTABLE_CTX_PARAMS = 11
+)
+
+// Asymmetric Key encapsulation
+const (
+	OSSL_FUNC_KEM_NEWCTX                = 1
+	OSSL_FUNC_KEM_ENCAPSULATE_INIT      = 2
+	OSSL_FUNC_KEM_ENCAPSULATE           = 3
+	OSSL_FUNC_KEM_DECAPSULATE_INIT      = 4
+	OSSL_FUNC_KEM_DECAPSULATE           = 5
+	OSSL_FUNC_KEM_FREECTX               = 6
+	OSSL_FUNC_KEM_DUPCTX                = 7
+	OSSL_FUNC_KEM_GET_CTX_PARAMS        = 8
+	OSSL_FUNC_KEM_GETTABLE_CTX_PARAMS   = 9
+	OSSL_FUNC_KEM_SET_CTX_PARAMS        = 10
+	OSSL_FUNC_KEM_SETTABLE_CTX_PARAMS   = 11
+	OSSL_FUNC_KEM_AUTH_ENCAPSULATE_INIT = 12
+	OSSL_FUNC_KEM_AUTH_DECAPSULATE_INIT = 13
+)
+
+// Encoders and decoders
+const (
+	OSSL_FUNC_ENCODER_NEWCTX              = 1
+	OSSL_FUNC_ENCODER_FREECTX             = 2
+	OSSL_FUNC_ENCODER_GET_PARAMS          = 3
+	OSSL_FUNC_ENCODER_GETTABLE_PARAMS     = 4
+	OSSL_FUNC_ENCODER_SET_CTX_PARAMS      = 5
+	OSSL_FUNC_ENCODER_SETTABLE_CTX_PARAMS = 6
+	OSSL_FUNC_ENCODER_DOES_SELECTION      = 10
+	OSSL_FUNC_ENCODER_ENCODE              = 11
+	OSSL_FUNC_ENCODER_IMPORT_OBJECT       = 20
+	OSSL_FUNC_ENCODER_FREE_OBJECT         = 21
+)
+const (
+	OSSL_FUNC_DECODER_NEWCTX              = 1
+	OSSL_FUNC_DECODER_FREECTX             = 2
+	OSSL_FUNC_DECODER_GET_PARAMS          = 3
+	OSSL_FUNC_DECODER_GETTABLE_PARAMS     = 4
+	OSSL_FUNC_DECODER_SET_CTX_PARAMS      = 5
+	OSSL_FUNC_DECODER_SETTABLE_CTX_PARAMS = 6
+	OSSL_FUNC_DECODER_DOES_SELECTION      = 10
+	OSSL_FUNC_DECODER_DECODE              = 11
+	OSSL_FUNC_DECODER_EXPORT_OBJECT       = 20
+)
+const (
+	OSSL_FUNC_STORE_OPEN                = 1
+	OSSL_FUNC_STORE_ATTACH              = 2
+	OSSL_FUNC_STORE_SETTABLE_CTX_PARAMS = 3
+	OSSL_FUNC_STORE_SET_CTX_PARAMS      = 4
+	OSSL_FUNC_STORE_LOAD                = 5
+	OSSL_FUNC_STORE_EOF                 = 6
+	OSSL_FUNC_STORE_CLOSE               = 7
+	OSSL_FUNC_STORE_EXPORT_OBJECT       = 8
+	OSSL_FUNC_STORE_DELETE              = 9
+	OSSL_FUNC_STORE_OPEN_EX             = 10
+)
 
 // Generic function pointer for provider method arrays, or other contexts where
 // functions of various signatures must occupy a common slot in an array of
@@ -946,129 +1065,66 @@ type OSSL_FUNCSignatureVerifyMessageUpdateFn = func(_llcppg_param1 unsafe.Pointe
 // llgo:type C
 type OSSL_FUNCSignatureVerifyMessageFinalFn = func(_llcppg_param1 unsafe.Pointer) c.Int
 
-// signature_verify_final requires that the signature to be verified against
-// is specified via an OSSL_PARAM.
-//
 // llgo:type C
 type OSSL_FUNCSignatureVerifyRecoverInitFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *OSSL_PARAM) c.Int
 
-// signature_verify_final requires that the signature to be verified against
-// is specified via an OSSL_PARAM.
-//
 // llgo:type C
 type OSSL_FUNCSignatureVerifyRecoverFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 *uint8, _llcppg_param6 c.SizeT) c.Int
 
-// signature_verify_final requires that the signature to be verified against
-// is specified via an OSSL_PARAM.
-//
 // llgo:type C
 type OSSL_FUNCSignatureDigestSignInitFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char, _llcppg_param3 unsafe.Pointer, _llcppg_param4 *OSSL_PARAM) c.Int
 
-// signature_verify_final requires that the signature to be verified against
-// is specified via an OSSL_PARAM.
-//
 // llgo:type C
 type OSSL_FUNCSignatureDigestSignUpdateFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT) c.Int
 
-// signature_verify_final requires that the signature to be verified against
-// is specified via an OSSL_PARAM.
-//
 // llgo:type C
 type OSSL_FUNCSignatureDigestSignFinalFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT) c.Int
 
-// signature_verify_final requires that the signature to be verified against
-// is specified via an OSSL_PARAM.
-//
 // llgo:type C
 type OSSL_FUNCSignatureDigestSignFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 *uint8, _llcppg_param6 c.SizeT) c.Int
 
-// signature_verify_final requires that the signature to be verified against
-// is specified via an OSSL_PARAM.
-//
 // llgo:type C
 type OSSL_FUNCSignatureDigestVerifyInitFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char, _llcppg_param3 unsafe.Pointer, _llcppg_param4 *OSSL_PARAM) c.Int
 
-// signature_verify_final requires that the signature to be verified against
-// is specified via an OSSL_PARAM.
-//
 // llgo:type C
 type OSSL_FUNCSignatureDigestVerifyUpdateFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT) c.Int
 
-// signature_verify_final requires that the signature to be verified against
-// is specified via an OSSL_PARAM.
-//
 // llgo:type C
 type OSSL_FUNCSignatureDigestVerifyFinalFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT) c.Int
 
-// signature_verify_final requires that the signature to be verified against
-// is specified via an OSSL_PARAM.
-//
 // llgo:type C
 type OSSL_FUNCSignatureDigestVerifyFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 *uint8, _llcppg_param5 c.SizeT) c.Int
 
-// signature_verify_final requires that the signature to be verified against
-// is specified via an OSSL_PARAM.
-//
 // llgo:type C
 type OSSL_FUNCSignatureFreectxFn = func(_llcppg_param1 unsafe.Pointer)
 
-// signature_verify_final requires that the signature to be verified against
-// is specified via an OSSL_PARAM.
-//
 // llgo:type C
 type OSSL_FUNCSignatureDupctxFn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
-// signature_verify_final requires that the signature to be verified against
-// is specified via an OSSL_PARAM.
-//
 // llgo:type C
 type OSSL_FUNCSignatureGetCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
-// signature_verify_final requires that the signature to be verified against
-// is specified via an OSSL_PARAM.
-//
 // llgo:type C
 type OSSL_FUNCSignatureGettableCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
-// signature_verify_final requires that the signature to be verified against
-// is specified via an OSSL_PARAM.
-//
 // llgo:type C
 type OSSL_FUNCSignatureSetCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
-// signature_verify_final requires that the signature to be verified against
-// is specified via an OSSL_PARAM.
-//
 // llgo:type C
 type OSSL_FUNCSignatureSettableCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
-// signature_verify_final requires that the signature to be verified against
-// is specified via an OSSL_PARAM.
-//
 // llgo:type C
 type OSSL_FUNCSignatureGetCtxMdParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
-// signature_verify_final requires that the signature to be verified against
-// is specified via an OSSL_PARAM.
-//
 // llgo:type C
 type OSSL_FUNCSignatureGettableCtxMdParamsFn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
 
-// signature_verify_final requires that the signature to be verified against
-// is specified via an OSSL_PARAM.
-//
 // llgo:type C
 type OSSL_FUNCSignatureSetCtxMdParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
-// signature_verify_final requires that the signature to be verified against
-// is specified via an OSSL_PARAM.
-//
 // llgo:type C
 type OSSL_FUNCSignatureSettableCtxMdParamsFn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
 
-// signature_verify_final requires that the signature to be verified against
-// is specified via an OSSL_PARAM.
-//
 // llgo:type C
 type OSSL_FUNCSignatureQueryKeyTypesFn = func() **c.Char
 

@@ -8,120 +8,195 @@ import (
 	"unsafe"
 )
 
-const V_ASN1_UNIVERSAL = 0
-const V_ASN1_APPLICATION = 64
-const V_ASN1_CONTEXT_SPECIFIC = 128
-const V_ASN1_PRIVATE = 192
-const V_ASN1_CONSTRUCTED = 32
-const V_ASN1_PRIMITIVE_TAG = 31
-const V_ASN1_PRIMATIVE_TAG = 31
-const V_ASN1_APP_CHOOSE = -2
-const V_ASN1_OTHER = -3
-const V_ASN1_ANY = -4
+const (
+	V_ASN1_UNIVERSAL        = 0
+	V_ASN1_APPLICATION      = 64
+	V_ASN1_CONTEXT_SPECIFIC = 128
+	V_ASN1_PRIVATE          = 192
+)
+const (
+	V_ASN1_CONSTRUCTED   = 32
+	V_ASN1_PRIMITIVE_TAG = 31
+	V_ASN1_PRIMATIVE_TAG = 31
+)
+const (
+	// let the recipient choose
+	V_ASN1_APP_CHOOSE = -2
+	// used in ASN1_TYPE
+	V_ASN1_OTHER = -3
+	// used in ASN1 template code
+	V_ASN1_ANY = -4
+)
+
+// ASN.1 tag values
 const V_ASN1_UNDEF = -1
-const V_ASN1_EOC = 0
-const V_ASN1_BOOLEAN = 1
-const V_ASN1_INTEGER = 2
-const V_ASN1_BIT_STRING = 3
-const V_ASN1_OCTET_STRING = 4
-const V_ASN1_NULL = 5
-const V_ASN1_OBJECT = 6
-const V_ASN1_OBJECT_DESCRIPTOR = 7
-const V_ASN1_EXTERNAL = 8
-const V_ASN1_REAL = 9
-const V_ASN1_ENUMERATED = 10
-const V_ASN1_UTF8STRING = 12
-const V_ASN1_SEQUENCE = 16
-const V_ASN1_SET = 17
-const V_ASN1_NUMERICSTRING = 18
-const V_ASN1_PRINTABLESTRING = 19
-const V_ASN1_T61STRING = 20
-const V_ASN1_TELETEXSTRING = 20
-const V_ASN1_VIDEOTEXSTRING = 21
-const V_ASN1_IA5STRING = 22
-const V_ASN1_UTCTIME = 23
-const V_ASN1_GENERALIZEDTIME = 24
-const V_ASN1_GRAPHICSTRING = 25
-const V_ASN1_ISO64STRING = 26
-const V_ASN1_VISIBLESTRING = 26
-const V_ASN1_GENERALSTRING = 27
-const V_ASN1_UNIVERSALSTRING = 28
-const V_ASN1_BMPSTRING = 30
-const V_ASN1_NEG = 256
-const V_ASN1_NEG_INTEGER = 258
-const V_ASN1_NEG_ENUMERATED = 266
-const B_ASN1_NUMERICSTRING = 1
-const B_ASN1_PRINTABLESTRING = 2
-const B_ASN1_T61STRING = 4
-const B_ASN1_TELETEXSTRING = 4
-const B_ASN1_VIDEOTEXSTRING = 8
-const B_ASN1_IA5STRING = 16
-const B_ASN1_GRAPHICSTRING = 32
-const B_ASN1_ISO64STRING = 64
-const B_ASN1_VISIBLESTRING = 64
-const B_ASN1_GENERALSTRING = 128
-const B_ASN1_UNIVERSALSTRING = 256
-const B_ASN1_OCTET_STRING = 512
-const B_ASN1_BIT_STRING = 1024
-const B_ASN1_BMPSTRING = 2048
-const B_ASN1_UNKNOWN = 4096
-const B_ASN1_UTF8STRING = 8192
-const B_ASN1_UTCTIME = 16384
-const B_ASN1_GENERALIZEDTIME = 32768
-const B_ASN1_SEQUENCE = 65536
-const MBSTRING_FLAG = 4096
-const MBSTRING_UTF8 = 4096
-const MBSTRING_ASC = 4097
-const MBSTRING_BMP = 4098
-const MBSTRING_UNIV = 4100
-const SMIME_OLDMIME = 1024
-const SMIME_CRLFEOL = 2048
-const SMIME_STREAM = 4096
+
+// ASN.1 tag values
+const (
+	V_ASN1_EOC               = 0
+	V_ASN1_BOOLEAN           = 1
+	V_ASN1_INTEGER           = 2
+	V_ASN1_BIT_STRING        = 3
+	V_ASN1_OCTET_STRING      = 4
+	V_ASN1_NULL              = 5
+	V_ASN1_OBJECT            = 6
+	V_ASN1_OBJECT_DESCRIPTOR = 7
+	V_ASN1_EXTERNAL          = 8
+	V_ASN1_REAL              = 9
+	V_ASN1_ENUMERATED        = 10
+	V_ASN1_UTF8STRING        = 12
+	V_ASN1_SEQUENCE          = 16
+	V_ASN1_SET               = 17
+	V_ASN1_NUMERICSTRING     = 18
+	V_ASN1_PRINTABLESTRING   = 19
+	V_ASN1_T61STRING         = 20
+	// alias
+	V_ASN1_TELETEXSTRING   = 20
+	V_ASN1_VIDEOTEXSTRING  = 21
+	V_ASN1_IA5STRING       = 22
+	V_ASN1_UTCTIME         = 23
+	V_ASN1_GENERALIZEDTIME = 24
+	V_ASN1_GRAPHICSTRING   = 25
+	V_ASN1_ISO64STRING     = 26
+	// alias
+	V_ASN1_VISIBLESTRING   = 26
+	V_ASN1_GENERALSTRING   = 27
+	V_ASN1_UNIVERSALSTRING = 28
+	V_ASN1_BMPSTRING       = 30
+)
+const (
+	V_ASN1_NEG            = 256
+	V_ASN1_NEG_INTEGER    = 258
+	V_ASN1_NEG_ENUMERATED = 266
+)
+
+// For use with d2i_ASN1_type_bytes()
+const (
+	B_ASN1_NUMERICSTRING   = 1
+	B_ASN1_PRINTABLESTRING = 2
+	B_ASN1_T61STRING       = 4
+	B_ASN1_TELETEXSTRING   = 4
+	B_ASN1_VIDEOTEXSTRING  = 8
+	B_ASN1_IA5STRING       = 16
+	B_ASN1_GRAPHICSTRING   = 32
+	B_ASN1_ISO64STRING     = 64
+	B_ASN1_VISIBLESTRING   = 64
+	B_ASN1_GENERALSTRING   = 128
+	B_ASN1_UNIVERSALSTRING = 256
+	B_ASN1_OCTET_STRING    = 512
+	B_ASN1_BIT_STRING      = 1024
+	B_ASN1_BMPSTRING       = 2048
+	B_ASN1_UNKNOWN         = 4096
+	B_ASN1_UTF8STRING      = 8192
+	B_ASN1_UTCTIME         = 16384
+	B_ASN1_GENERALIZEDTIME = 32768
+	// For use with ASN1_mbstring_copy()
+	B_ASN1_SEQUENCE = 65536
+)
+
+// For use with ASN1_mbstring_copy()
+const (
+	MBSTRING_FLAG = 4096
+	MBSTRING_UTF8 = 4096
+	MBSTRING_ASC  = 4097
+	MBSTRING_BMP  = 4098
+	MBSTRING_UNIV = 4100
+	SMIME_OLDMIME = 1024
+	SMIME_CRLFEOL = 2048
+	SMIME_STREAM  = 4096
+)
+
+// A zero passed to ASN1_STRING_TABLE_new_add for the flags is interpreted
+// as "don't change" and STABLE_FLAGS_MALLOC is always set. By setting
+// STABLE_FLAGS_MALLOC only we can clear the existing value. Use the alias
+// STABLE_FLAGS_CLEAR to reflect this.
 const STABLE_FLAGS_MALLOC = 1
-const STABLE_FLAGS_CLEAR = 1
-const STABLE_NO_MASK = 2
-const DIRSTRING_TYPE = 10246
-const PKCS9STRING_TYPE = 10262
-const UbName = 32768
-const UbCommonName = 64
-const UbLocalityName = 128
-const UbStateName = 128
-const UbOrganizationName = 64
-const UbOrganizationUnitName = 64
-const UbTitle = 64
-const UbEmailAddress = 128
-const ASN1_STRFLGS_ESC_2253 = 1
-const ASN1_STRFLGS_ESC_CTRL = 2
-const ASN1_STRFLGS_ESC_MSB = 4
+
+// A zero passed to ASN1_STRING_TABLE_new_add for the flags is interpreted
+// as "don't change" and STABLE_FLAGS_MALLOC is always set. By setting
+// STABLE_FLAGS_MALLOC only we can clear the existing value. Use the alias
+// STABLE_FLAGS_CLEAR to reflect this.
+const (
+	STABLE_FLAGS_CLEAR = 1
+	STABLE_NO_MASK     = 2
+	DIRSTRING_TYPE     = 10246
+	PKCS9STRING_TYPE   = 10262
+)
+const (
+	UbName                 = 32768
+	UbCommonName           = 64
+	UbLocalityName         = 128
+	UbStateName            = 128
+	UbOrganizationName     = 64
+	UbOrganizationUnitName = 64
+	UbTitle                = 64
+	UbEmailAddress         = 128
+)
+const (
+	ASN1_STRFLGS_ESC_2253 = 1
+	ASN1_STRFLGS_ESC_CTRL = 2
+	ASN1_STRFLGS_ESC_MSB  = 4
+)
 const ASN1_STRFLGS_ESC_QUOTE = 8
+
+// Character is a valid PrintableString character
 const CHARTYPE_PRINTABLESTRING = 16
+
+// Character needs escaping if it is the first character
 const CHARTYPE_FIRST_ESC_2253 = 32
+
+// Character needs escaping if it is the last character
 const CHARTYPE_LAST_ESC_2253 = 64
 const ASN1_STRFLGS_UTF8_CONVERT = 16
 const ASN1_STRFLGS_IGNORE_TYPE = 32
+
+// If this is set we include the string type in the output
 const ASN1_STRFLGS_SHOW_TYPE = 64
-const ASN1_STRFLGS_DUMP_ALL = 128
-const ASN1_STRFLGS_DUMP_UNKNOWN = 256
+const (
+	ASN1_STRFLGS_DUMP_ALL     = 128
+	ASN1_STRFLGS_DUMP_UNKNOWN = 256
+)
 const ASN1_STRFLGS_DUMP_DER = 512
+
+// This flag specifies that RC2254 escaping shall be performed.
 const ASN1_STRFLGS_ESC_2254 = 1024
 const ASN1_STRFLGS_RFC2253 = 791
 const B_ASN1_TIME = 49152
 const B_ASN1_PRINTABLE = 81175
 const B_ASN1_DIRECTORYSTRING = 10502
 const B_ASN1_DISPLAYTEXT = 10320
+
+// Indicate missing OPTIONAL fields
 const ASN1_PCTX_FLAGS_SHOW_ABSENT = 1
+
+// Mark start and end of SEQUENCE
 const ASN1_PCTX_FLAGS_SHOW_SEQUENCE = 2
+
+// Mark start and end of SEQUENCE/SET OF
 const ASN1_PCTX_FLAGS_SHOW_SSOF = 4
+
+// Show the ASN1 type of primitives
 const ASN1_PCTX_FLAGS_SHOW_TYPE = 8
+
+// Don't show ASN1 type of ANY
 const ASN1_PCTX_FLAGS_NO_ANY_TYPE = 16
+
+// Don't show ASN1 type of MSTRINGs
 const ASN1_PCTX_FLAGS_NO_MSTRING_TYPE = 32
+
+// Don't show field names in SEQUENCE
 const ASN1_PCTX_FLAGS_NO_FIELD_NAME = 64
+
+// Show structure names of each SEQUENCE field
 const ASN1_PCTX_FLAGS_SHOW_FIELD_STRUCT_NAME = 128
+
+// Don't show structure name even at top level
 const ASN1_PCTX_FLAGS_NO_STRUCT_NAME = 256
 
-type Asn1TypeSt struct {
-	Type  c.Int
-	Value _llcppg_anon_1
+type ASN1ENCODINGSt struct {
+	Enc      *uint8
+	Len      c.Long
+	Modified c.Int
 }
 type Asn1StringTableSt struct {
 	Nid     c.Int
@@ -130,42 +205,53 @@ type Asn1StringTableSt struct {
 	Mask    c.Ulong
 	Flags   c.Ulong
 }
+type Asn1TypeSt struct {
+	Type  c.Int
+	Value _llcppg_anon_1
+}
+
+// This is used to contain a list of bit names
+type BIT_STRING_BITNAMESt struct {
+	Bitnum c.Int
+	Lname  *c.Char
+	Sname  *c.Char
+}
+type ASN1TEMPLATESt struct {
+}
+type ASN1TLCSt struct {
+}
+type ASN1VALUESt struct {
+}
+type StackStASN1GENERALSTRING struct {
+}
+type StackStASN1INTEGER struct {
+}
+type StackStASN1OBJECT struct {
+}
+type StackStASN1STRING_TABLE struct {
+}
+type StackStASN1TYPE struct {
+}
+type StackStASN1UTF8STRING struct {
+}
 type StackStX509ALGOR struct {
 }
 
-// Stacks for types not otherwise defined in this header
 // clang-format off
 //
 // llgo:type C
 type SkX509ALGORCompfunc = func(_llcppg_param1 **X509_ALGOR, _llcppg_param2 **X509_ALGOR) c.Int
 
-// Stacks for types not otherwise defined in this header
 // clang-format off
 //
 // llgo:type C
 type SkX509ALGORFreefunc = func(_llcppg_param1 *X509_ALGOR)
 
-// Stacks for types not otherwise defined in this header
 // clang-format off
 //
 // llgo:type C
 type SkX509ALGORCopyfunc = func(_llcppg_param1 *X509_ALGOR) *X509_ALGOR
-
-// ASN1_ENCODING structure: this is used to save the received encoding of an
-// ASN1 type. This is useful to get round problems with invalid encodings
-// which can break signatures.
-type ASN1ENCODINGSt struct {
-	Enc      *uint8
-	Len      c.Long
-	Modified c.Int
-}
-
-// ASN1_ENCODING structure: this is used to save the received encoding of an
-// ASN1 type. This is useful to get round problems with invalid encodings
-// which can break signatures.
 type ASN1_ENCODING = ASN1ENCODINGSt
-type StackStASN1STRING_TABLE struct {
-}
 
 // clang-format off
 //
@@ -181,16 +267,12 @@ type SkASN1STRING_TABLEFreefunc = func(_llcppg_param1 *ASN1_STRING_TABLE)
 //
 // llgo:type C
 type SkASN1STRING_TABLECopyfunc = func(_llcppg_param1 *ASN1_STRING_TABLE) *ASN1_STRING_TABLE
-type ASN1TEMPLATESt struct {
-}
 
 // Declarations for template structures: for full definitions see asn1t.h
 type ASN1_TEMPLATE = ASN1TEMPLATESt
-type ASN1TLCSt struct {
-}
+
+// This is just an opaque pointer
 type ASN1_TLC = ASN1TLCSt
-type ASN1VALUESt struct {
-}
 
 // This is just an opaque pointer
 type ASN1_VALUE = ASN1VALUESt
@@ -211,8 +293,6 @@ type ASN1_ITEM_EXP = func() *ASN1_ITEM
 type _llcppg_anon_1 struct {
 	_xgo_union [1]uint64
 }
-type StackStASN1TYPE struct {
-}
 
 // clang-format off
 //
@@ -228,21 +308,10 @@ type SkASN1TYPEFreefunc = func(_llcppg_param1 *ASN1_TYPE)
 //
 // llgo:type C
 type SkASN1TYPECopyfunc = func(_llcppg_param1 *ASN1_TYPE) *ASN1_TYPE
-
-// clang-format on
 type ASN1_SEQUENCE_ANY = StackStASN1TYPE
 
 // This is used to contain a list of bit names
-type BIT_STRING_BITNAMESt struct {
-	Bitnum c.Int
-	Lname  *c.Char
-	Sname  *c.Char
-}
-
-// This is used to contain a list of bit names
 type BIT_STRING_BITNAME = BIT_STRING_BITNAMESt
-type StackStASN1OBJECT struct {
-}
 
 // clang-format off
 //
@@ -258,8 +327,6 @@ type SkASN1OBJECTFreefunc = func(_llcppg_param1 *ASN1_OBJECT)
 //
 // llgo:type C
 type SkASN1OBJECTCopyfunc = func(_llcppg_param1 *ASN1_OBJECT) *ASN1_OBJECT
-type StackStASN1INTEGER struct {
-}
 
 // clang-format off
 //
@@ -275,8 +342,6 @@ type SkASN1INTEGERFreefunc = func(_llcppg_param1 *ASN1_INTEGER)
 //
 // llgo:type C
 type SkASN1INTEGERCopyfunc = func(_llcppg_param1 *ASN1_INTEGER) *ASN1_INTEGER
-type StackStASN1UTF8STRING struct {
-}
 
 // clang-format off
 //
@@ -292,8 +357,6 @@ type SkASN1UTF8STRINGFreefunc = func(_llcppg_param1 *ASN1_UTF8STRING)
 //
 // llgo:type C
 type SkASN1UTF8STRINGCopyfunc = func(_llcppg_param1 *ASN1_UTF8STRING) *ASN1_UTF8STRING
-type StackStASN1GENERALSTRING struct {
-}
 
 // clang-format off
 //
@@ -458,6 +521,9 @@ func ASN1STRINGDup(a *ASN1_STRING) *ASN1_STRING
 //go:linkname ASN1STRINGTypeNew C.ASN1_STRING_type_new
 func ASN1STRINGTypeNew(type_ c.Int) *ASN1_STRING
 
+// Since this is used to store all sorts of things, via macros, for now,
+// make its data void *
+//
 //go:linkname ASN1STRINGCmp C.ASN1_STRING_cmp
 func ASN1STRINGCmp(a *ASN1_STRING, b *ASN1_STRING) c.Int
 
@@ -524,33 +590,21 @@ func ASN1BIT_STRINGGetLength(abs *ASN1_BIT_STRING, length *c.SizeT, unused_bits 
 //go:linkname ASN1BIT_STRINGSet1 C.ASN1_BIT_STRING_set1
 func ASN1BIT_STRINGSet1(abs *ASN1_BIT_STRING, data *c.Uint8T, length c.SizeT, unused_bits c.Int) c.Int
 
-// clang-format on
-//
 //go:linkname ASN1INTEGERNew C.ASN1_INTEGER_new
 func ASN1INTEGERNew() *ASN1_INTEGER
 
-// clang-format on
-//
 //go:linkname ASN1INTEGERFree C.ASN1_INTEGER_free
 func ASN1INTEGERFree(a *ASN1_INTEGER)
 
-// clang-format on
-//
 //go:linkname D2iASN1INTEGER C.d2i_ASN1_INTEGER
 func D2iASN1INTEGER(a **ASN1_INTEGER, in **uint8, len c.Long) *ASN1_INTEGER
 
-// clang-format on
-//
 //go:linkname I2dASN1INTEGER C.i2d_ASN1_INTEGER
 func I2dASN1INTEGER(a *ASN1_INTEGER, out **uint8) c.Int
 
-// clang-format on
-//
 //go:linkname ASN1INTEGERIt C.ASN1_INTEGER_it
 func ASN1INTEGERIt() *ASN1_ITEM
 
-// clang-format on
-//
 //go:linkname D2iASN1UINTEGER C.d2i_ASN1_UINTEGER
 func D2iASN1UINTEGER(a **ASN1_INTEGER, pp **uint8, length c.Long) *ASN1_INTEGER
 
@@ -629,411 +683,249 @@ func ASN1OCTET_STRINGCmp(a *ASN1_OCTET_STRING, b *ASN1_OCTET_STRING) c.Int
 //go:linkname ASN1OCTET_STRINGSet C.ASN1_OCTET_STRING_set
 func ASN1OCTET_STRINGSet(str *ASN1_OCTET_STRING, data *uint8, len c.Int) c.Int
 
-// clang-format on
-//
 //go:linkname ASN1VISIBLESTRINGNew C.ASN1_VISIBLESTRING_new
 func ASN1VISIBLESTRINGNew() *ASN1_VISIBLESTRING
 
-// clang-format on
-//
 //go:linkname ASN1VISIBLESTRINGFree C.ASN1_VISIBLESTRING_free
 func ASN1VISIBLESTRINGFree(a *ASN1_VISIBLESTRING)
 
-// clang-format on
-//
 //go:linkname D2iASN1VISIBLESTRING C.d2i_ASN1_VISIBLESTRING
 func D2iASN1VISIBLESTRING(a **ASN1_VISIBLESTRING, in **uint8, len c.Long) *ASN1_VISIBLESTRING
 
-// clang-format on
-//
 //go:linkname I2dASN1VISIBLESTRING C.i2d_ASN1_VISIBLESTRING
 func I2dASN1VISIBLESTRING(a *ASN1_VISIBLESTRING, out **uint8) c.Int
 
-// clang-format on
-//
 //go:linkname ASN1VISIBLESTRINGIt C.ASN1_VISIBLESTRING_it
 func ASN1VISIBLESTRINGIt() *ASN1_ITEM
 
-// clang-format on
-//
 //go:linkname ASN1UNIVERSALSTRINGNew C.ASN1_UNIVERSALSTRING_new
 func ASN1UNIVERSALSTRINGNew() *ASN1_UNIVERSALSTRING
 
-// clang-format on
-//
 //go:linkname ASN1UNIVERSALSTRINGFree C.ASN1_UNIVERSALSTRING_free
 func ASN1UNIVERSALSTRINGFree(a *ASN1_UNIVERSALSTRING)
 
-// clang-format on
-//
 //go:linkname D2iASN1UNIVERSALSTRING C.d2i_ASN1_UNIVERSALSTRING
 func D2iASN1UNIVERSALSTRING(a **ASN1_UNIVERSALSTRING, in **uint8, len c.Long) *ASN1_UNIVERSALSTRING
 
-// clang-format on
-//
 //go:linkname I2dASN1UNIVERSALSTRING C.i2d_ASN1_UNIVERSALSTRING
 func I2dASN1UNIVERSALSTRING(a *ASN1_UNIVERSALSTRING, out **uint8) c.Int
 
-// clang-format on
-//
 //go:linkname ASN1UNIVERSALSTRINGIt C.ASN1_UNIVERSALSTRING_it
 func ASN1UNIVERSALSTRINGIt() *ASN1_ITEM
 
-// clang-format on
-//
 //go:linkname ASN1UTF8STRINGNew C.ASN1_UTF8STRING_new
 func ASN1UTF8STRINGNew() *ASN1_UTF8STRING
 
-// clang-format on
-//
 //go:linkname ASN1UTF8STRINGFree C.ASN1_UTF8STRING_free
 func ASN1UTF8STRINGFree(a *ASN1_UTF8STRING)
 
-// clang-format on
-//
 //go:linkname D2iASN1UTF8STRING C.d2i_ASN1_UTF8STRING
 func D2iASN1UTF8STRING(a **ASN1_UTF8STRING, in **uint8, len c.Long) *ASN1_UTF8STRING
 
-// clang-format on
-//
 //go:linkname I2dASN1UTF8STRING C.i2d_ASN1_UTF8STRING
 func I2dASN1UTF8STRING(a *ASN1_UTF8STRING, out **uint8) c.Int
 
-// clang-format on
-//
 //go:linkname ASN1UTF8STRINGIt C.ASN1_UTF8STRING_it
 func ASN1UTF8STRINGIt() *ASN1_ITEM
 
-// clang-format on
-//
 //go:linkname ASN1NULLNew C.ASN1_NULL_new
 func ASN1NULLNew() *ASN1_NULL
 
-// clang-format on
-//
 //go:linkname ASN1NULLFree C.ASN1_NULL_free
 func ASN1NULLFree(a *ASN1_NULL)
 
-// clang-format on
-//
 //go:linkname D2iASN1NULL C.d2i_ASN1_NULL
 func D2iASN1NULL(a **ASN1_NULL, in **uint8, len c.Long) *ASN1_NULL
 
-// clang-format on
-//
 //go:linkname I2dASN1NULL C.i2d_ASN1_NULL
 func I2dASN1NULL(a *ASN1_NULL, out **uint8) c.Int
 
-// clang-format on
-//
 //go:linkname ASN1NULLIt C.ASN1_NULL_it
 func ASN1NULLIt() *ASN1_ITEM
 
-// clang-format on
-//
 //go:linkname ASN1BMPSTRINGNew C.ASN1_BMPSTRING_new
 func ASN1BMPSTRINGNew() *ASN1_BMPSTRING
 
-// clang-format on
-//
 //go:linkname ASN1BMPSTRINGFree C.ASN1_BMPSTRING_free
 func ASN1BMPSTRINGFree(a *ASN1_BMPSTRING)
 
-// clang-format on
-//
 //go:linkname D2iASN1BMPSTRING C.d2i_ASN1_BMPSTRING
 func D2iASN1BMPSTRING(a **ASN1_BMPSTRING, in **uint8, len c.Long) *ASN1_BMPSTRING
 
-// clang-format on
-//
 //go:linkname I2dASN1BMPSTRING C.i2d_ASN1_BMPSTRING
 func I2dASN1BMPSTRING(a *ASN1_BMPSTRING, out **uint8) c.Int
 
-// clang-format on
-//
 //go:linkname ASN1BMPSTRINGIt C.ASN1_BMPSTRING_it
 func ASN1BMPSTRINGIt() *ASN1_ITEM
 
-// clang-format on
-//
 //go:linkname UTF8Getc C.UTF8_getc
 func UTF8Getc(str *uint8, len c.Int, val *c.Ulong) c.Int
 
 //go:linkname UTF8Putc C.UTF8_putc
 func UTF8Putc(str *uint8, len c.Int, value c.Ulong) c.Int
 
-// clang-format on
-//
 //go:linkname ASN1PRINTABLENew C.ASN1_PRINTABLE_new
 func ASN1PRINTABLENew() *ASN1_STRING
 
-// clang-format on
-//
 //go:linkname ASN1PRINTABLEFree C.ASN1_PRINTABLE_free
 func ASN1PRINTABLEFree(a *ASN1_STRING)
 
-// clang-format on
-//
 //go:linkname D2iASN1PRINTABLE C.d2i_ASN1_PRINTABLE
 func D2iASN1PRINTABLE(a **ASN1_STRING, in **uint8, len c.Long) *ASN1_STRING
 
-// clang-format on
-//
 //go:linkname I2dASN1PRINTABLE C.i2d_ASN1_PRINTABLE
 func I2dASN1PRINTABLE(a *ASN1_STRING, out **uint8) c.Int
 
-// clang-format on
-//
 //go:linkname ASN1PRINTABLEIt C.ASN1_PRINTABLE_it
 func ASN1PRINTABLEIt() *ASN1_ITEM
 
-// clang-format on
-//
 //go:linkname DIRECTORYSTRINGNew C.DIRECTORYSTRING_new
 func DIRECTORYSTRINGNew() *ASN1_STRING
 
-// clang-format on
-//
 //go:linkname DIRECTORYSTRINGFree C.DIRECTORYSTRING_free
 func DIRECTORYSTRINGFree(a *ASN1_STRING)
 
-// clang-format on
-//
 //go:linkname D2iDIRECTORYSTRING C.d2i_DIRECTORYSTRING
 func D2iDIRECTORYSTRING(a **ASN1_STRING, in **uint8, len c.Long) *ASN1_STRING
 
-// clang-format on
-//
 //go:linkname I2dDIRECTORYSTRING C.i2d_DIRECTORYSTRING
 func I2dDIRECTORYSTRING(a *ASN1_STRING, out **uint8) c.Int
 
-// clang-format on
-//
 //go:linkname DIRECTORYSTRINGIt C.DIRECTORYSTRING_it
 func DIRECTORYSTRINGIt() *ASN1_ITEM
 
-// clang-format on
-//
 //go:linkname DISPLAYTEXTNew C.DISPLAYTEXT_new
 func DISPLAYTEXTNew() *ASN1_STRING
 
-// clang-format on
-//
 //go:linkname DISPLAYTEXTFree C.DISPLAYTEXT_free
 func DISPLAYTEXTFree(a *ASN1_STRING)
 
-// clang-format on
-//
 //go:linkname D2iDISPLAYTEXT C.d2i_DISPLAYTEXT
 func D2iDISPLAYTEXT(a **ASN1_STRING, in **uint8, len c.Long) *ASN1_STRING
 
-// clang-format on
-//
 //go:linkname I2dDISPLAYTEXT C.i2d_DISPLAYTEXT
 func I2dDISPLAYTEXT(a *ASN1_STRING, out **uint8) c.Int
 
-// clang-format on
-//
 //go:linkname DISPLAYTEXTIt C.DISPLAYTEXT_it
 func DISPLAYTEXTIt() *ASN1_ITEM
 
-// clang-format on
-//
 //go:linkname ASN1PRINTABLESTRINGNew C.ASN1_PRINTABLESTRING_new
 func ASN1PRINTABLESTRINGNew() *ASN1_PRINTABLESTRING
 
-// clang-format on
-//
 //go:linkname ASN1PRINTABLESTRINGFree C.ASN1_PRINTABLESTRING_free
 func ASN1PRINTABLESTRINGFree(a *ASN1_PRINTABLESTRING)
 
-// clang-format on
-//
 //go:linkname D2iASN1PRINTABLESTRING C.d2i_ASN1_PRINTABLESTRING
 func D2iASN1PRINTABLESTRING(a **ASN1_PRINTABLESTRING, in **uint8, len c.Long) *ASN1_PRINTABLESTRING
 
-// clang-format on
-//
 //go:linkname I2dASN1PRINTABLESTRING C.i2d_ASN1_PRINTABLESTRING
 func I2dASN1PRINTABLESTRING(a *ASN1_PRINTABLESTRING, out **uint8) c.Int
 
-// clang-format on
-//
 //go:linkname ASN1PRINTABLESTRINGIt C.ASN1_PRINTABLESTRING_it
 func ASN1PRINTABLESTRINGIt() *ASN1_ITEM
 
-// clang-format on
-//
 //go:linkname ASN1T61STRINGNew C.ASN1_T61STRING_new
 func ASN1T61STRINGNew() *ASN1_T61STRING
 
-// clang-format on
-//
 //go:linkname ASN1T61STRINGFree C.ASN1_T61STRING_free
 func ASN1T61STRINGFree(a *ASN1_T61STRING)
 
-// clang-format on
-//
 //go:linkname D2iASN1T61STRING C.d2i_ASN1_T61STRING
 func D2iASN1T61STRING(a **ASN1_T61STRING, in **uint8, len c.Long) *ASN1_T61STRING
 
-// clang-format on
-//
 //go:linkname I2dASN1T61STRING C.i2d_ASN1_T61STRING
 func I2dASN1T61STRING(a *ASN1_T61STRING, out **uint8) c.Int
 
-// clang-format on
-//
 //go:linkname ASN1T61STRINGIt C.ASN1_T61STRING_it
 func ASN1T61STRINGIt() *ASN1_ITEM
 
-// clang-format on
-//
 //go:linkname ASN1IA5STRINGNew C.ASN1_IA5STRING_new
 func ASN1IA5STRINGNew() *ASN1_IA5STRING
 
-// clang-format on
-//
 //go:linkname ASN1IA5STRINGFree C.ASN1_IA5STRING_free
 func ASN1IA5STRINGFree(a *ASN1_IA5STRING)
 
-// clang-format on
-//
 //go:linkname D2iASN1IA5STRING C.d2i_ASN1_IA5STRING
 func D2iASN1IA5STRING(a **ASN1_IA5STRING, in **uint8, len c.Long) *ASN1_IA5STRING
 
-// clang-format on
-//
 //go:linkname I2dASN1IA5STRING C.i2d_ASN1_IA5STRING
 func I2dASN1IA5STRING(a *ASN1_IA5STRING, out **uint8) c.Int
 
-// clang-format on
-//
 //go:linkname ASN1IA5STRINGIt C.ASN1_IA5STRING_it
 func ASN1IA5STRINGIt() *ASN1_ITEM
 
-// clang-format on
-//
 //go:linkname ASN1GENERALSTRINGNew C.ASN1_GENERALSTRING_new
 func ASN1GENERALSTRINGNew() *ASN1_GENERALSTRING
 
-// clang-format on
-//
 //go:linkname ASN1GENERALSTRINGFree C.ASN1_GENERALSTRING_free
 func ASN1GENERALSTRINGFree(a *ASN1_GENERALSTRING)
 
-// clang-format on
-//
 //go:linkname D2iASN1GENERALSTRING C.d2i_ASN1_GENERALSTRING
 func D2iASN1GENERALSTRING(a **ASN1_GENERALSTRING, in **uint8, len c.Long) *ASN1_GENERALSTRING
 
-// clang-format on
-//
 //go:linkname I2dASN1GENERALSTRING C.i2d_ASN1_GENERALSTRING
 func I2dASN1GENERALSTRING(a *ASN1_GENERALSTRING, out **uint8) c.Int
 
-// clang-format on
-//
 //go:linkname ASN1GENERALSTRINGIt C.ASN1_GENERALSTRING_it
 func ASN1GENERALSTRINGIt() *ASN1_ITEM
 
-// clang-format on
-//
 //go:linkname ASN1UTCTIMENew C.ASN1_UTCTIME_new
 func ASN1UTCTIMENew() *ASN1_UTCTIME
 
-// clang-format on
-//
 //go:linkname ASN1UTCTIMEFree C.ASN1_UTCTIME_free
 func ASN1UTCTIMEFree(a *ASN1_UTCTIME)
 
-// clang-format on
-//
 //go:linkname D2iASN1UTCTIME C.d2i_ASN1_UTCTIME
 func D2iASN1UTCTIME(a **ASN1_UTCTIME, in **uint8, len c.Long) *ASN1_UTCTIME
 
-// clang-format on
-//
 //go:linkname I2dASN1UTCTIME C.i2d_ASN1_UTCTIME
 func I2dASN1UTCTIME(a *ASN1_UTCTIME, out **uint8) c.Int
 
-// clang-format on
-//
 //go:linkname ASN1UTCTIMEIt C.ASN1_UTCTIME_it
 func ASN1UTCTIMEIt() *ASN1_ITEM
 
-// clang-format on
-//
 //go:linkname ASN1GENERALIZEDTIMENew C.ASN1_GENERALIZEDTIME_new
 func ASN1GENERALIZEDTIMENew() *ASN1_GENERALIZEDTIME
 
-// clang-format on
-//
 //go:linkname ASN1GENERALIZEDTIMEFree C.ASN1_GENERALIZEDTIME_free
 func ASN1GENERALIZEDTIMEFree(a *ASN1_GENERALIZEDTIME)
 
-// clang-format on
-//
 //go:linkname D2iASN1GENERALIZEDTIME C.d2i_ASN1_GENERALIZEDTIME
 func D2iASN1GENERALIZEDTIME(a **ASN1_GENERALIZEDTIME, in **uint8, len c.Long) *ASN1_GENERALIZEDTIME
 
-// clang-format on
-//
 //go:linkname I2dASN1GENERALIZEDTIME C.i2d_ASN1_GENERALIZEDTIME
 func I2dASN1GENERALIZEDTIME(a *ASN1_GENERALIZEDTIME, out **uint8) c.Int
 
-// clang-format on
-//
 //go:linkname ASN1GENERALIZEDTIMEIt C.ASN1_GENERALIZEDTIME_it
 func ASN1GENERALIZEDTIMEIt() *ASN1_ITEM
 
-// clang-format on
-//
 //go:linkname ASN1TIMENew C.ASN1_TIME_new
 func ASN1TIMENew() *ASN1_TIME
 
-// clang-format on
-//
 //go:linkname ASN1TIMEFree C.ASN1_TIME_free
 func ASN1TIMEFree(a *ASN1_TIME)
 
-// clang-format on
-//
 //go:linkname D2iASN1TIME C.d2i_ASN1_TIME
 func D2iASN1TIME(a **ASN1_TIME, in **uint8, len c.Long) *ASN1_TIME
 
-// clang-format on
-//
 //go:linkname I2dASN1TIME C.i2d_ASN1_TIME
 func I2dASN1TIME(a *ASN1_TIME, out **uint8) c.Int
 
-// clang-format on
-//
 //go:linkname ASN1TIMEIt C.ASN1_TIME_it
 func ASN1TIMEIt() *ASN1_ITEM
 
-// clang-format on
-//
 //go:linkname ASN1TIMEDup C.ASN1_TIME_dup
 func ASN1TIMEDup(a *ASN1_TIME) *ASN1_TIME
 
-// clang-format on
-//
 //go:linkname ASN1UTCTIMEDup C.ASN1_UTCTIME_dup
 func ASN1UTCTIMEDup(a *ASN1_UTCTIME) *ASN1_UTCTIME
 
-// clang-format on
-//
 //go:linkname ASN1GENERALIZEDTIMEDup C.ASN1_GENERALIZEDTIME_dup
 func ASN1GENERALIZEDTIMEDup(a *ASN1_GENERALIZEDTIME) *ASN1_GENERALIZEDTIME
 
-// clang-format on
-//
 //go:linkname ASN1OCTET_STRING_NDEFIt C.ASN1_OCTET_STRING_NDEF_it
 func ASN1OCTET_STRING_NDEFIt() *ASN1_ITEM
 
-// clang-format on
-//
 //go:linkname ASN1TIMESet C.ASN1_TIME_set
 func ASN1TIMESet(s *ASN1_TIME, t time.TimeT) *ASN1_TIME
 
@@ -1136,7 +1028,6 @@ func BNToASN1ENUMERATED(bn *BIGNUM, ai *ASN1_ENUMERATED) *ASN1_ENUMERATED
 //go:linkname ASN1ENUMERATEDToBN C.ASN1_ENUMERATED_to_BN
 func ASN1ENUMERATEDToBN(ai *ASN1_ENUMERATED, bn *BIGNUM) *BIGNUM
 
-// General
 // given a string, return the correct type, max is the maximum length
 //
 //go:linkname ASN1PRINTABLEType C.ASN1_PRINTABLE_type
@@ -1251,8 +1142,6 @@ func ASN1ParseDump(bp *BIO, pp *uint8, len c.Long, indent c.Int, dump c.Int) c.I
 //go:linkname ASN1Tag2str C.ASN1_tag2str
 func ASN1Tag2str(tag c.Int) *c.Char
 
-// Used to load and write Netscape format cert
-//
 //go:linkname ASN1UNIVERSALSTRINGToString C.ASN1_UNIVERSALSTRING_to_string
 func ASN1UNIVERSALSTRINGToString(s *ASN1_UNIVERSALSTRING) c.Int
 
@@ -1413,6 +1302,8 @@ func BIONewNDEF(out *BIO, val *ASN1_VALUE, it *ASN1_ITEM) *BIO
 //go:linkname I2dASN1BioStream C.i2d_ASN1_bio_stream
 func I2dASN1BioStream(out *BIO, val *ASN1_VALUE, in *BIO, flags c.Int, it *ASN1_ITEM) c.Int
 
+// cannot constify val because of CMS_dataFinal()
+//
 //go:linkname PEMWriteBioASN1Stream C.PEM_write_bio_ASN1_stream
 func PEMWriteBioASN1Stream(out *BIO, val *ASN1_VALUE, in *BIO, flags c.Int, hdr *c.Char, it *ASN1_ITEM) c.Int
 

@@ -9,6 +9,8 @@ import (
 
 type StackSt struct {
 }
+
+// Use STACK_OF(...) instead
 type OPENSSL_STACK = StackSt
 
 // llgo:type C

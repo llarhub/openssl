@@ -8,22 +8,32 @@ import (
 )
 
 const SHA_DIGEST_LENGTH = 20
-const SHA_LBLOCK = 16
-const SHA_CBLOCK = 64
+const (
+	SHA_LBLOCK = 16
+	// SHA treats input data as a      \
+	// contiguous array of 32 bit wide \
+	// big-endian values.
+	SHA_CBLOCK = 64
+)
 const SHA_LAST_BLOCK = 56
+
+// SHA-256 treats input data as a  \
+// contiguous array of 32 bit wide \
+// big-endian values.
 const SHA256_CBLOCK = 64
-const SHA256_192_DIGEST_LENGTH = 24
-const SHA224_DIGEST_LENGTH = 28
-const SHA256_DIGEST_LENGTH = 32
-const SHA384_DIGEST_LENGTH = 48
-const SHA512_DIGEST_LENGTH = 64
+const (
+	SHA256_192_DIGEST_LENGTH = 24
+	SHA224_DIGEST_LENGTH     = 28
+	SHA256_DIGEST_LENGTH     = 32
+	SHA384_DIGEST_LENGTH     = 48
+	SHA512_DIGEST_LENGTH     = 64
+)
+
+// SHA-512 treats input data as a
+// contiguous array of 64 bit
+// wide big-endian values.
 const SHA512_CBLOCK = 128
 
-// -
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// ! SHA_LONG has to be at least 32 bits wide.                    !
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-type SHA_LONG = c.Uint
 type SHAstateSt struct {
 	H0   SHA_LONG
 	H1   SHA_LONG
@@ -35,7 +45,6 @@ type SHAstateSt struct {
 	Data [16]SHA_LONG
 	Num  c.Uint
 }
-type SHA_CTX = SHAstateSt
 type SHA256stateSt struct {
 	H     [8]SHA_LONG
 	Nl    SHA_LONG
@@ -44,8 +53,6 @@ type SHA256stateSt struct {
 	Num   c.Uint
 	MdLen c.Uint
 }
-type SHA256_CTX = SHA256stateSt
-type SHA_LONG64 = c.UlongLong
 type SHA512stateSt struct {
 	H     [8]SHA_LONG64
 	Nl    SHA_LONG64
@@ -54,6 +61,15 @@ type SHA512stateSt struct {
 	Num   c.Uint
 	MdLen c.Uint
 }
+
+// -
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// ! SHA_LONG has to be at least 32 bits wide.                    !
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+type SHA_LONG = c.Uint
+type SHA_CTX = SHAstateSt
+type SHA256_CTX = SHA256stateSt
+type SHA_LONG64 = c.UlongLong
 type _llcppg_anon_2 struct {
 	_xgo_union [16]uint64
 }

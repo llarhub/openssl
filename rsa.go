@@ -11,51 +11,122 @@ const OPENSSL_RSA_MAX_MODULUS_BITS = 16384
 const OPENSSL_RSA_FIPS_MIN_MODULUS_BITS = 2048
 const OPENSSL_RSA_SMALL_MODULUS_BITS = 3072
 const OPENSSL_RSA_MAX_PUBEXP_BITS = 64
-const RSA_ASN1_VERSION_DEFAULT = 0
-const RSA_ASN1_VERSION_MULTI = 1
+
+// based on RFC 8017 appendix A.1.2
+const (
+	RSA_ASN1_VERSION_DEFAULT = 0
+	RSA_ASN1_VERSION_MULTI   = 1
+)
 const RSA_DEFAULT_PRIME_NUM = 2
-const RSA_METHOD_FLAG_NO_CHECK = 1
-const RSA_FLAG_CACHE_PUBLIC = 2
-const RSA_FLAG_CACHE_PRIVATE = 4
-const RSA_FLAG_BLINDING = 8
-const RSA_FLAG_THREAD_SAFE = 16
+
+// This flag means the private key operations will be handled by rsa_mod_exp
+// and that they do not depend on the private key components being present:
+// for example a key stored in external hardware. Without this flag
+// bn_mod_exp gets called when private key components are absent.
+const (
+	RSA_METHOD_FLAG_NO_CHECK = 1
+	RSA_FLAG_CACHE_PUBLIC    = 2
+	RSA_FLAG_CACHE_PRIVATE   = 4
+	RSA_FLAG_BLINDING        = 8
+	RSA_FLAG_THREAD_SAFE     = 16
+)
+
+// This flag means the private key operations will be handled by rsa_mod_exp
+// and that they do not depend on the private key components being present:
+// for example a key stored in external hardware. Without this flag
+// bn_mod_exp gets called when private key components are absent.
 const RSA_FLAG_EXT_PKEY = 32
+
+// new with 0.9.6j and 0.9.7b; the built-in
+// RSA implementation now uses blinding by
+// default (ignoring RSA_FLAG_BLINDING),
+// but other engines might not need it
 const RSA_FLAG_NO_BLINDING = 128
 const RSA_FLAG_NO_CONSTTIME = 0
 const RSA_FLAG_NO_EXP_CONSTTIME = 0
-const RSA_FLAG_TYPE_MASK = 61440
-const RSA_FLAG_TYPE_RSA = 0
-const RSA_FLAG_TYPE_RSASSAPSS = 4096
-const RSA_FLAG_TYPE_RSAESOAEP = 8192
+
+// -
+// New with 3.0: use part of the flags to denote exact type of RSA key,
+// some of which are limited to specific signature and encryption schemes.
+// These different types share the same RSA structure, but indicate the
+// use of certain fields in that structure.
+// Currently known are:
+// RSA          - this is the "normal" unlimited RSA structure (typenum 0)
+// RSASSA-PSS   - indicates that the PSS parameters are used.
+// RSAES-OAEP   - no specific field used for the moment, but OAEP padding
+//                is expected.  (currently unused)
+//
+// 4 bits allow for 16 types
+const (
+	RSA_FLAG_TYPE_MASK      = 61440
+	RSA_FLAG_TYPE_RSA       = 0
+	RSA_FLAG_TYPE_RSASSAPSS = 4096
+	RSA_FLAG_TYPE_RSAESOAEP = 8192
+)
+
+// Salt length matches digest
 const RSA_PSS_SALTLEN_DIGEST = -1
+
+// Verify only: auto detect salt length
 const RSA_PSS_SALTLEN_AUTO = -2
+
+// Set salt length to maximum possible
 const RSA_PSS_SALTLEN_MAX = -3
+
+// Auto-detect on verify, set salt length to min(maximum possible, digest
+// length) on sign
 const RSA_PSS_SALTLEN_AUTO_DIGEST_MAX = -4
+
+// Old compatible max salt length for sign only
 const RSA_PSS_SALTLEN_MAX_SIGN = -2
-const EVP_PKEY_CTRL_RSA_PADDING = 4097
-const EVP_PKEY_CTRL_RSA_PSS_SALTLEN = 4098
-const EVP_PKEY_CTRL_RSA_KEYGEN_BITS = 4099
-const EVP_PKEY_CTRL_RSA_KEYGEN_PUBEXP = 4100
-const EVP_PKEY_CTRL_RSA_MGF1_MD = 4101
-const EVP_PKEY_CTRL_GET_RSA_PADDING = 4102
-const EVP_PKEY_CTRL_GET_RSA_PSS_SALTLEN = 4103
-const EVP_PKEY_CTRL_GET_RSA_MGF1_MD = 4104
-const EVP_PKEY_CTRL_RSA_OAEP_MD = 4105
-const EVP_PKEY_CTRL_RSA_OAEP_LABEL = 4106
-const EVP_PKEY_CTRL_GET_RSA_OAEP_MD = 4107
-const EVP_PKEY_CTRL_GET_RSA_OAEP_LABEL = 4108
+const (
+	EVP_PKEY_CTRL_RSA_PADDING     = 4097
+	EVP_PKEY_CTRL_RSA_PSS_SALTLEN = 4098
+)
+const (
+	EVP_PKEY_CTRL_RSA_KEYGEN_BITS   = 4099
+	EVP_PKEY_CTRL_RSA_KEYGEN_PUBEXP = 4100
+	EVP_PKEY_CTRL_RSA_MGF1_MD       = 4101
+)
+const (
+	EVP_PKEY_CTRL_GET_RSA_PADDING     = 4102
+	EVP_PKEY_CTRL_GET_RSA_PSS_SALTLEN = 4103
+	EVP_PKEY_CTRL_GET_RSA_MGF1_MD     = 4104
+)
+const (
+	EVP_PKEY_CTRL_RSA_OAEP_MD    = 4105
+	EVP_PKEY_CTRL_RSA_OAEP_LABEL = 4106
+)
+const (
+	EVP_PKEY_CTRL_GET_RSA_OAEP_MD    = 4107
+	EVP_PKEY_CTRL_GET_RSA_OAEP_LABEL = 4108
+)
 const EVP_PKEY_CTRL_RSA_KEYGEN_PRIMES = 4109
 const EVP_PKEY_CTRL_RSA_IMPLICIT_REJECTION = 4110
-const RSA_PKCS1_PADDING = 1
-const RSA_NO_PADDING = 3
-const RSA_PKCS1_OAEP_PADDING = 4
-const RSA_X931_PADDING = 5
-const RSA_PKCS1_PSS_PADDING = 6
-const RSA_PKCS1_WITH_TLS_PADDING = 7
+const (
+	RSA_PKCS1_PADDING      = 1
+	RSA_NO_PADDING         = 3
+	RSA_PKCS1_OAEP_PADDING = 4
+	RSA_X931_PADDING       = 5
+)
+
+// EVP_PKEY_ only
+const (
+	RSA_PKCS1_PSS_PADDING      = 6
+	RSA_PKCS1_WITH_TLS_PADDING = 7
+)
+
+// internal RSA_ only
 const RSA_PKCS1_NO_IMPLICIT_REJECT_PADDING = 8
 const RSA_PKCS1_PADDING_SIZE = 11
 const RSA_FLAG_FIPS_METHOD = 1024
+
+// Application has decided PRNG is good enough to generate a key: don't
+// check.
 const RSA_FLAG_NON_FIPS_ALLOW = 1024
+
+// Application has decided PRNG is good enough to generate a key: don't
+// check.
 const RSA_FLAG_CHECKED = 2048
 
 type RsaPssParamsSt struct {
@@ -228,6 +299,8 @@ func RSAGetVersion(r *RSA) c.Int
 //go:linkname RSAGenerateKey C.RSA_generate_key
 func RSAGenerateKey(bits c.Int, e c.Ulong, callback func(_llcppg_param1 c.Int, _llcppg_param2 c.Int, _llcppg_param3 unsafe.Pointer), cb_arg unsafe.Pointer) *RSA
 
+// Multi-prime version
+//
 //go:linkname RSAGenerateKeyEx C.RSA_generate_key_ex
 func RSAGenerateKeyEx(rsa *RSA, bits c.Int, e *BIGNUM, cb *BN_GENCB) c.Int
 
@@ -245,6 +318,8 @@ func RSAX931GenerateKeyEx(rsa *RSA, bits c.Int, e *BIGNUM, cb *BN_GENCB) c.Int
 //go:linkname RSACheckKey C.RSA_check_key
 func RSACheckKey(_llcppg_param1 *RSA) c.Int
 
+// next 4 return -1 on error
+//
 //go:linkname RSACheckKeyEx C.RSA_check_key_ex
 func RSACheckKeyEx(_llcppg_param1 *RSA, cb *BN_GENCB) c.Int
 
@@ -262,6 +337,8 @@ func RSAPublicDecrypt(flen c.Int, from *uint8, to *uint8, rsa *RSA, padding c.In
 //go:linkname RSAPrivateDecrypt C.RSA_private_decrypt
 func RSAPrivateDecrypt(flen c.Int, from *uint8, to *uint8, rsa *RSA, padding c.Int) c.Int
 
+// "up" the RSA object's reference count
+//
 //go:linkname RSAFree C.RSA_free
 func RSAFree(r *RSA)
 

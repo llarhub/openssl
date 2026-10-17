@@ -9,9 +9,9 @@ import (
 
 type SslCompSt struct {
 }
-type SSL_COMP = SslCompSt
 type StackStSSL_COMP struct {
 }
+type SSL_COMP = SslCompSt
 
 // clang-format off
 //

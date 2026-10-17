@@ -10,480 +10,848 @@ import (
 	"unsafe"
 )
 
+// -
+// Version 0 - initial version
+// Version 1 - added the optional peer certificate
 const SSL_SESSION_ASN1_VERSION = 1
-const SSL_MAX_SSL_SESSION_ID_LENGTH = 32
-const SSL_MAX_SID_CTX_LENGTH = 32
-const SSL_MIN_RSA_MODULUS_LENGTH_IN_BYTES = 64
-const SSL_MAX_KEY_ARG_LENGTH = 8
+const (
+	SSL_MAX_SSL_SESSION_ID_LENGTH = 32
+	SSL_MAX_SID_CTX_LENGTH        = 32
+)
+
+// SSL_MAX_MASTER_KEY_LENGTH is defined in prov_ssl.h
+const (
+	SSL_MIN_RSA_MODULUS_LENGTH_IN_BYTES = 64
+	SSL_MAX_KEY_ARG_LENGTH              = 8
+)
+
+// The maximum number of encrypt/decrypt pipelines we can support
 const SSL_MAX_PIPELINES = 32
-const SSL_TXT_LOW = "LOW"
-const SSL_TXT_MEDIUM = "MEDIUM"
-const SSL_TXT_HIGH = "HIGH"
-const SSL_TXT_ANULL = "aNULL"
-const SSL_TXT_ENULL = "eNULL"
-const SSL_TXT_NULL = "NULL"
-const SSL_TXT_KRSA = "kRSA"
-const SSL_TXTKDHr = "kDHr"
-const SSL_TXTKDHd = "kDHd"
-const SSL_TXT_KDH = "kDH"
-const SSL_TXT_KEDH = "kEDH"
-const SSL_TXT_KDHE = "kDHE"
-const SSL_TXTKECDHr = "kECDHr"
-const SSL_TXT_KECDH = "kECDH"
-const SSL_TXT_KEECDH = "kEECDH"
-const SSL_TXT_KECDHE = "kECDHE"
-const SSL_TXT_KPSK = "kPSK"
-const SSL_TXT_KRSAPSK = "kRSAPSK"
-const SSL_TXT_KECDHEPSK = "kECDHEPSK"
-const SSL_TXT_KDHEPSK = "kDHEPSK"
-const SSL_TXT_KGOST = "kGOST"
-const SSL_TXTKGOST18 = "kGOST18"
-const SSL_TXT_KSRP = "kSRP"
-const SSL_TXT_ARSA = "aRSA"
-const SSL_TXT_ADSS = "aDSS"
-const SSL_TXT_AECDSA = "aECDSA"
-const SSL_TXT_APSK = "aPSK"
-const SSL_TXTAGOST94 = "aGOST94"
-const SSL_TXTAGOST01 = "aGOST01"
-const SSL_TXTAGOST12 = "aGOST12"
-const SSL_TXT_AGOST = "aGOST"
-const SSL_TXT_ASRP = "aSRP"
-const SSL_TXT_DSS = "DSS"
-const SSL_TXT_DH = "DH"
-const SSL_TXT_DHE = "DHE"
-const SSL_TXT_EDH = "EDH"
-const SSL_TXT_ADH = "ADH"
-const SSL_TXT_RSA = "RSA"
-const SSL_TXT_ECDH = "ECDH"
-const SSL_TXT_EECDH = "EECDH"
-const SSL_TXT_ECDHE = "ECDHE"
-const SSL_TXT_AECDH = "AECDH"
-const SSL_TXT_ECDSA = "ECDSA"
-const SSL_TXT_PSK = "PSK"
-const SSL_TXT_SRP = "SRP"
-const SSL_TXT_DES = "DES"
-const SSL_TXT_3DES = "3DES"
-const SSL_TXT_RC4 = "RC4"
-const SSL_TXT_RC2 = "RC2"
-const SSL_TXT_IDEA = "IDEA"
-const SSL_TXT_SEED = "SEED"
-const SSL_TXT_AES128 = "AES128"
-const SSL_TXT_AES256 = "AES256"
-const SSL_TXT_AES = "AES"
-const SSL_TXT_AES_GCM = "AESGCM"
-const SSL_TXT_AES_CCM = "AESCCM"
-const SSL_TXT_AES_CCM_8 = "AESCCM8"
-const SSL_TXT_CAMELLIA128 = "CAMELLIA128"
-const SSL_TXT_CAMELLIA256 = "CAMELLIA256"
-const SSL_TXT_CAMELLIA = "CAMELLIA"
-const SSL_TXT_CHACHA20 = "CHACHA20"
-const SSL_TXT_GOST = "GOST89"
-const SSL_TXT_ARIA = "ARIA"
-const SSL_TXT_ARIA_GCM = "ARIAGCM"
-const SSL_TXT_ARIA128 = "ARIA128"
-const SSL_TXT_ARIA256 = "ARIA256"
-const SSL_TXT_GOST2012_GOST8912_GOST8912 = "GOST2012-GOST8912-GOST8912"
-const SSL_TXT_CBC = "CBC"
-const SSL_TXT_MD5 = "MD5"
-const SSL_TXT_SHA1 = "SHA1"
-const SSL_TXT_SHA = "SHA"
-const SSL_TXT_GOST94 = "GOST94"
-const SSL_TXT_GOST89MAC = "GOST89MAC"
-const SSL_TXT_GOST12 = "GOST12"
-const SSL_TXT_GOST89MAC12 = "GOST89MAC12"
-const SSL_TXT_SHA256 = "SHA256"
-const SSL_TXT_SHA384 = "SHA384"
-const SSL_TXT_TLSV1 = "TLSv1"
-const SSL_TXT_TLSV1_1 = "TLSv1.1"
-const SSL_TXT_TLSV1_2 = "TLSv1.2"
+const (
+	SSL_TXT_LOW    = "LOW"
+	SSL_TXT_MEDIUM = "MEDIUM"
+	SSL_TXT_HIGH   = "HIGH"
+)
+const (
+	SSL_TXT_ANULL = "aNULL"
+	SSL_TXT_ENULL = "eNULL"
+	SSL_TXT_NULL  = "NULL"
+)
+const (
+	SSL_TXT_KRSA = "kRSA"
+	// this cipher class has been removed
+	SSL_TXTKDHr = "kDHr"
+	// this cipher class has been removed
+	SSL_TXTKDHd = "kDHd"
+	// this cipher class has been removed
+	SSL_TXT_KDH = "kDH"
+	// alias for kDHE
+	SSL_TXT_KEDH = "kEDH"
+	SSL_TXT_KDHE = "kDHE"
+	// this cipher class has been removed
+	SSL_TXTKECDHr = "kECDHr"
+	// this cipher class has been removed
+	SSL_TXT_KECDH = "kECDH"
+	// alias for kECDHE
+	SSL_TXT_KEECDH    = "kEECDH"
+	SSL_TXT_KECDHE    = "kECDHE"
+	SSL_TXT_KPSK      = "kPSK"
+	SSL_TXT_KRSAPSK   = "kRSAPSK"
+	SSL_TXT_KECDHEPSK = "kECDHEPSK"
+	SSL_TXT_KDHEPSK   = "kDHEPSK"
+	SSL_TXT_KGOST     = "kGOST"
+	SSL_TXTKGOST18    = "kGOST18"
+	SSL_TXT_KSRP      = "kSRP"
+)
+const (
+	SSL_TXT_ARSA   = "aRSA"
+	SSL_TXT_ADSS   = "aDSS"
+	SSL_TXT_AECDSA = "aECDSA"
+	SSL_TXT_APSK   = "aPSK"
+	SSL_TXTAGOST94 = "aGOST94"
+	SSL_TXTAGOST01 = "aGOST01"
+	SSL_TXTAGOST12 = "aGOST12"
+	SSL_TXT_AGOST  = "aGOST"
+	SSL_TXT_ASRP   = "aSRP"
+)
+const (
+	SSL_TXT_DSS = "DSS"
+	SSL_TXT_DH  = "DH"
+	// same as "kDHE:-ADH"
+	SSL_TXT_DHE = "DHE"
+	// alias for DHE
+	SSL_TXT_EDH  = "EDH"
+	SSL_TXT_ADH  = "ADH"
+	SSL_TXT_RSA  = "RSA"
+	SSL_TXT_ECDH = "ECDH"
+	// alias for ECDHE"
+	SSL_TXT_EECDH = "EECDH"
+	// same as "kECDHE:-AECDH"
+	SSL_TXT_ECDHE = "ECDHE"
+	SSL_TXT_AECDH = "AECDH"
+	SSL_TXT_ECDSA = "ECDSA"
+	SSL_TXT_PSK   = "PSK"
+	SSL_TXT_SRP   = "SRP"
+)
+const (
+	SSL_TXT_DES                        = "DES"
+	SSL_TXT_3DES                       = "3DES"
+	SSL_TXT_RC4                        = "RC4"
+	SSL_TXT_RC2                        = "RC2"
+	SSL_TXT_IDEA                       = "IDEA"
+	SSL_TXT_SEED                       = "SEED"
+	SSL_TXT_AES128                     = "AES128"
+	SSL_TXT_AES256                     = "AES256"
+	SSL_TXT_AES                        = "AES"
+	SSL_TXT_AES_GCM                    = "AESGCM"
+	SSL_TXT_AES_CCM                    = "AESCCM"
+	SSL_TXT_AES_CCM_8                  = "AESCCM8"
+	SSL_TXT_CAMELLIA128                = "CAMELLIA128"
+	SSL_TXT_CAMELLIA256                = "CAMELLIA256"
+	SSL_TXT_CAMELLIA                   = "CAMELLIA"
+	SSL_TXT_CHACHA20                   = "CHACHA20"
+	SSL_TXT_GOST                       = "GOST89"
+	SSL_TXT_ARIA                       = "ARIA"
+	SSL_TXT_ARIA_GCM                   = "ARIAGCM"
+	SSL_TXT_ARIA128                    = "ARIA128"
+	SSL_TXT_ARIA256                    = "ARIA256"
+	SSL_TXT_GOST2012_GOST8912_GOST8912 = "GOST2012-GOST8912-GOST8912"
+	SSL_TXT_CBC                        = "CBC"
+)
+const (
+	SSL_TXT_MD5  = "MD5"
+	SSL_TXT_SHA1 = "SHA1"
+	// same as "SHA1"
+	SSL_TXT_SHA         = "SHA"
+	SSL_TXT_GOST94      = "GOST94"
+	SSL_TXT_GOST89MAC   = "GOST89MAC"
+	SSL_TXT_GOST12      = "GOST12"
+	SSL_TXT_GOST89MAC12 = "GOST89MAC12"
+	SSL_TXT_SHA256      = "SHA256"
+	SSL_TXT_SHA384      = "SHA384"
+)
+const (
+	SSL_TXT_TLSV1   = "TLSv1"
+	SSL_TXT_TLSV1_1 = "TLSv1.1"
+	SSL_TXT_TLSV1_2 = "TLSv1.2"
+)
 const SSL_TXT_ALL = "ALL"
-const SSL_TXT_CMPALL = "COMPLEMENTOFALL"
-const SSL_TXT_CMPDEF = "COMPLEMENTOFDEFAULT"
+
+// -
+// COMPLEMENTOF* definitions. These identifiers are used to (de-select)
+// ciphers normally not being used.
+// Example: "RC4" will activate all ciphers using RC4 including ciphers
+// without authentication, which would normally disabled by DEFAULT (due
+// the "!ADH" being part of default). Therefore "RC4:!COMPLEMENTOFDEFAULT"
+// will make sure that it is also disabled in the specific selection.
+// COMPLEMENTOF* identifiers are portable between version, as adjustments
+// to the default cipher setup will also be included here.
+//
+// COMPLEMENTOFDEFAULT does not experience the same special treatment that
+// DEFAULT gets, as only selection is being done and no sorting as needed
+// for DEFAULT.
+const (
+	SSL_TXT_CMPALL = "COMPLEMENTOFALL"
+	SSL_TXT_CMPDEF = "COMPLEMENTOFDEFAULT"
+)
+
+// This is the default set of TLSv1.3 ciphersuites
+// DEPRECATED IN 3.0.0, in favor of OSSL_default_ciphersuites()
+// Update both macro and function simultaneously
 const SSL_DEFAULT_CIPHER_LIST = "ALL:!COMPLEMENTOFDEFAULT:!eNULL"
-const SSL_SENT_SHUTDOWN = 1
-const SSL_RECEIVED_SHUTDOWN = 2
-const SSL_FILETYPE_ASN1 = 2
-const SSL_FILETYPE_PEM = 1
+
+// Used in SSL_set_shutdown()/SSL_get_shutdown();
+const (
+	SSL_SENT_SHUTDOWN     = 1
+	SSL_RECEIVED_SHUTDOWN = 2
+)
+const (
+	SSL_FILETYPE_ASN1 = 2
+	SSL_FILETYPE_PEM  = 1
+)
+
+// This extension is only allowed in TLS
 const SSL_EXT_TLS_ONLY = 1
+
+// This extension is only allowed in DTLS
 const SSL_EXT_DTLS_ONLY = 2
+
+// Some extensions may be allowed in DTLS but we don't implement them for it
 const SSL_EXT_TLS_IMPLEMENTATION_ONLY = 4
+
+// Most extensions are not defined for SSLv3 but EXT_TYPE_renegotiate is
 const SSL_EXT_SSL3_ALLOWED = 8
+
+// Extension is only defined for TLS1.2 and below
 const SSL_EXT_TLS1_2_AND_BELOW_ONLY = 16
+
+// Extension is only defined for TLS1.3 and above
 const SSL_EXT_TLS1_3_ONLY = 32
-const SSL_EXT_IGNORE_ON_RESUMPTION = 64
-const SSL_EXT_CLIENT_HELLO = 128
-const SSL_EXT_TLS1_2_SERVER_HELLO = 256
-const SSL_EXT_TLS1_3_SERVER_HELLO = 512
-const SSL_EXT_TLS1_3_ENCRYPTED_EXTENSIONS = 1024
-const SSL_EXT_TLS1_3_HELLO_RETRY_REQUEST = 2048
-const SSL_EXT_TLS1_3_CERTIFICATE = 4096
-const SSL_EXT_TLS1_3_NEW_SESSION_TICKET = 8192
-const SSL_EXT_TLS1_3_CERTIFICATE_REQUEST = 16384
-const SSL_EXT_TLS1_3_CERTIFICATE_COMPRESSION = 32768
+
+// Ignore this extension during parsing if we are resuming
+const (
+	SSL_EXT_IGNORE_ON_RESUMPTION = 64
+	// Really means TLS1.2 or below
+	SSL_EXT_CLIENT_HELLO = 128
+)
+
+// Really means TLS1.2 or below
+const (
+	SSL_EXT_TLS1_2_SERVER_HELLO         = 256
+	SSL_EXT_TLS1_3_SERVER_HELLO         = 512
+	SSL_EXT_TLS1_3_ENCRYPTED_EXTENSIONS = 1024
+	SSL_EXT_TLS1_3_HELLO_RETRY_REQUEST  = 2048
+	SSL_EXT_TLS1_3_CERTIFICATE          = 4096
+	SSL_EXT_TLS1_3_NEW_SESSION_TICKET   = 8192
+	SSL_EXT_TLS1_3_CERTIFICATE_REQUEST  = 16384
+	// When sending a raw public key in a certificate message
+	SSL_EXT_TLS1_3_CERTIFICATE_COMPRESSION = 32768
+)
+
+// When sending a raw public key in a certificate message
 const SSL_EXT_TLS1_3_RAW_PUBLIC_KEY = 65536
-const SSL_OP_MICROSOFT_SESS_ID_BUG = 0
-const SSL_OP_NETSCAPE_CHALLENGE_BUG = 0
-const SSL_OP_NETSCAPE_REUSE_CIPHER_CHANGE_BUG = 0
-const SSL_OP_SSLREF2_REUSE_CERT_TYPE_BUG = 0
-const SSL_OP_MICROSOFT_BIG_SSLV3_BUFFER = 0
-const SSL_OP_MSIE_SSLV2_RSA_PADDING = 0
-const SSL_OP_SSLEAY_080_CLIENT_DH_BUG = 0
-const SSL_OP_TLS_D5_BUG = 0
-const SSL_OP_TLS_BLOCK_PADDING_BUG = 0
-const SSL_OP_SINGLE_ECDH_USE = 0
-const SSL_OP_SINGLE_DH_USE = 0
-const SSL_OP_EPHEMERAL_RSA = 0
-const SSL_OP_NO_SSLv2 = 0
-const SSL_OP_PKCS1_CHECK_1 = 0
-const SSL_OP_PKCS1_CHECK_2 = 0
-const SSL_OP_NETSCAPE_CA_DN_BUG = 0
-const SSL_OP_NETSCAPE_DEMO_CIPHER_CHANGE_BUG = 0
+const (
+	SSL_OP_MICROSOFT_SESS_ID_BUG            = 0
+	SSL_OP_NETSCAPE_CHALLENGE_BUG           = 0
+	SSL_OP_NETSCAPE_REUSE_CIPHER_CHANGE_BUG = 0
+	SSL_OP_SSLREF2_REUSE_CERT_TYPE_BUG      = 0
+	SSL_OP_MICROSOFT_BIG_SSLV3_BUFFER       = 0
+	SSL_OP_MSIE_SSLV2_RSA_PADDING           = 0
+	SSL_OP_SSLEAY_080_CLIENT_DH_BUG         = 0
+	SSL_OP_TLS_D5_BUG                       = 0
+	SSL_OP_TLS_BLOCK_PADDING_BUG            = 0
+	SSL_OP_SINGLE_ECDH_USE                  = 0
+	SSL_OP_SINGLE_DH_USE                    = 0
+	SSL_OP_EPHEMERAL_RSA                    = 0
+	SSL_OP_NO_SSLv2                         = 0
+	SSL_OP_PKCS1_CHECK_1                    = 0
+	SSL_OP_PKCS1_CHECK_2                    = 0
+	SSL_OP_NETSCAPE_CA_DN_BUG               = 0
+	SSL_OP_NETSCAPE_DEMO_CIPHER_CHANGE_BUG  = 0
+)
+
+// Suite B modes, takes same values as certificate verify flags
 const SSL_CERT_FLAG_SUITEB_128_LOS_ONLY = 65536
+
+// Suite B 192 bit only mode
 const SSL_CERT_FLAG_SUITEB_192_LOS = 131072
+
+// Suite B 128 bit mode allowing 192 bit algorithms
 const SSL_CERT_FLAG_SUITEB_128_LOS = 196608
+
+// Perform all sorts of protocol violations for testing purposes
 const SSL_CERT_FLAG_BROKEN_PROTOCOL = 268435456
+
+// Treat any existing certificates as untrusted CAs
 const SSL_BUILD_CHAIN_FLAG_UNTRUSTED = 1
+
+// Don't include root CA in chain
 const SSL_BUILD_CHAIN_FLAG_NO_ROOT = 2
+
+// Just check certificates already there
 const SSL_BUILD_CHAIN_FLAG_CHECK = 4
+
+// Ignore verification errors
 const SSL_BUILD_CHAIN_FLAG_IGNORE_ERROR = 8
+
+// Clear verification errors from queue
 const SSL_BUILD_CHAIN_FLAG_CLEAR_ERROR = 16
+
+// Certificate can be used with this session
 const CERT_PKEY_VALID = 1
+
+// Certificate can also be used for signing
 const CERT_PKEY_SIGN = 2
+
+// EE certificate signing algorithm OK
 const CERT_PKEY_EE_SIGNATURE = 16
+
+// CA signature algorithms OK
 const CERT_PKEY_CA_SIGNATURE = 32
+
+// EE certificate parameters OK
 const CERT_PKEY_EE_PARAM = 64
+
+// CA certificate parameters OK
 const CERT_PKEY_CA_PARAM = 128
+
+// Signing explicitly allowed as opposed to SHA1 fallback
 const CERT_PKEY_EXPLICIT_SIGN = 256
+
+// Client CA issuer names match (always set for server cert)
 const CERT_PKEY_ISSUER_NAME = 512
+
+// Cert type matches client types (always set for server cert)
 const CERT_PKEY_CERT_TYPE = 1024
+
+// Cert chain suitable to Suite B
 const CERT_PKEY_SUITEB = 2048
+
+// Cert pkey valid for raw public key use
 const CERT_PKEY_RPK = 4096
-const SSL_CONF_FLAG_CMDLINE = 1
-const SSL_CONF_FLAG_FILE = 2
-const SSL_CONF_FLAG_CLIENT = 4
-const SSL_CONF_FLAG_SERVER = 8
-const SSL_CONF_FLAG_SHOW_ERRORS = 16
-const SSL_CONF_FLAG_CERTIFICATE = 32
-const SSL_CONF_FLAG_REQUIRE_PRIVATE = 64
-const SSL_CONF_TYPE_UNKNOWN = 0
-const SSL_CONF_TYPE_STRING = 1
-const SSL_CONF_TYPE_FILE = 2
-const SSL_CONF_TYPE_DIR = 3
-const SSL_CONF_TYPE_NONE = 4
-const SSL_CONF_TYPE_STORE = 5
+
+// Configuration value types
+const (
+	SSL_CONF_FLAG_CMDLINE         = 1
+	SSL_CONF_FLAG_FILE            = 2
+	SSL_CONF_FLAG_CLIENT          = 4
+	SSL_CONF_FLAG_SERVER          = 8
+	SSL_CONF_FLAG_SHOW_ERRORS     = 16
+	SSL_CONF_FLAG_CERTIFICATE     = 32
+	SSL_CONF_FLAG_REQUIRE_PRIVATE = 64
+)
+
+// Configuration value types
+const (
+	SSL_CONF_TYPE_UNKNOWN = 0
+	SSL_CONF_TYPE_STRING  = 1
+	SSL_CONF_TYPE_FILE    = 2
+	SSL_CONF_TYPE_DIR     = 3
+	SSL_CONF_TYPE_NONE    = 4
+	SSL_CONF_TYPE_STORE   = 5
+)
+
+// Maximum length of the application-controlled segment of a a TLSv1.3 cookie
 const SSL_COOKIE_LENGTH = 4096
+
+// 100k max cert list
 const SSL_MAX_CERT_LIST_DEFAULT = 102400
 const SSL_SESSION_CACHE_MAX_SIZE_DEFAULT = 20480
-const SSL_SESS_CACHE_OFF = 0
-const SSL_SESS_CACHE_CLIENT = 1
-const SSL_SESS_CACHE_SERVER = 2
-const SSL_SESS_CACHE_BOTH = 3
-const SSL_SESS_CACHE_NO_AUTO_CLEAR = 128
-const SSL_SESS_CACHE_NO_INTERNAL_LOOKUP = 256
-const SSL_SESS_CACHE_NO_INTERNAL_STORE = 512
-const SSL_SESS_CACHE_NO_INTERNAL = 768
-const SSL_SESS_CACHE_UPDATE_TIME = 1024
-const OPENSSL_NPN_UNSUPPORTED = 0
-const OPENSSL_NPN_NEGOTIATED = 1
-const OPENSSL_NPN_NO_OVERLAP = 2
-const PSK_MAX_IDENTITY_LEN = 256
-const PSK_MAX_PSK_LEN = 512
-const SSL_NOTHING = 1
-const SSL_WRITING = 2
-const SSL_READING = 3
-const SSL_X509_LOOKUP = 4
-const SSL_ASYNC_PAUSED = 5
-const SSL_ASYNC_NO_JOBS = 6
-const SSL_CLIENT_HELLO_CB = 7
-const SSL_RETRY_VERIFY = 8
-const SSL_MAC_FLAG_READ_MAC_STREAM = 1
-const SSL_MAC_FLAG_WRITE_MAC_STREAM = 2
-const SSL_MAC_FLAG_READ_MAC_TLSTREE = 4
-const SSL_MAC_FLAG_WRITE_MAC_TLSTREE = 8
+
+// enough comments already ... see SSL_CTX_set_session_cache_mode(3)
+const (
+	SSL_SESS_CACHE_OFF           = 0
+	SSL_SESS_CACHE_CLIENT        = 1
+	SSL_SESS_CACHE_SERVER        = 2
+	SSL_SESS_CACHE_BOTH          = 3
+	SSL_SESS_CACHE_NO_AUTO_CLEAR = 128
+)
+
+// enough comments already ... see SSL_CTX_set_session_cache_mode(3)
+const (
+	SSL_SESS_CACHE_NO_INTERNAL_LOOKUP = 256
+	SSL_SESS_CACHE_NO_INTERNAL_STORE  = 512
+	SSL_SESS_CACHE_NO_INTERNAL        = 768
+	SSL_SESS_CACHE_UPDATE_TIME        = 1024
+)
+const (
+	OPENSSL_NPN_UNSUPPORTED = 0
+	OPENSSL_NPN_NEGOTIATED  = 1
+	OPENSSL_NPN_NO_OVERLAP  = 2
+)
+
+// the maximum length of the buffer given to callbacks containing the
+// resulting identity/psk
+const (
+	PSK_MAX_IDENTITY_LEN = 256
+	PSK_MAX_PSK_LEN      = 512
+)
+const (
+	SSL_NOTHING         = 1
+	SSL_WRITING         = 2
+	SSL_READING         = 3
+	SSL_X509_LOOKUP     = 4
+	SSL_ASYNC_PAUSED    = 5
+	SSL_ASYNC_NO_JOBS   = 6
+	SSL_CLIENT_HELLO_CB = 7
+	SSL_RETRY_VERIFY    = 8
+)
+const (
+	SSL_MAC_FLAG_READ_MAC_STREAM   = 1
+	SSL_MAC_FLAG_WRITE_MAC_STREAM  = 2
+	SSL_MAC_FLAG_READ_MAC_TLSTREE  = 4
+	SSL_MAC_FLAG_WRITE_MAC_TLSTREE = 8
+)
+
+// -1 used so that this is an invalid value for the on-the-wire protocol
 const SSL_KEY_UPDATE_NONE = -1
-const SSL_KEY_UPDATE_NOT_REQUESTED = 0
-const SSL_KEY_UPDATE_REQUESTED = 1
-const SSL_ST_CONNECT = 4096
-const SSL_ST_ACCEPT = 8192
+
+// Values as defined for the on-the-wire protocol
+const (
+	SSL_KEY_UPDATE_NOT_REQUESTED = 0
+	SSL_KEY_UPDATE_REQUESTED     = 1
+)
+const (
+	SSL_ST_CONNECT = 4096
+	SSL_ST_ACCEPT  = 8192
+)
 const SSL_ST_MASK = 4095
-const SSL_CB_LOOP = 1
-const SSL_CB_EXIT = 2
-const SSL_CB_READ = 4
-const SSL_CB_WRITE = 8
-const SSL_CB_ALERT = 16384
-const SSL_CB_READ_ALERT = 16388
-const SSL_CB_WRITE_ALERT = 16392
-const SSL_CB_ACCEPT_LOOP = 8193
-const SSL_CB_ACCEPT_EXIT = 8194
-const SSL_CB_CONNECT_LOOP = 4097
-const SSL_CB_CONNECT_EXIT = 4098
-const SSL_CB_HANDSHAKE_START = 16
-const SSL_CB_HANDSHAKE_DONE = 32
-const SSL_ST_READ_HEADER = 240
-const SSL_ST_READ_BODY = 241
-const SSL_ST_READ_DONE = 242
-const SSL_VERIFY_NONE = 0
-const SSL_VERIFY_PEER = 1
-const SSL_VERIFY_FAIL_IF_NO_PEER_CERT = 2
-const SSL_VERIFY_CLIENT_ONCE = 4
-const SSL_VERIFY_POST_HANDSHAKE = 8
+const (
+	SSL_CB_LOOP  = 1
+	SSL_CB_EXIT  = 2
+	SSL_CB_READ  = 4
+	SSL_CB_WRITE = 8
+	// used in callback
+	SSL_CB_ALERT           = 16384
+	SSL_CB_READ_ALERT      = 16388
+	SSL_CB_WRITE_ALERT     = 16392
+	SSL_CB_ACCEPT_LOOP     = 8193
+	SSL_CB_ACCEPT_EXIT     = 8194
+	SSL_CB_CONNECT_LOOP    = 4097
+	SSL_CB_CONNECT_EXIT    = 4098
+	SSL_CB_HANDSHAKE_START = 16
+	SSL_CB_HANDSHAKE_DONE  = 32
+)
+
+// The following 3 states are kept in ssl->rlayer.rstate when reads fail, you
+// should not need these
+const (
+	SSL_ST_READ_HEADER = 240
+	SSL_ST_READ_BODY   = 241
+	SSL_ST_READ_DONE   = 242
+)
+
+// use either SSL_VERIFY_NONE or SSL_VERIFY_PEER, the last 3 options are
+// 'ored' with SSL_VERIFY_PEER if they are desired
+const (
+	SSL_VERIFY_NONE                 = 0
+	SSL_VERIFY_PEER                 = 1
+	SSL_VERIFY_FAIL_IF_NO_PEER_CERT = 2
+	SSL_VERIFY_CLIENT_ONCE          = 4
+	SSL_VERIFY_POST_HANDSHAKE       = 8
+)
+
+// offset to get SSL_R_... value \
+// from SSL_AD_...
 const SSL_AD_REASON_OFFSET = 1000
+
+// These alert types are for SSLv3 and TLSv1
 const SSL_AD_CLOSE_NOTIFY = 0
+
+// fatal
 const SSL_AD_UNEXPECTED_MESSAGE = 10
-const SSL_AD_BAD_RECORD_MAC = 20
-const SSL_AD_DECRYPTION_FAILED = 21
-const SSL_AD_RECORD_OVERFLOW = 22
+
+// fatal
+const (
+	SSL_AD_BAD_RECORD_MAC    = 20
+	SSL_AD_DECRYPTION_FAILED = 21
+	// fatal
+	SSL_AD_RECORD_OVERFLOW = 22
+)
+
+// fatal
 const SSL_AD_DECOMPRESSION_FAILURE = 30
+
+// fatal
 const SSL_AD_HANDSHAKE_FAILURE = 40
-const SSL_AD_NO_CERTIFICATE = 41
-const SSL_AD_BAD_CERTIFICATE = 42
-const SSL_AD_UNSUPPORTED_CERTIFICATE = 43
-const SSL_AD_CERTIFICATE_REVOKED = 44
-const SSL_AD_CERTIFICATE_EXPIRED = 45
-const SSL_AD_CERTIFICATE_UNKNOWN = 46
+
+// Not for TLS
+const (
+	SSL_AD_NO_CERTIFICATE          = 41
+	SSL_AD_BAD_CERTIFICATE         = 42
+	SSL_AD_UNSUPPORTED_CERTIFICATE = 43
+	SSL_AD_CERTIFICATE_REVOKED     = 44
+	SSL_AD_CERTIFICATE_EXPIRED     = 45
+	// fatal
+	SSL_AD_CERTIFICATE_UNKNOWN = 46
+)
+
+// fatal
 const SSL_AD_ILLEGAL_PARAMETER = 47
+
+// fatal
 const SSL_AD_UNKNOWN_CA = 48
+
+// fatal
 const SSL_AD_ACCESS_DENIED = 49
-const SSL_AD_DECODE_ERROR = 50
-const SSL_AD_DECRYPT_ERROR = 51
+
+// fatal
+const (
+	SSL_AD_DECODE_ERROR = 50
+	// fatal
+	SSL_AD_DECRYPT_ERROR = 51
+)
+
+// fatal
 const SSL_AD_EXPORT_RESTRICTION = 60
+
+// fatal
 const SSL_AD_PROTOCOL_VERSION = 70
+
+// fatal
 const SSL_AD_INSUFFICIENT_SECURITY = 71
-const SSL_AD_INTERNAL_ERROR = 80
-const SSL_AD_USER_CANCELLED = 90
-const SSL_AD_NO_RENEGOTIATION = 100
-const SSL_AD_MISSING_EXTENSION = 109
-const SSL_AD_CERTIFICATE_REQUIRED = 116
+
+// fatal
+const (
+	SSL_AD_INTERNAL_ERROR       = 80
+	SSL_AD_USER_CANCELLED       = 90
+	SSL_AD_NO_RENEGOTIATION     = 100
+	SSL_AD_MISSING_EXTENSION    = 109
+	SSL_AD_CERTIFICATE_REQUIRED = 116
+)
 const SSL_AD_ECH_REQUIRED = 121
-const SSL_AD_UNSUPPORTED_EXTENSION = 110
-const SSL_AD_CERTIFICATE_UNOBTAINABLE = 111
-const SSL_AD_UNRECOGNIZED_NAME = 112
-const SSL_AD_BAD_CERTIFICATE_STATUS_RESPONSE = 113
-const SSL_AD_BAD_CERTIFICATE_HASH_VALUE = 114
+
+// fatal
+const (
+	SSL_AD_UNSUPPORTED_EXTENSION           = 110
+	SSL_AD_CERTIFICATE_UNOBTAINABLE        = 111
+	SSL_AD_UNRECOGNIZED_NAME               = 112
+	SSL_AD_BAD_CERTIFICATE_STATUS_RESPONSE = 113
+	SSL_AD_BAD_CERTIFICATE_HASH_VALUE      = 114
+)
+
+// fatal
 const SSL_AD_UNKNOWN_PSK_IDENTITY = 115
-const SSL_AD_INAPPROPRIATE_FALLBACK = 86
-const SSL_AD_NO_APPLICATION_PROTOCOL = 120
-const SSL_ERROR_NONE = 0
-const SSL_ERROR_SSL = 1
-const SSL_ERROR_WANT_READ = 2
-const SSL_ERROR_WANT_WRITE = 3
-const SSL_ERROR_WANT_X509_LOOKUP = 4
-const SSL_ERROR_SYSCALL = 5
-const SSL_ERROR_ZERO_RETURN = 6
-const SSL_ERROR_WANT_CONNECT = 7
-const SSL_ERROR_WANT_ACCEPT = 8
-const SSL_ERROR_WANT_ASYNC = 9
-const SSL_ERROR_WANT_ASYNC_JOB = 10
-const SSL_ERROR_WANT_CLIENT_HELLO_CB = 11
-const SSL_ERROR_WANT_RETRY_VERIFY = 12
-const SSL_CTRL_SET_TMP_DH = 3
-const SSL_CTRL_SET_TMP_ECDH = 4
-const SSL_CTRL_SET_TMP_DH_CB = 6
-const SSL_CTRL_GET_CLIENT_CERT_REQUEST = 9
-const SSL_CTRL_GET_NUM_RENEGOTIATIONS = 10
-const SSL_CTRL_CLEAR_NUM_RENEGOTIATIONS = 11
-const SSL_CTRL_GET_TOTAL_RENEGOTIATIONS = 12
-const SSL_CTRL_GET_FLAGS = 13
-const SSL_CTRL_EXTRA_CHAIN_CERT = 14
-const SSL_CTRL_SET_MSG_CALLBACK = 15
-const SSL_CTRL_SET_MSG_CALLBACK_ARG = 16
+
+// fatal
+const (
+	SSL_AD_INAPPROPRIATE_FALLBACK  = 86
+	SSL_AD_NO_APPLICATION_PROTOCOL = 120
+	SSL_ERROR_NONE                 = 0
+	SSL_ERROR_SSL                  = 1
+	SSL_ERROR_WANT_READ            = 2
+	SSL_ERROR_WANT_WRITE           = 3
+	SSL_ERROR_WANT_X509_LOOKUP     = 4
+	// look at error stack/return \
+	// value/errno
+	SSL_ERROR_SYSCALL = 5
+)
+const (
+	SSL_ERROR_ZERO_RETURN          = 6
+	SSL_ERROR_WANT_CONNECT         = 7
+	SSL_ERROR_WANT_ACCEPT          = 8
+	SSL_ERROR_WANT_ASYNC           = 9
+	SSL_ERROR_WANT_ASYNC_JOB       = 10
+	SSL_ERROR_WANT_CLIENT_HELLO_CB = 11
+	SSL_ERROR_WANT_RETRY_VERIFY    = 12
+)
+const (
+	SSL_CTRL_SET_TMP_DH    = 3
+	SSL_CTRL_SET_TMP_ECDH  = 4
+	SSL_CTRL_SET_TMP_DH_CB = 6
+)
+
+// only applies to datagram connections
+const (
+	SSL_CTRL_GET_CLIENT_CERT_REQUEST  = 9
+	SSL_CTRL_GET_NUM_RENEGOTIATIONS   = 10
+	SSL_CTRL_CLEAR_NUM_RENEGOTIATIONS = 11
+	SSL_CTRL_GET_TOTAL_RENEGOTIATIONS = 12
+	SSL_CTRL_GET_FLAGS                = 13
+	SSL_CTRL_EXTRA_CHAIN_CERT         = 14
+	SSL_CTRL_SET_MSG_CALLBACK         = 15
+	SSL_CTRL_SET_MSG_CALLBACK_ARG     = 16
+)
+
+// only applies to datagram connections
 const SSL_CTRL_SET_MTU = 17
-const SSL_CTRL_SESS_NUMBER = 20
-const SSL_CTRL_SESS_CONNECT = 21
-const SSL_CTRL_SESS_CONNECT_GOOD = 22
-const SSL_CTRL_SESS_CONNECT_RENEGOTIATE = 23
-const SSL_CTRL_SESS_ACCEPT = 24
-const SSL_CTRL_SESS_ACCEPT_GOOD = 25
-const SSL_CTRL_SESS_ACCEPT_RENEGOTIATE = 26
-const SSL_CTRL_SESS_HIT = 27
-const SSL_CTRL_SESS_CB_HIT = 28
-const SSL_CTRL_SESS_MISSES = 29
-const SSL_CTRL_SESS_TIMEOUTS = 30
-const SSL_CTRL_SESS_CACHE_FULL = 31
-const SSL_CTRL_MODE = 33
-const SSL_CTRL_GET_READ_AHEAD = 40
-const SSL_CTRL_SET_READ_AHEAD = 41
-const SSL_CTRL_SET_SESS_CACHE_SIZE = 42
-const SSL_CTRL_GET_SESS_CACHE_SIZE = 43
-const SSL_CTRL_SET_SESS_CACHE_MODE = 44
-const SSL_CTRL_GET_SESS_CACHE_MODE = 45
-const SSL_CTRL_GET_MAX_CERT_LIST = 50
-const SSL_CTRL_SET_MAX_CERT_LIST = 51
-const SSL_CTRL_SET_MAX_SEND_FRAGMENT = 52
-const SSL_CTRL_SET_TLSEXT_SERVERNAME_CB = 53
-const SSL_CTRL_SET_TLSEXT_SERVERNAME_ARG = 54
-const SSL_CTRL_SET_TLSEXT_HOSTNAME = 55
-const SSL_CTRL_SET_TLSEXT_DEBUG_CB = 56
-const SSL_CTRL_SET_TLSEXT_DEBUG_ARG = 57
-const SSL_CTRL_GET_TLSEXT_TICKET_KEYS = 58
-const SSL_CTRL_SET_TLSEXT_TICKET_KEYS = 59
-const SSL_CTRL_SET_TLSEXT_STATUS_REQ_CB = 63
-const SSL_CTRL_SET_TLSEXT_STATUS_REQ_CB_ARG = 64
-const SSL_CTRL_SET_TLSEXT_STATUS_REQ_TYPE = 65
-const SSL_CTRL_GET_TLSEXT_STATUS_REQ_EXTS = 66
-const SSL_CTRL_SET_TLSEXT_STATUS_REQ_EXTS = 67
-const SSL_CTRL_GET_TLSEXT_STATUS_REQ_IDS = 68
-const SSL_CTRL_SET_TLSEXT_STATUS_REQ_IDS = 69
-const SSL_CTRL_GET_TLSEXT_STATUS_REQ_OCSP_RESP = 70
-const SSL_CTRL_SET_TLSEXT_STATUS_REQ_OCSP_RESP = 71
+
+// Stats
+const (
+	SSL_CTRL_SESS_NUMBER              = 20
+	SSL_CTRL_SESS_CONNECT             = 21
+	SSL_CTRL_SESS_CONNECT_GOOD        = 22
+	SSL_CTRL_SESS_CONNECT_RENEGOTIATE = 23
+	SSL_CTRL_SESS_ACCEPT              = 24
+	SSL_CTRL_SESS_ACCEPT_GOOD         = 25
+	SSL_CTRL_SESS_ACCEPT_RENEGOTIATE  = 26
+	SSL_CTRL_SESS_HIT                 = 27
+	SSL_CTRL_SESS_CB_HIT              = 28
+	SSL_CTRL_SESS_MISSES              = 29
+	SSL_CTRL_SESS_TIMEOUTS            = 30
+	SSL_CTRL_SESS_CACHE_FULL          = 31
+	SSL_CTRL_MODE                     = 33
+	SSL_CTRL_GET_READ_AHEAD           = 40
+	SSL_CTRL_SET_READ_AHEAD           = 41
+	SSL_CTRL_SET_SESS_CACHE_SIZE      = 42
+	SSL_CTRL_GET_SESS_CACHE_SIZE      = 43
+	SSL_CTRL_SET_SESS_CACHE_MODE      = 44
+	SSL_CTRL_GET_SESS_CACHE_MODE      = 45
+	SSL_CTRL_GET_MAX_CERT_LIST        = 50
+	SSL_CTRL_SET_MAX_CERT_LIST        = 51
+	// see tls1.h for macros based on these
+	SSL_CTRL_SET_MAX_SEND_FRAGMENT = 52
+)
+
+// see tls1.h for macros based on these
+const (
+	SSL_CTRL_SET_TLSEXT_SERVERNAME_CB  = 53
+	SSL_CTRL_SET_TLSEXT_SERVERNAME_ARG = 54
+	SSL_CTRL_SET_TLSEXT_HOSTNAME       = 55
+	SSL_CTRL_SET_TLSEXT_DEBUG_CB       = 56
+	SSL_CTRL_SET_TLSEXT_DEBUG_ARG      = 57
+	SSL_CTRL_GET_TLSEXT_TICKET_KEYS    = 58
+	// # define SSL_CTRL_SET_TLSEXT_OPAQUE_PRF_INPUT    60
+	SSL_CTRL_SET_TLSEXT_TICKET_KEYS = 59
+)
+
+// # define SSL_CTRL_SET_TLSEXT_OPAQUE_PRF_INPUT_CB_ARG 62
+const (
+	SSL_CTRL_SET_TLSEXT_STATUS_REQ_CB        = 63
+	SSL_CTRL_SET_TLSEXT_STATUS_REQ_CB_ARG    = 64
+	SSL_CTRL_SET_TLSEXT_STATUS_REQ_TYPE      = 65
+	SSL_CTRL_GET_TLSEXT_STATUS_REQ_EXTS      = 66
+	SSL_CTRL_SET_TLSEXT_STATUS_REQ_EXTS      = 67
+	SSL_CTRL_GET_TLSEXT_STATUS_REQ_IDS       = 68
+	SSL_CTRL_SET_TLSEXT_STATUS_REQ_IDS       = 69
+	SSL_CTRL_GET_TLSEXT_STATUS_REQ_OCSP_RESP = 70
+	SSL_CTRL_SET_TLSEXT_STATUS_REQ_OCSP_RESP = 71
+)
 const SSL_CTRL_SET_TLSEXT_TICKET_KEY_CB = 72
-const SSL_CTRL_SET_TLS_EXT_SRP_USERNAME_CB = 75
-const SSL_CTRL_SET_SRP_VERIFY_PARAM_CB = 76
-const SSL_CTRL_SET_SRP_GIVE_CLIENT_PWD_CB = 77
-const SSL_CTRL_SET_SRP_ARG = 78
-const SSL_CTRL_SET_TLS_EXT_SRP_USERNAME = 79
-const SSL_CTRL_SET_TLS_EXT_SRP_STRENGTH = 80
-const SSL_CTRL_SET_TLS_EXT_SRP_PASSWORD = 81
-const DTLS_CTRL_GET_TIMEOUT = 73
-const DTLS_CTRL_HANDLE_TIMEOUT = 74
-const SSL_CTRL_GET_RI_SUPPORT = 76
-const SSL_CTRL_CLEAR_MODE = 78
-const SSL_CTRL_SET_NOT_RESUMABLE_SESS_CB = 79
-const SSL_CTRL_GET_EXTRA_CHAIN_CERTS = 82
-const SSL_CTRL_CLEAR_EXTRA_CHAIN_CERTS = 83
-const SSL_CTRL_CHAIN = 88
-const SSL_CTRL_CHAIN_CERT = 89
-const SSL_CTRL_GET_GROUPS = 90
-const SSL_CTRL_SET_GROUPS = 91
-const SSL_CTRL_SET_GROUPS_LIST = 92
-const SSL_CTRL_GET_SHARED_GROUP = 93
-const SSL_CTRL_SET_SIGALGS = 97
-const SSL_CTRL_SET_SIGALGS_LIST = 98
-const SSL_CTRL_CERT_FLAGS = 99
-const SSL_CTRL_CLEAR_CERT_FLAGS = 100
-const SSL_CTRL_SET_CLIENT_SIGALGS = 101
-const SSL_CTRL_SET_CLIENT_SIGALGS_LIST = 102
-const SSL_CTRL_GET_CLIENT_CERT_TYPES = 103
-const SSL_CTRL_SET_CLIENT_CERT_TYPES = 104
-const SSL_CTRL_BUILD_CERT_CHAIN = 105
-const SSL_CTRL_SET_VERIFY_CERT_STORE = 106
-const SSL_CTRL_SET_CHAIN_CERT_STORE = 107
-const SSL_CTRL_GET_PEER_SIGNATURE_NID = 108
-const SSL_CTRL_GET_PEER_TMP_KEY = 109
-const SSL_CTRL_GET_RAW_CIPHERLIST = 110
-const SSL_CTRL_GET_EC_POINT_FORMATS = 111
-const SSL_CTRL_GET_CHAIN_CERTS = 115
-const SSL_CTRL_SELECT_CURRENT_CERT = 116
-const SSL_CTRL_SET_CURRENT_CERT = 117
-const SSL_CTRL_SET_DH_AUTO = 118
-const DTLS_CTRL_SET_LINK_MTU = 120
-const DTLS_CTRL_GET_LINK_MIN_MTU = 121
-const SSL_CTRL_GET_EXTMS_SUPPORT = 122
-const SSL_CTRL_SET_MIN_PROTO_VERSION = 123
-const SSL_CTRL_SET_MAX_PROTO_VERSION = 124
-const SSL_CTRL_SET_SPLIT_SEND_FRAGMENT = 125
-const SSL_CTRL_SET_MAX_PIPELINES = 126
-const SSL_CTRL_GET_TLSEXT_STATUS_REQ_TYPE = 127
-const SSL_CTRL_GET_TLSEXT_STATUS_REQ_CB = 128
-const SSL_CTRL_GET_TLSEXT_STATUS_REQ_CB_ARG = 129
-const SSL_CTRL_GET_MIN_PROTO_VERSION = 130
-const SSL_CTRL_GET_MAX_PROTO_VERSION = 131
-const SSL_CTRL_GET_SIGNATURE_NID = 132
-const SSL_CTRL_GET_TMP_KEY = 133
-const SSL_CTRL_GET_NEGOTIATED_GROUP = 134
-const SSL_CTRL_GET_IANA_GROUPS = 135
-const SSL_CTRL_SET_RETRY_VERIFY = 136
-const SSL_CTRL_GET_VERIFY_CERT_STORE = 137
-const SSL_CTRL_GET_CHAIN_CERT_STORE = 138
-const SSL_CTRL_GET0_IMPLEMENTED_GROUPS = 139
-const SSL_CTRL_GET_SIGNATURE_NAME = 140
-const SSL_CTRL_GET_PEER_SIGNATURE_NAME = 141
-const SSL_CTRL_GET_TLSEXT_STATUS_REQ_OCSP_RESP_EX = 142
-const SSL_CTRL_SET_TLSEXT_STATUS_REQ_OCSP_RESP_EX = 143
-const SSL_CERT_SET_FIRST = 1
-const SSL_CERT_SET_NEXT = 2
-const SSL_CERT_SET_SERVER = 3
+const (
+	SSL_CTRL_SET_TLS_EXT_SRP_USERNAME_CB        = 75
+	SSL_CTRL_SET_SRP_VERIFY_PARAM_CB            = 76
+	SSL_CTRL_SET_SRP_GIVE_CLIENT_PWD_CB         = 77
+	SSL_CTRL_SET_SRP_ARG                        = 78
+	SSL_CTRL_SET_TLS_EXT_SRP_USERNAME           = 79
+	SSL_CTRL_SET_TLS_EXT_SRP_STRENGTH           = 80
+	SSL_CTRL_SET_TLS_EXT_SRP_PASSWORD           = 81
+	DTLS_CTRL_GET_TIMEOUT                       = 73
+	DTLS_CTRL_HANDLE_TIMEOUT                    = 74
+	SSL_CTRL_GET_RI_SUPPORT                     = 76
+	SSL_CTRL_CLEAR_MODE                         = 78
+	SSL_CTRL_SET_NOT_RESUMABLE_SESS_CB          = 79
+	SSL_CTRL_GET_EXTRA_CHAIN_CERTS              = 82
+	SSL_CTRL_CLEAR_EXTRA_CHAIN_CERTS            = 83
+	SSL_CTRL_CHAIN                              = 88
+	SSL_CTRL_CHAIN_CERT                         = 89
+	SSL_CTRL_GET_GROUPS                         = 90
+	SSL_CTRL_SET_GROUPS                         = 91
+	SSL_CTRL_SET_GROUPS_LIST                    = 92
+	SSL_CTRL_GET_SHARED_GROUP                   = 93
+	SSL_CTRL_SET_SIGALGS                        = 97
+	SSL_CTRL_SET_SIGALGS_LIST                   = 98
+	SSL_CTRL_CERT_FLAGS                         = 99
+	SSL_CTRL_CLEAR_CERT_FLAGS                   = 100
+	SSL_CTRL_SET_CLIENT_SIGALGS                 = 101
+	SSL_CTRL_SET_CLIENT_SIGALGS_LIST            = 102
+	SSL_CTRL_GET_CLIENT_CERT_TYPES              = 103
+	SSL_CTRL_SET_CLIENT_CERT_TYPES              = 104
+	SSL_CTRL_BUILD_CERT_CHAIN                   = 105
+	SSL_CTRL_SET_VERIFY_CERT_STORE              = 106
+	SSL_CTRL_SET_CHAIN_CERT_STORE               = 107
+	SSL_CTRL_GET_PEER_SIGNATURE_NID             = 108
+	SSL_CTRL_GET_PEER_TMP_KEY                   = 109
+	SSL_CTRL_GET_RAW_CIPHERLIST                 = 110
+	SSL_CTRL_GET_EC_POINT_FORMATS               = 111
+	SSL_CTRL_GET_CHAIN_CERTS                    = 115
+	SSL_CTRL_SELECT_CURRENT_CERT                = 116
+	SSL_CTRL_SET_CURRENT_CERT                   = 117
+	SSL_CTRL_SET_DH_AUTO                        = 118
+	DTLS_CTRL_SET_LINK_MTU                      = 120
+	DTLS_CTRL_GET_LINK_MIN_MTU                  = 121
+	SSL_CTRL_GET_EXTMS_SUPPORT                  = 122
+	SSL_CTRL_SET_MIN_PROTO_VERSION              = 123
+	SSL_CTRL_SET_MAX_PROTO_VERSION              = 124
+	SSL_CTRL_SET_SPLIT_SEND_FRAGMENT            = 125
+	SSL_CTRL_SET_MAX_PIPELINES                  = 126
+	SSL_CTRL_GET_TLSEXT_STATUS_REQ_TYPE         = 127
+	SSL_CTRL_GET_TLSEXT_STATUS_REQ_CB           = 128
+	SSL_CTRL_GET_TLSEXT_STATUS_REQ_CB_ARG       = 129
+	SSL_CTRL_GET_MIN_PROTO_VERSION              = 130
+	SSL_CTRL_GET_MAX_PROTO_VERSION              = 131
+	SSL_CTRL_GET_SIGNATURE_NID                  = 132
+	SSL_CTRL_GET_TMP_KEY                        = 133
+	SSL_CTRL_GET_NEGOTIATED_GROUP               = 134
+	SSL_CTRL_GET_IANA_GROUPS                    = 135
+	SSL_CTRL_SET_RETRY_VERIFY                   = 136
+	SSL_CTRL_GET_VERIFY_CERT_STORE              = 137
+	SSL_CTRL_GET_CHAIN_CERT_STORE               = 138
+	SSL_CTRL_GET0_IMPLEMENTED_GROUPS            = 139
+	SSL_CTRL_GET_SIGNATURE_NAME                 = 140
+	SSL_CTRL_GET_PEER_SIGNATURE_NAME            = 141
+	SSL_CTRL_GET_TLSEXT_STATUS_REQ_OCSP_RESP_EX = 142
+	SSL_CTRL_SET_TLSEXT_STATUS_REQ_OCSP_RESP_EX = 143
+	SSL_CERT_SET_FIRST                          = 1
+	SSL_CERT_SET_NEXT                           = 2
+	SSL_CERT_SET_SERVER                         = 3
+)
+
+// Backwards compatibility, original 1.1.0 names
 const SSL_CTRL_GET_SERVER_TMP_KEY = 109
-const SSL_CTRL_GET_CURVES = 90
-const SSL_CTRL_SET_CURVES = 91
-const SSL_CTRL_SET_CURVES_LIST = 92
-const SSL_CTRL_GET_SHARED_CURVE = 93
-const SSL_SERVERINFOV1 = 1
-const SSL_SERVERINFOV2 = 2
-const SSL_CLIENT_HELLO_SUCCESS = 1
-const SSL_CLIENT_HELLO_ERROR = 0
-const SSL_CLIENT_HELLO_RETRY = -1
-const SSL_READ_EARLY_DATA_ERROR = 0
-const SSL_READ_EARLY_DATA_SUCCESS = 1
-const SSL_READ_EARLY_DATA_FINISH = 2
-const SSL_EARLY_DATA_NOT_SENT = 0
-const SSL_EARLY_DATA_REJECTED = 1
-const SSL_EARLY_DATA_ACCEPTED = 2
+
+// The following symbol names are old and obsolete. They are kept
+// for compatibility reasons only and should not be used anymore.
+const (
+	SSL_CTRL_GET_CURVES       = 90
+	SSL_CTRL_SET_CURVES       = 91
+	SSL_CTRL_SET_CURVES_LIST  = 92
+	SSL_CTRL_GET_SHARED_CURVE = 93
+)
+
+// serverinfo file format versions
+const (
+	SSL_SERVERINFOV1 = 1
+	SSL_SERVERINFOV2 = 2
+)
+const (
+	SSL_CLIENT_HELLO_SUCCESS = 1
+	SSL_CLIENT_HELLO_ERROR   = 0
+	SSL_CLIENT_HELLO_RETRY   = -1
+)
+const (
+	SSL_READ_EARLY_DATA_ERROR   = 0
+	SSL_READ_EARLY_DATA_SUCCESS = 1
+	SSL_READ_EARLY_DATA_FINISH  = 2
+)
+const (
+	SSL_EARLY_DATA_NOT_SENT = 0
+	SSL_EARLY_DATA_REJECTED = 1
+	SSL_EARLY_DATA_ACCEPTED = 2
+)
 const SSL_STREAM_TYPE_NONE = 0
-const SSL_DEFAULT_STREAM_MODE_NONE = 0
-const SSL_DEFAULT_STREAM_MODE_AUTO_BIDI = 1
-const SSL_DEFAULT_STREAM_MODE_AUTO_UNI = 2
-const SSL_INCOMING_STREAM_POLICY_AUTO = 0
-const SSL_INCOMING_STREAM_POLICY_ACCEPT = 1
-const SSL_INCOMING_STREAM_POLICY_REJECT = 2
-const SSL_STREAM_STATE_NONE = 0
-const SSL_STREAM_STATE_OK = 1
-const SSL_STREAM_STATE_WRONG_DIR = 2
-const SSL_STREAM_STATE_FINISHED = 3
-const SSL_STREAM_STATE_RESET_LOCAL = 4
-const SSL_STREAM_STATE_RESET_REMOTE = 5
-const SSL_STREAM_STATE_CONN_CLOSED = 6
-const SSL_VALUE_CLASS_GENERIC = 0
-const SSL_VALUE_CLASS_FEATURE_REQUEST = 1
-const SSL_VALUE_CLASS_FEATURE_PEER_REQUEST = 2
-const SSL_VALUE_CLASS_FEATURE_NEGOTIATED = 3
-const SSL_VALUE_NONE = 0
-const SSL_VALUE_QUIC_STREAM_BIDI_LOCAL_AVAIL = 1
-const SSL_VALUE_QUIC_STREAM_BIDI_REMOTE_AVAIL = 2
-const SSL_VALUE_QUIC_STREAM_UNI_LOCAL_AVAIL = 3
-const SSL_VALUE_QUIC_STREAM_UNI_REMOTE_AVAIL = 4
-const SSL_VALUE_QUIC_IDLE_TIMEOUT = 5
-const SSL_VALUE_EVENT_HANDLING_MODE = 6
-const SSL_VALUE_STREAM_WRITE_BUF_SIZE = 7
-const SSL_VALUE_STREAM_WRITE_BUF_USED = 8
-const SSL_VALUE_STREAM_WRITE_BUF_AVAIL = 9
-const SSL_VALUE_QUIC_MAX_PENDING_CONNS = 16
-const SSL_VALUE_EVENT_HANDLING_MODE_INHERIT = 0
-const SSL_VALUE_EVENT_HANDLING_MODE_IMPLICIT = 1
-const SSL_VALUE_EVENT_HANDLING_MODE_EXPLICIT = 2
+const (
+	SSL_DEFAULT_STREAM_MODE_NONE      = 0
+	SSL_DEFAULT_STREAM_MODE_AUTO_BIDI = 1
+	SSL_DEFAULT_STREAM_MODE_AUTO_UNI  = 2
+)
+const (
+	SSL_INCOMING_STREAM_POLICY_AUTO   = 0
+	SSL_INCOMING_STREAM_POLICY_ACCEPT = 1
+	SSL_INCOMING_STREAM_POLICY_REJECT = 2
+)
+const (
+	SSL_STREAM_STATE_NONE         = 0
+	SSL_STREAM_STATE_OK           = 1
+	SSL_STREAM_STATE_WRONG_DIR    = 2
+	SSL_STREAM_STATE_FINISHED     = 3
+	SSL_STREAM_STATE_RESET_LOCAL  = 4
+	SSL_STREAM_STATE_RESET_REMOTE = 5
+	SSL_STREAM_STATE_CONN_CLOSED  = 6
+)
+const (
+	SSL_VALUE_CLASS_GENERIC              = 0
+	SSL_VALUE_CLASS_FEATURE_REQUEST      = 1
+	SSL_VALUE_CLASS_FEATURE_PEER_REQUEST = 2
+	SSL_VALUE_CLASS_FEATURE_NEGOTIATED   = 3
+)
+const (
+	SSL_VALUE_NONE                          = 0
+	SSL_VALUE_QUIC_STREAM_BIDI_LOCAL_AVAIL  = 1
+	SSL_VALUE_QUIC_STREAM_BIDI_REMOTE_AVAIL = 2
+	SSL_VALUE_QUIC_STREAM_UNI_LOCAL_AVAIL   = 3
+	SSL_VALUE_QUIC_STREAM_UNI_REMOTE_AVAIL  = 4
+	SSL_VALUE_QUIC_IDLE_TIMEOUT             = 5
+	SSL_VALUE_EVENT_HANDLING_MODE           = 6
+	SSL_VALUE_STREAM_WRITE_BUF_SIZE         = 7
+	SSL_VALUE_STREAM_WRITE_BUF_USED         = 8
+	SSL_VALUE_STREAM_WRITE_BUF_AVAIL        = 9
+	SSL_VALUE_QUIC_MAX_PENDING_CONNS        = 16
+)
+const (
+	SSL_VALUE_EVENT_HANDLING_MODE_INHERIT  = 0
+	SSL_VALUE_EVENT_HANDLING_MODE_IMPLICIT = 1
+	SSL_VALUE_EVENT_HANDLING_MODE_EXPLICIT = 2
+)
 const SSL_POLL_EVENT_NONE = 0
-const SSL_SECOP_OTHER_TYPE = 4294901760
-const SSL_SECOP_OTHER_NONE = 0
-const SSL_SECOP_OTHER_CIPHER = 65536
-const SSL_SECOP_OTHER_CURVE = 131072
-const SSL_SECOP_OTHER_DH = 196608
-const SSL_SECOP_OTHER_PKEY = 262144
-const SSL_SECOP_OTHER_SIGALG = 327680
-const SSL_SECOP_OTHER_CERT = 393216
+
+// Mask for type
+const (
+	SSL_SECOP_OTHER_TYPE   = 4294901760
+	SSL_SECOP_OTHER_NONE   = 0
+	SSL_SECOP_OTHER_CIPHER = 65536
+	SSL_SECOP_OTHER_CURVE  = 131072
+	SSL_SECOP_OTHER_DH     = 196608
+	SSL_SECOP_OTHER_PKEY   = 262144
+	SSL_SECOP_OTHER_SIGALG = 327680
+	SSL_SECOP_OTHER_CERT   = 393216
+)
+
+// Unused values - these do nothing and are never set.
+// They are retained because of API. They should
+// be removed next major
 const SSL_SECOP_PEER = 4096
+
+// Ciphers client supports
 const SSL_SECOP_CIPHER_SUPPORTED = 65537
+
+// Cipher shared by client/server
 const SSL_SECOP_CIPHER_SHARED = 65538
+
+// Sanity check of cipher server selects
 const SSL_SECOP_CIPHER_CHECK = 65539
+
+// Curves supported by client
 const SSL_SECOP_CURVE_SUPPORTED = 131076
+
+// Curves shared by client/server
 const SSL_SECOP_CURVE_SHARED = 131077
+
+// Sanity check of curve server selects
 const SSL_SECOP_CURVE_CHECK = 131078
+
+// Temporary DH key
 const SSL_SECOP_TMP_DH = 262151
+
+// SSL/TLS version
 const SSL_SECOP_VERSION = 9
+
+// Session tickets
 const SSL_SECOP_TICKET = 10
+
+// Supported signature algorithms sent to peer
 const SSL_SECOP_SIGALG_SUPPORTED = 327691
+
+// Shared signature algorithm
 const SSL_SECOP_SIGALG_SHARED = 327692
+
+// Sanity check signature algorithm allowed
 const SSL_SECOP_SIGALG_CHECK = 327693
+
+// Used to get mask of supported public key signature algorithms
 const SSL_SECOP_SIGALG_MASK = 327694
+
+// Use to see if compression is allowed
 const SSL_SECOP_COMPRESSION = 15
+
+// EE key in certificate
 const SSL_SECOP_EE_KEY = 393232
+
+// CA key in certificate
 const SSL_SECOP_CA_KEY = 393233
+
+// CA digest algorithm in certificate
 const SSL_SECOP_CA_MD = 393234
+
+// fatal error, malloc failure
 const SSL_TICKET_FATAL_ERR_MALLOC = 0
+
+// fatal error, either from parsing or decrypting the ticket
 const SSL_TICKET_FATAL_ERR_OTHER = 1
+
+// No ticket present
 const SSL_TICKET_NONE = 2
+
+// Empty ticket present
 const SSL_TICKET_EMPTY = 3
+
+// the ticket couldn't be decrypted
 const SSL_TICKET_NO_DECRYPT = 4
+
+// a ticket was successfully decrypted
 const SSL_TICKET_SUCCESS = 5
+
+// same as above but the ticket needs to be renewed
 const SSL_TICKET_SUCCESS_RENEW = 6
+
+// An error occurred
 const SSL_TICKET_RETURN_ABORT = 0
+
+// Do not use the ticket, do not send a renewed ticket to the client
 const SSL_TICKET_RETURN_IGNORE = 1
+
+// Do not use the ticket, send a renewed ticket to the client
 const SSL_TICKET_RETURN_IGNORE_RENEW = 2
+
+// Use the ticket, do not send a renewed ticket to the client
 const SSL_TICKET_RETURN_USE = 3
+
+// Use the ticket, send a renewed ticket to the client
 const SSL_TICKET_RETURN_USE_RENEW = 4
-const OSSL_RECORD_PROTECTION_LEVEL_NONE = 0
-const OSSL_RECORD_PROTECTION_LEVEL_EARLY = 1
-const OSSL_RECORD_PROTECTION_LEVEL_HANDSHAKE = 2
-const OSSL_RECORD_PROTECTION_LEVEL_APPLICATION = 3
+
+// Protection level. For <= TLSv1.2 only "NONE" and "APPLICATION" are used.
+const (
+	OSSL_RECORD_PROTECTION_LEVEL_NONE        = 0
+	OSSL_RECORD_PROTECTION_LEVEL_EARLY       = 1
+	OSSL_RECORD_PROTECTION_LEVEL_HANDSHAKE   = 2
+	OSSL_RECORD_PROTECTION_LEVEL_APPLICATION = 3
+)
+
+// SRTP protection profiles for use with the use_srtp extension (RFC 5764)
+type SrtpProtectionProfileSt struct {
+	Name *c.Char
+	Id   c.Ulong
+}
 
 // The valid handshake states (one for each type message sent and one for each
 // type of message received). There are also two "special" states:
@@ -554,6 +922,26 @@ const (
 	TLS_ST_SR_END_OF_EARLY_DATA     OSSL_HANDSHAKE_STATE = 53
 )
 
+type SslShutdownExArgsSt struct {
+	QuicErrorCode c.Uint64T
+	QuicReason    *c.Char
+}
+type SslStreamResetArgsSt struct {
+	QuicErrorCode c.Uint64T
+}
+type SslConnCloseInfoSt struct {
+	ErrorCode c.Uint64T
+	FrameType c.Uint64T
+	Reason    *c.Char
+	ReasonLen c.SizeT
+	Flags     c.Uint32T
+}
+type SslPollItemSt struct {
+	Desc    BIO_POLL_DESCRIPTOR
+	Events  c.Uint64T
+	Revents c.Uint64T
+}
+
 // The validation type enumerates the available behaviours of the built-in SSL
 // CT validation callback selected via SSL_enable_ct() and SSL_CTX_enable_ct().
 // The underlying callback is a static function in libssl.
@@ -562,38 +950,35 @@ const (
 	SSL_CT_VALIDATION_STRICT     = 1
 )
 
+type LhashStSSL_SESSION struct {
+}
+type SslCipherSt struct {
+}
+type SslConfCtxSt struct {
+}
+type SslMethodSt struct {
+}
+type SslSessionSt struct {
+}
+type StackStSRTP_PROTECTION_PROFILE struct {
+}
+type StackStSSL_CIPHER struct {
+}
+type TlsSigalgsSt struct {
+}
+
 // This is needed to stop compilers complaining about the 'struct ssl_st *'
 // function parameters used to prototype callbacks in SSL_CTX.
 type SslCrockSt = *SslSt
 type TLS_SESSION_TICKET_EXT = TlsSessionTicketExtSt
-type SslMethodSt struct {
-}
 type SSL_METHOD = SslMethodSt
-type SslCipherSt struct {
-}
 type SSL_CIPHER = SslCipherSt
-type SslSessionSt struct {
-}
 type SSL_SESSION = SslSessionSt
-type TlsSigalgsSt struct {
-}
 type TLS_SIGALGS = TlsSigalgsSt
-type SslConfCtxSt struct {
-}
 type SSL_CONF_CTX = SslConfCtxSt
-type StackStSSL_CIPHER struct {
-}
-
-// SRTP protection profiles for use with the use_srtp extension (RFC 5764)
-type SrtpProtectionProfileSt struct {
-	Name *c.Char
-	Id   c.Ulong
-}
 
 // SRTP protection profiles for use with the use_srtp extension (RFC 5764)
 type SRTP_PROTECTION_PROFILE = SrtpProtectionProfileSt
-type StackStSRTP_PROTECTION_PROFILE struct {
-}
 
 // clang-format off
 //
@@ -610,16 +995,12 @@ type SkSRTP_PROTECTION_PROFILEFreefunc = func(_llcppg_param1 *SRTP_PROTECTION_PR
 // llgo:type C
 type SkSRTP_PROTECTION_PROFILECopyfunc = func(_llcppg_param1 *SRTP_PROTECTION_PROFILE) *SRTP_PROTECTION_PROFILE
 
-// clang-format on
-//
 // llgo:type C
 type TlsSessionTicketExtCbFn = func(_llcppg_param1 *SSL, _llcppg_param2 *uint8, _llcppg_param3 c.Int, _llcppg_param4 unsafe.Pointer) c.Int
 
 // llgo:type C
 type TlsSessionSecretCbFn = func(_llcppg_param1 *SSL, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *c.Int, _llcppg_param4 *StackStSSL_CIPHER, _llcppg_param5 **SSL_CIPHER, _llcppg_param6 unsafe.Pointer) c.Int
 
-// Typedefs for handling custom extensions
-//
 // llgo:type C
 type CustomExtAddCb = func(_llcppg_param1 *SSL, _llcppg_param2 c.Uint, _llcppg_param3 **uint8, _llcppg_param4 *c.SizeT, _llcppg_param5 *c.Int, _llcppg_param6 unsafe.Pointer) c.Int
 
@@ -661,8 +1042,6 @@ type SSLAsyncCallbackFn = func(_llcppg_param1 *SSL, _llcppg_param2 unsafe.Pointe
 //
 // llgo:type C
 type GEN_SESSION_CB = func(_llcppg_param1 *SSL, _llcppg_param2 *uint8, _llcppg_param3 *c.Uint) c.Int
-type LhashStSSL_SESSION struct {
-}
 
 // llgo:type C
 type SSL_CTXNpnAdvertisedCbFunc = func(_llcppg_param1 *SSL, _llcppg_param2 **uint8, _llcppg_param3 *c.Uint, _llcppg_param4 unsafe.Pointer) c.Int
@@ -691,25 +1070,16 @@ type SSLPskUseSessionCbFunc = func(_llcppg_param1 *SSL, _llcppg_param2 *EVP_MD, 
 // llgo:type C
 type SSL_CTXKeylogCbFunc = func(_llcppg_param1 *SSL, _llcppg_param2 *c.Char)
 
-// These need to be after the above set of includes due to a compiler bug
-// in VisualStudio 2015
-//
 // clang-format off
 //
 // llgo:type C
 type SkSSL_CIPHERCompfunc = func(_llcppg_param1 **SSL_CIPHER, _llcppg_param2 **SSL_CIPHER) c.Int
 
-// These need to be after the above set of includes due to a compiler bug
-// in VisualStudio 2015
-//
 // clang-format off
 //
 // llgo:type C
 type SkSSL_CIPHERFreefunc = func(_llcppg_param1 *SSL_CIPHER)
 
-// These need to be after the above set of includes due to a compiler bug
-// in VisualStudio 2015
-//
 // clang-format off
 //
 // llgo:type C
@@ -720,28 +1090,9 @@ type SSLClientHelloCbFn = func(_llcppg_param1 *SSL, _llcppg_param2 *c.Int, _llcp
 
 // llgo:type C
 type SSLNewPendingConnCbFn = func(_llcppg_param1 *SSL_CTX, _llcppg_param2 *SSL, _llcppg_param3 unsafe.Pointer) c.Int
-type SslShutdownExArgsSt struct {
-	QuicErrorCode c.Uint64T
-	QuicReason    *c.Char
-}
 type SSL_SHUTDOWN_EX_ARGS = SslShutdownExArgsSt
-type SslStreamResetArgsSt struct {
-	QuicErrorCode c.Uint64T
-}
 type SSL_STREAM_RESET_ARGS = SslStreamResetArgsSt
-type SslConnCloseInfoSt struct {
-	ErrorCode c.Uint64T
-	FrameType c.Uint64T
-	Reason    *c.Char
-	ReasonLen c.SizeT
-	Flags     c.Uint32T
-}
 type SSL_CONN_CLOSE_INFO = SslConnCloseInfoSt
-type SslPollItemSt struct {
-	Desc    BIO_POLL_DESCRIPTOR
-	Events  c.Uint64T
-	Revents c.Uint64T
-}
 type SSL_POLL_ITEM = SslPollItemSt
 
 // A callback for verifying that the received SCTs are sufficient.
@@ -771,9 +1122,6 @@ type DTLSTimerCb = func(_llcppg_param1 *SSL, _llcppg_param2 c.Uint) c.Uint
 // llgo:type C
 type SSLAllowEarlyDataCbFn = func(_llcppg_param1 *SSL, _llcppg_param2 unsafe.Pointer) c.Int
 
-// Note: SSL[_CTX]_set_{options,mode} use |= op on the previous value, they
-// cannot be used to clear bits.
-//
 //go:linkname SSL_CTXGetOptions C.SSL_CTX_get_options
 func SSL_CTXGetOptions(ctx *SSL_CTX) c.Uint64T
 
@@ -927,8 +1275,6 @@ func SSLSetPskUseSessionCallback(s *SSL, cb SSLPskUseSessionCbFunc)
 //go:linkname SSL_CTXSetPskUseSessionCallback C.SSL_CTX_set_psk_use_session_callback
 func SSL_CTXSetPskUseSessionCallback(ctx *SSL_CTX, cb SSLPskUseSessionCbFunc)
 
-// Register callbacks to handle custom TLS Extensions for client or server.
-//
 //go:linkname SSL_CTXHasClientCustomExt C.SSL_CTX_has_client_custom_ext
 func SSL_CTXHasClientCustomExt(ctx *SSL_CTX, ext_type c.Uint) c.Int
 
@@ -1253,6 +1599,8 @@ func SSL_CTXUseRSAPrivateKeyFile(ctx *SSL_CTX, file *c.Char, type_ c.Int) c.Int
 //go:linkname SSL_CTXUsePrivateKeyFile C.SSL_CTX_use_PrivateKey_file
 func SSL_CTXUsePrivateKeyFile(ctx *SSL_CTX, file *c.Char, type_ c.Int) c.Int
 
+// PEM type
+//
 //go:linkname SSL_CTXUseCertificateFile C.SSL_CTX_use_certificate_file
 func SSL_CTXUseCertificateFile(ctx *SSL_CTX, file *c.Char, type_ c.Int) c.Int
 
@@ -1423,6 +1771,8 @@ func D2iSSL_SESSIONEx(a **SSL_SESSION, pp **uint8, length c.Long, libctx *OSSL_L
 //go:linkname SSLGet0PeerCertificate C.SSL_get0_peer_certificate
 func SSLGet0PeerCertificate(s *SSL) *X509
 
+// Deprecated in 3.0.0
+//
 //go:linkname SSLGet1PeerCertificate C.SSL_get1_peer_certificate
 func SSLGet1PeerCertificate(s *SSL) *X509
 
@@ -1579,6 +1929,9 @@ func SSLDaneTlsaAdd(s *SSL, usage c.Uint8T, selector c.Uint8T, mtype c.Uint8T, d
 //go:linkname SSLGet0DaneAuthority C.SSL_get0_dane_authority
 func SSLGet0DaneAuthority(s *SSL, mcert **X509, mspki **EVP_PKEY) c.Int
 
+// Bridge opacity barrier between libcrypt and libssl, also needed to support
+// offline testing in test/danetest.c
+//
 //go:linkname SSLGet0DaneTlsa C.SSL_get0_dane_tlsa
 func SSLGet0DaneTlsa(s *SSL, usage *c.Uint8T, selector *c.Uint8T, mtype *c.Uint8T, data **uint8, dlen *c.SizeT) c.Int
 
@@ -1795,12 +2148,18 @@ func TLSServerMethod() *SSL_METHOD
 //go:linkname TLSClientMethod C.TLS_client_method
 func TLSClientMethod() *SSL_METHOD
 
+// DTLS 1.0 and 1.2
+//
 //go:linkname DTLSMethod C.DTLS_method
 func DTLSMethod() *SSL_METHOD
 
+// DTLS 1.0 and 1.2
+//
 //go:linkname DTLSServerMethod C.DTLS_server_method
 func DTLSServerMethod() *SSL_METHOD
 
+// DTLS 1.0 and 1.2
+//
 //go:linkname DTLSClientMethod C.DTLS_client_method
 func DTLSClientMethod() *SSL_METHOD
 
@@ -1930,6 +2289,8 @@ func SSLDupCAList(sk *StackStX509NAME) *StackStX509NAME
 //go:linkname SSLDup C.SSL_dup
 func SSLDup(ssl *SSL) *SSL
 
+// EVP_PKEY
+//
 //go:linkname SSLGetCertificate C.SSL_get_certificate
 func SSLGetCertificate(ssl *SSL) *X509
 
@@ -1995,6 +2356,8 @@ func SSL_CTXLoadVerifyLocations(ctx *SSL_CTX, CAfile *c.Char, CApath *c.Char) c.
 //go:linkname SSLGetSession C.SSL_get_session
 func SSLGetSession(ssl *SSL) *SSL_SESSION
 
+// obtain a reference count
+//
 //go:linkname SSLGet1Session C.SSL_get1_session
 func SSLGet1Session(ssl *SSL) *SSL_SESSION
 
@@ -2515,8 +2878,6 @@ func OSSLDefaultCipherList() *c.Char
 //go:linkname OSSLDefaultCiphersuites C.OSSL_default_ciphersuites
 func OSSLDefaultCiphersuites() *c.Char
 
-// RFC8879 Certificate compression APIs
-//
 //go:linkname SSL_CTXCompressCerts C.SSL_CTX_compress_certs
 func SSL_CTXCompressCerts(ctx *SSL_CTX, alg c.Int) c.Int
 

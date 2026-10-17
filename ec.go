@@ -7,31 +7,61 @@ import (
 	"unsafe"
 )
 
-const OPENSSL_EC_EXPLICIT_CURVE = 0
-const OPENSSL_EC_NAMED_CURVE = 1
-const EVP_PKEY_CTRL_EC_PARAMGEN_CURVE_NID = 4097
-const EVP_PKEY_CTRL_EC_PARAM_ENC = 4098
-const EVP_PKEY_CTRL_EC_ECDH_COFACTOR = 4099
-const EVP_PKEY_CTRL_EC_KDF_TYPE = 4100
-const EVP_PKEY_CTRL_EC_KDF_MD = 4101
-const EVP_PKEY_CTRL_GET_EC_KDF_MD = 4102
-const EVP_PKEY_CTRL_EC_KDF_OUTLEN = 4103
-const EVP_PKEY_CTRL_GET_EC_KDF_OUTLEN = 4104
-const EVP_PKEY_CTRL_EC_KDF_UKM = 4105
-const EVP_PKEY_CTRL_GET_EC_KDF_UKM = 4106
-const EVP_PKEY_ECDH_KDF_NONE = 1
-const EVP_PKEY_ECDH_KDF_X9_63 = 2
+// Values for EVP_PKEY_CTX_set_ec_param_enc()
+const (
+	OPENSSL_EC_EXPLICIT_CURVE = 0
+	OPENSSL_EC_NAMED_CURVE    = 1
+)
+const (
+	EVP_PKEY_CTRL_EC_PARAMGEN_CURVE_NID = 4097
+	EVP_PKEY_CTRL_EC_PARAM_ENC          = 4098
+	EVP_PKEY_CTRL_EC_ECDH_COFACTOR      = 4099
+	EVP_PKEY_CTRL_EC_KDF_TYPE           = 4100
+	EVP_PKEY_CTRL_EC_KDF_MD             = 4101
+	EVP_PKEY_CTRL_GET_EC_KDF_MD         = 4102
+	EVP_PKEY_CTRL_EC_KDF_OUTLEN         = 4103
+	EVP_PKEY_CTRL_GET_EC_KDF_OUTLEN     = 4104
+	EVP_PKEY_CTRL_EC_KDF_UKM            = 4105
+	EVP_PKEY_CTRL_GET_EC_KDF_UKM        = 4106
+)
+
+// KDF types
+const (
+	EVP_PKEY_ECDH_KDF_NONE = 1
+	// The old name for EVP_PKEY_ECDH_KDF_X9_63
+	//  The ECDH KDF specification has been mistakenly attributed to ANSI X9.62,
+	//  it is actually specified in ANSI X9.63.
+	//  This identifier is retained for backwards compatibility
+	EVP_PKEY_ECDH_KDF_X9_63 = 2
+)
+
+// The old name for EVP_PKEY_ECDH_KDF_X9_63
+//  The ECDH KDF specification has been mistakenly attributed to ANSI X9.62,
+//  it is actually specified in ANSI X9.63.
+//  This identifier is retained for backwards compatibility
 const EVP_PKEY_ECDH_KDF_X9_62 = 2
 const OPENSSL_ECC_MAX_FIELD_BITS = 661
-const EC_PKEY_NO_PARAMETERS = 1
-const EC_PKEY_NO_PUBKEY = 2
-const EC_FLAG_SM2_RANGE = 4
-const EC_FLAG_COFACTOR_ECDH = 4096
-const EC_FLAG_CHECK_NAMED_GROUP = 8192
-const EC_FLAG_CHECK_NAMED_GROUP_NIST = 16384
-const EC_FLAG_CHECK_NAMED_GROUP_MASK = 24576
-const EC_FLAG_NON_FIPS_ALLOW = 0
-const EC_FLAG_FIPS_CHECKED = 0
+
+// some values for the encoding_flag
+const (
+	EC_PKEY_NO_PARAMETERS = 1
+	EC_PKEY_NO_PUBKEY     = 2
+)
+
+// some values for the flags field
+const (
+	EC_FLAG_SM2_RANGE              = 4
+	EC_FLAG_COFACTOR_ECDH          = 4096
+	EC_FLAG_CHECK_NAMED_GROUP      = 8192
+	EC_FLAG_CHECK_NAMED_GROUP_NIST = 16384
+	EC_FLAG_CHECK_NAMED_GROUP_MASK = 24576
+)
+
+// Deprecated flags -  it was using 0x01..0x02
+const (
+	EC_FLAG_NON_FIPS_ALLOW = 0
+	EC_FLAG_FIPS_CHECKED   = 0
+)
 
 // Enum for the point conversion form as defined in X9.62 (ECDSA)
 //  for the encoding of a elliptic curve point (x,y)
@@ -48,31 +78,27 @@ const (
 	POINT_CONVERSION_HYBRID PointConversionFormT = 6
 )
 
-type EcMethodSt struct {
-}
-type EC_METHOD = EcMethodSt
-type EcGroupSt struct {
-}
-type EC_GROUP = EcGroupSt
-type EcPointSt struct {
-}
-type EC_POINT = EcPointSt
-type EcpkParametersSt struct {
-}
-type ECPKPARAMETERS = EcpkParametersSt
-type EcParametersSt struct {
-}
-type ECPARAMETERS = EcParametersSt
-
-// /
-// handling of internal curves
-// /
 type ECBuiltinCurve struct {
 	Nid     c.Int
 	Comment *c.Char
 }
 type ECDSA_SIGSt struct {
 }
+type EcGroupSt struct {
+}
+type EcMethodSt struct {
+}
+type EcParametersSt struct {
+}
+type EcPointSt struct {
+}
+type EcpkParametersSt struct {
+}
+type EC_METHOD = EcMethodSt
+type EC_GROUP = EcGroupSt
+type EC_POINT = EcPointSt
+type ECPKPARAMETERS = EcpkParametersSt
+type ECPARAMETERS = EcParametersSt
 type ECDSA_SIG = ECDSA_SIGSt
 
 //go:linkname EVP_PKEY_CTXSetEcParamgenCurveNid C.EVP_PKEY_CTX_set_ec_paramgen_curve_nid
@@ -885,45 +911,21 @@ func EC_GROUPPrecomputeMult(group *EC_GROUP, ctx *BN_CTX) c.Int
 //go:linkname EC_GROUPHavePrecomputeMult C.EC_GROUP_have_precompute_mult
 func EC_GROUPHavePrecomputeMult(group *EC_GROUP) c.Int
 
-// /
-// ASN1 stuff
-// /
-//
 //go:linkname ECPKPARAMETERSIt C.ECPKPARAMETERS_it
 func ECPKPARAMETERSIt() *ASN1_ITEM
 
-// /
-// ASN1 stuff
-// /
-//
 //go:linkname ECPKPARAMETERSNew C.ECPKPARAMETERS_new
 func ECPKPARAMETERSNew() *ECPKPARAMETERS
 
-// /
-// ASN1 stuff
-// /
-//
 //go:linkname ECPKPARAMETERSFree C.ECPKPARAMETERS_free
 func ECPKPARAMETERSFree(a *ECPKPARAMETERS)
 
-// /
-// ASN1 stuff
-// /
-//
 //go:linkname ECPARAMETERSIt C.ECPARAMETERS_it
 func ECPARAMETERSIt() *ASN1_ITEM
 
-// /
-// ASN1 stuff
-// /
-//
 //go:linkname ECPARAMETERSNew C.ECPARAMETERS_new
 func ECPARAMETERSNew() *ECPARAMETERS
 
-// /
-// ASN1 stuff
-// /
-//
 //go:linkname ECPARAMETERSFree C.ECPARAMETERS_free
 func ECPARAMETERSFree(a *ECPARAMETERS)
 
@@ -1147,32 +1149,12 @@ func EC_KEYSetPublicKeyAffineCoordinates(key *EC_KEY, x *BIGNUM, y *BIGNUM) c.In
 //go:linkname EC_KEYKey2buf C.EC_KEY_key2buf
 func EC_KEYKey2buf(key *EC_KEY, form PointConversionFormT, pbuf **uint8, ctx *BN_CTX) c.SizeT
 
-// Decodes a EC_KEY public key from a octet string
-//  \param  key    key to decode
-//  \param  buf    memory buffer with the encoded ec point
-//  \param  len    length of the encoded ec point
-//  \param  ctx    BN_CTX object (optional)
-//  \return 1 on success and 0 if an error occurred
-//
 //go:linkname EC_KEYOct2key C.EC_KEY_oct2key
 func EC_KEYOct2key(key *EC_KEY, buf *uint8, len c.SizeT, ctx *BN_CTX) c.Int
 
-// Decodes an EC_KEY private key from an octet string
-//  \param  key    key to decode
-//  \param  buf    memory buffer with the encoded private key
-//  \param  len    length of the encoded key
-//  \return 1 on success and 0 if an error occurred
-//
 //go:linkname EC_KEYOct2priv C.EC_KEY_oct2priv
 func EC_KEYOct2priv(key *EC_KEY, buf *uint8, len c.SizeT) c.Int
 
-// Encodes a EC_KEY private key to an octet string
-//  \param  key    key to encode
-//  \param  buf    memory buffer for the result. If NULL the function returns
-//                 required buffer size.
-//  \param  len    length of the memory buffer
-//  \return the length of the encoded octet string or 0 if an error occurred
-//
 //go:linkname EC_KEYPriv2oct C.EC_KEY_priv2oct
 func EC_KEYPriv2oct(key *EC_KEY, buf *uint8, len c.SizeT) c.SizeT
 
@@ -1458,10 +1440,6 @@ func ECDSAVerify(type_ c.Int, dgst *uint8, dgstlen c.Int, sig *uint8, siglen c.I
 //go:linkname ECDSASize C.ECDSA_size
 func ECDSASize(eckey *EC_KEY) c.Int
 
-// /
-// EC_KEY_METHOD constructors, destructors, writers and accessors
-// /
-//
 //go:linkname EC_KEY_METHODNew C.EC_KEY_METHOD_new
 func EC_KEY_METHODNew(meth *EC_KEY_METHOD) *EC_KEY_METHOD
 

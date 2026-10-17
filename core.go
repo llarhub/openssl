@@ -7,12 +7,75 @@ import (
 	"unsafe"
 )
 
-const OSSL_PARAM_INTEGER = 1
-const OSSL_PARAM_UNSIGNED_INTEGER = 2
+// OSSL_PARAM_INTEGER and OSSL_PARAM_UNSIGNED_INTEGER
+// are arbitrary length and therefore require an arbitrarily sized buffer,
+// since they may be used to pass numbers larger than what is natively
+// available.
+//
+// The number must be buffered in native form, i.e. MSB first on B_ENDIAN
+// systems and LSB first on L_ENDIAN systems.  This means that arbitrary
+// native integers can be stored in the buffer, just make sure that the
+// buffer size is correct and the buffer itself is properly aligned (for
+// example by having the buffer field point at a C integer).
+const (
+	OSSL_PARAM_INTEGER = 1
+	// -
+	// OSSL_PARAM_REAL
+	// is a C binary floating point values in native form and alignment.
+	OSSL_PARAM_UNSIGNED_INTEGER = 2
+)
+
+// -
+// OSSL_PARAM_REAL
+// is a C binary floating point values in native form and alignment.
 const OSSL_PARAM_REAL = 3
+
+// -
+// OSSL_PARAM_UTF8_STRING
+// is a printable string.  It is expected to be printed as it is.
 const OSSL_PARAM_UTF8_STRING = 4
+
+// -
+// OSSL_PARAM_OCTET_STRING
+// is a string of bytes with no further specification.  It is expected to be
+// printed as a hexdump.
 const OSSL_PARAM_OCTET_STRING = 5
+
+// -
+// OSSL_PARAM_UTF8_PTR
+// is a pointer to a printable string.  It is expected to be printed as it is.
+//
+// The difference between this and OSSL_PARAM_UTF8_STRING is that only pointers
+// are manipulated for this type.
+//
+// This is more relevant for parameter requests, where the responding
+// function doesn't need to copy the data to the provided buffer, but
+// sets the provided buffer to point at the actual data instead.
+//
+// WARNING!  Using these is FRAGILE, as it assumes that the actual
+// data and its location are constant.
+//
+// EXTRA WARNING!  If you are not completely sure you most likely want
+// to use the OSSL_PARAM_UTF8_STRING type.
 const OSSL_PARAM_UTF8_PTR = 6
+
+// -
+// OSSL_PARAM_OCTET_PTR
+// is a pointer to a string of bytes with no further specification.  It is
+// expected to be printed as a hexdump.
+//
+// The difference between this and OSSL_PARAM_OCTET_STRING is that only pointers
+// are manipulated for this type.
+//
+// This is more relevant for parameter requests, where the responding
+// function doesn't need to copy the data to the provided buffer, but
+// sets the provided buffer to point at the actual data instead.
+//
+// WARNING!  Using these is FRAGILE, as it assumes that the actual
+// data and its location are constant.
+//
+// EXTRA WARNING!  If you are not completely sure you most likely want
+// to use the OSSL_PARAM_OCTET_STRING type.
 const OSSL_PARAM_OCTET_PTR = 7
 
 // Dispatch table element.  function_id numbers and the functions are defined
@@ -64,16 +127,16 @@ type OsslParamSt struct {
 	DataSize   c.SizeT
 	ReturnSize c.SizeT
 }
+type OpensslCoreCtxSt struct {
+}
+type OsslCoreBioSt struct {
+}
 type OsslCoreHandleSt struct {
 }
 
 // Opaque handles to be used with core upcall functions from providers
 type OSSL_CORE_HANDLE = OsslCoreHandleSt
-type OpensslCoreCtxSt struct {
-}
 type OPENSSL_CORE_CTX = OpensslCoreCtxSt
-type OsslCoreBioSt struct {
-}
 type OSSL_CORE_BIO = OsslCoreBioSt
 
 // Typedef for the thread stop handling callback. Used both internally and by
@@ -88,14 +151,6 @@ type OSSL_CORE_BIO = OsslCoreBioSt
 // llgo:type C
 type OSSLThreadStopHandlerFn = func(_llcppg_param1 unsafe.Pointer)
 
-// -
-// Provider entry point
-// --------------------
-//
-// This function is expected to be present in any dynamically loadable
-// provider module.  By definition, if this function doesn't exist in a
-// module, that module is not an OpenSSL provider module.
-//
 // -
 // |handle|     pointer to opaque type OSSL_CORE_HANDLE.  This can be used
 //              together with some functions passed via |in| to query data.
@@ -124,6 +179,11 @@ type OSSLProviderInitFn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 
 // llgo:type C
 type OSSL_CALLBACK = func(_llcppg_param1 *OSSL_PARAM, _llcppg_param2 unsafe.Pointer) c.Int
 
+// Passphrase callback function signature
+//
+// This is similar to the generic callback function above, but adds a
+// result parameter.
+//
 // llgo:type C
 type OSSL_INOUT_CALLBACK = func(_llcppg_param1 *OSSL_PARAM, _llcppg_param2 *OSSL_PARAM, _llcppg_param3 unsafe.Pointer) c.Int
 

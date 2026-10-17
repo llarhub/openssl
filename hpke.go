@@ -7,42 +7,98 @@ import (
 	_ "unsafe"
 )
 
-const OSSL_HPKE_MODE_BASE = 0
-const OSSL_HPKE_MODE_PSK = 1
-const OSSL_HPKE_MODE_AUTH = 2
-const OSSL_HPKE_MODE_PSKAUTH = 3
-const OSSL_HPKE_MAX_PARMLEN = 66
-const OSSL_HPKE_MIN_PSKLEN = 32
-const OSSL_HPKE_MAX_INFOLEN = 1024
-const OSSL_HPKE_KEM_ID_RESERVED = 0
-const OSSL_HPKE_KEM_ID_P256 = 16
-const OSSL_HPKE_KEM_ID_P384 = 17
-const OSSL_HPKE_KEM_ID_P521 = 18
-const OSSL_HPKE_KEM_ID_X25519 = 32
-const OSSL_HPKE_KEM_ID_X448 = 33
-const OSSL_HPKE_KDF_ID_RESERVED = 0
-const OSSL_HPKE_KDF_ID_HKDF_SHA256 = 1
-const OSSL_HPKE_KDF_ID_HKDF_SHA384 = 2
-const OSSL_HPKE_KDF_ID_HKDF_SHA512 = 3
-const OSSL_HPKE_AEAD_ID_RESERVED = 0
-const OSSL_HPKE_AEAD_ID_AES_GCM_128 = 1
-const OSSL_HPKE_AEAD_ID_AES_GCM_256 = 2
-const OSSL_HPKE_AEAD_ID_CHACHA_POLY1305 = 3
-const OSSL_HPKE_AEAD_ID_EXPORTONLY = 65535
-const OSSL_HPKE_KEMSTR_P256 = "P-256"
-const OSSL_HPKE_KEMSTR_P384 = "P-384"
-const OSSL_HPKE_KEMSTR_P521 = "P-521"
-const OSSL_HPKE_KEMSTR_X25519 = "X25519"
-const OSSL_HPKE_KEMSTR_X448 = "X448"
-const OSSL_HPKE_KDFSTR_256 = "hkdf-sha256"
-const OSSL_HPKE_KDFSTR_384 = "hkdf-sha384"
-const OSSL_HPKE_KDFSTR_512 = "hkdf-sha512"
-const OSSL_HPKE_AEADSTR_AES128GCM = "aes-128-gcm"
-const OSSL_HPKE_AEADSTR_AES256GCM = "aes-256-gcm"
-const OSSL_HPKE_AEADSTR_CP = "chacha20-poly1305"
-const OSSL_HPKE_AEADSTR_EXP = "exporter"
-const OSSL_HPKE_ROLE_SENDER = 0
-const OSSL_HPKE_ROLE_RECEIVER = 1
+// HPKE modes
+const (
+	OSSL_HPKE_MODE_BASE = 0
+	// Pre-shared key mode
+	OSSL_HPKE_MODE_PSK = 1
+	// Authenticated mode
+	OSSL_HPKE_MODE_AUTH = 2
+	// PSK+authenticated mode
+	OSSL_HPKE_MODE_PSKAUTH = 3
+)
+
+// Max for ikm, psk, pskid, info and exporter contexts.
+// RFC9180, section 7.2.1 RECOMMENDS 64 octets but we have test vectors from
+// Appendix A.6.1 with a 66 octet IKM so we'll allow that.
+const (
+	OSSL_HPKE_MAX_PARMLEN = 66
+	OSSL_HPKE_MIN_PSKLEN  = 32
+	OSSL_HPKE_MAX_INFOLEN = 1024
+)
+
+// The (16bit) HPKE algorithm ID IANA codepoints
+// If/when new IANA codepoints are added there are tables in
+// crypto/hpke/hpke_util.c that must also be updated.
+const (
+	OSSL_HPKE_KEM_ID_RESERVED = 0
+	// NIST P-256
+	OSSL_HPKE_KEM_ID_P256 = 16
+	// NIST P-384
+	OSSL_HPKE_KEM_ID_P384 = 17
+	// NIST P-521
+	OSSL_HPKE_KEM_ID_P521 = 18
+	// Curve25519
+	OSSL_HPKE_KEM_ID_X25519 = 32
+	// Curve448
+	OSSL_HPKE_KEM_ID_X448 = 33
+)
+const (
+	// not used
+	OSSL_HPKE_KDF_ID_RESERVED = 0
+	// HKDF-SHA256
+	OSSL_HPKE_KDF_ID_HKDF_SHA256 = 1
+	// HKDF-SHA384
+	OSSL_HPKE_KDF_ID_HKDF_SHA384 = 2
+	// HKDF-SHA512
+	OSSL_HPKE_KDF_ID_HKDF_SHA512 = 3
+)
+const (
+	// not used
+	OSSL_HPKE_AEAD_ID_RESERVED = 0
+	// AES-GCM-128
+	OSSL_HPKE_AEAD_ID_AES_GCM_128 = 1
+	// AES-GCM-256
+	OSSL_HPKE_AEAD_ID_AES_GCM_256 = 2
+	// Chacha20-Poly1305
+	OSSL_HPKE_AEAD_ID_CHACHA_POLY1305 = 3
+	// export-only fake ID
+	OSSL_HPKE_AEAD_ID_EXPORTONLY = 65535
+)
+
+// strings for suite components
+const (
+	OSSL_HPKE_KEMSTR_P256 = "P-256"
+	// KEM id 0x11
+	OSSL_HPKE_KEMSTR_P384 = "P-384"
+	// KEM id 0x12
+	OSSL_HPKE_KEMSTR_P521 = "P-521"
+	// KEM id 0x20
+	OSSL_HPKE_KEMSTR_X25519 = "X25519"
+	// KEM id 0x21
+	OSSL_HPKE_KEMSTR_X448 = "X448"
+	// KDF id 1
+	OSSL_HPKE_KDFSTR_256 = "hkdf-sha256"
+	// KDF id 2
+	OSSL_HPKE_KDFSTR_384 = "hkdf-sha384"
+	// KDF id 3
+	OSSL_HPKE_KDFSTR_512 = "hkdf-sha512"
+	// AEAD id 1
+	OSSL_HPKE_AEADSTR_AES128GCM = "aes-128-gcm"
+	// AEAD id 2
+	OSSL_HPKE_AEADSTR_AES256GCM = "aes-256-gcm"
+	// AEAD id 3
+	OSSL_HPKE_AEADSTR_CP = "chacha20-poly1305"
+	// AEAD id 0xff
+	OSSL_HPKE_AEADSTR_EXP = "exporter"
+)
+
+// Roles for use in creating an OSSL_HPKE_CTX, most
+// important use of this is to control nonce reuse.
+const (
+	OSSL_HPKE_ROLE_SENDER   = 0
+	OSSL_HPKE_ROLE_RECEIVER = 1
+)
 
 type OSSL_HPKE_SUITE struct {
 	KemId  c.Uint16T

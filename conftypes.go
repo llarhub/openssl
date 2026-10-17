@@ -7,17 +7,6 @@ import (
 	"unsafe"
 )
 
-// clang-format on
-type ConfSt struct {
-	Meth         *CONF_METHOD
-	MethData     unsafe.Pointer
-	Data         *LhashStCONF_VALUE
-	FlagDollarid c.Int
-	FlagAbspath  c.Int
-	Includedir   *c.Char
-	Libctx       *OSSL_LIB_CTX
-}
-
 // The contents of this file are deprecated and will be made opaque
 //
 // llgo:type C
@@ -32,4 +21,13 @@ type ConfMethodSt struct {
 	IsNumber    func(_llcppg_param1 *CONF, _llcppg_param2 c.Char) c.Int
 	ToInt       func(_llcppg_param1 *CONF, _llcppg_param2 c.Char) c.Int
 	Load        func(_llcppg_param1 *CONF, _llcppg_param2 *c.Char, _llcppg_param3 *c.Long) c.Int
+}
+type ConfSt struct {
+	Meth         *CONF_METHOD
+	MethData     unsafe.Pointer
+	Data         *LhashStCONF_VALUE
+	FlagDollarid c.Int
+	FlagAbspath  c.Int
+	Includedir   *c.Char
+	Libctx       *OSSL_LIB_CTX
 }

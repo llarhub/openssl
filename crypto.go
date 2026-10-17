@@ -10,65 +10,88 @@ import (
 	"unsafe"
 )
 
-const OPENSSL_VERSION = 0
-const OPENSSL_CFLAGS = 1
-const OPENSSL_BUILT_ON = 2
-const OPENSSL_PLATFORM = 3
-const OPENSSL_DIR = 4
-const OPENSSL_ENGINES_DIR = 5
-const OPENSSL_VERSION_STRING = 6
-const OPENSSL_FULL_VERSION_STRING = 7
-const OPENSSL_MODULES_DIR = 8
-const OPENSSL_CPU_INFO = 9
-const OPENSSL_WINCTX = 10
-const OPENSSL_INFO_CONFIG_DIR = 1001
-const OPENSSL_INFO_ENGINES_DIR = 1002
-const OPENSSL_INFO_MODULES_DIR = 1003
-const OPENSSL_INFO_DSO_EXTENSION = 1004
-const OPENSSL_INFO_DIR_FILENAME_SEPARATOR = 1005
-const OPENSSL_INFO_LIST_SEPARATOR = 1006
-const OPENSSL_INFO_SEED_SOURCE = 1007
-const OPENSSL_INFO_CPU_SETTINGS = 1008
-const OPENSSL_INFO_WINDOWS_CONTEXT = 1009
-const CRYPTO_EX_INDEX_SSL = 0
-const CRYPTO_EX_INDEX_SSL_CTX = 1
-const CRYPTO_EX_INDEX_SSL_SESSION = 2
-const CRYPTO_EX_INDEX_X509 = 3
-const CRYPTO_EX_INDEX_X509_STORE = 4
-const CRYPTO_EX_INDEX_X509_STORE_CTX = 5
-const CRYPTO_EX_INDEX_DH = 6
-const CRYPTO_EX_INDEX_DSA = 7
-const CRYPTO_EX_INDEX_EC_KEY = 8
-const CRYPTO_EX_INDEX_RSA = 9
-const CRYPTO_EX_INDEX_ENGINE = 10
-const CRYPTO_EX_INDEX_UI = 11
-const CRYPTO_EX_INDEX_BIO = 12
-const CRYPTO_EX_INDEX_APP = 13
-const CRYPTO_EX_INDEX_UI_METHOD = 14
-const CRYPTO_EX_INDEX_RAND_DRBG = 15
-const CRYPTO_EX_INDEX_DRBG = 15
-const CRYPTO_EX_INDEX_OSSL_LIB_CTX = 16
-const CRYPTO_EX_INDEX_EVP_PKEY = 17
-const CRYPTO_EX_INDEX__COUNT = 18
-const CRYPTO_LOCK = 1
-const CRYPTO_UNLOCK = 2
-const CRYPTO_READ = 4
-const CRYPTO_WRITE = 8
-const OPENSSL_INIT_ENGINE_ALL_BUILTIN = 0
+const (
+	OPENSSL_VERSION             = 0
+	OPENSSL_CFLAGS              = 1
+	OPENSSL_BUILT_ON            = 2
+	OPENSSL_PLATFORM            = 3
+	OPENSSL_DIR                 = 4
+	OPENSSL_ENGINES_DIR         = 5
+	OPENSSL_VERSION_STRING      = 6
+	OPENSSL_FULL_VERSION_STRING = 7
+	OPENSSL_MODULES_DIR         = 8
+	OPENSSL_CPU_INFO            = 9
+	OPENSSL_WINCTX              = 10
+)
 
-type CryptoExDataSt struct {
-	Ctx *OSSL_LIB_CTX
-	Sk  *StackStVoid
-}
+// The series starts at 1001 to avoid confusion with the OpenSSL_version
+// types.
+const (
+	OPENSSL_INFO_CONFIG_DIR             = 1001
+	OPENSSL_INFO_ENGINES_DIR            = 1002
+	OPENSSL_INFO_MODULES_DIR            = 1003
+	OPENSSL_INFO_DSO_EXTENSION          = 1004
+	OPENSSL_INFO_DIR_FILENAME_SEPARATOR = 1005
+	OPENSSL_INFO_LIST_SEPARATOR         = 1006
+	OPENSSL_INFO_SEED_SOURCE            = 1007
+	OPENSSL_INFO_CPU_SETTINGS           = 1008
+	OPENSSL_INFO_WINDOWS_CONTEXT        = 1009
+)
+
+// Per class, we have a STACK of function pointers.
+const (
+	CRYPTO_EX_INDEX_SSL            = 0
+	CRYPTO_EX_INDEX_SSL_CTX        = 1
+	CRYPTO_EX_INDEX_SSL_SESSION    = 2
+	CRYPTO_EX_INDEX_X509           = 3
+	CRYPTO_EX_INDEX_X509_STORE     = 4
+	CRYPTO_EX_INDEX_X509_STORE_CTX = 5
+	CRYPTO_EX_INDEX_DH             = 6
+	CRYPTO_EX_INDEX_DSA            = 7
+	CRYPTO_EX_INDEX_EC_KEY         = 8
+	CRYPTO_EX_INDEX_RSA            = 9
+	CRYPTO_EX_INDEX_ENGINE         = 10
+	CRYPTO_EX_INDEX_UI             = 11
+	CRYPTO_EX_INDEX_BIO            = 12
+	CRYPTO_EX_INDEX_APP            = 13
+	CRYPTO_EX_INDEX_UI_METHOD      = 14
+	CRYPTO_EX_INDEX_RAND_DRBG      = 15
+	CRYPTO_EX_INDEX_DRBG           = 15
+	CRYPTO_EX_INDEX_OSSL_LIB_CTX   = 16
+	CRYPTO_EX_INDEX_EVP_PKEY       = 17
+	CRYPTO_EX_INDEX__COUNT         = 18
+)
+
+// These defines where used in combination with the old locking callbacks,
+// they are not called anymore, but old code that's not called might still
+// use them.
+const (
+	CRYPTO_LOCK   = 1
+	CRYPTO_UNLOCK = 2
+	CRYPTO_READ   = 4
+	CRYPTO_WRITE  = 8
+)
+
+// ENGINEs are no longer available
+const OPENSSL_INIT_ENGINE_ALL_BUILTIN = 0
 
 // Old type for allocating dynamic locks. No longer used. Use the new thread
 // API instead.
 type CRYPTODynlock struct {
 	Dummy c.Int
 }
-type CRYPTO_RWLOCK = c.Void
+type CryptoExDataSt struct {
+	Ctx *OSSL_LIB_CTX
+	Sk  *StackStVoid
+}
+
+// This structure is no longer used
+type CryptoThreadidSt struct {
+	Dummy c.Int
+}
 type StackStVoid struct {
 }
+type CRYPTO_RWLOCK = c.Void
 
 // clang-format off
 //
@@ -93,11 +116,6 @@ type CRYPTO_EXFree = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.P
 
 // llgo:type C
 type CRYPTO_EXDup = func(_llcppg_param1 *CRYPTO_EX_DATA, _llcppg_param2 *CRYPTO_EX_DATA, _llcppg_param3 *unsafe.Pointer, _llcppg_param4 c.Int, _llcppg_param5 c.Long, _llcppg_param6 unsafe.Pointer) c.Int
-
-// This structure is no longer used
-type CryptoThreadidSt struct {
-	Dummy c.Int
-}
 
 // This structure is no longer used
 type CRYPTO_THREADID = CryptoThreadidSt
@@ -211,12 +229,17 @@ func OpenSSLVersionNum() c.Ulong
 //go:linkname OpenSSLVersion C.OpenSSL_version
 func OpenSSLVersion(type_ c.Int) *c.Char
 
+// The series starts at 1001 to avoid confusion with the OpenSSL_version
+// types.
+//
 //go:linkname OPENSSLInfo C.OPENSSL_info
 func OPENSSLInfo(type_ c.Int) *c.Char
 
 //go:linkname OPENSSLIssetugid C.OPENSSL_issetugid
 func OPENSSLIssetugid() c.Int
 
+// No longer use an index.
+//
 //go:linkname CRYPTOGetExNewIndex C.CRYPTO_get_ex_new_index
 func CRYPTOGetExNewIndex(class_index c.Int, argl c.Long, argp unsafe.Pointer, new_func *CRYPTO_EXNew, dup_func *CRYPTO_EXDup, free_func *CRYPTO_EXFree) c.Int
 

@@ -8,20 +8,24 @@ import (
 )
 
 const OSSL_BAD_ASYNC_FD = -1
-const ASYNC_ERR = 0
-const ASYNC_NO_JOBS = 1
-const ASYNC_PAUSE = 2
-const ASYNC_FINISH = 3
-const ASYNC_STATUS_UNSUPPORTED = 0
-const ASYNC_STATUS_ERR = 1
-const ASYNC_STATUS_OK = 2
-const ASYNC_STATUS_EAGAIN = 3
+const (
+	ASYNC_ERR     = 0
+	ASYNC_NO_JOBS = 1
+	ASYNC_PAUSE   = 2
+	ASYNC_FINISH  = 3
+)
+const (
+	ASYNC_STATUS_UNSUPPORTED = 0
+	ASYNC_STATUS_ERR         = 1
+	ASYNC_STATUS_OK          = 2
+	ASYNC_STATUS_EAGAIN      = 3
+)
 
 type AsyncJobSt struct {
 }
-type ASYNC_JOB = AsyncJobSt
 type AsyncWaitCtxSt struct {
 }
+type ASYNC_JOB = AsyncJobSt
 type ASYNC_WAIT_CTX = AsyncWaitCtxSt
 
 // llgo:type C

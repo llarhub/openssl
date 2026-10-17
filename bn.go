@@ -8,22 +8,53 @@ import (
 )
 
 const BN_BYTES = 8
-const BN_BITS2 = 64
-const BN_BITS = 128
-const BN_FLG_MALLOCED = 1
-const BN_FLG_STATIC_DATA = 2
-const BN_FLG_CONSTTIME = 4
-const BN_FLG_SECURE = 8
-const BN_FLG_EXP_CONSTTIME = 4
-const BN_FLG_FREE = 32768
-const BN_RAND_TOP_ANY = -1
-const BN_RAND_TOP_ONE = 0
-const BN_RAND_TOP_TWO = 1
-const BN_RAND_BOTTOM_ANY = 0
-const BN_RAND_BOTTOM_ODD = 1
+const (
+	BN_BITS2 = 64
+	BN_BITS  = 128
+)
+const (
+	BN_FLG_MALLOCED    = 1
+	BN_FLG_STATIC_DATA = 2
+)
+
+// avoid leaking exponent information through timing,
+// BN_mod_exp_mont() will call BN_mod_exp_mont_consttime,
+// BN_div() will call BN_div_no_branch,
+// BN_mod_inverse() will call bn_mod_inverse_no_branch.
+const (
+	BN_FLG_CONSTTIME = 4
+	BN_FLG_SECURE    = 8
+)
+
+// deprecated name for the flag
+const (
+	BN_FLG_EXP_CONSTTIME = 4
+	// used for debugging
+	BN_FLG_FREE = 32768
+)
+
+// Values for |top| in BN_rand()
+const (
+	BN_RAND_TOP_ANY = -1
+	BN_RAND_TOP_ONE = 0
+	BN_RAND_TOP_TWO = 1
+)
+
+// Values for |bottom| in BN_rand()
+const (
+	BN_RAND_BOTTOM_ANY = 0
+	BN_RAND_BOTTOM_ODD = 1
+)
+
+// default: select number of iterations based \
+// on the size of the number
 const BNPrimeChecks = 0
-const BN_BLINDING_NO_UPDATE = 1
-const BN_BLINDING_NO_RECREATE = 2
+
+// BN_BLINDING flags
+const (
+	BN_BLINDING_NO_UPDATE   = 1
+	BN_BLINDING_NO_RECREATE = 2
+)
 
 type BN_ULONG = c.Ulong
 
@@ -227,6 +258,10 @@ func BNAdd(r *BIGNUM, a *BIGNUM, b *BIGNUM) c.Int
 //go:linkname BNMul C.BN_mul
 func BNMul(r *BIGNUM, a *BIGNUM, b *BIGNUM, ctx *BN_CTX) c.Int
 
+// BN_set_negative sets sign of a BIGNUM
+// \param  b  pointer to the BIGNUM object
+// \param  n  0 if the BIGNUM b should be positive and a value != 0 otherwise
+//
 //go:linkname BNSqr C.BN_sqr
 func BNSqr(r *BIGNUM, a *BIGNUM, ctx *BN_CTX) c.Int
 
@@ -391,6 +426,10 @@ func BNAsc2bn(a **BIGNUM, str *c.Char) c.Int
 //go:linkname BNGcd C.BN_gcd
 func BNGcd(r *BIGNUM, a *BIGNUM, b *BIGNUM, ctx *BN_CTX) c.Int
 
+// returns
+// -2 for
+// error
+//
 //go:linkname BNKronecker C.BN_kronecker
 func BNKronecker(a *BIGNUM, b *BIGNUM, ctx *BN_CTX) c.Int
 
@@ -510,6 +549,8 @@ func BN_BLINDINGCreateParam(b *BN_BLINDING, e *BIGNUM, m *BIGNUM, ctx *BN_CTX, b
 //go:linkname BNSetParams C.BN_set_params
 func BNSetParams(mul c.Int, high c.Int, low c.Int, mont c.Int)
 
+// 0, mul, 1 high, 2 low, 3 mont
+//
 //go:linkname BNGetParams C.BN_get_params
 func BNGetParams(which c.Int) c.Int
 
@@ -576,12 +617,6 @@ func BNGF2mModSqrt(r *BIGNUM, a *BIGNUM, p *BIGNUM, ctx *BN_CTX) c.Int
 //go:linkname BNGF2mModSolveQuad C.BN_GF2m_mod_solve_quad
 func BNGF2mModSolveQuad(r *BIGNUM, a *BIGNUM, p *BIGNUM, ctx *BN_CTX) c.Int
 
-// -
-// Some functions allow for representation of the irreducible polynomials
-// as an unsigned int[], say p.  The irreducible f(t) is then of the form:
-//     t^p[0] + t^p[1] + ... + t^p[k]
-// where m = p[0] > p[1] > ... > p[k] = 0.
-//
 // r = a mod p
 //
 //go:linkname BNGF2mModArr C.BN_GF2m_mod_arr

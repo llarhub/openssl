@@ -7,60 +7,57 @@ import (
 	"unsafe"
 )
 
-const PKCS7_S_HEADER = 0
-const PKCS7_S_BODY = 1
-const PKCS7_S_TAIL = 2
-const PKCS7_OP_SET_DETACHED_SIGNATURE = 1
-const PKCS7_OP_GET_DETACHED_SIGNATURE = 2
-const PKCS7_TEXT = 1
-const PKCS7_NOCERTS = 2
-const PKCS7_NOSIGS = 4
-const PKCS7_NOCHAIN = 8
-const PKCS7_NOINTERN = 16
-const PKCS7_NOVERIFY = 32
-const PKCS7_DETACHED = 64
-const PKCS7_BINARY = 128
-const PKCS7_NOATTR = 256
-const PKCS7_NOSMIMECAP = 512
-const PKCS7_NOOLDMIMETYPE = 1024
-const PKCS7_CRLFEOL = 2048
-const PKCS7_STREAM = 4096
-const PKCS7_NOCRL = 8192
-const PKCS7_PARTIAL = 16384
-const PKCS7_REUSE_DIGEST = 32768
-const PKCS7_NO_DUAL_CONTENT = 65536
-const SMIME_TEXT = 1
-const SMIME_NOCERTS = 2
-const SMIME_NOSIGS = 4
-const SMIME_NOCHAIN = 8
-const SMIME_NOINTERN = 16
-const SMIME_NOVERIFY = 32
-const SMIME_DETACHED = 64
-const SMIME_BINARY = 128
-const SMIME_NOATTR = 256
+const (
+	PKCS7_S_HEADER = 0
+	PKCS7_S_BODY   = 1
+	PKCS7_S_TAIL   = 2
+)
+const (
+	PKCS7_OP_SET_DETACHED_SIGNATURE = 1
+	PKCS7_OP_GET_DETACHED_SIGNATURE = 2
+)
+const (
+	PKCS7_TEXT            = 1
+	PKCS7_NOCERTS         = 2
+	PKCS7_NOSIGS          = 4
+	PKCS7_NOCHAIN         = 8
+	PKCS7_NOINTERN        = 16
+	PKCS7_NOVERIFY        = 32
+	PKCS7_DETACHED        = 64
+	PKCS7_BINARY          = 128
+	PKCS7_NOATTR          = 256
+	PKCS7_NOSMIMECAP      = 512
+	PKCS7_NOOLDMIMETYPE   = 1024
+	PKCS7_CRLFEOL         = 2048
+	PKCS7_STREAM          = 4096
+	PKCS7_NOCRL           = 8192
+	PKCS7_PARTIAL         = 16384
+	PKCS7_REUSE_DIGEST    = 32768
+	PKCS7_NO_DUAL_CONTENT = 65536
+)
+const (
+	SMIME_TEXT     = 1
+	SMIME_NOCERTS  = 2
+	SMIME_NOSIGS   = 4
+	SMIME_NOCHAIN  = 8
+	SMIME_NOINTERN = 16
+	SMIME_NOVERIFY = 32
+	SMIME_DETACHED = 64
+	SMIME_BINARY   = 128
+	SMIME_NOATTR   = 256
+)
+
+// CRLF ASCII canonicalisation
 const SMIME_ASCIICRLF = 524288
 
-// -
-// Encryption_ID           DES-CBC
-// Digest_ID               MD5
-// Digest_Encryption_ID    rsaEncryption
-// Key_Encryption_ID       rsaEncryption
 type PKCS7CTXSt struct {
 	Libctx *OSSL_LIB_CTX
 	Propq  *c.Char
 }
-
-// -
-// Encryption_ID           DES-CBC
-// Digest_ID               MD5
-// Digest_Encryption_ID    rsaEncryption
-// Key_Encryption_ID       rsaEncryption
-type PKCS7_CTX = PKCS7CTXSt
 type Pkcs7IssuerAndSerialSt struct {
 	Issuer *X509_NAME
 	Serial *ASN1_INTEGER
 }
-type PKCS7_ISSUER_AND_SERIAL = Pkcs7IssuerAndSerialSt
 type Pkcs7SignerInfoSt struct {
 	Version         *ASN1_INTEGER
 	IssuerAndSerial *PKCS7_ISSUER_AND_SERIAL
@@ -72,9 +69,73 @@ type Pkcs7SignerInfoSt struct {
 	Pkey            *EVP_PKEY
 	Ctx             *PKCS7_CTX
 }
-type PKCS7_SIGNER_INFO = Pkcs7SignerInfoSt
+type Pkcs7RecipInfoSt struct {
+	Version         *ASN1_INTEGER
+	IssuerAndSerial *PKCS7_ISSUER_AND_SERIAL
+	KeyEncAlgor     *X509_ALGOR
+	EncKey          *ASN1_OCTET_STRING
+	Cert            *X509
+	Ctx             *PKCS7_CTX
+}
+type Pkcs7SignedSt struct {
+	Version    *ASN1_INTEGER
+	MdAlgs     *StackStX509ALGOR
+	Cert       *StackStX509
+	Crl        *StackStX509CRL
+	SignerInfo *StackStPKCS7SIGNER_INFO
+	Contents   *Pkcs7St
+}
+type Pkcs7EncContentSt struct {
+	ContentType *ASN1_OBJECT
+	Algorithm   *X509_ALGOR
+	EncData     *ASN1_OCTET_STRING
+	Cipher      *EVP_CIPHER
+	Ctx         *PKCS7_CTX
+}
+type Pkcs7EnvelopedSt struct {
+	Version       *ASN1_INTEGER
+	Recipientinfo *StackStPKCS7RECIP_INFO
+	EncData       *PKCS7_ENC_CONTENT
+}
+type Pkcs7SignedandenvelopedSt struct {
+	Version       *ASN1_INTEGER
+	MdAlgs        *StackStX509ALGOR
+	Cert          *StackStX509
+	Crl           *StackStX509CRL
+	SignerInfo    *StackStPKCS7SIGNER_INFO
+	EncData       *PKCS7_ENC_CONTENT
+	Recipientinfo *StackStPKCS7RECIP_INFO
+}
+type Pkcs7DigestSt struct {
+	Version  *ASN1_INTEGER
+	Md       *X509_ALGOR
+	Contents *Pkcs7St
+	Digest   *ASN1_OCTET_STRING
+}
+type Pkcs7EncryptedSt struct {
+	Version *ASN1_INTEGER
+	EncData *PKCS7_ENC_CONTENT
+}
+type Pkcs7St struct {
+	Asn1     *uint8
+	Length   c.Long
+	State    c.Int
+	Detached c.Int
+	Type     *ASN1_OBJECT
+	D        _llcppg_anon_3
+	Ctx      PKCS7_CTX
+}
+type StackStPKCS7 struct {
+}
+type StackStPKCS7RECIP_INFO struct {
+}
 type StackStPKCS7SIGNER_INFO struct {
 }
+type PKCS7_CTX = PKCS7CTXSt
+type PKCS7_ISSUER_AND_SERIAL = Pkcs7IssuerAndSerialSt
+
+// clang-format off
+type PKCS7_SIGNER_INFO = Pkcs7SignerInfoSt
 
 // clang-format off
 //
@@ -91,20 +152,8 @@ type SkPKCS7SIGNER_INFOFreefunc = func(_llcppg_param1 *PKCS7_SIGNER_INFO)
 // llgo:type C
 type SkPKCS7SIGNER_INFOCopyfunc = func(_llcppg_param1 *PKCS7_SIGNER_INFO) *PKCS7_SIGNER_INFO
 
-// clang-format on
-type Pkcs7RecipInfoSt struct {
-	Version         *ASN1_INTEGER
-	IssuerAndSerial *PKCS7_ISSUER_AND_SERIAL
-	KeyEncAlgor     *X509_ALGOR
-	EncKey          *ASN1_OCTET_STRING
-	Cert            *X509
-	Ctx             *PKCS7_CTX
-}
-
-// clang-format on
+// clang-format off
 type PKCS7_RECIP_INFO = Pkcs7RecipInfoSt
-type StackStPKCS7RECIP_INFO struct {
-}
 
 // clang-format off
 //
@@ -121,75 +170,20 @@ type SkPKCS7RECIP_INFOFreefunc = func(_llcppg_param1 *PKCS7_RECIP_INFO)
 // llgo:type C
 type SkPKCS7RECIP_INFOCopyfunc = func(_llcppg_param1 *PKCS7_RECIP_INFO) *PKCS7_RECIP_INFO
 
-// clang-format on
-type Pkcs7SignedSt struct {
-	Version    *ASN1_INTEGER
-	MdAlgs     *StackStX509ALGOR
-	Cert       *StackStX509
-	Crl        *StackStX509CRL
-	SignerInfo *StackStPKCS7SIGNER_INFO
-	Contents   *Pkcs7St
-}
-type Pkcs7St struct {
-	Asn1     *uint8
-	Length   c.Long
-	State    c.Int
-	Detached c.Int
-	Type     *ASN1_OBJECT
-	D        _llcppg_anon_3
-	Ctx      PKCS7_CTX
-}
-
-// clang-format on
+// The above structure is very very similar to PKCS7_SIGN_ENVELOPE. How about
+// merging the two
 type PKCS7_SIGNED = Pkcs7SignedSt
-
-// The above structure is very very similar to PKCS7_SIGN_ENVELOPE. How about
-// merging the two
-type Pkcs7EncContentSt struct {
-	ContentType *ASN1_OBJECT
-	Algorithm   *X509_ALGOR
-	EncData     *ASN1_OCTET_STRING
-	Cipher      *EVP_CIPHER
-	Ctx         *PKCS7_CTX
-}
-
-// The above structure is very very similar to PKCS7_SIGN_ENVELOPE. How about
-// merging the two
 type PKCS7_ENC_CONTENT = Pkcs7EncContentSt
-type Pkcs7EnvelopedSt struct {
-	Version       *ASN1_INTEGER
-	Recipientinfo *StackStPKCS7RECIP_INFO
-	EncData       *PKCS7_ENC_CONTENT
-}
 type PKCS7_ENVELOPE = Pkcs7EnvelopedSt
-type Pkcs7SignedandenvelopedSt struct {
-	Version       *ASN1_INTEGER
-	MdAlgs        *StackStX509ALGOR
-	Cert          *StackStX509
-	Crl           *StackStX509CRL
-	SignerInfo    *StackStPKCS7SIGNER_INFO
-	EncData       *PKCS7_ENC_CONTENT
-	Recipientinfo *StackStPKCS7RECIP_INFO
-}
 type PKCS7_SIGN_ENVELOPE = Pkcs7SignedandenvelopedSt
-type Pkcs7DigestSt struct {
-	Version  *ASN1_INTEGER
-	Md       *X509_ALGOR
-	Contents *Pkcs7St
-	Digest   *ASN1_OCTET_STRING
-}
 type PKCS7_DIGEST = Pkcs7DigestSt
-type Pkcs7EncryptedSt struct {
-	Version *ASN1_INTEGER
-	EncData *PKCS7_ENC_CONTENT
-}
 type PKCS7_ENCRYPT = Pkcs7EncryptedSt
 type _llcppg_anon_3 struct {
 	_xgo_union [1]uint64
 }
+
+// clang-format off
 type PKCS7 = Pkcs7St
-type StackStPKCS7 struct {
-}
 
 // clang-format off
 //

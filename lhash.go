@@ -9,7 +9,16 @@ import (
 
 const LH_LOAD_MULT = 256
 
+// clang-format off
+type LhashStOPENSSL_STRING struct {
+	Dummy LhOPENSSL_STRINGDummy
+}
+type LhashStOPENSSL_CSTRING struct {
+	Dummy LhOPENSSL_CSTRINGDummy
+}
 type LhashNodeSt struct {
+}
+type LhashSt struct {
 }
 type OPENSSL_LH_NODE = LhashNodeSt
 
@@ -36,14 +45,7 @@ type OPENSSL_LH_DOALL_FUNCARG = func(_llcppg_param1 unsafe.Pointer, _llcppg_para
 
 // llgo:type C
 type OPENSSL_LH_DOALL_FUNCARG_THUNK = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 OPENSSL_LH_DOALL_FUNCARG)
-type LhashSt struct {
-}
 type OPENSSL_LHASH = LhashSt
-
-// clang-format off
-type LhashStOPENSSL_STRING struct {
-	Dummy LhOPENSSL_STRINGDummy
-}
 type LhOPENSSL_STRINGDummy struct {
 	_xgo_union [1]uint64
 }
@@ -62,9 +64,6 @@ type LhOPENSSL_STRINGHashfunc = func(_llcppg_param1 *OPENSSL_STRING) c.Ulong
 //
 // llgo:type C
 type LhOPENSSL_STRINGDoallfunc = func(_llcppg_param1 *OPENSSL_STRING)
-type LhashStOPENSSL_CSTRING struct {
-	Dummy LhOPENSSL_CSTRINGDummy
-}
 type LhOPENSSL_CSTRINGDummy struct {
 	_xgo_union [1]uint64
 }

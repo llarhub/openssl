@@ -8,32 +8,71 @@ import (
 	_ "unsafe"
 )
 
-const OSSL_ECH_MAX_PAYLOAD_LEN = 1500
-const OSSL_ECH_MIN_ECHCONFIG_LEN = 32
-const OSSL_ECH_MAX_ECHCONFIG_LEN = 1500
-const OSSL_ECH_MAX_ECHCONFIGEXT_LEN = 512
-const OSSL_ECH_MAX_MAXNAMELEN = 255
-const OSSL_ECH_MAX_PUBLICNAME = 255
-const OSSL_ECH_MAX_ALPNLEN = 255
-const OSSL_ECH_OUTERS_MAX = 20
-const OSSL_ECH_ALLEXTS_MAX = 32
+// Some externally visible limits - most used for sanity checks that could be
+// bigger if needed, but that work for now
+const (
+	OSSL_ECH_MAX_PAYLOAD_LEN = 1500
+	// min for all encodings
+	OSSL_ECH_MIN_ECHCONFIG_LEN = 32
+	// max for all encodings
+	OSSL_ECH_MAX_ECHCONFIG_LEN = 1500
+	// ECHConfig extension max
+	OSSL_ECH_MAX_ECHCONFIGEXT_LEN = 512
+	// ECHConfig max for max name length
+	OSSL_ECH_MAX_MAXNAMELEN = 255
+	// max ECHConfig public name length
+	OSSL_ECH_MAX_PUBLICNAME = 255
+	// max alpn length
+	OSSL_ECH_MAX_ALPNLEN = 255
+	// max extensions we compress via outer-exts
+	OSSL_ECH_OUTERS_MAX = 20
+	// max total number of extension we allow
+	OSSL_ECH_ALLEXTS_MAX = 32
+)
+
+// ECH version. We only support RFC 9849 as of now.  As/if new ECHConfig
+// versions are added, those will be noted here.
 const OSSL_ECH_RFC9849_VERSION = 65037
+
+// latest version from an RFC
 const OSSL_ECH_CURRENT_VERSION = 65037
-const SSL_ECH_STATUS_BACKEND = 4
-const SSL_ECH_STATUS_GREASE_ECH = 3
-const SSL_ECH_STATUS_GREASE = 2
-const SSL_ECH_STATUS_SUCCESS = 1
-const SSL_ECH_STATUS_FAILED = 0
-const SSL_ECH_STATUS_BAD_CALL = -100
-const SSL_ECH_STATUS_NOT_TRIED = -101
-const SSL_ECH_STATUS_BAD_NAME = -102
-const SSL_ECH_STATUS_NOT_CONFIGURED = -103
-const SSL_ECH_STATUS_FAILED_ECH = -105
-const SSL_ECH_STATUS_FAILED_ECH_BAD_NAME = -106
+
+// Return codes from SSL_ech_get1_status
+const (
+	SSL_ECH_STATUS_BACKEND = 4
+	// GREASEd and got an ECH in return
+	SSL_ECH_STATUS_GREASE_ECH = 3
+	// ECH GREASE happened
+	SSL_ECH_STATUS_GREASE = 2
+	// Success
+	SSL_ECH_STATUS_SUCCESS = 1
+	// Some internal or protocol error
+	SSL_ECH_STATUS_FAILED = 0
+	// Some in/out arguments were NULL
+	SSL_ECH_STATUS_BAD_CALL = -100
+	// ECH wasn't attempted
+	SSL_ECH_STATUS_NOT_TRIED = -101
+	// ECH ok but server cert bad
+	SSL_ECH_STATUS_BAD_NAME = -102
+	// ECH wasn't configured
+	SSL_ECH_STATUS_NOT_CONFIGURED = -103
+	// Tried, failed, got an ECH, from a good name
+	SSL_ECH_STATUS_FAILED_ECH = -105
+	// Tried, failed, got an ECH, from a bad name
+	SSL_ECH_STATUS_FAILED_ECH_BAD_NAME = -106
+)
+
+// if a caller wants to index the last entry in the store
 const OSSL_ECHSTORE_LAST = -1
+
+// if a caller wants all entries in the store, e.g. to print public values
 const OSSL_ECHSTORE_ALL = -2
-const OSSL_ECH_FOR_RETRY = 1
-const OSSL_ECH_NO_RETRY = 0
+
+// Values for the for_retry inputs
+const (
+	OSSL_ECH_FOR_RETRY = 1
+	OSSL_ECH_NO_RETRY  = 0
+)
 
 // llgo:type C
 type SSLEchCbFunc = func(_llcppg_param1 *SSL, _llcppg_param2 *c.Char) c.Uint
@@ -93,6 +132,10 @@ func SSLGet1Echstore(s *SSL) *OSSL_ECHSTORE
 //go:linkname SSLEchSet1ServerNames C.SSL_ech_set1_server_names
 func SSLEchSet1ServerNames(s *SSL, inner_name *c.Char, outer_name *c.Char, no_outer c.Int) c.Int
 
+// Note that this function returns 1 for success and 0 for error. This
+// contrasts with SSL_set1_alpn_protos() which (unusually for OpenSSL)
+// returns 0 for success and 1 on error.
+//
 //go:linkname SSLEchSet1OuterServerName C.SSL_ech_set1_outer_server_name
 func SSLEchSet1OuterServerName(s *SSL, outer_name *c.Char, no_outer c.Int) c.Int
 

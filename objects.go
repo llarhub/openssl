@@ -7,17 +7,21 @@ import (
 	"unsafe"
 )
 
-const OBJ_NAME_TYPE_UNDEF = 0
-const OBJ_NAME_TYPE_MD_METH = 1
-const OBJ_NAME_TYPE_CIPHER_METH = 2
-const OBJ_NAME_TYPE_PKEY_METH = 3
-const OBJ_NAME_TYPE_COMP_METH = 4
-const OBJ_NAME_TYPE_MAC_METH = 5
-const OBJ_NAME_TYPE_KDF_METH = 6
-const OBJ_NAME_TYPE_NUM = 7
+const (
+	OBJ_NAME_TYPE_UNDEF       = 0
+	OBJ_NAME_TYPE_MD_METH     = 1
+	OBJ_NAME_TYPE_CIPHER_METH = 2
+	OBJ_NAME_TYPE_PKEY_METH   = 3
+	OBJ_NAME_TYPE_COMP_METH   = 4
+	OBJ_NAME_TYPE_MAC_METH    = 5
+	OBJ_NAME_TYPE_KDF_METH    = 6
+	OBJ_NAME_TYPE_NUM         = 7
+)
 const OBJ_NAME_ALIAS = 32768
-const OBJ_BSEARCH_VALUE_ON_NOMATCH = 1
-const OBJ_BSEARCH_FIRST_VALUE_ON_MATCH = 2
+const (
+	OBJ_BSEARCH_VALUE_ON_NOMATCH     = 1
+	OBJ_BSEARCH_FIRST_VALUE_ON_MATCH = 2
+)
 const SNAcAuditEntity = "ac-auditIdentity"
 
 type ObjNameSt struct {
@@ -43,6 +47,8 @@ func OBJ_NAMEAdd(name *c.Char, type_ c.Int, data *c.Char) c.Int
 //go:linkname OBJ_NAMERemove C.OBJ_NAME_remove
 func OBJ_NAMERemove(name *c.Char, type_ c.Int) c.Int
 
+// -1 for everything
+//
 //go:linkname OBJ_NAMECleanup C.OBJ_NAME_cleanup
 func OBJ_NAMECleanup(type_ c.Int)
 

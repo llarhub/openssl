@@ -2,6 +2,9 @@
 
 package openssl
 
-const OBJ_R_OID_EXISTS = 102
-const OBJ_R_UNKNOWN_NID = 101
-const OBJ_R_UNKNOWN_OBJECT_NAME = 103
+// OBJ reason codes.
+const (
+	OBJ_R_OID_EXISTS          = 102
+	OBJ_R_UNKNOWN_NID         = 101
+	OBJ_R_UNKNOWN_OBJECT_NAME = 103
+)

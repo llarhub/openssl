@@ -3,12 +3,18 @@
 package openssl
 
 const SSL_MAX_MASTER_KEY_LENGTH = 48
-const SSL3_VERSION = 768
-const TLS1_VERSION = 769
-const TLS1_1_VERSION = 770
-const TLS1_2_VERSION = 771
-const TLS1_3_VERSION = 772
-const DTLS1_VERSION = 65279
-const DTLS1_2_VERSION = 65277
-const DTLS1_BAD_VER = 256
+
+// SSL/TLS uses a 2 byte unsigned version number
+const (
+	SSL3_VERSION    = 768
+	TLS1_VERSION    = 769
+	TLS1_1_VERSION  = 770
+	TLS1_2_VERSION  = 771
+	TLS1_3_VERSION  = 772
+	DTLS1_VERSION   = 65279
+	DTLS1_2_VERSION = 65277
+	DTLS1_BAD_VER   = 256
+)
+
+// QUIC uses a 4 byte unsigned version number
 const OSSL_QUIC1_VERSION = 1

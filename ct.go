@@ -7,10 +7,12 @@ import (
 	_ "unsafe"
 )
 
+// Minimum RSA key size, from RFC6962
 const SCT_MIN_RSA_BITS = 2048
+
+// All hashes are SHA256 in v1 of Certificate Transparency
 const CT_V1_HASHLEN = 32
 
-// clang-format on
 type CtLogEntryTypeT c.Int
 
 const (
@@ -46,6 +48,8 @@ const (
 	SCT_VALIDATION_STATUS_UNKNOWN_VERSION SctValidationStatusT = 5
 )
 
+type StackStCTLOG struct {
+}
 type StackStSCT struct {
 }
 
@@ -63,8 +67,6 @@ type SkSCTFreefunc = func(_llcppg_param1 *SCT)
 //
 // llgo:type C
 type SkSCTCopyfunc = func(_llcppg_param1 *SCT) *SCT
-type StackStCTLOG struct {
-}
 
 // llgo:type C
 type SkCTLOGCompfunc = func(_llcppg_param1 **CTLOG, _llcppg_param2 **CTLOG) c.Int

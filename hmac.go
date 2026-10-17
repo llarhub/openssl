@@ -7,6 +7,7 @@ import (
 	"unsafe"
 )
 
+// Deprecated
 const HMAC_MAX_MD_CBLOCK = 200
 
 //go:linkname HMACSize C.HMAC_size

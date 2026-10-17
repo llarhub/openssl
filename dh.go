@@ -7,53 +7,87 @@ import (
 	"unsafe"
 )
 
-const DH_PARAMGEN_TYPE_GENERATOR = 0
-const DH_PARAMGEN_TYPE_FIPS_186_2 = 1
-const DH_PARAMGEN_TYPE_FIPS_186_4 = 2
-const DH_PARAMGEN_TYPE_GROUP = 3
-const EVP_PKEY_CTRL_DH_PARAMGEN_PRIME_LEN = 4097
-const EVP_PKEY_CTRL_DH_PARAMGEN_GENERATOR = 4098
-const EVP_PKEY_CTRL_DH_RFC5114 = 4099
-const EVP_PKEY_CTRL_DH_PARAMGEN_SUBPRIME_LEN = 4100
-const EVP_PKEY_CTRL_DH_PARAMGEN_TYPE = 4101
-const EVP_PKEY_CTRL_DH_KDF_TYPE = 4102
-const EVP_PKEY_CTRL_DH_KDF_MD = 4103
-const EVP_PKEY_CTRL_GET_DH_KDF_MD = 4104
-const EVP_PKEY_CTRL_DH_KDF_OUTLEN = 4105
-const EVP_PKEY_CTRL_GET_DH_KDF_OUTLEN = 4106
-const EVP_PKEY_CTRL_DH_KDF_UKM = 4107
-const EVP_PKEY_CTRL_GET_DH_KDF_UKM = 4108
-const EVP_PKEY_CTRL_DH_KDF_OID = 4109
-const EVP_PKEY_CTRL_GET_DH_KDF_OID = 4110
-const EVP_PKEY_CTRL_DH_NID = 4111
-const EVP_PKEY_CTRL_DH_PAD = 4112
-const EVP_PKEY_DH_KDF_NONE = 1
-const EVP_PKEY_DH_KDF_X9_42 = 2
+// DH parameter generation types used by EVP_PKEY_CTX_set_dh_paramgen_type()
+// Note that additions/changes to this set of values requires corresponding
+// adjustments to range checks in dh_gen()
+const (
+	DH_PARAMGEN_TYPE_GENERATOR = 0
+	// Use FIPS186-2 standard
+	DH_PARAMGEN_TYPE_FIPS_186_2 = 1
+	// Use FIPS186-4 standard
+	DH_PARAMGEN_TYPE_FIPS_186_4 = 2
+	// Use a named safe prime group
+	DH_PARAMGEN_TYPE_GROUP = 3
+)
+const (
+	EVP_PKEY_CTRL_DH_PARAMGEN_PRIME_LEN    = 4097
+	EVP_PKEY_CTRL_DH_PARAMGEN_GENERATOR    = 4098
+	EVP_PKEY_CTRL_DH_RFC5114               = 4099
+	EVP_PKEY_CTRL_DH_PARAMGEN_SUBPRIME_LEN = 4100
+	EVP_PKEY_CTRL_DH_PARAMGEN_TYPE         = 4101
+	EVP_PKEY_CTRL_DH_KDF_TYPE              = 4102
+	EVP_PKEY_CTRL_DH_KDF_MD                = 4103
+	EVP_PKEY_CTRL_GET_DH_KDF_MD            = 4104
+	EVP_PKEY_CTRL_DH_KDF_OUTLEN            = 4105
+	EVP_PKEY_CTRL_GET_DH_KDF_OUTLEN        = 4106
+	EVP_PKEY_CTRL_DH_KDF_UKM               = 4107
+	EVP_PKEY_CTRL_GET_DH_KDF_UKM           = 4108
+	EVP_PKEY_CTRL_DH_KDF_OID               = 4109
+	EVP_PKEY_CTRL_GET_DH_KDF_OID           = 4110
+	EVP_PKEY_CTRL_DH_NID                   = 4111
+	EVP_PKEY_CTRL_DH_PAD                   = 4112
+)
+
+// KDF types
+const (
+	EVP_PKEY_DH_KDF_NONE  = 1
+	EVP_PKEY_DH_KDF_X9_42 = 2
+)
 const OPENSSL_DH_MAX_MODULUS_BITS = 10000
 const OPENSSL_DH_CHECK_MAX_MODULUS_BITS = 32768
 const OPENSSL_DH_FIPS_MIN_MODULUS_BITS = 1024
 const DH_FLAG_CACHE_MONT_P = 1
-const DH_FLAG_TYPE_MASK = 61440
-const DH_FLAG_TYPE_DH = 0
-const DH_FLAG_TYPE_DHX = 4096
+const (
+	DH_FLAG_TYPE_MASK = 61440
+	DH_FLAG_TYPE_DH   = 0
+	DH_FLAG_TYPE_DHX  = 4096
+)
+
+// Does nothing. Previously this switched off constant time behaviour.
 const DH_FLAG_NO_EXP_CONSTTIME = 0
 const DH_FLAG_FIPS_METHOD = 1024
 const DH_FLAG_NON_FIPS_ALLOW = 1024
-const DH_GENERATOR_2 = 2
-const DH_GENERATOR_3 = 3
-const DH_GENERATOR_5 = 5
-const DH_CHECK_P_NOT_PRIME = 1
-const DH_CHECK_P_NOT_SAFE_PRIME = 2
-const DH_UNABLE_TO_CHECK_GENERATOR = 4
-const DH_NOT_SUITABLE_GENERATOR = 8
-const DH_CHECK_Q_NOT_PRIME = 16
-const DH_CHECK_INVALID_Q_VALUE = 32
-const DH_CHECK_INVALID_J_VALUE = 64
-const DH_MODULUS_TOO_SMALL = 128
-const DH_MODULUS_TOO_LARGE = 256
-const DH_CHECK_PUBKEY_TOO_SMALL = 1
-const DH_CHECK_PUBKEY_TOO_LARGE = 2
-const DH_CHECK_PUBKEY_INVALID = 4
+const (
+	DH_GENERATOR_2 = 2
+	DH_GENERATOR_3 = 3
+	DH_GENERATOR_5 = 5
+)
+
+// NB: These values must align with the equivalently named macros in
+// internal/ffc.h.
+const (
+	DH_CHECK_P_NOT_PRIME         = 1
+	DH_CHECK_P_NOT_SAFE_PRIME    = 2
+	DH_UNABLE_TO_CHECK_GENERATOR = 4
+	DH_NOT_SUITABLE_GENERATOR    = 8
+	DH_CHECK_Q_NOT_PRIME         = 16
+	// +DH_check_pub_key
+	DH_CHECK_INVALID_Q_VALUE = 32
+	DH_CHECK_INVALID_J_VALUE = 64
+	DH_MODULUS_TOO_SMALL     = 128
+	// +DH_check_pub_key
+	DH_MODULUS_TOO_LARGE = 256
+)
+
+// DH_check_pub_key error codes
+const (
+	DH_CHECK_PUBKEY_TOO_SMALL = 1
+	DH_CHECK_PUBKEY_TOO_LARGE = 2
+	DH_CHECK_PUBKEY_INVALID   = 4
+)
+
+// primes p where (p-1)/2 is prime too are called "safe"; we define this for
+// backward compatibility:
 const DH_CHECK_P_NOT_STRONG_PRIME = 2
 
 //go:linkname EVP_PKEY_CTXSetDhParamgenType C.EVP_PKEY_CTX_set_dh_paramgen_type
@@ -116,10 +150,6 @@ func EVP_PKEY_CTXSet0DhKdfUkm(ctx *EVP_PKEY_CTX, ukm *uint8, len c.Int) c.Int
 //go:linkname EVP_PKEY_CTXGet0DhKdfUkm C.EVP_PKEY_CTX_get0_dh_kdf_ukm
 func EVP_PKEY_CTXGet0DhKdfUkm(ctx *EVP_PKEY_CTX, ukm **uint8) c.Int
 
-// Already defined in ossl_typ.h
-// typedef struct dh_st DH;
-// typedef struct dh_method DH_METHOD;
-//
 //go:linkname DHparamsIt C.DHparams_it
 func DHparamsIt() *ASN1_ITEM
 

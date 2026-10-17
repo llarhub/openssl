@@ -8,82 +8,228 @@ import (
 	"unsafe"
 )
 
+// Signature info is valid
 const X509_SIG_INFO_VALID = 1
+
+// Signature is suitable for TLS use
 const X509_SIG_INFO_TLS = 2
-const X509_FILETYPE_PEM = 1
-const X509_FILETYPE_ASN1 = 2
-const X509_FILETYPE_DEFAULT = 3
-const X509v3_KU_DIGITAL_SIGNATURE = 128
-const X509v3_KU_NON_REPUDIATION = 64
-const X509v3_KU_KEY_ENCIPHERMENT = 32
-const X509v3_KU_DATA_ENCIPHERMENT = 16
-const X509v3_KU_KEY_AGREEMENT = 8
-const X509v3_KU_KEY_CERT_SIGN = 4
-const X509v3_KU_CRL_SIGN = 2
-const X509v3_KU_ENCIPHER_ONLY = 1
-const X509v3_KU_DECIPHER_ONLY = 32768
+const (
+	X509_FILETYPE_PEM     = 1
+	X509_FILETYPE_ASN1    = 2
+	X509_FILETYPE_DEFAULT = 3
+)
+
+// -
+// <https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.1.3>:
+// The KeyUsage BITSTRING is treated as a little-endian integer, hence bit `0`
+// is 0x80, while bit `7` is 0x01 (the LSB of the integer value), bit `8` is
+// then the MSB of the second octet, or 0x8000.
+const (
+	X509v3_KU_DIGITAL_SIGNATURE = 128
+	// (1)
+	X509v3_KU_NON_REPUDIATION = 64
+	// (2)
+	X509v3_KU_KEY_ENCIPHERMENT = 32
+	// (3)
+	X509v3_KU_DATA_ENCIPHERMENT = 16
+	// (4)
+	X509v3_KU_KEY_AGREEMENT = 8
+	// (5)
+	X509v3_KU_KEY_CERT_SIGN = 4
+	// (6)
+	X509v3_KU_CRL_SIGN = 2
+	// (7)
+	X509v3_KU_ENCIPHER_ONLY = 1
+	// (8)
+	X509v3_KU_DECIPHER_ONLY = 32768
+)
+
+// vestigial, not used
 const X509v3_KU_UNDEF = 65535
-const X509_EX_V_NETSCAPE_HACK = 32768
-const X509_EX_V_INIT = 1
+const (
+	X509_EX_V_NETSCAPE_HACK = 32768
+	X509_EX_V_INIT          = 1
+)
 const X509_FLAG_COMPAT = 0
 const XN_FLAG_SEP_MASK = 983040
-const XN_FLAG_COMPAT = 0
-const XN_FLAG_SEP_COMMA_PLUS = 65536
-const XN_FLAG_SEP_CPLUS_SPC = 131072
-const XN_FLAG_SEP_SPLUS_SPC = 196608
-const XN_FLAG_SEP_MULTILINE = 262144
+const (
+	// Traditional; use old X509_NAME_print
+	XN_FLAG_COMPAT = 0
+	// RFC2253 ,+
+	XN_FLAG_SEP_COMMA_PLUS = 65536
+	// ,+ spaced: more readable
+	XN_FLAG_SEP_CPLUS_SPC = 131072
+	// ;+ spaced
+	XN_FLAG_SEP_SPLUS_SPC = 196608
+	// One line per field
+	XN_FLAG_SEP_MULTILINE = 262144
+)
+
+// Reverse DN order
 const XN_FLAG_DN_REV = 1048576
 const XN_FLAG_FN_MASK = 6291456
-const XN_FLAG_FN_SN = 0
-const XN_FLAG_FN_LN = 2097152
-const XN_FLAG_FN_OID = 4194304
-const XN_FLAG_FN_NONE = 6291456
+const (
+	// Object short name
+	XN_FLAG_FN_SN = 0
+	// Object long name
+	XN_FLAG_FN_LN = 2097152
+	// Always use OIDs
+	XN_FLAG_FN_OID = 4194304
+	// No field names
+	XN_FLAG_FN_NONE = 6291456
+)
+
+// Put spaces round '='
 const XN_FLAG_SPC_EQ = 8388608
 const XN_FLAG_DUMP_UNKNOWN_FIELDS = 16777216
+
+// Align field names to 20 \
+// characters
 const XN_FLAG_FN_ALIGN = 33554432
 const XN_FLAG_RFC2253 = 17892119
 const XN_FLAG_ONELINE = 8520479
 const XN_FLAG_MULTILINE = 44302342
-const X509_EXT_PACK_UNKNOWN = 1
-const X509_EXT_PACK_STRING = 2
-const X509_VERSION_1 = 0
-const X509_VERSION_2 = 1
-const X509_VERSION_3 = 2
+const (
+	X509_EXT_PACK_UNKNOWN = 1
+	X509_EXT_PACK_STRING  = 2
+)
+const (
+	X509_VERSION_1 = 0
+	X509_VERSION_2 = 1
+	X509_VERSION_3 = 2
+)
 const X509_REQ_VERSION_1 = 0
-const X509_CRL_VERSION_1 = 0
-const X509_CRL_VERSION_2 = 1
-const X509_ADD_FLAG_DEFAULT = 0
-const X509_ADD_FLAG_UP_REF = 1
-const X509_ADD_FLAG_PREPEND = 2
-const X509_ADD_FLAG_NO_DUP = 4
-const X509_ADD_FLAG_NO_SS = 8
+const (
+	X509_CRL_VERSION_1 = 0
+	X509_CRL_VERSION_2 = 1
+)
+const (
+	X509_ADD_FLAG_DEFAULT = 0
+	X509_ADD_FLAG_UP_REF  = 1
+	X509_ADD_FLAG_PREPEND = 2
+	X509_ADD_FLAG_NO_DUP  = 4
+	X509_ADD_FLAG_NO_SS   = 8
+)
 
+// X509_ALGOR
 type X509AlgorSt struct {
 	Algorithm *ASN1_OBJECT
 	Parameter *ASN1_TYPE
 }
-type StackStX509NAME struct {
+type X509ValSt struct {
+	NotBefore *ASN1_TIME
+	NotAfter  *ASN1_TIME
+}
+type PrivateKeySt struct {
+	Version   c.Int
+	EncAlgor  *X509_ALGOR
+	EncPkey   *ASN1_OCTET_STRING
+	DecPkey   *EVP_PKEY
+	KeyLength c.Int
+	KeyData   *c.Char
+	KeyFree   c.Int
+	Cipher    EVP_CIPHER_INFO
+}
+type X509InfoSt struct {
+	X509      *X509
+	Crl       *X509_CRL
+	XPkey     *X509_PKEY
+	EncCipher EVP_CIPHER_INFO
+	EncLen    c.Int
+	EncData   *c.Char
 }
 
-// Needed stacks for types defined in other headers
+// The next 2 structures and their 8 routines are used to manipulate Netscape's
+// spki structures - useful if you are writing a CA web page
+type NetscapeSpkacSt struct {
+	Pubkey    *X509_PUBKEY
+	Challenge *ASN1_IA5STRING
+}
+type NetscapeSpkiSt struct {
+	Spkac     *NETSCAPE_SPKAC
+	SigAlgor  X509_ALGOR
+	Signature *ASN1_BIT_STRING
+}
+
+// Netscape certificate sequence structure
+type NetscapeCertificateSequence struct {
+	Type  *ASN1_OBJECT
+	Certs *StackStX509
+}
+type PBEPARAMSt struct {
+	Salt *ASN1_OCTET_STRING
+	Iter *ASN1_INTEGER
+}
+type PBE2PARAMSt struct {
+	Keyfunc    *X509_ALGOR
+	Encryption *X509_ALGOR
+}
+type PBKDF2PARAMSt struct {
+	Salt      *ASN1_TYPE
+	Iter      *ASN1_INTEGER
+	Keylength *ASN1_INTEGER
+	Prf       *X509_ALGOR
+}
+type PBMAC1PARAM struct {
+	KeyDerivationFunc *X509_ALGOR
+	MessageAuthScheme *X509_ALGOR
+}
+type SCRYPT_PARAMSSt struct {
+	Salt                     *ASN1_OCTET_STRING
+	CostParameter            *ASN1_INTEGER
+	BlockSize                *ASN1_INTEGER
+	ParallelizationParameter *ASN1_INTEGER
+	KeyLength                *ASN1_INTEGER
+}
+type X509CrlInfoSt struct {
+}
+type X509ExtensionSt struct {
+}
+type X509NameEntrySt struct {
+}
+type X509ReqInfoSt struct {
+}
+type X509ReqSt struct {
+}
+type X509SigSt struct {
+}
+type StackStX509 struct {
+}
+type StackStX509ATTRIBUTE struct {
+}
+type StackStX509CRL struct {
+}
+type StackStX509EXTENSION struct {
+}
+type StackStX509INFO struct {
+}
+type StackStX509NAME struct {
+}
+type StackStX509NAME_ENTRY struct {
+}
+type StackStX509REVOKED struct {
+}
+type X509AttributesSt struct {
+}
+type X509CertAuxSt struct {
+}
+type X509CinfSt struct {
+}
+
 // clang-format off
 //
 // llgo:type C
 type SkX509NAMECompfunc = func(_llcppg_param1 **X509_NAME, _llcppg_param2 **X509_NAME) c.Int
 
-// Needed stacks for types defined in other headers
 // clang-format off
 //
 // llgo:type C
 type SkX509NAMEFreefunc = func(_llcppg_param1 *X509_NAME)
 
-// Needed stacks for types defined in other headers
 // clang-format off
 //
 // llgo:type C
 type SkX509NAMECopyfunc = func(_llcppg_param1 *X509_NAME) *X509_NAME
-type StackStX509 struct {
-}
 
 // llgo:type C
 type SkX509Compfunc = func(_llcppg_param1 **X509, _llcppg_param2 **X509) c.Int
@@ -93,8 +239,6 @@ type SkX509Freefunc = func(_llcppg_param1 *X509)
 
 // llgo:type C
 type SkX509Copyfunc = func(_llcppg_param1 *X509) *X509
-type StackStX509REVOKED struct {
-}
 
 // llgo:type C
 type SkX509REVOKEDCompfunc = func(_llcppg_param1 **X509_REVOKED, _llcppg_param2 **X509_REVOKED) c.Int
@@ -104,8 +248,6 @@ type SkX509REVOKEDFreefunc = func(_llcppg_param1 *X509_REVOKED)
 
 // llgo:type C
 type SkX509REVOKEDCopyfunc = func(_llcppg_param1 *X509_REVOKED) *X509_REVOKED
-type StackStX509CRL struct {
-}
 
 // llgo:type C
 type SkX509CRLCompfunc = func(_llcppg_param1 **X509_CRL, _llcppg_param2 **X509_CRL) c.Int
@@ -116,19 +258,9 @@ type SkX509CRLFreefunc = func(_llcppg_param1 *X509_CRL)
 // llgo:type C
 type SkX509CRLCopyfunc = func(_llcppg_param1 *X509_CRL) *X509_CRL
 type X509_ALGORS = StackStX509ALGOR
-type X509ValSt struct {
-	NotBefore *ASN1_TIME
-	NotAfter  *ASN1_TIME
-}
 type X509_VAL = X509ValSt
-type X509SigSt struct {
-}
 type X509_SIG = X509SigSt
-type X509NameEntrySt struct {
-}
 type X509_NAME_ENTRY = X509NameEntrySt
-type StackStX509NAME_ENTRY struct {
-}
 
 // clang-format off
 //
@@ -144,11 +276,9 @@ type SkX509NAME_ENTRYFreefunc = func(_llcppg_param1 *X509_NAME_ENTRY)
 //
 // llgo:type C
 type SkX509NAME_ENTRYCopyfunc = func(_llcppg_param1 *X509_NAME_ENTRY) *X509_NAME_ENTRY
-type X509ExtensionSt struct {
-}
+
+// clang-format off
 type X509_EXTENSION = X509ExtensionSt
-type StackStX509EXTENSION struct {
-}
 
 // clang-format off
 //
@@ -167,11 +297,9 @@ type SkX509EXTENSIONCopyfunc = func(_llcppg_param1 *X509_EXTENSION) *X509_EXTENS
 
 // clang-format on
 type X509_EXTENSIONS = StackStX509EXTENSION
-type X509AttributesSt struct {
-}
+
+// clang-format off
 type X509_ATTRIBUTE = X509AttributesSt
-type StackStX509ATTRIBUTE struct {
-}
 
 // clang-format off
 //
@@ -187,45 +315,17 @@ type SkX509ATTRIBUTEFreefunc = func(_llcppg_param1 *X509_ATTRIBUTE)
 //
 // llgo:type C
 type SkX509ATTRIBUTECopyfunc = func(_llcppg_param1 *X509_ATTRIBUTE) *X509_ATTRIBUTE
-type X509ReqInfoSt struct {
-}
 
 // clang-format on
 type X509_REQ_INFO = X509ReqInfoSt
-type X509ReqSt struct {
-}
 type X509_REQ = X509ReqSt
-type X509CertAuxSt struct {
-}
 type X509_CERT_AUX = X509CertAuxSt
-type X509CinfSt struct {
-}
 type X509_CINF = X509CinfSt
-type X509CrlInfoSt struct {
-}
 type X509_CRL_INFO = X509CrlInfoSt
-type PrivateKeySt struct {
-	Version   c.Int
-	EncAlgor  *X509_ALGOR
-	EncPkey   *ASN1_OCTET_STRING
-	DecPkey   *EVP_PKEY
-	KeyLength c.Int
-	KeyData   *c.Char
-	KeyFree   c.Int
-	Cipher    EVP_CIPHER_INFO
-}
 type X509_PKEY = PrivateKeySt
-type X509InfoSt struct {
-	X509      *X509
-	Crl       *X509_CRL
-	XPkey     *X509_PKEY
-	EncCipher EVP_CIPHER_INFO
-	EncLen    c.Int
-	EncData   *c.Char
-}
+
+// clang-format off
 type X509_INFO = X509InfoSt
-type StackStX509INFO struct {
-}
 
 // clang-format off
 //
@@ -244,65 +344,14 @@ type SkX509INFOCopyfunc = func(_llcppg_param1 *X509_INFO) *X509_INFO
 
 // The next 2 structures and their 8 routines are used to manipulate Netscape's
 // spki structures - useful if you are writing a CA web page
-type NetscapeSpkacSt struct {
-	Pubkey    *X509_PUBKEY
-	Challenge *ASN1_IA5STRING
-}
-
-// The next 2 structures and their 8 routines are used to manipulate Netscape's
-// spki structures - useful if you are writing a CA web page
 type NETSCAPE_SPKAC = NetscapeSpkacSt
-type NetscapeSpkiSt struct {
-	Spkac     *NETSCAPE_SPKAC
-	SigAlgor  X509_ALGOR
-	Signature *ASN1_BIT_STRING
-}
 type NETSCAPE_SPKI = NetscapeSpkiSt
 
 // Netscape certificate sequence structure
-type NetscapeCertificateSequence struct {
-	Type  *ASN1_OBJECT
-	Certs *StackStX509
-}
-
-// Netscape certificate sequence structure
 type NETSCAPE_CERT_SEQUENCE = NetscapeCertificateSequence
-
-// Password based encryption structure
-type PBEPARAMSt struct {
-	Salt *ASN1_OCTET_STRING
-	Iter *ASN1_INTEGER
-}
-
-// Password based encryption structure
 type PBEPARAM = PBEPARAMSt
-
-// Password based encryption V2 structures
-type PBE2PARAMSt struct {
-	Keyfunc    *X509_ALGOR
-	Encryption *X509_ALGOR
-}
-
-// Password based encryption V2 structures
 type PBE2PARAM = PBE2PARAMSt
-type PBKDF2PARAMSt struct {
-	Salt      *ASN1_TYPE
-	Iter      *ASN1_INTEGER
-	Keylength *ASN1_INTEGER
-	Prf       *X509_ALGOR
-}
 type PBKDF2PARAM = PBKDF2PARAMSt
-type PBMAC1PARAM struct {
-	KeyDerivationFunc *X509_ALGOR
-	MessageAuthScheme *X509_ALGOR
-}
-type SCRYPT_PARAMSSt struct {
-	Salt                     *ASN1_OCTET_STRING
-	CostParameter            *ASN1_INTEGER
-	BlockSize                *ASN1_INTEGER
-	ParallelizationParameter *ASN1_INTEGER
-	KeyLength                *ASN1_INTEGER
-}
 type SCRYPT_PARAMS = SCRYPT_PARAMSSt
 
 //go:linkname X509CRLSetDefaultMethod C.X509_CRL_set_default_method
@@ -1220,9 +1269,14 @@ func X509GetSignatureType(x *X509) c.Int
 //go:linkname X509SetPubkey C.X509_set_pubkey
 func X509SetPubkey(x *X509, pkey *EVP_PKEY) c.Int
 
+// deprecated
+//
 //go:linkname X509GetPubkey C.X509_get_pubkey
 func X509GetPubkey(x *X509) *EVP_PKEY
 
+// This one is only used so that a binary form can output, as in
+// i2d_X509_PUBKEY(X509_get_X509_PUBKEY(x), &buf)
+//
 //go:linkname X509Get0Pubkey C.X509_get0_pubkey
 func X509Get0Pubkey(x *X509) *EVP_PKEY
 
@@ -1274,6 +1328,8 @@ func I2dReX509REQTbs(req *X509_REQ, pp **uint8) c.Int
 //go:linkname X509REQSetPubkey C.X509_REQ_set_pubkey
 func X509REQSetPubkey(x *X509_REQ, pkey *EVP_PKEY) c.Int
 
+// deprecated
+//
 //go:linkname X509REQGetPubkey C.X509_REQ_get_pubkey
 func X509REQGetPubkey(req *X509_REQ) *EVP_PKEY
 
@@ -1906,36 +1962,26 @@ func PKCS5Pbkdf2Set(iter c.Int, salt *uint8, saltlen c.Int, prf_nid c.Int, keyle
 //go:linkname PKCS5Pbkdf2SetEx C.PKCS5_pbkdf2_set_ex
 func PKCS5Pbkdf2SetEx(iter c.Int, salt *uint8, saltlen c.Int, prf_nid c.Int, keylen c.Int, libctx *OSSL_LIB_CTX) *X509_ALGOR
 
+// PKCS#8 utilities
+//
 //go:linkname PBMAC1Get1Pbkdf2Param C.PBMAC1_get1_pbkdf2_param
 func PBMAC1Get1Pbkdf2Param(macalg *X509_ALGOR) *PBKDF2PARAM
 
-// PKCS#8 utilities
-//
 //go:linkname PKCS8PRIV_KEY_INFONew C.PKCS8_PRIV_KEY_INFO_new
 func PKCS8PRIV_KEY_INFONew() *PKCS8_PRIV_KEY_INFO
 
-// PKCS#8 utilities
-//
 //go:linkname PKCS8PRIV_KEY_INFOFree C.PKCS8_PRIV_KEY_INFO_free
 func PKCS8PRIV_KEY_INFOFree(a *PKCS8_PRIV_KEY_INFO)
 
-// PKCS#8 utilities
-//
 //go:linkname D2iPKCS8PRIV_KEY_INFO C.d2i_PKCS8_PRIV_KEY_INFO
 func D2iPKCS8PRIV_KEY_INFO(a **PKCS8_PRIV_KEY_INFO, in **uint8, len c.Long) *PKCS8_PRIV_KEY_INFO
 
-// PKCS#8 utilities
-//
 //go:linkname I2dPKCS8PRIV_KEY_INFO C.i2d_PKCS8_PRIV_KEY_INFO
 func I2dPKCS8PRIV_KEY_INFO(a *PKCS8_PRIV_KEY_INFO, out **uint8) c.Int
 
-// PKCS#8 utilities
-//
 //go:linkname PKCS8PRIV_KEY_INFOIt C.PKCS8_PRIV_KEY_INFO_it
 func PKCS8PRIV_KEY_INFOIt() *ASN1_ITEM
 
-// PKCS#8 utilities
-//
 //go:linkname EVP_PKCS82PKEY C.EVP_PKCS82PKEY
 func EVP_PKCS82PKEY(p8 *PKCS8_PRIV_KEY_INFO) *EVP_PKEY
 

@@ -7,16 +7,27 @@ import (
 	"unsafe"
 )
 
-const EVP_PKEY_CTRL_DSA_PARAMGEN_BITS = 4097
-const EVP_PKEY_CTRL_DSA_PARAMGEN_Q_BITS = 4098
-const EVP_PKEY_CTRL_DSA_PARAMGEN_MD = 4099
+const (
+	EVP_PKEY_CTRL_DSA_PARAMGEN_BITS   = 4097
+	EVP_PKEY_CTRL_DSA_PARAMGEN_Q_BITS = 4098
+	EVP_PKEY_CTRL_DSA_PARAMGEN_MD     = 4099
+)
 const OPENSSL_DSA_MAX_MODULUS_BITS = 10000
 const OPENSSL_DSA_FIPS_MIN_MODULUS_BITS = 1024
+
+// Does nothing. Previously this switched off constant time behaviour.
 const DSA_FLAG_NO_EXP_CONSTTIME = 0
 const DSA_FLAG_CACHE_MONT_P = 1
 const DSA_FLAG_FIPS_METHOD = 1024
-const DSA_FLAG_NON_FIPS_ALLOW = 1024
-const DSA_FLAG_FIPS_CHECKED = 2048
+const (
+	DSA_FLAG_NON_FIPS_ALLOW = 1024
+	DSA_FLAG_FIPS_CHECKED   = 2048
+)
+
+// Primality test according to FIPS PUB 186-4, Appendix C.3. Since we only
+// have one value here we set the number of checks to 64 which is the 128 bit
+// security level that is the highest level and valid for creating a 3072 bit
+// DSA key.
 const DSSPrimeChecks = 64
 
 type DSA_SIGSt struct {
@@ -92,6 +103,8 @@ func DSANew() *DSA
 //go:linkname DSANewMethod C.DSA_new_method
 func DSANewMethod(engine *ENGINE) *DSA
 
+// "up" the DSA object's reference count
+//
 //go:linkname DSAFree C.DSA_free
 func DSAFree(r *DSA)
 
@@ -106,6 +119,8 @@ func DSASize(_llcppg_param1 *DSA) c.Int
 //go:linkname DSABits C.DSA_bits
 func DSABits(d *DSA) c.Int
 
+// next 4 return -1 on error
+//
 //go:linkname DSASecurityBits C.DSA_security_bits
 func DSASecurityBits(d *DSA) c.Int
 

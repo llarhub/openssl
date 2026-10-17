@@ -7,226 +7,413 @@ import (
 	"unsafe"
 )
 
-const EVP_MAX_MD_SIZE = 64
-const EVP_MAX_KEY_LENGTH = 64
-const EVP_MAX_IV_LENGTH = 16
-const EVP_MAX_BLOCK_LENGTH = 32
-const EVP_MAX_AEAD_TAG_LENGTH = 16
+const (
+	// longest known is SHA512
+	EVP_MAX_MD_SIZE         = 64
+	EVP_MAX_KEY_LENGTH      = 64
+	EVP_MAX_IV_LENGTH       = 16
+	EVP_MAX_BLOCK_LENGTH    = 32
+	EVP_MAX_AEAD_TAG_LENGTH = 16
+)
+
+// Maximum pipes in cipher pipelining
 const EVP_MAX_PIPES = 32
+
+// Default PKCS#5 iteration count
 const PKCS5_SALT_LEN = 8
+
+// Default PKCS#5 iteration count
 const PKCS5_DEFAULT_ITER = 2048
-const EVP_PK_RSA = 1
-const EVP_PK_DSA = 2
-const EVP_PK_DH = 4
-const EVP_PK_EC = 8
-const EVP_PKT_SIGN = 16
-const EVP_PKT_ENC = 32
-const EVP_PKT_EXCH = 64
-const EVP_PKS_RSA = 256
-const EVP_PKS_DSA = 512
-const EVP_PKS_EC = 1024
-const EVP_PKEY_NONE = 0
-const EVP_PKEY_RSA = 6
-const EVP_PKEY_RSA2 = 19
-const EVP_PKEY_RSA_PSS = 912
-const EVP_PKEY_DSA = 116
-const EVP_PKEY_DSA1 = 67
-const EVP_PKEY_DSA2 = 66
-const EVP_PKEY_DSA3 = 113
-const EVP_PKEY_DSA4 = 70
-const EVP_PKEY_DH = 28
-const EVP_PKEY_DHX = 920
-const EVP_PKEY_EC = 408
-const EVP_PKEY_SM2 = 1172
-const EVP_PKEY_HMAC = 855
-const EVP_PKEY_CMAC = 894
-const EVP_PKEY_SCRYPT = 973
-const EVP_PKEY_TLS1_PRF = 1021
-const EVP_PKEY_HKDF = 1036
-const EVP_PKEY_POLY1305 = 1061
-const EVP_PKEY_SIPHASH = 1062
-const EVP_PKEY_X25519 = 1034
-const EVP_PKEY_ED25519 = 1087
-const EVP_PKEY_X448 = 1035
-const EVP_PKEY_ED448 = 1088
-const EVP_PKEY_ML_DSA_44 = 1457
-const EVP_PKEY_ML_DSA_65 = 1458
-const EVP_PKEY_ML_DSA_87 = 1459
-const EVP_PKEY_SLH_DSA_SHA2_128S = 1460
-const EVP_PKEY_SLH_DSA_SHA2_128F = 1461
-const EVP_PKEY_SLH_DSA_SHA2_192S = 1462
-const EVP_PKEY_SLH_DSA_SHA2_192F = 1463
-const EVP_PKEY_SLH_DSA_SHA2_256S = 1464
-const EVP_PKEY_SLH_DSA_SHA2_256F = 1465
-const EVP_PKEY_SLH_DSA_SHAKE_128S = 1466
-const EVP_PKEY_SLH_DSA_SHAKE_128F = 1467
-const EVP_PKEY_SLH_DSA_SHAKE_192S = 1468
-const EVP_PKEY_SLH_DSA_SHAKE_192F = 1469
-const EVP_PKEY_SLH_DSA_SHAKE_256S = 1470
-const EVP_PKEY_SLH_DSA_SHAKE_256F = 1471
-const EVP_PKEY_HSS_LMS = 1501
+const (
+	EVP_PK_RSA   = 1
+	EVP_PK_DSA   = 2
+	EVP_PK_DH    = 4
+	EVP_PK_EC    = 8
+	EVP_PKT_SIGN = 16
+	EVP_PKT_ENC  = 32
+	EVP_PKT_EXCH = 64
+	EVP_PKS_RSA  = 256
+	EVP_PKS_DSA  = 512
+	EVP_PKS_EC   = 1024
+)
+const (
+	EVP_PKEY_NONE               = 0
+	EVP_PKEY_RSA                = 6
+	EVP_PKEY_RSA2               = 19
+	EVP_PKEY_RSA_PSS            = 912
+	EVP_PKEY_DSA                = 116
+	EVP_PKEY_DSA1               = 67
+	EVP_PKEY_DSA2               = 66
+	EVP_PKEY_DSA3               = 113
+	EVP_PKEY_DSA4               = 70
+	EVP_PKEY_DH                 = 28
+	EVP_PKEY_DHX                = 920
+	EVP_PKEY_EC                 = 408
+	EVP_PKEY_SM2                = 1172
+	EVP_PKEY_HMAC               = 855
+	EVP_PKEY_CMAC               = 894
+	EVP_PKEY_SCRYPT             = 973
+	EVP_PKEY_TLS1_PRF           = 1021
+	EVP_PKEY_HKDF               = 1036
+	EVP_PKEY_POLY1305           = 1061
+	EVP_PKEY_SIPHASH            = 1062
+	EVP_PKEY_X25519             = 1034
+	EVP_PKEY_ED25519            = 1087
+	EVP_PKEY_X448               = 1035
+	EVP_PKEY_ED448              = 1088
+	EVP_PKEY_ML_DSA_44          = 1457
+	EVP_PKEY_ML_DSA_65          = 1458
+	EVP_PKEY_ML_DSA_87          = 1459
+	EVP_PKEY_SLH_DSA_SHA2_128S  = 1460
+	EVP_PKEY_SLH_DSA_SHA2_128F  = 1461
+	EVP_PKEY_SLH_DSA_SHA2_192S  = 1462
+	EVP_PKEY_SLH_DSA_SHA2_192F  = 1463
+	EVP_PKEY_SLH_DSA_SHA2_256S  = 1464
+	EVP_PKEY_SLH_DSA_SHA2_256F  = 1465
+	EVP_PKEY_SLH_DSA_SHAKE_128S = 1466
+	EVP_PKEY_SLH_DSA_SHAKE_128F = 1467
+	EVP_PKEY_SLH_DSA_SHAKE_192S = 1468
+	EVP_PKEY_SLH_DSA_SHAKE_192F = 1469
+	EVP_PKEY_SLH_DSA_SHAKE_256S = 1470
+	EVP_PKEY_SLH_DSA_SHAKE_256F = 1471
+	EVP_PKEY_HSS_LMS            = 1501
+)
+
+// Special indicator that the object is uniquely provider side
 const EVP_PKEY_KEYMGMT = -1
-const EVP_PKEY_KEY_PARAMETERS = 132
-const EVP_PKEY_PRIVATE_KEY = 133
-const EVP_PKEY_PUBLIC_KEY = 134
-const EVP_PKEY_KEYPAIR = 135
-const EVP_PKEY_MO_SIGN = 1
-const EVP_PKEY_MO_VERIFY = 2
-const EVP_PKEY_MO_ENCRYPT = 4
-const EVP_PKEY_MO_DECRYPT = 8
+
+// Easy to use macros for EVP_PKEY related selections
+const (
+	EVP_PKEY_KEY_PARAMETERS = 132
+	EVP_PKEY_PRIVATE_KEY    = 133
+	EVP_PKEY_PUBLIC_KEY     = 134
+	EVP_PKEY_KEYPAIR        = 135
+)
+const (
+	EVP_PKEY_MO_SIGN    = 1
+	EVP_PKEY_MO_VERIFY  = 2
+	EVP_PKEY_MO_ENCRYPT = 4
+	EVP_PKEY_MO_DECRYPT = 8
+)
+
+// digest can only handle a single block
 const EVP_MD_FLAG_ONESHOT = 1
+
+// digest is extensible-output function, XOF
 const EVP_MD_FLAG_XOF = 2
 const EVP_MD_FLAG_DIGALGID_MASK = 24
 const EVP_MD_FLAG_DIGALGID_NULL = 0
 const EVP_MD_FLAG_DIGALGID_ABSENT = 8
 const EVP_MD_FLAG_DIGALGID_CUSTOM = 24
+
+// Note if suitable for use in FIPS mode
 const EVP_MD_FLAG_FIPS = 1024
-const EVP_MD_CTRL_DIGALGID = 1
-const EVP_MD_CTRL_MICALG = 2
-const EVP_MD_CTRL_XOF_LEN = 3
-const EVP_MD_CTRL_TLSTREE = 4
+const (
+	EVP_MD_CTRL_DIGALGID = 1
+	EVP_MD_CTRL_MICALG   = 2
+	EVP_MD_CTRL_XOF_LEN  = 3
+	EVP_MD_CTRL_TLSTREE  = 4
+)
 const EVP_MD_CTRL_ALG_CTRL = 4096
+
+// digest update will be \
+// called once only
 const EVP_MD_CTX_FLAG_ONESHOT = 1
+
+// context has already been \
+// cleaned
 const EVP_MD_CTX_FLAG_CLEANED = 2
+
+// Don't free up ctx->md_data \
+// in EVP_MD_CTX_reset
 const EVP_MD_CTX_FLAG_REUSE = 4
+
+// This flag has no effect from openssl-3.0 onwards
 const EVP_MD_CTX_FLAG_NON_FIPS_ALLOW = 8
-const EVP_MD_CTX_FLAG_PAD_MASK = 240
-const EVP_MD_CTX_FLAG_PAD_PKCS1 = 0
-const EVP_MD_CTX_FLAG_PAD_X931 = 16
-const EVP_MD_CTX_FLAG_PAD_PSS = 32
+
+// The following PAD options are also currently ignored in 1.0.0, digest
+// parameters are handled through EVP_DigestSign*() and EVP_DigestVerify*()
+// instead.
+const (
+	EVP_MD_CTX_FLAG_PAD_MASK = 240
+	// PKCS#1 v1.5 mode
+	EVP_MD_CTX_FLAG_PAD_PKCS1 = 0
+	// X9.31 mode
+	EVP_MD_CTX_FLAG_PAD_X931 = 16
+	// PSS mode
+	EVP_MD_CTX_FLAG_PAD_PSS = 32
+)
+
+// Don't initialize md_data
 const EVP_MD_CTX_FLAG_NO_INIT = 256
+
+// Some functions such as EVP_DigestSign only finalise copies of internal
+// contexts so additional data can be included after the finalisation call.
+// This is inefficient if this functionality is not required: it is disabled
+// if the following flag is set.
 const EVP_MD_CTX_FLAG_FINALISE = 512
-const EVP_CIPH_STREAM_CIPHER = 0
-const EVP_CIPH_ECB_MODE = 1
-const EVP_CIPH_CBC_MODE = 2
-const EVP_CIPH_CFB_MODE = 3
-const EVP_CIPH_OFB_MODE = 4
-const EVP_CIPH_CTR_MODE = 5
-const EVP_CIPH_GCM_MODE = 6
-const EVP_CIPH_CCM_MODE = 7
-const EVP_CIPH_XTS_MODE = 65537
-const EVP_CIPH_WRAP_MODE = 65538
-const EVP_CIPH_OCB_MODE = 65539
-const EVP_CIPH_SIV_MODE = 65540
-const EVP_CIPH_GCM_SIV_MODE = 65541
-const EVP_CIPH_MODE = 983047
+
+// Set if variable length cipher
+const (
+	EVP_CIPH_STREAM_CIPHER = 0
+	EVP_CIPH_ECB_MODE      = 1
+	EVP_CIPH_CBC_MODE      = 2
+	EVP_CIPH_CFB_MODE      = 3
+	EVP_CIPH_OFB_MODE      = 4
+	EVP_CIPH_CTR_MODE      = 5
+	EVP_CIPH_GCM_MODE      = 6
+	EVP_CIPH_CCM_MODE      = 7
+	EVP_CIPH_XTS_MODE      = 65537
+	EVP_CIPH_WRAP_MODE     = 65538
+	EVP_CIPH_OCB_MODE      = 65539
+	EVP_CIPH_SIV_MODE      = 65540
+	EVP_CIPH_GCM_SIV_MODE  = 65541
+	EVP_CIPH_MODE          = 983047
+)
+
+// Set if variable length cipher
 const EVP_CIPH_VARIABLE_LENGTH = 8
+
+// Set if the iv handling should be done by the cipher itself
 const EVP_CIPH_CUSTOM_IV = 16
+
+// Set if the cipher's init() function should be called if key is NULL
 const EVP_CIPH_ALWAYS_CALL_INIT = 32
+
+// Call ctrl() to init cipher parameters
 const EVP_CIPH_CTRL_INIT = 64
+
+// Don't use standard key length function
 const EVP_CIPH_CUSTOM_KEY_LENGTH = 128
+
+// Don't use standard block padding
 const EVP_CIPH_NO_PADDING = 256
+
+// cipher handles random key generation
 const EVP_CIPH_RAND_KEY = 512
+
+// cipher has its own additional copying logic
 const EVP_CIPH_CUSTOM_COPY = 1024
+
+// Don't use standard iv length function
 const EVP_CIPH_CUSTOM_IV_LENGTH = 2048
+
+// Legacy and no longer relevant: Allow use default ASN1 get/set iv
 const EVP_CIPH_FLAG_DEFAULT_ASN1 = 0
+
+// Buffer length in bits not bytes: CFB1 mode only
 const EVP_CIPH_FLAG_LENGTH_BITS = 8192
+
+// Deprecated FIPS flag: was 0x4000
 const EVP_CIPH_FLAG_FIPS = 0
+
+// Deprecated FIPS flag: was 0x8000
 const EVP_CIPH_FLAG_NON_FIPS_ALLOW = 0
-const EVP_CIPH_FLAG_CTS = 16384
-const EVP_CIPH_FLAG_CUSTOM_CIPHER = 1048576
-const EVP_CIPH_FLAG_AEAD_CIPHER = 2097152
-const EVP_CIPH_FLAG_TLS1_1_MULTIBLOCK = 4194304
+
+// Cipher handles any and all padding logic as well as finalisation.
+const (
+	EVP_CIPH_FLAG_CTS           = 16384
+	EVP_CIPH_FLAG_CUSTOM_CIPHER = 1048576
+	EVP_CIPH_FLAG_AEAD_CIPHER   = 2097152
+	// Cipher can handle pipeline operations
+	EVP_CIPH_FLAG_TLS1_1_MULTIBLOCK = 4194304
+)
+
+// Cipher can handle pipeline operations
 const EVP_CIPH_FLAG_PIPELINE = 8388608
+
+// For provider implementations that handle  ASN1 get/set param themselves
 const EVP_CIPH_FLAG_CUSTOM_ASN1 = 16777216
+
+// For ciphers generating unprotected CMS attributes
 const EVP_CIPH_FLAG_CIPHER_WITH_MAC = 33554432
-const EVP_CIPH_FLAG_GET_WRAP_CIPHER = 67108864
-const EVP_CIPH_FLAG_INVERSE_CIPHER = 134217728
-const EVP_CIPH_FLAG_ENC_THEN_MAC = 268435456
+
+// For supplementary wrap cipher support
+const (
+	EVP_CIPH_FLAG_GET_WRAP_CIPHER = 67108864
+	EVP_CIPH_FLAG_INVERSE_CIPHER  = 134217728
+	EVP_CIPH_FLAG_ENC_THEN_MAC    = 268435456
+)
 const EVP_CIPHER_CTX_FLAG_WRAP_ALLOW = 1
-const EVP_CTRL_INIT = 0
-const EVP_CTRL_SET_KEY_LENGTH = 1
-const EVP_CTRL_GET_RC2_KEY_BITS = 2
-const EVP_CTRL_SET_RC2_KEY_BITS = 3
-const EVP_CTRL_GET_RC5_ROUNDS = 4
-const EVP_CTRL_SET_RC5_ROUNDS = 5
-const EVP_CTRL_RAND_KEY = 6
-const EVP_CTRL_PBE_PRF_NID = 7
-const EVP_CTRL_COPY = 8
-const EVP_CTRL_AEAD_SET_IVLEN = 9
-const EVP_CTRL_AEAD_GET_TAG = 16
-const EVP_CTRL_AEAD_SET_TAG = 17
-const EVP_CTRL_AEAD_SET_IV_FIXED = 18
-const EVP_CTRL_GCM_SET_IVLEN = 9
-const EVP_CTRL_GCM_GET_TAG = 16
-const EVP_CTRL_GCM_SET_TAG = 17
-const EVP_CTRL_GCM_SET_IV_FIXED = 18
-const EVP_CTRL_GCM_IV_GEN = 19
-const EVP_CTRL_CCM_SET_IVLEN = 9
-const EVP_CTRL_CCM_GET_TAG = 16
-const EVP_CTRL_CCM_SET_TAG = 17
-const EVP_CTRL_CCM_SET_IV_FIXED = 18
-const EVP_CTRL_CCM_SET_L = 20
-const EVP_CTRL_CCM_SET_MSGLEN = 21
+
+// AEAD cipher deduces payload length and returns number of bytes required to
+// store MAC and eventual padding. Subsequent call to EVP_Cipher even
+// appends/verifies MAC.
+const (
+	EVP_CTRL_INIT              = 0
+	EVP_CTRL_SET_KEY_LENGTH    = 1
+	EVP_CTRL_GET_RC2_KEY_BITS  = 2
+	EVP_CTRL_SET_RC2_KEY_BITS  = 3
+	EVP_CTRL_GET_RC5_ROUNDS    = 4
+	EVP_CTRL_SET_RC5_ROUNDS    = 5
+	EVP_CTRL_RAND_KEY          = 6
+	EVP_CTRL_PBE_PRF_NID       = 7
+	EVP_CTRL_COPY              = 8
+	EVP_CTRL_AEAD_SET_IVLEN    = 9
+	EVP_CTRL_AEAD_GET_TAG      = 16
+	EVP_CTRL_AEAD_SET_TAG      = 17
+	EVP_CTRL_AEAD_SET_IV_FIXED = 18
+	EVP_CTRL_GCM_SET_IVLEN     = 9
+	EVP_CTRL_GCM_GET_TAG       = 16
+	EVP_CTRL_GCM_SET_TAG       = 17
+	EVP_CTRL_GCM_SET_IV_FIXED  = 18
+	EVP_CTRL_GCM_IV_GEN        = 19
+	EVP_CTRL_CCM_SET_IVLEN     = 9
+	EVP_CTRL_CCM_GET_TAG       = 16
+	EVP_CTRL_CCM_SET_TAG       = 17
+	EVP_CTRL_CCM_SET_IV_FIXED  = 18
+	EVP_CTRL_CCM_SET_L         = 20
+	EVP_CTRL_CCM_SET_MSGLEN    = 21
+)
+
+// AEAD cipher deduces payload length and returns number of bytes required to
+// store MAC and eventual padding. Subsequent call to EVP_Cipher even
+// appends/verifies MAC.
 const EVP_CTRL_AEAD_TLS1_AAD = 22
+
+// Used by composite AEAD ciphers, no-op in GCM, CCM...
 const EVP_CTRL_AEAD_SET_MAC_KEY = 23
+
+// Set the GCM invocation field, decrypt only
 const EVP_CTRL_GCM_SET_IV_INV = 24
-const EVP_CTRL_TLS1_1_MULTIBLOCK_AAD = 25
-const EVP_CTRL_TLS1_1_MULTIBLOCK_ENCRYPT = 26
-const EVP_CTRL_TLS1_1_MULTIBLOCK_DECRYPT = 27
-const EVP_CTRL_TLS1_1_MULTIBLOCK_MAX_BUFSIZE = 28
+const (
+	EVP_CTRL_TLS1_1_MULTIBLOCK_AAD         = 25
+	EVP_CTRL_TLS1_1_MULTIBLOCK_ENCRYPT     = 26
+	EVP_CTRL_TLS1_1_MULTIBLOCK_DECRYPT     = 27
+	EVP_CTRL_TLS1_1_MULTIBLOCK_MAX_BUFSIZE = 28
+)
 const EVP_CTRL_SSL3_MASTER_SECRET = 29
+
+// EVP_CTRL_SET_SBOX takes the char * specifying S-boxes
 const EVP_CTRL_SET_SBOX = 30
+
+// EVP_CTRL_SBOX_USED takes a 'size_t' and 'char *', pointing at a
+// pre-allocated buffer with specified size
 const EVP_CTRL_SBOX_USED = 31
+
+// EVP_CTRL_KEY_MESH takes 'size_t' number of bytes to mesh the key after,
+// 0 switches meshing off
 const EVP_CTRL_KEY_MESH = 32
+
+// EVP_CTRL_BLOCK_PADDING_MODE takes the padding mode
 const EVP_CTRL_BLOCK_PADDING_MODE = 33
+
+// Set the output buffers to use for a pipelined operation
 const EVP_CTRL_SET_PIPELINE_OUTPUT_BUFS = 34
+
+// Set the input buffers to use for a pipelined operation
 const EVP_CTRL_SET_PIPELINE_INPUT_BUFS = 35
+
+// Set the input buffer lengths to use for a pipelined operation
 const EVP_CTRL_SET_PIPELINE_INPUT_LENS = 36
+
+// Get the IV length used by the cipher
 const EVP_CTRL_GET_IVLEN = 37
+
+// Tell the cipher it's doing a speed test (SIV disallows multiple ops)
 const EVP_CTRL_SET_SPEED = 39
+
+// Get the unprotectedAttrs from cipher ctx
 const EVP_CTRL_PROCESS_UNPROTECTED = 40
+
+// Get the supplementary wrap cipher
 const EVP_CTRL_GET_WRAP_CIPHER = 41
+
+// TLSTREE key diversification
 const EVP_CTRL_TLSTREE = 42
-const EVP_PADDING_PKCS7 = 1
-const EVP_PADDING_ISO7816_4 = 2
-const EVP_PADDING_ANSI923 = 3
-const EVP_PADDING_ISO10126 = 4
-const EVP_PADDING_ZERO = 5
+
+// Padding modes
+const (
+	EVP_PADDING_PKCS7     = 1
+	EVP_PADDING_ISO7816_4 = 2
+	EVP_PADDING_ANSI923   = 3
+	EVP_PADDING_ISO10126  = 4
+	EVP_PADDING_ZERO      = 5
+)
+
+// RFC 5246 defines additional data to be 13 bytes in length
 const EVP_AEAD_TLS1_AAD_LEN = 13
+
+// Length of fixed part of IV derived from PRF
 const EVP_GCM_TLS_FIXED_IV_LEN = 4
+
+// Length of explicit part of IV part of TLS records
 const EVP_GCM_TLS_EXPLICIT_IV_LEN = 8
+
+// Length of tag for TLS
 const EVP_GCM_TLS_TAG_LEN = 16
+
+// Length of fixed part of IV derived from PRF
 const EVP_CCM_TLS_FIXED_IV_LEN = 4
+
+// Length of explicit part of IV part of TLS records
 const EVP_CCM_TLS_EXPLICIT_IV_LEN = 8
+
+// Total length of CCM IV length for TLS
 const EVP_CCM_TLS_IV_LEN = 12
+
+// Length of tag for TLS
 const EVP_CCM_TLS_TAG_LEN = 16
+
+// Length of CCM8 tag for TLS
 const EVP_CCM8_TLS_TAG_LEN = 8
+
+// Length of tag for TLS
 const EVP_CHACHAPOLY_TLS_TAG_LEN = 16
-const EVP_RAND_STATE_UNINITIALISED = 0
-const EVP_RAND_STATE_READY = 1
-const EVP_RAND_STATE_ERROR = 2
+const (
+	EVP_RAND_STATE_UNINITIALISED = 0
+	EVP_RAND_STATE_READY         = 1
+	EVP_RAND_STATE_ERROR         = 2
+)
+
+// Can appear as the outermost AlgorithmIdentifier
 const EVP_PBE_TYPE_OUTER = 0
+
+// Is an PRF type OID
 const EVP_PBE_TYPE_PRF = 1
+
+// Is a PKCS#5 v2.0 KDF
 const EVP_PBE_TYPE_KDF = 2
-const ASN1_PKEY_ALIAS = 1
-const ASN1_PKEY_DYNAMIC = 2
-const ASN1_PKEY_SIGPARAM_NULL = 4
-const ASN1_PKEY_CTRL_PKCS7_SIGN = 1
-const ASN1_PKEY_CTRL_PKCS7_ENCRYPT = 2
-const ASN1_PKEY_CTRL_DEFAULT_MD_NID = 3
-const ASN1_PKEY_CTRL_CMS_SIGN = 5
-const ASN1_PKEY_CTRL_CMS_ENVELOPE = 7
-const ASN1_PKEY_CTRL_CMS_RI_TYPE = 8
-const ASN1_PKEY_CTRL_SET1_TLS_ENCPT = 9
-const ASN1_PKEY_CTRL_GET1_TLS_ENCPT = 10
-const ASN1_PKEY_CTRL_CMS_IS_RI_TYPE_SUPPORTED = 11
-const EVP_PKEY_OP_UNDEFINED = 0
-const EVP_PKEY_OP_PARAMGEN = 2
-const EVP_PKEY_OP_KEYGEN = 4
-const EVP_PKEY_OP_FROMDATA = 8
-const EVP_PKEY_OP_SIGN = 16
-const EVP_PKEY_OP_VERIFY = 32
-const EVP_PKEY_OP_VERIFYRECOVER = 64
-const EVP_PKEY_OP_SIGNCTX = 128
-const EVP_PKEY_OP_VERIFYCTX = 256
-const EVP_PKEY_OP_ENCRYPT = 512
-const EVP_PKEY_OP_DECRYPT = 1024
-const EVP_PKEY_OP_DERIVE = 2048
-const EVP_PKEY_OP_ENCAPSULATE = 4096
-const EVP_PKEY_OP_DECAPSULATE = 8192
-const EVP_PKEY_OP_SIGNMSG = 16384
-const EVP_PKEY_OP_VERIFYMSG = 32768
+const (
+	ASN1_PKEY_ALIAS         = 1
+	ASN1_PKEY_DYNAMIC       = 2
+	ASN1_PKEY_SIGPARAM_NULL = 4
+)
+const (
+	ASN1_PKEY_CTRL_PKCS7_SIGN     = 1
+	ASN1_PKEY_CTRL_PKCS7_ENCRYPT  = 2
+	ASN1_PKEY_CTRL_DEFAULT_MD_NID = 3
+	ASN1_PKEY_CTRL_CMS_SIGN       = 5
+	ASN1_PKEY_CTRL_CMS_ENVELOPE   = 7
+	ASN1_PKEY_CTRL_CMS_RI_TYPE    = 8
+)
+const (
+	ASN1_PKEY_CTRL_SET1_TLS_ENCPT           = 9
+	ASN1_PKEY_CTRL_GET1_TLS_ENCPT           = 10
+	ASN1_PKEY_CTRL_CMS_IS_RI_TYPE_SUPPORTED = 11
+)
+
+// Update the following when adding new EVP_PKEY_OPs
+const (
+	EVP_PKEY_OP_UNDEFINED     = 0
+	EVP_PKEY_OP_PARAMGEN      = 2
+	EVP_PKEY_OP_KEYGEN        = 4
+	EVP_PKEY_OP_FROMDATA      = 8
+	EVP_PKEY_OP_SIGN          = 16
+	EVP_PKEY_OP_VERIFY        = 32
+	EVP_PKEY_OP_VERIFYRECOVER = 64
+	EVP_PKEY_OP_SIGNCTX       = 128
+	EVP_PKEY_OP_VERIFYCTX     = 256
+	EVP_PKEY_OP_ENCRYPT       = 512
+	EVP_PKEY_OP_DECRYPT       = 1024
+	EVP_PKEY_OP_DERIVE        = 2048
+	EVP_PKEY_OP_ENCAPSULATE   = 4096
+	EVP_PKEY_OP_DECAPSULATE   = 8192
+	EVP_PKEY_OP_SIGNMSG       = 16384
+	EVP_PKEY_OP_VERIFYMSG     = 32768
+)
+
+// Update the following when adding new EVP_PKEY_OPs
 const EVP_PKEY_OP_ALL = 65535
 const EVP_PKEY_OP_TYPE_SIG = 49648
 const EVP_PKEY_OP_TYPE_CRYPT = 1536
@@ -235,25 +422,39 @@ const EVP_PKEY_OP_TYPE_DATA = 8
 const EVP_PKEY_OP_TYPE_KEM = 12288
 const EVP_PKEY_OP_TYPE_GEN = 6
 const EVP_PKEY_OP_TYPE_NOGEN = 65529
-const EVP_PKEY_CTRL_MD = 1
-const EVP_PKEY_CTRL_PEER_KEY = 2
-const EVP_PKEY_CTRL_SET_MAC_KEY = 6
-const EVP_PKEY_CTRL_DIGESTINIT = 7
+
+// Used by GOST key encryption in TLS
+const (
+	EVP_PKEY_CTRL_MD          = 1
+	EVP_PKEY_CTRL_PEER_KEY    = 2
+	EVP_PKEY_CTRL_SET_MAC_KEY = 6
+	EVP_PKEY_CTRL_DIGESTINIT  = 7
+)
+
+// Used by GOST key encryption in TLS
 const EVP_PKEY_CTRL_SET_IV = 8
-const EVP_PKEY_CTRL_PKCS7_ENCRYPT = 3
-const EVP_PKEY_CTRL_PKCS7_DECRYPT = 4
-const EVP_PKEY_CTRL_PKCS7_SIGN = 5
-const EVP_PKEY_CTRL_CMS_ENCRYPT = 9
-const EVP_PKEY_CTRL_CMS_DECRYPT = 10
-const EVP_PKEY_CTRL_CMS_SIGN = 11
-const EVP_PKEY_CTRL_CIPHER = 12
-const EVP_PKEY_CTRL_GET_MD = 13
-const EVP_PKEY_CTRL_SET_DIGEST_SIZE = 14
-const EVP_PKEY_CTRL_SET1_ID = 15
-const EVP_PKEY_CTRL_GET1_ID = 16
-const EVP_PKEY_CTRL_GET1_ID_LEN = 17
+const (
+	EVP_PKEY_CTRL_PKCS7_ENCRYPT = 3
+	EVP_PKEY_CTRL_PKCS7_DECRYPT = 4
+	EVP_PKEY_CTRL_PKCS7_SIGN    = 5
+	EVP_PKEY_CTRL_CMS_ENCRYPT   = 9
+	EVP_PKEY_CTRL_CMS_DECRYPT   = 10
+	EVP_PKEY_CTRL_CMS_SIGN      = 11
+)
+const (
+	EVP_PKEY_CTRL_CIPHER          = 12
+	EVP_PKEY_CTRL_GET_MD          = 13
+	EVP_PKEY_CTRL_SET_DIGEST_SIZE = 14
+	EVP_PKEY_CTRL_SET1_ID         = 15
+	EVP_PKEY_CTRL_GET1_ID         = 16
+	EVP_PKEY_CTRL_GET1_ID_LEN     = 17
+)
 const EVP_PKEY_ALG_CTRL = 4096
+
+// Method handles all operations: don't assume any digest related defaults.
 const EVP_PKEY_FLAG_AUTOARGLEN = 2
+
+// Method handles all operations: don't assume any digest related defaults.
 const EVP_PKEY_FLAG_SIGCTX_CUSTOM = 4
 
 type EVP_CTRL_TLS1_1_MULTIBLOCK_PARAM struct {
@@ -885,6 +1086,8 @@ func EVPWhirlpool() *EVP_MD
 //go:linkname EVPSm3 C.EVP_sm3
 func EVPSm3() *EVP_MD
 
+// does nothing :-)
+//
 //go:linkname EVPEncNull C.EVP_enc_null
 func EVPEncNull() *EVP_CIPHER
 
@@ -945,6 +1148,10 @@ func EVPDesEde3Cbc() *EVP_CIPHER
 //go:linkname EVPDesxCbc C.EVP_desx_cbc
 func EVPDesxCbc() *EVP_CIPHER
 
+// This should now be supported through the dev_crypto ENGINE. But also, why
+// are rc4 and md5 declarations made here inside a "NO_DES" precompiler
+// branch?
+//
 //go:linkname EVPDesEde3Wrap C.EVP_des_ede3_wrap
 func EVPDesEde3Wrap() *EVP_CIPHER
 
@@ -1344,8 +1551,6 @@ func EVP_MDDoAllSorted(fn func(_llcppg_param1 *EVP_MD, _llcppg_param2 *c.Char, _
 //go:linkname EVP_MDDoAllProvided C.EVP_MD_do_all_provided
 func EVP_MDDoAllProvided(libctx *OSSL_LIB_CTX, fn func(_llcppg_param1 *EVP_MD, _llcppg_param2 unsafe.Pointer), arg unsafe.Pointer)
 
-// MAC stuff
-//
 //go:linkname EVP_MACFetch C.EVP_MAC_fetch
 func EVP_MACFetch(libctx *OSSL_LIB_CTX, algorithm *c.Char, properties *c.Char) *EVP_MAC
 

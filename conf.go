@@ -7,17 +7,30 @@ import (
 	"unsafe"
 )
 
-const CONF_MFLAGS_IGNORE_ERRORS = 1
-const CONF_MFLAGS_IGNORE_RETURN_CODES = 2
-const CONF_MFLAGS_SILENT = 4
-const CONF_MFLAGS_NO_DSO = 8
-const CONF_MFLAGS_IGNORE_MISSING_FILE = 16
-const CONF_MFLAGS_DEFAULT_SECTION = 32
+const (
+	CONF_MFLAGS_IGNORE_ERRORS       = 1
+	CONF_MFLAGS_IGNORE_RETURN_CODES = 2
+	CONF_MFLAGS_SILENT              = 4
+	CONF_MFLAGS_NO_DSO              = 8
+	CONF_MFLAGS_IGNORE_MISSING_FILE = 16
+	CONF_MFLAGS_DEFAULT_SECTION     = 32
+)
 
 type CONF_VALUE struct {
 	Section *c.Char
 	Name    *c.Char
 	Value   *c.Char
+}
+type LhashStCONF_VALUE struct {
+	Dummy LhCONF_VALUEDummy
+}
+type ConfImoduleSt struct {
+}
+type ConfModuleSt struct {
+}
+type StackStCONF_IMODULE struct {
+}
+type StackStCONF_MODULE struct {
 }
 type StackStCONF_VALUE struct {
 }
@@ -36,9 +49,6 @@ type SkCONF_VALUEFreefunc = func(_llcppg_param1 *CONF_VALUE)
 //
 // llgo:type C
 type SkCONF_VALUECopyfunc = func(_llcppg_param1 *CONF_VALUE) *CONF_VALUE
-type LhashStCONF_VALUE struct {
-	Dummy LhCONF_VALUEDummy
-}
 type LhCONF_VALUEDummy struct {
 	_xgo_union [1]uint64
 }
@@ -52,18 +62,10 @@ type LhCONF_VALUEHashfunc = func(_llcppg_param1 *CONF_VALUE) c.Ulong
 // llgo:type C
 type LhCONF_VALUEDoallfunc = func(_llcppg_param1 *CONF_VALUE)
 type CONF_METHOD = ConfMethodSt
-type ConfImoduleSt struct {
-}
 
 // Module definitions
 type CONF_IMODULE = ConfImoduleSt
-type ConfModuleSt struct {
-}
 type CONF_MODULE = ConfModuleSt
-type StackStCONF_MODULE struct {
-}
-type StackStCONF_IMODULE struct {
-}
 
 // DSO module function typedefs
 //
@@ -119,9 +121,6 @@ func CONFDumpBio(conf *LhashStCONF_VALUE, out *BIO) c.Int
 //go:linkname OPENSSLConfig C.OPENSSL_config
 func OPENSSLConfig(config_name *c.Char)
 
-// New conf code.  The semantics are different from the functions above. If
-// that wasn't the case, the above functions would have been replaced
-//
 //go:linkname NCONFNewEx C.NCONF_new_ex
 func NCONFNewEx(libctx *OSSL_LIB_CTX, meth *CONF_METHOD) *CONF
 
@@ -170,8 +169,6 @@ func NCONFDumpFp(conf *CONF, out *c.FILE) c.Int
 //go:linkname NCONFDumpBio C.NCONF_dump_bio
 func NCONFDumpBio(conf *CONF, out *BIO) c.Int
 
-// Module functions
-//
 //go:linkname CONFModulesLoad C.CONF_modules_load
 func CONFModulesLoad(cnf *CONF, appname *c.Char, flags c.Ulong) c.Int
 
