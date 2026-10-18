@@ -376,26 +376,26 @@ type BioPollDescriptorSt struct {
 	Type  c.Uint32T
 	Value _llcppg_anon_0
 }
-type BIOHostservPriorities c.Uint
+type BIO_hostserv_priorities c.Uint
 
 const (
-	BIO_PARSE_PRIO_HOST BIOHostservPriorities = 0
-	BIO_PARSE_PRIO_SERV BIOHostservPriorities = 1
+	BIO_PARSE_PRIO_HOST BIO_hostserv_priorities = 0
+	BIO_PARSE_PRIO_SERV BIO_hostserv_priorities = 1
 )
 
-type BIOLookupType c.Uint
+type BIO_lookup_type c.Uint
 
 const (
-	BIO_LOOKUP_CLIENT BIOLookupType = 0
-	BIO_LOOKUP_SERVER BIOLookupType = 1
+	BIO_LOOKUP_CLIENT BIO_lookup_type = 0
+	BIO_LOOKUP_SERVER BIO_lookup_type = 1
 )
 
-type BIOSockInfoU struct {
+type BIO_sock_info_u struct {
 	_xgo_union [1]uint64
 }
-type BIOSockInfoType c.Uint
+type BIO_sock_info_type c.Uint
 
-const BIO_SOCK_INFO_ADDRESS BIOSockInfoType = 0
+const BIO_SOCK_INFO_ADDRESS BIO_sock_info_type = 0
 
 type BioAddrSt struct {
 }
@@ -405,38 +405,38 @@ type BioMethodSt struct {
 }
 type Hostent struct {
 }
-type StackStBIO struct {
+type Stack_st_BIO struct {
 }
-type BIO_ADDR = BioAddrSt
-type BIO_ADDRINFO = BioAddrinfoSt
+type BIO_ADDR BioAddrSt
+type BIO_ADDRINFO BioAddrinfoSt
 
 // llgo:type C
-type BIOCallbackFn = func(_llcppg_param1 *BIO, _llcppg_param2 c.Int, _llcppg_param3 *c.Char, _llcppg_param4 c.Int, _llcppg_param5 c.Long, _llcppg_param6 c.Long) c.Long
+type BIO_callback_fn = func(_llcppg_param1 *BIO, _llcppg_param2 c.Int, _llcppg_param3 *c.Char, _llcppg_param4 c.Int, _llcppg_param5 c.Long, _llcppg_param6 c.Long) c.Long
 
 // llgo:type C
-type BIOCallbackFnEx = func(_llcppg_param1 *BIO, _llcppg_param2 c.Int, _llcppg_param3 *c.Char, _llcppg_param4 c.SizeT, _llcppg_param5 c.Int, _llcppg_param6 c.Long, _llcppg_param7 c.Int, _llcppg_param8 *c.SizeT) c.Long
-type BIO_METHOD = BioMethodSt
+type BIO_callback_fn_ex = func(_llcppg_param1 *BIO, _llcppg_param2 c.Int, _llcppg_param3 *c.Char, _llcppg_param4 c.SizeT, _llcppg_param5 c.Int, _llcppg_param6 c.Long, _llcppg_param7 c.Int, _llcppg_param8 *c.SizeT) c.Long
+type BIO_METHOD BioMethodSt
 
 // llgo:type C
-type BIOInfoCb = func(_llcppg_param1 *BIO, _llcppg_param2 c.Int, _llcppg_param3 c.Int) c.Int
+type BIO_info_cb = func(_llcppg_param1 *BIO, _llcppg_param2 c.Int, _llcppg_param3 c.Int) c.Int
 
 // backward compatibility
-type BioInfoCb = BIOInfoCb
+type BioInfoCb = BIO_info_cb
 
 // clang-format off
 //
 // llgo:type C
-type SkBIOCompfunc = func(_llcppg_param1 **BIO, _llcppg_param2 **BIO) c.Int
+type Sk_BIO_compfunc = func(_llcppg_param1 **BIO, _llcppg_param2 **BIO) c.Int
 
 // clang-format off
 //
 // llgo:type C
-type SkBIOFreefunc = func(_llcppg_param1 *BIO)
+type Sk_BIO_freefunc = func(_llcppg_param1 *BIO)
 
 // clang-format off
 //
 // llgo:type C
-type SkBIOCopyfunc = func(_llcppg_param1 *BIO) *BIO
+type Sk_BIO_copyfunc = func(_llcppg_param1 *BIO) *BIO
 
 // Prefix and suffix callback in ASN1 BIO
 //
@@ -444,7 +444,7 @@ type SkBIOCopyfunc = func(_llcppg_param1 *BIO) *BIO
 type Asn1PsFunc = func(_llcppg_param1 *BIO, _llcppg_param2 **uint8, _llcppg_param3 *c.Int, _llcppg_param4 unsafe.Pointer) c.Int
 
 // llgo:type C
-type BIODgramSctpNotificationHandlerFn = func(_llcppg_param1 *BIO, _llcppg_param2 unsafe.Pointer, _llcppg_param3 unsafe.Pointer)
+type BIO_dgram_sctp_notification_handler_fn = func(_llcppg_param1 *BIO, _llcppg_param2 unsafe.Pointer, _llcppg_param3 unsafe.Pointer)
 
 // BIO_sendmmsg/BIO_recvmmsg-related definitions
 type BIO_MSG = BioMsgSt
@@ -454,47 +454,68 @@ type _llcppg_anon_0 struct {
 }
 type BIO_POLL_DESCRIPTOR = BioPollDescriptorSt
 
-//go:linkname BIOGetNewIndex C.BIO_get_new_index
-func BIOGetNewIndex() c.Int
+//go:linkname BIO_get_new_index C.BIO_get_new_index
+func BIO_get_new_index() c.Int
 
-//go:linkname BIOSetFlags C.BIO_set_flags
-func BIOSetFlags(b *BIO, flags c.Int)
+// llgo:link (*BIO).SetFlags C.BIO_set_flags
+func (self *BIO) SetFlags(flags c.Int) {
+}
 
-//go:linkname BIOTestFlags C.BIO_test_flags
-func BIOTestFlags(b *BIO, flags c.Int) c.Int
+// llgo:link (*BIO).TestFlags C.BIO_test_flags
+func (self *BIO) TestFlags(flags c.Int) c.Int {
+	return 0
+}
 
-//go:linkname BIOClearFlags C.BIO_clear_flags
-func BIOClearFlags(b *BIO, flags c.Int)
+// llgo:link (*BIO).ClearFlags C.BIO_clear_flags
+func (self *BIO) ClearFlags(flags c.Int) {
+}
 
-//go:linkname BIOGetCallback C.BIO_get_callback
-func BIOGetCallback(b *BIO) BIOCallbackFn
+// llgo:link (*BIO).Callback C.BIO_get_callback
+func (self *BIO) Callback() BIO_callback_fn {
+	return nil
+}
 
-//go:linkname BIOSetCallback C.BIO_set_callback
-func BIOSetCallback(b *BIO, callback BIOCallbackFn)
+// llgo:link (*BIO).SetCallback C.BIO_set_callback
+func (self *BIO) SetCallback(callback BIO_callback_fn) {
+}
 
-//go:linkname BIODebugCallback C.BIO_debug_callback
-func BIODebugCallback(bio *BIO, cmd c.Int, argp *c.Char, argi c.Int, argl c.Long, ret c.Long) c.Long
+// llgo:link (*BIO).DebugCallback C.BIO_debug_callback
+func (self *BIO) DebugCallback(cmd c.Int, argp *c.Char, argi c.Int, argl c.Long, ret c.Long) c.Long {
+	return 0
+}
 
-//go:linkname BIOGetCallbackEx C.BIO_get_callback_ex
-func BIOGetCallbackEx(b *BIO) BIOCallbackFnEx
+// llgo:link (*BIO).CallbackEx C.BIO_get_callback_ex
+func (self *BIO) CallbackEx() BIO_callback_fn_ex {
+	return nil
+}
 
-//go:linkname BIOSetCallbackEx C.BIO_set_callback_ex
-func BIOSetCallbackEx(b *BIO, callback BIOCallbackFnEx)
+// llgo:link (*BIO).SetCallbackEx C.BIO_set_callback_ex
+func (self *BIO) SetCallbackEx(callback BIO_callback_fn_ex) {
+}
 
-//go:linkname BIODebugCallbackEx C.BIO_debug_callback_ex
-func BIODebugCallbackEx(bio *BIO, oper c.Int, argp *c.Char, len c.SizeT, argi c.Int, argl c.Long, ret c.Int, processed *c.SizeT) c.Long
+// llgo:link (*BIO).DebugCallbackEx C.BIO_debug_callback_ex
+func (self *BIO) DebugCallbackEx(oper c.Int, argp *c.Char, len c.SizeT, argi c.Int, argl c.Long, ret c.Int, processed *c.SizeT) c.Long {
+	return 0
+}
 
-//go:linkname BIOGetCallbackArg C.BIO_get_callback_arg
-func BIOGetCallbackArg(b *BIO) *c.Char
+// llgo:link (*BIO).CallbackArg C.BIO_get_callback_arg
+func (self *BIO) CallbackArg() *c.Char {
+	return nil
+}
 
-//go:linkname BIOSetCallbackArg C.BIO_set_callback_arg
-func BIOSetCallbackArg(b *BIO, arg *c.Char)
+// llgo:link (*BIO).SetCallbackArg C.BIO_set_callback_arg
+func (self *BIO) SetCallbackArg(arg *c.Char) {
+}
 
-//go:linkname BIOMethodName C.BIO_method_name
-func BIOMethodName(b *BIO) *c.Char
+// llgo:link (*BIO).MethodName C.BIO_method_name
+func (self *BIO) MethodName() *c.Char {
+	return nil
+}
 
-//go:linkname BIOMethodType C.BIO_method_type
-func BIOMethodType(b *BIO) c.Int
+// llgo:link (*BIO).MethodType C.BIO_method_type
+func (self *BIO) MethodType() c.Int {
+	return 0
+}
 func (p *_llcppg_anon_0) XGof_ref_fd() *c.Int {
 	return (*c.Int)(unsafe.Pointer(p))
 }
@@ -510,523 +531,722 @@ func (p *_llcppg_anon_0) XGof_ref_ssl() **SSL {
 
 // ...pending macros have inappropriate return type
 //
-//go:linkname BIOCtrlPending C.BIO_ctrl_pending
-func BIOCtrlPending(b *BIO) c.SizeT
+// llgo:link (*BIO).CtrlPending C.BIO_ctrl_pending
+func (self *BIO) CtrlPending() c.SizeT {
+	return 0
+}
 
-//go:linkname BIOCtrlWpending C.BIO_ctrl_wpending
-func BIOCtrlWpending(b *BIO) c.SizeT
+// llgo:link (*BIO).CtrlWpending C.BIO_ctrl_wpending
+func (self *BIO) CtrlWpending() c.SizeT {
+	return 0
+}
 
-//go:linkname BIOCtrlGetWriteGuarantee C.BIO_ctrl_get_write_guarantee
-func BIOCtrlGetWriteGuarantee(b *BIO) c.SizeT
+// llgo:link (*BIO).CtrlGetWriteGuarantee C.BIO_ctrl_get_write_guarantee
+func (self *BIO) CtrlGetWriteGuarantee() c.SizeT {
+	return 0
+}
 
-//go:linkname BIOCtrlGetReadRequest C.BIO_ctrl_get_read_request
-func BIOCtrlGetReadRequest(b *BIO) c.SizeT
+// llgo:link (*BIO).CtrlGetReadRequest C.BIO_ctrl_get_read_request
+func (self *BIO) CtrlGetReadRequest() c.SizeT {
+	return 0
+}
 
-//go:linkname BIOCtrlResetReadRequest C.BIO_ctrl_reset_read_request
-func BIOCtrlResetReadRequest(b *BIO) c.Int
+// llgo:link (*BIO).CtrlResetReadRequest C.BIO_ctrl_reset_read_request
+func (self *BIO) CtrlResetReadRequest() c.Int {
+	return 0
+}
 
-//go:linkname BIOSetExData C.BIO_set_ex_data
-func BIOSetExData(bio *BIO, idx c.Int, data unsafe.Pointer) c.Int
+// llgo:link (*BIO).SetExData C.BIO_set_ex_data
+func (self *BIO) SetExData(idx c.Int, data unsafe.Pointer) c.Int {
+	return 0
+}
 
-//go:linkname BIOGetExData C.BIO_get_ex_data
-func BIOGetExData(bio *BIO, idx c.Int) unsafe.Pointer
+// llgo:link (*BIO).ExData C.BIO_get_ex_data
+func (self *BIO) ExData(idx c.Int) unsafe.Pointer {
+	return nil
+}
 
-//go:linkname BIONumberRead C.BIO_number_read
-func BIONumberRead(bio *BIO) c.Uint64T
+// llgo:link (*BIO).NumberRead C.BIO_number_read
+func (self *BIO) NumberRead() c.Uint64T {
+	return 0
+}
 
-//go:linkname BIONumberWritten C.BIO_number_written
-func BIONumberWritten(bio *BIO) c.Uint64T
+// llgo:link (*BIO).NumberWritten C.BIO_number_written
+func (self *BIO) NumberWritten() c.Uint64T {
+	return 0
+}
 
 // For BIO_f_asn1()
 //
-//go:linkname BIOAsn1SetPrefix C.BIO_asn1_set_prefix
-func BIOAsn1SetPrefix(b *BIO, prefix *Asn1PsFunc, prefix_free *Asn1PsFunc) c.Int
+// llgo:link (*BIO).Asn1SetPrefix C.BIO_asn1_set_prefix
+func (self *BIO) Asn1SetPrefix(prefix *Asn1PsFunc, prefix_free *Asn1PsFunc) c.Int {
+	return 0
+}
+
+// llgo:link (*BIO).Asn1GetPrefix C.BIO_asn1_get_prefix
+func (self *BIO) Asn1GetPrefix(pprefix **Asn1PsFunc, pprefix_free **Asn1PsFunc) c.Int {
+	return 0
+}
+
+// llgo:link (*BIO).Asn1SetSuffix C.BIO_asn1_set_suffix
+func (self *BIO) Asn1SetSuffix(suffix *Asn1PsFunc, suffix_free *Asn1PsFunc) c.Int {
+	return 0
+}
+
+// llgo:link (*BIO).Asn1GetSuffix C.BIO_asn1_get_suffix
+func (self *BIO) Asn1GetSuffix(psuffix **Asn1PsFunc, psuffix_free **Asn1PsFunc) c.Int {
+	return 0
+}
+
+//go:linkname BIO_s_file C.BIO_s_file
+func BIO_s_file() *BIO_METHOD
+
+//go:linkname BIO_new_file C.BIO_new_file
+func BIO_new_file(filename *c.Char, mode *c.Char) *BIO
+
+// llgo:link (*OSSL_LIB_CTX).BIO_new_from_core_bio C.BIO_new_from_core_bio
+func (self *OSSL_LIB_CTX) BIO_new_from_core_bio(corebio *OSSL_CORE_BIO) *BIO {
+	return nil
+}
+
+//go:linkname BIO_new_fp C.BIO_new_fp
+func BIO_new_fp(stream *c.FILE, close_flag c.Int) *BIO
+
+// llgo:link (*OSSL_LIB_CTX).BIO_new_ex C.BIO_new_ex
+func (self *OSSL_LIB_CTX) BIO_new_ex(method *BIO_METHOD) *BIO {
+	return nil
+}
+
+// llgo:link (*BIO_METHOD).New C.BIO_new
+func (self *BIO_METHOD) New() *BIO {
+	return nil
+}
+
+// llgo:link (*BIO).Free C.BIO_free
+func (self *BIO) Free() c.Int {
+	return 0
+}
+
+// llgo:link (*BIO).SetData C.BIO_set_data
+func (self *BIO) SetData(ptr unsafe.Pointer) {
+}
+
+// llgo:link (*BIO).Data C.BIO_get_data
+func (self *BIO) Data() unsafe.Pointer {
+	return nil
+}
+
+// llgo:link (*BIO).SetInit C.BIO_set_init
+func (self *BIO) SetInit(init c.Int) {
+}
+
+// llgo:link (*BIO).Init C.BIO_get_init
+func (self *BIO) Init() c.Int {
+	return 0
+}
+
+// llgo:link (*BIO).SetShutdown C.BIO_set_shutdown
+func (self *BIO) SetShutdown(shut c.Int) {
+}
+
+// llgo:link (*BIO).Shutdown C.BIO_get_shutdown
+func (self *BIO) Shutdown() c.Int {
+	return 0
+}
+
+// llgo:link (*BIO).Vfree C.BIO_vfree
+func (self *BIO) Vfree() {
+}
+
+// llgo:link (*BIO).UpRef C.BIO_up_ref
+func (self *BIO) UpRef() c.Int {
+	return 0
+}
+
+// llgo:link (*BIO).Read C.BIO_read
+func (self *BIO) Read(data unsafe.Pointer, dlen c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*BIO).ReadEx C.BIO_read_ex
+func (self *BIO) ReadEx(data unsafe.Pointer, dlen c.SizeT, readbytes *c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*BIO).Recvmmsg C.BIO_recvmmsg
+func (self *BIO) Recvmmsg(msg *BIO_MSG, stride c.SizeT, num_msg c.SizeT, flags c.Uint64T, msgs_processed *c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*BIO).Gets C.BIO_gets
+func (self *BIO) Gets(buf *c.Char, size c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*BIO).Line C.BIO_get_line
+func (self *BIO) Line(buf *c.Char, size c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*BIO).Write C.BIO_write
+func (self *BIO) Write(data unsafe.Pointer, dlen c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*BIO).WriteEx C.BIO_write_ex
+func (self *BIO) WriteEx(data unsafe.Pointer, dlen c.SizeT, written *c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*BIO).Sendmmsg C.BIO_sendmmsg
+func (self *BIO) Sendmmsg(msg *BIO_MSG, stride c.SizeT, num_msg c.SizeT, flags c.Uint64T, msgs_processed *c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*BIO).RpollDescriptor C.BIO_get_rpoll_descriptor
+func (self *BIO) RpollDescriptor(desc *BIO_POLL_DESCRIPTOR) c.Int {
+	return 0
+}
+
+// llgo:link (*BIO).WpollDescriptor C.BIO_get_wpoll_descriptor
+func (self *BIO) WpollDescriptor(desc *BIO_POLL_DESCRIPTOR) c.Int {
+	return 0
+}
+
+// llgo:link (*BIO).Puts C.BIO_puts
+func (self *BIO) Puts(buf *c.Char) c.Int {
+	return 0
+}
+
+// llgo:link (*BIO).Indent C.BIO_indent
+func (self *BIO) Indent(indent c.Int, max c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*BIO).Ctrl C.BIO_ctrl
+func (self *BIO) Ctrl(cmd c.Int, larg c.Long, parg unsafe.Pointer) c.Long {
+	return 0
+}
+
+// llgo:link (*BIO).Eof C.BIO_eof
+func (self *BIO) Eof() c.Int {
+	return 0
+}
+
+// llgo:link (*BIO).CallbackCtrl C.BIO_callback_ctrl
+func (self *BIO) CallbackCtrl(cmd c.Int, fp *BIO_info_cb) c.Long {
+	return 0
+}
+
+// llgo:link (*BIO).PtrCtrl C.BIO_ptr_ctrl
+func (self *BIO) PtrCtrl(cmd c.Int, larg c.Long) unsafe.Pointer {
+	return nil
+}
+
+// llgo:link (*BIO).IntCtrl C.BIO_int_ctrl
+func (self *BIO) IntCtrl(cmd c.Int, larg c.Long, iarg c.Int) c.Long {
+	return 0
+}
+
+//go:linkname BIO_push C.BIO_push
+func BIO_push(b *BIO, append *BIO) *BIO
+
+// llgo:link (*BIO).Pop C.BIO_pop
+func (self *BIO) Pop() *BIO {
+	return self
+}
+
+// llgo:link (*BIO).FreeAll C.BIO_free_all
+func (self *BIO) FreeAll() {
+}
+
+// llgo:link (*BIO).FindType C.BIO_find_type
+func (self *BIO) FindType(bio_type c.Int) *BIO {
+	return self
+}
+
+// llgo:link (*BIO).Next C.BIO_next
+func (self *BIO) Next() *BIO {
+	return self
+}
+
+//go:linkname BIO_set_next C.BIO_set_next
+func BIO_set_next(b *BIO, next *BIO)
+
+// llgo:link (*BIO).Retry C.BIO_get_retry_BIO
+func (self *BIO) Retry(reason *c.Int) *BIO {
+	return self
+}
+
+// llgo:link (*BIO).RetryReason C.BIO_get_retry_reason
+func (self *BIO) RetryReason() c.Int {
+	return 0
+}
 
-//go:linkname BIOAsn1GetPrefix C.BIO_asn1_get_prefix
-func BIOAsn1GetPrefix(b *BIO, pprefix **Asn1PsFunc, pprefix_free **Asn1PsFunc) c.Int
+// llgo:link (*BIO).SetRetryReason C.BIO_set_retry_reason
+func (self *BIO) SetRetryReason(reason c.Int) {
+}
 
-//go:linkname BIOAsn1SetSuffix C.BIO_asn1_set_suffix
-func BIOAsn1SetSuffix(b *BIO, suffix *Asn1PsFunc, suffix_free *Asn1PsFunc) c.Int
+// llgo:link (*BIO).DupChain C.BIO_dup_chain
+func (self *BIO) DupChain() *BIO {
+	return self
+}
 
-//go:linkname BIOAsn1GetSuffix C.BIO_asn1_get_suffix
-func BIOAsn1GetSuffix(b *BIO, psuffix **Asn1PsFunc, psuffix_free **Asn1PsFunc) c.Int
+// llgo:link (*BIO).Nread0 C.BIO_nread0
+func (self *BIO) Nread0(buf **c.Char) c.Int {
+	return 0
+}
 
-//go:linkname BIO_SFile C.BIO_s_file
-func BIO_SFile() *BIO_METHOD
+// llgo:link (*BIO).Nread C.BIO_nread
+func (self *BIO) Nread(buf **c.Char, num c.Int) c.Int {
+	return 0
+}
 
-//go:linkname BIONewFile C.BIO_new_file
-func BIONewFile(filename *c.Char, mode *c.Char) *BIO
+// llgo:link (*BIO).Nwrite0 C.BIO_nwrite0
+func (self *BIO) Nwrite0(buf **c.Char) c.Int {
+	return 0
+}
 
-//go:linkname BIONewFromCoreBio C.BIO_new_from_core_bio
-func BIONewFromCoreBio(libctx *OSSL_LIB_CTX, corebio *OSSL_CORE_BIO) *BIO
+// llgo:link (*BIO).Nwrite C.BIO_nwrite
+func (self *BIO) Nwrite(buf **c.Char, num c.Int) c.Int {
+	return 0
+}
 
-//go:linkname BIONewFp C.BIO_new_fp
-func BIONewFp(stream *c.FILE, close_flag c.Int) *BIO
+//go:linkname BIO_s_mem C.BIO_s_mem
+func BIO_s_mem() *BIO_METHOD
 
-//go:linkname BIONewEx C.BIO_new_ex
-func BIONewEx(libctx *OSSL_LIB_CTX, method *BIO_METHOD) *BIO
+//go:linkname BIO_s_dgram_mem C.BIO_s_dgram_mem
+func BIO_s_dgram_mem() *BIO_METHOD
 
-//go:linkname BIONew C.BIO_new
-func BIONew(type_ *BIO_METHOD) *BIO
+//go:linkname BIO_s_secmem C.BIO_s_secmem
+func BIO_s_secmem() *BIO_METHOD
 
-//go:linkname BIOFree C.BIO_free
-func BIOFree(a *BIO) c.Int
+//go:linkname BIO_new_mem_buf C.BIO_new_mem_buf
+func BIO_new_mem_buf(buf unsafe.Pointer, len c.Int) *BIO
 
-//go:linkname BIOSetData C.BIO_set_data
-func BIOSetData(a *BIO, ptr unsafe.Pointer)
+//go:linkname BIO_s_socket C.BIO_s_socket
+func BIO_s_socket() *BIO_METHOD
 
-//go:linkname BIOGetData C.BIO_get_data
-func BIOGetData(a *BIO) unsafe.Pointer
+//go:linkname BIO_s_connect C.BIO_s_connect
+func BIO_s_connect() *BIO_METHOD
 
-//go:linkname BIOSetInit C.BIO_set_init
-func BIOSetInit(a *BIO, init c.Int)
+//go:linkname BIO_s_accept C.BIO_s_accept
+func BIO_s_accept() *BIO_METHOD
 
-//go:linkname BIOGetInit C.BIO_get_init
-func BIOGetInit(a *BIO) c.Int
+//go:linkname BIO_s_fd C.BIO_s_fd
+func BIO_s_fd() *BIO_METHOD
 
-//go:linkname BIOSetShutdown C.BIO_set_shutdown
-func BIOSetShutdown(a *BIO, shut c.Int)
+//go:linkname BIO_s_log C.BIO_s_log
+func BIO_s_log() *BIO_METHOD
 
-//go:linkname BIOGetShutdown C.BIO_get_shutdown
-func BIOGetShutdown(a *BIO) c.Int
+//go:linkname BIO_s_bio C.BIO_s_bio
+func BIO_s_bio() *BIO_METHOD
 
-//go:linkname BIOVfree C.BIO_vfree
-func BIOVfree(a *BIO)
+//go:linkname BIO_s_null C.BIO_s_null
+func BIO_s_null() *BIO_METHOD
 
-//go:linkname BIOUpRef C.BIO_up_ref
-func BIOUpRef(a *BIO) c.Int
+//go:linkname BIO_f_null C.BIO_f_null
+func BIO_f_null() *BIO_METHOD
 
-//go:linkname BIORead C.BIO_read
-func BIORead(b *BIO, data unsafe.Pointer, dlen c.Int) c.Int
+//go:linkname BIO_f_buffer C.BIO_f_buffer
+func BIO_f_buffer() *BIO_METHOD
 
-//go:linkname BIOReadEx C.BIO_read_ex
-func BIOReadEx(b *BIO, data unsafe.Pointer, dlen c.SizeT, readbytes *c.SizeT) c.Int
+//go:linkname BIO_f_readbuffer C.BIO_f_readbuffer
+func BIO_f_readbuffer() *BIO_METHOD
 
-//go:linkname BIORecvmmsg C.BIO_recvmmsg
-func BIORecvmmsg(b *BIO, msg *BIO_MSG, stride c.SizeT, num_msg c.SizeT, flags c.Uint64T, msgs_processed *c.SizeT) c.Int
+//go:linkname BIO_f_linebuffer C.BIO_f_linebuffer
+func BIO_f_linebuffer() *BIO_METHOD
 
-//go:linkname BIOGets C.BIO_gets
-func BIOGets(bp *BIO, buf *c.Char, size c.Int) c.Int
+//go:linkname BIO_f_nbio_test C.BIO_f_nbio_test
+func BIO_f_nbio_test() *BIO_METHOD
+
+//go:linkname BIO_f_prefix C.BIO_f_prefix
+func BIO_f_prefix() *BIO_METHOD
 
-//go:linkname BIOGetLine C.BIO_get_line
-func BIOGetLine(bio *BIO, buf *c.Char, size c.Int) c.Int
+//go:linkname BIO_s_core C.BIO_s_core
+func BIO_s_core() *BIO_METHOD
 
-//go:linkname BIOWrite C.BIO_write
-func BIOWrite(b *BIO, data unsafe.Pointer, dlen c.Int) c.Int
+//go:linkname BIO_s_dgram_pair C.BIO_s_dgram_pair
+func BIO_s_dgram_pair() *BIO_METHOD
+
+//go:linkname BIO_s_datagram C.BIO_s_datagram
+func BIO_s_datagram() *BIO_METHOD
+
+//go:linkname BIO_dgram_non_fatal_error C.BIO_dgram_non_fatal_error
+func BIO_dgram_non_fatal_error(error c.Int) c.Int
 
-//go:linkname BIOWriteEx C.BIO_write_ex
-func BIOWriteEx(b *BIO, data unsafe.Pointer, dlen c.SizeT, written *c.SizeT) c.Int
+//go:linkname BIO_new_dgram C.BIO_new_dgram
+func BIO_new_dgram(fd c.Int, close_flag c.Int) *BIO
+
+//go:linkname BIO_sock_should_retry C.BIO_sock_should_retry
+func BIO_sock_should_retry(i c.Int) c.Int
+
+//go:linkname BIO_sock_non_fatal_error C.BIO_sock_non_fatal_error
+func BIO_sock_non_fatal_error(error c.Int) c.Int
+
+//go:linkname BIO_err_is_non_fatal C.BIO_err_is_non_fatal
+func BIO_err_is_non_fatal(errcode c.Uint) c.Int
+
+//go:linkname BIO_socket_wait C.BIO_socket_wait
+func BIO_socket_wait(fd c.Int, for_read c.Int, max_time time.TimeT) c.Int
+
+// llgo:link (*BIO).SetSendFlags C.BIO_set_send_flags
+func (self *BIO) SetSendFlags(flags c.Int) c.Long {
+	return 0
+}
+
+// llgo:link (*BIO).Wait C.BIO_wait
+func (self *BIO) Wait(max_time time.TimeT, nap_milliseconds c.Uint) c.Int {
+	return 0
+}
+
+// llgo:link (*BIO).DoConnectRetry C.BIO_do_connect_retry
+func (self *BIO) DoConnectRetry(timeout c.Int, nap_milliseconds c.Int) c.Int {
+	return 0
+}
+
+//go:linkname BIO_fd_should_retry C.BIO_fd_should_retry
+func BIO_fd_should_retry(i c.Int) c.Int
+
+//go:linkname BIO_fd_non_fatal_error C.BIO_fd_non_fatal_error
+func BIO_fd_non_fatal_error(error c.Int) c.Int
+
+//go:linkname BIO_dump_cb C.BIO_dump_cb
+func BIO_dump_cb(cb func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.SizeT, _llcppg_param3 unsafe.Pointer) c.Int, u unsafe.Pointer, s unsafe.Pointer, len c.Int) c.Int
+
+//go:linkname BIO_dump_indent_cb C.BIO_dump_indent_cb
+func BIO_dump_indent_cb(cb func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.SizeT, _llcppg_param3 unsafe.Pointer) c.Int, u unsafe.Pointer, s unsafe.Pointer, len c.Int, indent c.Int) c.Int
+
+// llgo:link (*BIO).Dump C.BIO_dump
+func (self *BIO) Dump(bytes unsafe.Pointer, len c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*BIO).DumpIndent C.BIO_dump_indent
+func (self *BIO) DumpIndent(bytes unsafe.Pointer, len c.Int, indent c.Int) c.Int {
+	return 0
+}
+
+//go:linkname BIO_dump_fp C.BIO_dump_fp
+func BIO_dump_fp(fp *c.FILE, s unsafe.Pointer, len c.Int) c.Int
+
+//go:linkname BIO_dump_indent_fp C.BIO_dump_indent_fp
+func BIO_dump_indent_fp(fp *c.FILE, s unsafe.Pointer, len c.Int, indent c.Int) c.Int
+
+// llgo:link (*BIO).HexString C.BIO_hex_string
+func (self *BIO) HexString(indent c.Int, width c.Int, data unsafe.Pointer, datalen c.Int) c.Int {
+	return 0
+}
+
+//go:linkname BIO_ADDR_new C.BIO_ADDR_new
+func BIO_ADDR_new() *BIO_ADDR
+
+// llgo:link (*BIO_ADDR).Copy C.BIO_ADDR_copy
+func (self *BIO_ADDR) Copy(src *BIO_ADDR) c.Int {
+	return 0
+}
+
+// llgo:link (*BIO_ADDR).Dup C.BIO_ADDR_dup
+func (self *BIO_ADDR) Dup() *BIO_ADDR {
+	return self
+}
 
-//go:linkname BIOSendmmsg C.BIO_sendmmsg
-func BIOSendmmsg(b *BIO, msg *BIO_MSG, stride c.SizeT, num_msg c.SizeT, flags c.Uint64T, msgs_processed *c.SizeT) c.Int
+// llgo:link (*BIO_ADDR).Rawmake C.BIO_ADDR_rawmake
+func (self *BIO_ADDR) Rawmake(family c.Int, where unsafe.Pointer, wherelen c.SizeT, port uint16) c.Int {
+	return 0
+}
+
+// llgo:link (*BIO_ADDR).Free C.BIO_ADDR_free
+func (self *BIO_ADDR) Free() {
+}
 
-//go:linkname BIOGetRpollDescriptor C.BIO_get_rpoll_descriptor
-func BIOGetRpollDescriptor(b *BIO, desc *BIO_POLL_DESCRIPTOR) c.Int
+// llgo:link (*BIO_ADDR).Clear C.BIO_ADDR_clear
+func (self *BIO_ADDR) Clear() {
+}
 
-//go:linkname BIOGetWpollDescriptor C.BIO_get_wpoll_descriptor
-func BIOGetWpollDescriptor(b *BIO, desc *BIO_POLL_DESCRIPTOR) c.Int
+// llgo:link (*BIO_ADDR).Family C.BIO_ADDR_family
+func (self *BIO_ADDR) Family() c.Int {
+	return 0
+}
 
-//go:linkname BIOPuts C.BIO_puts
-func BIOPuts(bp *BIO, buf *c.Char) c.Int
+// llgo:link (*BIO_ADDR).Rawaddress C.BIO_ADDR_rawaddress
+func (self *BIO_ADDR) Rawaddress(p unsafe.Pointer, l *c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname BIOIndent C.BIO_indent
-func BIOIndent(b *BIO, indent c.Int, max c.Int) c.Int
+// llgo:link (*BIO_ADDR).Rawport C.BIO_ADDR_rawport
+func (self *BIO_ADDR) Rawport() uint16 {
+	return 0
+}
 
-//go:linkname BIOCtrl C.BIO_ctrl
-func BIOCtrl(bp *BIO, cmd c.Int, larg c.Long, parg unsafe.Pointer) c.Long
+// llgo:link (*BIO_ADDR).HostnameString C.BIO_ADDR_hostname_string
+func (self *BIO_ADDR) HostnameString(numeric c.Int) *c.Char {
+	return nil
+}
 
-//go:linkname BIOEof C.BIO_eof
-func BIOEof(b *BIO) c.Int
+// llgo:link (*BIO_ADDR).ServiceString C.BIO_ADDR_service_string
+func (self *BIO_ADDR) ServiceString(numeric c.Int) *c.Char {
+	return nil
+}
 
-//go:linkname BIOCallbackCtrl C.BIO_callback_ctrl
-func BIOCallbackCtrl(b *BIO, cmd c.Int, fp *BIOInfoCb) c.Long
+// llgo:link (*BIO_ADDR).PathString C.BIO_ADDR_path_string
+func (self *BIO_ADDR) PathString() *c.Char {
+	return nil
+}
 
-//go:linkname BIOPtrCtrl C.BIO_ptr_ctrl
-func BIOPtrCtrl(bp *BIO, cmd c.Int, larg c.Long) unsafe.Pointer
+// llgo:link (*BIO_ADDRINFO).Next C.BIO_ADDRINFO_next
+func (self *BIO_ADDRINFO) Next() *BIO_ADDRINFO {
+	return self
+}
 
-//go:linkname BIOIntCtrl C.BIO_int_ctrl
-func BIOIntCtrl(bp *BIO, cmd c.Int, larg c.Long, iarg c.Int) c.Long
+// llgo:link (*BIO_ADDRINFO).Family C.BIO_ADDRINFO_family
+func (self *BIO_ADDRINFO) Family() c.Int {
+	return 0
+}
 
-//go:linkname BIOPush C.BIO_push
-func BIOPush(b *BIO, append *BIO) *BIO
+// llgo:link (*BIO_ADDRINFO).Socktype C.BIO_ADDRINFO_socktype
+func (self *BIO_ADDRINFO) Socktype() c.Int {
+	return 0
+}
 
-//go:linkname BIOPop C.BIO_pop
-func BIOPop(b *BIO) *BIO
+// llgo:link (*BIO_ADDRINFO).Protocol C.BIO_ADDRINFO_protocol
+func (self *BIO_ADDRINFO) Protocol() c.Int {
+	return 0
+}
 
-//go:linkname BIOFreeAll C.BIO_free_all
-func BIOFreeAll(a *BIO)
+// llgo:link (*BIO_ADDRINFO).Address C.BIO_ADDRINFO_address
+func (self *BIO_ADDRINFO) Address() *BIO_ADDR {
+	return nil
+}
 
-//go:linkname BIOFindType C.BIO_find_type
-func BIOFindType(b *BIO, bio_type c.Int) *BIO
+// llgo:link (*BIO_ADDRINFO).Free C.BIO_ADDRINFO_free
+func (self *BIO_ADDRINFO) Free() {
+}
 
-//go:linkname BIONext C.BIO_next
-func BIONext(b *BIO) *BIO
+//go:linkname BIO_parse_hostserv C.BIO_parse_hostserv
+func BIO_parse_hostserv(hostserv *c.Char, host **c.Char, service **c.Char, hostserv_prio BIO_hostserv_priorities) c.Int
 
-//go:linkname BIOSetNext C.BIO_set_next
-func BIOSetNext(b *BIO, next *BIO)
+//go:linkname BIO_lookup C.BIO_lookup
+func BIO_lookup(host *c.Char, service *c.Char, lookup_type BIO_lookup_type, family c.Int, socktype c.Int, res **BIO_ADDRINFO) c.Int
 
-//go:linkname BIOGetRetryBIO C.BIO_get_retry_BIO
-func BIOGetRetryBIO(bio *BIO, reason *c.Int) *BIO
+//go:linkname BIO_lookup_ex C.BIO_lookup_ex
+func BIO_lookup_ex(host *c.Char, service *c.Char, lookup_type c.Int, family c.Int, socktype c.Int, protocol c.Int, res **BIO_ADDRINFO) c.Int
 
-//go:linkname BIOGetRetryReason C.BIO_get_retry_reason
-func BIOGetRetryReason(bio *BIO) c.Int
+//go:linkname BIO_sock_error C.BIO_sock_error
+func BIO_sock_error(sock c.Int) c.Int
 
-//go:linkname BIOSetRetryReason C.BIO_set_retry_reason
-func BIOSetRetryReason(bio *BIO, reason c.Int)
+//go:linkname BIO_socket_ioctl C.BIO_socket_ioctl
+func BIO_socket_ioctl(fd c.Int, type_ c.Long, arg unsafe.Pointer) c.Int
 
-//go:linkname BIODupChain C.BIO_dup_chain
-func BIODupChain(in *BIO) *BIO
+//go:linkname BIO_socket_nbio C.BIO_socket_nbio
+func BIO_socket_nbio(fd c.Int, mode c.Int) c.Int
 
-//go:linkname BIONread0 C.BIO_nread0
-func BIONread0(bio *BIO, buf **c.Char) c.Int
+//go:linkname BIO_sock_init C.BIO_sock_init
+func BIO_sock_init() c.Int
 
-//go:linkname BIONread C.BIO_nread
-func BIONread(bio *BIO, buf **c.Char, num c.Int) c.Int
+//go:linkname BIO_set_tcp_ndelay C.BIO_set_tcp_ndelay
+func BIO_set_tcp_ndelay(sock c.Int, turn_on c.Int) c.Int
 
-//go:linkname BIONwrite0 C.BIO_nwrite0
-func BIONwrite0(bio *BIO, buf **c.Char) c.Int
+//go:linkname BIO_gethostbyname C.BIO_gethostbyname
+func BIO_gethostbyname(name *c.Char) *Hostent
 
-//go:linkname BIONwrite C.BIO_nwrite
-func BIONwrite(bio *BIO, buf **c.Char, num c.Int) c.Int
+//go:linkname BIO_get_port C.BIO_get_port
+func BIO_get_port(str *c.Char, port_ptr *uint16) c.Int
 
-//go:linkname BIO_SMem C.BIO_s_mem
-func BIO_SMem() *BIO_METHOD
+//go:linkname BIO_get_host_ip C.BIO_get_host_ip
+func BIO_get_host_ip(str *c.Char, ip *uint8) c.Int
 
-//go:linkname BIO_SDgramMem C.BIO_s_dgram_mem
-func BIO_SDgramMem() *BIO_METHOD
+//go:linkname BIO_get_accept_socket C.BIO_get_accept_socket
+func BIO_get_accept_socket(host_port *c.Char, mode c.Int) c.Int
 
-//go:linkname BIO_SSecmem C.BIO_s_secmem
-func BIO_SSecmem() *BIO_METHOD
-
-//go:linkname BIONewMemBuf C.BIO_new_mem_buf
-func BIONewMemBuf(buf unsafe.Pointer, len c.Int) *BIO
-
-//go:linkname BIO_SSocket C.BIO_s_socket
-func BIO_SSocket() *BIO_METHOD
-
-//go:linkname BIO_SConnect C.BIO_s_connect
-func BIO_SConnect() *BIO_METHOD
-
-//go:linkname BIO_SAccept C.BIO_s_accept
-func BIO_SAccept() *BIO_METHOD
-
-//go:linkname BIO_SFd C.BIO_s_fd
-func BIO_SFd() *BIO_METHOD
-
-//go:linkname BIO_SLog C.BIO_s_log
-func BIO_SLog() *BIO_METHOD
-
-//go:linkname BIO_SBio C.BIO_s_bio
-func BIO_SBio() *BIO_METHOD
-
-//go:linkname BIO_SNull C.BIO_s_null
-func BIO_SNull() *BIO_METHOD
-
-//go:linkname BIO_FNull C.BIO_f_null
-func BIO_FNull() *BIO_METHOD
-
-//go:linkname BIO_FBuffer C.BIO_f_buffer
-func BIO_FBuffer() *BIO_METHOD
-
-//go:linkname BIO_FReadbuffer C.BIO_f_readbuffer
-func BIO_FReadbuffer() *BIO_METHOD
-
-//go:linkname BIO_FLinebuffer C.BIO_f_linebuffer
-func BIO_FLinebuffer() *BIO_METHOD
-
-//go:linkname BIO_FNbioTest C.BIO_f_nbio_test
-func BIO_FNbioTest() *BIO_METHOD
-
-//go:linkname BIO_FPrefix C.BIO_f_prefix
-func BIO_FPrefix() *BIO_METHOD
-
-//go:linkname BIO_SCore C.BIO_s_core
-func BIO_SCore() *BIO_METHOD
-
-//go:linkname BIO_SDgramPair C.BIO_s_dgram_pair
-func BIO_SDgramPair() *BIO_METHOD
-
-//go:linkname BIO_SDatagram C.BIO_s_datagram
-func BIO_SDatagram() *BIO_METHOD
-
-//go:linkname BIODgramNonFatalError C.BIO_dgram_non_fatal_error
-func BIODgramNonFatalError(error c.Int) c.Int
-
-//go:linkname BIONewDgram C.BIO_new_dgram
-func BIONewDgram(fd c.Int, close_flag c.Int) *BIO
-
-//go:linkname BIOSockShouldRetry C.BIO_sock_should_retry
-func BIOSockShouldRetry(i c.Int) c.Int
-
-//go:linkname BIOSockNonFatalError C.BIO_sock_non_fatal_error
-func BIOSockNonFatalError(error c.Int) c.Int
-
-//go:linkname BIOErrIsNonFatal C.BIO_err_is_non_fatal
-func BIOErrIsNonFatal(errcode c.Uint) c.Int
-
-//go:linkname BIOSocketWait C.BIO_socket_wait
-func BIOSocketWait(fd c.Int, for_read c.Int, max_time time.TimeT) c.Int
-
-//go:linkname BIOSetSendFlags C.BIO_set_send_flags
-func BIOSetSendFlags(b *BIO, flags c.Int) c.Long
-
-//go:linkname BIOWait C.BIO_wait
-func BIOWait(bio *BIO, max_time time.TimeT, nap_milliseconds c.Uint) c.Int
-
-//go:linkname BIODoConnectRetry C.BIO_do_connect_retry
-func BIODoConnectRetry(bio *BIO, timeout c.Int, nap_milliseconds c.Int) c.Int
-
-//go:linkname BIOFdShouldRetry C.BIO_fd_should_retry
-func BIOFdShouldRetry(i c.Int) c.Int
-
-//go:linkname BIOFdNonFatalError C.BIO_fd_non_fatal_error
-func BIOFdNonFatalError(error c.Int) c.Int
-
-//go:linkname BIODumpCb C.BIO_dump_cb
-func BIODumpCb(cb func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.SizeT, _llcppg_param3 unsafe.Pointer) c.Int, u unsafe.Pointer, s unsafe.Pointer, len c.Int) c.Int
-
-//go:linkname BIODumpIndentCb C.BIO_dump_indent_cb
-func BIODumpIndentCb(cb func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.SizeT, _llcppg_param3 unsafe.Pointer) c.Int, u unsafe.Pointer, s unsafe.Pointer, len c.Int, indent c.Int) c.Int
-
-//go:linkname BIODump C.BIO_dump
-func BIODump(b *BIO, bytes unsafe.Pointer, len c.Int) c.Int
-
-//go:linkname BIODumpIndent C.BIO_dump_indent
-func BIODumpIndent(b *BIO, bytes unsafe.Pointer, len c.Int, indent c.Int) c.Int
-
-//go:linkname BIODumpFp C.BIO_dump_fp
-func BIODumpFp(fp *c.FILE, s unsafe.Pointer, len c.Int) c.Int
-
-//go:linkname BIODumpIndentFp C.BIO_dump_indent_fp
-func BIODumpIndentFp(fp *c.FILE, s unsafe.Pointer, len c.Int, indent c.Int) c.Int
-
-//go:linkname BIOHexString C.BIO_hex_string
-func BIOHexString(out *BIO, indent c.Int, width c.Int, data unsafe.Pointer, datalen c.Int) c.Int
-
-//go:linkname BIO_ADDRNew C.BIO_ADDR_new
-func BIO_ADDRNew() *BIO_ADDR
-
-//go:linkname BIO_ADDRCopy C.BIO_ADDR_copy
-func BIO_ADDRCopy(dst *BIO_ADDR, src *BIO_ADDR) c.Int
-
-//go:linkname BIO_ADDRDup C.BIO_ADDR_dup
-func BIO_ADDRDup(ap *BIO_ADDR) *BIO_ADDR
-
-//go:linkname BIO_ADDRRawmake C.BIO_ADDR_rawmake
-func BIO_ADDRRawmake(ap *BIO_ADDR, family c.Int, where unsafe.Pointer, wherelen c.SizeT, port uint16) c.Int
-
-//go:linkname BIO_ADDRFree C.BIO_ADDR_free
-func BIO_ADDRFree(_llcppg_param1 *BIO_ADDR)
-
-//go:linkname BIO_ADDRClear C.BIO_ADDR_clear
-func BIO_ADDRClear(ap *BIO_ADDR)
-
-//go:linkname BIO_ADDRFamily C.BIO_ADDR_family
-func BIO_ADDRFamily(ap *BIO_ADDR) c.Int
-
-//go:linkname BIO_ADDRRawaddress C.BIO_ADDR_rawaddress
-func BIO_ADDRRawaddress(ap *BIO_ADDR, p unsafe.Pointer, l *c.SizeT) c.Int
-
-//go:linkname BIO_ADDRRawport C.BIO_ADDR_rawport
-func BIO_ADDRRawport(ap *BIO_ADDR) uint16
-
-//go:linkname BIO_ADDRHostnameString C.BIO_ADDR_hostname_string
-func BIO_ADDRHostnameString(ap *BIO_ADDR, numeric c.Int) *c.Char
-
-//go:linkname BIO_ADDRServiceString C.BIO_ADDR_service_string
-func BIO_ADDRServiceString(ap *BIO_ADDR, numeric c.Int) *c.Char
-
-//go:linkname BIO_ADDRPathString C.BIO_ADDR_path_string
-func BIO_ADDRPathString(ap *BIO_ADDR) *c.Char
-
-//go:linkname BIO_ADDRINFONext C.BIO_ADDRINFO_next
-func BIO_ADDRINFONext(bai *BIO_ADDRINFO) *BIO_ADDRINFO
-
-//go:linkname BIO_ADDRINFOFamily C.BIO_ADDRINFO_family
-func BIO_ADDRINFOFamily(bai *BIO_ADDRINFO) c.Int
-
-//go:linkname BIO_ADDRINFOSocktype C.BIO_ADDRINFO_socktype
-func BIO_ADDRINFOSocktype(bai *BIO_ADDRINFO) c.Int
-
-//go:linkname BIO_ADDRINFOProtocol C.BIO_ADDRINFO_protocol
-func BIO_ADDRINFOProtocol(bai *BIO_ADDRINFO) c.Int
-
-//go:linkname BIO_ADDRINFOAddress C.BIO_ADDRINFO_address
-func BIO_ADDRINFOAddress(bai *BIO_ADDRINFO) *BIO_ADDR
-
-//go:linkname BIO_ADDRINFOFree C.BIO_ADDRINFO_free
-func BIO_ADDRINFOFree(bai *BIO_ADDRINFO)
-
-//go:linkname BIOParseHostserv C.BIO_parse_hostserv
-func BIOParseHostserv(hostserv *c.Char, host **c.Char, service **c.Char, hostserv_prio BIOHostservPriorities) c.Int
-
-//go:linkname BIOLookup C.BIO_lookup
-func BIOLookup(host *c.Char, service *c.Char, lookup_type BIOLookupType, family c.Int, socktype c.Int, res **BIO_ADDRINFO) c.Int
-
-//go:linkname BIOLookupEx C.BIO_lookup_ex
-func BIOLookupEx(host *c.Char, service *c.Char, lookup_type c.Int, family c.Int, socktype c.Int, protocol c.Int, res **BIO_ADDRINFO) c.Int
-
-//go:linkname BIOSockError C.BIO_sock_error
-func BIOSockError(sock c.Int) c.Int
-
-//go:linkname BIOSocketIoctl C.BIO_socket_ioctl
-func BIOSocketIoctl(fd c.Int, type_ c.Long, arg unsafe.Pointer) c.Int
-
-//go:linkname BIOSocketNbio C.BIO_socket_nbio
-func BIOSocketNbio(fd c.Int, mode c.Int) c.Int
-
-//go:linkname BIOSockInit C.BIO_sock_init
-func BIOSockInit() c.Int
-
-//go:linkname BIOSetTcpNdelay C.BIO_set_tcp_ndelay
-func BIOSetTcpNdelay(sock c.Int, turn_on c.Int) c.Int
-
-//go:linkname BIOGethostbyname C.BIO_gethostbyname
-func BIOGethostbyname(name *c.Char) *Hostent
-
-//go:linkname BIOGetPort C.BIO_get_port
-func BIOGetPort(str *c.Char, port_ptr *uint16) c.Int
-
-//go:linkname BIOGetHostIp C.BIO_get_host_ip
-func BIOGetHostIp(str *c.Char, ip *uint8) c.Int
-
-//go:linkname BIOGetAcceptSocket C.BIO_get_accept_socket
-func BIOGetAcceptSocket(host_port *c.Char, mode c.Int) c.Int
-
-//go:linkname BIOAccept C.BIO_accept
-func BIOAccept(sock c.Int, ip_port **c.Char) c.Int
-func (p *BIOSockInfoU) XGof_ref_addr() **BIO_ADDR {
+//go:linkname BIO_accept C.BIO_accept
+func BIO_accept(sock c.Int, ip_port **c.Char) c.Int
+func (p *BIO_sock_info_u) XGof_ref_addr() **BIO_ADDR {
 	return (**BIO_ADDR)(unsafe.Pointer(p))
 }
 
-//go:linkname BIOSockInfo C.BIO_sock_info
-func BIOSockInfo(sock c.Int, type_ BIOSockInfoType, info *BIOSockInfoU) c.Int
+//go:linkname BIO_sock_info C.BIO_sock_info
+func BIO_sock_info(sock c.Int, type_ BIO_sock_info_type, info *BIO_sock_info_u) c.Int
 
-//go:linkname BIOSocket C.BIO_socket
-func BIOSocket(domain c.Int, socktype c.Int, protocol c.Int, options c.Int) c.Int
+//go:linkname BIO_socket C.BIO_socket
+func BIO_socket(domain c.Int, socktype c.Int, protocol c.Int, options c.Int) c.Int
 
-//go:linkname BIOConnect C.BIO_connect
-func BIOConnect(sock c.Int, addr *BIO_ADDR, options c.Int) c.Int
+//go:linkname BIO_connect C.BIO_connect
+func BIO_connect(sock c.Int, addr *BIO_ADDR, options c.Int) c.Int
 
-//go:linkname BIOBind C.BIO_bind
-func BIOBind(sock c.Int, addr *BIO_ADDR, options c.Int) c.Int
+//go:linkname BIO_bind C.BIO_bind
+func BIO_bind(sock c.Int, addr *BIO_ADDR, options c.Int) c.Int
 
-//go:linkname BIOListen C.BIO_listen
-func BIOListen(sock c.Int, addr *BIO_ADDR, options c.Int) c.Int
+//go:linkname BIO_listen C.BIO_listen
+func BIO_listen(sock c.Int, addr *BIO_ADDR, options c.Int) c.Int
 
-//go:linkname BIOAcceptEx C.BIO_accept_ex
-func BIOAcceptEx(accept_sock c.Int, addr *BIO_ADDR, options c.Int) c.Int
+//go:linkname BIO_accept_ex C.BIO_accept_ex
+func BIO_accept_ex(accept_sock c.Int, addr *BIO_ADDR, options c.Int) c.Int
 
-//go:linkname BIOClosesocket C.BIO_closesocket
-func BIOClosesocket(sock c.Int) c.Int
+//go:linkname BIO_closesocket C.BIO_closesocket
+func BIO_closesocket(sock c.Int) c.Int
 
-//go:linkname BIONewSocket C.BIO_new_socket
-func BIONewSocket(sock c.Int, close_flag c.Int) *BIO
+//go:linkname BIO_new_socket C.BIO_new_socket
+func BIO_new_socket(sock c.Int, close_flag c.Int) *BIO
 
-//go:linkname BIONewConnect C.BIO_new_connect
-func BIONewConnect(host_port *c.Char) *BIO
+//go:linkname BIO_new_connect C.BIO_new_connect
+func BIO_new_connect(host_port *c.Char) *BIO
 
-//go:linkname BIONewAccept C.BIO_new_accept
-func BIONewAccept(host_port *c.Char) *BIO
+//go:linkname BIO_new_accept C.BIO_new_accept
+func BIO_new_accept(host_port *c.Char) *BIO
 
-//go:linkname BIONewFd C.BIO_new_fd
-func BIONewFd(fd c.Int, close_flag c.Int) *BIO
+//go:linkname BIO_new_fd C.BIO_new_fd
+func BIO_new_fd(fd c.Int, close_flag c.Int) *BIO
 
-//go:linkname BIONewBioPair C.BIO_new_bio_pair
-func BIONewBioPair(bio1 **BIO, writebuf1 c.SizeT, bio2 **BIO, writebuf2 c.SizeT) c.Int
+//go:linkname BIO_new_bio_pair C.BIO_new_bio_pair
+func BIO_new_bio_pair(bio1 **BIO, writebuf1 c.SizeT, bio2 **BIO, writebuf2 c.SizeT) c.Int
 
-//go:linkname BIONewBioDgramPair C.BIO_new_bio_dgram_pair
-func BIONewBioDgramPair(bio1 **BIO, writebuf1 c.SizeT, bio2 **BIO, writebuf2 c.SizeT) c.Int
+//go:linkname BIO_new_bio_dgram_pair C.BIO_new_bio_dgram_pair
+func BIO_new_bio_dgram_pair(bio1 **BIO, writebuf1 c.SizeT, bio2 **BIO, writebuf2 c.SizeT) c.Int
 
-//go:linkname BIOCopyNextRetry C.BIO_copy_next_retry
-func BIOCopyNextRetry(b *BIO)
+// llgo:link (*BIO).CopyNextRetry C.BIO_copy_next_retry
+func (self *BIO) CopyNextRetry() {
+}
 
-//go:linkname BIOPrintf C.BIO_printf
-func BIOPrintf(bio *BIO, format *c.Char, __llgo_va_list ...any) c.Int
+// llgo:link (*BIO).Printf C.BIO_printf
+func (self *BIO) Printf(format *c.Char, __llgo_va_list ...any) c.Int {
+	return 0
+}
 
-//go:linkname BIOVprintf C.BIO_vprintf
-func BIOVprintf(bio *BIO, format *c.Char, args c.VaList) c.Int
+// llgo:link (*BIO).Vprintf C.BIO_vprintf
+func (self *BIO) Vprintf(format *c.Char, args c.VaList) c.Int {
+	return 0
+}
 
-//go:linkname BIOSnprintf C.BIO_snprintf
-func BIOSnprintf(buf *c.Char, n c.SizeT, format *c.Char, __llgo_va_list ...any) c.Int
+//go:linkname BIO_snprintf C.BIO_snprintf
+func BIO_snprintf(buf *c.Char, n c.SizeT, format *c.Char, __llgo_va_list ...any) c.Int
 
-//go:linkname BIOVsnprintf C.BIO_vsnprintf
-func BIOVsnprintf(buf *c.Char, n c.SizeT, format *c.Char, args c.VaList) c.Int
+//go:linkname BIO_vsnprintf C.BIO_vsnprintf
+func BIO_vsnprintf(buf *c.Char, n c.SizeT, format *c.Char, args c.VaList) c.Int
 
-//go:linkname BIOMethNew C.BIO_meth_new
-func BIOMethNew(type_ c.Int, name *c.Char) *BIO_METHOD
+//go:linkname BIO_meth_new C.BIO_meth_new
+func BIO_meth_new(type_ c.Int, name *c.Char) *BIO_METHOD
 
-//go:linkname BIOMethFree C.BIO_meth_free
-func BIOMethFree(biom *BIO_METHOD)
+// llgo:link (*BIO_METHOD).Free C.BIO_meth_free
+func (self *BIO_METHOD) Free() {
+}
 
-//go:linkname BIOMethSetWrite C.BIO_meth_set_write
-func BIOMethSetWrite(biom *BIO_METHOD, write func(_llcppg_param1 *BIO, _llcppg_param2 *c.Char, _llcppg_param3 c.Int) c.Int) c.Int
+// llgo:link (*BIO_METHOD).SetWrite C.BIO_meth_set_write
+func (self *BIO_METHOD) SetWrite(write func(_llcppg_param1 *BIO, _llcppg_param2 *c.Char, _llcppg_param3 c.Int) c.Int) c.Int {
+	return 0
+}
 
-//go:linkname BIOMethSetWriteEx C.BIO_meth_set_write_ex
-func BIOMethSetWriteEx(biom *BIO_METHOD, bwrite func(_llcppg_param1 *BIO, _llcppg_param2 *c.Char, _llcppg_param3 c.SizeT, _llcppg_param4 *c.SizeT) c.Int) c.Int
+// llgo:link (*BIO_METHOD).SetWriteEx C.BIO_meth_set_write_ex
+func (self *BIO_METHOD) SetWriteEx(bwrite func(_llcppg_param1 *BIO, _llcppg_param2 *c.Char, _llcppg_param3 c.SizeT, _llcppg_param4 *c.SizeT) c.Int) c.Int {
+	return 0
+}
 
-//go:linkname BIOMethSetSendmmsg C.BIO_meth_set_sendmmsg
-func BIOMethSetSendmmsg(biom *BIO_METHOD, f func(_llcppg_param1 *BIO, _llcppg_param2 *BIO_MSG, _llcppg_param3 c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 c.Uint64T, _llcppg_param6 *c.SizeT) c.Int) c.Int
+// llgo:link (*BIO_METHOD).SetSendmmsg C.BIO_meth_set_sendmmsg
+func (self *BIO_METHOD) SetSendmmsg(f func(_llcppg_param1 *BIO, _llcppg_param2 *BIO_MSG, _llcppg_param3 c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 c.Uint64T, _llcppg_param6 *c.SizeT) c.Int) c.Int {
+	return 0
+}
 
-//go:linkname BIOMethSetRead C.BIO_meth_set_read
-func BIOMethSetRead(biom *BIO_METHOD, read func(_llcppg_param1 *BIO, _llcppg_param2 *c.Char, _llcppg_param3 c.Int) c.Int) c.Int
+// llgo:link (*BIO_METHOD).SetRead C.BIO_meth_set_read
+func (self *BIO_METHOD) SetRead(read func(_llcppg_param1 *BIO, _llcppg_param2 *c.Char, _llcppg_param3 c.Int) c.Int) c.Int {
+	return 0
+}
 
-//go:linkname BIOMethSetReadEx C.BIO_meth_set_read_ex
-func BIOMethSetReadEx(biom *BIO_METHOD, bread func(_llcppg_param1 *BIO, _llcppg_param2 *c.Char, _llcppg_param3 c.SizeT, _llcppg_param4 *c.SizeT) c.Int) c.Int
+// llgo:link (*BIO_METHOD).SetReadEx C.BIO_meth_set_read_ex
+func (self *BIO_METHOD) SetReadEx(bread func(_llcppg_param1 *BIO, _llcppg_param2 *c.Char, _llcppg_param3 c.SizeT, _llcppg_param4 *c.SizeT) c.Int) c.Int {
+	return 0
+}
 
-//go:linkname BIOMethSetRecvmmsg C.BIO_meth_set_recvmmsg
-func BIOMethSetRecvmmsg(biom *BIO_METHOD, f func(_llcppg_param1 *BIO, _llcppg_param2 *BIO_MSG, _llcppg_param3 c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 c.Uint64T, _llcppg_param6 *c.SizeT) c.Int) c.Int
+// llgo:link (*BIO_METHOD).SetRecvmmsg C.BIO_meth_set_recvmmsg
+func (self *BIO_METHOD) SetRecvmmsg(f func(_llcppg_param1 *BIO, _llcppg_param2 *BIO_MSG, _llcppg_param3 c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 c.Uint64T, _llcppg_param6 *c.SizeT) c.Int) c.Int {
+	return 0
+}
 
-//go:linkname BIOMethSetPuts C.BIO_meth_set_puts
-func BIOMethSetPuts(biom *BIO_METHOD, puts func(_llcppg_param1 *BIO, _llcppg_param2 *c.Char) c.Int) c.Int
+// llgo:link (*BIO_METHOD).SetPuts C.BIO_meth_set_puts
+func (self *BIO_METHOD) SetPuts(puts func(_llcppg_param1 *BIO, _llcppg_param2 *c.Char) c.Int) c.Int {
+	return 0
+}
 
-//go:linkname BIOMethSetGets C.BIO_meth_set_gets
-func BIOMethSetGets(biom *BIO_METHOD, ossl_gets func(_llcppg_param1 *BIO, _llcppg_param2 *c.Char, _llcppg_param3 c.Int) c.Int) c.Int
+// llgo:link (*BIO_METHOD).SetGets C.BIO_meth_set_gets
+func (self *BIO_METHOD) SetGets(ossl_gets func(_llcppg_param1 *BIO, _llcppg_param2 *c.Char, _llcppg_param3 c.Int) c.Int) c.Int {
+	return 0
+}
 
-//go:linkname BIOMethSetCtrl C.BIO_meth_set_ctrl
-func BIOMethSetCtrl(biom *BIO_METHOD, ctrl func(_llcppg_param1 *BIO, _llcppg_param2 c.Int, _llcppg_param3 c.Long, _llcppg_param4 unsafe.Pointer) c.Long) c.Int
+// llgo:link (*BIO_METHOD).SetCtrl C.BIO_meth_set_ctrl
+func (self *BIO_METHOD) SetCtrl(ctrl func(_llcppg_param1 *BIO, _llcppg_param2 c.Int, _llcppg_param3 c.Long, _llcppg_param4 unsafe.Pointer) c.Long) c.Int {
+	return 0
+}
 
-//go:linkname BIOMethSetCreate C.BIO_meth_set_create
-func BIOMethSetCreate(biom *BIO_METHOD, create func(_llcppg_param1 *BIO) c.Int) c.Int
+// llgo:link (*BIO_METHOD).SetCreate C.BIO_meth_set_create
+func (self *BIO_METHOD) SetCreate(create func(_llcppg_param1 *BIO) c.Int) c.Int {
+	return 0
+}
 
-//go:linkname BIOMethSetDestroy C.BIO_meth_set_destroy
-func BIOMethSetDestroy(biom *BIO_METHOD, destroy func(_llcppg_param1 *BIO) c.Int) c.Int
+// llgo:link (*BIO_METHOD).SetDestroy C.BIO_meth_set_destroy
+func (self *BIO_METHOD) SetDestroy(destroy func(_llcppg_param1 *BIO) c.Int) c.Int {
+	return 0
+}
 
-//go:linkname BIOMethSetCallbackCtrl C.BIO_meth_set_callback_ctrl
-func BIOMethSetCallbackCtrl(biom *BIO_METHOD, callback_ctrl func(_llcppg_param1 *BIO, _llcppg_param2 c.Int, _llcppg_param3 *BIOInfoCb) c.Long) c.Int
+// llgo:link (*BIO_METHOD).SetCallbackCtrl C.BIO_meth_set_callback_ctrl
+func (self *BIO_METHOD) SetCallbackCtrl(callback_ctrl func(_llcppg_param1 *BIO, _llcppg_param2 c.Int, _llcppg_param3 *BIO_info_cb) c.Long) c.Int {
+	return 0
+}
 
-//go:linkname BIOMethGetWrite C.BIO_meth_get_write
-func BIOMethGetWrite(biom *BIO_METHOD) func(_llcppg_param1 *BIO, _llcppg_param2 *c.Char, _llcppg_param3 c.Int) c.Int
+// llgo:link (*BIO_METHOD).Write C.BIO_meth_get_write
+func (self *BIO_METHOD) Write() func(_llcppg_param1 *BIO, _llcppg_param2 *c.Char, _llcppg_param3 c.Int) c.Int {
+	return nil
+}
 
-//go:linkname BIOMethGetWriteEx C.BIO_meth_get_write_ex
-func BIOMethGetWriteEx(biom *BIO_METHOD) func(_llcppg_param1 *BIO, _llcppg_param2 *c.Char, _llcppg_param3 c.SizeT, _llcppg_param4 *c.SizeT) c.Int
+// llgo:link (*BIO_METHOD).WriteEx C.BIO_meth_get_write_ex
+func (self *BIO_METHOD) WriteEx() func(_llcppg_param1 *BIO, _llcppg_param2 *c.Char, _llcppg_param3 c.SizeT, _llcppg_param4 *c.SizeT) c.Int {
+	return nil
+}
 
-//go:linkname BIOMethGetSendmmsg C.BIO_meth_get_sendmmsg
-func BIOMethGetSendmmsg(biom *BIO_METHOD) func(_llcppg_param1 *BIO, _llcppg_param2 *BIO_MSG, _llcppg_param3 c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 c.Uint64T, _llcppg_param6 *c.SizeT) c.Int
+// llgo:link (*BIO_METHOD).Sendmmsg C.BIO_meth_get_sendmmsg
+func (self *BIO_METHOD) Sendmmsg() func(_llcppg_param1 *BIO, _llcppg_param2 *BIO_MSG, _llcppg_param3 c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 c.Uint64T, _llcppg_param6 *c.SizeT) c.Int {
+	return nil
+}
 
-//go:linkname BIOMethGetRead C.BIO_meth_get_read
-func BIOMethGetRead(biom *BIO_METHOD) func(_llcppg_param1 *BIO, _llcppg_param2 *c.Char, _llcppg_param3 c.Int) c.Int
+// llgo:link (*BIO_METHOD).Read C.BIO_meth_get_read
+func (self *BIO_METHOD) Read() func(_llcppg_param1 *BIO, _llcppg_param2 *c.Char, _llcppg_param3 c.Int) c.Int {
+	return nil
+}
 
-//go:linkname BIOMethGetReadEx C.BIO_meth_get_read_ex
-func BIOMethGetReadEx(biom *BIO_METHOD) func(_llcppg_param1 *BIO, _llcppg_param2 *c.Char, _llcppg_param3 c.SizeT, _llcppg_param4 *c.SizeT) c.Int
+// llgo:link (*BIO_METHOD).ReadEx C.BIO_meth_get_read_ex
+func (self *BIO_METHOD) ReadEx() func(_llcppg_param1 *BIO, _llcppg_param2 *c.Char, _llcppg_param3 c.SizeT, _llcppg_param4 *c.SizeT) c.Int {
+	return nil
+}
 
-//go:linkname BIOMethGetRecvmmsg C.BIO_meth_get_recvmmsg
-func BIOMethGetRecvmmsg(biom *BIO_METHOD) func(_llcppg_param1 *BIO, _llcppg_param2 *BIO_MSG, _llcppg_param3 c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 c.Uint64T, _llcppg_param6 *c.SizeT) c.Int
+// llgo:link (*BIO_METHOD).Recvmmsg C.BIO_meth_get_recvmmsg
+func (self *BIO_METHOD) Recvmmsg() func(_llcppg_param1 *BIO, _llcppg_param2 *BIO_MSG, _llcppg_param3 c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 c.Uint64T, _llcppg_param6 *c.SizeT) c.Int {
+	return nil
+}
 
-//go:linkname BIOMethGetPuts C.BIO_meth_get_puts
-func BIOMethGetPuts(biom *BIO_METHOD) func(_llcppg_param1 *BIO, _llcppg_param2 *c.Char) c.Int
+// llgo:link (*BIO_METHOD).Puts C.BIO_meth_get_puts
+func (self *BIO_METHOD) Puts() func(_llcppg_param1 *BIO, _llcppg_param2 *c.Char) c.Int {
+	return nil
+}
 
-//go:linkname BIOMethGetGets C.BIO_meth_get_gets
-func BIOMethGetGets(biom *BIO_METHOD) func(_llcppg_param1 *BIO, _llcppg_param2 *c.Char, _llcppg_param3 c.Int) c.Int
+// llgo:link (*BIO_METHOD).Gets C.BIO_meth_get_gets
+func (self *BIO_METHOD) Gets() func(_llcppg_param1 *BIO, _llcppg_param2 *c.Char, _llcppg_param3 c.Int) c.Int {
+	return nil
+}
 
-//go:linkname BIOMethGetCtrl C.BIO_meth_get_ctrl
-func BIOMethGetCtrl(biom *BIO_METHOD) func(_llcppg_param1 *BIO, _llcppg_param2 c.Int, _llcppg_param3 c.Long, _llcppg_param4 unsafe.Pointer) c.Long
+// llgo:link (*BIO_METHOD).Ctrl C.BIO_meth_get_ctrl
+func (self *BIO_METHOD) Ctrl() func(_llcppg_param1 *BIO, _llcppg_param2 c.Int, _llcppg_param3 c.Long, _llcppg_param4 unsafe.Pointer) c.Long {
+	return nil
+}
 
-//go:linkname BIOMethGetCreate C.BIO_meth_get_create
-func BIOMethGetCreate(bion *BIO_METHOD) func(_llcppg_param1 *BIO) c.Int
+// llgo:link (*BIO_METHOD).Create C.BIO_meth_get_create
+func (self *BIO_METHOD) Create() func(_llcppg_param1 *BIO) c.Int {
+	return nil
+}
 
-//go:linkname BIOMethGetDestroy C.BIO_meth_get_destroy
-func BIOMethGetDestroy(biom *BIO_METHOD) func(_llcppg_param1 *BIO) c.Int
+// llgo:link (*BIO_METHOD).Destroy C.BIO_meth_get_destroy
+func (self *BIO_METHOD) Destroy() func(_llcppg_param1 *BIO) c.Int {
+	return nil
+}
 
-//go:linkname BIOMethGetCallbackCtrl C.BIO_meth_get_callback_ctrl
-func BIOMethGetCallbackCtrl(biom *BIO_METHOD) func(_llcppg_param1 *BIO, _llcppg_param2 c.Int, _llcppg_param3 *BIOInfoCb) c.Long
+// llgo:link (*BIO_METHOD).CallbackCtrl C.BIO_meth_get_callback_ctrl
+func (self *BIO_METHOD) CallbackCtrl() func(_llcppg_param1 *BIO, _llcppg_param2 c.Int, _llcppg_param3 *BIO_info_cb) c.Long {
+	return nil
+}

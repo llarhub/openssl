@@ -78,11 +78,11 @@ const (
 	POINT_CONVERSION_HYBRID PointConversionFormT = 6
 )
 
-type ECBuiltinCurve struct {
+type EC_builtin_curve struct {
 	Nid     c.Int
 	Comment *c.Char
 }
-type ECDSA_SIGSt struct {
+type ECDSA_SIG_st struct {
 }
 type EcGroupSt struct {
 }
@@ -94,143 +94,179 @@ type EcPointSt struct {
 }
 type EcpkParametersSt struct {
 }
-type EC_METHOD = EcMethodSt
-type EC_GROUP = EcGroupSt
-type EC_POINT = EcPointSt
-type ECPKPARAMETERS = EcpkParametersSt
-type ECPARAMETERS = EcParametersSt
-type ECDSA_SIG = ECDSA_SIGSt
+type EC_METHOD EcMethodSt
+type EC_GROUP EcGroupSt
+type EC_POINT EcPointSt
+type ECPKPARAMETERS EcpkParametersSt
+type ECPARAMETERS EcParametersSt
+type ECDSA_SIG ECDSA_SIG_st
 
-//go:linkname EVP_PKEY_CTXSetEcParamgenCurveNid C.EVP_PKEY_CTX_set_ec_paramgen_curve_nid
-func EVP_PKEY_CTXSetEcParamgenCurveNid(ctx *EVP_PKEY_CTX, nid c.Int) c.Int
+// llgo:link (*EVP_PKEY_CTX).SetEcParamgenCurveNid C.EVP_PKEY_CTX_set_ec_paramgen_curve_nid
+func (self *EVP_PKEY_CTX) SetEcParamgenCurveNid(nid c.Int) c.Int {
+	return 0
+}
 
-//go:linkname EVP_PKEY_CTXSetEcParamEnc C.EVP_PKEY_CTX_set_ec_param_enc
-func EVP_PKEY_CTXSetEcParamEnc(ctx *EVP_PKEY_CTX, param_enc c.Int) c.Int
+// llgo:link (*EVP_PKEY_CTX).SetEcParamEnc C.EVP_PKEY_CTX_set_ec_param_enc
+func (self *EVP_PKEY_CTX) SetEcParamEnc(param_enc c.Int) c.Int {
+	return 0
+}
 
-//go:linkname EVP_PKEY_CTXSetEcdhCofactorMode C.EVP_PKEY_CTX_set_ecdh_cofactor_mode
-func EVP_PKEY_CTXSetEcdhCofactorMode(ctx *EVP_PKEY_CTX, cofactor_mode c.Int) c.Int
+// llgo:link (*EVP_PKEY_CTX).SetEcdhCofactorMode C.EVP_PKEY_CTX_set_ecdh_cofactor_mode
+func (self *EVP_PKEY_CTX) SetEcdhCofactorMode(cofactor_mode c.Int) c.Int {
+	return 0
+}
 
-//go:linkname EVP_PKEY_CTXGetEcdhCofactorMode C.EVP_PKEY_CTX_get_ecdh_cofactor_mode
-func EVP_PKEY_CTXGetEcdhCofactorMode(ctx *EVP_PKEY_CTX) c.Int
+// llgo:link (*EVP_PKEY_CTX).EcdhCofactorMode C.EVP_PKEY_CTX_get_ecdh_cofactor_mode
+func (self *EVP_PKEY_CTX) EcdhCofactorMode() c.Int {
+	return 0
+}
 
-//go:linkname EVP_PKEY_CTXSetEcdhKdfType C.EVP_PKEY_CTX_set_ecdh_kdf_type
-func EVP_PKEY_CTXSetEcdhKdfType(ctx *EVP_PKEY_CTX, kdf c.Int) c.Int
+// llgo:link (*EVP_PKEY_CTX).SetEcdhKdfType C.EVP_PKEY_CTX_set_ecdh_kdf_type
+func (self *EVP_PKEY_CTX) SetEcdhKdfType(kdf c.Int) c.Int {
+	return 0
+}
 
-//go:linkname EVP_PKEY_CTXGetEcdhKdfType C.EVP_PKEY_CTX_get_ecdh_kdf_type
-func EVP_PKEY_CTXGetEcdhKdfType(ctx *EVP_PKEY_CTX) c.Int
+// llgo:link (*EVP_PKEY_CTX).EcdhKdfType C.EVP_PKEY_CTX_get_ecdh_kdf_type
+func (self *EVP_PKEY_CTX) EcdhKdfType() c.Int {
+	return 0
+}
 
-//go:linkname EVP_PKEY_CTXSetEcdhKdfMd C.EVP_PKEY_CTX_set_ecdh_kdf_md
-func EVP_PKEY_CTXSetEcdhKdfMd(ctx *EVP_PKEY_CTX, md *EVP_MD) c.Int
+// llgo:link (*EVP_PKEY_CTX).SetEcdhKdfMd C.EVP_PKEY_CTX_set_ecdh_kdf_md
+func (self *EVP_PKEY_CTX) SetEcdhKdfMd(md *EVP_MD) c.Int {
+	return 0
+}
 
-//go:linkname EVP_PKEY_CTXGetEcdhKdfMd C.EVP_PKEY_CTX_get_ecdh_kdf_md
-func EVP_PKEY_CTXGetEcdhKdfMd(ctx *EVP_PKEY_CTX, md **EVP_MD) c.Int
+// llgo:link (*EVP_PKEY_CTX).EcdhKdfMd C.EVP_PKEY_CTX_get_ecdh_kdf_md
+func (self *EVP_PKEY_CTX) EcdhKdfMd(md **EVP_MD) c.Int {
+	return 0
+}
 
-//go:linkname EVP_PKEY_CTXSetEcdhKdfOutlen C.EVP_PKEY_CTX_set_ecdh_kdf_outlen
-func EVP_PKEY_CTXSetEcdhKdfOutlen(ctx *EVP_PKEY_CTX, len c.Int) c.Int
+// llgo:link (*EVP_PKEY_CTX).SetEcdhKdfOutlen C.EVP_PKEY_CTX_set_ecdh_kdf_outlen
+func (self *EVP_PKEY_CTX) SetEcdhKdfOutlen(len c.Int) c.Int {
+	return 0
+}
 
-//go:linkname EVP_PKEY_CTXGetEcdhKdfOutlen C.EVP_PKEY_CTX_get_ecdh_kdf_outlen
-func EVP_PKEY_CTXGetEcdhKdfOutlen(ctx *EVP_PKEY_CTX, len *c.Int) c.Int
+// llgo:link (*EVP_PKEY_CTX).EcdhKdfOutlen C.EVP_PKEY_CTX_get_ecdh_kdf_outlen
+func (self *EVP_PKEY_CTX) EcdhKdfOutlen(len *c.Int) c.Int {
+	return 0
+}
 
-//go:linkname EVP_PKEY_CTXSet0EcdhKdfUkm C.EVP_PKEY_CTX_set0_ecdh_kdf_ukm
-func EVP_PKEY_CTXSet0EcdhKdfUkm(ctx *EVP_PKEY_CTX, ukm *uint8, len c.Int) c.Int
+// llgo:link (*EVP_PKEY_CTX).Set0EcdhKdfUkm C.EVP_PKEY_CTX_set0_ecdh_kdf_ukm
+func (self *EVP_PKEY_CTX) Set0EcdhKdfUkm(ukm *uint8, len c.Int) c.Int {
+	return 0
+}
 
-//go:linkname EVP_PKEY_CTXGet0EcdhKdfUkm C.EVP_PKEY_CTX_get0_ecdh_kdf_ukm
-func EVP_PKEY_CTXGet0EcdhKdfUkm(ctx *EVP_PKEY_CTX, ukm **uint8) c.Int
+// llgo:link (*EVP_PKEY_CTX).Get0EcdhKdfUkm C.EVP_PKEY_CTX_get0_ecdh_kdf_ukm
+func (self *EVP_PKEY_CTX) Get0EcdhKdfUkm(ukm **uint8) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_ECCurveNid2name C.OSSL_EC_curve_nid2name
-func OSSL_ECCurveNid2name(nid c.Int) *c.Char
+//go:linkname OSSL_EC_curve_nid2name C.OSSL_EC_curve_nid2name
+func OSSL_EC_curve_nid2name(nid c.Int) *c.Char
 
 // Returns the basic GFp ec methods which provides the basis for the
 //  optimized methods.
 //  \return  EC_METHOD object
 //
-//go:linkname ECGFpSimpleMethod C.EC_GFp_simple_method
-func ECGFpSimpleMethod() *EC_METHOD
+//go:linkname EC_GFp_simple_method C.EC_GFp_simple_method
+func EC_GFp_simple_method() *EC_METHOD
 
 // Returns GFp methods using montgomery multiplication.
 //  \return  EC_METHOD object
 //
-//go:linkname ECGFpMontMethod C.EC_GFp_mont_method
-func ECGFpMontMethod() *EC_METHOD
+//go:linkname EC_GFp_mont_method C.EC_GFp_mont_method
+func EC_GFp_mont_method() *EC_METHOD
 
 // Returns GFp methods using optimized methods for NIST recommended curves
 //  \return  EC_METHOD object
 //
-//go:linkname ECGFpNistMethod C.EC_GFp_nist_method
-func ECGFpNistMethod() *EC_METHOD
+//go:linkname EC_GFp_nist_method C.EC_GFp_nist_method
+func EC_GFp_nist_method() *EC_METHOD
 
 // Returns 64-bit optimized methods for nistp224
 //  \return  EC_METHOD object
 //
-//go:linkname ECGFpNistp224Method C.EC_GFp_nistp224_method
-func ECGFpNistp224Method() *EC_METHOD
+//go:linkname EC_GFp_nistp224_method C.EC_GFp_nistp224_method
+func EC_GFp_nistp224_method() *EC_METHOD
 
 // Returns 64-bit optimized methods for nistp256
 //  \return  EC_METHOD object
 //
-//go:linkname ECGFpNistp256Method C.EC_GFp_nistp256_method
-func ECGFpNistp256Method() *EC_METHOD
+//go:linkname EC_GFp_nistp256_method C.EC_GFp_nistp256_method
+func EC_GFp_nistp256_method() *EC_METHOD
 
 // Returns 64-bit optimized methods for nistp521
 //  \return  EC_METHOD object
 //
-//go:linkname ECGFpNistp521Method C.EC_GFp_nistp521_method
-func ECGFpNistp521Method() *EC_METHOD
+//go:linkname EC_GFp_nistp521_method C.EC_GFp_nistp521_method
+func EC_GFp_nistp521_method() *EC_METHOD
 
 // Returns the basic GF2m ec method
 //  \return  EC_METHOD object
 //
-//go:linkname ECGF2mSimpleMethod C.EC_GF2m_simple_method
-func ECGF2mSimpleMethod() *EC_METHOD
+//go:linkname EC_GF2m_simple_method C.EC_GF2m_simple_method
+func EC_GF2m_simple_method() *EC_METHOD
 
 //  Creates a new EC_GROUP object
 //  \param   meth   EC_METHOD to use
 //  \return  newly created EC_GROUP object or NULL in case of an error.
 //
-//go:linkname EC_GROUPNew C.EC_GROUP_new
-func EC_GROUPNew(meth *EC_METHOD) *EC_GROUP
+// llgo:link (*EC_METHOD).EC_GROUP_new C.EC_GROUP_new
+func (self *EC_METHOD) EC_GROUP_new() *EC_GROUP {
+	return nil
+}
 
 // Clears and frees a EC_GROUP object
 //  \param  group  EC_GROUP object to be cleared and freed.
 //
-//go:linkname EC_GROUPClearFree C.EC_GROUP_clear_free
-func EC_GROUPClearFree(group *EC_GROUP)
+// llgo:link (*EC_GROUP).ClearFree C.EC_GROUP_clear_free
+func (self *EC_GROUP) ClearFree() {
+}
 
 // Returns the EC_METHOD of the EC_GROUP object.
 //  \param  group  EC_GROUP object
 //  \return EC_METHOD used in this EC_GROUP object.
 //
-//go:linkname EC_GROUPMethodOf C.EC_GROUP_method_of
-func EC_GROUPMethodOf(group *EC_GROUP) *EC_METHOD
+// llgo:link (*EC_GROUP).MethodOf C.EC_GROUP_method_of
+func (self *EC_GROUP) MethodOf() *EC_METHOD {
+	return nil
+}
 
 // Returns the field type of the EC_METHOD.
 //  \param  meth  EC_METHOD object
 //  \return NID of the underlying field type OID.
 //
-//go:linkname EC_METHODGetFieldType C.EC_METHOD_get_field_type
-func EC_METHODGetFieldType(meth *EC_METHOD) c.Int
+// llgo:link (*EC_METHOD).FieldType C.EC_METHOD_get_field_type
+func (self *EC_METHOD) FieldType() c.Int {
+	return 0
+}
 
 // Frees a EC_GROUP object
 //  \param  group  EC_GROUP object to be freed.
 //
-//go:linkname EC_GROUPFree C.EC_GROUP_free
-func EC_GROUPFree(group *EC_GROUP)
+// llgo:link (*EC_GROUP).Free C.EC_GROUP_free
+func (self *EC_GROUP) Free() {
+}
 
 // Copies EC_GROUP objects. Note: both EC_GROUPs must use the same EC_METHOD.
 //  \param  dst  destination EC_GROUP object
 //  \param  src  source EC_GROUP object
 //  \return 1 on success and 0 if an error occurred.
 //
-//go:linkname EC_GROUPCopy C.EC_GROUP_copy
-func EC_GROUPCopy(dst *EC_GROUP, src *EC_GROUP) c.Int
+// llgo:link (*EC_GROUP).Copy C.EC_GROUP_copy
+func (self *EC_GROUP) Copy(src *EC_GROUP) c.Int {
+	return 0
+}
 
 // Creates a new EC_GROUP object and copies the content
 //  form src to the newly created EC_KEY object
 //  \param  src  source EC_GROUP object
 //  \return newly created EC_GROUP object or NULL in case of an error.
 //
-//go:linkname EC_GROUPDup C.EC_GROUP_dup
-func EC_GROUPDup(src *EC_GROUP) *EC_GROUP
+// llgo:link (*EC_GROUP).Dup C.EC_GROUP_dup
+func (self *EC_GROUP) Dup() *EC_GROUP {
+	return self
+}
 
 // Sets the generator and its order/cofactor of a EC_GROUP object.
 //  \param  group      EC_GROUP object
@@ -240,22 +276,28 @@ func EC_GROUPDup(src *EC_GROUP) *EC_GROUP
 //                     in the group of all points on the elliptic curve.
 //  \return 1 on success and 0 if an error occurred
 //
-//go:linkname EC_GROUPSetGenerator C.EC_GROUP_set_generator
-func EC_GROUPSetGenerator(group *EC_GROUP, generator *EC_POINT, order *BIGNUM, cofactor *BIGNUM) c.Int
+// llgo:link (*EC_GROUP).SetGenerator C.EC_GROUP_set_generator
+func (self *EC_GROUP) SetGenerator(generator *EC_POINT, order *BIGNUM, cofactor *BIGNUM) c.Int {
+	return 0
+}
 
 // Returns the generator of a EC_GROUP object.
 //  \param  group  EC_GROUP object
 //  \return the currently used generator (possibly NULL).
 //
-//go:linkname EC_GROUPGet0Generator C.EC_GROUP_get0_generator
-func EC_GROUPGet0Generator(group *EC_GROUP) *EC_POINT
+// llgo:link (*EC_GROUP).Get0Generator C.EC_GROUP_get0_generator
+func (self *EC_GROUP) Get0Generator() *EC_POINT {
+	return nil
+}
 
 // Returns the montgomery data for order(Generator)
 //  \param  group  EC_GROUP object
 //  \return the currently used montgomery data (possibly NULL).
 //
-//go:linkname EC_GROUPGetMontData C.EC_GROUP_get_mont_data
-func EC_GROUPGetMontData(group *EC_GROUP) *BN_MONT_CTX
+// llgo:link (*EC_GROUP).MontData C.EC_GROUP_get_mont_data
+func (self *EC_GROUP) MontData() *BN_MONT_CTX {
+	return nil
+}
 
 // Gets the order of a EC_GROUP
 //  \param  group  EC_GROUP object
@@ -263,22 +305,28 @@ func EC_GROUPGetMontData(group *EC_GROUP) *BN_MONT_CTX
 //  \param  ctx    unused
 //  \return 1 on success and 0 if an error occurred
 //
-//go:linkname EC_GROUPGetOrder C.EC_GROUP_get_order
-func EC_GROUPGetOrder(group *EC_GROUP, order *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*EC_GROUP).Order C.EC_GROUP_get_order
+func (self *EC_GROUP) Order(order *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // Gets the order of an EC_GROUP
 //  \param  group  EC_GROUP object
 //  \return the group order
 //
-//go:linkname EC_GROUPGet0Order C.EC_GROUP_get0_order
-func EC_GROUPGet0Order(group *EC_GROUP) *BIGNUM
+// llgo:link (*EC_GROUP).Get0Order C.EC_GROUP_get0_order
+func (self *EC_GROUP) Get0Order() *BIGNUM {
+	return nil
+}
 
 // Gets the number of bits of the order of an EC_GROUP
 //  \param  group  EC_GROUP object
 //  \return number of bits of group order.
 //
-//go:linkname EC_GROUPOrderBits C.EC_GROUP_order_bits
-func EC_GROUPOrderBits(group *EC_GROUP) c.Int
+// llgo:link (*EC_GROUP).OrderBits C.EC_GROUP_order_bits
+func (self *EC_GROUP) OrderBits() c.Int {
+	return 0
+}
 
 // Gets the symmetric-equivalent security bit size an EC_GROUP.
 // This is rounded down to one of the standard sizes, (80, 112,
@@ -286,8 +334,10 @@ func EC_GROUPOrderBits(group *EC_GROUP) c.Int
 //  \param  group  EC_GROUP object
 //  \return symmetric-equivalent security bits.
 //
-//go:linkname EC_GROUPSecurityBits C.EC_GROUP_security_bits
-func EC_GROUPSecurityBits(group *EC_GROUP) c.Int
+// llgo:link (*EC_GROUP).SecurityBits C.EC_GROUP_security_bits
+func (self *EC_GROUP) SecurityBits() c.Int {
+	return 0
+}
 
 // Gets the cofactor of a EC_GROUP
 //  \param  group     EC_GROUP object
@@ -295,64 +345,87 @@ func EC_GROUPSecurityBits(group *EC_GROUP) c.Int
 //  \param  ctx       unused
 //  \return 1 on success and 0 if an error occurred
 //
-//go:linkname EC_GROUPGetCofactor C.EC_GROUP_get_cofactor
-func EC_GROUPGetCofactor(group *EC_GROUP, cofactor *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*EC_GROUP).Cofactor C.EC_GROUP_get_cofactor
+func (self *EC_GROUP) Cofactor(cofactor *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // Gets the cofactor of an EC_GROUP
 //  \param  group  EC_GROUP object
 //  \return the group cofactor
 //
-//go:linkname EC_GROUPGet0Cofactor C.EC_GROUP_get0_cofactor
-func EC_GROUPGet0Cofactor(group *EC_GROUP) *BIGNUM
+// llgo:link (*EC_GROUP).Get0Cofactor C.EC_GROUP_get0_cofactor
+func (self *EC_GROUP) Get0Cofactor() *BIGNUM {
+	return nil
+}
 
 // Sets the name of a EC_GROUP object
 //  \param  group  EC_GROUP object
 //  \param  nid    NID of the curve name OID
 //
-//go:linkname EC_GROUPSetCurveName C.EC_GROUP_set_curve_name
-func EC_GROUPSetCurveName(group *EC_GROUP, nid c.Int)
+// llgo:link (*EC_GROUP).SetCurveName C.EC_GROUP_set_curve_name
+func (self *EC_GROUP) SetCurveName(nid c.Int) {
+}
 
 // Returns the curve name of a EC_GROUP object
 //  \param  group  EC_GROUP object
 //  \return NID of the curve name OID or 0 if not set.
 //
-//go:linkname EC_GROUPGetCurveName C.EC_GROUP_get_curve_name
-func EC_GROUPGetCurveName(group *EC_GROUP) c.Int
+// llgo:link (*EC_GROUP).CurveName C.EC_GROUP_get_curve_name
+func (self *EC_GROUP) CurveName() c.Int {
+	return 0
+}
 
 // Gets the field of an EC_GROUP
 //  \param  group  EC_GROUP object
 //  \return the group field
 //
-//go:linkname EC_GROUPGet0Field C.EC_GROUP_get0_field
-func EC_GROUPGet0Field(group *EC_GROUP) *BIGNUM
+// llgo:link (*EC_GROUP).Get0Field C.EC_GROUP_get0_field
+func (self *EC_GROUP) Get0Field() *BIGNUM {
+	return nil
+}
 
 // Returns the field type of the EC_GROUP.
 //  \param  group  EC_GROUP object
 //  \return NID of the underlying field type OID.
 //
-//go:linkname EC_GROUPGetFieldType C.EC_GROUP_get_field_type
-func EC_GROUPGetFieldType(group *EC_GROUP) c.Int
+// llgo:link (*EC_GROUP).FieldType C.EC_GROUP_get_field_type
+func (self *EC_GROUP) FieldType() c.Int {
+	return 0
+}
 
-//go:linkname EC_GROUPSetAsn1Flag C.EC_GROUP_set_asn1_flag
-func EC_GROUPSetAsn1Flag(group *EC_GROUP, flag c.Int)
+// llgo:link (*EC_GROUP).SetAsn1Flag C.EC_GROUP_set_asn1_flag
+func (self *EC_GROUP) SetAsn1Flag(flag c.Int) {
+}
 
-//go:linkname EC_GROUPGetAsn1Flag C.EC_GROUP_get_asn1_flag
-func EC_GROUPGetAsn1Flag(group *EC_GROUP) c.Int
+// llgo:link (*EC_GROUP).Asn1Flag C.EC_GROUP_get_asn1_flag
+func (self *EC_GROUP) Asn1Flag() c.Int {
+	return 0
+}
 
-//go:linkname EC_GROUPSetPointConversionForm C.EC_GROUP_set_point_conversion_form
-func EC_GROUPSetPointConversionForm(group *EC_GROUP, form PointConversionFormT)
+// llgo:link (*EC_GROUP).SetPointConversionForm C.EC_GROUP_set_point_conversion_form
+func (self *EC_GROUP) SetPointConversionForm(form PointConversionFormT) {
+}
 
-//go:linkname EC_GROUPGetPointConversionForm C.EC_GROUP_get_point_conversion_form
-func EC_GROUPGetPointConversionForm(_llcppg_param1 *EC_GROUP) PointConversionFormT
+// llgo:link (*EC_GROUP).PointConversionForm C.EC_GROUP_get_point_conversion_form
+func (self *EC_GROUP) PointConversionForm() PointConversionFormT {
+	return 0
+}
 
-//go:linkname EC_GROUPGet0Seed C.EC_GROUP_get0_seed
-func EC_GROUPGet0Seed(x *EC_GROUP) *uint8
+// llgo:link (*EC_GROUP).Get0Seed C.EC_GROUP_get0_seed
+func (self *EC_GROUP) Get0Seed() *uint8 {
+	return nil
+}
 
-//go:linkname EC_GROUPGetSeedLen C.EC_GROUP_get_seed_len
-func EC_GROUPGetSeedLen(_llcppg_param1 *EC_GROUP) c.SizeT
+// llgo:link (*EC_GROUP).SeedLen C.EC_GROUP_get_seed_len
+func (self *EC_GROUP) SeedLen() c.SizeT {
+	return 0
+}
 
-//go:linkname EC_GROUPSetSeed C.EC_GROUP_set_seed
-func EC_GROUPSetSeed(_llcppg_param1 *EC_GROUP, _llcppg_param2 *uint8, len c.SizeT) c.SizeT
+// llgo:link (*EC_GROUP).SetSeed C.EC_GROUP_set_seed
+func (self *EC_GROUP) SetSeed(_llcppg_param2 *uint8, len c.SizeT) c.SizeT {
+	return 0
+}
 
 // Sets the parameters of an ec curve defined by y^2 = x^3 + a*x + b (for GFp)
 //  or y^2 + x*y = x^3 + a*x^2 + b (for GF2m)
@@ -364,8 +437,10 @@ func EC_GROUPSetSeed(_llcppg_param1 *EC_GROUP, _llcppg_param2 *uint8, len c.Size
 //  \param  ctx    BN_CTX object (optional)
 //  \return 1 on success and 0 if an error occurred
 //
-//go:linkname EC_GROUPSetCurve C.EC_GROUP_set_curve
-func EC_GROUPSetCurve(group *EC_GROUP, p *BIGNUM, a *BIGNUM, b *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*EC_GROUP).SetCurve C.EC_GROUP_set_curve
+func (self *EC_GROUP) SetCurve(p *BIGNUM, a *BIGNUM, b *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // Gets the parameters of the ec curve defined by y^2 = x^3 + a*x + b (for GFp)
 //  or y^2 + x*y = x^3 + a*x^2 + b (for GF2m)
@@ -377,8 +452,10 @@ func EC_GROUPSetCurve(group *EC_GROUP, p *BIGNUM, a *BIGNUM, b *BIGNUM, ctx *BN_
 //  \param  ctx    BN_CTX object (optional)
 //  \return 1 on success and 0 if an error occurred
 //
-//go:linkname EC_GROUPGetCurve C.EC_GROUP_get_curve
-func EC_GROUPGetCurve(group *EC_GROUP, p *BIGNUM, a *BIGNUM, b *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*EC_GROUP).Curve C.EC_GROUP_get_curve
+func (self *EC_GROUP) Curve(p *BIGNUM, a *BIGNUM, b *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // Sets the parameters of an ec curve. Synonym for EC_GROUP_set_curve
 //  \param  group  EC_GROUP object
@@ -389,8 +466,10 @@ func EC_GROUPGetCurve(group *EC_GROUP, p *BIGNUM, a *BIGNUM, b *BIGNUM, ctx *BN_
 //  \param  ctx    BN_CTX object (optional)
 //  \return 1 on success and 0 if an error occurred
 //
-//go:linkname EC_GROUPSetCurveGFp C.EC_GROUP_set_curve_GFp
-func EC_GROUPSetCurveGFp(group *EC_GROUP, p *BIGNUM, a *BIGNUM, b *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*EC_GROUP).SetCurveGFp C.EC_GROUP_set_curve_GFp
+func (self *EC_GROUP) SetCurveGFp(p *BIGNUM, a *BIGNUM, b *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // Gets the parameters of an ec curve. Synonym for EC_GROUP_get_curve
 //  \param  group  EC_GROUP object
@@ -401,8 +480,10 @@ func EC_GROUPSetCurveGFp(group *EC_GROUP, p *BIGNUM, a *BIGNUM, b *BIGNUM, ctx *
 //  \param  ctx    BN_CTX object (optional)
 //  \return 1 on success and 0 if an error occurred
 //
-//go:linkname EC_GROUPGetCurveGFp C.EC_GROUP_get_curve_GFp
-func EC_GROUPGetCurveGFp(group *EC_GROUP, p *BIGNUM, a *BIGNUM, b *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*EC_GROUP).CurveGFp C.EC_GROUP_get_curve_GFp
+func (self *EC_GROUP) CurveGFp(p *BIGNUM, a *BIGNUM, b *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // Sets the parameter of an ec curve. Synonym for EC_GROUP_set_curve
 //  \param  group  EC_GROUP object
@@ -413,8 +494,10 @@ func EC_GROUPGetCurveGFp(group *EC_GROUP, p *BIGNUM, a *BIGNUM, b *BIGNUM, ctx *
 //  \param  ctx    BN_CTX object (optional)
 //  \return 1 on success and 0 if an error occurred
 //
-//go:linkname EC_GROUPSetCurveGF2m C.EC_GROUP_set_curve_GF2m
-func EC_GROUPSetCurveGF2m(group *EC_GROUP, p *BIGNUM, a *BIGNUM, b *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*EC_GROUP).SetCurveGF2m C.EC_GROUP_set_curve_GF2m
+func (self *EC_GROUP) SetCurveGF2m(p *BIGNUM, a *BIGNUM, b *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // Gets the parameters of an ec curve. Synonym for EC_GROUP_get_curve
 //  \param  group  EC_GROUP object
@@ -425,31 +508,39 @@ func EC_GROUPSetCurveGF2m(group *EC_GROUP, p *BIGNUM, a *BIGNUM, b *BIGNUM, ctx 
 //  \param  ctx    BN_CTX object (optional)
 //  \return 1 on success and 0 if an error occurred
 //
-//go:linkname EC_GROUPGetCurveGF2m C.EC_GROUP_get_curve_GF2m
-func EC_GROUPGetCurveGF2m(group *EC_GROUP, p *BIGNUM, a *BIGNUM, b *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*EC_GROUP).CurveGF2m C.EC_GROUP_get_curve_GF2m
+func (self *EC_GROUP) CurveGF2m(p *BIGNUM, a *BIGNUM, b *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // Returns the number of bits needed to represent a field element
 //  \param  group  EC_GROUP object
 //  \return number of bits needed to represent a field element
 //
-//go:linkname EC_GROUPGetDegree C.EC_GROUP_get_degree
-func EC_GROUPGetDegree(group *EC_GROUP) c.Int
+// llgo:link (*EC_GROUP).Degree C.EC_GROUP_get_degree
+func (self *EC_GROUP) Degree() c.Int {
+	return 0
+}
 
 // Checks whether the parameter in the EC_GROUP define a valid ec group
 //  \param  group  EC_GROUP object
 //  \param  ctx    BN_CTX object (optional)
 //  \return 1 if group is a valid ec group and 0 otherwise
 //
-//go:linkname EC_GROUPCheck C.EC_GROUP_check
-func EC_GROUPCheck(group *EC_GROUP, ctx *BN_CTX) c.Int
+// llgo:link (*EC_GROUP).Check C.EC_GROUP_check
+func (self *EC_GROUP) Check(ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // Checks whether the discriminant of the elliptic curve is zero or not
 //  \param  group  EC_GROUP object
 //  \param  ctx    BN_CTX object (optional)
 //  \return 1 if the discriminant is not zero and 0 otherwise
 //
-//go:linkname EC_GROUPCheckDiscriminant C.EC_GROUP_check_discriminant
-func EC_GROUPCheckDiscriminant(group *EC_GROUP, ctx *BN_CTX) c.Int
+// llgo:link (*EC_GROUP).CheckDiscriminant C.EC_GROUP_check_discriminant
+func (self *EC_GROUP) CheckDiscriminant(ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // Compares two EC_GROUP objects
 //  \param  a    first EC_GROUP object
@@ -457,8 +548,10 @@ func EC_GROUPCheckDiscriminant(group *EC_GROUP, ctx *BN_CTX) c.Int
 //  \param  ctx  BN_CTX object (optional)
 //  \return 0 if the groups are equal, 1 if not, or -1 on error
 //
-//go:linkname EC_GROUPCmp C.EC_GROUP_cmp
-func EC_GROUPCmp(a *EC_GROUP, b *EC_GROUP, ctx *BN_CTX) c.Int
+// llgo:link (*EC_GROUP).Cmp C.EC_GROUP_cmp
+func (self *EC_GROUP) Cmp(b *EC_GROUP, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // Creates a new EC_GROUP object with the specified parameters defined
 //  over GFp (defined by the equation y^2 = x^3 + a*x + b)
@@ -468,8 +561,10 @@ func EC_GROUPCmp(a *EC_GROUP, b *EC_GROUP, ctx *BN_CTX) c.Int
 //  \param  ctx  BN_CTX object (optional)
 //  \return newly created EC_GROUP object with the specified parameters
 //
-//go:linkname EC_GROUPNewCurveGFp C.EC_GROUP_new_curve_GFp
-func EC_GROUPNewCurveGFp(p *BIGNUM, a *BIGNUM, b *BIGNUM, ctx *BN_CTX) *EC_GROUP
+// llgo:link (*BIGNUM).EC_GROUP_new_curve_GFp C.EC_GROUP_new_curve_GFp
+func (self *BIGNUM) EC_GROUP_new_curve_GFp(a *BIGNUM, b *BIGNUM, ctx *BN_CTX) *EC_GROUP {
+	return nil
+}
 
 // Creates a new EC_GROUP object with the specified parameters defined
 //  over GF2m (defined by the equation y^2 + x*y = x^3 + a*x^2 + b)
@@ -479,8 +574,10 @@ func EC_GROUPNewCurveGFp(p *BIGNUM, a *BIGNUM, b *BIGNUM, ctx *BN_CTX) *EC_GROUP
 //  \param  ctx  BN_CTX object (optional)
 //  \return newly created EC_GROUP object with the specified parameters
 //
-//go:linkname EC_GROUPNewCurveGF2m C.EC_GROUP_new_curve_GF2m
-func EC_GROUPNewCurveGF2m(p *BIGNUM, a *BIGNUM, b *BIGNUM, ctx *BN_CTX) *EC_GROUP
+// llgo:link (*BIGNUM).EC_GROUP_new_curve_GF2m C.EC_GROUP_new_curve_GF2m
+func (self *BIGNUM) EC_GROUP_new_curve_GF2m(a *BIGNUM, b *BIGNUM, ctx *BN_CTX) *EC_GROUP {
+	return nil
+}
 
 // Creates a EC_GROUP object with a curve specified by parameters.
 // The parameters may be explicit or a named curve,
@@ -491,8 +588,10 @@ func EC_GROUPNewCurveGF2m(p *BIGNUM, a *BIGNUM, b *BIGNUM, ctx *BN_CTX) *EC_GROU
 //  \return newly created EC_GROUP object with specified parameters or NULL
 //          if an error occurred
 //
-//go:linkname EC_GROUPNewFromParams C.EC_GROUP_new_from_params
-func EC_GROUPNewFromParams(params *OSSL_PARAM, libctx *OSSL_LIB_CTX, propq *c.Char) *EC_GROUP
+// llgo:link (*OSSL_PARAM).EC_GROUP_new_from_params C.EC_GROUP_new_from_params
+func (self *OSSL_PARAM) EC_GROUP_new_from_params(libctx *OSSL_LIB_CTX, propq *c.Char) *EC_GROUP {
+	return nil
+}
 
 // Creates an OSSL_PARAM array with the parameters describing the given
 // EC_GROUP.
@@ -506,8 +605,10 @@ func EC_GROUPNewFromParams(params *OSSL_PARAM, libctx *OSSL_LIB_CTX, propq *c.Ch
 //  \return newly created OSSL_PARAM array with the parameters
 //          describing the given EC_GROUP or NULL if an error occurred
 //
-//go:linkname EC_GROUPToParams C.EC_GROUP_to_params
-func EC_GROUPToParams(group *EC_GROUP, libctx *OSSL_LIB_CTX, propq *c.Char, bnctx *BN_CTX) *OSSL_PARAM
+// llgo:link (*EC_GROUP).ToParams C.EC_GROUP_to_params
+func (self *EC_GROUP) ToParams(libctx *OSSL_LIB_CTX, propq *c.Char, bnctx *BN_CTX) *OSSL_PARAM {
+	return nil
+}
 
 // Creates a EC_GROUP object with a curve specified by a NID
 //  \param  libctx The associated library context or NULL for the default
@@ -517,8 +618,10 @@ func EC_GROUPToParams(group *EC_GROUP, libctx *OSSL_LIB_CTX, propq *c.Char, bnct
 //  \return newly created EC_GROUP object with specified curve or NULL
 //          if an error occurred
 //
-//go:linkname EC_GROUPNewByCurveNameEx C.EC_GROUP_new_by_curve_name_ex
-func EC_GROUPNewByCurveNameEx(libctx *OSSL_LIB_CTX, propq *c.Char, nid c.Int) *EC_GROUP
+// llgo:link (*OSSL_LIB_CTX).EC_GROUP_new_by_curve_name_ex C.EC_GROUP_new_by_curve_name_ex
+func (self *OSSL_LIB_CTX) EC_GROUP_new_by_curve_name_ex(propq *c.Char, nid c.Int) *EC_GROUP {
+	return nil
+}
 
 // Creates a EC_GROUP object with a curve specified by a NID. Same as
 // EC_GROUP_new_by_curve_name_ex but the libctx and propq are always
@@ -527,16 +630,18 @@ func EC_GROUPNewByCurveNameEx(libctx *OSSL_LIB_CTX, propq *c.Char, nid c.Int) *E
 //  \return newly created EC_GROUP object with specified curve or NULL
 //          if an error occurred
 //
-//go:linkname EC_GROUPNewByCurveName C.EC_GROUP_new_by_curve_name
-func EC_GROUPNewByCurveName(nid c.Int) *EC_GROUP
+//go:linkname EC_GROUP_new_by_curve_name C.EC_GROUP_new_by_curve_name
+func EC_GROUP_new_by_curve_name(nid c.Int) *EC_GROUP
 
 // Creates a new EC_GROUP object from an ECPARAMETERS object
 //  \param  params  pointer to the ECPARAMETERS object
 //  \return newly created EC_GROUP object with specified curve or NULL
 //          if an error occurred
 //
-//go:linkname EC_GROUPNewFromEcparameters C.EC_GROUP_new_from_ecparameters
-func EC_GROUPNewFromEcparameters(params *ECPARAMETERS) *EC_GROUP
+// llgo:link (*ECPARAMETERS).New C.EC_GROUP_new_from_ecparameters
+func (self *ECPARAMETERS) New() *EC_GROUP {
+	return nil
+}
 
 // Creates an ECPARAMETERS object for the given EC_GROUP object.
 //  \param  group   pointer to the EC_GROUP object
@@ -544,16 +649,20 @@ func EC_GROUPNewFromEcparameters(params *ECPARAMETERS) *EC_GROUP
 //  \return pointer to the new ECPARAMETERS object or NULL
 //          if an error occurred.
 //
-//go:linkname EC_GROUPGetEcparameters C.EC_GROUP_get_ecparameters
-func EC_GROUPGetEcparameters(group *EC_GROUP, params *ECPARAMETERS) *ECPARAMETERS
+// llgo:link (*EC_GROUP).Ecparameters C.EC_GROUP_get_ecparameters
+func (self *EC_GROUP) Ecparameters(params *ECPARAMETERS) *ECPARAMETERS {
+	return nil
+}
 
 // Creates a new EC_GROUP object from an ECPKPARAMETERS object
 //  \param  params  pointer to an existing ECPKPARAMETERS object, or NULL
 //  \return newly created EC_GROUP object with specified curve, or NULL
 //          if an error occurred
 //
-//go:linkname EC_GROUPNewFromEcpkparameters C.EC_GROUP_new_from_ecpkparameters
-func EC_GROUPNewFromEcpkparameters(params *ECPKPARAMETERS) *EC_GROUP
+// llgo:link (*ECPKPARAMETERS).New C.EC_GROUP_new_from_ecpkparameters
+func (self *ECPKPARAMETERS) New() *EC_GROUP {
+	return nil
+}
 
 // Creates an ECPKPARAMETERS object for the given EC_GROUP object.
 //  \param  group   pointer to the EC_GROUP object
@@ -561,52 +670,62 @@ func EC_GROUPNewFromEcpkparameters(params *ECPKPARAMETERS) *EC_GROUP
 //  \return pointer to the new ECPKPARAMETERS object or NULL
 //          if an error occurred.
 //
-//go:linkname EC_GROUPGetEcpkparameters C.EC_GROUP_get_ecpkparameters
-func EC_GROUPGetEcpkparameters(group *EC_GROUP, params *ECPKPARAMETERS) *ECPKPARAMETERS
+// llgo:link (*EC_GROUP).Ecpkparameters C.EC_GROUP_get_ecpkparameters
+func (self *EC_GROUP) Ecpkparameters(params *ECPKPARAMETERS) *ECPKPARAMETERS {
+	return nil
+}
 
 // EC_builtin_curves(EC_builtin_curve *r, size_t size) returns number of all
 // available curves or zero if a error occurred. In case r is not zero,
 // nitems EC_builtin_curve structures are filled with the data of the first
 // nitems internal groups
 //
-//go:linkname ECGetBuiltinCurves C.EC_get_builtin_curves
-func ECGetBuiltinCurves(r *ECBuiltinCurve, nitems c.SizeT) c.SizeT
+//go:linkname EC_get_builtin_curves C.EC_get_builtin_curves
+func EC_get_builtin_curves(r *EC_builtin_curve, nitems c.SizeT) c.SizeT
 
-//go:linkname ECCurveNid2nist C.EC_curve_nid2nist
-func ECCurveNid2nist(nid c.Int) *c.Char
+//go:linkname EC_curve_nid2nist C.EC_curve_nid2nist
+func EC_curve_nid2nist(nid c.Int) *c.Char
 
-//go:linkname ECCurveNist2nid C.EC_curve_nist2nid
-func ECCurveNist2nid(name *c.Char) c.Int
+//go:linkname EC_curve_nist2nid C.EC_curve_nist2nid
+func EC_curve_nist2nid(name *c.Char) c.Int
 
-//go:linkname EC_GROUPCheckNamedCurve C.EC_GROUP_check_named_curve
-func EC_GROUPCheckNamedCurve(group *EC_GROUP, nist_only c.Int, ctx *BN_CTX) c.Int
+// llgo:link (*EC_GROUP).CheckNamedCurve C.EC_GROUP_check_named_curve
+func (self *EC_GROUP) CheckNamedCurve(nist_only c.Int, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // Creates a new EC_POINT object for the specified EC_GROUP
 //  \param  group  EC_GROUP the underlying EC_GROUP object
 //  \return newly created EC_POINT object or NULL if an error occurred
 //
-//go:linkname EC_POINTNew C.EC_POINT_new
-func EC_POINTNew(group *EC_GROUP) *EC_POINT
+// llgo:link (*EC_GROUP).EC_POINT_new C.EC_POINT_new
+func (self *EC_GROUP) EC_POINT_new() *EC_POINT {
+	return nil
+}
 
 // Frees a EC_POINT object
 //  \param  point  EC_POINT object to be freed
 //
-//go:linkname EC_POINTFree C.EC_POINT_free
-func EC_POINTFree(point *EC_POINT)
+// llgo:link (*EC_POINT).Free C.EC_POINT_free
+func (self *EC_POINT) Free() {
+}
 
 // Clears and frees a EC_POINT object
 //  \param  point  EC_POINT object to be cleared and freed
 //
-//go:linkname EC_POINTClearFree C.EC_POINT_clear_free
-func EC_POINTClearFree(point *EC_POINT)
+// llgo:link (*EC_POINT).ClearFree C.EC_POINT_clear_free
+func (self *EC_POINT) ClearFree() {
+}
 
 // Copies EC_POINT object
 //  \param  dst  destination EC_POINT object
 //  \param  src  source EC_POINT object
 //  \return 1 on success and 0 if an error occurred
 //
-//go:linkname EC_POINTCopy C.EC_POINT_copy
-func EC_POINTCopy(dst *EC_POINT, src *EC_POINT) c.Int
+// llgo:link (*EC_POINT).Copy C.EC_POINT_copy
+func (self *EC_POINT) Copy(src *EC_POINT) c.Int {
+	return 0
+}
 
 // Creates a new EC_POINT object and copies the content of the supplied
 //  EC_POINT
@@ -614,23 +733,29 @@ func EC_POINTCopy(dst *EC_POINT, src *EC_POINT) c.Int
 //  \param  group  underlying the EC_GROUP object
 //  \return newly created EC_POINT object or NULL if an error occurred
 //
-//go:linkname EC_POINTDup C.EC_POINT_dup
-func EC_POINTDup(src *EC_POINT, group *EC_GROUP) *EC_POINT
+// llgo:link (*EC_POINT).Dup C.EC_POINT_dup
+func (self *EC_POINT) Dup(group *EC_GROUP) *EC_POINT {
+	return self
+}
 
 // Sets a point to infinity (neutral element)
 //  \param  group  underlying EC_GROUP object
 //  \param  point  EC_POINT to set to infinity
 //  \return 1 on success and 0 if an error occurred
 //
-//go:linkname EC_POINTSetToInfinity C.EC_POINT_set_to_infinity
-func EC_POINTSetToInfinity(group *EC_GROUP, point *EC_POINT) c.Int
+// llgo:link (*EC_GROUP).EC_POINT_set_to_infinity C.EC_POINT_set_to_infinity
+func (self *EC_GROUP) EC_POINT_set_to_infinity(point *EC_POINT) c.Int {
+	return 0
+}
 
 // Returns the EC_METHOD used in EC_POINT object
 //  \param  point  EC_POINT object
 //  \return the EC_METHOD used
 //
-//go:linkname EC_POINTMethodOf C.EC_POINT_method_of
-func EC_POINTMethodOf(point *EC_POINT) *EC_METHOD
+// llgo:link (*EC_POINT).MethodOf C.EC_POINT_method_of
+func (self *EC_POINT) MethodOf() *EC_METHOD {
+	return nil
+}
 
 // Sets the jacobian projective coordinates of a EC_POINT over GFp
 //  \param  group  underlying EC_GROUP object
@@ -641,8 +766,10 @@ func EC_POINTMethodOf(point *EC_POINT) *EC_METHOD
 //  \param  ctx    BN_CTX object (optional)
 //  \return 1 on success and 0 if an error occurred
 //
-//go:linkname EC_POINTSetJprojectiveCoordinatesGFp C.EC_POINT_set_Jprojective_coordinates_GFp
-func EC_POINTSetJprojectiveCoordinatesGFp(group *EC_GROUP, p *EC_POINT, x *BIGNUM, y *BIGNUM, z *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*EC_GROUP).EC_POINT_set_Jprojective_coordinates_GFp C.EC_POINT_set_Jprojective_coordinates_GFp
+func (self *EC_GROUP) EC_POINT_set_Jprojective_coordinates_GFp(p *EC_POINT, x *BIGNUM, y *BIGNUM, z *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // Gets the jacobian projective coordinates of a EC_POINT over GFp
 //  \param  group  underlying EC_GROUP object
@@ -653,8 +780,10 @@ func EC_POINTSetJprojectiveCoordinatesGFp(group *EC_GROUP, p *EC_POINT, x *BIGNU
 //  \param  ctx    BN_CTX object (optional)
 //  \return 1 on success and 0 if an error occurred
 //
-//go:linkname EC_POINTGetJprojectiveCoordinatesGFp C.EC_POINT_get_Jprojective_coordinates_GFp
-func EC_POINTGetJprojectiveCoordinatesGFp(group *EC_GROUP, p *EC_POINT, x *BIGNUM, y *BIGNUM, z *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*EC_GROUP).EC_POINT_get_Jprojective_coordinates_GFp C.EC_POINT_get_Jprojective_coordinates_GFp
+func (self *EC_GROUP) EC_POINT_get_Jprojective_coordinates_GFp(p *EC_POINT, x *BIGNUM, y *BIGNUM, z *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // Sets the affine coordinates of an EC_POINT
 //  \param  group  underlying EC_GROUP object
@@ -664,8 +793,10 @@ func EC_POINTGetJprojectiveCoordinatesGFp(group *EC_GROUP, p *EC_POINT, x *BIGNU
 //  \param  ctx    BN_CTX object (optional)
 //  \return 1 on success and 0 if an error occurred
 //
-//go:linkname EC_POINTSetAffineCoordinates C.EC_POINT_set_affine_coordinates
-func EC_POINTSetAffineCoordinates(group *EC_GROUP, p *EC_POINT, x *BIGNUM, y *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*EC_GROUP).EC_POINT_set_affine_coordinates C.EC_POINT_set_affine_coordinates
+func (self *EC_GROUP) EC_POINT_set_affine_coordinates(p *EC_POINT, x *BIGNUM, y *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // Gets the affine coordinates of an EC_POINT.
 //  \param  group  underlying EC_GROUP object
@@ -675,8 +806,10 @@ func EC_POINTSetAffineCoordinates(group *EC_GROUP, p *EC_POINT, x *BIGNUM, y *BI
 //  \param  ctx    BN_CTX object (optional)
 //  \return 1 on success and 0 if an error occurred
 //
-//go:linkname EC_POINTGetAffineCoordinates C.EC_POINT_get_affine_coordinates
-func EC_POINTGetAffineCoordinates(group *EC_GROUP, p *EC_POINT, x *BIGNUM, y *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*EC_GROUP).EC_POINT_get_affine_coordinates C.EC_POINT_get_affine_coordinates
+func (self *EC_GROUP) EC_POINT_get_affine_coordinates(p *EC_POINT, x *BIGNUM, y *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // Sets the affine coordinates of an EC_POINT. A synonym of
 //  EC_POINT_set_affine_coordinates
@@ -687,8 +820,10 @@ func EC_POINTGetAffineCoordinates(group *EC_GROUP, p *EC_POINT, x *BIGNUM, y *BI
 //  \param  ctx    BN_CTX object (optional)
 //  \return 1 on success and 0 if an error occurred
 //
-//go:linkname EC_POINTSetAffineCoordinatesGFp C.EC_POINT_set_affine_coordinates_GFp
-func EC_POINTSetAffineCoordinatesGFp(group *EC_GROUP, p *EC_POINT, x *BIGNUM, y *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*EC_GROUP).EC_POINT_set_affine_coordinates_GFp C.EC_POINT_set_affine_coordinates_GFp
+func (self *EC_GROUP) EC_POINT_set_affine_coordinates_GFp(p *EC_POINT, x *BIGNUM, y *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // Gets the affine coordinates of an EC_POINT. A synonym of
 //  EC_POINT_get_affine_coordinates
@@ -699,8 +834,10 @@ func EC_POINTSetAffineCoordinatesGFp(group *EC_GROUP, p *EC_POINT, x *BIGNUM, y 
 //  \param  ctx    BN_CTX object (optional)
 //  \return 1 on success and 0 if an error occurred
 //
-//go:linkname EC_POINTGetAffineCoordinatesGFp C.EC_POINT_get_affine_coordinates_GFp
-func EC_POINTGetAffineCoordinatesGFp(group *EC_GROUP, p *EC_POINT, x *BIGNUM, y *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*EC_GROUP).EC_POINT_get_affine_coordinates_GFp C.EC_POINT_get_affine_coordinates_GFp
+func (self *EC_GROUP) EC_POINT_get_affine_coordinates_GFp(p *EC_POINT, x *BIGNUM, y *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // Sets the x9.62 compressed coordinates of a EC_POINT
 //  \param  group  underlying EC_GROUP object
@@ -710,8 +847,10 @@ func EC_POINTGetAffineCoordinatesGFp(group *EC_GROUP, p *EC_POINT, x *BIGNUM, y 
 //  \param  ctx    BN_CTX object (optional)
 //  \return 1 on success and 0 if an error occurred
 //
-//go:linkname EC_POINTSetCompressedCoordinates C.EC_POINT_set_compressed_coordinates
-func EC_POINTSetCompressedCoordinates(group *EC_GROUP, p *EC_POINT, x *BIGNUM, y_bit c.Int, ctx *BN_CTX) c.Int
+// llgo:link (*EC_GROUP).EC_POINT_set_compressed_coordinates C.EC_POINT_set_compressed_coordinates
+func (self *EC_GROUP) EC_POINT_set_compressed_coordinates(p *EC_POINT, x *BIGNUM, y_bit c.Int, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // Sets the x9.62 compressed coordinates of a EC_POINT. A synonym of
 //  EC_POINT_set_compressed_coordinates
@@ -722,8 +861,10 @@ func EC_POINTSetCompressedCoordinates(group *EC_GROUP, p *EC_POINT, x *BIGNUM, y
 //  \param  ctx    BN_CTX object (optional)
 //  \return 1 on success and 0 if an error occurred
 //
-//go:linkname EC_POINTSetCompressedCoordinatesGFp C.EC_POINT_set_compressed_coordinates_GFp
-func EC_POINTSetCompressedCoordinatesGFp(group *EC_GROUP, p *EC_POINT, x *BIGNUM, y_bit c.Int, ctx *BN_CTX) c.Int
+// llgo:link (*EC_GROUP).EC_POINT_set_compressed_coordinates_GFp C.EC_POINT_set_compressed_coordinates_GFp
+func (self *EC_GROUP) EC_POINT_set_compressed_coordinates_GFp(p *EC_POINT, x *BIGNUM, y_bit c.Int, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // Sets the affine coordinates of an EC_POINT. A synonym of
 //  EC_POINT_set_affine_coordinates
@@ -734,8 +875,10 @@ func EC_POINTSetCompressedCoordinatesGFp(group *EC_GROUP, p *EC_POINT, x *BIGNUM
 //  \param  ctx    BN_CTX object (optional)
 //  \return 1 on success and 0 if an error occurred
 //
-//go:linkname EC_POINTSetAffineCoordinatesGF2m C.EC_POINT_set_affine_coordinates_GF2m
-func EC_POINTSetAffineCoordinatesGF2m(group *EC_GROUP, p *EC_POINT, x *BIGNUM, y *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*EC_GROUP).EC_POINT_set_affine_coordinates_GF2m C.EC_POINT_set_affine_coordinates_GF2m
+func (self *EC_GROUP) EC_POINT_set_affine_coordinates_GF2m(p *EC_POINT, x *BIGNUM, y *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // Gets the affine coordinates of an EC_POINT. A synonym of
 //  EC_POINT_get_affine_coordinates
@@ -746,8 +889,10 @@ func EC_POINTSetAffineCoordinatesGF2m(group *EC_GROUP, p *EC_POINT, x *BIGNUM, y
 //  \param  ctx    BN_CTX object (optional)
 //  \return 1 on success and 0 if an error occurred
 //
-//go:linkname EC_POINTGetAffineCoordinatesGF2m C.EC_POINT_get_affine_coordinates_GF2m
-func EC_POINTGetAffineCoordinatesGF2m(group *EC_GROUP, p *EC_POINT, x *BIGNUM, y *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*EC_GROUP).EC_POINT_get_affine_coordinates_GF2m C.EC_POINT_get_affine_coordinates_GF2m
+func (self *EC_GROUP) EC_POINT_get_affine_coordinates_GF2m(p *EC_POINT, x *BIGNUM, y *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // Sets the x9.62 compressed coordinates of a EC_POINT. A synonym of
 //  EC_POINT_set_compressed_coordinates
@@ -758,8 +903,10 @@ func EC_POINTGetAffineCoordinatesGF2m(group *EC_GROUP, p *EC_POINT, x *BIGNUM, y
 //  \param  ctx    BN_CTX object (optional)
 //  \return 1 on success and 0 if an error occurred
 //
-//go:linkname EC_POINTSetCompressedCoordinatesGF2m C.EC_POINT_set_compressed_coordinates_GF2m
-func EC_POINTSetCompressedCoordinatesGF2m(group *EC_GROUP, p *EC_POINT, x *BIGNUM, y_bit c.Int, ctx *BN_CTX) c.Int
+// llgo:link (*EC_GROUP).EC_POINT_set_compressed_coordinates_GF2m C.EC_POINT_set_compressed_coordinates_GF2m
+func (self *EC_GROUP) EC_POINT_set_compressed_coordinates_GF2m(p *EC_POINT, x *BIGNUM, y_bit c.Int, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // Encodes a EC_POINT object to a octet string
 //  \param  group  underlying EC_GROUP object
@@ -771,8 +918,10 @@ func EC_POINTSetCompressedCoordinatesGF2m(group *EC_GROUP, p *EC_POINT, x *BIGNU
 //  \param  ctx    BN_CTX object (optional)
 //  \return the length of the encoded octet string or 0 if an error occurred
 //
-//go:linkname EC_POINTPoint2oct C.EC_POINT_point2oct
-func EC_POINTPoint2oct(group *EC_GROUP, p *EC_POINT, form PointConversionFormT, buf *uint8, len c.SizeT, ctx *BN_CTX) c.SizeT
+// llgo:link (*EC_GROUP).EC_POINT_point2oct C.EC_POINT_point2oct
+func (self *EC_GROUP) EC_POINT_point2oct(p *EC_POINT, form PointConversionFormT, buf *uint8, len c.SizeT, ctx *BN_CTX) c.SizeT {
+	return 0
+}
 
 // Decodes a EC_POINT from a octet string
 //  \param  group  underlying EC_GROUP object
@@ -782,8 +931,10 @@ func EC_POINTPoint2oct(group *EC_GROUP, p *EC_POINT, form PointConversionFormT, 
 //  \param  ctx    BN_CTX object (optional)
 //  \return 1 on success and 0 if an error occurred
 //
-//go:linkname EC_POINTOct2point C.EC_POINT_oct2point
-func EC_POINTOct2point(group *EC_GROUP, p *EC_POINT, buf *uint8, len c.SizeT, ctx *BN_CTX) c.Int
+// llgo:link (*EC_GROUP).EC_POINT_oct2point C.EC_POINT_oct2point
+func (self *EC_GROUP) EC_POINT_oct2point(p *EC_POINT, buf *uint8, len c.SizeT, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // Encodes an EC_POINT object to an allocated octet string
 //  \param  group  underlying EC_GROUP object
@@ -793,20 +944,30 @@ func EC_POINTOct2point(group *EC_GROUP, p *EC_POINT, buf *uint8, len c.SizeT, ct
 //  \param  ctx    BN_CTX object (optional)
 //  \return the length of the encoded octet string or 0 if an error occurred
 //
-//go:linkname EC_POINTPoint2buf C.EC_POINT_point2buf
-func EC_POINTPoint2buf(group *EC_GROUP, point *EC_POINT, form PointConversionFormT, pbuf **uint8, ctx *BN_CTX) c.SizeT
+// llgo:link (*EC_GROUP).EC_POINT_point2buf C.EC_POINT_point2buf
+func (self *EC_GROUP) EC_POINT_point2buf(point *EC_POINT, form PointConversionFormT, pbuf **uint8, ctx *BN_CTX) c.SizeT {
+	return 0
+}
 
-//go:linkname EC_POINTPoint2bn C.EC_POINT_point2bn
-func EC_POINTPoint2bn(_llcppg_param1 *EC_GROUP, _llcppg_param2 *EC_POINT, form PointConversionFormT, _llcppg_param4 *BIGNUM, _llcppg_param5 *BN_CTX) *BIGNUM
+// llgo:link (*EC_GROUP).EC_POINT_point2bn C.EC_POINT_point2bn
+func (self *EC_GROUP) EC_POINT_point2bn(_llcppg_param2 *EC_POINT, form PointConversionFormT, _llcppg_param4 *BIGNUM, _llcppg_param5 *BN_CTX) *BIGNUM {
+	return nil
+}
 
-//go:linkname EC_POINTBn2point C.EC_POINT_bn2point
-func EC_POINTBn2point(_llcppg_param1 *EC_GROUP, _llcppg_param2 *BIGNUM, _llcppg_param3 *EC_POINT, _llcppg_param4 *BN_CTX) *EC_POINT
+// llgo:link (*EC_GROUP).EC_POINT_bn2point C.EC_POINT_bn2point
+func (self *EC_GROUP) EC_POINT_bn2point(_llcppg_param2 *BIGNUM, _llcppg_param3 *EC_POINT, _llcppg_param4 *BN_CTX) *EC_POINT {
+	return nil
+}
 
-//go:linkname EC_POINTPoint2hex C.EC_POINT_point2hex
-func EC_POINTPoint2hex(_llcppg_param1 *EC_GROUP, _llcppg_param2 *EC_POINT, form PointConversionFormT, _llcppg_param4 *BN_CTX) *c.Char
+// llgo:link (*EC_GROUP).EC_POINT_point2hex C.EC_POINT_point2hex
+func (self *EC_GROUP) EC_POINT_point2hex(_llcppg_param2 *EC_POINT, form PointConversionFormT, _llcppg_param4 *BN_CTX) *c.Char {
+	return nil
+}
 
-//go:linkname EC_POINTHex2point C.EC_POINT_hex2point
-func EC_POINTHex2point(_llcppg_param1 *EC_GROUP, _llcppg_param2 *c.Char, _llcppg_param3 *EC_POINT, _llcppg_param4 *BN_CTX) *EC_POINT
+// llgo:link (*EC_GROUP).EC_POINT_hex2point C.EC_POINT_hex2point
+func (self *EC_GROUP) EC_POINT_hex2point(_llcppg_param2 *c.Char, _llcppg_param3 *EC_POINT, _llcppg_param4 *BN_CTX) *EC_POINT {
+	return nil
+}
 
 // Computes the sum of two EC_POINT
 //  \param  group  underlying EC_GROUP object
@@ -816,8 +977,10 @@ func EC_POINTHex2point(_llcppg_param1 *EC_GROUP, _llcppg_param2 *c.Char, _llcppg
 //  \param  ctx    BN_CTX object (optional)
 //  \return 1 on success and 0 if an error occurred
 //
-//go:linkname EC_POINTAdd C.EC_POINT_add
-func EC_POINTAdd(group *EC_GROUP, r *EC_POINT, a *EC_POINT, b *EC_POINT, ctx *BN_CTX) c.Int
+// llgo:link (*EC_GROUP).EC_POINT_add C.EC_POINT_add
+func (self *EC_GROUP) EC_POINT_add(r *EC_POINT, a *EC_POINT, b *EC_POINT, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // Computes the double of a EC_POINT
 //  \param  group  underlying EC_GROUP object
@@ -826,8 +989,10 @@ func EC_POINTAdd(group *EC_GROUP, r *EC_POINT, a *EC_POINT, b *EC_POINT, ctx *BN
 //  \param  ctx    BN_CTX object (optional)
 //  \return 1 on success and 0 if an error occurred
 //
-//go:linkname EC_POINTDbl C.EC_POINT_dbl
-func EC_POINTDbl(group *EC_GROUP, r *EC_POINT, a *EC_POINT, ctx *BN_CTX) c.Int
+// llgo:link (*EC_GROUP).EC_POINT_dbl C.EC_POINT_dbl
+func (self *EC_GROUP) EC_POINT_dbl(r *EC_POINT, a *EC_POINT, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // Computes the inverse of a EC_POINT
 //  \param  group  underlying EC_GROUP object
@@ -835,16 +1000,20 @@ func EC_POINTDbl(group *EC_GROUP, r *EC_POINT, a *EC_POINT, ctx *BN_CTX) c.Int
 //  \param  ctx    BN_CTX object (optional)
 //  \return 1 on success and 0 if an error occurred
 //
-//go:linkname EC_POINTInvert C.EC_POINT_invert
-func EC_POINTInvert(group *EC_GROUP, a *EC_POINT, ctx *BN_CTX) c.Int
+// llgo:link (*EC_GROUP).EC_POINT_invert C.EC_POINT_invert
+func (self *EC_GROUP) EC_POINT_invert(a *EC_POINT, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // Checks whether the point is the neutral element of the group
 //  \param  group  the underlying EC_GROUP object
 //  \param  p      EC_POINT object
 //  \return 1 if the point is the neutral element and 0 otherwise
 //
-//go:linkname EC_POINTIsAtInfinity C.EC_POINT_is_at_infinity
-func EC_POINTIsAtInfinity(group *EC_GROUP, p *EC_POINT) c.Int
+// llgo:link (*EC_GROUP).EC_POINT_is_at_infinity C.EC_POINT_is_at_infinity
+func (self *EC_GROUP) EC_POINT_is_at_infinity(p *EC_POINT) c.Int {
+	return 0
+}
 
 // Checks whether the point is on the curve
 //  \param  group  underlying EC_GROUP object
@@ -852,8 +1021,10 @@ func EC_POINTIsAtInfinity(group *EC_GROUP, p *EC_POINT) c.Int
 //  \param  ctx    BN_CTX object (optional)
 //  \return 1 if the point is on the curve, 0 if not, or -1 on error
 //
-//go:linkname EC_POINTIsOnCurve C.EC_POINT_is_on_curve
-func EC_POINTIsOnCurve(group *EC_GROUP, point *EC_POINT, ctx *BN_CTX) c.Int
+// llgo:link (*EC_GROUP).EC_POINT_is_on_curve C.EC_POINT_is_on_curve
+func (self *EC_GROUP) EC_POINT_is_on_curve(point *EC_POINT, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // Compares two EC_POINTs
 //  \param  group  underlying EC_GROUP object
@@ -862,14 +1033,20 @@ func EC_POINTIsOnCurve(group *EC_GROUP, point *EC_POINT, ctx *BN_CTX) c.Int
 //  \param  ctx    BN_CTX object (optional)
 //  \return 1 if the points are not equal, 0 if they are, or -1 on error
 //
-//go:linkname EC_POINTCmp C.EC_POINT_cmp
-func EC_POINTCmp(group *EC_GROUP, a *EC_POINT, b *EC_POINT, ctx *BN_CTX) c.Int
+// llgo:link (*EC_GROUP).EC_POINT_cmp C.EC_POINT_cmp
+func (self *EC_GROUP) EC_POINT_cmp(a *EC_POINT, b *EC_POINT, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname EC_POINTMakeAffine C.EC_POINT_make_affine
-func EC_POINTMakeAffine(group *EC_GROUP, point *EC_POINT, ctx *BN_CTX) c.Int
+// llgo:link (*EC_GROUP).EC_POINT_make_affine C.EC_POINT_make_affine
+func (self *EC_GROUP) EC_POINT_make_affine(point *EC_POINT, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname ECPOINTsMakeAffine C.EC_POINTs_make_affine
-func ECPOINTsMakeAffine(group *EC_GROUP, num c.SizeT, points **EC_POINT, ctx *BN_CTX) c.Int
+// llgo:link (*EC_GROUP).EC_POINTs_make_affine C.EC_POINTs_make_affine
+func (self *EC_GROUP) EC_POINTs_make_affine(num c.SizeT, points **EC_POINT, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // Computes r = generator * n + sum_{i=0}^{num-1} p[i] * m[i]
 //  \param  group  underlying EC_GROUP object
@@ -881,8 +1058,10 @@ func ECPOINTsMakeAffine(group *EC_GROUP, num c.SizeT, points **EC_POINT, ctx *BN
 //  \param  ctx    BN_CTX object (optional)
 //  \return 1 on success and 0 if an error occurred
 //
-//go:linkname ECPOINTsMul C.EC_POINTs_mul
-func ECPOINTsMul(group *EC_GROUP, r *EC_POINT, n *BIGNUM, num c.SizeT, p **EC_POINT, m **BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*EC_GROUP).EC_POINTs_mul C.EC_POINTs_mul
+func (self *EC_GROUP) EC_POINTs_mul(r *EC_POINT, n *BIGNUM, num c.SizeT, p **EC_POINT, m **BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // Computes r = generator * n + q * m
 //  \param  group  underlying EC_GROUP object
@@ -893,62 +1072,80 @@ func ECPOINTsMul(group *EC_GROUP, r *EC_POINT, n *BIGNUM, num c.SizeT, p **EC_PO
 //  \param  ctx    BN_CTX object (optional)
 //  \return 1 on success and 0 if an error occurred
 //
-//go:linkname EC_POINTMul C.EC_POINT_mul
-func EC_POINTMul(group *EC_GROUP, r *EC_POINT, n *BIGNUM, q *EC_POINT, m *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*EC_GROUP).EC_POINT_mul C.EC_POINT_mul
+func (self *EC_GROUP) EC_POINT_mul(r *EC_POINT, n *BIGNUM, q *EC_POINT, m *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // Stores multiples of generator for faster point multiplication
 //  \param  group  EC_GROUP object
 //  \param  ctx    BN_CTX object (optional)
 //  \return 1 on success and 0 if an error occurred
 //
-//go:linkname EC_GROUPPrecomputeMult C.EC_GROUP_precompute_mult
-func EC_GROUPPrecomputeMult(group *EC_GROUP, ctx *BN_CTX) c.Int
+// llgo:link (*EC_GROUP).PrecomputeMult C.EC_GROUP_precompute_mult
+func (self *EC_GROUP) PrecomputeMult(ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // Reports whether a precomputation has been done
 //  \param  group  EC_GROUP object
 //  \return 1 if a pre-computation has been done and 0 otherwise
 //
-//go:linkname EC_GROUPHavePrecomputeMult C.EC_GROUP_have_precompute_mult
-func EC_GROUPHavePrecomputeMult(group *EC_GROUP) c.Int
+// llgo:link (*EC_GROUP).HavePrecomputeMult C.EC_GROUP_have_precompute_mult
+func (self *EC_GROUP) HavePrecomputeMult() c.Int {
+	return 0
+}
 
-//go:linkname ECPKPARAMETERSIt C.ECPKPARAMETERS_it
-func ECPKPARAMETERSIt() *ASN1_ITEM
+//go:linkname ECPKPARAMETERS_it C.ECPKPARAMETERS_it
+func ECPKPARAMETERS_it() *ASN1_ITEM
 
-//go:linkname ECPKPARAMETERSNew C.ECPKPARAMETERS_new
-func ECPKPARAMETERSNew() *ECPKPARAMETERS
+//go:linkname ECPKPARAMETERS_new C.ECPKPARAMETERS_new
+func ECPKPARAMETERS_new() *ECPKPARAMETERS
 
-//go:linkname ECPKPARAMETERSFree C.ECPKPARAMETERS_free
-func ECPKPARAMETERSFree(a *ECPKPARAMETERS)
+// llgo:link (*ECPKPARAMETERS).Free C.ECPKPARAMETERS_free
+func (self *ECPKPARAMETERS) Free() {
+}
 
-//go:linkname ECPARAMETERSIt C.ECPARAMETERS_it
-func ECPARAMETERSIt() *ASN1_ITEM
+//go:linkname ECPARAMETERS_it C.ECPARAMETERS_it
+func ECPARAMETERS_it() *ASN1_ITEM
 
-//go:linkname ECPARAMETERSNew C.ECPARAMETERS_new
-func ECPARAMETERSNew() *ECPARAMETERS
+//go:linkname ECPARAMETERS_new C.ECPARAMETERS_new
+func ECPARAMETERS_new() *ECPARAMETERS
 
-//go:linkname ECPARAMETERSFree C.ECPARAMETERS_free
-func ECPARAMETERSFree(a *ECPARAMETERS)
+// llgo:link (*ECPARAMETERS).Free C.ECPARAMETERS_free
+func (self *ECPARAMETERS) Free() {
+}
 
 // EC_GROUP_get_basis_type() returns the NID of the basis type used to
 // represent the field elements
 //
-//go:linkname EC_GROUPGetBasisType C.EC_GROUP_get_basis_type
-func EC_GROUPGetBasisType(_llcppg_param1 *EC_GROUP) c.Int
+// llgo:link (*EC_GROUP).BasisType C.EC_GROUP_get_basis_type
+func (self *EC_GROUP) BasisType() c.Int {
+	return 0
+}
 
-//go:linkname EC_GROUPGetTrinomialBasis C.EC_GROUP_get_trinomial_basis
-func EC_GROUPGetTrinomialBasis(_llcppg_param1 *EC_GROUP, k *c.Uint) c.Int
+// llgo:link (*EC_GROUP).TrinomialBasis C.EC_GROUP_get_trinomial_basis
+func (self *EC_GROUP) TrinomialBasis(k *c.Uint) c.Int {
+	return 0
+}
 
-//go:linkname EC_GROUPGetPentanomialBasis C.EC_GROUP_get_pentanomial_basis
-func EC_GROUPGetPentanomialBasis(_llcppg_param1 *EC_GROUP, k1 *c.Uint, k2 *c.Uint, k3 *c.Uint) c.Int
+// llgo:link (*EC_GROUP).PentanomialBasis C.EC_GROUP_get_pentanomial_basis
+func (self *EC_GROUP) PentanomialBasis(k1 *c.Uint, k2 *c.Uint, k3 *c.Uint) c.Int {
+	return 0
+}
 
 //go:linkname D2iECPKParameters C.d2i_ECPKParameters
 func D2iECPKParameters(_llcppg_param1 **EC_GROUP, in **uint8, len c.Long) *EC_GROUP
 
-//go:linkname I2dECPKParameters C.i2d_ECPKParameters
-func I2dECPKParameters(_llcppg_param1 *EC_GROUP, out **uint8) c.Int
+// llgo:link (*EC_GROUP).I2dECPKParameters C.i2d_ECPKParameters
+func (self *EC_GROUP) I2dECPKParameters(out **uint8) c.Int {
+	return 0
+}
 
-//go:linkname ECPKParametersPrint C.ECPKParameters_print
-func ECPKParametersPrint(bp *BIO, x *EC_GROUP, off c.Int) c.Int
+// llgo:link (*BIO).ECPKParametersPrint C.ECPKParameters_print
+func (self *BIO) ECPKParametersPrint(x *EC_GROUP, off c.Int) c.Int {
+	return 0
+}
 
 //go:linkname ECPKParametersPrintFp C.ECPKParameters_print_fp
 func ECPKParametersPrintFp(fp *c.FILE, x *EC_GROUP, off c.Int) c.Int
@@ -958,27 +1155,35 @@ func ECPKParametersPrintFp(fp *c.FILE, x *EC_GROUP, off c.Int) c.Int
 //               which case the default library context is used.
 //  \return EC_KEY object or NULL if an error occurred.
 //
-//go:linkname EC_KEYNewEx C.EC_KEY_new_ex
-func EC_KEYNewEx(ctx *OSSL_LIB_CTX, propq *c.Char) *EC_KEY
+// llgo:link (*OSSL_LIB_CTX).EC_KEY_new_ex C.EC_KEY_new_ex
+func (self *OSSL_LIB_CTX) EC_KEY_new_ex(propq *c.Char) *EC_KEY {
+	return nil
+}
 
 //  Creates a new EC_KEY object. Same as calling EC_KEY_new_ex with a
 //  NULL library context
 //  \return EC_KEY object or NULL if an error occurred.
 //
-//go:linkname EC_KEYNew C.EC_KEY_new
-func EC_KEYNew() *EC_KEY
+//go:linkname EC_KEY_new C.EC_KEY_new
+func EC_KEY_new() *EC_KEY
 
-//go:linkname EC_KEYGetFlags C.EC_KEY_get_flags
-func EC_KEYGetFlags(key *EC_KEY) c.Int
+// llgo:link (*EC_KEY).Flags C.EC_KEY_get_flags
+func (self *EC_KEY) Flags() c.Int {
+	return 0
+}
 
-//go:linkname EC_KEYSetFlags C.EC_KEY_set_flags
-func EC_KEYSetFlags(key *EC_KEY, flags c.Int)
+// llgo:link (*EC_KEY).SetFlags C.EC_KEY_set_flags
+func (self *EC_KEY) SetFlags(flags c.Int) {
+}
 
-//go:linkname EC_KEYClearFlags C.EC_KEY_clear_flags
-func EC_KEYClearFlags(key *EC_KEY, flags c.Int)
+// llgo:link (*EC_KEY).ClearFlags C.EC_KEY_clear_flags
+func (self *EC_KEY) ClearFlags(flags c.Int) {
+}
 
-//go:linkname EC_KEYDecodedFromExplicitParams C.EC_KEY_decoded_from_explicit_params
-func EC_KEYDecodedFromExplicitParams(key *EC_KEY) c.Int
+// llgo:link (*EC_KEY).DecodedFromExplicitParams C.EC_KEY_decoded_from_explicit_params
+func (self *EC_KEY) DecodedFromExplicitParams() c.Int {
+	return 0
+}
 
 //  Creates a new EC_KEY object using a named curve as underlying
 //  EC_GROUP object.
@@ -988,8 +1193,10 @@ func EC_KEYDecodedFromExplicitParams(key *EC_KEY) c.Int
 //  \param  nid   NID of the named curve.
 //  \return EC_KEY object or NULL if an error occurred.
 //
-//go:linkname EC_KEYNewByCurveNameEx C.EC_KEY_new_by_curve_name_ex
-func EC_KEYNewByCurveNameEx(ctx *OSSL_LIB_CTX, propq *c.Char, nid c.Int) *EC_KEY
+// llgo:link (*OSSL_LIB_CTX).EC_KEY_new_by_curve_name_ex C.EC_KEY_new_by_curve_name_ex
+func (self *OSSL_LIB_CTX) EC_KEY_new_by_curve_name_ex(propq *c.Char, nid c.Int) *EC_KEY {
+	return nil
+}
 
 //  Creates a new EC_KEY object using a named curve as underlying
 //  EC_GROUP object. Same as calling EC_KEY_new_by_curve_name_ex with a NULL
@@ -997,43 +1204,52 @@ func EC_KEYNewByCurveNameEx(ctx *OSSL_LIB_CTX, propq *c.Char, nid c.Int) *EC_KEY
 //  \param  nid  NID of the named curve.
 //  \return EC_KEY object or NULL if an error occurred.
 //
-//go:linkname EC_KEYNewByCurveName C.EC_KEY_new_by_curve_name
-func EC_KEYNewByCurveName(nid c.Int) *EC_KEY
+//go:linkname EC_KEY_new_by_curve_name C.EC_KEY_new_by_curve_name
+func EC_KEY_new_by_curve_name(nid c.Int) *EC_KEY
 
 // Frees a EC_KEY object.
 //  \param  key  EC_KEY object to be freed.
 //
-//go:linkname EC_KEYFree C.EC_KEY_free
-func EC_KEYFree(key *EC_KEY)
+// llgo:link (*EC_KEY).Free C.EC_KEY_free
+func (self *EC_KEY) Free() {
+}
 
 // Copies a EC_KEY object.
 //  \param  dst  destination EC_KEY object
 //  \param  src  src EC_KEY object
 //  \return dst or NULL if an error occurred.
 //
-//go:linkname EC_KEYCopy C.EC_KEY_copy
-func EC_KEYCopy(dst *EC_KEY, src *EC_KEY) *EC_KEY
+// llgo:link (*EC_KEY).Copy C.EC_KEY_copy
+func (self *EC_KEY) Copy(src *EC_KEY) *EC_KEY {
+	return self
+}
 
 // Creates a new EC_KEY object and copies the content from src to it.
 //  \param  src  the source EC_KEY object
 //  \return newly created EC_KEY object or NULL if an error occurred.
 //
-//go:linkname EC_KEYDup C.EC_KEY_dup
-func EC_KEYDup(src *EC_KEY) *EC_KEY
+// llgo:link (*EC_KEY).Dup C.EC_KEY_dup
+func (self *EC_KEY) Dup() *EC_KEY {
+	return self
+}
 
 // Increases the internal reference count of a EC_KEY object.
 //  \param  key  EC_KEY object
 //  \return 1 on success and 0 if an error occurred.
 //
-//go:linkname EC_KEYUpRef C.EC_KEY_up_ref
-func EC_KEYUpRef(key *EC_KEY) c.Int
+// llgo:link (*EC_KEY).UpRef C.EC_KEY_up_ref
+func (self *EC_KEY) UpRef() c.Int {
+	return 0
+}
 
 // Returns the EC_GROUP object of a EC_KEY object
 //  \param  key  EC_KEY object
 //  \return the EC_GROUP object (possibly NULL).
 //
-//go:linkname EC_KEYGet0Group C.EC_KEY_get0_group
-func EC_KEYGet0Group(key *EC_KEY) *EC_GROUP
+// llgo:link (*EC_KEY).Get0Group C.EC_KEY_get0_group
+func (self *EC_KEY) Get0Group() *EC_GROUP {
+	return nil
+}
 
 // Sets the EC_GROUP of a EC_KEY object.
 //  \param  key    EC_KEY object
@@ -1041,15 +1257,19 @@ func EC_KEYGet0Group(key *EC_KEY) *EC_GROUP
 //                 object will use an own copy of the EC_GROUP).
 //  \return 1 on success and 0 if an error occurred.
 //
-//go:linkname EC_KEYSetGroup C.EC_KEY_set_group
-func EC_KEYSetGroup(key *EC_KEY, group *EC_GROUP) c.Int
+// llgo:link (*EC_KEY).SetGroup C.EC_KEY_set_group
+func (self *EC_KEY) SetGroup(group *EC_GROUP) c.Int {
+	return 0
+}
 
 // Returns the private key of a EC_KEY object.
 //  \param  key  EC_KEY object
 //  \return a BIGNUM with the private key (possibly NULL).
 //
-//go:linkname EC_KEYGet0PrivateKey C.EC_KEY_get0_private_key
-func EC_KEYGet0PrivateKey(key *EC_KEY) *BIGNUM
+// llgo:link (*EC_KEY).Get0PrivateKey C.EC_KEY_get0_private_key
+func (self *EC_KEY) Get0PrivateKey() *BIGNUM {
+	return nil
+}
 
 // Sets the private key of a EC_KEY object.
 //  \param  key  EC_KEY object
@@ -1057,15 +1277,19 @@ func EC_KEYGet0PrivateKey(key *EC_KEY) *BIGNUM
 //               will use an own copy of the BIGNUM).
 //  \return 1 on success and 0 if an error occurred.
 //
-//go:linkname EC_KEYSetPrivateKey C.EC_KEY_set_private_key
-func EC_KEYSetPrivateKey(key *EC_KEY, prv *BIGNUM) c.Int
+// llgo:link (*EC_KEY).SetPrivateKey C.EC_KEY_set_private_key
+func (self *EC_KEY) SetPrivateKey(prv *BIGNUM) c.Int {
+	return 0
+}
 
 // Returns the public key of a EC_KEY object.
 //  \param  key  the EC_KEY object
 //  \return a EC_POINT object with the public key (possibly NULL)
 //
-//go:linkname EC_KEYGet0PublicKey C.EC_KEY_get0_public_key
-func EC_KEYGet0PublicKey(key *EC_KEY) *EC_POINT
+// llgo:link (*EC_KEY).Get0PublicKey C.EC_KEY_get0_public_key
+func (self *EC_KEY) Get0PublicKey() *EC_POINT {
+	return nil
+}
 
 // Sets the public key of a EC_KEY object.
 //  \param  key  EC_KEY object
@@ -1073,31 +1297,44 @@ func EC_KEYGet0PublicKey(key *EC_KEY) *EC_POINT
 //               will use an own copy of the EC_POINT object).
 //  \return 1 on success and 0 if an error occurred.
 //
-//go:linkname EC_KEYSetPublicKey C.EC_KEY_set_public_key
-func EC_KEYSetPublicKey(key *EC_KEY, pub *EC_POINT) c.Int
+// llgo:link (*EC_KEY).SetPublicKey C.EC_KEY_set_public_key
+func (self *EC_KEY) SetPublicKey(pub *EC_POINT) c.Int {
+	return 0
+}
 
-//go:linkname EC_KEYGetEncFlags C.EC_KEY_get_enc_flags
-func EC_KEYGetEncFlags(key *EC_KEY) c.Uint
+// llgo:link (*EC_KEY).EncFlags C.EC_KEY_get_enc_flags
+func (self *EC_KEY) EncFlags() c.Uint {
+	return 0
+}
 
-//go:linkname EC_KEYSetEncFlags C.EC_KEY_set_enc_flags
-func EC_KEYSetEncFlags(eckey *EC_KEY, flags c.Uint)
+// llgo:link (*EC_KEY).SetEncFlags C.EC_KEY_set_enc_flags
+func (self *EC_KEY) SetEncFlags(flags c.Uint) {
+}
 
-//go:linkname EC_KEYGetConvForm C.EC_KEY_get_conv_form
-func EC_KEYGetConvForm(key *EC_KEY) PointConversionFormT
+// llgo:link (*EC_KEY).ConvForm C.EC_KEY_get_conv_form
+func (self *EC_KEY) ConvForm() PointConversionFormT {
+	return 0
+}
 
-//go:linkname EC_KEYSetConvForm C.EC_KEY_set_conv_form
-func EC_KEYSetConvForm(eckey *EC_KEY, cform PointConversionFormT)
+// llgo:link (*EC_KEY).SetConvForm C.EC_KEY_set_conv_form
+func (self *EC_KEY) SetConvForm(cform PointConversionFormT) {
+}
 
-//go:linkname EC_KEYSetExData C.EC_KEY_set_ex_data
-func EC_KEYSetExData(key *EC_KEY, idx c.Int, arg unsafe.Pointer) c.Int
+// llgo:link (*EC_KEY).SetExData C.EC_KEY_set_ex_data
+func (self *EC_KEY) SetExData(idx c.Int, arg unsafe.Pointer) c.Int {
+	return 0
+}
 
-//go:linkname EC_KEYGetExData C.EC_KEY_get_ex_data
-func EC_KEYGetExData(key *EC_KEY, idx c.Int) unsafe.Pointer
+// llgo:link (*EC_KEY).ExData C.EC_KEY_get_ex_data
+func (self *EC_KEY) ExData(idx c.Int) unsafe.Pointer {
+	return nil
+}
 
 // wrapper functions for the underlying EC_GROUP object
 //
-//go:linkname EC_KEYSetAsn1Flag C.EC_KEY_set_asn1_flag
-func EC_KEYSetAsn1Flag(eckey *EC_KEY, asn1_flag c.Int)
+// llgo:link (*EC_KEY).SetAsn1Flag C.EC_KEY_set_asn1_flag
+func (self *EC_KEY) SetAsn1Flag(asn1_flag c.Int) {
+}
 
 // Creates a table of pre-computed multiples of the generator to
 //  accelerate further EC_KEY operations.
@@ -1105,29 +1342,37 @@ func EC_KEYSetAsn1Flag(eckey *EC_KEY, asn1_flag c.Int)
 //  \param  ctx  BN_CTX object (optional)
 //  \return 1 on success and 0 if an error occurred.
 //
-//go:linkname EC_KEYPrecomputeMult C.EC_KEY_precompute_mult
-func EC_KEYPrecomputeMult(key *EC_KEY, ctx *BN_CTX) c.Int
+// llgo:link (*EC_KEY).PrecomputeMult C.EC_KEY_precompute_mult
+func (self *EC_KEY) PrecomputeMult(ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // Creates a new ec private (and optional a new public) key.
 //  \param  key  EC_KEY object
 //  \return 1 on success and 0 if an error occurred.
 //
-//go:linkname EC_KEYGenerateKey C.EC_KEY_generate_key
-func EC_KEYGenerateKey(key *EC_KEY) c.Int
+// llgo:link (*EC_KEY).GenerateKey C.EC_KEY_generate_key
+func (self *EC_KEY) GenerateKey() c.Int {
+	return 0
+}
 
 // Verifies that a private and/or public key is valid.
 //  \param  key  the EC_KEY object
 //  \return 1 on success and 0 otherwise.
 //
-//go:linkname EC_KEYCheckKey C.EC_KEY_check_key
-func EC_KEYCheckKey(key *EC_KEY) c.Int
+// llgo:link (*EC_KEY).CheckKey C.EC_KEY_check_key
+func (self *EC_KEY) CheckKey() c.Int {
+	return 0
+}
 
 // Indicates if an EC_KEY can be used for signing.
 //  \param  eckey  the EC_KEY object
 //  \return 1 if can sign and 0 otherwise.
 //
-//go:linkname EC_KEYCanSign C.EC_KEY_can_sign
-func EC_KEYCanSign(eckey *EC_KEY) c.Int
+// llgo:link (*EC_KEY).CanSign C.EC_KEY_can_sign
+func (self *EC_KEY) CanSign() c.Int {
+	return 0
+}
 
 // Sets a public key from affine coordinates performing
 //  necessary NIST PKV tests.
@@ -1136,8 +1381,10 @@ func EC_KEYCanSign(eckey *EC_KEY) c.Int
 //  \param  y    public key y coordinate
 //  \return 1 on success and 0 otherwise.
 //
-//go:linkname EC_KEYSetPublicKeyAffineCoordinates C.EC_KEY_set_public_key_affine_coordinates
-func EC_KEYSetPublicKeyAffineCoordinates(key *EC_KEY, x *BIGNUM, y *BIGNUM) c.Int
+// llgo:link (*EC_KEY).SetPublicKeyAffineCoordinates C.EC_KEY_set_public_key_affine_coordinates
+func (self *EC_KEY) SetPublicKeyAffineCoordinates(x *BIGNUM, y *BIGNUM) c.Int {
+	return 0
+}
 
 // Encodes an EC_KEY public key to an allocated octet string
 //  \param  key    key to encode
@@ -1146,25 +1393,35 @@ func EC_KEYSetPublicKeyAffineCoordinates(key *EC_KEY, x *BIGNUM, y *BIGNUM) c.In
 //  \param  ctx    BN_CTX object (optional)
 //  \return the length of the encoded octet string or 0 if an error occurred
 //
-//go:linkname EC_KEYKey2buf C.EC_KEY_key2buf
-func EC_KEYKey2buf(key *EC_KEY, form PointConversionFormT, pbuf **uint8, ctx *BN_CTX) c.SizeT
+// llgo:link (*EC_KEY).Key2buf C.EC_KEY_key2buf
+func (self *EC_KEY) Key2buf(form PointConversionFormT, pbuf **uint8, ctx *BN_CTX) c.SizeT {
+	return 0
+}
 
-//go:linkname EC_KEYOct2key C.EC_KEY_oct2key
-func EC_KEYOct2key(key *EC_KEY, buf *uint8, len c.SizeT, ctx *BN_CTX) c.Int
+// llgo:link (*EC_KEY).Oct2key C.EC_KEY_oct2key
+func (self *EC_KEY) Oct2key(buf *uint8, len c.SizeT, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname EC_KEYOct2priv C.EC_KEY_oct2priv
-func EC_KEYOct2priv(key *EC_KEY, buf *uint8, len c.SizeT) c.Int
+// llgo:link (*EC_KEY).Oct2priv C.EC_KEY_oct2priv
+func (self *EC_KEY) Oct2priv(buf *uint8, len c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname EC_KEYPriv2oct C.EC_KEY_priv2oct
-func EC_KEYPriv2oct(key *EC_KEY, buf *uint8, len c.SizeT) c.SizeT
+// llgo:link (*EC_KEY).Priv2oct C.EC_KEY_priv2oct
+func (self *EC_KEY) Priv2oct(buf *uint8, len c.SizeT) c.SizeT {
+	return 0
+}
 
 // Encodes an EC_KEY private key to an allocated octet string
 //  \param  eckey  key to encode
 //  \param  pbuf   returns pointer to allocated buffer
 //  \return the length of the encoded octet string or 0 if an error occurred
 //
-//go:linkname EC_KEYPriv2buf C.EC_KEY_priv2buf
-func EC_KEYPriv2buf(eckey *EC_KEY, pbuf **uint8) c.SizeT
+// llgo:link (*EC_KEY).Priv2buf C.EC_KEY_priv2buf
+func (self *EC_KEY) Priv2buf(pbuf **uint8) c.SizeT {
+	return 0
+}
 
 // Decodes a private key from a memory buffer.
 //  \param  key  a pointer to a EC_KEY object which should be used (or NULL)
@@ -1181,8 +1438,10 @@ func D2iECPrivateKey(key **EC_KEY, in **uint8, len c.Long) *EC_KEY
 //               of bytes needed).
 //  \return 1 on success and 0 if an error occurred.
 //
-//go:linkname I2dECPrivateKey C.i2d_ECPrivateKey
-func I2dECPrivateKey(key *EC_KEY, out **uint8) c.Int
+// llgo:link (*EC_KEY).I2dECPrivateKey C.i2d_ECPrivateKey
+func (self *EC_KEY) I2dECPrivateKey(out **uint8) c.Int {
+	return 0
+}
 
 // Decodes ec parameter from a memory buffer.
 //  \param  key  a pointer to a EC_KEY object which should be used (or NULL)
@@ -1200,8 +1459,10 @@ func D2iECParameters(key **EC_KEY, in **uint8, len c.Long) *EC_KEY
 //               of bytes needed).
 //  \return 1 on success and 0 if an error occurred.
 //
-//go:linkname I2dECParameters C.i2d_ECParameters
-func I2dECParameters(key *EC_KEY, out **uint8) c.Int
+// llgo:link (*EC_KEY).I2dECParameters C.i2d_ECParameters
+func (self *EC_KEY) I2dECParameters(out **uint8) c.Int {
+	return 0
+}
 
 // Decodes an ec public key from a octet string.
 //  \param  key  a pointer to a EC_KEY object which should be used
@@ -1219,16 +1480,20 @@ func O2iECPublicKey(key **EC_KEY, in **uint8, len c.Long) *EC_KEY
 //               of bytes needed).
 //  \return 1 on success and 0 if an error occurred
 //
-//go:linkname I2oECPublicKey C.i2o_ECPublicKey
-func I2oECPublicKey(key *EC_KEY, out **uint8) c.Int
+// llgo:link (*EC_KEY).I2oECPublicKey C.i2o_ECPublicKey
+func (self *EC_KEY) I2oECPublicKey(out **uint8) c.Int {
+	return 0
+}
 
 // Prints out the ec parameters on human readable form.
 //  \param  bp   BIO object to which the information is printed
 //  \param  key  EC_KEY object
 //  \return 1 on success and 0 if an error occurred
 //
-//go:linkname ECParametersPrint C.ECParameters_print
-func ECParametersPrint(bp *BIO, key *EC_KEY) c.Int
+// llgo:link (*BIO).ECParametersPrint C.ECParameters_print
+func (self *BIO) ECParametersPrint(key *EC_KEY) c.Int {
+	return 0
+}
 
 // Prints out the contents of a EC_KEY object
 //  \param  bp   BIO object to which the information is printed
@@ -1236,8 +1501,10 @@ func ECParametersPrint(bp *BIO, key *EC_KEY) c.Int
 //  \param  off  line offset
 //  \return 1 on success and 0 if an error occurred
 //
-//go:linkname EC_KEYPrint C.EC_KEY_print
-func EC_KEYPrint(bp *BIO, key *EC_KEY, off c.Int) c.Int
+// llgo:link (*BIO).EC_KEY_print C.EC_KEY_print
+func (self *BIO) EC_KEY_print(key *EC_KEY, off c.Int) c.Int {
+	return 0
+}
 
 // Prints out the ec parameters on human readable form.
 //  \param  fp   file descriptor to which the information is printed
@@ -1253,26 +1520,33 @@ func ECParametersPrintFp(fp *c.FILE, key *EC_KEY) c.Int
 //  \param  off  line offset
 //  \return 1 on success and 0 if an error occurred
 //
-//go:linkname EC_KEYPrintFp C.EC_KEY_print_fp
-func EC_KEYPrintFp(fp *c.FILE, key *EC_KEY, off c.Int) c.Int
+//go:linkname EC_KEY_print_fp C.EC_KEY_print_fp
+func EC_KEY_print_fp(fp *c.FILE, key *EC_KEY, off c.Int) c.Int
 
 //go:linkname EC_KEY_OpenSSL C.EC_KEY_OpenSSL
 func EC_KEY_OpenSSL() *EC_KEY_METHOD
 
-//go:linkname EC_KEYGetDefaultMethod C.EC_KEY_get_default_method
-func EC_KEYGetDefaultMethod() *EC_KEY_METHOD
+//go:linkname EC_KEY_get_default_method C.EC_KEY_get_default_method
+func EC_KEY_get_default_method() *EC_KEY_METHOD
 
-//go:linkname EC_KEYSetDefaultMethod C.EC_KEY_set_default_method
-func EC_KEYSetDefaultMethod(meth *EC_KEY_METHOD)
+// llgo:link (*EC_KEY_METHOD).SetDefaultMethod C.EC_KEY_set_default_method
+func (self *EC_KEY_METHOD) SetDefaultMethod() {
+}
 
-//go:linkname EC_KEYGetMethod C.EC_KEY_get_method
-func EC_KEYGetMethod(key *EC_KEY) *EC_KEY_METHOD
+// llgo:link (*EC_KEY).Method C.EC_KEY_get_method
+func (self *EC_KEY) Method() *EC_KEY_METHOD {
+	return nil
+}
 
-//go:linkname EC_KEYSetMethod C.EC_KEY_set_method
-func EC_KEYSetMethod(key *EC_KEY, meth *EC_KEY_METHOD) c.Int
+// llgo:link (*EC_KEY).SetMethod C.EC_KEY_set_method
+func (self *EC_KEY) SetMethod(meth *EC_KEY_METHOD) c.Int {
+	return 0
+}
 
-//go:linkname EC_KEYNewMethod C.EC_KEY_new_method
-func EC_KEYNewMethod(engine *ENGINE) *EC_KEY
+// llgo:link (*ENGINE).EC_KEY_new_method C.EC_KEY_new_method
+func (self *ENGINE) EC_KEY_new_method() *EC_KEY {
+	return nil
+}
 
 // The old name for ecdh_KDF_X9_63
 //  The ECDH KDF specification has been mistakenly attributed to ANSI X9.62,
@@ -1282,20 +1556,21 @@ func EC_KEYNewMethod(engine *ENGINE) *EC_KEY
 //go:linkname ECDH_KDF_X9_62 C.ECDH_KDF_X9_62
 func ECDH_KDF_X9_62(out *uint8, outlen c.SizeT, Z *uint8, Zlen c.SizeT, sinfo *uint8, sinfolen c.SizeT, md *EVP_MD) c.Int
 
-//go:linkname ECDHComputeKey C.ECDH_compute_key
-func ECDHComputeKey(out unsafe.Pointer, outlen c.SizeT, pub_key *EC_POINT, ecdh *EC_KEY, KDF func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.SizeT, _llcppg_param3 unsafe.Pointer, _llcppg_param4 *c.SizeT) unsafe.Pointer) c.Int
+//go:linkname ECDH_compute_key C.ECDH_compute_key
+func ECDH_compute_key(out unsafe.Pointer, outlen c.SizeT, pub_key *EC_POINT, ecdh *EC_KEY, KDF func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.SizeT, _llcppg_param3 unsafe.Pointer, _llcppg_param4 *c.SizeT) unsafe.Pointer) c.Int
 
 // Allocates and initialize a ECDSA_SIG structure
 //  \return pointer to a ECDSA_SIG structure or NULL if an error occurred
 //
-//go:linkname ECDSA_SIGNew C.ECDSA_SIG_new
-func ECDSA_SIGNew() *ECDSA_SIG
+//go:linkname ECDSA_SIG_new C.ECDSA_SIG_new
+func ECDSA_SIG_new() *ECDSA_SIG
 
 // frees a ECDSA_SIG structure
 //  \param  sig  pointer to the ECDSA_SIG structure
 //
-//go:linkname ECDSA_SIGFree C.ECDSA_SIG_free
-func ECDSA_SIGFree(sig *ECDSA_SIG)
+// llgo:link (*ECDSA_SIG).Free C.ECDSA_SIG_free
+func (self *ECDSA_SIG) Free() {
+}
 
 // i2d_ECDSA_SIG encodes content of ECDSA_SIG (note: this function modifies *pp
 //  (*pp += length of the DER encoded signature)).
@@ -1304,8 +1579,8 @@ func ECDSA_SIGFree(sig *ECDSA_SIG)
 //  \return the length of the DER encoded ECDSA_SIG object or a negative value
 //          on error
 //
-//go:linkname D2iECDSA_SIG C.d2i_ECDSA_SIG
-func D2iECDSA_SIG(a **ECDSA_SIG, in **uint8, len c.Long) *ECDSA_SIG
+//go:linkname D2i_ECDSA_SIG C.d2i_ECDSA_SIG
+func D2i_ECDSA_SIG(a **ECDSA_SIG, in **uint8, len c.Long) *ECDSA_SIG
 
 // i2d_ECDSA_SIG encodes content of ECDSA_SIG (note: this function modifies *pp
 //  (*pp += length of the DER encoded signature)).
@@ -1314,36 +1589,45 @@ func D2iECDSA_SIG(a **ECDSA_SIG, in **uint8, len c.Long) *ECDSA_SIG
 //  \return the length of the DER encoded ECDSA_SIG object or a negative value
 //          on error
 //
-//go:linkname I2dECDSA_SIG C.i2d_ECDSA_SIG
-func I2dECDSA_SIG(a *ECDSA_SIG, out **uint8) c.Int
+// llgo:link (*ECDSA_SIG).I2d C.i2d_ECDSA_SIG
+func (self *ECDSA_SIG) I2d(out **uint8) c.Int {
+	return 0
+}
 
 // Accessor for r and s fields of ECDSA_SIG
 //  \param  sig  pointer to ECDSA_SIG structure
 //  \param  pr   pointer to BIGNUM pointer for r (may be NULL)
 //  \param  ps   pointer to BIGNUM pointer for s (may be NULL)
 //
-//go:linkname ECDSA_SIGGet0 C.ECDSA_SIG_get0
-func ECDSA_SIGGet0(sig *ECDSA_SIG, pr **BIGNUM, ps **BIGNUM)
+// llgo:link (*ECDSA_SIG).Get0 C.ECDSA_SIG_get0
+func (self *ECDSA_SIG) Get0(pr **BIGNUM, ps **BIGNUM) {
+}
 
 // Accessor for r field of ECDSA_SIG
 //  \param  sig  pointer to ECDSA_SIG structure
 //
-//go:linkname ECDSA_SIGGet0R C.ECDSA_SIG_get0_r
-func ECDSA_SIGGet0R(sig *ECDSA_SIG) *BIGNUM
+// llgo:link (*ECDSA_SIG).Get0R C.ECDSA_SIG_get0_r
+func (self *ECDSA_SIG) Get0R() *BIGNUM {
+	return nil
+}
 
 // Accessor for s field of ECDSA_SIG
 //  \param  sig  pointer to ECDSA_SIG structure
 //
-//go:linkname ECDSA_SIGGet0S C.ECDSA_SIG_get0_s
-func ECDSA_SIGGet0S(sig *ECDSA_SIG) *BIGNUM
+// llgo:link (*ECDSA_SIG).Get0S C.ECDSA_SIG_get0_s
+func (self *ECDSA_SIG) Get0S() *BIGNUM {
+	return nil
+}
 
 // Setter for r and s fields of ECDSA_SIG
 //  \param  sig  pointer to ECDSA_SIG structure
 //  \param  r    pointer to BIGNUM for r
 //  \param  s    pointer to BIGNUM for s
 //
-//go:linkname ECDSA_SIGSet0 C.ECDSA_SIG_set0
-func ECDSA_SIGSet0(sig *ECDSA_SIG, r *BIGNUM, s *BIGNUM) c.Int
+// llgo:link (*ECDSA_SIG).Set0 C.ECDSA_SIG_set0
+func (self *ECDSA_SIG) Set0(r *BIGNUM, s *BIGNUM) c.Int {
+	return 0
+}
 
 // Computes the ECDSA signature of the given hash value using
 //  the supplied private key and returns the created signature.
@@ -1352,8 +1636,8 @@ func ECDSA_SIGSet0(sig *ECDSA_SIG, r *BIGNUM, s *BIGNUM) c.Int
 //  \param  eckey     EC_KEY object containing a private EC key
 //  \return pointer to a ECDSA_SIG structure or NULL if an error occurred
 //
-//go:linkname ECDSADoSign C.ECDSA_do_sign
-func ECDSADoSign(dgst *uint8, dgst_len c.Int, eckey *EC_KEY) *ECDSA_SIG
+//go:linkname ECDSA_do_sign C.ECDSA_do_sign
+func ECDSA_do_sign(dgst *uint8, dgst_len c.Int, eckey *EC_KEY) *ECDSA_SIG
 
 // Computes ECDSA signature of a given hash value using the supplied
 //  private key (note: sig must point to ECDSA_size(eckey) bytes of memory).
@@ -1365,8 +1649,8 @@ func ECDSADoSign(dgst *uint8, dgst_len c.Int, eckey *EC_KEY) *ECDSA_SIG
 //  \param  eckey    EC_KEY object containing a private EC key
 //  \return pointer to a ECDSA_SIG structure or NULL if an error occurred
 //
-//go:linkname ECDSADoSignEx C.ECDSA_do_sign_ex
-func ECDSADoSignEx(dgst *uint8, dgstlen c.Int, kinv *BIGNUM, rp *BIGNUM, eckey *EC_KEY) *ECDSA_SIG
+//go:linkname ECDSA_do_sign_ex C.ECDSA_do_sign_ex
+func ECDSA_do_sign_ex(dgst *uint8, dgstlen c.Int, kinv *BIGNUM, rp *BIGNUM, eckey *EC_KEY) *ECDSA_SIG
 
 // Verifies that the supplied signature is a valid ECDSA
 //  signature of the supplied hash value using the supplied public key.
@@ -1377,8 +1661,8 @@ func ECDSADoSignEx(dgst *uint8, dgstlen c.Int, kinv *BIGNUM, rp *BIGNUM, eckey *
 //  \return 1 if the signature is valid, 0 if the signature is invalid
 //          and -1 on error
 //
-//go:linkname ECDSADoVerify C.ECDSA_do_verify
-func ECDSADoVerify(dgst *uint8, dgst_len c.Int, sig *ECDSA_SIG, eckey *EC_KEY) c.Int
+//go:linkname ECDSA_do_verify C.ECDSA_do_verify
+func ECDSA_do_verify(dgst *uint8, dgst_len c.Int, sig *ECDSA_SIG, eckey *EC_KEY) c.Int
 
 // Precompute parts of the signing operation
 //  \param  eckey  EC_KEY object containing a private EC key
@@ -1387,8 +1671,10 @@ func ECDSADoVerify(dgst *uint8, dgst_len c.Int, sig *ECDSA_SIG, eckey *EC_KEY) c
 //  \param  rp     BIGNUM pointer for x coordinate of k * generator
 //  \return 1 on success and 0 otherwise
 //
-//go:linkname ECDSASignSetup C.ECDSA_sign_setup
-func ECDSASignSetup(eckey *EC_KEY, ctx *BN_CTX, kinv **BIGNUM, rp **BIGNUM) c.Int
+// llgo:link (*EC_KEY).ECDSA_sign_setup C.ECDSA_sign_setup
+func (self *EC_KEY) ECDSA_sign_setup(ctx *BN_CTX, kinv **BIGNUM, rp **BIGNUM) c.Int {
+	return 0
+}
 
 // Computes ECDSA signature of a given hash value using the supplied
 //  private key (note: sig must point to ECDSA_size(eckey) bytes of memory).
@@ -1400,8 +1686,8 @@ func ECDSASignSetup(eckey *EC_KEY, ctx *BN_CTX, kinv **BIGNUM, rp **BIGNUM) c.In
 //  \param  eckey    EC_KEY object containing a private EC key
 //  \return 1 on success and 0 otherwise
 //
-//go:linkname ECDSASign C.ECDSA_sign
-func ECDSASign(type_ c.Int, dgst *uint8, dgstlen c.Int, sig *uint8, siglen *c.Uint, eckey *EC_KEY) c.Int
+//go:linkname ECDSA_sign C.ECDSA_sign
+func ECDSA_sign(type_ c.Int, dgst *uint8, dgstlen c.Int, sig *uint8, siglen *c.Uint, eckey *EC_KEY) c.Int
 
 // Computes ECDSA signature of a given hash value using the supplied
 //  private key (note: sig must point to ECDSA_size(eckey) bytes of memory).
@@ -1416,8 +1702,8 @@ func ECDSASign(type_ c.Int, dgst *uint8, dgstlen c.Int, sig *uint8, siglen *c.Ui
 //  \param  eckey    EC_KEY object containing a private EC key
 //  \return 1 on success and 0 otherwise
 //
-//go:linkname ECDSASignEx C.ECDSA_sign_ex
-func ECDSASignEx(type_ c.Int, dgst *uint8, dgstlen c.Int, sig *uint8, siglen *c.Uint, kinv *BIGNUM, rp *BIGNUM, eckey *EC_KEY) c.Int
+//go:linkname ECDSA_sign_ex C.ECDSA_sign_ex
+func ECDSA_sign_ex(type_ c.Int, dgst *uint8, dgstlen c.Int, sig *uint8, siglen *c.Uint, kinv *BIGNUM, rp *BIGNUM, eckey *EC_KEY) c.Int
 
 // Verifies that the given signature is valid ECDSA signature
 //  of the supplied hash value using the specified public key.
@@ -1430,48 +1716,63 @@ func ECDSASignEx(type_ c.Int, dgst *uint8, dgstlen c.Int, sig *uint8, siglen *c.
 //  \return 1 if the signature is valid, 0 if the signature is invalid
 //          and -1 on error
 //
-//go:linkname ECDSAVerify C.ECDSA_verify
-func ECDSAVerify(type_ c.Int, dgst *uint8, dgstlen c.Int, sig *uint8, siglen c.Int, eckey *EC_KEY) c.Int
+//go:linkname ECDSA_verify C.ECDSA_verify
+func ECDSA_verify(type_ c.Int, dgst *uint8, dgstlen c.Int, sig *uint8, siglen c.Int, eckey *EC_KEY) c.Int
 
 // Returns the maximum length of the DER encoded signature
 //  \param  eckey  EC_KEY object
 //  \return numbers of bytes required for the DER encoded signature
 //
-//go:linkname ECDSASize C.ECDSA_size
-func ECDSASize(eckey *EC_KEY) c.Int
+// llgo:link (*EC_KEY).ECDSA_size C.ECDSA_size
+func (self *EC_KEY) ECDSA_size() c.Int {
+	return 0
+}
 
-//go:linkname EC_KEY_METHODNew C.EC_KEY_METHOD_new
-func EC_KEY_METHODNew(meth *EC_KEY_METHOD) *EC_KEY_METHOD
+// llgo:link (*EC_KEY_METHOD).New C.EC_KEY_METHOD_new
+func (self *EC_KEY_METHOD) New() *EC_KEY_METHOD {
+	return self
+}
 
-//go:linkname EC_KEY_METHODFree C.EC_KEY_METHOD_free
-func EC_KEY_METHODFree(meth *EC_KEY_METHOD)
+// llgo:link (*EC_KEY_METHOD).Free C.EC_KEY_METHOD_free
+func (self *EC_KEY_METHOD) Free() {
+}
 
-//go:linkname EC_KEY_METHODSetInit C.EC_KEY_METHOD_set_init
-func EC_KEY_METHODSetInit(meth *EC_KEY_METHOD, init func(_llcppg_param1 *EC_KEY) c.Int, finish func(_llcppg_param1 *EC_KEY), copy func(_llcppg_param1 *EC_KEY, _llcppg_param2 *EC_KEY) c.Int, set_group func(_llcppg_param1 *EC_KEY, _llcppg_param2 *EC_GROUP) c.Int, set_private func(_llcppg_param1 *EC_KEY, _llcppg_param2 *BIGNUM) c.Int, set_public func(_llcppg_param1 *EC_KEY, _llcppg_param2 *EC_POINT) c.Int)
+// llgo:link (*EC_KEY_METHOD).SetInit C.EC_KEY_METHOD_set_init
+func (self *EC_KEY_METHOD) SetInit(init func(_llcppg_param1 *EC_KEY) c.Int, finish func(_llcppg_param1 *EC_KEY), copy func(_llcppg_param1 *EC_KEY, _llcppg_param2 *EC_KEY) c.Int, set_group func(_llcppg_param1 *EC_KEY, _llcppg_param2 *EC_GROUP) c.Int, set_private func(_llcppg_param1 *EC_KEY, _llcppg_param2 *BIGNUM) c.Int, set_public func(_llcppg_param1 *EC_KEY, _llcppg_param2 *EC_POINT) c.Int) {
+}
 
-//go:linkname EC_KEY_METHODSetKeygen C.EC_KEY_METHOD_set_keygen
-func EC_KEY_METHODSetKeygen(meth *EC_KEY_METHOD, keygen func(_llcppg_param1 *EC_KEY) c.Int)
+// llgo:link (*EC_KEY_METHOD).SetKeygen C.EC_KEY_METHOD_set_keygen
+func (self *EC_KEY_METHOD) SetKeygen(keygen func(_llcppg_param1 *EC_KEY) c.Int) {
+}
 
-//go:linkname EC_KEY_METHODSetComputeKey C.EC_KEY_METHOD_set_compute_key
-func EC_KEY_METHODSetComputeKey(meth *EC_KEY_METHOD, ckey func(_llcppg_param1 **uint8, _llcppg_param2 *c.SizeT, _llcppg_param3 *EC_POINT, _llcppg_param4 *EC_KEY) c.Int)
+// llgo:link (*EC_KEY_METHOD).SetComputeKey C.EC_KEY_METHOD_set_compute_key
+func (self *EC_KEY_METHOD) SetComputeKey(ckey func(_llcppg_param1 **uint8, _llcppg_param2 *c.SizeT, _llcppg_param3 *EC_POINT, _llcppg_param4 *EC_KEY) c.Int) {
+}
 
-//go:linkname EC_KEY_METHODSetSign C.EC_KEY_METHOD_set_sign
-func EC_KEY_METHODSetSign(meth *EC_KEY_METHOD, sign func(_llcppg_param1 c.Int, _llcppg_param2 *uint8, _llcppg_param3 c.Int, _llcppg_param4 *uint8, _llcppg_param5 *c.Uint, _llcppg_param6 *BIGNUM, _llcppg_param7 *BIGNUM, _llcppg_param8 *EC_KEY) c.Int, sign_setup func(_llcppg_param1 *EC_KEY, _llcppg_param2 *BN_CTX, _llcppg_param3 **BIGNUM, _llcppg_param4 **BIGNUM) c.Int, sign_sig func(_llcppg_param1 *uint8, _llcppg_param2 c.Int, _llcppg_param3 *BIGNUM, _llcppg_param4 *BIGNUM, _llcppg_param5 *EC_KEY) *ECDSA_SIG)
+// llgo:link (*EC_KEY_METHOD).SetSign C.EC_KEY_METHOD_set_sign
+func (self *EC_KEY_METHOD) SetSign(sign func(_llcppg_param1 c.Int, _llcppg_param2 *uint8, _llcppg_param3 c.Int, _llcppg_param4 *uint8, _llcppg_param5 *c.Uint, _llcppg_param6 *BIGNUM, _llcppg_param7 *BIGNUM, _llcppg_param8 *EC_KEY) c.Int, sign_setup func(_llcppg_param1 *EC_KEY, _llcppg_param2 *BN_CTX, _llcppg_param3 **BIGNUM, _llcppg_param4 **BIGNUM) c.Int, sign_sig func(_llcppg_param1 *uint8, _llcppg_param2 c.Int, _llcppg_param3 *BIGNUM, _llcppg_param4 *BIGNUM, _llcppg_param5 *EC_KEY) *ECDSA_SIG) {
+}
 
-//go:linkname EC_KEY_METHODSetVerify C.EC_KEY_METHOD_set_verify
-func EC_KEY_METHODSetVerify(meth *EC_KEY_METHOD, verify func(_llcppg_param1 c.Int, _llcppg_param2 *uint8, _llcppg_param3 c.Int, _llcppg_param4 *uint8, _llcppg_param5 c.Int, _llcppg_param6 *EC_KEY) c.Int, verify_sig func(_llcppg_param1 *uint8, _llcppg_param2 c.Int, _llcppg_param3 *ECDSA_SIG, _llcppg_param4 *EC_KEY) c.Int)
+// llgo:link (*EC_KEY_METHOD).SetVerify C.EC_KEY_METHOD_set_verify
+func (self *EC_KEY_METHOD) SetVerify(verify func(_llcppg_param1 c.Int, _llcppg_param2 *uint8, _llcppg_param3 c.Int, _llcppg_param4 *uint8, _llcppg_param5 c.Int, _llcppg_param6 *EC_KEY) c.Int, verify_sig func(_llcppg_param1 *uint8, _llcppg_param2 c.Int, _llcppg_param3 *ECDSA_SIG, _llcppg_param4 *EC_KEY) c.Int) {
+}
 
-//go:linkname EC_KEY_METHODGetInit C.EC_KEY_METHOD_get_init
-func EC_KEY_METHODGetInit(meth *EC_KEY_METHOD, pinit *func(_llcppg_param1 *EC_KEY) c.Int, pfinish *func(_llcppg_param1 *EC_KEY), pcopy *func(_llcppg_param1 *EC_KEY, _llcppg_param2 *EC_KEY) c.Int, pset_group *func(_llcppg_param1 *EC_KEY, _llcppg_param2 *EC_GROUP) c.Int, pset_private *func(_llcppg_param1 *EC_KEY, _llcppg_param2 *BIGNUM) c.Int, pset_public *func(_llcppg_param1 *EC_KEY, _llcppg_param2 *EC_POINT) c.Int)
+// llgo:link (*EC_KEY_METHOD).Init C.EC_KEY_METHOD_get_init
+func (self *EC_KEY_METHOD) Init(pinit *func(_llcppg_param1 *EC_KEY) c.Int, pfinish *func(_llcppg_param1 *EC_KEY), pcopy *func(_llcppg_param1 *EC_KEY, _llcppg_param2 *EC_KEY) c.Int, pset_group *func(_llcppg_param1 *EC_KEY, _llcppg_param2 *EC_GROUP) c.Int, pset_private *func(_llcppg_param1 *EC_KEY, _llcppg_param2 *BIGNUM) c.Int, pset_public *func(_llcppg_param1 *EC_KEY, _llcppg_param2 *EC_POINT) c.Int) {
+}
 
-//go:linkname EC_KEY_METHODGetKeygen C.EC_KEY_METHOD_get_keygen
-func EC_KEY_METHODGetKeygen(meth *EC_KEY_METHOD, pkeygen *func(_llcppg_param1 *EC_KEY) c.Int)
+// llgo:link (*EC_KEY_METHOD).Keygen C.EC_KEY_METHOD_get_keygen
+func (self *EC_KEY_METHOD) Keygen(pkeygen *func(_llcppg_param1 *EC_KEY) c.Int) {
+}
 
-//go:linkname EC_KEY_METHODGetComputeKey C.EC_KEY_METHOD_get_compute_key
-func EC_KEY_METHODGetComputeKey(meth *EC_KEY_METHOD, pck *func(_llcppg_param1 **uint8, _llcppg_param2 *c.SizeT, _llcppg_param3 *EC_POINT, _llcppg_param4 *EC_KEY) c.Int)
+// llgo:link (*EC_KEY_METHOD).ComputeKey C.EC_KEY_METHOD_get_compute_key
+func (self *EC_KEY_METHOD) ComputeKey(pck *func(_llcppg_param1 **uint8, _llcppg_param2 *c.SizeT, _llcppg_param3 *EC_POINT, _llcppg_param4 *EC_KEY) c.Int) {
+}
 
-//go:linkname EC_KEY_METHODGetSign C.EC_KEY_METHOD_get_sign
-func EC_KEY_METHODGetSign(meth *EC_KEY_METHOD, psign *func(_llcppg_param1 c.Int, _llcppg_param2 *uint8, _llcppg_param3 c.Int, _llcppg_param4 *uint8, _llcppg_param5 *c.Uint, _llcppg_param6 *BIGNUM, _llcppg_param7 *BIGNUM, _llcppg_param8 *EC_KEY) c.Int, psign_setup *func(_llcppg_param1 *EC_KEY, _llcppg_param2 *BN_CTX, _llcppg_param3 **BIGNUM, _llcppg_param4 **BIGNUM) c.Int, psign_sig *func(_llcppg_param1 *uint8, _llcppg_param2 c.Int, _llcppg_param3 *BIGNUM, _llcppg_param4 *BIGNUM, _llcppg_param5 *EC_KEY) *ECDSA_SIG)
+// llgo:link (*EC_KEY_METHOD).Sign C.EC_KEY_METHOD_get_sign
+func (self *EC_KEY_METHOD) Sign(psign *func(_llcppg_param1 c.Int, _llcppg_param2 *uint8, _llcppg_param3 c.Int, _llcppg_param4 *uint8, _llcppg_param5 *c.Uint, _llcppg_param6 *BIGNUM, _llcppg_param7 *BIGNUM, _llcppg_param8 *EC_KEY) c.Int, psign_setup *func(_llcppg_param1 *EC_KEY, _llcppg_param2 *BN_CTX, _llcppg_param3 **BIGNUM, _llcppg_param4 **BIGNUM) c.Int, psign_sig *func(_llcppg_param1 *uint8, _llcppg_param2 c.Int, _llcppg_param3 *BIGNUM, _llcppg_param4 *BIGNUM, _llcppg_param5 *EC_KEY) *ECDSA_SIG) {
+}
 
-//go:linkname EC_KEY_METHODGetVerify C.EC_KEY_METHOD_get_verify
-func EC_KEY_METHODGetVerify(meth *EC_KEY_METHOD, pverify *func(_llcppg_param1 c.Int, _llcppg_param2 *uint8, _llcppg_param3 c.Int, _llcppg_param4 *uint8, _llcppg_param5 c.Int, _llcppg_param6 *EC_KEY) c.Int, pverify_sig *func(_llcppg_param1 *uint8, _llcppg_param2 c.Int, _llcppg_param3 *ECDSA_SIG, _llcppg_param4 *EC_KEY) c.Int)
+// llgo:link (*EC_KEY_METHOD).Verify C.EC_KEY_METHOD_get_verify
+func (self *EC_KEY_METHOD) Verify(pverify *func(_llcppg_param1 c.Int, _llcppg_param2 *uint8, _llcppg_param3 c.Int, _llcppg_param4 *uint8, _llcppg_param5 c.Int, _llcppg_param6 *EC_KEY) c.Int, pverify_sig *func(_llcppg_param1 *uint8, _llcppg_param2 c.Int, _llcppg_param3 *ECDSA_SIG, _llcppg_param4 *EC_KEY) c.Int) {
+}

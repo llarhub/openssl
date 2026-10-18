@@ -51,390 +51,518 @@ const (
 	PEM_FLAG_ONLY_B64       = 4
 )
 
-//go:linkname PEMGetEVP_CIPHER_INFO C.PEM_get_EVP_CIPHER_INFO
-func PEMGetEVP_CIPHER_INFO(header *c.Char, cipher *EVP_CIPHER_INFO) c.Int
+//go:linkname PEM_get_EVP_CIPHER_INFO C.PEM_get_EVP_CIPHER_INFO
+func PEM_get_EVP_CIPHER_INFO(header *c.Char, cipher *EVP_CIPHER_INFO) c.Int
 
-//go:linkname PEMDoHeader C.PEM_do_header
-func PEMDoHeader(cipher *EVP_CIPHER_INFO, data *uint8, len *c.Long, callback *PemPasswordCb, u unsafe.Pointer) c.Int
+// llgo:link (*EVP_CIPHER_INFO).PEM_do_header C.PEM_do_header
+func (self *EVP_CIPHER_INFO) PEM_do_header(data *uint8, len *c.Long, callback *PemPasswordCb, u unsafe.Pointer) c.Int {
+	return 0
+}
 
-//go:linkname PEMReadBio C.PEM_read_bio
-func PEMReadBio(bp *BIO, name **c.Char, header **c.Char, data **uint8, len *c.Long) c.Int
+// llgo:link (*BIO).PEM_read_bio C.PEM_read_bio
+func (self *BIO) PEM_read_bio(name **c.Char, header **c.Char, data **uint8, len *c.Long) c.Int {
+	return 0
+}
 
-//go:linkname PEMReadBioEx C.PEM_read_bio_ex
-func PEMReadBioEx(bp *BIO, name **c.Char, header **c.Char, data **uint8, len *c.Long, flags c.Uint) c.Int
+// llgo:link (*BIO).PEM_read_bio_ex C.PEM_read_bio_ex
+func (self *BIO) PEM_read_bio_ex(name **c.Char, header **c.Char, data **uint8, len *c.Long, flags c.Uint) c.Int {
+	return 0
+}
 
-//go:linkname PEMBytesReadBioSecmem C.PEM_bytes_read_bio_secmem
-func PEMBytesReadBioSecmem(pdata **uint8, plen *c.Long, pnm **c.Char, name *c.Char, bp *BIO, cb *PemPasswordCb, u unsafe.Pointer) c.Int
+//go:linkname PEM_bytes_read_bio_secmem C.PEM_bytes_read_bio_secmem
+func PEM_bytes_read_bio_secmem(pdata **uint8, plen *c.Long, pnm **c.Char, name *c.Char, bp *BIO, cb *PemPasswordCb, u unsafe.Pointer) c.Int
 
-//go:linkname PEMWriteBio C.PEM_write_bio
-func PEMWriteBio(bp *BIO, name *c.Char, hdr *c.Char, data *uint8, len c.Long) c.Int
+// llgo:link (*BIO).PEM_write_bio C.PEM_write_bio
+func (self *BIO) PEM_write_bio(name *c.Char, hdr *c.Char, data *uint8, len c.Long) c.Int {
+	return 0
+}
 
-//go:linkname PEMBytesReadBio C.PEM_bytes_read_bio
-func PEMBytesReadBio(pdata **uint8, plen *c.Long, pnm **c.Char, name *c.Char, bp *BIO, cb *PemPasswordCb, u unsafe.Pointer) c.Int
+//go:linkname PEM_bytes_read_bio C.PEM_bytes_read_bio
+func PEM_bytes_read_bio(pdata **uint8, plen *c.Long, pnm **c.Char, name *c.Char, bp *BIO, cb *PemPasswordCb, u unsafe.Pointer) c.Int
 
-//go:linkname PEMASN1ReadBio C.PEM_ASN1_read_bio
-func PEMASN1ReadBio(d2i *D2iOfVoid, name *c.Char, bp *BIO, x *unsafe.Pointer, cb *PemPasswordCb, u unsafe.Pointer) unsafe.Pointer
+//go:linkname PEM_ASN1_read_bio C.PEM_ASN1_read_bio
+func PEM_ASN1_read_bio(d2i *D2iOfVoid, name *c.Char, bp *BIO, x *unsafe.Pointer, cb *PemPasswordCb, u unsafe.Pointer) unsafe.Pointer
 
-//go:linkname PEMASN1WriteBio C.PEM_ASN1_write_bio
-func PEMASN1WriteBio(i2d *I2dOfVoid, name *c.Char, bp *BIO, x unsafe.Pointer, enc *EVP_CIPHER, kstr *uint8, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer) c.Int
+//go:linkname PEM_ASN1_write_bio C.PEM_ASN1_write_bio
+func PEM_ASN1_write_bio(i2d *I2dOfVoid, name *c.Char, bp *BIO, x unsafe.Pointer, enc *EVP_CIPHER, kstr *uint8, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer) c.Int
 
-//go:linkname PEMASN1WriteBioCtx C.PEM_ASN1_write_bio_ctx
-func PEMASN1WriteBioCtx(i2d *OSSLI2dOfVoidCtx, vctx unsafe.Pointer, name *c.Char, bp *BIO, x unsafe.Pointer, enc *EVP_CIPHER, kstr *uint8, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer) c.Int
+//go:linkname PEM_ASN1_write_bio_ctx C.PEM_ASN1_write_bio_ctx
+func PEM_ASN1_write_bio_ctx(i2d *OSSL_i2d_of_void_ctx, vctx unsafe.Pointer, name *c.Char, bp *BIO, x unsafe.Pointer, enc *EVP_CIPHER, kstr *uint8, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer) c.Int
 
-//go:linkname PEMX509INFOReadBio C.PEM_X509_INFO_read_bio
-func PEMX509INFOReadBio(bp *BIO, sk *StackStX509INFO, cb *PemPasswordCb, u unsafe.Pointer) *StackStX509INFO
+// llgo:link (*BIO).PEM_X509_INFO_read_bio C.PEM_X509_INFO_read_bio
+func (self *BIO) PEM_X509_INFO_read_bio(sk *Stack_st_X509_INFO, cb *PemPasswordCb, u unsafe.Pointer) *Stack_st_X509_INFO {
+	return nil
+}
 
-//go:linkname PEMX509INFOReadBioEx C.PEM_X509_INFO_read_bio_ex
-func PEMX509INFOReadBioEx(bp *BIO, sk *StackStX509INFO, cb *PemPasswordCb, u unsafe.Pointer, libctx *OSSL_LIB_CTX, propq *c.Char) *StackStX509INFO
+// llgo:link (*BIO).PEM_X509_INFO_read_bio_ex C.PEM_X509_INFO_read_bio_ex
+func (self *BIO) PEM_X509_INFO_read_bio_ex(sk *Stack_st_X509_INFO, cb *PemPasswordCb, u unsafe.Pointer, libctx *OSSL_LIB_CTX, propq *c.Char) *Stack_st_X509_INFO {
+	return nil
+}
 
-//go:linkname PEMX509INFOWriteBio C.PEM_X509_INFO_write_bio
-func PEMX509INFOWriteBio(bp *BIO, xi *X509_INFO, enc *EVP_CIPHER, kstr *uint8, klen c.Int, cd *PemPasswordCb, u unsafe.Pointer) c.Int
+// llgo:link (*BIO).PEM_X509_INFO_write_bio C.PEM_X509_INFO_write_bio
+func (self *BIO) PEM_X509_INFO_write_bio(xi *X509_INFO, enc *EVP_CIPHER, kstr *uint8, klen c.Int, cd *PemPasswordCb, u unsafe.Pointer) c.Int {
+	return 0
+}
 
-//go:linkname PEMRead C.PEM_read
-func PEMRead(fp *c.FILE, name **c.Char, header **c.Char, data **uint8, len *c.Long) c.Int
+//go:linkname PEM_read C.PEM_read
+func PEM_read(fp *c.FILE, name **c.Char, header **c.Char, data **uint8, len *c.Long) c.Int
 
-//go:linkname PEMWrite C.PEM_write
-func PEMWrite(fp *c.FILE, name *c.Char, hdr *c.Char, data *uint8, len c.Long) c.Int
+//go:linkname PEM_write C.PEM_write
+func PEM_write(fp *c.FILE, name *c.Char, hdr *c.Char, data *uint8, len c.Long) c.Int
 
-//go:linkname PEMASN1Read C.PEM_ASN1_read
-func PEMASN1Read(d2i *D2iOfVoid, name *c.Char, fp *c.FILE, x *unsafe.Pointer, cb *PemPasswordCb, u unsafe.Pointer) unsafe.Pointer
+//go:linkname PEM_ASN1_read C.PEM_ASN1_read
+func PEM_ASN1_read(d2i *D2iOfVoid, name *c.Char, fp *c.FILE, x *unsafe.Pointer, cb *PemPasswordCb, u unsafe.Pointer) unsafe.Pointer
 
-//go:linkname PEMASN1Write C.PEM_ASN1_write
-func PEMASN1Write(i2d *I2dOfVoid, name *c.Char, fp *c.FILE, x unsafe.Pointer, enc *EVP_CIPHER, kstr *uint8, klen c.Int, callback *PemPasswordCb, u unsafe.Pointer) c.Int
+//go:linkname PEM_ASN1_write C.PEM_ASN1_write
+func PEM_ASN1_write(i2d *I2dOfVoid, name *c.Char, fp *c.FILE, x unsafe.Pointer, enc *EVP_CIPHER, kstr *uint8, klen c.Int, callback *PemPasswordCb, u unsafe.Pointer) c.Int
 
-//go:linkname PEMX509INFORead C.PEM_X509_INFO_read
-func PEMX509INFORead(fp *c.FILE, sk *StackStX509INFO, cb *PemPasswordCb, u unsafe.Pointer) *StackStX509INFO
+//go:linkname PEM_X509_INFO_read C.PEM_X509_INFO_read
+func PEM_X509_INFO_read(fp *c.FILE, sk *Stack_st_X509_INFO, cb *PemPasswordCb, u unsafe.Pointer) *Stack_st_X509_INFO
 
-//go:linkname PEMX509INFOReadEx C.PEM_X509_INFO_read_ex
-func PEMX509INFOReadEx(fp *c.FILE, sk *StackStX509INFO, cb *PemPasswordCb, u unsafe.Pointer, libctx *OSSL_LIB_CTX, propq *c.Char) *StackStX509INFO
+//go:linkname PEM_X509_INFO_read_ex C.PEM_X509_INFO_read_ex
+func PEM_X509_INFO_read_ex(fp *c.FILE, sk *Stack_st_X509_INFO, cb *PemPasswordCb, u unsafe.Pointer, libctx *OSSL_LIB_CTX, propq *c.Char) *Stack_st_X509_INFO
 
-//go:linkname PEM_SignInit C.PEM_SignInit
-func PEM_SignInit(ctx *EVP_MD_CTX, type_ *EVP_MD) c.Int
+// llgo:link (*EVP_MD_CTX).PEM_SignInit C.PEM_SignInit
+func (self *EVP_MD_CTX) PEM_SignInit(type_ *EVP_MD) c.Int {
+	return 0
+}
 
-//go:linkname PEM_SignUpdate C.PEM_SignUpdate
-func PEM_SignUpdate(ctx *EVP_MD_CTX, d *uint8, cnt c.Uint) c.Int
+// llgo:link (*EVP_MD_CTX).PEM_SignUpdate C.PEM_SignUpdate
+func (self *EVP_MD_CTX) PEM_SignUpdate(d *uint8, cnt c.Uint) c.Int {
+	return 0
+}
 
-//go:linkname PEM_SignFinal C.PEM_SignFinal
-func PEM_SignFinal(ctx *EVP_MD_CTX, sigret *uint8, siglen *c.Uint, pkey *EVP_PKEY) c.Int
+// llgo:link (*EVP_MD_CTX).PEM_SignFinal C.PEM_SignFinal
+func (self *EVP_MD_CTX) PEM_SignFinal(sigret *uint8, siglen *c.Uint, pkey *EVP_PKEY) c.Int {
+	return 0
+}
 
 // The default pem_password_cb that's used internally
 //
-//go:linkname PEMDefCallback C.PEM_def_callback
-func PEMDefCallback(buf *c.Char, num c.Int, rwflag c.Int, userdata unsafe.Pointer) c.Int
+//go:linkname PEM_def_callback C.PEM_def_callback
+func PEM_def_callback(buf *c.Char, num c.Int, rwflag c.Int, userdata unsafe.Pointer) c.Int
 
-//go:linkname PEMProcType C.PEM_proc_type
-func PEMProcType(buf *c.Char, type_ c.Int)
+//go:linkname PEM_proc_type C.PEM_proc_type
+func PEM_proc_type(buf *c.Char, type_ c.Int)
 
-//go:linkname PEMDekInfo C.PEM_dek_info
-func PEMDekInfo(buf *c.Char, type_ *c.Char, len c.Int, str *c.Char)
+//go:linkname PEM_dek_info C.PEM_dek_info
+func PEM_dek_info(buf *c.Char, type_ *c.Char, len c.Int, str *c.Char)
 
-//go:linkname PEMReadBioX509 C.PEM_read_bio_X509
-func PEMReadBioX509(out *BIO, x **X509, cb *PemPasswordCb, u unsafe.Pointer) *X509
+// llgo:link (*BIO).PEM_read_bio_X509 C.PEM_read_bio_X509
+func (self *BIO) PEM_read_bio_X509(x **X509, cb *PemPasswordCb, u unsafe.Pointer) *X509 {
+	return nil
+}
 
-//go:linkname PEMReadX509 C.PEM_read_X509
-func PEMReadX509(out *c.FILE, x **X509, cb *PemPasswordCb, u unsafe.Pointer) *X509
+//go:linkname PEM_read_X509 C.PEM_read_X509
+func PEM_read_X509(out *c.FILE, x **X509, cb *PemPasswordCb, u unsafe.Pointer) *X509
 
-//go:linkname PEMWriteBioX509 C.PEM_write_bio_X509
-func PEMWriteBioX509(out *BIO, x *X509) c.Int
+// llgo:link (*BIO).PEM_write_bio_X509 C.PEM_write_bio_X509
+func (self *BIO) PEM_write_bio_X509(x *X509) c.Int {
+	return 0
+}
 
-//go:linkname PEMWriteX509 C.PEM_write_X509
-func PEMWriteX509(out *c.FILE, x *X509) c.Int
+//go:linkname PEM_write_X509 C.PEM_write_X509
+func PEM_write_X509(out *c.FILE, x *X509) c.Int
 
-//go:linkname PEMReadBioX509AUX C.PEM_read_bio_X509_AUX
-func PEMReadBioX509AUX(out *BIO, x **X509, cb *PemPasswordCb, u unsafe.Pointer) *X509
+// llgo:link (*BIO).PEM_read_bio_X509_AUX C.PEM_read_bio_X509_AUX
+func (self *BIO) PEM_read_bio_X509_AUX(x **X509, cb *PemPasswordCb, u unsafe.Pointer) *X509 {
+	return nil
+}
 
-//go:linkname PEMReadX509AUX C.PEM_read_X509_AUX
-func PEMReadX509AUX(out *c.FILE, x **X509, cb *PemPasswordCb, u unsafe.Pointer) *X509
+//go:linkname PEM_read_X509_AUX C.PEM_read_X509_AUX
+func PEM_read_X509_AUX(out *c.FILE, x **X509, cb *PemPasswordCb, u unsafe.Pointer) *X509
 
-//go:linkname PEMWriteBioX509AUX C.PEM_write_bio_X509_AUX
-func PEMWriteBioX509AUX(out *BIO, x *X509) c.Int
+// llgo:link (*BIO).PEM_write_bio_X509_AUX C.PEM_write_bio_X509_AUX
+func (self *BIO) PEM_write_bio_X509_AUX(x *X509) c.Int {
+	return 0
+}
 
-//go:linkname PEMWriteX509AUX C.PEM_write_X509_AUX
-func PEMWriteX509AUX(out *c.FILE, x *X509) c.Int
+//go:linkname PEM_write_X509_AUX C.PEM_write_X509_AUX
+func PEM_write_X509_AUX(out *c.FILE, x *X509) c.Int
 
-//go:linkname PEMReadBioX509REQ C.PEM_read_bio_X509_REQ
-func PEMReadBioX509REQ(out *BIO, x **X509_REQ, cb *PemPasswordCb, u unsafe.Pointer) *X509_REQ
+// llgo:link (*BIO).PEM_read_bio_X509_REQ C.PEM_read_bio_X509_REQ
+func (self *BIO) PEM_read_bio_X509_REQ(x **X509_REQ, cb *PemPasswordCb, u unsafe.Pointer) *X509_REQ {
+	return nil
+}
 
-//go:linkname PEMReadX509REQ C.PEM_read_X509_REQ
-func PEMReadX509REQ(out *c.FILE, x **X509_REQ, cb *PemPasswordCb, u unsafe.Pointer) *X509_REQ
+//go:linkname PEM_read_X509_REQ C.PEM_read_X509_REQ
+func PEM_read_X509_REQ(out *c.FILE, x **X509_REQ, cb *PemPasswordCb, u unsafe.Pointer) *X509_REQ
 
-//go:linkname PEMWriteBioX509REQ C.PEM_write_bio_X509_REQ
-func PEMWriteBioX509REQ(out *BIO, x *X509_REQ) c.Int
+// llgo:link (*BIO).PEM_write_bio_X509_REQ C.PEM_write_bio_X509_REQ
+func (self *BIO) PEM_write_bio_X509_REQ(x *X509_REQ) c.Int {
+	return 0
+}
 
-//go:linkname PEMWriteX509REQ C.PEM_write_X509_REQ
-func PEMWriteX509REQ(out *c.FILE, x *X509_REQ) c.Int
+//go:linkname PEM_write_X509_REQ C.PEM_write_X509_REQ
+func PEM_write_X509_REQ(out *c.FILE, x *X509_REQ) c.Int
 
-//go:linkname PEMWriteBioX509REQ_NEW C.PEM_write_bio_X509_REQ_NEW
-func PEMWriteBioX509REQ_NEW(out *BIO, x *X509_REQ) c.Int
+// llgo:link (*BIO).PEM_write_bio_X509_REQ_NEW C.PEM_write_bio_X509_REQ_NEW
+func (self *BIO) PEM_write_bio_X509_REQ_NEW(x *X509_REQ) c.Int {
+	return 0
+}
 
-//go:linkname PEMWriteX509REQ_NEW C.PEM_write_X509_REQ_NEW
-func PEMWriteX509REQ_NEW(out *c.FILE, x *X509_REQ) c.Int
+//go:linkname PEM_write_X509_REQ_NEW C.PEM_write_X509_REQ_NEW
+func PEM_write_X509_REQ_NEW(out *c.FILE, x *X509_REQ) c.Int
 
-//go:linkname PEMReadBioX509CRL C.PEM_read_bio_X509_CRL
-func PEMReadBioX509CRL(out *BIO, x **X509_CRL, cb *PemPasswordCb, u unsafe.Pointer) *X509_CRL
+// llgo:link (*BIO).PEM_read_bio_X509_CRL C.PEM_read_bio_X509_CRL
+func (self *BIO) PEM_read_bio_X509_CRL(x **X509_CRL, cb *PemPasswordCb, u unsafe.Pointer) *X509_CRL {
+	return nil
+}
 
-//go:linkname PEMReadX509CRL C.PEM_read_X509_CRL
-func PEMReadX509CRL(out *c.FILE, x **X509_CRL, cb *PemPasswordCb, u unsafe.Pointer) *X509_CRL
+//go:linkname PEM_read_X509_CRL C.PEM_read_X509_CRL
+func PEM_read_X509_CRL(out *c.FILE, x **X509_CRL, cb *PemPasswordCb, u unsafe.Pointer) *X509_CRL
 
-//go:linkname PEMWriteBioX509CRL C.PEM_write_bio_X509_CRL
-func PEMWriteBioX509CRL(out *BIO, x *X509_CRL) c.Int
+// llgo:link (*BIO).PEM_write_bio_X509_CRL C.PEM_write_bio_X509_CRL
+func (self *BIO) PEM_write_bio_X509_CRL(x *X509_CRL) c.Int {
+	return 0
+}
 
-//go:linkname PEMWriteX509CRL C.PEM_write_X509_CRL
-func PEMWriteX509CRL(out *c.FILE, x *X509_CRL) c.Int
+//go:linkname PEM_write_X509_CRL C.PEM_write_X509_CRL
+func PEM_write_X509_CRL(out *c.FILE, x *X509_CRL) c.Int
 
-//go:linkname PEMReadBioX509PUBKEY C.PEM_read_bio_X509_PUBKEY
-func PEMReadBioX509PUBKEY(out *BIO, x **X509_PUBKEY, cb *PemPasswordCb, u unsafe.Pointer) *X509_PUBKEY
+// llgo:link (*BIO).PEM_read_bio_X509_PUBKEY C.PEM_read_bio_X509_PUBKEY
+func (self *BIO) PEM_read_bio_X509_PUBKEY(x **X509_PUBKEY, cb *PemPasswordCb, u unsafe.Pointer) *X509_PUBKEY {
+	return nil
+}
 
-//go:linkname PEMReadX509PUBKEY C.PEM_read_X509_PUBKEY
-func PEMReadX509PUBKEY(out *c.FILE, x **X509_PUBKEY, cb *PemPasswordCb, u unsafe.Pointer) *X509_PUBKEY
+//go:linkname PEM_read_X509_PUBKEY C.PEM_read_X509_PUBKEY
+func PEM_read_X509_PUBKEY(out *c.FILE, x **X509_PUBKEY, cb *PemPasswordCb, u unsafe.Pointer) *X509_PUBKEY
 
-//go:linkname PEMWriteBioX509PUBKEY C.PEM_write_bio_X509_PUBKEY
-func PEMWriteBioX509PUBKEY(out *BIO, x *X509_PUBKEY) c.Int
+// llgo:link (*BIO).PEM_write_bio_X509_PUBKEY C.PEM_write_bio_X509_PUBKEY
+func (self *BIO) PEM_write_bio_X509_PUBKEY(x *X509_PUBKEY) c.Int {
+	return 0
+}
 
-//go:linkname PEMWriteX509PUBKEY C.PEM_write_X509_PUBKEY
-func PEMWriteX509PUBKEY(out *c.FILE, x *X509_PUBKEY) c.Int
+//go:linkname PEM_write_X509_PUBKEY C.PEM_write_X509_PUBKEY
+func PEM_write_X509_PUBKEY(out *c.FILE, x *X509_PUBKEY) c.Int
 
-//go:linkname PEMReadBioPKCS7 C.PEM_read_bio_PKCS7
-func PEMReadBioPKCS7(out *BIO, x **PKCS7, cb *PemPasswordCb, u unsafe.Pointer) *PKCS7
+// llgo:link (*BIO).PEM_read_bio_PKCS7 C.PEM_read_bio_PKCS7
+func (self *BIO) PEM_read_bio_PKCS7(x **PKCS7, cb *PemPasswordCb, u unsafe.Pointer) *PKCS7 {
+	return nil
+}
 
-//go:linkname PEMReadPKCS7 C.PEM_read_PKCS7
-func PEMReadPKCS7(out *c.FILE, x **PKCS7, cb *PemPasswordCb, u unsafe.Pointer) *PKCS7
+//go:linkname PEM_read_PKCS7 C.PEM_read_PKCS7
+func PEM_read_PKCS7(out *c.FILE, x **PKCS7, cb *PemPasswordCb, u unsafe.Pointer) *PKCS7
 
-//go:linkname PEMWriteBioPKCS7 C.PEM_write_bio_PKCS7
-func PEMWriteBioPKCS7(out *BIO, x *PKCS7) c.Int
+// llgo:link (*BIO).PEM_write_bio_PKCS7 C.PEM_write_bio_PKCS7
+func (self *BIO) PEM_write_bio_PKCS7(x *PKCS7) c.Int {
+	return 0
+}
 
-//go:linkname PEMWritePKCS7 C.PEM_write_PKCS7
-func PEMWritePKCS7(out *c.FILE, x *PKCS7) c.Int
+//go:linkname PEM_write_PKCS7 C.PEM_write_PKCS7
+func PEM_write_PKCS7(out *c.FILE, x *PKCS7) c.Int
 
-//go:linkname PEMReadBioNETSCAPE_CERT_SEQUENCE C.PEM_read_bio_NETSCAPE_CERT_SEQUENCE
-func PEMReadBioNETSCAPE_CERT_SEQUENCE(out *BIO, x **NETSCAPE_CERT_SEQUENCE, cb *PemPasswordCb, u unsafe.Pointer) *NETSCAPE_CERT_SEQUENCE
+// llgo:link (*BIO).PEM_read_bio_NETSCAPE_CERT_SEQUENCE C.PEM_read_bio_NETSCAPE_CERT_SEQUENCE
+func (self *BIO) PEM_read_bio_NETSCAPE_CERT_SEQUENCE(x **NETSCAPE_CERT_SEQUENCE, cb *PemPasswordCb, u unsafe.Pointer) *NETSCAPE_CERT_SEQUENCE {
+	return nil
+}
 
-//go:linkname PEMReadNETSCAPE_CERT_SEQUENCE C.PEM_read_NETSCAPE_CERT_SEQUENCE
-func PEMReadNETSCAPE_CERT_SEQUENCE(out *c.FILE, x **NETSCAPE_CERT_SEQUENCE, cb *PemPasswordCb, u unsafe.Pointer) *NETSCAPE_CERT_SEQUENCE
+//go:linkname PEM_read_NETSCAPE_CERT_SEQUENCE C.PEM_read_NETSCAPE_CERT_SEQUENCE
+func PEM_read_NETSCAPE_CERT_SEQUENCE(out *c.FILE, x **NETSCAPE_CERT_SEQUENCE, cb *PemPasswordCb, u unsafe.Pointer) *NETSCAPE_CERT_SEQUENCE
 
-//go:linkname PEMWriteBioNETSCAPE_CERT_SEQUENCE C.PEM_write_bio_NETSCAPE_CERT_SEQUENCE
-func PEMWriteBioNETSCAPE_CERT_SEQUENCE(out *BIO, x *NETSCAPE_CERT_SEQUENCE) c.Int
+// llgo:link (*BIO).PEM_write_bio_NETSCAPE_CERT_SEQUENCE C.PEM_write_bio_NETSCAPE_CERT_SEQUENCE
+func (self *BIO) PEM_write_bio_NETSCAPE_CERT_SEQUENCE(x *NETSCAPE_CERT_SEQUENCE) c.Int {
+	return 0
+}
 
-//go:linkname PEMWriteNETSCAPE_CERT_SEQUENCE C.PEM_write_NETSCAPE_CERT_SEQUENCE
-func PEMWriteNETSCAPE_CERT_SEQUENCE(out *c.FILE, x *NETSCAPE_CERT_SEQUENCE) c.Int
+//go:linkname PEM_write_NETSCAPE_CERT_SEQUENCE C.PEM_write_NETSCAPE_CERT_SEQUENCE
+func PEM_write_NETSCAPE_CERT_SEQUENCE(out *c.FILE, x *NETSCAPE_CERT_SEQUENCE) c.Int
 
-//go:linkname PEMReadBioPKCS8 C.PEM_read_bio_PKCS8
-func PEMReadBioPKCS8(out *BIO, x **X509_SIG, cb *PemPasswordCb, u unsafe.Pointer) *X509_SIG
+// llgo:link (*BIO).PEM_read_bio_PKCS8 C.PEM_read_bio_PKCS8
+func (self *BIO) PEM_read_bio_PKCS8(x **X509_SIG, cb *PemPasswordCb, u unsafe.Pointer) *X509_SIG {
+	return nil
+}
 
-//go:linkname PEMReadPKCS8 C.PEM_read_PKCS8
-func PEMReadPKCS8(out *c.FILE, x **X509_SIG, cb *PemPasswordCb, u unsafe.Pointer) *X509_SIG
+//go:linkname PEM_read_PKCS8 C.PEM_read_PKCS8
+func PEM_read_PKCS8(out *c.FILE, x **X509_SIG, cb *PemPasswordCb, u unsafe.Pointer) *X509_SIG
 
-//go:linkname PEMWriteBioPKCS8 C.PEM_write_bio_PKCS8
-func PEMWriteBioPKCS8(out *BIO, x *X509_SIG) c.Int
+// llgo:link (*BIO).PEM_write_bio_PKCS8 C.PEM_write_bio_PKCS8
+func (self *BIO) PEM_write_bio_PKCS8(x *X509_SIG) c.Int {
+	return 0
+}
 
-//go:linkname PEMWritePKCS8 C.PEM_write_PKCS8
-func PEMWritePKCS8(out *c.FILE, x *X509_SIG) c.Int
+//go:linkname PEM_write_PKCS8 C.PEM_write_PKCS8
+func PEM_write_PKCS8(out *c.FILE, x *X509_SIG) c.Int
 
-//go:linkname PEMReadBioPKCS8PRIV_KEY_INFO C.PEM_read_bio_PKCS8_PRIV_KEY_INFO
-func PEMReadBioPKCS8PRIV_KEY_INFO(out *BIO, x **PKCS8_PRIV_KEY_INFO, cb *PemPasswordCb, u unsafe.Pointer) *PKCS8_PRIV_KEY_INFO
+// llgo:link (*BIO).PEM_read_bio_PKCS8_PRIV_KEY_INFO C.PEM_read_bio_PKCS8_PRIV_KEY_INFO
+func (self *BIO) PEM_read_bio_PKCS8_PRIV_KEY_INFO(x **PKCS8_PRIV_KEY_INFO, cb *PemPasswordCb, u unsafe.Pointer) *PKCS8_PRIV_KEY_INFO {
+	return nil
+}
 
-//go:linkname PEMReadPKCS8PRIV_KEY_INFO C.PEM_read_PKCS8_PRIV_KEY_INFO
-func PEMReadPKCS8PRIV_KEY_INFO(out *c.FILE, x **PKCS8_PRIV_KEY_INFO, cb *PemPasswordCb, u unsafe.Pointer) *PKCS8_PRIV_KEY_INFO
+//go:linkname PEM_read_PKCS8_PRIV_KEY_INFO C.PEM_read_PKCS8_PRIV_KEY_INFO
+func PEM_read_PKCS8_PRIV_KEY_INFO(out *c.FILE, x **PKCS8_PRIV_KEY_INFO, cb *PemPasswordCb, u unsafe.Pointer) *PKCS8_PRIV_KEY_INFO
 
-//go:linkname PEMWriteBioPKCS8PRIV_KEY_INFO C.PEM_write_bio_PKCS8_PRIV_KEY_INFO
-func PEMWriteBioPKCS8PRIV_KEY_INFO(out *BIO, x *PKCS8_PRIV_KEY_INFO) c.Int
+// llgo:link (*BIO).PEM_write_bio_PKCS8_PRIV_KEY_INFO C.PEM_write_bio_PKCS8_PRIV_KEY_INFO
+func (self *BIO) PEM_write_bio_PKCS8_PRIV_KEY_INFO(x *PKCS8_PRIV_KEY_INFO) c.Int {
+	return 0
+}
 
-//go:linkname PEMWritePKCS8PRIV_KEY_INFO C.PEM_write_PKCS8_PRIV_KEY_INFO
-func PEMWritePKCS8PRIV_KEY_INFO(out *c.FILE, x *PKCS8_PRIV_KEY_INFO) c.Int
+//go:linkname PEM_write_PKCS8_PRIV_KEY_INFO C.PEM_write_PKCS8_PRIV_KEY_INFO
+func PEM_write_PKCS8_PRIV_KEY_INFO(out *c.FILE, x *PKCS8_PRIV_KEY_INFO) c.Int
 
-//go:linkname PEMReadBioRSAPrivateKey C.PEM_read_bio_RSAPrivateKey
-func PEMReadBioRSAPrivateKey(out *BIO, x **RSA, cb *PemPasswordCb, u unsafe.Pointer) *RSA
+// llgo:link (*BIO).PEM_read_bio_RSAPrivateKey C.PEM_read_bio_RSAPrivateKey
+func (self *BIO) PEM_read_bio_RSAPrivateKey(x **RSA, cb *PemPasswordCb, u unsafe.Pointer) *RSA {
+	return nil
+}
 
-//go:linkname PEMReadRSAPrivateKey C.PEM_read_RSAPrivateKey
-func PEMReadRSAPrivateKey(out *c.FILE, x **RSA, cb *PemPasswordCb, u unsafe.Pointer) *RSA
+//go:linkname PEM_read_RSAPrivateKey C.PEM_read_RSAPrivateKey
+func PEM_read_RSAPrivateKey(out *c.FILE, x **RSA, cb *PemPasswordCb, u unsafe.Pointer) *RSA
 
-//go:linkname PEMWriteBioRSAPrivateKey C.PEM_write_bio_RSAPrivateKey
-func PEMWriteBioRSAPrivateKey(out *BIO, x *RSA, enc *EVP_CIPHER, kstr *uint8, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer) c.Int
+// llgo:link (*BIO).PEM_write_bio_RSAPrivateKey C.PEM_write_bio_RSAPrivateKey
+func (self *BIO) PEM_write_bio_RSAPrivateKey(x *RSA, enc *EVP_CIPHER, kstr *uint8, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer) c.Int {
+	return 0
+}
 
-//go:linkname PEMWriteRSAPrivateKey C.PEM_write_RSAPrivateKey
-func PEMWriteRSAPrivateKey(out *c.FILE, x *RSA, enc *EVP_CIPHER, kstr *uint8, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer) c.Int
+//go:linkname PEM_write_RSAPrivateKey C.PEM_write_RSAPrivateKey
+func PEM_write_RSAPrivateKey(out *c.FILE, x *RSA, enc *EVP_CIPHER, kstr *uint8, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer) c.Int
 
-//go:linkname PEMReadBioRSAPublicKey C.PEM_read_bio_RSAPublicKey
-func PEMReadBioRSAPublicKey(out *BIO, x **RSA, cb *PemPasswordCb, u unsafe.Pointer) *RSA
+// llgo:link (*BIO).PEM_read_bio_RSAPublicKey C.PEM_read_bio_RSAPublicKey
+func (self *BIO) PEM_read_bio_RSAPublicKey(x **RSA, cb *PemPasswordCb, u unsafe.Pointer) *RSA {
+	return nil
+}
 
-//go:linkname PEMReadRSAPublicKey C.PEM_read_RSAPublicKey
-func PEMReadRSAPublicKey(out *c.FILE, x **RSA, cb *PemPasswordCb, u unsafe.Pointer) *RSA
+//go:linkname PEM_read_RSAPublicKey C.PEM_read_RSAPublicKey
+func PEM_read_RSAPublicKey(out *c.FILE, x **RSA, cb *PemPasswordCb, u unsafe.Pointer) *RSA
 
-//go:linkname PEMWriteBioRSAPublicKey C.PEM_write_bio_RSAPublicKey
-func PEMWriteBioRSAPublicKey(out *BIO, x *RSA) c.Int
+// llgo:link (*BIO).PEM_write_bio_RSAPublicKey C.PEM_write_bio_RSAPublicKey
+func (self *BIO) PEM_write_bio_RSAPublicKey(x *RSA) c.Int {
+	return 0
+}
 
-//go:linkname PEMWriteRSAPublicKey C.PEM_write_RSAPublicKey
-func PEMWriteRSAPublicKey(out *c.FILE, x *RSA) c.Int
+//go:linkname PEM_write_RSAPublicKey C.PEM_write_RSAPublicKey
+func PEM_write_RSAPublicKey(out *c.FILE, x *RSA) c.Int
 
-//go:linkname PEMReadBioRSA_PUBKEY C.PEM_read_bio_RSA_PUBKEY
-func PEMReadBioRSA_PUBKEY(out *BIO, x **RSA, cb *PemPasswordCb, u unsafe.Pointer) *RSA
+// llgo:link (*BIO).PEM_read_bio_RSA_PUBKEY C.PEM_read_bio_RSA_PUBKEY
+func (self *BIO) PEM_read_bio_RSA_PUBKEY(x **RSA, cb *PemPasswordCb, u unsafe.Pointer) *RSA {
+	return nil
+}
 
-//go:linkname PEMReadRSA_PUBKEY C.PEM_read_RSA_PUBKEY
-func PEMReadRSA_PUBKEY(out *c.FILE, x **RSA, cb *PemPasswordCb, u unsafe.Pointer) *RSA
+//go:linkname PEM_read_RSA_PUBKEY C.PEM_read_RSA_PUBKEY
+func PEM_read_RSA_PUBKEY(out *c.FILE, x **RSA, cb *PemPasswordCb, u unsafe.Pointer) *RSA
 
-//go:linkname PEMWriteBioRSA_PUBKEY C.PEM_write_bio_RSA_PUBKEY
-func PEMWriteBioRSA_PUBKEY(out *BIO, x *RSA) c.Int
+// llgo:link (*BIO).PEM_write_bio_RSA_PUBKEY C.PEM_write_bio_RSA_PUBKEY
+func (self *BIO) PEM_write_bio_RSA_PUBKEY(x *RSA) c.Int {
+	return 0
+}
 
-//go:linkname PEMWriteRSA_PUBKEY C.PEM_write_RSA_PUBKEY
-func PEMWriteRSA_PUBKEY(out *c.FILE, x *RSA) c.Int
+//go:linkname PEM_write_RSA_PUBKEY C.PEM_write_RSA_PUBKEY
+func PEM_write_RSA_PUBKEY(out *c.FILE, x *RSA) c.Int
 
-//go:linkname PEMReadBioDSAPrivateKey C.PEM_read_bio_DSAPrivateKey
-func PEMReadBioDSAPrivateKey(out *BIO, x **DSA, cb *PemPasswordCb, u unsafe.Pointer) *DSA
+// llgo:link (*BIO).PEM_read_bio_DSAPrivateKey C.PEM_read_bio_DSAPrivateKey
+func (self *BIO) PEM_read_bio_DSAPrivateKey(x **DSA, cb *PemPasswordCb, u unsafe.Pointer) *DSA {
+	return nil
+}
 
-//go:linkname PEMReadDSAPrivateKey C.PEM_read_DSAPrivateKey
-func PEMReadDSAPrivateKey(out *c.FILE, x **DSA, cb *PemPasswordCb, u unsafe.Pointer) *DSA
+//go:linkname PEM_read_DSAPrivateKey C.PEM_read_DSAPrivateKey
+func PEM_read_DSAPrivateKey(out *c.FILE, x **DSA, cb *PemPasswordCb, u unsafe.Pointer) *DSA
 
-//go:linkname PEMWriteBioDSAPrivateKey C.PEM_write_bio_DSAPrivateKey
-func PEMWriteBioDSAPrivateKey(out *BIO, x *DSA, enc *EVP_CIPHER, kstr *uint8, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer) c.Int
+// llgo:link (*BIO).PEM_write_bio_DSAPrivateKey C.PEM_write_bio_DSAPrivateKey
+func (self *BIO) PEM_write_bio_DSAPrivateKey(x *DSA, enc *EVP_CIPHER, kstr *uint8, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer) c.Int {
+	return 0
+}
 
-//go:linkname PEMWriteDSAPrivateKey C.PEM_write_DSAPrivateKey
-func PEMWriteDSAPrivateKey(out *c.FILE, x *DSA, enc *EVP_CIPHER, kstr *uint8, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer) c.Int
+//go:linkname PEM_write_DSAPrivateKey C.PEM_write_DSAPrivateKey
+func PEM_write_DSAPrivateKey(out *c.FILE, x *DSA, enc *EVP_CIPHER, kstr *uint8, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer) c.Int
 
-//go:linkname PEMReadBioDSA_PUBKEY C.PEM_read_bio_DSA_PUBKEY
-func PEMReadBioDSA_PUBKEY(out *BIO, x **DSA, cb *PemPasswordCb, u unsafe.Pointer) *DSA
+// llgo:link (*BIO).PEM_read_bio_DSA_PUBKEY C.PEM_read_bio_DSA_PUBKEY
+func (self *BIO) PEM_read_bio_DSA_PUBKEY(x **DSA, cb *PemPasswordCb, u unsafe.Pointer) *DSA {
+	return nil
+}
 
-//go:linkname PEMReadDSA_PUBKEY C.PEM_read_DSA_PUBKEY
-func PEMReadDSA_PUBKEY(out *c.FILE, x **DSA, cb *PemPasswordCb, u unsafe.Pointer) *DSA
+//go:linkname PEM_read_DSA_PUBKEY C.PEM_read_DSA_PUBKEY
+func PEM_read_DSA_PUBKEY(out *c.FILE, x **DSA, cb *PemPasswordCb, u unsafe.Pointer) *DSA
 
-//go:linkname PEMWriteBioDSA_PUBKEY C.PEM_write_bio_DSA_PUBKEY
-func PEMWriteBioDSA_PUBKEY(out *BIO, x *DSA) c.Int
+// llgo:link (*BIO).PEM_write_bio_DSA_PUBKEY C.PEM_write_bio_DSA_PUBKEY
+func (self *BIO) PEM_write_bio_DSA_PUBKEY(x *DSA) c.Int {
+	return 0
+}
+
+//go:linkname PEM_write_DSA_PUBKEY C.PEM_write_DSA_PUBKEY
+func PEM_write_DSA_PUBKEY(out *c.FILE, x *DSA) c.Int
 
-//go:linkname PEMWriteDSA_PUBKEY C.PEM_write_DSA_PUBKEY
-func PEMWriteDSA_PUBKEY(out *c.FILE, x *DSA) c.Int
+// llgo:link (*BIO).PEM_read_bio_DSAparams C.PEM_read_bio_DSAparams
+func (self *BIO) PEM_read_bio_DSAparams(x **DSA, cb *PemPasswordCb, u unsafe.Pointer) *DSA {
+	return nil
+}
 
-//go:linkname PEMReadBioDSAparams C.PEM_read_bio_DSAparams
-func PEMReadBioDSAparams(out *BIO, x **DSA, cb *PemPasswordCb, u unsafe.Pointer) *DSA
+//go:linkname PEM_read_DSAparams C.PEM_read_DSAparams
+func PEM_read_DSAparams(out *c.FILE, x **DSA, cb *PemPasswordCb, u unsafe.Pointer) *DSA
 
-//go:linkname PEMReadDSAparams C.PEM_read_DSAparams
-func PEMReadDSAparams(out *c.FILE, x **DSA, cb *PemPasswordCb, u unsafe.Pointer) *DSA
+// llgo:link (*BIO).PEM_write_bio_DSAparams C.PEM_write_bio_DSAparams
+func (self *BIO) PEM_write_bio_DSAparams(x *DSA) c.Int {
+	return 0
+}
+
+//go:linkname PEM_write_DSAparams C.PEM_write_DSAparams
+func PEM_write_DSAparams(out *c.FILE, x *DSA) c.Int
 
-//go:linkname PEMWriteBioDSAparams C.PEM_write_bio_DSAparams
-func PEMWriteBioDSAparams(out *BIO, x *DSA) c.Int
+// llgo:link (*BIO).PEM_read_bio_ECPKParameters C.PEM_read_bio_ECPKParameters
+func (self *BIO) PEM_read_bio_ECPKParameters(x **EC_GROUP, cb *PemPasswordCb, u unsafe.Pointer) *EC_GROUP {
+	return nil
+}
 
-//go:linkname PEMWriteDSAparams C.PEM_write_DSAparams
-func PEMWriteDSAparams(out *c.FILE, x *DSA) c.Int
+//go:linkname PEM_read_ECPKParameters C.PEM_read_ECPKParameters
+func PEM_read_ECPKParameters(out *c.FILE, x **EC_GROUP, cb *PemPasswordCb, u unsafe.Pointer) *EC_GROUP
 
-//go:linkname PEMReadBioECPKParameters C.PEM_read_bio_ECPKParameters
-func PEMReadBioECPKParameters(out *BIO, x **EC_GROUP, cb *PemPasswordCb, u unsafe.Pointer) *EC_GROUP
+// llgo:link (*BIO).PEM_write_bio_ECPKParameters C.PEM_write_bio_ECPKParameters
+func (self *BIO) PEM_write_bio_ECPKParameters(x *EC_GROUP) c.Int {
+	return 0
+}
+
+//go:linkname PEM_write_ECPKParameters C.PEM_write_ECPKParameters
+func PEM_write_ECPKParameters(out *c.FILE, x *EC_GROUP) c.Int
 
-//go:linkname PEMReadECPKParameters C.PEM_read_ECPKParameters
-func PEMReadECPKParameters(out *c.FILE, x **EC_GROUP, cb *PemPasswordCb, u unsafe.Pointer) *EC_GROUP
+// llgo:link (*BIO).PEM_read_bio_ECPrivateKey C.PEM_read_bio_ECPrivateKey
+func (self *BIO) PEM_read_bio_ECPrivateKey(x **EC_KEY, cb *PemPasswordCb, u unsafe.Pointer) *EC_KEY {
+	return nil
+}
 
-//go:linkname PEMWriteBioECPKParameters C.PEM_write_bio_ECPKParameters
-func PEMWriteBioECPKParameters(out *BIO, x *EC_GROUP) c.Int
+//go:linkname PEM_read_ECPrivateKey C.PEM_read_ECPrivateKey
+func PEM_read_ECPrivateKey(out *c.FILE, x **EC_KEY, cb *PemPasswordCb, u unsafe.Pointer) *EC_KEY
 
-//go:linkname PEMWriteECPKParameters C.PEM_write_ECPKParameters
-func PEMWriteECPKParameters(out *c.FILE, x *EC_GROUP) c.Int
+// llgo:link (*BIO).PEM_write_bio_ECPrivateKey C.PEM_write_bio_ECPrivateKey
+func (self *BIO) PEM_write_bio_ECPrivateKey(x *EC_KEY, enc *EVP_CIPHER, kstr *uint8, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer) c.Int {
+	return 0
+}
+
+//go:linkname PEM_write_ECPrivateKey C.PEM_write_ECPrivateKey
+func PEM_write_ECPrivateKey(out *c.FILE, x *EC_KEY, enc *EVP_CIPHER, kstr *uint8, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer) c.Int
 
-//go:linkname PEMReadBioECPrivateKey C.PEM_read_bio_ECPrivateKey
-func PEMReadBioECPrivateKey(out *BIO, x **EC_KEY, cb *PemPasswordCb, u unsafe.Pointer) *EC_KEY
+// llgo:link (*BIO).PEM_read_bio_EC_PUBKEY C.PEM_read_bio_EC_PUBKEY
+func (self *BIO) PEM_read_bio_EC_PUBKEY(x **EC_KEY, cb *PemPasswordCb, u unsafe.Pointer) *EC_KEY {
+	return nil
+}
 
-//go:linkname PEMReadECPrivateKey C.PEM_read_ECPrivateKey
-func PEMReadECPrivateKey(out *c.FILE, x **EC_KEY, cb *PemPasswordCb, u unsafe.Pointer) *EC_KEY
+//go:linkname PEM_read_EC_PUBKEY C.PEM_read_EC_PUBKEY
+func PEM_read_EC_PUBKEY(out *c.FILE, x **EC_KEY, cb *PemPasswordCb, u unsafe.Pointer) *EC_KEY
 
-//go:linkname PEMWriteBioECPrivateKey C.PEM_write_bio_ECPrivateKey
-func PEMWriteBioECPrivateKey(out *BIO, x *EC_KEY, enc *EVP_CIPHER, kstr *uint8, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer) c.Int
-
-//go:linkname PEMWriteECPrivateKey C.PEM_write_ECPrivateKey
-func PEMWriteECPrivateKey(out *c.FILE, x *EC_KEY, enc *EVP_CIPHER, kstr *uint8, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer) c.Int
-
-//go:linkname PEMReadBioEC_PUBKEY C.PEM_read_bio_EC_PUBKEY
-func PEMReadBioEC_PUBKEY(out *BIO, x **EC_KEY, cb *PemPasswordCb, u unsafe.Pointer) *EC_KEY
-
-//go:linkname PEMReadEC_PUBKEY C.PEM_read_EC_PUBKEY
-func PEMReadEC_PUBKEY(out *c.FILE, x **EC_KEY, cb *PemPasswordCb, u unsafe.Pointer) *EC_KEY
-
-//go:linkname PEMWriteBioEC_PUBKEY C.PEM_write_bio_EC_PUBKEY
-func PEMWriteBioEC_PUBKEY(out *BIO, x *EC_KEY) c.Int
-
-//go:linkname PEMWriteEC_PUBKEY C.PEM_write_EC_PUBKEY
-func PEMWriteEC_PUBKEY(out *c.FILE, x *EC_KEY) c.Int
-
-//go:linkname PEMReadBioDHparams C.PEM_read_bio_DHparams
-func PEMReadBioDHparams(out *BIO, x **DH, cb *PemPasswordCb, u unsafe.Pointer) *DH
-
-//go:linkname PEMReadDHparams C.PEM_read_DHparams
-func PEMReadDHparams(out *c.FILE, x **DH, cb *PemPasswordCb, u unsafe.Pointer) *DH
-
-//go:linkname PEMWriteBioDHparams C.PEM_write_bio_DHparams
-func PEMWriteBioDHparams(out *BIO, x *DH) c.Int
-
-//go:linkname PEMWriteDHparams C.PEM_write_DHparams
-func PEMWriteDHparams(out *c.FILE, x *DH) c.Int
-
-//go:linkname PEMWriteBioDHxparams C.PEM_write_bio_DHxparams
-func PEMWriteBioDHxparams(out *BIO, x *DH) c.Int
-
-//go:linkname PEMWriteDHxparams C.PEM_write_DHxparams
-func PEMWriteDHxparams(out *c.FILE, x *DH) c.Int
-
-//go:linkname PEMReadBioPrivateKey C.PEM_read_bio_PrivateKey
-func PEMReadBioPrivateKey(out *BIO, x **EVP_PKEY, cb *PemPasswordCb, u unsafe.Pointer) *EVP_PKEY
-
-//go:linkname PEMReadBioPrivateKeyEx C.PEM_read_bio_PrivateKey_ex
-func PEMReadBioPrivateKeyEx(out *BIO, x **EVP_PKEY, cb *PemPasswordCb, u unsafe.Pointer, libctx *OSSL_LIB_CTX, propq *c.Char) *EVP_PKEY
-
-//go:linkname PEMReadPrivateKey C.PEM_read_PrivateKey
-func PEMReadPrivateKey(out *c.FILE, x **EVP_PKEY, cb *PemPasswordCb, u unsafe.Pointer) *EVP_PKEY
-
-//go:linkname PEMReadPrivateKeyEx C.PEM_read_PrivateKey_ex
-func PEMReadPrivateKeyEx(out *c.FILE, x **EVP_PKEY, cb *PemPasswordCb, u unsafe.Pointer, libctx *OSSL_LIB_CTX, propq *c.Char) *EVP_PKEY
-
-//go:linkname PEMWriteBioPrivateKey C.PEM_write_bio_PrivateKey
-func PEMWriteBioPrivateKey(out *BIO, x *EVP_PKEY, enc *EVP_CIPHER, kstr *uint8, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer) c.Int
-
-//go:linkname PEMWriteBioPrivateKeyEx C.PEM_write_bio_PrivateKey_ex
-func PEMWriteBioPrivateKeyEx(out *BIO, x *EVP_PKEY, enc *EVP_CIPHER, kstr *uint8, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int
-
-//go:linkname PEMWritePrivateKey C.PEM_write_PrivateKey
-func PEMWritePrivateKey(out *c.FILE, x *EVP_PKEY, enc *EVP_CIPHER, kstr *uint8, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer) c.Int
-
-//go:linkname PEMWritePrivateKeyEx C.PEM_write_PrivateKey_ex
-func PEMWritePrivateKeyEx(out *c.FILE, x *EVP_PKEY, enc *EVP_CIPHER, kstr *uint8, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int
-
-//go:linkname PEMReadBioPUBKEY C.PEM_read_bio_PUBKEY
-func PEMReadBioPUBKEY(out *BIO, x **EVP_PKEY, cb *PemPasswordCb, u unsafe.Pointer) *EVP_PKEY
-
-//go:linkname PEMReadBioPUBKEYEx C.PEM_read_bio_PUBKEY_ex
-func PEMReadBioPUBKEYEx(out *BIO, x **EVP_PKEY, cb *PemPasswordCb, u unsafe.Pointer, libctx *OSSL_LIB_CTX, propq *c.Char) *EVP_PKEY
-
-//go:linkname PEMReadPUBKEY C.PEM_read_PUBKEY
-func PEMReadPUBKEY(out *c.FILE, x **EVP_PKEY, cb *PemPasswordCb, u unsafe.Pointer) *EVP_PKEY
-
-//go:linkname PEMReadPUBKEYEx C.PEM_read_PUBKEY_ex
-func PEMReadPUBKEYEx(out *c.FILE, x **EVP_PKEY, cb *PemPasswordCb, u unsafe.Pointer, libctx *OSSL_LIB_CTX, propq *c.Char) *EVP_PKEY
-
-//go:linkname PEMWriteBioPUBKEY C.PEM_write_bio_PUBKEY
-func PEMWriteBioPUBKEY(out *BIO, x *EVP_PKEY) c.Int
-
-//go:linkname PEMWriteBioPUBKEYEx C.PEM_write_bio_PUBKEY_ex
-func PEMWriteBioPUBKEYEx(out *BIO, x *EVP_PKEY, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int
-
-//go:linkname PEMWritePUBKEY C.PEM_write_PUBKEY
-func PEMWritePUBKEY(out *c.FILE, x *EVP_PKEY) c.Int
-
-//go:linkname PEMWritePUBKEYEx C.PEM_write_PUBKEY_ex
-func PEMWritePUBKEYEx(out *c.FILE, x *EVP_PKEY, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int
-
-//go:linkname PEMWriteBioPrivateKeyTraditional C.PEM_write_bio_PrivateKey_traditional
-func PEMWriteBioPrivateKeyTraditional(bp *BIO, x *EVP_PKEY, enc *EVP_CIPHER, kstr *uint8, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer) c.Int
+// llgo:link (*BIO).PEM_write_bio_EC_PUBKEY C.PEM_write_bio_EC_PUBKEY
+func (self *BIO) PEM_write_bio_EC_PUBKEY(x *EC_KEY) c.Int {
+	return 0
+}
+
+//go:linkname PEM_write_EC_PUBKEY C.PEM_write_EC_PUBKEY
+func PEM_write_EC_PUBKEY(out *c.FILE, x *EC_KEY) c.Int
+
+// llgo:link (*BIO).PEM_read_bio_DHparams C.PEM_read_bio_DHparams
+func (self *BIO) PEM_read_bio_DHparams(x **DH, cb *PemPasswordCb, u unsafe.Pointer) *DH {
+	return nil
+}
+
+//go:linkname PEM_read_DHparams C.PEM_read_DHparams
+func PEM_read_DHparams(out *c.FILE, x **DH, cb *PemPasswordCb, u unsafe.Pointer) *DH
+
+// llgo:link (*BIO).PEM_write_bio_DHparams C.PEM_write_bio_DHparams
+func (self *BIO) PEM_write_bio_DHparams(x *DH) c.Int {
+	return 0
+}
+
+//go:linkname PEM_write_DHparams C.PEM_write_DHparams
+func PEM_write_DHparams(out *c.FILE, x *DH) c.Int
+
+// llgo:link (*BIO).PEM_write_bio_DHxparams C.PEM_write_bio_DHxparams
+func (self *BIO) PEM_write_bio_DHxparams(x *DH) c.Int {
+	return 0
+}
+
+//go:linkname PEM_write_DHxparams C.PEM_write_DHxparams
+func PEM_write_DHxparams(out *c.FILE, x *DH) c.Int
+
+// llgo:link (*BIO).PEM_read_bio_PrivateKey C.PEM_read_bio_PrivateKey
+func (self *BIO) PEM_read_bio_PrivateKey(x **EVP_PKEY, cb *PemPasswordCb, u unsafe.Pointer) *EVP_PKEY {
+	return nil
+}
+
+// llgo:link (*BIO).PEM_read_bio_PrivateKey_ex C.PEM_read_bio_PrivateKey_ex
+func (self *BIO) PEM_read_bio_PrivateKey_ex(x **EVP_PKEY, cb *PemPasswordCb, u unsafe.Pointer, libctx *OSSL_LIB_CTX, propq *c.Char) *EVP_PKEY {
+	return nil
+}
+
+//go:linkname PEM_read_PrivateKey C.PEM_read_PrivateKey
+func PEM_read_PrivateKey(out *c.FILE, x **EVP_PKEY, cb *PemPasswordCb, u unsafe.Pointer) *EVP_PKEY
+
+//go:linkname PEM_read_PrivateKey_ex C.PEM_read_PrivateKey_ex
+func PEM_read_PrivateKey_ex(out *c.FILE, x **EVP_PKEY, cb *PemPasswordCb, u unsafe.Pointer, libctx *OSSL_LIB_CTX, propq *c.Char) *EVP_PKEY
+
+// llgo:link (*BIO).PEM_write_bio_PrivateKey C.PEM_write_bio_PrivateKey
+func (self *BIO) PEM_write_bio_PrivateKey(x *EVP_PKEY, enc *EVP_CIPHER, kstr *uint8, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer) c.Int {
+	return 0
+}
+
+// llgo:link (*BIO).PEM_write_bio_PrivateKey_ex C.PEM_write_bio_PrivateKey_ex
+func (self *BIO) PEM_write_bio_PrivateKey_ex(x *EVP_PKEY, enc *EVP_CIPHER, kstr *uint8, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int {
+	return 0
+}
+
+//go:linkname PEM_write_PrivateKey C.PEM_write_PrivateKey
+func PEM_write_PrivateKey(out *c.FILE, x *EVP_PKEY, enc *EVP_CIPHER, kstr *uint8, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer) c.Int
+
+//go:linkname PEM_write_PrivateKey_ex C.PEM_write_PrivateKey_ex
+func PEM_write_PrivateKey_ex(out *c.FILE, x *EVP_PKEY, enc *EVP_CIPHER, kstr *uint8, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int
+
+// llgo:link (*BIO).PEM_read_bio_PUBKEY C.PEM_read_bio_PUBKEY
+func (self *BIO) PEM_read_bio_PUBKEY(x **EVP_PKEY, cb *PemPasswordCb, u unsafe.Pointer) *EVP_PKEY {
+	return nil
+}
+
+// llgo:link (*BIO).PEM_read_bio_PUBKEY_ex C.PEM_read_bio_PUBKEY_ex
+func (self *BIO) PEM_read_bio_PUBKEY_ex(x **EVP_PKEY, cb *PemPasswordCb, u unsafe.Pointer, libctx *OSSL_LIB_CTX, propq *c.Char) *EVP_PKEY {
+	return nil
+}
+
+//go:linkname PEM_read_PUBKEY C.PEM_read_PUBKEY
+func PEM_read_PUBKEY(out *c.FILE, x **EVP_PKEY, cb *PemPasswordCb, u unsafe.Pointer) *EVP_PKEY
+
+//go:linkname PEM_read_PUBKEY_ex C.PEM_read_PUBKEY_ex
+func PEM_read_PUBKEY_ex(out *c.FILE, x **EVP_PKEY, cb *PemPasswordCb, u unsafe.Pointer, libctx *OSSL_LIB_CTX, propq *c.Char) *EVP_PKEY
+
+// llgo:link (*BIO).PEM_write_bio_PUBKEY C.PEM_write_bio_PUBKEY
+func (self *BIO) PEM_write_bio_PUBKEY(x *EVP_PKEY) c.Int {
+	return 0
+}
+
+// llgo:link (*BIO).PEM_write_bio_PUBKEY_ex C.PEM_write_bio_PUBKEY_ex
+func (self *BIO) PEM_write_bio_PUBKEY_ex(x *EVP_PKEY, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int {
+	return 0
+}
+
+//go:linkname PEM_write_PUBKEY C.PEM_write_PUBKEY
+func PEM_write_PUBKEY(out *c.FILE, x *EVP_PKEY) c.Int
+
+//go:linkname PEM_write_PUBKEY_ex C.PEM_write_PUBKEY_ex
+func PEM_write_PUBKEY_ex(out *c.FILE, x *EVP_PKEY, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int
+
+// llgo:link (*BIO).PEM_write_bio_PrivateKey_traditional C.PEM_write_bio_PrivateKey_traditional
+func (self *BIO) PEM_write_bio_PrivateKey_traditional(x *EVP_PKEY, enc *EVP_CIPHER, kstr *uint8, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer) c.Int {
+	return 0
+}
 
 // Why do these take a signed char *kstr?
 //
-//go:linkname PEMWriteBioPKCS8PrivateKeyNid C.PEM_write_bio_PKCS8PrivateKey_nid
-func PEMWriteBioPKCS8PrivateKeyNid(bp *BIO, x *EVP_PKEY, nid c.Int, kstr *c.Char, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer) c.Int
+// llgo:link (*BIO).PEM_write_bio_PKCS8PrivateKey_nid C.PEM_write_bio_PKCS8PrivateKey_nid
+func (self *BIO) PEM_write_bio_PKCS8PrivateKey_nid(x *EVP_PKEY, nid c.Int, kstr *c.Char, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer) c.Int {
+	return 0
+}
 
-//go:linkname PEMWriteBioPKCS8PrivateKey C.PEM_write_bio_PKCS8PrivateKey
-func PEMWriteBioPKCS8PrivateKey(_llcppg_param1 *BIO, _llcppg_param2 *EVP_PKEY, _llcppg_param3 *EVP_CIPHER, kstr *c.Char, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer) c.Int
+// llgo:link (*BIO).PEM_write_bio_PKCS8PrivateKey C.PEM_write_bio_PKCS8PrivateKey
+func (self *BIO) PEM_write_bio_PKCS8PrivateKey(_llcppg_param2 *EVP_PKEY, _llcppg_param3 *EVP_CIPHER, kstr *c.Char, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer) c.Int {
+	return 0
+}
 
-//go:linkname I2dPKCS8PrivateKeyBio C.i2d_PKCS8PrivateKey_bio
-func I2dPKCS8PrivateKeyBio(bp *BIO, x *EVP_PKEY, enc *EVP_CIPHER, kstr *c.Char, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer) c.Int
+// llgo:link (*BIO).I2dPKCS8PrivateKeyBio C.i2d_PKCS8PrivateKey_bio
+func (self *BIO) I2dPKCS8PrivateKeyBio(x *EVP_PKEY, enc *EVP_CIPHER, kstr *c.Char, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer) c.Int {
+	return 0
+}
 
-//go:linkname I2dPKCS8PrivateKeyNidBio C.i2d_PKCS8PrivateKey_nid_bio
-func I2dPKCS8PrivateKeyNidBio(bp *BIO, x *EVP_PKEY, nid c.Int, kstr *c.Char, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer) c.Int
+// llgo:link (*BIO).I2dPKCS8PrivateKeyNidBio C.i2d_PKCS8PrivateKey_nid_bio
+func (self *BIO) I2dPKCS8PrivateKeyNidBio(x *EVP_PKEY, nid c.Int, kstr *c.Char, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer) c.Int {
+	return 0
+}
 
-//go:linkname D2iPKCS8PrivateKeyBio C.d2i_PKCS8PrivateKey_bio
-func D2iPKCS8PrivateKeyBio(bp *BIO, x **EVP_PKEY, cb *PemPasswordCb, u unsafe.Pointer) *EVP_PKEY
+// llgo:link (*BIO).D2iPKCS8PrivateKeyBio C.d2i_PKCS8PrivateKey_bio
+func (self *BIO) D2iPKCS8PrivateKeyBio(x **EVP_PKEY, cb *PemPasswordCb, u unsafe.Pointer) *EVP_PKEY {
+	return nil
+}
 
 //go:linkname I2dPKCS8PrivateKeyFp C.i2d_PKCS8PrivateKey_fp
 func I2dPKCS8PrivateKeyFp(fp *c.FILE, x *EVP_PKEY, enc *EVP_CIPHER, kstr *c.Char, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer) c.Int
@@ -442,23 +570,29 @@ func I2dPKCS8PrivateKeyFp(fp *c.FILE, x *EVP_PKEY, enc *EVP_CIPHER, kstr *c.Char
 //go:linkname I2dPKCS8PrivateKeyNidFp C.i2d_PKCS8PrivateKey_nid_fp
 func I2dPKCS8PrivateKeyNidFp(fp *c.FILE, x *EVP_PKEY, nid c.Int, kstr *c.Char, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer) c.Int
 
-//go:linkname PEMWritePKCS8PrivateKeyNid C.PEM_write_PKCS8PrivateKey_nid
-func PEMWritePKCS8PrivateKeyNid(fp *c.FILE, x *EVP_PKEY, nid c.Int, kstr *c.Char, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer) c.Int
+//go:linkname PEM_write_PKCS8PrivateKey_nid C.PEM_write_PKCS8PrivateKey_nid
+func PEM_write_PKCS8PrivateKey_nid(fp *c.FILE, x *EVP_PKEY, nid c.Int, kstr *c.Char, klen c.Int, cb *PemPasswordCb, u unsafe.Pointer) c.Int
 
 //go:linkname D2iPKCS8PrivateKeyFp C.d2i_PKCS8PrivateKey_fp
 func D2iPKCS8PrivateKeyFp(fp *c.FILE, x **EVP_PKEY, cb *PemPasswordCb, u unsafe.Pointer) *EVP_PKEY
 
-//go:linkname PEMWritePKCS8PrivateKey C.PEM_write_PKCS8PrivateKey
-func PEMWritePKCS8PrivateKey(fp *c.FILE, x *EVP_PKEY, enc *EVP_CIPHER, kstr *c.Char, klen c.Int, cd *PemPasswordCb, u unsafe.Pointer) c.Int
+//go:linkname PEM_write_PKCS8PrivateKey C.PEM_write_PKCS8PrivateKey
+func PEM_write_PKCS8PrivateKey(fp *c.FILE, x *EVP_PKEY, enc *EVP_CIPHER, kstr *c.Char, klen c.Int, cd *PemPasswordCb, u unsafe.Pointer) c.Int
 
-//go:linkname PEMReadBioParametersEx C.PEM_read_bio_Parameters_ex
-func PEMReadBioParametersEx(bp *BIO, x **EVP_PKEY, libctx *OSSL_LIB_CTX, propq *c.Char) *EVP_PKEY
+// llgo:link (*BIO).PEM_read_bio_Parameters_ex C.PEM_read_bio_Parameters_ex
+func (self *BIO) PEM_read_bio_Parameters_ex(x **EVP_PKEY, libctx *OSSL_LIB_CTX, propq *c.Char) *EVP_PKEY {
+	return nil
+}
 
-//go:linkname PEMReadBioParameters C.PEM_read_bio_Parameters
-func PEMReadBioParameters(bp *BIO, x **EVP_PKEY) *EVP_PKEY
+// llgo:link (*BIO).PEM_read_bio_Parameters C.PEM_read_bio_Parameters
+func (self *BIO) PEM_read_bio_Parameters(x **EVP_PKEY) *EVP_PKEY {
+	return nil
+}
 
-//go:linkname PEMWriteBioParameters C.PEM_write_bio_Parameters
-func PEMWriteBioParameters(bp *BIO, x *EVP_PKEY) c.Int
+// llgo:link (*BIO).PEM_write_bio_Parameters C.PEM_write_bio_Parameters
+func (self *BIO) PEM_write_bio_Parameters(x *EVP_PKEY) c.Int {
+	return 0
+}
 
 //go:linkname B2iPrivateKey C.b2i_PrivateKey
 func B2iPrivateKey(in **uint8, length c.Long) *EVP_PKEY
@@ -466,26 +600,42 @@ func B2iPrivateKey(in **uint8, length c.Long) *EVP_PKEY
 //go:linkname B2iPublicKey C.b2i_PublicKey
 func B2iPublicKey(in **uint8, length c.Long) *EVP_PKEY
 
-//go:linkname B2iPrivateKeyBio C.b2i_PrivateKey_bio
-func B2iPrivateKeyBio(in *BIO) *EVP_PKEY
+// llgo:link (*BIO).B2iPrivateKeyBio C.b2i_PrivateKey_bio
+func (self *BIO) B2iPrivateKeyBio() *EVP_PKEY {
+	return nil
+}
 
-//go:linkname B2iPublicKeyBio C.b2i_PublicKey_bio
-func B2iPublicKeyBio(in *BIO) *EVP_PKEY
+// llgo:link (*BIO).B2iPublicKeyBio C.b2i_PublicKey_bio
+func (self *BIO) B2iPublicKeyBio() *EVP_PKEY {
+	return nil
+}
 
-//go:linkname I2bPrivateKeyBio C.i2b_PrivateKey_bio
-func I2bPrivateKeyBio(out *BIO, pk *EVP_PKEY) c.Int
+// llgo:link (*BIO).I2bPrivateKeyBio C.i2b_PrivateKey_bio
+func (self *BIO) I2bPrivateKeyBio(pk *EVP_PKEY) c.Int {
+	return 0
+}
 
-//go:linkname I2bPublicKeyBio C.i2b_PublicKey_bio
-func I2bPublicKeyBio(out *BIO, pk *EVP_PKEY) c.Int
+// llgo:link (*BIO).I2bPublicKeyBio C.i2b_PublicKey_bio
+func (self *BIO) I2bPublicKeyBio(pk *EVP_PKEY) c.Int {
+	return 0
+}
 
-//go:linkname B2iPVKBio C.b2i_PVK_bio
-func B2iPVKBio(in *BIO, cb *PemPasswordCb, u unsafe.Pointer) *EVP_PKEY
+// llgo:link (*BIO).B2i_PVK_bio C.b2i_PVK_bio
+func (self *BIO) B2i_PVK_bio(cb *PemPasswordCb, u unsafe.Pointer) *EVP_PKEY {
+	return nil
+}
 
-//go:linkname B2iPVKBioEx C.b2i_PVK_bio_ex
-func B2iPVKBioEx(in *BIO, cb *PemPasswordCb, u unsafe.Pointer, libctx *OSSL_LIB_CTX, propq *c.Char) *EVP_PKEY
+// llgo:link (*BIO).B2i_PVK_bio_ex C.b2i_PVK_bio_ex
+func (self *BIO) B2i_PVK_bio_ex(cb *PemPasswordCb, u unsafe.Pointer, libctx *OSSL_LIB_CTX, propq *c.Char) *EVP_PKEY {
+	return nil
+}
 
-//go:linkname I2bPVKBio C.i2b_PVK_bio
-func I2bPVKBio(out *BIO, pk *EVP_PKEY, enclevel c.Int, cb *PemPasswordCb, u unsafe.Pointer) c.Int
+// llgo:link (*BIO).I2b_PVK_bio C.i2b_PVK_bio
+func (self *BIO) I2b_PVK_bio(pk *EVP_PKEY, enclevel c.Int, cb *PemPasswordCb, u unsafe.Pointer) c.Int {
+	return 0
+}
 
-//go:linkname I2bPVKBioEx C.i2b_PVK_bio_ex
-func I2bPVKBioEx(out *BIO, pk *EVP_PKEY, enclevel c.Int, cb *PemPasswordCb, u unsafe.Pointer, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int
+// llgo:link (*BIO).I2b_PVK_bio_ex C.i2b_PVK_bio_ex
+func (self *BIO) I2b_PVK_bio_ex(pk *EVP_PKEY, enclevel c.Int, cb *PemPasswordCb, u unsafe.Pointer, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int {
+	return 0
+}

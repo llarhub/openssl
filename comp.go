@@ -9,63 +9,78 @@ import (
 
 type SslCompSt struct {
 }
-type StackStSSL_COMP struct {
+type Stack_st_SSL_COMP struct {
 }
-type SSL_COMP = SslCompSt
+type SSL_COMP SslCompSt
 
 // clang-format off
 //
 // llgo:type C
-type SkSSL_COMPCompfunc = func(_llcppg_param1 **SSL_COMP, _llcppg_param2 **SSL_COMP) c.Int
+type Sk_SSL_COMP_compfunc = func(_llcppg_param1 **SSL_COMP, _llcppg_param2 **SSL_COMP) c.Int
 
 // clang-format off
 //
 // llgo:type C
-type SkSSL_COMPFreefunc = func(_llcppg_param1 *SSL_COMP)
+type Sk_SSL_COMP_freefunc = func(_llcppg_param1 *SSL_COMP)
 
 // clang-format off
 //
 // llgo:type C
-type SkSSL_COMPCopyfunc = func(_llcppg_param1 *SSL_COMP) *SSL_COMP
+type Sk_SSL_COMP_copyfunc = func(_llcppg_param1 *SSL_COMP) *SSL_COMP
 
-//go:linkname COMP_CTXNew C.COMP_CTX_new
-func COMP_CTXNew(meth *COMP_METHOD) *COMP_CTX
+// llgo:link (*COMP_METHOD).CTX_new C.COMP_CTX_new
+func (self *COMP_METHOD) CTX_new() *COMP_CTX {
+	return nil
+}
 
-//go:linkname COMP_CTXGetMethod C.COMP_CTX_get_method
-func COMP_CTXGetMethod(ctx *COMP_CTX) *COMP_METHOD
+// llgo:link (*COMP_CTX).Method C.COMP_CTX_get_method
+func (self *COMP_CTX) Method() *COMP_METHOD {
+	return nil
+}
 
-//go:linkname COMP_CTXGetType C.COMP_CTX_get_type
-func COMP_CTXGetType(comp *COMP_CTX) c.Int
+// llgo:link (*COMP_CTX).Type C.COMP_CTX_get_type
+func (self *COMP_CTX) Type() c.Int {
+	return 0
+}
 
-//go:linkname COMPGetType C.COMP_get_type
-func COMPGetType(meth *COMP_METHOD) c.Int
+// llgo:link (*COMP_METHOD).Type C.COMP_get_type
+func (self *COMP_METHOD) Type() c.Int {
+	return 0
+}
 
-//go:linkname COMPGetName C.COMP_get_name
-func COMPGetName(meth *COMP_METHOD) *c.Char
+// llgo:link (*COMP_METHOD).Name C.COMP_get_name
+func (self *COMP_METHOD) Name() *c.Char {
+	return nil
+}
 
-//go:linkname COMP_CTXFree C.COMP_CTX_free
-func COMP_CTXFree(ctx *COMP_CTX)
+// llgo:link (*COMP_CTX).Free C.COMP_CTX_free
+func (self *COMP_CTX) Free() {
+}
 
-//go:linkname COMPCompressBlock C.COMP_compress_block
-func COMPCompressBlock(ctx *COMP_CTX, out *uint8, olen c.Int, in *uint8, ilen c.Int) c.Int
+// llgo:link (*COMP_CTX).CompressBlock C.COMP_compress_block
+func (self *COMP_CTX) CompressBlock(out *uint8, olen c.Int, in *uint8, ilen c.Int) c.Int {
+	return 0
+}
 
-//go:linkname COMPExpandBlock C.COMP_expand_block
-func COMPExpandBlock(ctx *COMP_CTX, out *uint8, olen c.Int, in *uint8, ilen c.Int) c.Int
+// llgo:link (*COMP_CTX).ExpandBlock C.COMP_expand_block
+func (self *COMP_CTX) ExpandBlock(out *uint8, olen c.Int, in *uint8, ilen c.Int) c.Int {
+	return 0
+}
 
-//go:linkname COMPZlib C.COMP_zlib
-func COMPZlib() *COMP_METHOD
+//go:linkname COMP_zlib C.COMP_zlib
+func COMP_zlib() *COMP_METHOD
 
-//go:linkname COMPZlibOneshot C.COMP_zlib_oneshot
-func COMPZlibOneshot() *COMP_METHOD
+//go:linkname COMP_zlib_oneshot C.COMP_zlib_oneshot
+func COMP_zlib_oneshot() *COMP_METHOD
 
-//go:linkname COMPBrotli C.COMP_brotli
-func COMPBrotli() *COMP_METHOD
+//go:linkname COMP_brotli C.COMP_brotli
+func COMP_brotli() *COMP_METHOD
 
-//go:linkname COMPBrotliOneshot C.COMP_brotli_oneshot
-func COMPBrotliOneshot() *COMP_METHOD
+//go:linkname COMP_brotli_oneshot C.COMP_brotli_oneshot
+func COMP_brotli_oneshot() *COMP_METHOD
 
-//go:linkname COMPZstd C.COMP_zstd
-func COMPZstd() *COMP_METHOD
+//go:linkname COMP_zstd C.COMP_zstd
+func COMP_zstd() *COMP_METHOD
 
-//go:linkname COMPZstdOneshot C.COMP_zstd_oneshot
-func COMPZstdOneshot() *COMP_METHOD
+//go:linkname COMP_zstd_oneshot C.COMP_zstd_oneshot
+func COMP_zstd_oneshot() *COMP_METHOD

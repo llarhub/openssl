@@ -25,7 +25,7 @@ type ConfMethodSt struct {
 type ConfSt struct {
 	Meth         *CONF_METHOD
 	MethData     unsafe.Pointer
-	Data         *LhashStCONF_VALUE
+	Data         *Lhash_st_CONF_VALUE
 	FlagDollarid c.Int
 	FlagAbspath  c.Int
 	Includedir   *c.Char

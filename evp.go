@@ -478,1377 +478,1882 @@ type EVP_PBE_KEYGEN = func(_llcppg_param1 *EVP_CIPHER_CTX, _llcppg_param2 *c.Cha
 type EVP_PBE_KEYGEN_EX = func(_llcppg_param1 *EVP_CIPHER_CTX, _llcppg_param2 *c.Char, _llcppg_param3 c.Int, _llcppg_param4 *ASN1_TYPE, _llcppg_param5 *EVP_CIPHER, _llcppg_param6 *EVP_MD, _llcppg_param7 c.Int, _llcppg_param8 *OSSL_LIB_CTX, _llcppg_param9 *c.Char) c.Int
 
 // llgo:type C
-type EVP_PKEYGenCb = func(_llcppg_param1 *EVP_PKEY_CTX) c.Int
-
-//go:linkname EVPSetDefaultProperties C.EVP_set_default_properties
-func EVPSetDefaultProperties(libctx *OSSL_LIB_CTX, propq *c.Char) c.Int
-
-//go:linkname EVPGet1DefaultProperties C.EVP_get1_default_properties
-func EVPGet1DefaultProperties(libctx *OSSL_LIB_CTX) *c.Char
-
-//go:linkname EVPDefaultPropertiesIsFipsEnabled C.EVP_default_properties_is_fips_enabled
-func EVPDefaultPropertiesIsFipsEnabled(libctx *OSSL_LIB_CTX) c.Int
-
-//go:linkname EVPDefaultPropertiesEnableFips C.EVP_default_properties_enable_fips
-func EVPDefaultPropertiesEnableFips(libctx *OSSL_LIB_CTX, enable c.Int) c.Int
-
-//go:linkname EVP_MDGetType C.EVP_MD_get_type
-func EVP_MDGetType(md *EVP_MD) c.Int
-
-//go:linkname EVP_MDGet0Name C.EVP_MD_get0_name
-func EVP_MDGet0Name(md *EVP_MD) *c.Char
-
-//go:linkname EVP_MDGet0Description C.EVP_MD_get0_description
-func EVP_MDGet0Description(md *EVP_MD) *c.Char
-
-//go:linkname EVP_MDIsA C.EVP_MD_is_a
-func EVP_MDIsA(md *EVP_MD, name *c.Char) c.Int
-
-//go:linkname EVP_MDNamesDoAll C.EVP_MD_names_do_all
-func EVP_MDNamesDoAll(md *EVP_MD, fn func(_llcppg_param1 *c.Char, _llcppg_param2 unsafe.Pointer), data unsafe.Pointer) c.Int
-
-//go:linkname EVP_MDGet0Provider C.EVP_MD_get0_provider
-func EVP_MDGet0Provider(md *EVP_MD) *OSSL_PROVIDER
-
-//go:linkname EVP_MDGetPkeyType C.EVP_MD_get_pkey_type
-func EVP_MDGetPkeyType(md *EVP_MD) c.Int
-
-//go:linkname EVP_MDGetSize C.EVP_MD_get_size
-func EVP_MDGetSize(md *EVP_MD) c.Int
-
-//go:linkname EVP_MDGetBlockSize C.EVP_MD_get_block_size
-func EVP_MDGetBlockSize(md *EVP_MD) c.Int
-
-//go:linkname EVP_MDGetFlags C.EVP_MD_get_flags
-func EVP_MDGetFlags(md *EVP_MD) c.Ulong
-
-//go:linkname EVP_MDXof C.EVP_MD_xof
-func EVP_MDXof(md *EVP_MD) c.Int
-
-//go:linkname EVP_MD_CTXGet0Md C.EVP_MD_CTX_get0_md
-func EVP_MD_CTXGet0Md(ctx *EVP_MD_CTX) *EVP_MD
-
-//go:linkname EVP_MD_CTXGet1Md C.EVP_MD_CTX_get1_md
-func EVP_MD_CTXGet1Md(ctx *EVP_MD_CTX) *EVP_MD
-
-//go:linkname EVP_MD_CTXMd C.EVP_MD_CTX_md
-func EVP_MD_CTXMd(ctx *EVP_MD_CTX) *EVP_MD
-
-//go:linkname EVP_MD_CTXGetSizeEx C.EVP_MD_CTX_get_size_ex
-func EVP_MD_CTXGetSizeEx(ctx *EVP_MD_CTX) c.Int
-
-//go:linkname EVP_MD_CTXGetPkeyCtx C.EVP_MD_CTX_get_pkey_ctx
-func EVP_MD_CTXGetPkeyCtx(ctx *EVP_MD_CTX) *EVP_PKEY_CTX
-
-//go:linkname EVP_MD_CTXSetPkeyCtx C.EVP_MD_CTX_set_pkey_ctx
-func EVP_MD_CTXSetPkeyCtx(ctx *EVP_MD_CTX, pctx *EVP_PKEY_CTX)
-
-//go:linkname EVP_MD_CTXGet0MdData C.EVP_MD_CTX_get0_md_data
-func EVP_MD_CTXGet0MdData(ctx *EVP_MD_CTX) unsafe.Pointer
-
-//go:linkname EVP_CIPHERGetNid C.EVP_CIPHER_get_nid
-func EVP_CIPHERGetNid(cipher *EVP_CIPHER) c.Int
-
-//go:linkname EVP_CIPHERGet0Name C.EVP_CIPHER_get0_name
-func EVP_CIPHERGet0Name(cipher *EVP_CIPHER) *c.Char
-
-//go:linkname EVP_CIPHERGet0Description C.EVP_CIPHER_get0_description
-func EVP_CIPHERGet0Description(cipher *EVP_CIPHER) *c.Char
-
-//go:linkname EVP_CIPHERIsA C.EVP_CIPHER_is_a
-func EVP_CIPHERIsA(cipher *EVP_CIPHER, name *c.Char) c.Int
-
-//go:linkname EVP_CIPHERNamesDoAll C.EVP_CIPHER_names_do_all
-func EVP_CIPHERNamesDoAll(cipher *EVP_CIPHER, fn func(_llcppg_param1 *c.Char, _llcppg_param2 unsafe.Pointer), data unsafe.Pointer) c.Int
-
-//go:linkname EVP_CIPHERGet0Provider C.EVP_CIPHER_get0_provider
-func EVP_CIPHERGet0Provider(cipher *EVP_CIPHER) *OSSL_PROVIDER
-
-//go:linkname EVP_CIPHERGetBlockSize C.EVP_CIPHER_get_block_size
-func EVP_CIPHERGetBlockSize(cipher *EVP_CIPHER) c.Int
-
-//go:linkname EVP_CIPHERImplCtxSize C.EVP_CIPHER_impl_ctx_size
-func EVP_CIPHERImplCtxSize(cipher *EVP_CIPHER) c.Int
-
-//go:linkname EVP_CIPHERGetKeyLength C.EVP_CIPHER_get_key_length
-func EVP_CIPHERGetKeyLength(cipher *EVP_CIPHER) c.Int
-
-//go:linkname EVP_CIPHERGetIvLength C.EVP_CIPHER_get_iv_length
-func EVP_CIPHERGetIvLength(cipher *EVP_CIPHER) c.Int
-
-//go:linkname EVP_CIPHERGetFlags C.EVP_CIPHER_get_flags
-func EVP_CIPHERGetFlags(cipher *EVP_CIPHER) c.Ulong
-
-//go:linkname EVP_CIPHERGetMode C.EVP_CIPHER_get_mode
-func EVP_CIPHERGetMode(cipher *EVP_CIPHER) c.Int
-
-//go:linkname EVP_CIPHERGetType C.EVP_CIPHER_get_type
-func EVP_CIPHERGetType(cipher *EVP_CIPHER) c.Int
-
-//go:linkname EVP_CIPHERFetch C.EVP_CIPHER_fetch
-func EVP_CIPHERFetch(ctx *OSSL_LIB_CTX, algorithm *c.Char, properties *c.Char) *EVP_CIPHER
-
-//go:linkname EVP_CIPHERCanPipeline C.EVP_CIPHER_can_pipeline
-func EVP_CIPHERCanPipeline(cipher *EVP_CIPHER, enc c.Int) c.Int
-
-//go:linkname EVP_CIPHERUpRef C.EVP_CIPHER_up_ref
-func EVP_CIPHERUpRef(cipher *EVP_CIPHER) c.Int
-
-//go:linkname EVP_CIPHERFree C.EVP_CIPHER_free
-func EVP_CIPHERFree(cipher *EVP_CIPHER)
-
-//go:linkname EVP_CIPHER_CTXGet0Cipher C.EVP_CIPHER_CTX_get0_cipher
-func EVP_CIPHER_CTXGet0Cipher(ctx *EVP_CIPHER_CTX) *EVP_CIPHER
-
-//go:linkname EVP_CIPHER_CTXGet1Cipher C.EVP_CIPHER_CTX_get1_cipher
-func EVP_CIPHER_CTXGet1Cipher(ctx *EVP_CIPHER_CTX) *EVP_CIPHER
-
-//go:linkname EVP_CIPHER_CTXIsEncrypting C.EVP_CIPHER_CTX_is_encrypting
-func EVP_CIPHER_CTXIsEncrypting(ctx *EVP_CIPHER_CTX) c.Int
-
-//go:linkname EVP_CIPHER_CTXGetNid C.EVP_CIPHER_CTX_get_nid
-func EVP_CIPHER_CTXGetNid(ctx *EVP_CIPHER_CTX) c.Int
-
-//go:linkname EVP_CIPHER_CTXGetBlockSize C.EVP_CIPHER_CTX_get_block_size
-func EVP_CIPHER_CTXGetBlockSize(ctx *EVP_CIPHER_CTX) c.Int
-
-//go:linkname EVP_CIPHER_CTXGetKeyLength C.EVP_CIPHER_CTX_get_key_length
-func EVP_CIPHER_CTXGetKeyLength(ctx *EVP_CIPHER_CTX) c.Int
-
-//go:linkname EVP_CIPHER_CTXGetIvLength C.EVP_CIPHER_CTX_get_iv_length
-func EVP_CIPHER_CTXGetIvLength(ctx *EVP_CIPHER_CTX) c.Int
-
-//go:linkname EVP_CIPHER_CTXGetTagLength C.EVP_CIPHER_CTX_get_tag_length
-func EVP_CIPHER_CTXGetTagLength(ctx *EVP_CIPHER_CTX) c.Int
-
-//go:linkname EVP_CIPHER_CTXCipher C.EVP_CIPHER_CTX_cipher
-func EVP_CIPHER_CTXCipher(ctx *EVP_CIPHER_CTX) *EVP_CIPHER
-
-//go:linkname EVP_CIPHER_CTXIv C.EVP_CIPHER_CTX_iv
-func EVP_CIPHER_CTXIv(ctx *EVP_CIPHER_CTX) *uint8
-
-//go:linkname EVP_CIPHER_CTXOriginalIv C.EVP_CIPHER_CTX_original_iv
-func EVP_CIPHER_CTXOriginalIv(ctx *EVP_CIPHER_CTX) *uint8
-
-//go:linkname EVP_CIPHER_CTXIvNoconst C.EVP_CIPHER_CTX_iv_noconst
-func EVP_CIPHER_CTXIvNoconst(ctx *EVP_CIPHER_CTX) *uint8
-
-//go:linkname EVP_CIPHER_CTXGetUpdatedIv C.EVP_CIPHER_CTX_get_updated_iv
-func EVP_CIPHER_CTXGetUpdatedIv(ctx *EVP_CIPHER_CTX, buf unsafe.Pointer, len c.SizeT) c.Int
-
-//go:linkname EVP_CIPHER_CTXGetOriginalIv C.EVP_CIPHER_CTX_get_original_iv
-func EVP_CIPHER_CTXGetOriginalIv(ctx *EVP_CIPHER_CTX, buf unsafe.Pointer, len c.SizeT) c.Int
-
-//go:linkname EVP_CIPHER_CTXBufNoconst C.EVP_CIPHER_CTX_buf_noconst
-func EVP_CIPHER_CTXBufNoconst(ctx *EVP_CIPHER_CTX) *uint8
-
-//go:linkname EVP_CIPHER_CTXGetNum C.EVP_CIPHER_CTX_get_num
-func EVP_CIPHER_CTXGetNum(ctx *EVP_CIPHER_CTX) c.Int
-
-//go:linkname EVP_CIPHER_CTXSetNum C.EVP_CIPHER_CTX_set_num
-func EVP_CIPHER_CTXSetNum(ctx *EVP_CIPHER_CTX, num c.Int) c.Int
-
-//go:linkname EVP_CIPHER_CTXDup C.EVP_CIPHER_CTX_dup
-func EVP_CIPHER_CTXDup(in *EVP_CIPHER_CTX) *EVP_CIPHER_CTX
-
-//go:linkname EVP_CIPHER_CTXCopy C.EVP_CIPHER_CTX_copy
-func EVP_CIPHER_CTXCopy(out *EVP_CIPHER_CTX, in *EVP_CIPHER_CTX) c.Int
-
-//go:linkname EVP_CIPHER_CTXGetAppData C.EVP_CIPHER_CTX_get_app_data
-func EVP_CIPHER_CTXGetAppData(ctx *EVP_CIPHER_CTX) unsafe.Pointer
-
-//go:linkname EVP_CIPHER_CTXSetAppData C.EVP_CIPHER_CTX_set_app_data
-func EVP_CIPHER_CTXSetAppData(ctx *EVP_CIPHER_CTX, data unsafe.Pointer)
-
-//go:linkname EVP_CIPHER_CTXGetCipherData C.EVP_CIPHER_CTX_get_cipher_data
-func EVP_CIPHER_CTXGetCipherData(ctx *EVP_CIPHER_CTX) unsafe.Pointer
-
-//go:linkname EVP_CIPHER_CTXSetCipherData C.EVP_CIPHER_CTX_set_cipher_data
-func EVP_CIPHER_CTXSetCipherData(ctx *EVP_CIPHER_CTX, cipher_data unsafe.Pointer) unsafe.Pointer
-
-//go:linkname EVP_Cipher C.EVP_Cipher
-func EVP_Cipher(c *EVP_CIPHER_CTX, out *uint8, in *uint8, inl c.Uint) c.Int
-
-//go:linkname EVP_MDGetParams C.EVP_MD_get_params
-func EVP_MDGetParams(digest *EVP_MD, params *OSSL_PARAM) c.Int
-
-//go:linkname EVP_MD_CTXSetParams C.EVP_MD_CTX_set_params
-func EVP_MD_CTXSetParams(ctx *EVP_MD_CTX, params *OSSL_PARAM) c.Int
-
-//go:linkname EVP_MD_CTXGetParams C.EVP_MD_CTX_get_params
-func EVP_MD_CTXGetParams(ctx *EVP_MD_CTX, params *OSSL_PARAM) c.Int
-
-//go:linkname EVP_MDGettableParams C.EVP_MD_gettable_params
-func EVP_MDGettableParams(digest *EVP_MD) *OSSL_PARAM
-
-//go:linkname EVP_MDSettableCtxParams C.EVP_MD_settable_ctx_params
-func EVP_MDSettableCtxParams(md *EVP_MD) *OSSL_PARAM
-
-//go:linkname EVP_MDGettableCtxParams C.EVP_MD_gettable_ctx_params
-func EVP_MDGettableCtxParams(md *EVP_MD) *OSSL_PARAM
-
-//go:linkname EVP_MD_CTXSettableParams C.EVP_MD_CTX_settable_params
-func EVP_MD_CTXSettableParams(ctx *EVP_MD_CTX) *OSSL_PARAM
-
-//go:linkname EVP_MD_CTXGettableParams C.EVP_MD_CTX_gettable_params
-func EVP_MD_CTXGettableParams(ctx *EVP_MD_CTX) *OSSL_PARAM
-
-//go:linkname EVP_MD_CTXCtrl C.EVP_MD_CTX_ctrl
-func EVP_MD_CTXCtrl(ctx *EVP_MD_CTX, cmd c.Int, p1 c.Int, p2 unsafe.Pointer) c.Int
-
-//go:linkname EVP_MD_CTXNew C.EVP_MD_CTX_new
-func EVP_MD_CTXNew() *EVP_MD_CTX
-
-//go:linkname EVP_MD_CTXReset C.EVP_MD_CTX_reset
-func EVP_MD_CTXReset(ctx *EVP_MD_CTX) c.Int
-
-//go:linkname EVP_MD_CTXFree C.EVP_MD_CTX_free
-func EVP_MD_CTXFree(ctx *EVP_MD_CTX)
-
-//go:linkname EVP_MD_CTXDup C.EVP_MD_CTX_dup
-func EVP_MD_CTXDup(in *EVP_MD_CTX) *EVP_MD_CTX
-
-//go:linkname EVP_MD_CTXCopyEx C.EVP_MD_CTX_copy_ex
-func EVP_MD_CTXCopyEx(out *EVP_MD_CTX, in *EVP_MD_CTX) c.Int
-
-//go:linkname EVP_MD_CTXSetFlags C.EVP_MD_CTX_set_flags
-func EVP_MD_CTXSetFlags(ctx *EVP_MD_CTX, flags c.Int)
-
-//go:linkname EVP_MD_CTXClearFlags C.EVP_MD_CTX_clear_flags
-func EVP_MD_CTXClearFlags(ctx *EVP_MD_CTX, flags c.Int)
-
-//go:linkname EVP_MD_CTXTestFlags C.EVP_MD_CTX_test_flags
-func EVP_MD_CTXTestFlags(ctx *EVP_MD_CTX, flags c.Int) c.Int
-
-//go:linkname EVPDigestInitEx2 C.EVP_DigestInit_ex2
-func EVPDigestInitEx2(ctx *EVP_MD_CTX, type_ *EVP_MD, params *OSSL_PARAM) c.Int
-
-//go:linkname EVPDigestInitEx C.EVP_DigestInit_ex
-func EVPDigestInitEx(ctx *EVP_MD_CTX, type_ *EVP_MD, impl *ENGINE) c.Int
-
-//go:linkname EVP_DigestUpdate C.EVP_DigestUpdate
-func EVP_DigestUpdate(ctx *EVP_MD_CTX, d unsafe.Pointer, cnt c.SizeT) c.Int
-
-//go:linkname EVPDigestFinalEx C.EVP_DigestFinal_ex
-func EVPDigestFinalEx(ctx *EVP_MD_CTX, md *uint8, s *c.Uint) c.Int
+type EVP_PKEY_gen_cb = func(_llcppg_param1 *EVP_PKEY_CTX) c.Int
+
+// llgo:link (*OSSL_LIB_CTX).EVP_set_default_properties C.EVP_set_default_properties
+func (self *OSSL_LIB_CTX) EVP_set_default_properties(propq *c.Char) c.Int {
+	return 0
+}
+
+// llgo:link (*OSSL_LIB_CTX).EVP_get1_default_properties C.EVP_get1_default_properties
+func (self *OSSL_LIB_CTX) EVP_get1_default_properties() *c.Char {
+	return nil
+}
+
+// llgo:link (*OSSL_LIB_CTX).EVP_default_properties_is_fips_enabled C.EVP_default_properties_is_fips_enabled
+func (self *OSSL_LIB_CTX) EVP_default_properties_is_fips_enabled() c.Int {
+	return 0
+}
+
+// llgo:link (*OSSL_LIB_CTX).EVP_default_properties_enable_fips C.EVP_default_properties_enable_fips
+func (self *OSSL_LIB_CTX) EVP_default_properties_enable_fips(enable c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD).Type C.EVP_MD_get_type
+func (self *EVP_MD) Type() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD).Get0Name C.EVP_MD_get0_name
+func (self *EVP_MD) Get0Name() *c.Char {
+	return nil
+}
+
+// llgo:link (*EVP_MD).Get0Description C.EVP_MD_get0_description
+func (self *EVP_MD) Get0Description() *c.Char {
+	return nil
+}
+
+// llgo:link (*EVP_MD).IsA C.EVP_MD_is_a
+func (self *EVP_MD) IsA(name *c.Char) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD).NamesDoAll C.EVP_MD_names_do_all
+func (self *EVP_MD) NamesDoAll(fn func(_llcppg_param1 *c.Char, _llcppg_param2 unsafe.Pointer), data unsafe.Pointer) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD).Get0Provider C.EVP_MD_get0_provider
+func (self *EVP_MD) Get0Provider() *OSSL_PROVIDER {
+	return nil
+}
+
+// llgo:link (*EVP_MD).PkeyType C.EVP_MD_get_pkey_type
+func (self *EVP_MD) PkeyType() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD).Size C.EVP_MD_get_size
+func (self *EVP_MD) Size() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD).BlockSize C.EVP_MD_get_block_size
+func (self *EVP_MD) BlockSize() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD).Flags C.EVP_MD_get_flags
+func (self *EVP_MD) Flags() c.Ulong {
+	return 0
+}
+
+// llgo:link (*EVP_MD).Xof C.EVP_MD_xof
+func (self *EVP_MD) Xof() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD_CTX).Get0Md C.EVP_MD_CTX_get0_md
+func (self *EVP_MD_CTX) Get0Md() *EVP_MD {
+	return nil
+}
+
+// llgo:link (*EVP_MD_CTX).Get1Md C.EVP_MD_CTX_get1_md
+func (self *EVP_MD_CTX) Get1Md() *EVP_MD {
+	return nil
+}
+
+// llgo:link (*EVP_MD_CTX).Md C.EVP_MD_CTX_md
+func (self *EVP_MD_CTX) Md() *EVP_MD {
+	return nil
+}
+
+// llgo:link (*EVP_MD_CTX).SizeEx C.EVP_MD_CTX_get_size_ex
+func (self *EVP_MD_CTX) SizeEx() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD_CTX).PkeyCtx C.EVP_MD_CTX_get_pkey_ctx
+func (self *EVP_MD_CTX) PkeyCtx() *EVP_PKEY_CTX {
+	return nil
+}
+
+// llgo:link (*EVP_MD_CTX).SetPkeyCtx C.EVP_MD_CTX_set_pkey_ctx
+func (self *EVP_MD_CTX) SetPkeyCtx(pctx *EVP_PKEY_CTX) {
+}
+
+// llgo:link (*EVP_MD_CTX).Get0MdData C.EVP_MD_CTX_get0_md_data
+func (self *EVP_MD_CTX) Get0MdData() unsafe.Pointer {
+	return nil
+}
+
+// llgo:link (*EVP_CIPHER).Nid C.EVP_CIPHER_get_nid
+func (self *EVP_CIPHER) Nid() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER).Get0Name C.EVP_CIPHER_get0_name
+func (self *EVP_CIPHER) Get0Name() *c.Char {
+	return nil
+}
+
+// llgo:link (*EVP_CIPHER).Get0Description C.EVP_CIPHER_get0_description
+func (self *EVP_CIPHER) Get0Description() *c.Char {
+	return nil
+}
+
+// llgo:link (*EVP_CIPHER).IsA C.EVP_CIPHER_is_a
+func (self *EVP_CIPHER) IsA(name *c.Char) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER).NamesDoAll C.EVP_CIPHER_names_do_all
+func (self *EVP_CIPHER) NamesDoAll(fn func(_llcppg_param1 *c.Char, _llcppg_param2 unsafe.Pointer), data unsafe.Pointer) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER).Get0Provider C.EVP_CIPHER_get0_provider
+func (self *EVP_CIPHER) Get0Provider() *OSSL_PROVIDER {
+	return nil
+}
+
+// llgo:link (*EVP_CIPHER).BlockSize C.EVP_CIPHER_get_block_size
+func (self *EVP_CIPHER) BlockSize() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER).ImplCtxSize C.EVP_CIPHER_impl_ctx_size
+func (self *EVP_CIPHER) ImplCtxSize() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER).KeyLength C.EVP_CIPHER_get_key_length
+func (self *EVP_CIPHER) KeyLength() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER).IvLength C.EVP_CIPHER_get_iv_length
+func (self *EVP_CIPHER) IvLength() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER).Flags C.EVP_CIPHER_get_flags
+func (self *EVP_CIPHER) Flags() c.Ulong {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER).Mode C.EVP_CIPHER_get_mode
+func (self *EVP_CIPHER) Mode() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER).Type C.EVP_CIPHER_get_type
+func (self *EVP_CIPHER) Type() c.Int {
+	return 0
+}
+
+// llgo:link (*OSSL_LIB_CTX).EVP_CIPHER_fetch C.EVP_CIPHER_fetch
+func (self *OSSL_LIB_CTX) EVP_CIPHER_fetch(algorithm *c.Char, properties *c.Char) *EVP_CIPHER {
+	return nil
+}
+
+// llgo:link (*EVP_CIPHER).CanPipeline C.EVP_CIPHER_can_pipeline
+func (self *EVP_CIPHER) CanPipeline(enc c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER).UpRef C.EVP_CIPHER_up_ref
+func (self *EVP_CIPHER) UpRef() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER).Free C.EVP_CIPHER_free
+func (self *EVP_CIPHER) Free() {
+}
+
+// llgo:link (*EVP_CIPHER_CTX).Get0Cipher C.EVP_CIPHER_CTX_get0_cipher
+func (self *EVP_CIPHER_CTX) Get0Cipher() *EVP_CIPHER {
+	return nil
+}
+
+// llgo:link (*EVP_CIPHER_CTX).Get1Cipher C.EVP_CIPHER_CTX_get1_cipher
+func (self *EVP_CIPHER_CTX) Get1Cipher() *EVP_CIPHER {
+	return nil
+}
+
+// llgo:link (*EVP_CIPHER_CTX).IsEncrypting C.EVP_CIPHER_CTX_is_encrypting
+func (self *EVP_CIPHER_CTX) IsEncrypting() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).Nid C.EVP_CIPHER_CTX_get_nid
+func (self *EVP_CIPHER_CTX) Nid() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).BlockSize C.EVP_CIPHER_CTX_get_block_size
+func (self *EVP_CIPHER_CTX) BlockSize() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).KeyLength C.EVP_CIPHER_CTX_get_key_length
+func (self *EVP_CIPHER_CTX) KeyLength() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).IvLength C.EVP_CIPHER_CTX_get_iv_length
+func (self *EVP_CIPHER_CTX) IvLength() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).TagLength C.EVP_CIPHER_CTX_get_tag_length
+func (self *EVP_CIPHER_CTX) TagLength() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).Cipher C.EVP_CIPHER_CTX_cipher
+func (self *EVP_CIPHER_CTX) Cipher() *EVP_CIPHER {
+	return nil
+}
+
+// llgo:link (*EVP_CIPHER_CTX).Iv C.EVP_CIPHER_CTX_iv
+func (self *EVP_CIPHER_CTX) Iv() *uint8 {
+	return nil
+}
+
+// llgo:link (*EVP_CIPHER_CTX).OriginalIv C.EVP_CIPHER_CTX_original_iv
+func (self *EVP_CIPHER_CTX) OriginalIv() *uint8 {
+	return nil
+}
+
+// llgo:link (*EVP_CIPHER_CTX).IvNoconst C.EVP_CIPHER_CTX_iv_noconst
+func (self *EVP_CIPHER_CTX) IvNoconst() *uint8 {
+	return nil
+}
+
+// llgo:link (*EVP_CIPHER_CTX).UpdatedIv C.EVP_CIPHER_CTX_get_updated_iv
+func (self *EVP_CIPHER_CTX) UpdatedIv(buf unsafe.Pointer, len c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).GetOriginalIv C.EVP_CIPHER_CTX_get_original_iv
+func (self *EVP_CIPHER_CTX) GetOriginalIv(buf unsafe.Pointer, len c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).BufNoconst C.EVP_CIPHER_CTX_buf_noconst
+func (self *EVP_CIPHER_CTX) BufNoconst() *uint8 {
+	return nil
+}
+
+// llgo:link (*EVP_CIPHER_CTX).Num C.EVP_CIPHER_CTX_get_num
+func (self *EVP_CIPHER_CTX) Num() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).SetNum C.EVP_CIPHER_CTX_set_num
+func (self *EVP_CIPHER_CTX) SetNum(num c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).Dup C.EVP_CIPHER_CTX_dup
+func (self *EVP_CIPHER_CTX) Dup() *EVP_CIPHER_CTX {
+	return self
+}
+
+// llgo:link (*EVP_CIPHER_CTX).Copy C.EVP_CIPHER_CTX_copy
+func (self *EVP_CIPHER_CTX) Copy(in *EVP_CIPHER_CTX) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).AppData C.EVP_CIPHER_CTX_get_app_data
+func (self *EVP_CIPHER_CTX) AppData() unsafe.Pointer {
+	return nil
+}
+
+// llgo:link (*EVP_CIPHER_CTX).SetAppData C.EVP_CIPHER_CTX_set_app_data
+func (self *EVP_CIPHER_CTX) SetAppData(data unsafe.Pointer) {
+}
+
+// llgo:link (*EVP_CIPHER_CTX).CipherData C.EVP_CIPHER_CTX_get_cipher_data
+func (self *EVP_CIPHER_CTX) CipherData() unsafe.Pointer {
+	return nil
+}
+
+// llgo:link (*EVP_CIPHER_CTX).SetCipherData C.EVP_CIPHER_CTX_set_cipher_data
+func (self *EVP_CIPHER_CTX) SetCipherData(cipher_data unsafe.Pointer) unsafe.Pointer {
+	return nil
+}
+
+// llgo:link (*EVP_CIPHER_CTX).EVP_Cipher C.EVP_Cipher
+func (self *EVP_CIPHER_CTX) EVP_Cipher(out *uint8, in *uint8, inl c.Uint) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD).Params C.EVP_MD_get_params
+func (self *EVP_MD) Params(params *OSSL_PARAM) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD_CTX).SetParams C.EVP_MD_CTX_set_params
+func (self *EVP_MD_CTX) SetParams(params *OSSL_PARAM) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD_CTX).Params C.EVP_MD_CTX_get_params
+func (self *EVP_MD_CTX) Params(params *OSSL_PARAM) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD).GettableParams C.EVP_MD_gettable_params
+func (self *EVP_MD) GettableParams() *OSSL_PARAM {
+	return nil
+}
+
+// llgo:link (*EVP_MD).SettableCtxParams C.EVP_MD_settable_ctx_params
+func (self *EVP_MD) SettableCtxParams() *OSSL_PARAM {
+	return nil
+}
+
+// llgo:link (*EVP_MD).GettableCtxParams C.EVP_MD_gettable_ctx_params
+func (self *EVP_MD) GettableCtxParams() *OSSL_PARAM {
+	return nil
+}
+
+// llgo:link (*EVP_MD_CTX).SettableParams C.EVP_MD_CTX_settable_params
+func (self *EVP_MD_CTX) SettableParams() *OSSL_PARAM {
+	return nil
+}
+
+// llgo:link (*EVP_MD_CTX).GettableParams C.EVP_MD_CTX_gettable_params
+func (self *EVP_MD_CTX) GettableParams() *OSSL_PARAM {
+	return nil
+}
+
+// llgo:link (*EVP_MD_CTX).Ctrl C.EVP_MD_CTX_ctrl
+func (self *EVP_MD_CTX) Ctrl(cmd c.Int, p1 c.Int, p2 unsafe.Pointer) c.Int {
+	return 0
+}
+
+//go:linkname EVP_MD_CTX_new C.EVP_MD_CTX_new
+func EVP_MD_CTX_new() *EVP_MD_CTX
+
+// llgo:link (*EVP_MD_CTX).Reset C.EVP_MD_CTX_reset
+func (self *EVP_MD_CTX) Reset() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD_CTX).Free C.EVP_MD_CTX_free
+func (self *EVP_MD_CTX) Free() {
+}
+
+// llgo:link (*EVP_MD_CTX).Dup C.EVP_MD_CTX_dup
+func (self *EVP_MD_CTX) Dup() *EVP_MD_CTX {
+	return self
+}
+
+// llgo:link (*EVP_MD_CTX).CopyEx C.EVP_MD_CTX_copy_ex
+func (self *EVP_MD_CTX) CopyEx(in *EVP_MD_CTX) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD_CTX).SetFlags C.EVP_MD_CTX_set_flags
+func (self *EVP_MD_CTX) SetFlags(flags c.Int) {
+}
+
+// llgo:link (*EVP_MD_CTX).ClearFlags C.EVP_MD_CTX_clear_flags
+func (self *EVP_MD_CTX) ClearFlags(flags c.Int) {
+}
+
+// llgo:link (*EVP_MD_CTX).TestFlags C.EVP_MD_CTX_test_flags
+func (self *EVP_MD_CTX) TestFlags(flags c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD_CTX).DigestInitEx2 C.EVP_DigestInit_ex2
+func (self *EVP_MD_CTX) DigestInitEx2(type_ *EVP_MD, params *OSSL_PARAM) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD_CTX).DigestInitEx C.EVP_DigestInit_ex
+func (self *EVP_MD_CTX) DigestInitEx(type_ *EVP_MD, impl *ENGINE) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD_CTX).DigestUpdate C.EVP_DigestUpdate
+func (self *EVP_MD_CTX) DigestUpdate(d unsafe.Pointer, cnt c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD_CTX).DigestFinalEx C.EVP_DigestFinal_ex
+func (self *EVP_MD_CTX) DigestFinalEx(md *uint8, s *c.Uint) c.Int {
+	return 0
+}
 
 //go:linkname EVP_Digest C.EVP_Digest
 func EVP_Digest(data unsafe.Pointer, count c.SizeT, md *uint8, size *c.Uint, type_ *EVP_MD, impl *ENGINE) c.Int
 
-//go:linkname EVP_QDigest C.EVP_Q_digest
-func EVP_QDigest(libctx *OSSL_LIB_CTX, name *c.Char, propq *c.Char, data unsafe.Pointer, datalen c.SizeT, md *uint8, mdlen *c.SizeT) c.Int
-
-//go:linkname EVP_MD_CTXCopy C.EVP_MD_CTX_copy
-func EVP_MD_CTXCopy(out *EVP_MD_CTX, in *EVP_MD_CTX) c.Int
-
-//go:linkname EVP_DigestInit C.EVP_DigestInit
-func EVP_DigestInit(ctx *EVP_MD_CTX, type_ *EVP_MD) c.Int
-
-//go:linkname EVP_DigestFinal C.EVP_DigestFinal
-func EVP_DigestFinal(ctx *EVP_MD_CTX, md *uint8, s *c.Uint) c.Int
-
-//go:linkname EVP_DigestFinalXOF C.EVP_DigestFinalXOF
-func EVP_DigestFinalXOF(ctx *EVP_MD_CTX, out *uint8, outlen c.SizeT) c.Int
-
-//go:linkname EVP_DigestSqueeze C.EVP_DigestSqueeze
-func EVP_DigestSqueeze(ctx *EVP_MD_CTX, out *uint8, outlen c.SizeT) c.Int
-
-//go:linkname EVP_MD_CTXSerialize C.EVP_MD_CTX_serialize
-func EVP_MD_CTXSerialize(ctx *EVP_MD_CTX, out *uint8, outlen *c.SizeT) c.Int
-
-//go:linkname EVP_MD_CTXDeserialize C.EVP_MD_CTX_deserialize
-func EVP_MD_CTXDeserialize(ctx *EVP_MD_CTX, in *uint8, inlen c.SizeT) c.Int
-
-//go:linkname EVP_MDFetch C.EVP_MD_fetch
-func EVP_MDFetch(ctx *OSSL_LIB_CTX, algorithm *c.Char, properties *c.Char) *EVP_MD
-
-//go:linkname EVP_MDUpRef C.EVP_MD_up_ref
-func EVP_MDUpRef(md *EVP_MD) c.Int
-
-//go:linkname EVP_MDFree C.EVP_MD_free
-func EVP_MDFree(md *EVP_MD)
-
-//go:linkname EVPReadPwString C.EVP_read_pw_string
-func EVPReadPwString(buf *c.Char, length c.Int, prompt *c.Char, verify c.Int) c.Int
-
-//go:linkname EVPReadPwStringMin C.EVP_read_pw_string_min
-func EVPReadPwStringMin(buf *c.Char, minlen c.Int, maxlen c.Int, prompt *c.Char, verify c.Int) c.Int
-
-//go:linkname EVPSetPwPrompt C.EVP_set_pw_prompt
-func EVPSetPwPrompt(prompt *c.Char)
-
-//go:linkname EVPGetPwPrompt C.EVP_get_pw_prompt
-func EVPGetPwPrompt() *c.Char
-
-//go:linkname EVP_BytesToKey C.EVP_BytesToKey
-func EVP_BytesToKey(type_ *EVP_CIPHER, md *EVP_MD, salt *uint8, data *uint8, datal c.Int, count c.Int, key *uint8, iv *uint8) c.Int
-
-//go:linkname EVP_CIPHER_CTXSetFlags C.EVP_CIPHER_CTX_set_flags
-func EVP_CIPHER_CTXSetFlags(ctx *EVP_CIPHER_CTX, flags c.Int)
-
-//go:linkname EVP_CIPHER_CTXClearFlags C.EVP_CIPHER_CTX_clear_flags
-func EVP_CIPHER_CTXClearFlags(ctx *EVP_CIPHER_CTX, flags c.Int)
-
-//go:linkname EVP_CIPHER_CTXTestFlags C.EVP_CIPHER_CTX_test_flags
-func EVP_CIPHER_CTXTestFlags(ctx *EVP_CIPHER_CTX, flags c.Int) c.Int
-
-//go:linkname EVP_EncryptInit C.EVP_EncryptInit
-func EVP_EncryptInit(ctx *EVP_CIPHER_CTX, cipher *EVP_CIPHER, key *uint8, iv *uint8) c.Int
-
-//go:linkname EVPEncryptInitEx C.EVP_EncryptInit_ex
-func EVPEncryptInitEx(ctx *EVP_CIPHER_CTX, cipher *EVP_CIPHER, impl *ENGINE, key *uint8, iv *uint8) c.Int
-
-//go:linkname EVPEncryptInitEx2 C.EVP_EncryptInit_ex2
-func EVPEncryptInitEx2(ctx *EVP_CIPHER_CTX, cipher *EVP_CIPHER, key *uint8, iv *uint8, params *OSSL_PARAM) c.Int
-
-//go:linkname EVP_EncryptUpdate C.EVP_EncryptUpdate
-func EVP_EncryptUpdate(ctx *EVP_CIPHER_CTX, out *uint8, outl *c.Int, in *uint8, inl c.Int) c.Int
-
-//go:linkname EVPEncryptFinalEx C.EVP_EncryptFinal_ex
-func EVPEncryptFinalEx(ctx *EVP_CIPHER_CTX, out *uint8, outl *c.Int) c.Int
-
-//go:linkname EVP_EncryptFinal C.EVP_EncryptFinal
-func EVP_EncryptFinal(ctx *EVP_CIPHER_CTX, out *uint8, outl *c.Int) c.Int
-
-//go:linkname EVP_DecryptInit C.EVP_DecryptInit
-func EVP_DecryptInit(ctx *EVP_CIPHER_CTX, cipher *EVP_CIPHER, key *uint8, iv *uint8) c.Int
-
-//go:linkname EVPDecryptInitEx C.EVP_DecryptInit_ex
-func EVPDecryptInitEx(ctx *EVP_CIPHER_CTX, cipher *EVP_CIPHER, impl *ENGINE, key *uint8, iv *uint8) c.Int
-
-//go:linkname EVPDecryptInitEx2 C.EVP_DecryptInit_ex2
-func EVPDecryptInitEx2(ctx *EVP_CIPHER_CTX, cipher *EVP_CIPHER, key *uint8, iv *uint8, params *OSSL_PARAM) c.Int
-
-//go:linkname EVP_DecryptUpdate C.EVP_DecryptUpdate
-func EVP_DecryptUpdate(ctx *EVP_CIPHER_CTX, out *uint8, outl *c.Int, in *uint8, inl c.Int) c.Int
-
-//go:linkname EVP_DecryptFinal C.EVP_DecryptFinal
-func EVP_DecryptFinal(ctx *EVP_CIPHER_CTX, outm *uint8, outl *c.Int) c.Int
-
-//go:linkname EVPDecryptFinalEx C.EVP_DecryptFinal_ex
-func EVPDecryptFinalEx(ctx *EVP_CIPHER_CTX, outm *uint8, outl *c.Int) c.Int
-
-//go:linkname EVP_CipherInit C.EVP_CipherInit
-func EVP_CipherInit(ctx *EVP_CIPHER_CTX, cipher *EVP_CIPHER, key *uint8, iv *uint8, enc c.Int) c.Int
-
-//go:linkname EVPCipherInitEx C.EVP_CipherInit_ex
-func EVPCipherInitEx(ctx *EVP_CIPHER_CTX, cipher *EVP_CIPHER, impl *ENGINE, key *uint8, iv *uint8, enc c.Int) c.Int
-
-//go:linkname EVP_CipherInit_SKEY C.EVP_CipherInit_SKEY
-func EVP_CipherInit_SKEY(ctx *EVP_CIPHER_CTX, cipher *EVP_CIPHER, skey *EVP_SKEY, iv *uint8, iv_len c.SizeT, enc c.Int, params *OSSL_PARAM) c.Int
-
-//go:linkname EVPCipherInitEx2 C.EVP_CipherInit_ex2
-func EVPCipherInitEx2(ctx *EVP_CIPHER_CTX, cipher *EVP_CIPHER, key *uint8, iv *uint8, enc c.Int, params *OSSL_PARAM) c.Int
-
-//go:linkname EVP_CipherUpdate C.EVP_CipherUpdate
-func EVP_CipherUpdate(ctx *EVP_CIPHER_CTX, out *uint8, outl *c.Int, in *uint8, inl c.Int) c.Int
-
-//go:linkname EVP_CipherFinal C.EVP_CipherFinal
-func EVP_CipherFinal(ctx *EVP_CIPHER_CTX, outm *uint8, outl *c.Int) c.Int
-
-//go:linkname EVP_CipherPipelineEncryptInit C.EVP_CipherPipelineEncryptInit
-func EVP_CipherPipelineEncryptInit(ctx *EVP_CIPHER_CTX, cipher *EVP_CIPHER, key *uint8, keylen c.SizeT, numpipes c.SizeT, iv **uint8, ivlen c.SizeT) c.Int
-
-//go:linkname EVP_CipherPipelineDecryptInit C.EVP_CipherPipelineDecryptInit
-func EVP_CipherPipelineDecryptInit(ctx *EVP_CIPHER_CTX, cipher *EVP_CIPHER, key *uint8, keylen c.SizeT, numpipes c.SizeT, iv **uint8, ivlen c.SizeT) c.Int
-
-//go:linkname EVP_CipherPipelineUpdate C.EVP_CipherPipelineUpdate
-func EVP_CipherPipelineUpdate(ctx *EVP_CIPHER_CTX, out **uint8, outl *c.SizeT, outsize *c.SizeT, in **uint8, inl *c.SizeT) c.Int
-
-//go:linkname EVP_CipherPipelineFinal C.EVP_CipherPipelineFinal
-func EVP_CipherPipelineFinal(ctx *EVP_CIPHER_CTX, outm **uint8, outl *c.SizeT, outsize *c.SizeT) c.Int
-
-//go:linkname EVPCipherFinalEx C.EVP_CipherFinal_ex
-func EVPCipherFinalEx(ctx *EVP_CIPHER_CTX, outm *uint8, outl *c.Int) c.Int
-
-//go:linkname EVP_SignFinal C.EVP_SignFinal
-func EVP_SignFinal(ctx *EVP_MD_CTX, md *uint8, s *c.Uint, pkey *EVP_PKEY) c.Int
-
-//go:linkname EVPSignFinalEx C.EVP_SignFinal_ex
-func EVPSignFinalEx(ctx *EVP_MD_CTX, md *uint8, s *c.Uint, pkey *EVP_PKEY, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int
-
-//go:linkname EVP_DigestSign C.EVP_DigestSign
-func EVP_DigestSign(ctx *EVP_MD_CTX, sigret *uint8, siglen *c.SizeT, tbs *uint8, tbslen c.SizeT) c.Int
-
-//go:linkname EVP_VerifyFinal C.EVP_VerifyFinal
-func EVP_VerifyFinal(ctx *EVP_MD_CTX, sigbuf *uint8, siglen c.Uint, pkey *EVP_PKEY) c.Int
-
-//go:linkname EVPVerifyFinalEx C.EVP_VerifyFinal_ex
-func EVPVerifyFinalEx(ctx *EVP_MD_CTX, sigbuf *uint8, siglen c.Uint, pkey *EVP_PKEY, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int
-
-//go:linkname EVP_DigestVerify C.EVP_DigestVerify
-func EVP_DigestVerify(ctx *EVP_MD_CTX, sigret *uint8, siglen c.SizeT, tbs *uint8, tbslen c.SizeT) c.Int
-
-//go:linkname EVPDigestSignInitEx C.EVP_DigestSignInit_ex
-func EVPDigestSignInitEx(ctx *EVP_MD_CTX, pctx **EVP_PKEY_CTX, mdname *c.Char, libctx *OSSL_LIB_CTX, props *c.Char, pkey *EVP_PKEY, params *OSSL_PARAM) c.Int
-
-//go:linkname EVP_DigestSignInit C.EVP_DigestSignInit
-func EVP_DigestSignInit(ctx *EVP_MD_CTX, pctx **EVP_PKEY_CTX, type_ *EVP_MD, e *ENGINE, pkey *EVP_PKEY) c.Int
-
-//go:linkname EVP_DigestSignUpdate C.EVP_DigestSignUpdate
-func EVP_DigestSignUpdate(ctx *EVP_MD_CTX, data unsafe.Pointer, dsize c.SizeT) c.Int
-
-//go:linkname EVP_DigestSignFinal C.EVP_DigestSignFinal
-func EVP_DigestSignFinal(ctx *EVP_MD_CTX, sigret *uint8, siglen *c.SizeT) c.Int
-
-//go:linkname EVPDigestVerifyInitEx C.EVP_DigestVerifyInit_ex
-func EVPDigestVerifyInitEx(ctx *EVP_MD_CTX, pctx **EVP_PKEY_CTX, mdname *c.Char, libctx *OSSL_LIB_CTX, props *c.Char, pkey *EVP_PKEY, params *OSSL_PARAM) c.Int
-
-//go:linkname EVP_DigestVerifyInit C.EVP_DigestVerifyInit
-func EVP_DigestVerifyInit(ctx *EVP_MD_CTX, pctx **EVP_PKEY_CTX, type_ *EVP_MD, e *ENGINE, pkey *EVP_PKEY) c.Int
-
-//go:linkname EVP_DigestVerifyUpdate C.EVP_DigestVerifyUpdate
-func EVP_DigestVerifyUpdate(ctx *EVP_MD_CTX, data unsafe.Pointer, dsize c.SizeT) c.Int
-
-//go:linkname EVP_DigestVerifyFinal C.EVP_DigestVerifyFinal
-func EVP_DigestVerifyFinal(ctx *EVP_MD_CTX, sig *uint8, siglen c.SizeT) c.Int
-
-//go:linkname EVP_OpenInit C.EVP_OpenInit
-func EVP_OpenInit(ctx *EVP_CIPHER_CTX, type_ *EVP_CIPHER, ek *uint8, ekl c.Int, iv *uint8, priv *EVP_PKEY) c.Int
-
-//go:linkname EVP_OpenFinal C.EVP_OpenFinal
-func EVP_OpenFinal(ctx *EVP_CIPHER_CTX, out *uint8, outl *c.Int) c.Int
-
-//go:linkname EVP_SealInit C.EVP_SealInit
-func EVP_SealInit(ctx *EVP_CIPHER_CTX, type_ *EVP_CIPHER, ek **uint8, ekl *c.Int, iv *uint8, pubk **EVP_PKEY, npubk c.Int) c.Int
-
-//go:linkname EVP_SealFinal C.EVP_SealFinal
-func EVP_SealFinal(ctx *EVP_CIPHER_CTX, out *uint8, outl *c.Int) c.Int
-
-//go:linkname EVP_ENCODE_CTXNew C.EVP_ENCODE_CTX_new
-func EVP_ENCODE_CTXNew() *EVP_ENCODE_CTX
-
-//go:linkname EVP_ENCODE_CTXFree C.EVP_ENCODE_CTX_free
-func EVP_ENCODE_CTXFree(ctx *EVP_ENCODE_CTX)
-
-//go:linkname EVP_ENCODE_CTXCopy C.EVP_ENCODE_CTX_copy
-func EVP_ENCODE_CTXCopy(dctx *EVP_ENCODE_CTX, sctx *EVP_ENCODE_CTX) c.Int
-
-//go:linkname EVP_ENCODE_CTXNum C.EVP_ENCODE_CTX_num
-func EVP_ENCODE_CTXNum(ctx *EVP_ENCODE_CTX) c.Int
-
-//go:linkname EVP_EncodeInit C.EVP_EncodeInit
-func EVP_EncodeInit(ctx *EVP_ENCODE_CTX)
-
-//go:linkname EVP_EncodeUpdate C.EVP_EncodeUpdate
-func EVP_EncodeUpdate(ctx *EVP_ENCODE_CTX, out *uint8, outl *c.Int, in *uint8, inl c.Int) c.Int
-
-//go:linkname EVP_EncodeFinal C.EVP_EncodeFinal
-func EVP_EncodeFinal(ctx *EVP_ENCODE_CTX, out *uint8, outl *c.Int)
+// llgo:link (*OSSL_LIB_CTX).EVP_Q_digest C.EVP_Q_digest
+func (self *OSSL_LIB_CTX) EVP_Q_digest(name *c.Char, propq *c.Char, data unsafe.Pointer, datalen c.SizeT, md *uint8, mdlen *c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD_CTX).Copy C.EVP_MD_CTX_copy
+func (self *EVP_MD_CTX) Copy(in *EVP_MD_CTX) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD_CTX).DigestInit C.EVP_DigestInit
+func (self *EVP_MD_CTX) DigestInit(type_ *EVP_MD) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD_CTX).DigestFinal C.EVP_DigestFinal
+func (self *EVP_MD_CTX) DigestFinal(md *uint8, s *c.Uint) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD_CTX).DigestFinalXOF C.EVP_DigestFinalXOF
+func (self *EVP_MD_CTX) DigestFinalXOF(out *uint8, outlen c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD_CTX).DigestSqueeze C.EVP_DigestSqueeze
+func (self *EVP_MD_CTX) DigestSqueeze(out *uint8, outlen c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD_CTX).Serialize C.EVP_MD_CTX_serialize
+func (self *EVP_MD_CTX) Serialize(out *uint8, outlen *c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD_CTX).Deserialize C.EVP_MD_CTX_deserialize
+func (self *EVP_MD_CTX) Deserialize(in *uint8, inlen c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*OSSL_LIB_CTX).EVP_MD_fetch C.EVP_MD_fetch
+func (self *OSSL_LIB_CTX) EVP_MD_fetch(algorithm *c.Char, properties *c.Char) *EVP_MD {
+	return nil
+}
+
+// llgo:link (*EVP_MD).UpRef C.EVP_MD_up_ref
+func (self *EVP_MD) UpRef() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD).Free C.EVP_MD_free
+func (self *EVP_MD) Free() {
+}
+
+//go:linkname EVP_read_pw_string C.EVP_read_pw_string
+func EVP_read_pw_string(buf *c.Char, length c.Int, prompt *c.Char, verify c.Int) c.Int
+
+//go:linkname EVP_read_pw_string_min C.EVP_read_pw_string_min
+func EVP_read_pw_string_min(buf *c.Char, minlen c.Int, maxlen c.Int, prompt *c.Char, verify c.Int) c.Int
+
+//go:linkname EVP_set_pw_prompt C.EVP_set_pw_prompt
+func EVP_set_pw_prompt(prompt *c.Char)
+
+//go:linkname EVP_get_pw_prompt C.EVP_get_pw_prompt
+func EVP_get_pw_prompt() *c.Char
+
+// llgo:link (*EVP_CIPHER).BytesToKey C.EVP_BytesToKey
+func (self *EVP_CIPHER) BytesToKey(md *EVP_MD, salt *uint8, data *uint8, datal c.Int, count c.Int, key *uint8, iv *uint8) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).SetFlags C.EVP_CIPHER_CTX_set_flags
+func (self *EVP_CIPHER_CTX) SetFlags(flags c.Int) {
+}
+
+// llgo:link (*EVP_CIPHER_CTX).ClearFlags C.EVP_CIPHER_CTX_clear_flags
+func (self *EVP_CIPHER_CTX) ClearFlags(flags c.Int) {
+}
+
+// llgo:link (*EVP_CIPHER_CTX).TestFlags C.EVP_CIPHER_CTX_test_flags
+func (self *EVP_CIPHER_CTX) TestFlags(flags c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).EncryptInit C.EVP_EncryptInit
+func (self *EVP_CIPHER_CTX) EncryptInit(cipher *EVP_CIPHER, key *uint8, iv *uint8) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).EncryptInitEx C.EVP_EncryptInit_ex
+func (self *EVP_CIPHER_CTX) EncryptInitEx(cipher *EVP_CIPHER, impl *ENGINE, key *uint8, iv *uint8) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).EncryptInitEx2 C.EVP_EncryptInit_ex2
+func (self *EVP_CIPHER_CTX) EncryptInitEx2(cipher *EVP_CIPHER, key *uint8, iv *uint8, params *OSSL_PARAM) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).EncryptUpdate C.EVP_EncryptUpdate
+func (self *EVP_CIPHER_CTX) EncryptUpdate(out *uint8, outl *c.Int, in *uint8, inl c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).EncryptFinalEx C.EVP_EncryptFinal_ex
+func (self *EVP_CIPHER_CTX) EncryptFinalEx(out *uint8, outl *c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).EncryptFinal C.EVP_EncryptFinal
+func (self *EVP_CIPHER_CTX) EncryptFinal(out *uint8, outl *c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).DecryptInit C.EVP_DecryptInit
+func (self *EVP_CIPHER_CTX) DecryptInit(cipher *EVP_CIPHER, key *uint8, iv *uint8) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).DecryptInitEx C.EVP_DecryptInit_ex
+func (self *EVP_CIPHER_CTX) DecryptInitEx(cipher *EVP_CIPHER, impl *ENGINE, key *uint8, iv *uint8) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).DecryptInitEx2 C.EVP_DecryptInit_ex2
+func (self *EVP_CIPHER_CTX) DecryptInitEx2(cipher *EVP_CIPHER, key *uint8, iv *uint8, params *OSSL_PARAM) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).DecryptUpdate C.EVP_DecryptUpdate
+func (self *EVP_CIPHER_CTX) DecryptUpdate(out *uint8, outl *c.Int, in *uint8, inl c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).DecryptFinal C.EVP_DecryptFinal
+func (self *EVP_CIPHER_CTX) DecryptFinal(outm *uint8, outl *c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).DecryptFinalEx C.EVP_DecryptFinal_ex
+func (self *EVP_CIPHER_CTX) DecryptFinalEx(outm *uint8, outl *c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).CipherInit C.EVP_CipherInit
+func (self *EVP_CIPHER_CTX) CipherInit(cipher *EVP_CIPHER, key *uint8, iv *uint8, enc c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).CipherInitEx C.EVP_CipherInit_ex
+func (self *EVP_CIPHER_CTX) CipherInitEx(cipher *EVP_CIPHER, impl *ENGINE, key *uint8, iv *uint8, enc c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).CipherInit_SKEY C.EVP_CipherInit_SKEY
+func (self *EVP_CIPHER_CTX) CipherInit_SKEY(cipher *EVP_CIPHER, skey *EVP_SKEY, iv *uint8, iv_len c.SizeT, enc c.Int, params *OSSL_PARAM) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).CipherInitEx2 C.EVP_CipherInit_ex2
+func (self *EVP_CIPHER_CTX) CipherInitEx2(cipher *EVP_CIPHER, key *uint8, iv *uint8, enc c.Int, params *OSSL_PARAM) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).CipherUpdate C.EVP_CipherUpdate
+func (self *EVP_CIPHER_CTX) CipherUpdate(out *uint8, outl *c.Int, in *uint8, inl c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).CipherFinal C.EVP_CipherFinal
+func (self *EVP_CIPHER_CTX) CipherFinal(outm *uint8, outl *c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).CipherPipelineEncryptInit C.EVP_CipherPipelineEncryptInit
+func (self *EVP_CIPHER_CTX) CipherPipelineEncryptInit(cipher *EVP_CIPHER, key *uint8, keylen c.SizeT, numpipes c.SizeT, iv **uint8, ivlen c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).CipherPipelineDecryptInit C.EVP_CipherPipelineDecryptInit
+func (self *EVP_CIPHER_CTX) CipherPipelineDecryptInit(cipher *EVP_CIPHER, key *uint8, keylen c.SizeT, numpipes c.SizeT, iv **uint8, ivlen c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).CipherPipelineUpdate C.EVP_CipherPipelineUpdate
+func (self *EVP_CIPHER_CTX) CipherPipelineUpdate(out **uint8, outl *c.SizeT, outsize *c.SizeT, in **uint8, inl *c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).CipherPipelineFinal C.EVP_CipherPipelineFinal
+func (self *EVP_CIPHER_CTX) CipherPipelineFinal(outm **uint8, outl *c.SizeT, outsize *c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).CipherFinalEx C.EVP_CipherFinal_ex
+func (self *EVP_CIPHER_CTX) CipherFinalEx(outm *uint8, outl *c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD_CTX).SignFinal C.EVP_SignFinal
+func (self *EVP_MD_CTX) SignFinal(md *uint8, s *c.Uint, pkey *EVP_PKEY) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD_CTX).SignFinalEx C.EVP_SignFinal_ex
+func (self *EVP_MD_CTX) SignFinalEx(md *uint8, s *c.Uint, pkey *EVP_PKEY, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD_CTX).DigestSign C.EVP_DigestSign
+func (self *EVP_MD_CTX) DigestSign(sigret *uint8, siglen *c.SizeT, tbs *uint8, tbslen c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD_CTX).VerifyFinal C.EVP_VerifyFinal
+func (self *EVP_MD_CTX) VerifyFinal(sigbuf *uint8, siglen c.Uint, pkey *EVP_PKEY) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD_CTX).VerifyFinalEx C.EVP_VerifyFinal_ex
+func (self *EVP_MD_CTX) VerifyFinalEx(sigbuf *uint8, siglen c.Uint, pkey *EVP_PKEY, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD_CTX).DigestVerify C.EVP_DigestVerify
+func (self *EVP_MD_CTX) DigestVerify(sigret *uint8, siglen c.SizeT, tbs *uint8, tbslen c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD_CTX).DigestSignInitEx C.EVP_DigestSignInit_ex
+func (self *EVP_MD_CTX) DigestSignInitEx(pctx **EVP_PKEY_CTX, mdname *c.Char, libctx *OSSL_LIB_CTX, props *c.Char, pkey *EVP_PKEY, params *OSSL_PARAM) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD_CTX).DigestSignInit C.EVP_DigestSignInit
+func (self *EVP_MD_CTX) DigestSignInit(pctx **EVP_PKEY_CTX, type_ *EVP_MD, e *ENGINE, pkey *EVP_PKEY) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD_CTX).DigestSignUpdate C.EVP_DigestSignUpdate
+func (self *EVP_MD_CTX) DigestSignUpdate(data unsafe.Pointer, dsize c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD_CTX).DigestSignFinal C.EVP_DigestSignFinal
+func (self *EVP_MD_CTX) DigestSignFinal(sigret *uint8, siglen *c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD_CTX).DigestVerifyInitEx C.EVP_DigestVerifyInit_ex
+func (self *EVP_MD_CTX) DigestVerifyInitEx(pctx **EVP_PKEY_CTX, mdname *c.Char, libctx *OSSL_LIB_CTX, props *c.Char, pkey *EVP_PKEY, params *OSSL_PARAM) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD_CTX).DigestVerifyInit C.EVP_DigestVerifyInit
+func (self *EVP_MD_CTX) DigestVerifyInit(pctx **EVP_PKEY_CTX, type_ *EVP_MD, e *ENGINE, pkey *EVP_PKEY) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD_CTX).DigestVerifyUpdate C.EVP_DigestVerifyUpdate
+func (self *EVP_MD_CTX) DigestVerifyUpdate(data unsafe.Pointer, dsize c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_MD_CTX).DigestVerifyFinal C.EVP_DigestVerifyFinal
+func (self *EVP_MD_CTX) DigestVerifyFinal(sig *uint8, siglen c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).OpenInit C.EVP_OpenInit
+func (self *EVP_CIPHER_CTX) OpenInit(type_ *EVP_CIPHER, ek *uint8, ekl c.Int, iv *uint8, priv *EVP_PKEY) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).OpenFinal C.EVP_OpenFinal
+func (self *EVP_CIPHER_CTX) OpenFinal(out *uint8, outl *c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).SealInit C.EVP_SealInit
+func (self *EVP_CIPHER_CTX) SealInit(type_ *EVP_CIPHER, ek **uint8, ekl *c.Int, iv *uint8, pubk **EVP_PKEY, npubk c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).SealFinal C.EVP_SealFinal
+func (self *EVP_CIPHER_CTX) SealFinal(out *uint8, outl *c.Int) c.Int {
+	return 0
+}
+
+//go:linkname EVP_ENCODE_CTX_new C.EVP_ENCODE_CTX_new
+func EVP_ENCODE_CTX_new() *EVP_ENCODE_CTX
+
+// llgo:link (*EVP_ENCODE_CTX).Free C.EVP_ENCODE_CTX_free
+func (self *EVP_ENCODE_CTX) Free() {
+}
+
+// llgo:link (*EVP_ENCODE_CTX).Copy C.EVP_ENCODE_CTX_copy
+func (self *EVP_ENCODE_CTX) Copy(sctx *EVP_ENCODE_CTX) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_ENCODE_CTX).Num C.EVP_ENCODE_CTX_num
+func (self *EVP_ENCODE_CTX) Num() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_ENCODE_CTX).EncodeInit C.EVP_EncodeInit
+func (self *EVP_ENCODE_CTX) EncodeInit() {
+}
+
+// llgo:link (*EVP_ENCODE_CTX).EncodeUpdate C.EVP_EncodeUpdate
+func (self *EVP_ENCODE_CTX) EncodeUpdate(out *uint8, outl *c.Int, in *uint8, inl c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_ENCODE_CTX).EncodeFinal C.EVP_EncodeFinal
+func (self *EVP_ENCODE_CTX) EncodeFinal(out *uint8, outl *c.Int) {
+}
 
 //go:linkname EVP_EncodeBlock C.EVP_EncodeBlock
 func EVP_EncodeBlock(t *uint8, f *uint8, n c.Int) c.Int
 
-//go:linkname EVP_DecodeInit C.EVP_DecodeInit
-func EVP_DecodeInit(ctx *EVP_ENCODE_CTX)
+// llgo:link (*EVP_ENCODE_CTX).DecodeInit C.EVP_DecodeInit
+func (self *EVP_ENCODE_CTX) DecodeInit() {
+}
 
-//go:linkname EVP_DecodeUpdate C.EVP_DecodeUpdate
-func EVP_DecodeUpdate(ctx *EVP_ENCODE_CTX, out *uint8, outl *c.Int, in *uint8, inl c.Int) c.Int
+// llgo:link (*EVP_ENCODE_CTX).DecodeUpdate C.EVP_DecodeUpdate
+func (self *EVP_ENCODE_CTX) DecodeUpdate(out *uint8, outl *c.Int, in *uint8, inl c.Int) c.Int {
+	return 0
+}
 
-//go:linkname EVP_DecodeFinal C.EVP_DecodeFinal
-func EVP_DecodeFinal(ctx *EVP_ENCODE_CTX, out *uint8, outl *c.Int) c.Int
+// llgo:link (*EVP_ENCODE_CTX).DecodeFinal C.EVP_DecodeFinal
+func (self *EVP_ENCODE_CTX) DecodeFinal(out *uint8, outl *c.Int) c.Int {
+	return 0
+}
 
 //go:linkname EVP_DecodeBlock C.EVP_DecodeBlock
 func EVP_DecodeBlock(t *uint8, f *uint8, n c.Int) c.Int
 
-//go:linkname EVP_CIPHER_CTXNew C.EVP_CIPHER_CTX_new
-func EVP_CIPHER_CTXNew() *EVP_CIPHER_CTX
+//go:linkname EVP_CIPHER_CTX_new C.EVP_CIPHER_CTX_new
+func EVP_CIPHER_CTX_new() *EVP_CIPHER_CTX
 
-//go:linkname EVP_CIPHER_CTXReset C.EVP_CIPHER_CTX_reset
-func EVP_CIPHER_CTXReset(c *EVP_CIPHER_CTX) c.Int
+// llgo:link (*EVP_CIPHER_CTX).Reset C.EVP_CIPHER_CTX_reset
+func (self *EVP_CIPHER_CTX) Reset() c.Int {
+	return 0
+}
 
-//go:linkname EVP_CIPHER_CTXFree C.EVP_CIPHER_CTX_free
-func EVP_CIPHER_CTXFree(c *EVP_CIPHER_CTX)
+// llgo:link (*EVP_CIPHER_CTX).Free C.EVP_CIPHER_CTX_free
+func (self *EVP_CIPHER_CTX) Free() {
+}
 
-//go:linkname EVP_CIPHER_CTXSetKeyLength C.EVP_CIPHER_CTX_set_key_length
-func EVP_CIPHER_CTXSetKeyLength(x *EVP_CIPHER_CTX, keylen c.Int) c.Int
+// llgo:link (*EVP_CIPHER_CTX).SetKeyLength C.EVP_CIPHER_CTX_set_key_length
+func (self *EVP_CIPHER_CTX) SetKeyLength(keylen c.Int) c.Int {
+	return 0
+}
 
-//go:linkname EVP_CIPHER_CTXSetPadding C.EVP_CIPHER_CTX_set_padding
-func EVP_CIPHER_CTXSetPadding(c *EVP_CIPHER_CTX, pad c.Int) c.Int
+// llgo:link (*EVP_CIPHER_CTX).SetPadding C.EVP_CIPHER_CTX_set_padding
+func (self *EVP_CIPHER_CTX) SetPadding(pad c.Int) c.Int {
+	return 0
+}
 
-//go:linkname EVP_CIPHER_CTXCtrl C.EVP_CIPHER_CTX_ctrl
-func EVP_CIPHER_CTXCtrl(ctx *EVP_CIPHER_CTX, type_ c.Int, arg c.Int, ptr unsafe.Pointer) c.Int
+// llgo:link (*EVP_CIPHER_CTX).Ctrl C.EVP_CIPHER_CTX_ctrl
+func (self *EVP_CIPHER_CTX) Ctrl(type_ c.Int, arg c.Int, ptr unsafe.Pointer) c.Int {
+	return 0
+}
 
-//go:linkname EVP_CIPHER_CTXRandKey C.EVP_CIPHER_CTX_rand_key
-func EVP_CIPHER_CTXRandKey(ctx *EVP_CIPHER_CTX, key *uint8) c.Int
+// llgo:link (*EVP_CIPHER_CTX).RandKey C.EVP_CIPHER_CTX_rand_key
+func (self *EVP_CIPHER_CTX) RandKey(key *uint8) c.Int {
+	return 0
+}
 
-//go:linkname EVP_CIPHERGetParams C.EVP_CIPHER_get_params
-func EVP_CIPHERGetParams(cipher *EVP_CIPHER, params *OSSL_PARAM) c.Int
+// llgo:link (*EVP_CIPHER).Params C.EVP_CIPHER_get_params
+func (self *EVP_CIPHER) Params(params *OSSL_PARAM) c.Int {
+	return 0
+}
 
-//go:linkname EVP_CIPHER_CTXSetParams C.EVP_CIPHER_CTX_set_params
-func EVP_CIPHER_CTXSetParams(ctx *EVP_CIPHER_CTX, params *OSSL_PARAM) c.Int
+// llgo:link (*EVP_CIPHER_CTX).SetParams C.EVP_CIPHER_CTX_set_params
+func (self *EVP_CIPHER_CTX) SetParams(params *OSSL_PARAM) c.Int {
+	return 0
+}
 
-//go:linkname EVP_CIPHER_CTXGetParams C.EVP_CIPHER_CTX_get_params
-func EVP_CIPHER_CTXGetParams(ctx *EVP_CIPHER_CTX, params *OSSL_PARAM) c.Int
+// llgo:link (*EVP_CIPHER_CTX).Params C.EVP_CIPHER_CTX_get_params
+func (self *EVP_CIPHER_CTX) Params(params *OSSL_PARAM) c.Int {
+	return 0
+}
 
-//go:linkname EVP_CIPHERGettableParams C.EVP_CIPHER_gettable_params
-func EVP_CIPHERGettableParams(cipher *EVP_CIPHER) *OSSL_PARAM
+// llgo:link (*EVP_CIPHER).GettableParams C.EVP_CIPHER_gettable_params
+func (self *EVP_CIPHER) GettableParams() *OSSL_PARAM {
+	return nil
+}
 
-//go:linkname EVP_CIPHERSettableCtxParams C.EVP_CIPHER_settable_ctx_params
-func EVP_CIPHERSettableCtxParams(cipher *EVP_CIPHER) *OSSL_PARAM
+// llgo:link (*EVP_CIPHER).SettableCtxParams C.EVP_CIPHER_settable_ctx_params
+func (self *EVP_CIPHER) SettableCtxParams() *OSSL_PARAM {
+	return nil
+}
 
-//go:linkname EVP_CIPHERGettableCtxParams C.EVP_CIPHER_gettable_ctx_params
-func EVP_CIPHERGettableCtxParams(cipher *EVP_CIPHER) *OSSL_PARAM
+// llgo:link (*EVP_CIPHER).GettableCtxParams C.EVP_CIPHER_gettable_ctx_params
+func (self *EVP_CIPHER) GettableCtxParams() *OSSL_PARAM {
+	return nil
+}
 
-//go:linkname EVP_CIPHER_CTXSettableParams C.EVP_CIPHER_CTX_settable_params
-func EVP_CIPHER_CTXSettableParams(ctx *EVP_CIPHER_CTX) *OSSL_PARAM
+// llgo:link (*EVP_CIPHER_CTX).SettableParams C.EVP_CIPHER_CTX_settable_params
+func (self *EVP_CIPHER_CTX) SettableParams() *OSSL_PARAM {
+	return nil
+}
 
-//go:linkname EVP_CIPHER_CTXGettableParams C.EVP_CIPHER_CTX_gettable_params
-func EVP_CIPHER_CTXGettableParams(ctx *EVP_CIPHER_CTX) *OSSL_PARAM
+// llgo:link (*EVP_CIPHER_CTX).GettableParams C.EVP_CIPHER_CTX_gettable_params
+func (self *EVP_CIPHER_CTX) GettableParams() *OSSL_PARAM {
+	return nil
+}
 
-//go:linkname EVP_CIPHER_CTXSetAlgorParams C.EVP_CIPHER_CTX_set_algor_params
-func EVP_CIPHER_CTXSetAlgorParams(ctx *EVP_CIPHER_CTX, alg *X509_ALGOR) c.Int
+// llgo:link (*EVP_CIPHER_CTX).SetAlgorParams C.EVP_CIPHER_CTX_set_algor_params
+func (self *EVP_CIPHER_CTX) SetAlgorParams(alg *X509_ALGOR) c.Int {
+	return 0
+}
 
-//go:linkname EVP_CIPHER_CTXGetAlgorParams C.EVP_CIPHER_CTX_get_algor_params
-func EVP_CIPHER_CTXGetAlgorParams(ctx *EVP_CIPHER_CTX, alg *X509_ALGOR) c.Int
+// llgo:link (*EVP_CIPHER_CTX).AlgorParams C.EVP_CIPHER_CTX_get_algor_params
+func (self *EVP_CIPHER_CTX) AlgorParams(alg *X509_ALGOR) c.Int {
+	return 0
+}
 
-//go:linkname EVP_CIPHER_CTXGetAlgor C.EVP_CIPHER_CTX_get_algor
-func EVP_CIPHER_CTXGetAlgor(ctx *EVP_CIPHER_CTX, alg **X509_ALGOR) c.Int
+// llgo:link (*EVP_CIPHER_CTX).Algor C.EVP_CIPHER_CTX_get_algor
+func (self *EVP_CIPHER_CTX) Algor(alg **X509_ALGOR) c.Int {
+	return 0
+}
 
-//go:linkname BIO_FMd C.BIO_f_md
-func BIO_FMd() *BIO_METHOD
+//go:linkname BIO_f_md C.BIO_f_md
+func BIO_f_md() *BIO_METHOD
 
-//go:linkname BIO_FBase64 C.BIO_f_base64
-func BIO_FBase64() *BIO_METHOD
+//go:linkname BIO_f_base64 C.BIO_f_base64
+func BIO_f_base64() *BIO_METHOD
 
-//go:linkname BIO_FCipher C.BIO_f_cipher
-func BIO_FCipher() *BIO_METHOD
+//go:linkname BIO_f_cipher C.BIO_f_cipher
+func BIO_f_cipher() *BIO_METHOD
 
-//go:linkname BIOSetCipher C.BIO_set_cipher
-func BIOSetCipher(b *BIO, c *EVP_CIPHER, k *uint8, i *uint8, enc c.Int) c.Int
+// llgo:link (*BIO).SetCipher C.BIO_set_cipher
+func (self *BIO) SetCipher(c *EVP_CIPHER, k *uint8, i *uint8, enc c.Int) c.Int {
+	return 0
+}
 
-//go:linkname EVPMdNull C.EVP_md_null
-func EVPMdNull() *EVP_MD
+//go:linkname EVP_md_null C.EVP_md_null
+func EVP_md_null() *EVP_MD
 
-//go:linkname EVPMd4 C.EVP_md4
-func EVPMd4() *EVP_MD
+//go:linkname EVP_md4 C.EVP_md4
+func EVP_md4() *EVP_MD
 
-//go:linkname EVPMd5 C.EVP_md5
-func EVPMd5() *EVP_MD
+//go:linkname EVP_md5 C.EVP_md5
+func EVP_md5() *EVP_MD
 
-//go:linkname EVPMd5Sha1 C.EVP_md5_sha1
-func EVPMd5Sha1() *EVP_MD
+//go:linkname EVP_md5_sha1 C.EVP_md5_sha1
+func EVP_md5_sha1() *EVP_MD
 
-//go:linkname EVPBlake2b512 C.EVP_blake2b512
-func EVPBlake2b512() *EVP_MD
+//go:linkname EVP_blake2b512 C.EVP_blake2b512
+func EVP_blake2b512() *EVP_MD
 
-//go:linkname EVPBlake2s256 C.EVP_blake2s256
-func EVPBlake2s256() *EVP_MD
+//go:linkname EVP_blake2s256 C.EVP_blake2s256
+func EVP_blake2s256() *EVP_MD
 
-//go:linkname EVPSha1 C.EVP_sha1
-func EVPSha1() *EVP_MD
+//go:linkname EVP_sha1 C.EVP_sha1
+func EVP_sha1() *EVP_MD
 
-//go:linkname EVPSha224 C.EVP_sha224
-func EVPSha224() *EVP_MD
+//go:linkname EVP_sha224 C.EVP_sha224
+func EVP_sha224() *EVP_MD
 
-//go:linkname EVPSha256 C.EVP_sha256
-func EVPSha256() *EVP_MD
+//go:linkname EVP_sha256 C.EVP_sha256
+func EVP_sha256() *EVP_MD
 
-//go:linkname EVPSha384 C.EVP_sha384
-func EVPSha384() *EVP_MD
+//go:linkname EVP_sha384 C.EVP_sha384
+func EVP_sha384() *EVP_MD
 
-//go:linkname EVPSha512 C.EVP_sha512
-func EVPSha512() *EVP_MD
+//go:linkname EVP_sha512 C.EVP_sha512
+func EVP_sha512() *EVP_MD
 
-//go:linkname EVPSha512224 C.EVP_sha512_224
-func EVPSha512224() *EVP_MD
+//go:linkname EVP_sha512_224 C.EVP_sha512_224
+func EVP_sha512_224() *EVP_MD
 
-//go:linkname EVPSha512256 C.EVP_sha512_256
-func EVPSha512256() *EVP_MD
+//go:linkname EVP_sha512_256 C.EVP_sha512_256
+func EVP_sha512_256() *EVP_MD
 
-//go:linkname EVPSha3224 C.EVP_sha3_224
-func EVPSha3224() *EVP_MD
+//go:linkname EVP_sha3_224 C.EVP_sha3_224
+func EVP_sha3_224() *EVP_MD
 
-//go:linkname EVPSha3256 C.EVP_sha3_256
-func EVPSha3256() *EVP_MD
+//go:linkname EVP_sha3_256 C.EVP_sha3_256
+func EVP_sha3_256() *EVP_MD
 
-//go:linkname EVPSha3384 C.EVP_sha3_384
-func EVPSha3384() *EVP_MD
+//go:linkname EVP_sha3_384 C.EVP_sha3_384
+func EVP_sha3_384() *EVP_MD
 
-//go:linkname EVPSha3512 C.EVP_sha3_512
-func EVPSha3512() *EVP_MD
+//go:linkname EVP_sha3_512 C.EVP_sha3_512
+func EVP_sha3_512() *EVP_MD
 
-//go:linkname EVPShake128 C.EVP_shake128
-func EVPShake128() *EVP_MD
+//go:linkname EVP_shake128 C.EVP_shake128
+func EVP_shake128() *EVP_MD
 
-//go:linkname EVPShake256 C.EVP_shake256
-func EVPShake256() *EVP_MD
+//go:linkname EVP_shake256 C.EVP_shake256
+func EVP_shake256() *EVP_MD
 
-//go:linkname EVPMdc2 C.EVP_mdc2
-func EVPMdc2() *EVP_MD
+//go:linkname EVP_mdc2 C.EVP_mdc2
+func EVP_mdc2() *EVP_MD
 
-//go:linkname EVPRipemd160 C.EVP_ripemd160
-func EVPRipemd160() *EVP_MD
+//go:linkname EVP_ripemd160 C.EVP_ripemd160
+func EVP_ripemd160() *EVP_MD
 
-//go:linkname EVPWhirlpool C.EVP_whirlpool
-func EVPWhirlpool() *EVP_MD
+//go:linkname EVP_whirlpool C.EVP_whirlpool
+func EVP_whirlpool() *EVP_MD
 
-//go:linkname EVPSm3 C.EVP_sm3
-func EVPSm3() *EVP_MD
+//go:linkname EVP_sm3 C.EVP_sm3
+func EVP_sm3() *EVP_MD
 
 // does nothing :-)
 //
-//go:linkname EVPEncNull C.EVP_enc_null
-func EVPEncNull() *EVP_CIPHER
+//go:linkname EVP_enc_null C.EVP_enc_null
+func EVP_enc_null() *EVP_CIPHER
 
-//go:linkname EVPDesEcb C.EVP_des_ecb
-func EVPDesEcb() *EVP_CIPHER
+//go:linkname EVP_des_ecb C.EVP_des_ecb
+func EVP_des_ecb() *EVP_CIPHER
 
-//go:linkname EVPDesEde C.EVP_des_ede
-func EVPDesEde() *EVP_CIPHER
+//go:linkname EVP_des_ede C.EVP_des_ede
+func EVP_des_ede() *EVP_CIPHER
 
-//go:linkname EVPDesEde3 C.EVP_des_ede3
-func EVPDesEde3() *EVP_CIPHER
+//go:linkname EVP_des_ede3 C.EVP_des_ede3
+func EVP_des_ede3() *EVP_CIPHER
 
-//go:linkname EVPDesEdeEcb C.EVP_des_ede_ecb
-func EVPDesEdeEcb() *EVP_CIPHER
+//go:linkname EVP_des_ede_ecb C.EVP_des_ede_ecb
+func EVP_des_ede_ecb() *EVP_CIPHER
 
-//go:linkname EVPDesEde3Ecb C.EVP_des_ede3_ecb
-func EVPDesEde3Ecb() *EVP_CIPHER
+//go:linkname EVP_des_ede3_ecb C.EVP_des_ede3_ecb
+func EVP_des_ede3_ecb() *EVP_CIPHER
 
-//go:linkname EVPDesCfb64 C.EVP_des_cfb64
-func EVPDesCfb64() *EVP_CIPHER
+//go:linkname EVP_des_cfb64 C.EVP_des_cfb64
+func EVP_des_cfb64() *EVP_CIPHER
 
-//go:linkname EVPDesCfb1 C.EVP_des_cfb1
-func EVPDesCfb1() *EVP_CIPHER
+//go:linkname EVP_des_cfb1 C.EVP_des_cfb1
+func EVP_des_cfb1() *EVP_CIPHER
 
-//go:linkname EVPDesCfb8 C.EVP_des_cfb8
-func EVPDesCfb8() *EVP_CIPHER
+//go:linkname EVP_des_cfb8 C.EVP_des_cfb8
+func EVP_des_cfb8() *EVP_CIPHER
 
-//go:linkname EVPDesEdeCfb64 C.EVP_des_ede_cfb64
-func EVPDesEdeCfb64() *EVP_CIPHER
+//go:linkname EVP_des_ede_cfb64 C.EVP_des_ede_cfb64
+func EVP_des_ede_cfb64() *EVP_CIPHER
 
-//go:linkname EVPDesEde3Cfb64 C.EVP_des_ede3_cfb64
-func EVPDesEde3Cfb64() *EVP_CIPHER
+//go:linkname EVP_des_ede3_cfb64 C.EVP_des_ede3_cfb64
+func EVP_des_ede3_cfb64() *EVP_CIPHER
 
-//go:linkname EVPDesEde3Cfb1 C.EVP_des_ede3_cfb1
-func EVPDesEde3Cfb1() *EVP_CIPHER
+//go:linkname EVP_des_ede3_cfb1 C.EVP_des_ede3_cfb1
+func EVP_des_ede3_cfb1() *EVP_CIPHER
 
-//go:linkname EVPDesEde3Cfb8 C.EVP_des_ede3_cfb8
-func EVPDesEde3Cfb8() *EVP_CIPHER
+//go:linkname EVP_des_ede3_cfb8 C.EVP_des_ede3_cfb8
+func EVP_des_ede3_cfb8() *EVP_CIPHER
 
-//go:linkname EVPDesOfb C.EVP_des_ofb
-func EVPDesOfb() *EVP_CIPHER
+//go:linkname EVP_des_ofb C.EVP_des_ofb
+func EVP_des_ofb() *EVP_CIPHER
 
-//go:linkname EVPDesEdeOfb C.EVP_des_ede_ofb
-func EVPDesEdeOfb() *EVP_CIPHER
+//go:linkname EVP_des_ede_ofb C.EVP_des_ede_ofb
+func EVP_des_ede_ofb() *EVP_CIPHER
 
-//go:linkname EVPDesEde3Ofb C.EVP_des_ede3_ofb
-func EVPDesEde3Ofb() *EVP_CIPHER
+//go:linkname EVP_des_ede3_ofb C.EVP_des_ede3_ofb
+func EVP_des_ede3_ofb() *EVP_CIPHER
 
-//go:linkname EVPDesCbc C.EVP_des_cbc
-func EVPDesCbc() *EVP_CIPHER
+//go:linkname EVP_des_cbc C.EVP_des_cbc
+func EVP_des_cbc() *EVP_CIPHER
 
-//go:linkname EVPDesEdeCbc C.EVP_des_ede_cbc
-func EVPDesEdeCbc() *EVP_CIPHER
+//go:linkname EVP_des_ede_cbc C.EVP_des_ede_cbc
+func EVP_des_ede_cbc() *EVP_CIPHER
 
-//go:linkname EVPDesEde3Cbc C.EVP_des_ede3_cbc
-func EVPDesEde3Cbc() *EVP_CIPHER
+//go:linkname EVP_des_ede3_cbc C.EVP_des_ede3_cbc
+func EVP_des_ede3_cbc() *EVP_CIPHER
 
-//go:linkname EVPDesxCbc C.EVP_desx_cbc
-func EVPDesxCbc() *EVP_CIPHER
+//go:linkname EVP_desx_cbc C.EVP_desx_cbc
+func EVP_desx_cbc() *EVP_CIPHER
 
 // This should now be supported through the dev_crypto ENGINE. But also, why
 // are rc4 and md5 declarations made here inside a "NO_DES" precompiler
 // branch?
 //
-//go:linkname EVPDesEde3Wrap C.EVP_des_ede3_wrap
-func EVPDesEde3Wrap() *EVP_CIPHER
+//go:linkname EVP_des_ede3_wrap C.EVP_des_ede3_wrap
+func EVP_des_ede3_wrap() *EVP_CIPHER
 
-//go:linkname EVPRc4 C.EVP_rc4
-func EVPRc4() *EVP_CIPHER
+//go:linkname EVP_rc4 C.EVP_rc4
+func EVP_rc4() *EVP_CIPHER
 
-//go:linkname EVPRc440 C.EVP_rc4_40
-func EVPRc440() *EVP_CIPHER
+//go:linkname EVP_rc4_40 C.EVP_rc4_40
+func EVP_rc4_40() *EVP_CIPHER
 
-//go:linkname EVPRc4HmacMd5 C.EVP_rc4_hmac_md5
-func EVPRc4HmacMd5() *EVP_CIPHER
+//go:linkname EVP_rc4_hmac_md5 C.EVP_rc4_hmac_md5
+func EVP_rc4_hmac_md5() *EVP_CIPHER
 
-//go:linkname EVPIdeaEcb C.EVP_idea_ecb
-func EVPIdeaEcb() *EVP_CIPHER
+//go:linkname EVP_idea_ecb C.EVP_idea_ecb
+func EVP_idea_ecb() *EVP_CIPHER
 
-//go:linkname EVPIdeaCfb64 C.EVP_idea_cfb64
-func EVPIdeaCfb64() *EVP_CIPHER
+//go:linkname EVP_idea_cfb64 C.EVP_idea_cfb64
+func EVP_idea_cfb64() *EVP_CIPHER
 
-//go:linkname EVPIdeaOfb C.EVP_idea_ofb
-func EVPIdeaOfb() *EVP_CIPHER
+//go:linkname EVP_idea_ofb C.EVP_idea_ofb
+func EVP_idea_ofb() *EVP_CIPHER
 
-//go:linkname EVPIdeaCbc C.EVP_idea_cbc
-func EVPIdeaCbc() *EVP_CIPHER
+//go:linkname EVP_idea_cbc C.EVP_idea_cbc
+func EVP_idea_cbc() *EVP_CIPHER
 
-//go:linkname EVPRc2Ecb C.EVP_rc2_ecb
-func EVPRc2Ecb() *EVP_CIPHER
+//go:linkname EVP_rc2_ecb C.EVP_rc2_ecb
+func EVP_rc2_ecb() *EVP_CIPHER
 
-//go:linkname EVPRc2Cbc C.EVP_rc2_cbc
-func EVPRc2Cbc() *EVP_CIPHER
+//go:linkname EVP_rc2_cbc C.EVP_rc2_cbc
+func EVP_rc2_cbc() *EVP_CIPHER
 
-//go:linkname EVPRc240Cbc C.EVP_rc2_40_cbc
-func EVPRc240Cbc() *EVP_CIPHER
+//go:linkname EVP_rc2_40_cbc C.EVP_rc2_40_cbc
+func EVP_rc2_40_cbc() *EVP_CIPHER
 
-//go:linkname EVPRc264Cbc C.EVP_rc2_64_cbc
-func EVPRc264Cbc() *EVP_CIPHER
+//go:linkname EVP_rc2_64_cbc C.EVP_rc2_64_cbc
+func EVP_rc2_64_cbc() *EVP_CIPHER
 
-//go:linkname EVPRc2Cfb64 C.EVP_rc2_cfb64
-func EVPRc2Cfb64() *EVP_CIPHER
+//go:linkname EVP_rc2_cfb64 C.EVP_rc2_cfb64
+func EVP_rc2_cfb64() *EVP_CIPHER
 
-//go:linkname EVPRc2Ofb C.EVP_rc2_ofb
-func EVPRc2Ofb() *EVP_CIPHER
+//go:linkname EVP_rc2_ofb C.EVP_rc2_ofb
+func EVP_rc2_ofb() *EVP_CIPHER
 
-//go:linkname EVPBfEcb C.EVP_bf_ecb
-func EVPBfEcb() *EVP_CIPHER
+//go:linkname EVP_bf_ecb C.EVP_bf_ecb
+func EVP_bf_ecb() *EVP_CIPHER
 
-//go:linkname EVPBfCbc C.EVP_bf_cbc
-func EVPBfCbc() *EVP_CIPHER
+//go:linkname EVP_bf_cbc C.EVP_bf_cbc
+func EVP_bf_cbc() *EVP_CIPHER
 
-//go:linkname EVPBfCfb64 C.EVP_bf_cfb64
-func EVPBfCfb64() *EVP_CIPHER
+//go:linkname EVP_bf_cfb64 C.EVP_bf_cfb64
+func EVP_bf_cfb64() *EVP_CIPHER
 
-//go:linkname EVPBfOfb C.EVP_bf_ofb
-func EVPBfOfb() *EVP_CIPHER
+//go:linkname EVP_bf_ofb C.EVP_bf_ofb
+func EVP_bf_ofb() *EVP_CIPHER
 
-//go:linkname EVPCast5Ecb C.EVP_cast5_ecb
-func EVPCast5Ecb() *EVP_CIPHER
+//go:linkname EVP_cast5_ecb C.EVP_cast5_ecb
+func EVP_cast5_ecb() *EVP_CIPHER
 
-//go:linkname EVPCast5Cbc C.EVP_cast5_cbc
-func EVPCast5Cbc() *EVP_CIPHER
+//go:linkname EVP_cast5_cbc C.EVP_cast5_cbc
+func EVP_cast5_cbc() *EVP_CIPHER
 
-//go:linkname EVPCast5Cfb64 C.EVP_cast5_cfb64
-func EVPCast5Cfb64() *EVP_CIPHER
+//go:linkname EVP_cast5_cfb64 C.EVP_cast5_cfb64
+func EVP_cast5_cfb64() *EVP_CIPHER
 
-//go:linkname EVPCast5Ofb C.EVP_cast5_ofb
-func EVPCast5Ofb() *EVP_CIPHER
+//go:linkname EVP_cast5_ofb C.EVP_cast5_ofb
+func EVP_cast5_ofb() *EVP_CIPHER
 
-//go:linkname EVPAes128Ecb C.EVP_aes_128_ecb
-func EVPAes128Ecb() *EVP_CIPHER
+//go:linkname EVP_aes_128_ecb C.EVP_aes_128_ecb
+func EVP_aes_128_ecb() *EVP_CIPHER
 
-//go:linkname EVPAes128Cbc C.EVP_aes_128_cbc
-func EVPAes128Cbc() *EVP_CIPHER
+//go:linkname EVP_aes_128_cbc C.EVP_aes_128_cbc
+func EVP_aes_128_cbc() *EVP_CIPHER
 
-//go:linkname EVPAes128Cfb1 C.EVP_aes_128_cfb1
-func EVPAes128Cfb1() *EVP_CIPHER
+//go:linkname EVP_aes_128_cfb1 C.EVP_aes_128_cfb1
+func EVP_aes_128_cfb1() *EVP_CIPHER
 
-//go:linkname EVPAes128Cfb8 C.EVP_aes_128_cfb8
-func EVPAes128Cfb8() *EVP_CIPHER
+//go:linkname EVP_aes_128_cfb8 C.EVP_aes_128_cfb8
+func EVP_aes_128_cfb8() *EVP_CIPHER
 
-//go:linkname EVPAes128Cfb128 C.EVP_aes_128_cfb128
-func EVPAes128Cfb128() *EVP_CIPHER
+//go:linkname EVP_aes_128_cfb128 C.EVP_aes_128_cfb128
+func EVP_aes_128_cfb128() *EVP_CIPHER
 
-//go:linkname EVPAes128Ofb C.EVP_aes_128_ofb
-func EVPAes128Ofb() *EVP_CIPHER
+//go:linkname EVP_aes_128_ofb C.EVP_aes_128_ofb
+func EVP_aes_128_ofb() *EVP_CIPHER
 
-//go:linkname EVPAes128Ctr C.EVP_aes_128_ctr
-func EVPAes128Ctr() *EVP_CIPHER
+//go:linkname EVP_aes_128_ctr C.EVP_aes_128_ctr
+func EVP_aes_128_ctr() *EVP_CIPHER
 
-//go:linkname EVPAes128Ccm C.EVP_aes_128_ccm
-func EVPAes128Ccm() *EVP_CIPHER
+//go:linkname EVP_aes_128_ccm C.EVP_aes_128_ccm
+func EVP_aes_128_ccm() *EVP_CIPHER
 
-//go:linkname EVPAes128Gcm C.EVP_aes_128_gcm
-func EVPAes128Gcm() *EVP_CIPHER
+//go:linkname EVP_aes_128_gcm C.EVP_aes_128_gcm
+func EVP_aes_128_gcm() *EVP_CIPHER
 
-//go:linkname EVPAes128Xts C.EVP_aes_128_xts
-func EVPAes128Xts() *EVP_CIPHER
+//go:linkname EVP_aes_128_xts C.EVP_aes_128_xts
+func EVP_aes_128_xts() *EVP_CIPHER
 
-//go:linkname EVPAes128Wrap C.EVP_aes_128_wrap
-func EVPAes128Wrap() *EVP_CIPHER
+//go:linkname EVP_aes_128_wrap C.EVP_aes_128_wrap
+func EVP_aes_128_wrap() *EVP_CIPHER
 
-//go:linkname EVPAes128WrapPad C.EVP_aes_128_wrap_pad
-func EVPAes128WrapPad() *EVP_CIPHER
+//go:linkname EVP_aes_128_wrap_pad C.EVP_aes_128_wrap_pad
+func EVP_aes_128_wrap_pad() *EVP_CIPHER
 
-//go:linkname EVPAes128Ocb C.EVP_aes_128_ocb
-func EVPAes128Ocb() *EVP_CIPHER
+//go:linkname EVP_aes_128_ocb C.EVP_aes_128_ocb
+func EVP_aes_128_ocb() *EVP_CIPHER
 
-//go:linkname EVPAes192Ecb C.EVP_aes_192_ecb
-func EVPAes192Ecb() *EVP_CIPHER
+//go:linkname EVP_aes_192_ecb C.EVP_aes_192_ecb
+func EVP_aes_192_ecb() *EVP_CIPHER
 
-//go:linkname EVPAes192Cbc C.EVP_aes_192_cbc
-func EVPAes192Cbc() *EVP_CIPHER
+//go:linkname EVP_aes_192_cbc C.EVP_aes_192_cbc
+func EVP_aes_192_cbc() *EVP_CIPHER
 
-//go:linkname EVPAes192Cfb1 C.EVP_aes_192_cfb1
-func EVPAes192Cfb1() *EVP_CIPHER
+//go:linkname EVP_aes_192_cfb1 C.EVP_aes_192_cfb1
+func EVP_aes_192_cfb1() *EVP_CIPHER
 
-//go:linkname EVPAes192Cfb8 C.EVP_aes_192_cfb8
-func EVPAes192Cfb8() *EVP_CIPHER
+//go:linkname EVP_aes_192_cfb8 C.EVP_aes_192_cfb8
+func EVP_aes_192_cfb8() *EVP_CIPHER
 
-//go:linkname EVPAes192Cfb128 C.EVP_aes_192_cfb128
-func EVPAes192Cfb128() *EVP_CIPHER
+//go:linkname EVP_aes_192_cfb128 C.EVP_aes_192_cfb128
+func EVP_aes_192_cfb128() *EVP_CIPHER
 
-//go:linkname EVPAes192Ofb C.EVP_aes_192_ofb
-func EVPAes192Ofb() *EVP_CIPHER
+//go:linkname EVP_aes_192_ofb C.EVP_aes_192_ofb
+func EVP_aes_192_ofb() *EVP_CIPHER
 
-//go:linkname EVPAes192Ctr C.EVP_aes_192_ctr
-func EVPAes192Ctr() *EVP_CIPHER
+//go:linkname EVP_aes_192_ctr C.EVP_aes_192_ctr
+func EVP_aes_192_ctr() *EVP_CIPHER
 
-//go:linkname EVPAes192Ccm C.EVP_aes_192_ccm
-func EVPAes192Ccm() *EVP_CIPHER
+//go:linkname EVP_aes_192_ccm C.EVP_aes_192_ccm
+func EVP_aes_192_ccm() *EVP_CIPHER
 
-//go:linkname EVPAes192Gcm C.EVP_aes_192_gcm
-func EVPAes192Gcm() *EVP_CIPHER
+//go:linkname EVP_aes_192_gcm C.EVP_aes_192_gcm
+func EVP_aes_192_gcm() *EVP_CIPHER
 
-//go:linkname EVPAes192Wrap C.EVP_aes_192_wrap
-func EVPAes192Wrap() *EVP_CIPHER
+//go:linkname EVP_aes_192_wrap C.EVP_aes_192_wrap
+func EVP_aes_192_wrap() *EVP_CIPHER
 
-//go:linkname EVPAes192WrapPad C.EVP_aes_192_wrap_pad
-func EVPAes192WrapPad() *EVP_CIPHER
+//go:linkname EVP_aes_192_wrap_pad C.EVP_aes_192_wrap_pad
+func EVP_aes_192_wrap_pad() *EVP_CIPHER
 
-//go:linkname EVPAes192Ocb C.EVP_aes_192_ocb
-func EVPAes192Ocb() *EVP_CIPHER
+//go:linkname EVP_aes_192_ocb C.EVP_aes_192_ocb
+func EVP_aes_192_ocb() *EVP_CIPHER
 
-//go:linkname EVPAes256Ecb C.EVP_aes_256_ecb
-func EVPAes256Ecb() *EVP_CIPHER
+//go:linkname EVP_aes_256_ecb C.EVP_aes_256_ecb
+func EVP_aes_256_ecb() *EVP_CIPHER
 
-//go:linkname EVPAes256Cbc C.EVP_aes_256_cbc
-func EVPAes256Cbc() *EVP_CIPHER
+//go:linkname EVP_aes_256_cbc C.EVP_aes_256_cbc
+func EVP_aes_256_cbc() *EVP_CIPHER
 
-//go:linkname EVPAes256Cfb1 C.EVP_aes_256_cfb1
-func EVPAes256Cfb1() *EVP_CIPHER
+//go:linkname EVP_aes_256_cfb1 C.EVP_aes_256_cfb1
+func EVP_aes_256_cfb1() *EVP_CIPHER
 
-//go:linkname EVPAes256Cfb8 C.EVP_aes_256_cfb8
-func EVPAes256Cfb8() *EVP_CIPHER
+//go:linkname EVP_aes_256_cfb8 C.EVP_aes_256_cfb8
+func EVP_aes_256_cfb8() *EVP_CIPHER
 
-//go:linkname EVPAes256Cfb128 C.EVP_aes_256_cfb128
-func EVPAes256Cfb128() *EVP_CIPHER
+//go:linkname EVP_aes_256_cfb128 C.EVP_aes_256_cfb128
+func EVP_aes_256_cfb128() *EVP_CIPHER
 
-//go:linkname EVPAes256Ofb C.EVP_aes_256_ofb
-func EVPAes256Ofb() *EVP_CIPHER
+//go:linkname EVP_aes_256_ofb C.EVP_aes_256_ofb
+func EVP_aes_256_ofb() *EVP_CIPHER
 
-//go:linkname EVPAes256Ctr C.EVP_aes_256_ctr
-func EVPAes256Ctr() *EVP_CIPHER
+//go:linkname EVP_aes_256_ctr C.EVP_aes_256_ctr
+func EVP_aes_256_ctr() *EVP_CIPHER
 
-//go:linkname EVPAes256Ccm C.EVP_aes_256_ccm
-func EVPAes256Ccm() *EVP_CIPHER
+//go:linkname EVP_aes_256_ccm C.EVP_aes_256_ccm
+func EVP_aes_256_ccm() *EVP_CIPHER
 
-//go:linkname EVPAes256Gcm C.EVP_aes_256_gcm
-func EVPAes256Gcm() *EVP_CIPHER
+//go:linkname EVP_aes_256_gcm C.EVP_aes_256_gcm
+func EVP_aes_256_gcm() *EVP_CIPHER
 
-//go:linkname EVPAes256Xts C.EVP_aes_256_xts
-func EVPAes256Xts() *EVP_CIPHER
+//go:linkname EVP_aes_256_xts C.EVP_aes_256_xts
+func EVP_aes_256_xts() *EVP_CIPHER
 
-//go:linkname EVPAes256Wrap C.EVP_aes_256_wrap
-func EVPAes256Wrap() *EVP_CIPHER
+//go:linkname EVP_aes_256_wrap C.EVP_aes_256_wrap
+func EVP_aes_256_wrap() *EVP_CIPHER
 
-//go:linkname EVPAes256WrapPad C.EVP_aes_256_wrap_pad
-func EVPAes256WrapPad() *EVP_CIPHER
+//go:linkname EVP_aes_256_wrap_pad C.EVP_aes_256_wrap_pad
+func EVP_aes_256_wrap_pad() *EVP_CIPHER
 
-//go:linkname EVPAes256Ocb C.EVP_aes_256_ocb
-func EVPAes256Ocb() *EVP_CIPHER
+//go:linkname EVP_aes_256_ocb C.EVP_aes_256_ocb
+func EVP_aes_256_ocb() *EVP_CIPHER
 
-//go:linkname EVPAes128CbcHmacSha1 C.EVP_aes_128_cbc_hmac_sha1
-func EVPAes128CbcHmacSha1() *EVP_CIPHER
+//go:linkname EVP_aes_128_cbc_hmac_sha1 C.EVP_aes_128_cbc_hmac_sha1
+func EVP_aes_128_cbc_hmac_sha1() *EVP_CIPHER
 
-//go:linkname EVPAes256CbcHmacSha1 C.EVP_aes_256_cbc_hmac_sha1
-func EVPAes256CbcHmacSha1() *EVP_CIPHER
+//go:linkname EVP_aes_256_cbc_hmac_sha1 C.EVP_aes_256_cbc_hmac_sha1
+func EVP_aes_256_cbc_hmac_sha1() *EVP_CIPHER
 
-//go:linkname EVPAes128CbcHmacSha256 C.EVP_aes_128_cbc_hmac_sha256
-func EVPAes128CbcHmacSha256() *EVP_CIPHER
+//go:linkname EVP_aes_128_cbc_hmac_sha256 C.EVP_aes_128_cbc_hmac_sha256
+func EVP_aes_128_cbc_hmac_sha256() *EVP_CIPHER
 
-//go:linkname EVPAes256CbcHmacSha256 C.EVP_aes_256_cbc_hmac_sha256
-func EVPAes256CbcHmacSha256() *EVP_CIPHER
+//go:linkname EVP_aes_256_cbc_hmac_sha256 C.EVP_aes_256_cbc_hmac_sha256
+func EVP_aes_256_cbc_hmac_sha256() *EVP_CIPHER
 
-//go:linkname EVPAria128Ecb C.EVP_aria_128_ecb
-func EVPAria128Ecb() *EVP_CIPHER
+//go:linkname EVP_aria_128_ecb C.EVP_aria_128_ecb
+func EVP_aria_128_ecb() *EVP_CIPHER
 
-//go:linkname EVPAria128Cbc C.EVP_aria_128_cbc
-func EVPAria128Cbc() *EVP_CIPHER
+//go:linkname EVP_aria_128_cbc C.EVP_aria_128_cbc
+func EVP_aria_128_cbc() *EVP_CIPHER
 
-//go:linkname EVPAria128Cfb1 C.EVP_aria_128_cfb1
-func EVPAria128Cfb1() *EVP_CIPHER
+//go:linkname EVP_aria_128_cfb1 C.EVP_aria_128_cfb1
+func EVP_aria_128_cfb1() *EVP_CIPHER
 
-//go:linkname EVPAria128Cfb8 C.EVP_aria_128_cfb8
-func EVPAria128Cfb8() *EVP_CIPHER
+//go:linkname EVP_aria_128_cfb8 C.EVP_aria_128_cfb8
+func EVP_aria_128_cfb8() *EVP_CIPHER
 
-//go:linkname EVPAria128Cfb128 C.EVP_aria_128_cfb128
-func EVPAria128Cfb128() *EVP_CIPHER
+//go:linkname EVP_aria_128_cfb128 C.EVP_aria_128_cfb128
+func EVP_aria_128_cfb128() *EVP_CIPHER
 
-//go:linkname EVPAria128Ctr C.EVP_aria_128_ctr
-func EVPAria128Ctr() *EVP_CIPHER
+//go:linkname EVP_aria_128_ctr C.EVP_aria_128_ctr
+func EVP_aria_128_ctr() *EVP_CIPHER
 
-//go:linkname EVPAria128Ofb C.EVP_aria_128_ofb
-func EVPAria128Ofb() *EVP_CIPHER
+//go:linkname EVP_aria_128_ofb C.EVP_aria_128_ofb
+func EVP_aria_128_ofb() *EVP_CIPHER
 
-//go:linkname EVPAria128Gcm C.EVP_aria_128_gcm
-func EVPAria128Gcm() *EVP_CIPHER
+//go:linkname EVP_aria_128_gcm C.EVP_aria_128_gcm
+func EVP_aria_128_gcm() *EVP_CIPHER
 
-//go:linkname EVPAria128Ccm C.EVP_aria_128_ccm
-func EVPAria128Ccm() *EVP_CIPHER
+//go:linkname EVP_aria_128_ccm C.EVP_aria_128_ccm
+func EVP_aria_128_ccm() *EVP_CIPHER
 
-//go:linkname EVPAria192Ecb C.EVP_aria_192_ecb
-func EVPAria192Ecb() *EVP_CIPHER
+//go:linkname EVP_aria_192_ecb C.EVP_aria_192_ecb
+func EVP_aria_192_ecb() *EVP_CIPHER
 
-//go:linkname EVPAria192Cbc C.EVP_aria_192_cbc
-func EVPAria192Cbc() *EVP_CIPHER
+//go:linkname EVP_aria_192_cbc C.EVP_aria_192_cbc
+func EVP_aria_192_cbc() *EVP_CIPHER
 
-//go:linkname EVPAria192Cfb1 C.EVP_aria_192_cfb1
-func EVPAria192Cfb1() *EVP_CIPHER
+//go:linkname EVP_aria_192_cfb1 C.EVP_aria_192_cfb1
+func EVP_aria_192_cfb1() *EVP_CIPHER
 
-//go:linkname EVPAria192Cfb8 C.EVP_aria_192_cfb8
-func EVPAria192Cfb8() *EVP_CIPHER
+//go:linkname EVP_aria_192_cfb8 C.EVP_aria_192_cfb8
+func EVP_aria_192_cfb8() *EVP_CIPHER
 
-//go:linkname EVPAria192Cfb128 C.EVP_aria_192_cfb128
-func EVPAria192Cfb128() *EVP_CIPHER
+//go:linkname EVP_aria_192_cfb128 C.EVP_aria_192_cfb128
+func EVP_aria_192_cfb128() *EVP_CIPHER
 
-//go:linkname EVPAria192Ctr C.EVP_aria_192_ctr
-func EVPAria192Ctr() *EVP_CIPHER
+//go:linkname EVP_aria_192_ctr C.EVP_aria_192_ctr
+func EVP_aria_192_ctr() *EVP_CIPHER
 
-//go:linkname EVPAria192Ofb C.EVP_aria_192_ofb
-func EVPAria192Ofb() *EVP_CIPHER
+//go:linkname EVP_aria_192_ofb C.EVP_aria_192_ofb
+func EVP_aria_192_ofb() *EVP_CIPHER
 
-//go:linkname EVPAria192Gcm C.EVP_aria_192_gcm
-func EVPAria192Gcm() *EVP_CIPHER
+//go:linkname EVP_aria_192_gcm C.EVP_aria_192_gcm
+func EVP_aria_192_gcm() *EVP_CIPHER
 
-//go:linkname EVPAria192Ccm C.EVP_aria_192_ccm
-func EVPAria192Ccm() *EVP_CIPHER
+//go:linkname EVP_aria_192_ccm C.EVP_aria_192_ccm
+func EVP_aria_192_ccm() *EVP_CIPHER
 
-//go:linkname EVPAria256Ecb C.EVP_aria_256_ecb
-func EVPAria256Ecb() *EVP_CIPHER
+//go:linkname EVP_aria_256_ecb C.EVP_aria_256_ecb
+func EVP_aria_256_ecb() *EVP_CIPHER
 
-//go:linkname EVPAria256Cbc C.EVP_aria_256_cbc
-func EVPAria256Cbc() *EVP_CIPHER
+//go:linkname EVP_aria_256_cbc C.EVP_aria_256_cbc
+func EVP_aria_256_cbc() *EVP_CIPHER
 
-//go:linkname EVPAria256Cfb1 C.EVP_aria_256_cfb1
-func EVPAria256Cfb1() *EVP_CIPHER
+//go:linkname EVP_aria_256_cfb1 C.EVP_aria_256_cfb1
+func EVP_aria_256_cfb1() *EVP_CIPHER
 
-//go:linkname EVPAria256Cfb8 C.EVP_aria_256_cfb8
-func EVPAria256Cfb8() *EVP_CIPHER
+//go:linkname EVP_aria_256_cfb8 C.EVP_aria_256_cfb8
+func EVP_aria_256_cfb8() *EVP_CIPHER
 
-//go:linkname EVPAria256Cfb128 C.EVP_aria_256_cfb128
-func EVPAria256Cfb128() *EVP_CIPHER
+//go:linkname EVP_aria_256_cfb128 C.EVP_aria_256_cfb128
+func EVP_aria_256_cfb128() *EVP_CIPHER
 
-//go:linkname EVPAria256Ctr C.EVP_aria_256_ctr
-func EVPAria256Ctr() *EVP_CIPHER
+//go:linkname EVP_aria_256_ctr C.EVP_aria_256_ctr
+func EVP_aria_256_ctr() *EVP_CIPHER
 
-//go:linkname EVPAria256Ofb C.EVP_aria_256_ofb
-func EVPAria256Ofb() *EVP_CIPHER
+//go:linkname EVP_aria_256_ofb C.EVP_aria_256_ofb
+func EVP_aria_256_ofb() *EVP_CIPHER
 
-//go:linkname EVPAria256Gcm C.EVP_aria_256_gcm
-func EVPAria256Gcm() *EVP_CIPHER
+//go:linkname EVP_aria_256_gcm C.EVP_aria_256_gcm
+func EVP_aria_256_gcm() *EVP_CIPHER
 
-//go:linkname EVPAria256Ccm C.EVP_aria_256_ccm
-func EVPAria256Ccm() *EVP_CIPHER
+//go:linkname EVP_aria_256_ccm C.EVP_aria_256_ccm
+func EVP_aria_256_ccm() *EVP_CIPHER
 
-//go:linkname EVPCamellia128Ecb C.EVP_camellia_128_ecb
-func EVPCamellia128Ecb() *EVP_CIPHER
+//go:linkname EVP_camellia_128_ecb C.EVP_camellia_128_ecb
+func EVP_camellia_128_ecb() *EVP_CIPHER
 
-//go:linkname EVPCamellia128Cbc C.EVP_camellia_128_cbc
-func EVPCamellia128Cbc() *EVP_CIPHER
+//go:linkname EVP_camellia_128_cbc C.EVP_camellia_128_cbc
+func EVP_camellia_128_cbc() *EVP_CIPHER
 
-//go:linkname EVPCamellia128Cfb1 C.EVP_camellia_128_cfb1
-func EVPCamellia128Cfb1() *EVP_CIPHER
+//go:linkname EVP_camellia_128_cfb1 C.EVP_camellia_128_cfb1
+func EVP_camellia_128_cfb1() *EVP_CIPHER
 
-//go:linkname EVPCamellia128Cfb8 C.EVP_camellia_128_cfb8
-func EVPCamellia128Cfb8() *EVP_CIPHER
+//go:linkname EVP_camellia_128_cfb8 C.EVP_camellia_128_cfb8
+func EVP_camellia_128_cfb8() *EVP_CIPHER
 
-//go:linkname EVPCamellia128Cfb128 C.EVP_camellia_128_cfb128
-func EVPCamellia128Cfb128() *EVP_CIPHER
+//go:linkname EVP_camellia_128_cfb128 C.EVP_camellia_128_cfb128
+func EVP_camellia_128_cfb128() *EVP_CIPHER
 
-//go:linkname EVPCamellia128Ofb C.EVP_camellia_128_ofb
-func EVPCamellia128Ofb() *EVP_CIPHER
+//go:linkname EVP_camellia_128_ofb C.EVP_camellia_128_ofb
+func EVP_camellia_128_ofb() *EVP_CIPHER
 
-//go:linkname EVPCamellia128Ctr C.EVP_camellia_128_ctr
-func EVPCamellia128Ctr() *EVP_CIPHER
+//go:linkname EVP_camellia_128_ctr C.EVP_camellia_128_ctr
+func EVP_camellia_128_ctr() *EVP_CIPHER
 
-//go:linkname EVPCamellia192Ecb C.EVP_camellia_192_ecb
-func EVPCamellia192Ecb() *EVP_CIPHER
+//go:linkname EVP_camellia_192_ecb C.EVP_camellia_192_ecb
+func EVP_camellia_192_ecb() *EVP_CIPHER
 
-//go:linkname EVPCamellia192Cbc C.EVP_camellia_192_cbc
-func EVPCamellia192Cbc() *EVP_CIPHER
+//go:linkname EVP_camellia_192_cbc C.EVP_camellia_192_cbc
+func EVP_camellia_192_cbc() *EVP_CIPHER
 
-//go:linkname EVPCamellia192Cfb1 C.EVP_camellia_192_cfb1
-func EVPCamellia192Cfb1() *EVP_CIPHER
+//go:linkname EVP_camellia_192_cfb1 C.EVP_camellia_192_cfb1
+func EVP_camellia_192_cfb1() *EVP_CIPHER
 
-//go:linkname EVPCamellia192Cfb8 C.EVP_camellia_192_cfb8
-func EVPCamellia192Cfb8() *EVP_CIPHER
+//go:linkname EVP_camellia_192_cfb8 C.EVP_camellia_192_cfb8
+func EVP_camellia_192_cfb8() *EVP_CIPHER
 
-//go:linkname EVPCamellia192Cfb128 C.EVP_camellia_192_cfb128
-func EVPCamellia192Cfb128() *EVP_CIPHER
+//go:linkname EVP_camellia_192_cfb128 C.EVP_camellia_192_cfb128
+func EVP_camellia_192_cfb128() *EVP_CIPHER
 
-//go:linkname EVPCamellia192Ofb C.EVP_camellia_192_ofb
-func EVPCamellia192Ofb() *EVP_CIPHER
+//go:linkname EVP_camellia_192_ofb C.EVP_camellia_192_ofb
+func EVP_camellia_192_ofb() *EVP_CIPHER
 
-//go:linkname EVPCamellia192Ctr C.EVP_camellia_192_ctr
-func EVPCamellia192Ctr() *EVP_CIPHER
+//go:linkname EVP_camellia_192_ctr C.EVP_camellia_192_ctr
+func EVP_camellia_192_ctr() *EVP_CIPHER
 
-//go:linkname EVPCamellia256Ecb C.EVP_camellia_256_ecb
-func EVPCamellia256Ecb() *EVP_CIPHER
+//go:linkname EVP_camellia_256_ecb C.EVP_camellia_256_ecb
+func EVP_camellia_256_ecb() *EVP_CIPHER
 
-//go:linkname EVPCamellia256Cbc C.EVP_camellia_256_cbc
-func EVPCamellia256Cbc() *EVP_CIPHER
+//go:linkname EVP_camellia_256_cbc C.EVP_camellia_256_cbc
+func EVP_camellia_256_cbc() *EVP_CIPHER
 
-//go:linkname EVPCamellia256Cfb1 C.EVP_camellia_256_cfb1
-func EVPCamellia256Cfb1() *EVP_CIPHER
+//go:linkname EVP_camellia_256_cfb1 C.EVP_camellia_256_cfb1
+func EVP_camellia_256_cfb1() *EVP_CIPHER
 
-//go:linkname EVPCamellia256Cfb8 C.EVP_camellia_256_cfb8
-func EVPCamellia256Cfb8() *EVP_CIPHER
+//go:linkname EVP_camellia_256_cfb8 C.EVP_camellia_256_cfb8
+func EVP_camellia_256_cfb8() *EVP_CIPHER
 
-//go:linkname EVPCamellia256Cfb128 C.EVP_camellia_256_cfb128
-func EVPCamellia256Cfb128() *EVP_CIPHER
+//go:linkname EVP_camellia_256_cfb128 C.EVP_camellia_256_cfb128
+func EVP_camellia_256_cfb128() *EVP_CIPHER
 
-//go:linkname EVPCamellia256Ofb C.EVP_camellia_256_ofb
-func EVPCamellia256Ofb() *EVP_CIPHER
+//go:linkname EVP_camellia_256_ofb C.EVP_camellia_256_ofb
+func EVP_camellia_256_ofb() *EVP_CIPHER
 
-//go:linkname EVPCamellia256Ctr C.EVP_camellia_256_ctr
-func EVPCamellia256Ctr() *EVP_CIPHER
+//go:linkname EVP_camellia_256_ctr C.EVP_camellia_256_ctr
+func EVP_camellia_256_ctr() *EVP_CIPHER
 
-//go:linkname EVPChacha20 C.EVP_chacha20
-func EVPChacha20() *EVP_CIPHER
+//go:linkname EVP_chacha20 C.EVP_chacha20
+func EVP_chacha20() *EVP_CIPHER
 
-//go:linkname EVPChacha20Poly1305 C.EVP_chacha20_poly1305
-func EVPChacha20Poly1305() *EVP_CIPHER
+//go:linkname EVP_chacha20_poly1305 C.EVP_chacha20_poly1305
+func EVP_chacha20_poly1305() *EVP_CIPHER
 
-//go:linkname EVPSeedEcb C.EVP_seed_ecb
-func EVPSeedEcb() *EVP_CIPHER
+//go:linkname EVP_seed_ecb C.EVP_seed_ecb
+func EVP_seed_ecb() *EVP_CIPHER
 
-//go:linkname EVPSeedCbc C.EVP_seed_cbc
-func EVPSeedCbc() *EVP_CIPHER
+//go:linkname EVP_seed_cbc C.EVP_seed_cbc
+func EVP_seed_cbc() *EVP_CIPHER
 
-//go:linkname EVPSeedCfb128 C.EVP_seed_cfb128
-func EVPSeedCfb128() *EVP_CIPHER
+//go:linkname EVP_seed_cfb128 C.EVP_seed_cfb128
+func EVP_seed_cfb128() *EVP_CIPHER
 
-//go:linkname EVPSeedOfb C.EVP_seed_ofb
-func EVPSeedOfb() *EVP_CIPHER
+//go:linkname EVP_seed_ofb C.EVP_seed_ofb
+func EVP_seed_ofb() *EVP_CIPHER
 
-//go:linkname EVPSm4Ecb C.EVP_sm4_ecb
-func EVPSm4Ecb() *EVP_CIPHER
+//go:linkname EVP_sm4_ecb C.EVP_sm4_ecb
+func EVP_sm4_ecb() *EVP_CIPHER
 
-//go:linkname EVPSm4Cbc C.EVP_sm4_cbc
-func EVPSm4Cbc() *EVP_CIPHER
+//go:linkname EVP_sm4_cbc C.EVP_sm4_cbc
+func EVP_sm4_cbc() *EVP_CIPHER
 
-//go:linkname EVPSm4Cfb128 C.EVP_sm4_cfb128
-func EVPSm4Cfb128() *EVP_CIPHER
+//go:linkname EVP_sm4_cfb128 C.EVP_sm4_cfb128
+func EVP_sm4_cfb128() *EVP_CIPHER
 
-//go:linkname EVPSm4Ofb C.EVP_sm4_ofb
-func EVPSm4Ofb() *EVP_CIPHER
+//go:linkname EVP_sm4_ofb C.EVP_sm4_ofb
+func EVP_sm4_ofb() *EVP_CIPHER
 
-//go:linkname EVPSm4Ctr C.EVP_sm4_ctr
-func EVPSm4Ctr() *EVP_CIPHER
+//go:linkname EVP_sm4_ctr C.EVP_sm4_ctr
+func EVP_sm4_ctr() *EVP_CIPHER
 
-//go:linkname EVPAddCipher C.EVP_add_cipher
-func EVPAddCipher(cipher *EVP_CIPHER) c.Int
+// llgo:link (*EVP_CIPHER).AddCipher C.EVP_add_cipher
+func (self *EVP_CIPHER) AddCipher() c.Int {
+	return 0
+}
 
-//go:linkname EVPAddDigest C.EVP_add_digest
-func EVPAddDigest(digest *EVP_MD) c.Int
+// llgo:link (*EVP_MD).EVP_add_digest C.EVP_add_digest
+func (self *EVP_MD) EVP_add_digest() c.Int {
+	return 0
+}
 
-//go:linkname EVPGetCipherbyname C.EVP_get_cipherbyname
-func EVPGetCipherbyname(name *c.Char) *EVP_CIPHER
+//go:linkname EVP_get_cipherbyname C.EVP_get_cipherbyname
+func EVP_get_cipherbyname(name *c.Char) *EVP_CIPHER
 
-//go:linkname EVPGetDigestbyname C.EVP_get_digestbyname
-func EVPGetDigestbyname(name *c.Char) *EVP_MD
+//go:linkname EVP_get_digestbyname C.EVP_get_digestbyname
+func EVP_get_digestbyname(name *c.Char) *EVP_MD
 
-//go:linkname EVP_CIPHERDoAll C.EVP_CIPHER_do_all
-func EVP_CIPHERDoAll(fn func(_llcppg_param1 *EVP_CIPHER, _llcppg_param2 *c.Char, _llcppg_param3 *c.Char, _llcppg_param4 unsafe.Pointer), arg unsafe.Pointer)
+//go:linkname EVP_CIPHER_do_all C.EVP_CIPHER_do_all
+func EVP_CIPHER_do_all(fn func(_llcppg_param1 *EVP_CIPHER, _llcppg_param2 *c.Char, _llcppg_param3 *c.Char, _llcppg_param4 unsafe.Pointer), arg unsafe.Pointer)
 
-//go:linkname EVP_CIPHERDoAllSorted C.EVP_CIPHER_do_all_sorted
-func EVP_CIPHERDoAllSorted(fn func(_llcppg_param1 *EVP_CIPHER, _llcppg_param2 *c.Char, _llcppg_param3 *c.Char, _llcppg_param4 unsafe.Pointer), arg unsafe.Pointer)
+//go:linkname EVP_CIPHER_do_all_sorted C.EVP_CIPHER_do_all_sorted
+func EVP_CIPHER_do_all_sorted(fn func(_llcppg_param1 *EVP_CIPHER, _llcppg_param2 *c.Char, _llcppg_param3 *c.Char, _llcppg_param4 unsafe.Pointer), arg unsafe.Pointer)
 
-//go:linkname EVP_CIPHERDoAllProvided C.EVP_CIPHER_do_all_provided
-func EVP_CIPHERDoAllProvided(libctx *OSSL_LIB_CTX, fn func(_llcppg_param1 *EVP_CIPHER, _llcppg_param2 unsafe.Pointer), arg unsafe.Pointer)
+// llgo:link (*OSSL_LIB_CTX).EVP_CIPHER_do_all_provided C.EVP_CIPHER_do_all_provided
+func (self *OSSL_LIB_CTX) EVP_CIPHER_do_all_provided(fn func(_llcppg_param1 *EVP_CIPHER, _llcppg_param2 unsafe.Pointer), arg unsafe.Pointer) {
+}
 
-//go:linkname EVP_MDDoAll C.EVP_MD_do_all
-func EVP_MDDoAll(fn func(_llcppg_param1 *EVP_MD, _llcppg_param2 *c.Char, _llcppg_param3 *c.Char, _llcppg_param4 unsafe.Pointer), arg unsafe.Pointer)
+//go:linkname EVP_MD_do_all C.EVP_MD_do_all
+func EVP_MD_do_all(fn func(_llcppg_param1 *EVP_MD, _llcppg_param2 *c.Char, _llcppg_param3 *c.Char, _llcppg_param4 unsafe.Pointer), arg unsafe.Pointer)
 
-//go:linkname EVP_MDDoAllSorted C.EVP_MD_do_all_sorted
-func EVP_MDDoAllSorted(fn func(_llcppg_param1 *EVP_MD, _llcppg_param2 *c.Char, _llcppg_param3 *c.Char, _llcppg_param4 unsafe.Pointer), arg unsafe.Pointer)
+//go:linkname EVP_MD_do_all_sorted C.EVP_MD_do_all_sorted
+func EVP_MD_do_all_sorted(fn func(_llcppg_param1 *EVP_MD, _llcppg_param2 *c.Char, _llcppg_param3 *c.Char, _llcppg_param4 unsafe.Pointer), arg unsafe.Pointer)
 
-//go:linkname EVP_MDDoAllProvided C.EVP_MD_do_all_provided
-func EVP_MDDoAllProvided(libctx *OSSL_LIB_CTX, fn func(_llcppg_param1 *EVP_MD, _llcppg_param2 unsafe.Pointer), arg unsafe.Pointer)
+// llgo:link (*OSSL_LIB_CTX).EVP_MD_do_all_provided C.EVP_MD_do_all_provided
+func (self *OSSL_LIB_CTX) EVP_MD_do_all_provided(fn func(_llcppg_param1 *EVP_MD, _llcppg_param2 unsafe.Pointer), arg unsafe.Pointer) {
+}
 
-//go:linkname EVP_MACFetch C.EVP_MAC_fetch
-func EVP_MACFetch(libctx *OSSL_LIB_CTX, algorithm *c.Char, properties *c.Char) *EVP_MAC
+// llgo:link (*OSSL_LIB_CTX).EVP_MAC_fetch C.EVP_MAC_fetch
+func (self *OSSL_LIB_CTX) EVP_MAC_fetch(algorithm *c.Char, properties *c.Char) *EVP_MAC {
+	return nil
+}
 
-//go:linkname EVP_MACUpRef C.EVP_MAC_up_ref
-func EVP_MACUpRef(mac *EVP_MAC) c.Int
+// llgo:link (*EVP_MAC).UpRef C.EVP_MAC_up_ref
+func (self *EVP_MAC) UpRef() c.Int {
+	return 0
+}
 
-//go:linkname EVP_MACFree C.EVP_MAC_free
-func EVP_MACFree(mac *EVP_MAC)
+// llgo:link (*EVP_MAC).Free C.EVP_MAC_free
+func (self *EVP_MAC) Free() {
+}
 
-//go:linkname EVP_MACGet0Name C.EVP_MAC_get0_name
-func EVP_MACGet0Name(mac *EVP_MAC) *c.Char
+// llgo:link (*EVP_MAC).Get0Name C.EVP_MAC_get0_name
+func (self *EVP_MAC) Get0Name() *c.Char {
+	return nil
+}
 
-//go:linkname EVP_MACGet0Description C.EVP_MAC_get0_description
-func EVP_MACGet0Description(mac *EVP_MAC) *c.Char
+// llgo:link (*EVP_MAC).Get0Description C.EVP_MAC_get0_description
+func (self *EVP_MAC) Get0Description() *c.Char {
+	return nil
+}
 
-//go:linkname EVP_MACIsA C.EVP_MAC_is_a
-func EVP_MACIsA(mac *EVP_MAC, name *c.Char) c.Int
+// llgo:link (*EVP_MAC).IsA C.EVP_MAC_is_a
+func (self *EVP_MAC) IsA(name *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname EVP_MACGet0Provider C.EVP_MAC_get0_provider
-func EVP_MACGet0Provider(mac *EVP_MAC) *OSSL_PROVIDER
+// llgo:link (*EVP_MAC).Get0Provider C.EVP_MAC_get0_provider
+func (self *EVP_MAC) Get0Provider() *OSSL_PROVIDER {
+	return nil
+}
 
-//go:linkname EVP_MACGetParams C.EVP_MAC_get_params
-func EVP_MACGetParams(mac *EVP_MAC, params *OSSL_PARAM) c.Int
+// llgo:link (*EVP_MAC).Params C.EVP_MAC_get_params
+func (self *EVP_MAC) Params(params *OSSL_PARAM) c.Int {
+	return 0
+}
 
-//go:linkname EVP_MAC_CTXNew C.EVP_MAC_CTX_new
-func EVP_MAC_CTXNew(mac *EVP_MAC) *EVP_MAC_CTX
+// llgo:link (*EVP_MAC).CTX_new C.EVP_MAC_CTX_new
+func (self *EVP_MAC) CTX_new() *EVP_MAC_CTX {
+	return nil
+}
 
-//go:linkname EVP_MAC_CTXFree C.EVP_MAC_CTX_free
-func EVP_MAC_CTXFree(ctx *EVP_MAC_CTX)
+// llgo:link (*EVP_MAC_CTX).Free C.EVP_MAC_CTX_free
+func (self *EVP_MAC_CTX) Free() {
+}
 
-//go:linkname EVP_MAC_CTXDup C.EVP_MAC_CTX_dup
-func EVP_MAC_CTXDup(src *EVP_MAC_CTX) *EVP_MAC_CTX
+// llgo:link (*EVP_MAC_CTX).Dup C.EVP_MAC_CTX_dup
+func (self *EVP_MAC_CTX) Dup() *EVP_MAC_CTX {
+	return self
+}
 
-//go:linkname EVP_MAC_CTXGet0Mac C.EVP_MAC_CTX_get0_mac
-func EVP_MAC_CTXGet0Mac(ctx *EVP_MAC_CTX) *EVP_MAC
+// llgo:link (*EVP_MAC_CTX).Get0Mac C.EVP_MAC_CTX_get0_mac
+func (self *EVP_MAC_CTX) Get0Mac() *EVP_MAC {
+	return nil
+}
 
-//go:linkname EVP_MAC_CTXGetParams C.EVP_MAC_CTX_get_params
-func EVP_MAC_CTXGetParams(ctx *EVP_MAC_CTX, params *OSSL_PARAM) c.Int
+// llgo:link (*EVP_MAC_CTX).Params C.EVP_MAC_CTX_get_params
+func (self *EVP_MAC_CTX) Params(params *OSSL_PARAM) c.Int {
+	return 0
+}
 
-//go:linkname EVP_MAC_CTXSetParams C.EVP_MAC_CTX_set_params
-func EVP_MAC_CTXSetParams(ctx *EVP_MAC_CTX, params *OSSL_PARAM) c.Int
+// llgo:link (*EVP_MAC_CTX).SetParams C.EVP_MAC_CTX_set_params
+func (self *EVP_MAC_CTX) SetParams(params *OSSL_PARAM) c.Int {
+	return 0
+}
 
-//go:linkname EVP_MAC_CTXGetMacSize C.EVP_MAC_CTX_get_mac_size
-func EVP_MAC_CTXGetMacSize(ctx *EVP_MAC_CTX) c.SizeT
+// llgo:link (*EVP_MAC_CTX).MacSize C.EVP_MAC_CTX_get_mac_size
+func (self *EVP_MAC_CTX) MacSize() c.SizeT {
+	return 0
+}
 
-//go:linkname EVP_MAC_CTXGetBlockSize C.EVP_MAC_CTX_get_block_size
-func EVP_MAC_CTXGetBlockSize(ctx *EVP_MAC_CTX) c.SizeT
+// llgo:link (*EVP_MAC_CTX).BlockSize C.EVP_MAC_CTX_get_block_size
+func (self *EVP_MAC_CTX) BlockSize() c.SizeT {
+	return 0
+}
 
-//go:linkname EVP_QMac C.EVP_Q_mac
-func EVP_QMac(libctx *OSSL_LIB_CTX, name *c.Char, propq *c.Char, subalg *c.Char, params *OSSL_PARAM, key unsafe.Pointer, keylen c.SizeT, data *uint8, datalen c.SizeT, out *uint8, outsize c.SizeT, outlen *c.SizeT) *uint8
+// llgo:link (*OSSL_LIB_CTX).EVP_Q_mac C.EVP_Q_mac
+func (self *OSSL_LIB_CTX) EVP_Q_mac(name *c.Char, propq *c.Char, subalg *c.Char, params *OSSL_PARAM, key unsafe.Pointer, keylen c.SizeT, data *uint8, datalen c.SizeT, out *uint8, outsize c.SizeT, outlen *c.SizeT) *uint8 {
+	return nil
+}
 
-//go:linkname EVP_MACInit C.EVP_MAC_init
-func EVP_MACInit(ctx *EVP_MAC_CTX, key *uint8, keylen c.SizeT, params *OSSL_PARAM) c.Int
+// llgo:link (*EVP_MAC_CTX).Init C.EVP_MAC_init
+func (self *EVP_MAC_CTX) Init(key *uint8, keylen c.SizeT, params *OSSL_PARAM) c.Int {
+	return 0
+}
 
-//go:linkname EVP_MACInitSKEY C.EVP_MAC_init_SKEY
-func EVP_MACInitSKEY(ctx *EVP_MAC_CTX, skey *EVP_SKEY, params *OSSL_PARAM) c.Int
+// llgo:link (*EVP_MAC_CTX).Init_SKEY C.EVP_MAC_init_SKEY
+func (self *EVP_MAC_CTX) Init_SKEY(skey *EVP_SKEY, params *OSSL_PARAM) c.Int {
+	return 0
+}
 
-//go:linkname EVP_MACUpdate C.EVP_MAC_update
-func EVP_MACUpdate(ctx *EVP_MAC_CTX, data *uint8, datalen c.SizeT) c.Int
+// llgo:link (*EVP_MAC_CTX).Update C.EVP_MAC_update
+func (self *EVP_MAC_CTX) Update(data *uint8, datalen c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname EVP_MACFinal C.EVP_MAC_final
-func EVP_MACFinal(ctx *EVP_MAC_CTX, out *uint8, outl *c.SizeT, outsize c.SizeT) c.Int
+// llgo:link (*EVP_MAC_CTX).Final C.EVP_MAC_final
+func (self *EVP_MAC_CTX) Final(out *uint8, outl *c.SizeT, outsize c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname EVP_MAC_FinalXOF C.EVP_MAC_finalXOF
-func EVP_MAC_FinalXOF(ctx *EVP_MAC_CTX, out *uint8, outsize c.SizeT) c.Int
+// llgo:link (*EVP_MAC_CTX).FinalXOF C.EVP_MAC_finalXOF
+func (self *EVP_MAC_CTX) FinalXOF(out *uint8, outsize c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname EVP_MACGettableParams C.EVP_MAC_gettable_params
-func EVP_MACGettableParams(mac *EVP_MAC) *OSSL_PARAM
+// llgo:link (*EVP_MAC).GettableParams C.EVP_MAC_gettable_params
+func (self *EVP_MAC) GettableParams() *OSSL_PARAM {
+	return nil
+}
 
-//go:linkname EVP_MACGettableCtxParams C.EVP_MAC_gettable_ctx_params
-func EVP_MACGettableCtxParams(mac *EVP_MAC) *OSSL_PARAM
+// llgo:link (*EVP_MAC).GettableCtxParams C.EVP_MAC_gettable_ctx_params
+func (self *EVP_MAC) GettableCtxParams() *OSSL_PARAM {
+	return nil
+}
 
-//go:linkname EVP_MACSettableCtxParams C.EVP_MAC_settable_ctx_params
-func EVP_MACSettableCtxParams(mac *EVP_MAC) *OSSL_PARAM
+// llgo:link (*EVP_MAC).SettableCtxParams C.EVP_MAC_settable_ctx_params
+func (self *EVP_MAC) SettableCtxParams() *OSSL_PARAM {
+	return nil
+}
 
-//go:linkname EVP_MAC_CTXGettableParams C.EVP_MAC_CTX_gettable_params
-func EVP_MAC_CTXGettableParams(ctx *EVP_MAC_CTX) *OSSL_PARAM
+// llgo:link (*EVP_MAC_CTX).GettableParams C.EVP_MAC_CTX_gettable_params
+func (self *EVP_MAC_CTX) GettableParams() *OSSL_PARAM {
+	return nil
+}
 
-//go:linkname EVP_MAC_CTXSettableParams C.EVP_MAC_CTX_settable_params
-func EVP_MAC_CTXSettableParams(ctx *EVP_MAC_CTX) *OSSL_PARAM
+// llgo:link (*EVP_MAC_CTX).SettableParams C.EVP_MAC_CTX_settable_params
+func (self *EVP_MAC_CTX) SettableParams() *OSSL_PARAM {
+	return nil
+}
 
-//go:linkname EVP_MACDoAllProvided C.EVP_MAC_do_all_provided
-func EVP_MACDoAllProvided(libctx *OSSL_LIB_CTX, fn func(_llcppg_param1 *EVP_MAC, _llcppg_param2 unsafe.Pointer), arg unsafe.Pointer)
+// llgo:link (*OSSL_LIB_CTX).EVP_MAC_do_all_provided C.EVP_MAC_do_all_provided
+func (self *OSSL_LIB_CTX) EVP_MAC_do_all_provided(fn func(_llcppg_param1 *EVP_MAC, _llcppg_param2 unsafe.Pointer), arg unsafe.Pointer) {
+}
 
-//go:linkname EVP_MACNamesDoAll C.EVP_MAC_names_do_all
-func EVP_MACNamesDoAll(mac *EVP_MAC, fn func(_llcppg_param1 *c.Char, _llcppg_param2 unsafe.Pointer), data unsafe.Pointer) c.Int
+// llgo:link (*EVP_MAC).NamesDoAll C.EVP_MAC_names_do_all
+func (self *EVP_MAC) NamesDoAll(fn func(_llcppg_param1 *c.Char, _llcppg_param2 unsafe.Pointer), data unsafe.Pointer) c.Int {
+	return 0
+}
 
 // RAND stuff
 //
-//go:linkname EVP_RANDFetch C.EVP_RAND_fetch
-func EVP_RANDFetch(libctx *OSSL_LIB_CTX, algorithm *c.Char, properties *c.Char) *EVP_RAND
-
-//go:linkname EVP_RANDUpRef C.EVP_RAND_up_ref
-func EVP_RANDUpRef(rand *EVP_RAND) c.Int
-
-//go:linkname EVP_RANDFree C.EVP_RAND_free
-func EVP_RANDFree(rand *EVP_RAND)
-
-//go:linkname EVP_RANDGet0Name C.EVP_RAND_get0_name
-func EVP_RANDGet0Name(rand *EVP_RAND) *c.Char
-
-//go:linkname EVP_RANDGet0Description C.EVP_RAND_get0_description
-func EVP_RANDGet0Description(md *EVP_RAND) *c.Char
-
-//go:linkname EVP_RANDIsA C.EVP_RAND_is_a
-func EVP_RANDIsA(rand *EVP_RAND, name *c.Char) c.Int
-
-//go:linkname EVP_RANDGet0Provider C.EVP_RAND_get0_provider
-func EVP_RANDGet0Provider(rand *EVP_RAND) *OSSL_PROVIDER
-
-//go:linkname EVP_RANDGetParams C.EVP_RAND_get_params
-func EVP_RANDGetParams(rand *EVP_RAND, params *OSSL_PARAM) c.Int
-
-//go:linkname EVP_RAND_CTXNew C.EVP_RAND_CTX_new
-func EVP_RAND_CTXNew(rand *EVP_RAND, parent *EVP_RAND_CTX) *EVP_RAND_CTX
-
-//go:linkname EVP_RAND_CTXUpRef C.EVP_RAND_CTX_up_ref
-func EVP_RAND_CTXUpRef(ctx *EVP_RAND_CTX) c.Int
-
-//go:linkname EVP_RAND_CTXFree C.EVP_RAND_CTX_free
-func EVP_RAND_CTXFree(ctx *EVP_RAND_CTX)
-
-//go:linkname EVP_RAND_CTXGet0Rand C.EVP_RAND_CTX_get0_rand
-func EVP_RAND_CTXGet0Rand(ctx *EVP_RAND_CTX) *EVP_RAND
-
-//go:linkname EVP_RAND_CTXGetParams C.EVP_RAND_CTX_get_params
-func EVP_RAND_CTXGetParams(ctx *EVP_RAND_CTX, params *OSSL_PARAM) c.Int
-
-//go:linkname EVP_RAND_CTXSetParams C.EVP_RAND_CTX_set_params
-func EVP_RAND_CTXSetParams(ctx *EVP_RAND_CTX, params *OSSL_PARAM) c.Int
-
-//go:linkname EVP_RANDGettableParams C.EVP_RAND_gettable_params
-func EVP_RANDGettableParams(rand *EVP_RAND) *OSSL_PARAM
-
-//go:linkname EVP_RANDGettableCtxParams C.EVP_RAND_gettable_ctx_params
-func EVP_RANDGettableCtxParams(rand *EVP_RAND) *OSSL_PARAM
-
-//go:linkname EVP_RANDSettableCtxParams C.EVP_RAND_settable_ctx_params
-func EVP_RANDSettableCtxParams(rand *EVP_RAND) *OSSL_PARAM
-
-//go:linkname EVP_RAND_CTXGettableParams C.EVP_RAND_CTX_gettable_params
-func EVP_RAND_CTXGettableParams(ctx *EVP_RAND_CTX) *OSSL_PARAM
-
-//go:linkname EVP_RAND_CTXSettableParams C.EVP_RAND_CTX_settable_params
-func EVP_RAND_CTXSettableParams(ctx *EVP_RAND_CTX) *OSSL_PARAM
-
-//go:linkname EVP_RANDDoAllProvided C.EVP_RAND_do_all_provided
-func EVP_RANDDoAllProvided(libctx *OSSL_LIB_CTX, fn func(_llcppg_param1 *EVP_RAND, _llcppg_param2 unsafe.Pointer), arg unsafe.Pointer)
-
-//go:linkname EVP_RANDNamesDoAll C.EVP_RAND_names_do_all
-func EVP_RANDNamesDoAll(rand *EVP_RAND, fn func(_llcppg_param1 *c.Char, _llcppg_param2 unsafe.Pointer), data unsafe.Pointer) c.Int
-
-//go:linkname EVP_RANDInstantiate C.EVP_RAND_instantiate
-func EVP_RANDInstantiate(ctx *EVP_RAND_CTX, strength c.Uint, prediction_resistance c.Int, pstr *uint8, pstr_len c.SizeT, params *OSSL_PARAM) c.Int
-
-//go:linkname EVP_RANDUninstantiate C.EVP_RAND_uninstantiate
-func EVP_RANDUninstantiate(ctx *EVP_RAND_CTX) c.Int
-
-//go:linkname EVP_RANDGenerate C.EVP_RAND_generate
-func EVP_RANDGenerate(ctx *EVP_RAND_CTX, out *uint8, outlen c.SizeT, strength c.Uint, prediction_resistance c.Int, addin *uint8, addin_len c.SizeT) c.Int
-
-//go:linkname EVP_RANDReseed C.EVP_RAND_reseed
-func EVP_RANDReseed(ctx *EVP_RAND_CTX, prediction_resistance c.Int, ent *uint8, ent_len c.SizeT, addin *uint8, addin_len c.SizeT) c.Int
-
-//go:linkname EVP_RANDNonce C.EVP_RAND_nonce
-func EVP_RANDNonce(ctx *EVP_RAND_CTX, out *uint8, outlen c.SizeT) c.Int
-
-//go:linkname EVP_RANDEnableLocking C.EVP_RAND_enable_locking
-func EVP_RANDEnableLocking(ctx *EVP_RAND_CTX) c.Int
-
-//go:linkname EVP_RANDVerifyZeroization C.EVP_RAND_verify_zeroization
-func EVP_RANDVerifyZeroization(ctx *EVP_RAND_CTX) c.Int
-
-//go:linkname EVP_RANDGetStrength C.EVP_RAND_get_strength
-func EVP_RANDGetStrength(ctx *EVP_RAND_CTX) c.Uint
-
-//go:linkname EVP_RANDGetState C.EVP_RAND_get_state
-func EVP_RANDGetState(ctx *EVP_RAND_CTX) c.Int
-
-//go:linkname EVP_PKEYDecryptOld C.EVP_PKEY_decrypt_old
-func EVP_PKEYDecryptOld(dec_key *uint8, enc_key *uint8, enc_key_len c.Int, private_key *EVP_PKEY) c.Int
-
-//go:linkname EVP_PKEYEncryptOld C.EVP_PKEY_encrypt_old
-func EVP_PKEYEncryptOld(enc_key *uint8, key *uint8, key_len c.Int, pub_key *EVP_PKEY) c.Int
-
-//go:linkname EVP_PKEYIsA C.EVP_PKEY_is_a
-func EVP_PKEYIsA(pkey *EVP_PKEY, name *c.Char) c.Int
-
-//go:linkname EVP_PKEYTypeNamesDoAll C.EVP_PKEY_type_names_do_all
-func EVP_PKEYTypeNamesDoAll(pkey *EVP_PKEY, fn func(_llcppg_param1 *c.Char, _llcppg_param2 unsafe.Pointer), data unsafe.Pointer) c.Int
-
-//go:linkname EVP_PKEYType C.EVP_PKEY_type
-func EVP_PKEYType(type_ c.Int) c.Int
-
-//go:linkname EVP_PKEYGetId C.EVP_PKEY_get_id
-func EVP_PKEYGetId(pkey *EVP_PKEY) c.Int
-
-//go:linkname EVP_PKEYGetBaseId C.EVP_PKEY_get_base_id
-func EVP_PKEYGetBaseId(pkey *EVP_PKEY) c.Int
-
-//go:linkname EVP_PKEYGetBits C.EVP_PKEY_get_bits
-func EVP_PKEYGetBits(pkey *EVP_PKEY) c.Int
-
-//go:linkname EVP_PKEYGetSecurityBits C.EVP_PKEY_get_security_bits
-func EVP_PKEYGetSecurityBits(pkey *EVP_PKEY) c.Int
-
-//go:linkname EVP_PKEYGetSecurityCategory C.EVP_PKEY_get_security_category
-func EVP_PKEYGetSecurityCategory(pkey *EVP_PKEY) c.Int
-
-//go:linkname EVP_PKEYGetSize C.EVP_PKEY_get_size
-func EVP_PKEYGetSize(pkey *EVP_PKEY) c.Int
-
-//go:linkname EVP_PKEYCanSign C.EVP_PKEY_can_sign
-func EVP_PKEYCanSign(pkey *EVP_PKEY) c.Int
-
-//go:linkname EVP_PKEYSetType C.EVP_PKEY_set_type
-func EVP_PKEYSetType(pkey *EVP_PKEY, type_ c.Int) c.Int
-
-//go:linkname EVP_PKEYSetTypeStr C.EVP_PKEY_set_type_str
-func EVP_PKEYSetTypeStr(pkey *EVP_PKEY, str *c.Char, len c.Int) c.Int
-
-//go:linkname EVP_PKEYSetTypeByKeymgmt C.EVP_PKEY_set_type_by_keymgmt
-func EVP_PKEYSetTypeByKeymgmt(pkey *EVP_PKEY, keymgmt *EVP_KEYMGMT) c.Int
-
-//go:linkname EVP_PKEYAssign C.EVP_PKEY_assign
-func EVP_PKEYAssign(pkey *EVP_PKEY, type_ c.Int, key unsafe.Pointer) c.Int
-
-//go:linkname EVP_PKEYGet0 C.EVP_PKEY_get0
-func EVP_PKEYGet0(pkey *EVP_PKEY) unsafe.Pointer
-
-//go:linkname EVP_PKEYGet0Hmac C.EVP_PKEY_get0_hmac
-func EVP_PKEYGet0Hmac(pkey *EVP_PKEY, len *c.SizeT) *uint8
-
-//go:linkname EVP_PKEYGet0Poly1305 C.EVP_PKEY_get0_poly1305
-func EVP_PKEYGet0Poly1305(pkey *EVP_PKEY, len *c.SizeT) *uint8
-
-//go:linkname EVP_PKEYGet0Siphash C.EVP_PKEY_get0_siphash
-func EVP_PKEYGet0Siphash(pkey *EVP_PKEY, len *c.SizeT) *uint8
-
-//go:linkname EVP_PKEYSet1RSA C.EVP_PKEY_set1_RSA
-func EVP_PKEYSet1RSA(pkey *EVP_PKEY, key *RsaSt) c.Int
-
-//go:linkname EVP_PKEYGet0RSA C.EVP_PKEY_get0_RSA
-func EVP_PKEYGet0RSA(pkey *EVP_PKEY) *RsaSt
-
-//go:linkname EVP_PKEYGet1RSA C.EVP_PKEY_get1_RSA
-func EVP_PKEYGet1RSA(pkey *EVP_PKEY) *RsaSt
-
-//go:linkname EVP_PKEYSet1DSA C.EVP_PKEY_set1_DSA
-func EVP_PKEYSet1DSA(pkey *EVP_PKEY, key *DsaSt) c.Int
-
-//go:linkname EVP_PKEYGet0DSA C.EVP_PKEY_get0_DSA
-func EVP_PKEYGet0DSA(pkey *EVP_PKEY) *DsaSt
-
-//go:linkname EVP_PKEYGet1DSA C.EVP_PKEY_get1_DSA
-func EVP_PKEYGet1DSA(pkey *EVP_PKEY) *DsaSt
-
-//go:linkname EVP_PKEYSet1DH C.EVP_PKEY_set1_DH
-func EVP_PKEYSet1DH(pkey *EVP_PKEY, key *DhSt) c.Int
-
-//go:linkname EVP_PKEYGet0DH C.EVP_PKEY_get0_DH
-func EVP_PKEYGet0DH(pkey *EVP_PKEY) *DhSt
-
-//go:linkname EVP_PKEYGet1DH C.EVP_PKEY_get1_DH
-func EVP_PKEYGet1DH(pkey *EVP_PKEY) *DhSt
-
-//go:linkname EVP_PKEYSet1EC_KEY C.EVP_PKEY_set1_EC_KEY
-func EVP_PKEYSet1EC_KEY(pkey *EVP_PKEY, key *EcKeySt) c.Int
-
-//go:linkname EVP_PKEYGet0EC_KEY C.EVP_PKEY_get0_EC_KEY
-func EVP_PKEYGet0EC_KEY(pkey *EVP_PKEY) *EcKeySt
-
-//go:linkname EVP_PKEYGet1EC_KEY C.EVP_PKEY_get1_EC_KEY
-func EVP_PKEYGet1EC_KEY(pkey *EVP_PKEY) *EcKeySt
-
-//go:linkname EVP_PKEYNew C.EVP_PKEY_new
-func EVP_PKEYNew() *EVP_PKEY
-
-//go:linkname EVP_PKEYUpRef C.EVP_PKEY_up_ref
-func EVP_PKEYUpRef(pkey *EVP_PKEY) c.Int
-
-//go:linkname EVP_PKEYDup C.EVP_PKEY_dup
-func EVP_PKEYDup(pkey *EVP_PKEY) *EVP_PKEY
-
-//go:linkname EVP_PKEYFree C.EVP_PKEY_free
-func EVP_PKEYFree(pkey *EVP_PKEY)
-
-//go:linkname EVP_PKEYGet0Description C.EVP_PKEY_get0_description
-func EVP_PKEYGet0Description(pkey *EVP_PKEY) *c.Char
-
-//go:linkname EVP_PKEYGet0Provider C.EVP_PKEY_get0_provider
-func EVP_PKEYGet0Provider(key *EVP_PKEY) *OSSL_PROVIDER
+// llgo:link (*OSSL_LIB_CTX).EVP_RAND_fetch C.EVP_RAND_fetch
+func (self *OSSL_LIB_CTX) EVP_RAND_fetch(algorithm *c.Char, properties *c.Char) *EVP_RAND {
+	return nil
+}
+
+// llgo:link (*EVP_RAND).UpRef C.EVP_RAND_up_ref
+func (self *EVP_RAND) UpRef() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_RAND).Free C.EVP_RAND_free
+func (self *EVP_RAND) Free() {
+}
+
+// llgo:link (*EVP_RAND).Get0Name C.EVP_RAND_get0_name
+func (self *EVP_RAND) Get0Name() *c.Char {
+	return nil
+}
+
+// llgo:link (*EVP_RAND).Get0Description C.EVP_RAND_get0_description
+func (self *EVP_RAND) Get0Description() *c.Char {
+	return nil
+}
+
+// llgo:link (*EVP_RAND).IsA C.EVP_RAND_is_a
+func (self *EVP_RAND) IsA(name *c.Char) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_RAND).Get0Provider C.EVP_RAND_get0_provider
+func (self *EVP_RAND) Get0Provider() *OSSL_PROVIDER {
+	return nil
+}
+
+// llgo:link (*EVP_RAND).Params C.EVP_RAND_get_params
+func (self *EVP_RAND) Params(params *OSSL_PARAM) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_RAND).CTX_new C.EVP_RAND_CTX_new
+func (self *EVP_RAND) CTX_new(parent *EVP_RAND_CTX) *EVP_RAND_CTX {
+	return nil
+}
+
+// llgo:link (*EVP_RAND_CTX).UpRef C.EVP_RAND_CTX_up_ref
+func (self *EVP_RAND_CTX) UpRef() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_RAND_CTX).Free C.EVP_RAND_CTX_free
+func (self *EVP_RAND_CTX) Free() {
+}
+
+// llgo:link (*EVP_RAND_CTX).Get0Rand C.EVP_RAND_CTX_get0_rand
+func (self *EVP_RAND_CTX) Get0Rand() *EVP_RAND {
+	return nil
+}
+
+// llgo:link (*EVP_RAND_CTX).Params C.EVP_RAND_CTX_get_params
+func (self *EVP_RAND_CTX) Params(params *OSSL_PARAM) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_RAND_CTX).SetParams C.EVP_RAND_CTX_set_params
+func (self *EVP_RAND_CTX) SetParams(params *OSSL_PARAM) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_RAND).GettableParams C.EVP_RAND_gettable_params
+func (self *EVP_RAND) GettableParams() *OSSL_PARAM {
+	return nil
+}
+
+// llgo:link (*EVP_RAND).GettableCtxParams C.EVP_RAND_gettable_ctx_params
+func (self *EVP_RAND) GettableCtxParams() *OSSL_PARAM {
+	return nil
+}
+
+// llgo:link (*EVP_RAND).SettableCtxParams C.EVP_RAND_settable_ctx_params
+func (self *EVP_RAND) SettableCtxParams() *OSSL_PARAM {
+	return nil
+}
+
+// llgo:link (*EVP_RAND_CTX).GettableParams C.EVP_RAND_CTX_gettable_params
+func (self *EVP_RAND_CTX) GettableParams() *OSSL_PARAM {
+	return nil
+}
+
+// llgo:link (*EVP_RAND_CTX).SettableParams C.EVP_RAND_CTX_settable_params
+func (self *EVP_RAND_CTX) SettableParams() *OSSL_PARAM {
+	return nil
+}
+
+// llgo:link (*OSSL_LIB_CTX).EVP_RAND_do_all_provided C.EVP_RAND_do_all_provided
+func (self *OSSL_LIB_CTX) EVP_RAND_do_all_provided(fn func(_llcppg_param1 *EVP_RAND, _llcppg_param2 unsafe.Pointer), arg unsafe.Pointer) {
+}
+
+// llgo:link (*EVP_RAND).NamesDoAll C.EVP_RAND_names_do_all
+func (self *EVP_RAND) NamesDoAll(fn func(_llcppg_param1 *c.Char, _llcppg_param2 unsafe.Pointer), data unsafe.Pointer) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_RAND_CTX).Instantiate C.EVP_RAND_instantiate
+func (self *EVP_RAND_CTX) Instantiate(strength c.Uint, prediction_resistance c.Int, pstr *uint8, pstr_len c.SizeT, params *OSSL_PARAM) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_RAND_CTX).Uninstantiate C.EVP_RAND_uninstantiate
+func (self *EVP_RAND_CTX) Uninstantiate() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_RAND_CTX).Generate C.EVP_RAND_generate
+func (self *EVP_RAND_CTX) Generate(out *uint8, outlen c.SizeT, strength c.Uint, prediction_resistance c.Int, addin *uint8, addin_len c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_RAND_CTX).Reseed C.EVP_RAND_reseed
+func (self *EVP_RAND_CTX) Reseed(prediction_resistance c.Int, ent *uint8, ent_len c.SizeT, addin *uint8, addin_len c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_RAND_CTX).Nonce C.EVP_RAND_nonce
+func (self *EVP_RAND_CTX) Nonce(out *uint8, outlen c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_RAND_CTX).EnableLocking C.EVP_RAND_enable_locking
+func (self *EVP_RAND_CTX) EnableLocking() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_RAND_CTX).VerifyZeroization C.EVP_RAND_verify_zeroization
+func (self *EVP_RAND_CTX) VerifyZeroization() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_RAND_CTX).Strength C.EVP_RAND_get_strength
+func (self *EVP_RAND_CTX) Strength() c.Uint {
+	return 0
+}
+
+// llgo:link (*EVP_RAND_CTX).State C.EVP_RAND_get_state
+func (self *EVP_RAND_CTX) State() c.Int {
+	return 0
+}
+
+//go:linkname EVP_PKEY_decrypt_old C.EVP_PKEY_decrypt_old
+func EVP_PKEY_decrypt_old(dec_key *uint8, enc_key *uint8, enc_key_len c.Int, private_key *EVP_PKEY) c.Int
+
+//go:linkname EVP_PKEY_encrypt_old C.EVP_PKEY_encrypt_old
+func EVP_PKEY_encrypt_old(enc_key *uint8, key *uint8, key_len c.Int, pub_key *EVP_PKEY) c.Int
+
+// llgo:link (*EVP_PKEY).IsA C.EVP_PKEY_is_a
+func (self *EVP_PKEY) IsA(name *c.Char) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY).TypeNamesDoAll C.EVP_PKEY_type_names_do_all
+func (self *EVP_PKEY) TypeNamesDoAll(fn func(_llcppg_param1 *c.Char, _llcppg_param2 unsafe.Pointer), data unsafe.Pointer) c.Int {
+	return 0
+}
+
+//go:linkname EVP_PKEY_type C.EVP_PKEY_type
+func EVP_PKEY_type(type_ c.Int) c.Int
+
+// llgo:link (*EVP_PKEY).Id C.EVP_PKEY_get_id
+func (self *EVP_PKEY) Id() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY).BaseId C.EVP_PKEY_get_base_id
+func (self *EVP_PKEY) BaseId() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY).Bits C.EVP_PKEY_get_bits
+func (self *EVP_PKEY) Bits() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY).SecurityBits C.EVP_PKEY_get_security_bits
+func (self *EVP_PKEY) SecurityBits() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY).SecurityCategory C.EVP_PKEY_get_security_category
+func (self *EVP_PKEY) SecurityCategory() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY).Size C.EVP_PKEY_get_size
+func (self *EVP_PKEY) Size() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY).CanSign C.EVP_PKEY_can_sign
+func (self *EVP_PKEY) CanSign() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY).SetType C.EVP_PKEY_set_type
+func (self *EVP_PKEY) SetType(type_ c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY).SetTypeStr C.EVP_PKEY_set_type_str
+func (self *EVP_PKEY) SetTypeStr(str *c.Char, len c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY).SetTypeByKeymgmt C.EVP_PKEY_set_type_by_keymgmt
+func (self *EVP_PKEY) SetTypeByKeymgmt(keymgmt *EVP_KEYMGMT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY).Assign C.EVP_PKEY_assign
+func (self *EVP_PKEY) Assign(type_ c.Int, key unsafe.Pointer) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY).Get0 C.EVP_PKEY_get0
+func (self *EVP_PKEY) Get0() unsafe.Pointer {
+	return nil
+}
+
+// llgo:link (*EVP_PKEY).Get0Hmac C.EVP_PKEY_get0_hmac
+func (self *EVP_PKEY) Get0Hmac(len *c.SizeT) *uint8 {
+	return nil
+}
+
+// llgo:link (*EVP_PKEY).Get0Poly1305 C.EVP_PKEY_get0_poly1305
+func (self *EVP_PKEY) Get0Poly1305(len *c.SizeT) *uint8 {
+	return nil
+}
+
+// llgo:link (*EVP_PKEY).Get0Siphash C.EVP_PKEY_get0_siphash
+func (self *EVP_PKEY) Get0Siphash(len *c.SizeT) *uint8 {
+	return nil
+}
+
+// llgo:link (*EVP_PKEY).Set1_RSA C.EVP_PKEY_set1_RSA
+func (self *EVP_PKEY) Set1_RSA(key *RsaSt) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY).Get0_RSA C.EVP_PKEY_get0_RSA
+func (self *EVP_PKEY) Get0_RSA() *RsaSt {
+	return nil
+}
+
+// llgo:link (*EVP_PKEY).Get1_RSA C.EVP_PKEY_get1_RSA
+func (self *EVP_PKEY) Get1_RSA() *RsaSt {
+	return nil
+}
+
+// llgo:link (*EVP_PKEY).Set1_DSA C.EVP_PKEY_set1_DSA
+func (self *EVP_PKEY) Set1_DSA(key *DsaSt) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY).Get0_DSA C.EVP_PKEY_get0_DSA
+func (self *EVP_PKEY) Get0_DSA() *DsaSt {
+	return nil
+}
+
+// llgo:link (*EVP_PKEY).Get1_DSA C.EVP_PKEY_get1_DSA
+func (self *EVP_PKEY) Get1_DSA() *DsaSt {
+	return nil
+}
+
+// llgo:link (*EVP_PKEY).Set1_DH C.EVP_PKEY_set1_DH
+func (self *EVP_PKEY) Set1_DH(key *DhSt) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY).Get0_DH C.EVP_PKEY_get0_DH
+func (self *EVP_PKEY) Get0_DH() *DhSt {
+	return nil
+}
+
+// llgo:link (*EVP_PKEY).Get1_DH C.EVP_PKEY_get1_DH
+func (self *EVP_PKEY) Get1_DH() *DhSt {
+	return nil
+}
+
+// llgo:link (*EVP_PKEY).Set1_EC_KEY C.EVP_PKEY_set1_EC_KEY
+func (self *EVP_PKEY) Set1_EC_KEY(key *EcKeySt) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY).Get0_EC_KEY C.EVP_PKEY_get0_EC_KEY
+func (self *EVP_PKEY) Get0_EC_KEY() *EcKeySt {
+	return nil
+}
+
+// llgo:link (*EVP_PKEY).Get1_EC_KEY C.EVP_PKEY_get1_EC_KEY
+func (self *EVP_PKEY) Get1_EC_KEY() *EcKeySt {
+	return nil
+}
+
+//go:linkname EVP_PKEY_new C.EVP_PKEY_new
+func EVP_PKEY_new() *EVP_PKEY
+
+// llgo:link (*EVP_PKEY).UpRef C.EVP_PKEY_up_ref
+func (self *EVP_PKEY) UpRef() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY).Dup C.EVP_PKEY_dup
+func (self *EVP_PKEY) Dup() *EVP_PKEY {
+	return self
+}
+
+// llgo:link (*EVP_PKEY).Free C.EVP_PKEY_free
+func (self *EVP_PKEY) Free() {
+}
+
+// llgo:link (*EVP_PKEY).Get0Description C.EVP_PKEY_get0_description
+func (self *EVP_PKEY) Get0Description() *c.Char {
+	return nil
+}
+
+// llgo:link (*EVP_PKEY).Get0Provider C.EVP_PKEY_get0_provider
+func (self *EVP_PKEY) Get0Provider() *OSSL_PROVIDER {
+	return nil
+}
 
 //go:linkname D2iPublicKey C.d2i_PublicKey
 func D2iPublicKey(type_ c.Int, a **EVP_PKEY, pp **uint8, length c.Long) *EVP_PKEY
 
-//go:linkname I2dPublicKey C.i2d_PublicKey
-func I2dPublicKey(a *EVP_PKEY, pp **uint8) c.Int
+// llgo:link (*EVP_PKEY).I2dPublicKey C.i2d_PublicKey
+func (self *EVP_PKEY) I2dPublicKey(pp **uint8) c.Int {
+	return 0
+}
 
 //go:linkname D2iPrivateKeyEx C.d2i_PrivateKey_ex
 func D2iPrivateKeyEx(type_ c.Int, a **EVP_PKEY, pp **uint8, length c.Long, libctx *OSSL_LIB_CTX, propq *c.Char) *EVP_PKEY
@@ -1862,101 +2367,143 @@ func D2iAutoPrivateKeyEx(a **EVP_PKEY, pp **uint8, length c.Long, libctx *OSSL_L
 //go:linkname D2iAutoPrivateKey C.d2i_AutoPrivateKey
 func D2iAutoPrivateKey(a **EVP_PKEY, pp **uint8, length c.Long) *EVP_PKEY
 
-//go:linkname I2dPrivateKey C.i2d_PrivateKey
-func I2dPrivateKey(a *EVP_PKEY, pp **uint8) c.Int
+// llgo:link (*EVP_PKEY).I2dPrivateKey C.i2d_PrivateKey
+func (self *EVP_PKEY) I2dPrivateKey(pp **uint8) c.Int {
+	return 0
+}
 
-//go:linkname I2dPKCS8PrivateKey C.i2d_PKCS8PrivateKey
-func I2dPKCS8PrivateKey(a *EVP_PKEY, pp **uint8) c.Int
+// llgo:link (*EVP_PKEY).I2dPKCS8PrivateKey C.i2d_PKCS8PrivateKey
+func (self *EVP_PKEY) I2dPKCS8PrivateKey(pp **uint8) c.Int {
+	return 0
+}
 
-//go:linkname I2dKeyParams C.i2d_KeyParams
-func I2dKeyParams(a *EVP_PKEY, pp **uint8) c.Int
+// llgo:link (*EVP_PKEY).I2dKeyParams C.i2d_KeyParams
+func (self *EVP_PKEY) I2dKeyParams(pp **uint8) c.Int {
+	return 0
+}
 
 //go:linkname D2iKeyParams C.d2i_KeyParams
 func D2iKeyParams(type_ c.Int, a **EVP_PKEY, pp **uint8, length c.Long) *EVP_PKEY
 
-//go:linkname I2dKeyParamsBio C.i2d_KeyParams_bio
-func I2dKeyParamsBio(bp *BIO, pkey *EVP_PKEY) c.Int
+// llgo:link (*BIO).I2dKeyParamsBio C.i2d_KeyParams_bio
+func (self *BIO) I2dKeyParamsBio(pkey *EVP_PKEY) c.Int {
+	return 0
+}
 
 //go:linkname D2iKeyParamsBio C.d2i_KeyParams_bio
 func D2iKeyParamsBio(type_ c.Int, a **EVP_PKEY, in *BIO) *EVP_PKEY
 
-//go:linkname EVP_PKEYCopyParameters C.EVP_PKEY_copy_parameters
-func EVP_PKEYCopyParameters(to *EVP_PKEY, from *EVP_PKEY) c.Int
+// llgo:link (*EVP_PKEY).CopyParameters C.EVP_PKEY_copy_parameters
+func (self *EVP_PKEY) CopyParameters(from *EVP_PKEY) c.Int {
+	return 0
+}
 
-//go:linkname EVP_PKEYMissingParameters C.EVP_PKEY_missing_parameters
-func EVP_PKEYMissingParameters(pkey *EVP_PKEY) c.Int
+// llgo:link (*EVP_PKEY).MissingParameters C.EVP_PKEY_missing_parameters
+func (self *EVP_PKEY) MissingParameters() c.Int {
+	return 0
+}
 
-//go:linkname EVP_PKEYSaveParameters C.EVP_PKEY_save_parameters
-func EVP_PKEYSaveParameters(pkey *EVP_PKEY, mode c.Int) c.Int
+// llgo:link (*EVP_PKEY).SaveParameters C.EVP_PKEY_save_parameters
+func (self *EVP_PKEY) SaveParameters(mode c.Int) c.Int {
+	return 0
+}
 
-//go:linkname EVP_PKEYParametersEq C.EVP_PKEY_parameters_eq
-func EVP_PKEYParametersEq(a *EVP_PKEY, b *EVP_PKEY) c.Int
+//go:linkname EVP_PKEY_parameters_eq C.EVP_PKEY_parameters_eq
+func EVP_PKEY_parameters_eq(a *EVP_PKEY, b *EVP_PKEY) c.Int
 
-//go:linkname EVP_PKEYEq C.EVP_PKEY_eq
-func EVP_PKEYEq(a *EVP_PKEY, b *EVP_PKEY) c.Int
+//go:linkname EVP_PKEY_eq C.EVP_PKEY_eq
+func EVP_PKEY_eq(a *EVP_PKEY, b *EVP_PKEY) c.Int
 
-//go:linkname EVP_PKEYCmpParameters C.EVP_PKEY_cmp_parameters
-func EVP_PKEYCmpParameters(a *EVP_PKEY, b *EVP_PKEY) c.Int
+//go:linkname EVP_PKEY_cmp_parameters C.EVP_PKEY_cmp_parameters
+func EVP_PKEY_cmp_parameters(a *EVP_PKEY, b *EVP_PKEY) c.Int
 
-//go:linkname EVP_PKEYCmp C.EVP_PKEY_cmp
-func EVP_PKEYCmp(a *EVP_PKEY, b *EVP_PKEY) c.Int
+//go:linkname EVP_PKEY_cmp C.EVP_PKEY_cmp
+func EVP_PKEY_cmp(a *EVP_PKEY, b *EVP_PKEY) c.Int
 
-//go:linkname EVP_PKEYPrintPublic C.EVP_PKEY_print_public
-func EVP_PKEYPrintPublic(out *BIO, pkey *EVP_PKEY, indent c.Int, pctx *ASN1_PCTX) c.Int
+// llgo:link (*BIO).EVP_PKEY_print_public C.EVP_PKEY_print_public
+func (self *BIO) EVP_PKEY_print_public(pkey *EVP_PKEY, indent c.Int, pctx *ASN1_PCTX) c.Int {
+	return 0
+}
 
-//go:linkname EVP_PKEYPrintPrivate C.EVP_PKEY_print_private
-func EVP_PKEYPrintPrivate(out *BIO, pkey *EVP_PKEY, indent c.Int, pctx *ASN1_PCTX) c.Int
+// llgo:link (*BIO).EVP_PKEY_print_private C.EVP_PKEY_print_private
+func (self *BIO) EVP_PKEY_print_private(pkey *EVP_PKEY, indent c.Int, pctx *ASN1_PCTX) c.Int {
+	return 0
+}
 
-//go:linkname EVP_PKEYPrintParams C.EVP_PKEY_print_params
-func EVP_PKEYPrintParams(out *BIO, pkey *EVP_PKEY, indent c.Int, pctx *ASN1_PCTX) c.Int
+// llgo:link (*BIO).EVP_PKEY_print_params C.EVP_PKEY_print_params
+func (self *BIO) EVP_PKEY_print_params(pkey *EVP_PKEY, indent c.Int, pctx *ASN1_PCTX) c.Int {
+	return 0
+}
 
-//go:linkname EVP_PKEYPrintPublicFp C.EVP_PKEY_print_public_fp
-func EVP_PKEYPrintPublicFp(fp *c.FILE, pkey *EVP_PKEY, indent c.Int, pctx *ASN1_PCTX) c.Int
+//go:linkname EVP_PKEY_print_public_fp C.EVP_PKEY_print_public_fp
+func EVP_PKEY_print_public_fp(fp *c.FILE, pkey *EVP_PKEY, indent c.Int, pctx *ASN1_PCTX) c.Int
 
-//go:linkname EVP_PKEYPrintPrivateFp C.EVP_PKEY_print_private_fp
-func EVP_PKEYPrintPrivateFp(fp *c.FILE, pkey *EVP_PKEY, indent c.Int, pctx *ASN1_PCTX) c.Int
+//go:linkname EVP_PKEY_print_private_fp C.EVP_PKEY_print_private_fp
+func EVP_PKEY_print_private_fp(fp *c.FILE, pkey *EVP_PKEY, indent c.Int, pctx *ASN1_PCTX) c.Int
 
-//go:linkname EVP_PKEYPrintParamsFp C.EVP_PKEY_print_params_fp
-func EVP_PKEYPrintParamsFp(fp *c.FILE, pkey *EVP_PKEY, indent c.Int, pctx *ASN1_PCTX) c.Int
+//go:linkname EVP_PKEY_print_params_fp C.EVP_PKEY_print_params_fp
+func EVP_PKEY_print_params_fp(fp *c.FILE, pkey *EVP_PKEY, indent c.Int, pctx *ASN1_PCTX) c.Int
 
-//go:linkname EVP_PKEYGetDefaultDigestNid C.EVP_PKEY_get_default_digest_nid
-func EVP_PKEYGetDefaultDigestNid(pkey *EVP_PKEY, pnid *c.Int) c.Int
+// llgo:link (*EVP_PKEY).DefaultDigestNid C.EVP_PKEY_get_default_digest_nid
+func (self *EVP_PKEY) DefaultDigestNid(pnid *c.Int) c.Int {
+	return 0
+}
 
-//go:linkname EVP_PKEYGetDefaultDigestName C.EVP_PKEY_get_default_digest_name
-func EVP_PKEYGetDefaultDigestName(pkey *EVP_PKEY, mdname *c.Char, mdname_sz c.SizeT) c.Int
+// llgo:link (*EVP_PKEY).DefaultDigestName C.EVP_PKEY_get_default_digest_name
+func (self *EVP_PKEY) DefaultDigestName(mdname *c.Char, mdname_sz c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname EVP_PKEYDigestsignSupportsDigest C.EVP_PKEY_digestsign_supports_digest
-func EVP_PKEYDigestsignSupportsDigest(pkey *EVP_PKEY, libctx *OSSL_LIB_CTX, name *c.Char, propq *c.Char) c.Int
+// llgo:link (*EVP_PKEY).DigestsignSupportsDigest C.EVP_PKEY_digestsign_supports_digest
+func (self *EVP_PKEY) DigestsignSupportsDigest(libctx *OSSL_LIB_CTX, name *c.Char, propq *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname EVP_PKEYSet1EncodedPublicKey C.EVP_PKEY_set1_encoded_public_key
-func EVP_PKEYSet1EncodedPublicKey(pkey *EVP_PKEY, pub *uint8, publen c.SizeT) c.Int
+// llgo:link (*EVP_PKEY).Set1EncodedPublicKey C.EVP_PKEY_set1_encoded_public_key
+func (self *EVP_PKEY) Set1EncodedPublicKey(pub *uint8, publen c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname EVP_PKEYGet1EncodedPublicKey C.EVP_PKEY_get1_encoded_public_key
-func EVP_PKEYGet1EncodedPublicKey(pkey *EVP_PKEY, ppub **uint8) c.SizeT
+// llgo:link (*EVP_PKEY).Get1EncodedPublicKey C.EVP_PKEY_get1_encoded_public_key
+func (self *EVP_PKEY) Get1EncodedPublicKey(ppub **uint8) c.SizeT {
+	return 0
+}
 
 // calls methods
 //
-//go:linkname EVP_CIPHERParamToAsn1 C.EVP_CIPHER_param_to_asn1
-func EVP_CIPHERParamToAsn1(c *EVP_CIPHER_CTX, type_ *ASN1_TYPE) c.Int
+// llgo:link (*EVP_CIPHER_CTX).ParamToAsn1 C.EVP_CIPHER_param_to_asn1
+func (self *EVP_CIPHER_CTX) ParamToAsn1(type_ *ASN1_TYPE) c.Int {
+	return 0
+}
 
-//go:linkname EVP_CIPHERAsn1ToParam C.EVP_CIPHER_asn1_to_param
-func EVP_CIPHERAsn1ToParam(c *EVP_CIPHER_CTX, type_ *ASN1_TYPE) c.Int
+// llgo:link (*EVP_CIPHER_CTX).Asn1ToParam C.EVP_CIPHER_asn1_to_param
+func (self *EVP_CIPHER_CTX) Asn1ToParam(type_ *ASN1_TYPE) c.Int {
+	return 0
+}
 
 // These are used by EVP_CIPHER methods
 //
-//go:linkname EVP_CIPHERSetAsn1Iv C.EVP_CIPHER_set_asn1_iv
-func EVP_CIPHERSetAsn1Iv(c *EVP_CIPHER_CTX, type_ *ASN1_TYPE) c.Int
+// llgo:link (*EVP_CIPHER_CTX).SetAsn1Iv C.EVP_CIPHER_set_asn1_iv
+func (self *EVP_CIPHER_CTX) SetAsn1Iv(type_ *ASN1_TYPE) c.Int {
+	return 0
+}
 
-//go:linkname EVP_CIPHERGetAsn1Iv C.EVP_CIPHER_get_asn1_iv
-func EVP_CIPHERGetAsn1Iv(c *EVP_CIPHER_CTX, type_ *ASN1_TYPE) c.Int
+// llgo:link (*EVP_CIPHER_CTX).Asn1Iv C.EVP_CIPHER_get_asn1_iv
+func (self *EVP_CIPHER_CTX) Asn1Iv(type_ *ASN1_TYPE) c.Int {
+	return 0
+}
 
 // PKCS5 password based encryption
 //
-//go:linkname PKCS5PBEKeyivgen C.PKCS5_PBE_keyivgen
-func PKCS5PBEKeyivgen(ctx *EVP_CIPHER_CTX, pass *c.Char, passlen c.Int, param *ASN1_TYPE, cipher *EVP_CIPHER, md *EVP_MD, en_de c.Int) c.Int
+// llgo:link (*EVP_CIPHER_CTX).PKCS5_PBE_keyivgen C.PKCS5_PBE_keyivgen
+func (self *EVP_CIPHER_CTX) PKCS5_PBE_keyivgen(pass *c.Char, passlen c.Int, param *ASN1_TYPE, cipher *EVP_CIPHER, md *EVP_MD, en_de c.Int) c.Int {
+	return 0
+}
 
-//go:linkname PKCS5PBEKeyivgenEx C.PKCS5_PBE_keyivgen_ex
-func PKCS5PBEKeyivgenEx(cctx *EVP_CIPHER_CTX, pass *c.Char, passlen c.Int, param *ASN1_TYPE, cipher *EVP_CIPHER, md *EVP_MD, en_de c.Int, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int
+// llgo:link (*EVP_CIPHER_CTX).PKCS5_PBE_keyivgen_ex C.PKCS5_PBE_keyivgen_ex
+func (self *EVP_CIPHER_CTX) PKCS5_PBE_keyivgen_ex(pass *c.Char, passlen c.Int, param *ASN1_TYPE, cipher *EVP_CIPHER, md *EVP_MD, en_de c.Int, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int {
+	return 0
+}
 
 //go:linkname PKCS5_PBKDF2_HMAC_SHA1 C.PKCS5_PBKDF2_HMAC_SHA1
 func PKCS5_PBKDF2_HMAC_SHA1(pass *c.Char, passlen c.Int, salt *uint8, saltlen c.Int, iter c.Int, keylen c.Int, out *uint8) c.Int
@@ -1964,674 +2511,1076 @@ func PKCS5_PBKDF2_HMAC_SHA1(pass *c.Char, passlen c.Int, salt *uint8, saltlen c.
 //go:linkname PKCS5_PBKDF2_HMAC C.PKCS5_PBKDF2_HMAC
 func PKCS5_PBKDF2_HMAC(pass *c.Char, passlen c.Int, salt *uint8, saltlen c.Int, iter c.Int, digest *EVP_MD, keylen c.Int, out *uint8) c.Int
 
-//go:linkname PKCS5V2PBEKeyivgen C.PKCS5_v2_PBE_keyivgen
-func PKCS5V2PBEKeyivgen(ctx *EVP_CIPHER_CTX, pass *c.Char, passlen c.Int, param *ASN1_TYPE, cipher *EVP_CIPHER, md *EVP_MD, en_de c.Int) c.Int
-
-//go:linkname PKCS5V2PBEKeyivgenEx C.PKCS5_v2_PBE_keyivgen_ex
-func PKCS5V2PBEKeyivgenEx(ctx *EVP_CIPHER_CTX, pass *c.Char, passlen c.Int, param *ASN1_TYPE, cipher *EVP_CIPHER, md *EVP_MD, en_de c.Int, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int
-
-//go:linkname EVP_PBEScrypt C.EVP_PBE_scrypt
-func EVP_PBEScrypt(pass *c.Char, passlen c.SizeT, salt *uint8, saltlen c.SizeT, N c.Uint64T, r c.Uint64T, p c.Uint64T, maxmem c.Uint64T, key *uint8, keylen c.SizeT) c.Int
-
-//go:linkname EVP_PBEScryptEx C.EVP_PBE_scrypt_ex
-func EVP_PBEScryptEx(pass *c.Char, passlen c.SizeT, salt *uint8, saltlen c.SizeT, N c.Uint64T, r c.Uint64T, p c.Uint64T, maxmem c.Uint64T, key *uint8, keylen c.SizeT, ctx *OSSL_LIB_CTX, propq *c.Char) c.Int
-
-//go:linkname PKCS5V2ScryptKeyivgen C.PKCS5_v2_scrypt_keyivgen
-func PKCS5V2ScryptKeyivgen(ctx *EVP_CIPHER_CTX, pass *c.Char, passlen c.Int, param *ASN1_TYPE, c *EVP_CIPHER, md *EVP_MD, en_de c.Int) c.Int
-
-//go:linkname PKCS5V2ScryptKeyivgenEx C.PKCS5_v2_scrypt_keyivgen_ex
-func PKCS5V2ScryptKeyivgenEx(ctx *EVP_CIPHER_CTX, pass *c.Char, passlen c.Int, param *ASN1_TYPE, c *EVP_CIPHER, md *EVP_MD, en_de c.Int, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int
-
-//go:linkname PKCS5PBEAdd C.PKCS5_PBE_add
-func PKCS5PBEAdd()
-
-//go:linkname EVP_PBE_CipherInit C.EVP_PBE_CipherInit
-func EVP_PBE_CipherInit(pbe_obj *ASN1_OBJECT, pass *c.Char, passlen c.Int, param *ASN1_TYPE, ctx *EVP_CIPHER_CTX, en_de c.Int) c.Int
-
-//go:linkname EVP_PBECipherInitEx C.EVP_PBE_CipherInit_ex
-func EVP_PBECipherInitEx(pbe_obj *ASN1_OBJECT, pass *c.Char, passlen c.Int, param *ASN1_TYPE, ctx *EVP_CIPHER_CTX, en_de c.Int, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int
-
-//go:linkname EVP_PBEAlgAddType C.EVP_PBE_alg_add_type
-func EVP_PBEAlgAddType(pbe_type c.Int, pbe_nid c.Int, cipher_nid c.Int, md_nid c.Int, keygen *EVP_PBE_KEYGEN) c.Int
-
-//go:linkname EVP_PBEAlgAdd C.EVP_PBE_alg_add
-func EVP_PBEAlgAdd(nid c.Int, cipher *EVP_CIPHER, md *EVP_MD, keygen *EVP_PBE_KEYGEN) c.Int
-
-//go:linkname EVP_PBEFind C.EVP_PBE_find
-func EVP_PBEFind(type_ c.Int, pbe_nid c.Int, pcnid *c.Int, pmnid *c.Int, pkeygen **EVP_PBE_KEYGEN) c.Int
-
-//go:linkname EVP_PBEFindEx C.EVP_PBE_find_ex
-func EVP_PBEFindEx(type_ c.Int, pbe_nid c.Int, pcnid *c.Int, pmnid *c.Int, pkeygen **EVP_PBE_KEYGEN, pkeygen_ex **EVP_PBE_KEYGEN_EX) c.Int
-
-//go:linkname EVP_PBECleanup C.EVP_PBE_cleanup
-func EVP_PBECleanup()
-
-//go:linkname EVP_PBEGet C.EVP_PBE_get
-func EVP_PBEGet(ptype *c.Int, ppbe_nid *c.Int, num c.SizeT) c.Int
-
-//go:linkname EVP_PKEY_CTXGetSignatureMd C.EVP_PKEY_CTX_get_signature_md
-func EVP_PKEY_CTXGetSignatureMd(ctx *EVP_PKEY_CTX, md **EVP_MD) c.Int
-
-//go:linkname EVP_PKEY_CTXSetSignatureMd C.EVP_PKEY_CTX_set_signature_md
-func EVP_PKEY_CTXSetSignatureMd(ctx *EVP_PKEY_CTX, md *EVP_MD) c.Int
-
-//go:linkname EVP_PKEY_CTXSet1Id C.EVP_PKEY_CTX_set1_id
-func EVP_PKEY_CTXSet1Id(ctx *EVP_PKEY_CTX, id unsafe.Pointer, len c.Int) c.Int
-
-//go:linkname EVP_PKEY_CTXGet1Id C.EVP_PKEY_CTX_get1_id
-func EVP_PKEY_CTXGet1Id(ctx *EVP_PKEY_CTX, id unsafe.Pointer) c.Int
-
-//go:linkname EVP_PKEY_CTXGet1IdLen C.EVP_PKEY_CTX_get1_id_len
-func EVP_PKEY_CTXGet1IdLen(ctx *EVP_PKEY_CTX, id_len *c.SizeT) c.Int
-
-//go:linkname EVP_PKEY_CTXSetKemOp C.EVP_PKEY_CTX_set_kem_op
-func EVP_PKEY_CTXSetKemOp(ctx *EVP_PKEY_CTX, op *c.Char) c.Int
-
-//go:linkname EVP_PKEYGet0TypeName C.EVP_PKEY_get0_type_name
-func EVP_PKEYGet0TypeName(key *EVP_PKEY) *c.Char
-
-//go:linkname EVP_PKEY_CTXSetMacKey C.EVP_PKEY_CTX_set_mac_key
-func EVP_PKEY_CTXSetMacKey(ctx *EVP_PKEY_CTX, key *uint8, keylen c.Int) c.Int
-
-//go:linkname EVP_KEYMGMTFetch C.EVP_KEYMGMT_fetch
-func EVP_KEYMGMTFetch(ctx *OSSL_LIB_CTX, algorithm *c.Char, properties *c.Char) *EVP_KEYMGMT
-
-//go:linkname EVP_KEYMGMTUpRef C.EVP_KEYMGMT_up_ref
-func EVP_KEYMGMTUpRef(keymgmt *EVP_KEYMGMT) c.Int
-
-//go:linkname EVP_KEYMGMTFree C.EVP_KEYMGMT_free
-func EVP_KEYMGMTFree(keymgmt *EVP_KEYMGMT)
-
-//go:linkname EVP_KEYMGMTGet0Provider C.EVP_KEYMGMT_get0_provider
-func EVP_KEYMGMTGet0Provider(keymgmt *EVP_KEYMGMT) *OSSL_PROVIDER
-
-//go:linkname EVP_KEYMGMTGet0Name C.EVP_KEYMGMT_get0_name
-func EVP_KEYMGMTGet0Name(keymgmt *EVP_KEYMGMT) *c.Char
-
-//go:linkname EVP_KEYMGMTGet0Description C.EVP_KEYMGMT_get0_description
-func EVP_KEYMGMTGet0Description(keymgmt *EVP_KEYMGMT) *c.Char
-
-//go:linkname EVP_KEYMGMTIsA C.EVP_KEYMGMT_is_a
-func EVP_KEYMGMTIsA(keymgmt *EVP_KEYMGMT, name *c.Char) c.Int
-
-//go:linkname EVP_KEYMGMTDoAllProvided C.EVP_KEYMGMT_do_all_provided
-func EVP_KEYMGMTDoAllProvided(libctx *OSSL_LIB_CTX, fn func(_llcppg_param1 *EVP_KEYMGMT, _llcppg_param2 unsafe.Pointer), arg unsafe.Pointer)
-
-//go:linkname EVP_KEYMGMTNamesDoAll C.EVP_KEYMGMT_names_do_all
-func EVP_KEYMGMTNamesDoAll(keymgmt *EVP_KEYMGMT, fn func(_llcppg_param1 *c.Char, _llcppg_param2 unsafe.Pointer), data unsafe.Pointer) c.Int
-
-//go:linkname EVP_KEYMGMTGettableParams C.EVP_KEYMGMT_gettable_params
-func EVP_KEYMGMTGettableParams(keymgmt *EVP_KEYMGMT) *OSSL_PARAM
-
-//go:linkname EVP_KEYMGMTSettableParams C.EVP_KEYMGMT_settable_params
-func EVP_KEYMGMTSettableParams(keymgmt *EVP_KEYMGMT) *OSSL_PARAM
-
-//go:linkname EVP_KEYMGMTGenSettableParams C.EVP_KEYMGMT_gen_settable_params
-func EVP_KEYMGMTGenSettableParams(keymgmt *EVP_KEYMGMT) *OSSL_PARAM
-
-//go:linkname EVP_KEYMGMTGenGettableParams C.EVP_KEYMGMT_gen_gettable_params
-func EVP_KEYMGMTGenGettableParams(keymgmt *EVP_KEYMGMT) *OSSL_PARAM
-
-//go:linkname EVP_SKEYMGMTFetch C.EVP_SKEYMGMT_fetch
-func EVP_SKEYMGMTFetch(ctx *OSSL_LIB_CTX, algorithm *c.Char, properties *c.Char) *EVP_SKEYMGMT
-
-//go:linkname EVP_SKEYMGMTUpRef C.EVP_SKEYMGMT_up_ref
-func EVP_SKEYMGMTUpRef(keymgmt *EVP_SKEYMGMT) c.Int
-
-//go:linkname EVP_SKEYMGMTFree C.EVP_SKEYMGMT_free
-func EVP_SKEYMGMTFree(keymgmt *EVP_SKEYMGMT)
-
-//go:linkname EVP_SKEYMGMTGet0Provider C.EVP_SKEYMGMT_get0_provider
-func EVP_SKEYMGMTGet0Provider(keymgmt *EVP_SKEYMGMT) *OSSL_PROVIDER
-
-//go:linkname EVP_SKEYMGMTGet0Name C.EVP_SKEYMGMT_get0_name
-func EVP_SKEYMGMTGet0Name(keymgmt *EVP_SKEYMGMT) *c.Char
-
-//go:linkname EVP_SKEYMGMTGet0Description C.EVP_SKEYMGMT_get0_description
-func EVP_SKEYMGMTGet0Description(keymgmt *EVP_SKEYMGMT) *c.Char
-
-//go:linkname EVP_SKEYMGMTIsA C.EVP_SKEYMGMT_is_a
-func EVP_SKEYMGMTIsA(keymgmt *EVP_SKEYMGMT, name *c.Char) c.Int
-
-//go:linkname EVP_SKEYMGMTDoAllProvided C.EVP_SKEYMGMT_do_all_provided
-func EVP_SKEYMGMTDoAllProvided(libctx *OSSL_LIB_CTX, fn func(_llcppg_param1 *EVP_SKEYMGMT, _llcppg_param2 unsafe.Pointer), arg unsafe.Pointer)
-
-//go:linkname EVP_SKEYMGMTNamesDoAll C.EVP_SKEYMGMT_names_do_all
-func EVP_SKEYMGMTNamesDoAll(keymgmt *EVP_SKEYMGMT, fn func(_llcppg_param1 *c.Char, _llcppg_param2 unsafe.Pointer), data unsafe.Pointer) c.Int
-
-//go:linkname EVP_SKEYMGMTGet0GenSettableParams C.EVP_SKEYMGMT_get0_gen_settable_params
-func EVP_SKEYMGMTGet0GenSettableParams(skeymgmt *EVP_SKEYMGMT) *OSSL_PARAM
-
-//go:linkname EVP_SKEYMGMTGet0ImpSettableParams C.EVP_SKEYMGMT_get0_imp_settable_params
-func EVP_SKEYMGMTGet0ImpSettableParams(skeymgmt *EVP_SKEYMGMT) *OSSL_PARAM
-
-//go:linkname EVP_PKEY_CTXNew C.EVP_PKEY_CTX_new
-func EVP_PKEY_CTXNew(pkey *EVP_PKEY, e *ENGINE) *EVP_PKEY_CTX
-
-//go:linkname EVP_PKEY_CTXNewId C.EVP_PKEY_CTX_new_id
-func EVP_PKEY_CTXNewId(id c.Int, e *ENGINE) *EVP_PKEY_CTX
-
-//go:linkname EVP_PKEY_CTXNewFromName C.EVP_PKEY_CTX_new_from_name
-func EVP_PKEY_CTXNewFromName(libctx *OSSL_LIB_CTX, name *c.Char, propquery *c.Char) *EVP_PKEY_CTX
-
-//go:linkname EVP_PKEY_CTXNewFromPkey C.EVP_PKEY_CTX_new_from_pkey
-func EVP_PKEY_CTXNewFromPkey(libctx *OSSL_LIB_CTX, pkey *EVP_PKEY, propquery *c.Char) *EVP_PKEY_CTX
-
-//go:linkname EVP_PKEY_CTXDup C.EVP_PKEY_CTX_dup
-func EVP_PKEY_CTXDup(ctx *EVP_PKEY_CTX) *EVP_PKEY_CTX
-
-//go:linkname EVP_PKEY_CTXFree C.EVP_PKEY_CTX_free
-func EVP_PKEY_CTXFree(ctx *EVP_PKEY_CTX)
-
-//go:linkname EVP_PKEY_CTXIsA C.EVP_PKEY_CTX_is_a
-func EVP_PKEY_CTXIsA(ctx *EVP_PKEY_CTX, keytype *c.Char) c.Int
-
-//go:linkname EVP_PKEY_CTXGetParams C.EVP_PKEY_CTX_get_params
-func EVP_PKEY_CTXGetParams(ctx *EVP_PKEY_CTX, params *OSSL_PARAM) c.Int
-
-//go:linkname EVP_PKEY_CTXGettableParams C.EVP_PKEY_CTX_gettable_params
-func EVP_PKEY_CTXGettableParams(ctx *EVP_PKEY_CTX) *OSSL_PARAM
-
-//go:linkname EVP_PKEY_CTXSetParams C.EVP_PKEY_CTX_set_params
-func EVP_PKEY_CTXSetParams(ctx *EVP_PKEY_CTX, params *OSSL_PARAM) c.Int
-
-//go:linkname EVP_PKEY_CTXSettableParams C.EVP_PKEY_CTX_settable_params
-func EVP_PKEY_CTXSettableParams(ctx *EVP_PKEY_CTX) *OSSL_PARAM
-
-//go:linkname EVP_PKEY_CTXSetAlgorParams C.EVP_PKEY_CTX_set_algor_params
-func EVP_PKEY_CTXSetAlgorParams(ctx *EVP_PKEY_CTX, alg *X509_ALGOR) c.Int
-
-//go:linkname EVP_PKEY_CTXGetAlgorParams C.EVP_PKEY_CTX_get_algor_params
-func EVP_PKEY_CTXGetAlgorParams(ctx *EVP_PKEY_CTX, alg *X509_ALGOR) c.Int
-
-//go:linkname EVP_PKEY_CTXGetAlgor C.EVP_PKEY_CTX_get_algor
-func EVP_PKEY_CTXGetAlgor(ctx *EVP_PKEY_CTX, alg **X509_ALGOR) c.Int
-
-//go:linkname EVP_PKEY_CTXCtrl C.EVP_PKEY_CTX_ctrl
-func EVP_PKEY_CTXCtrl(ctx *EVP_PKEY_CTX, keytype c.Int, optype c.Int, cmd c.Int, p1 c.Int, p2 unsafe.Pointer) c.Int
-
-//go:linkname EVP_PKEY_CTXCtrlStr C.EVP_PKEY_CTX_ctrl_str
-func EVP_PKEY_CTXCtrlStr(ctx *EVP_PKEY_CTX, type_ *c.Char, value *c.Char) c.Int
-
-//go:linkname EVP_PKEY_CTXCtrlUint64 C.EVP_PKEY_CTX_ctrl_uint64
-func EVP_PKEY_CTXCtrlUint64(ctx *EVP_PKEY_CTX, keytype c.Int, optype c.Int, cmd c.Int, value c.Uint64T) c.Int
-
-//go:linkname EVP_PKEY_CTXStr2ctrl C.EVP_PKEY_CTX_str2ctrl
-func EVP_PKEY_CTXStr2ctrl(ctx *EVP_PKEY_CTX, cmd c.Int, str *c.Char) c.Int
-
-//go:linkname EVP_PKEY_CTXHex2ctrl C.EVP_PKEY_CTX_hex2ctrl
-func EVP_PKEY_CTXHex2ctrl(ctx *EVP_PKEY_CTX, cmd c.Int, hex *c.Char) c.Int
-
-//go:linkname EVP_PKEY_CTXMd C.EVP_PKEY_CTX_md
-func EVP_PKEY_CTXMd(ctx *EVP_PKEY_CTX, optype c.Int, cmd c.Int, md *c.Char) c.Int
-
-//go:linkname EVP_PKEY_CTXGetOperation C.EVP_PKEY_CTX_get_operation
-func EVP_PKEY_CTXGetOperation(ctx *EVP_PKEY_CTX) c.Int
-
-//go:linkname EVP_PKEY_CTXSet0KeygenInfo C.EVP_PKEY_CTX_set0_keygen_info
-func EVP_PKEY_CTXSet0KeygenInfo(ctx *EVP_PKEY_CTX, dat *c.Int, datlen c.Int)
-
-//go:linkname EVP_PKEYNewMacKey C.EVP_PKEY_new_mac_key
-func EVP_PKEYNewMacKey(type_ c.Int, e *ENGINE, key *uint8, keylen c.Int) *EVP_PKEY
-
-//go:linkname EVP_PKEYNewRawPrivateKeyEx C.EVP_PKEY_new_raw_private_key_ex
-func EVP_PKEYNewRawPrivateKeyEx(libctx *OSSL_LIB_CTX, keytype *c.Char, propq *c.Char, priv *uint8, len c.SizeT) *EVP_PKEY
-
-//go:linkname EVP_PKEYNewRawPrivateKey C.EVP_PKEY_new_raw_private_key
-func EVP_PKEYNewRawPrivateKey(type_ c.Int, e *ENGINE, priv *uint8, len c.SizeT) *EVP_PKEY
-
-//go:linkname EVP_PKEYNewRawPublicKeyEx C.EVP_PKEY_new_raw_public_key_ex
-func EVP_PKEYNewRawPublicKeyEx(libctx *OSSL_LIB_CTX, keytype *c.Char, propq *c.Char, pub *uint8, len c.SizeT) *EVP_PKEY
-
-//go:linkname EVP_PKEYNewRawPublicKey C.EVP_PKEY_new_raw_public_key
-func EVP_PKEYNewRawPublicKey(type_ c.Int, e *ENGINE, pub *uint8, len c.SizeT) *EVP_PKEY
-
-//go:linkname EVP_PKEYGetRawPrivateKey C.EVP_PKEY_get_raw_private_key
-func EVP_PKEYGetRawPrivateKey(pkey *EVP_PKEY, priv *uint8, len *c.SizeT) c.Int
-
-//go:linkname EVP_PKEYGetRawPublicKey C.EVP_PKEY_get_raw_public_key
-func EVP_PKEYGetRawPublicKey(pkey *EVP_PKEY, pub *uint8, len *c.SizeT) c.Int
-
-//go:linkname EVP_PKEYNewCMACKey C.EVP_PKEY_new_CMAC_key
-func EVP_PKEYNewCMACKey(e *ENGINE, priv *uint8, len c.SizeT, cipher *EVP_CIPHER) *EVP_PKEY
-
-//go:linkname EVP_PKEY_CTXSetData C.EVP_PKEY_CTX_set_data
-func EVP_PKEY_CTXSetData(ctx *EVP_PKEY_CTX, data unsafe.Pointer)
-
-//go:linkname EVP_PKEY_CTXGetData C.EVP_PKEY_CTX_get_data
-func EVP_PKEY_CTXGetData(ctx *EVP_PKEY_CTX) unsafe.Pointer
-
-//go:linkname EVP_PKEY_CTXGet0Pkey C.EVP_PKEY_CTX_get0_pkey
-func EVP_PKEY_CTXGet0Pkey(ctx *EVP_PKEY_CTX) *EVP_PKEY
-
-//go:linkname EVP_PKEY_CTXGet0Peerkey C.EVP_PKEY_CTX_get0_peerkey
-func EVP_PKEY_CTXGet0Peerkey(ctx *EVP_PKEY_CTX) *EVP_PKEY
-
-//go:linkname EVP_PKEY_CTXSetAppData C.EVP_PKEY_CTX_set_app_data
-func EVP_PKEY_CTXSetAppData(ctx *EVP_PKEY_CTX, data unsafe.Pointer)
-
-//go:linkname EVP_PKEY_CTXGetAppData C.EVP_PKEY_CTX_get_app_data
-func EVP_PKEY_CTXGetAppData(ctx *EVP_PKEY_CTX) unsafe.Pointer
-
-//go:linkname EVP_PKEY_CTXSetSignature C.EVP_PKEY_CTX_set_signature
-func EVP_PKEY_CTXSetSignature(pctx *EVP_PKEY_CTX, sig *uint8, siglen c.SizeT) c.Int
-
-//go:linkname EVP_SIGNATUREFree C.EVP_SIGNATURE_free
-func EVP_SIGNATUREFree(signature *EVP_SIGNATURE)
-
-//go:linkname EVP_SIGNATUREUpRef C.EVP_SIGNATURE_up_ref
-func EVP_SIGNATUREUpRef(signature *EVP_SIGNATURE) c.Int
-
-//go:linkname EVP_SIGNATUREGet0Provider C.EVP_SIGNATURE_get0_provider
-func EVP_SIGNATUREGet0Provider(signature *EVP_SIGNATURE) *OSSL_PROVIDER
-
-//go:linkname EVP_SIGNATUREFetch C.EVP_SIGNATURE_fetch
-func EVP_SIGNATUREFetch(ctx *OSSL_LIB_CTX, algorithm *c.Char, properties *c.Char) *EVP_SIGNATURE
-
-//go:linkname EVP_SIGNATUREIsA C.EVP_SIGNATURE_is_a
-func EVP_SIGNATUREIsA(signature *EVP_SIGNATURE, name *c.Char) c.Int
-
-//go:linkname EVP_SIGNATUREGet0Name C.EVP_SIGNATURE_get0_name
-func EVP_SIGNATUREGet0Name(signature *EVP_SIGNATURE) *c.Char
-
-//go:linkname EVP_SIGNATUREGet0Description C.EVP_SIGNATURE_get0_description
-func EVP_SIGNATUREGet0Description(signature *EVP_SIGNATURE) *c.Char
-
-//go:linkname EVP_SIGNATUREDoAllProvided C.EVP_SIGNATURE_do_all_provided
-func EVP_SIGNATUREDoAllProvided(libctx *OSSL_LIB_CTX, fn func(_llcppg_param1 *EVP_SIGNATURE, _llcppg_param2 unsafe.Pointer), data unsafe.Pointer)
-
-//go:linkname EVP_SIGNATURENamesDoAll C.EVP_SIGNATURE_names_do_all
-func EVP_SIGNATURENamesDoAll(signature *EVP_SIGNATURE, fn func(_llcppg_param1 *c.Char, _llcppg_param2 unsafe.Pointer), data unsafe.Pointer) c.Int
-
-//go:linkname EVP_SIGNATUREGettableCtxParams C.EVP_SIGNATURE_gettable_ctx_params
-func EVP_SIGNATUREGettableCtxParams(sig *EVP_SIGNATURE) *OSSL_PARAM
-
-//go:linkname EVP_SIGNATURESettableCtxParams C.EVP_SIGNATURE_settable_ctx_params
-func EVP_SIGNATURESettableCtxParams(sig *EVP_SIGNATURE) *OSSL_PARAM
-
-//go:linkname EVP_SIGNATUREHasMessageUpdate C.EVP_SIGNATURE_has_message_update
-func EVP_SIGNATUREHasMessageUpdate(sig *EVP_SIGNATURE) c.Int
-
-//go:linkname EVP_ASYM_CIPHERFree C.EVP_ASYM_CIPHER_free
-func EVP_ASYM_CIPHERFree(cipher *EVP_ASYM_CIPHER)
-
-//go:linkname EVP_ASYM_CIPHERUpRef C.EVP_ASYM_CIPHER_up_ref
-func EVP_ASYM_CIPHERUpRef(cipher *EVP_ASYM_CIPHER) c.Int
-
-//go:linkname EVP_ASYM_CIPHERGet0Provider C.EVP_ASYM_CIPHER_get0_provider
-func EVP_ASYM_CIPHERGet0Provider(cipher *EVP_ASYM_CIPHER) *OSSL_PROVIDER
-
-//go:linkname EVP_ASYM_CIPHERFetch C.EVP_ASYM_CIPHER_fetch
-func EVP_ASYM_CIPHERFetch(ctx *OSSL_LIB_CTX, algorithm *c.Char, properties *c.Char) *EVP_ASYM_CIPHER
-
-//go:linkname EVP_ASYM_CIPHERIsA C.EVP_ASYM_CIPHER_is_a
-func EVP_ASYM_CIPHERIsA(cipher *EVP_ASYM_CIPHER, name *c.Char) c.Int
-
-//go:linkname EVP_ASYM_CIPHERGet0Name C.EVP_ASYM_CIPHER_get0_name
-func EVP_ASYM_CIPHERGet0Name(cipher *EVP_ASYM_CIPHER) *c.Char
-
-//go:linkname EVP_ASYM_CIPHERGet0Description C.EVP_ASYM_CIPHER_get0_description
-func EVP_ASYM_CIPHERGet0Description(cipher *EVP_ASYM_CIPHER) *c.Char
-
-//go:linkname EVP_ASYM_CIPHERDoAllProvided C.EVP_ASYM_CIPHER_do_all_provided
-func EVP_ASYM_CIPHERDoAllProvided(libctx *OSSL_LIB_CTX, fn func(_llcppg_param1 *EVP_ASYM_CIPHER, _llcppg_param2 unsafe.Pointer), arg unsafe.Pointer)
-
-//go:linkname EVP_ASYM_CIPHERNamesDoAll C.EVP_ASYM_CIPHER_names_do_all
-func EVP_ASYM_CIPHERNamesDoAll(cipher *EVP_ASYM_CIPHER, fn func(_llcppg_param1 *c.Char, _llcppg_param2 unsafe.Pointer), data unsafe.Pointer) c.Int
-
-//go:linkname EVP_ASYM_CIPHERGettableCtxParams C.EVP_ASYM_CIPHER_gettable_ctx_params
-func EVP_ASYM_CIPHERGettableCtxParams(ciph *EVP_ASYM_CIPHER) *OSSL_PARAM
-
-//go:linkname EVP_ASYM_CIPHERSettableCtxParams C.EVP_ASYM_CIPHER_settable_ctx_params
-func EVP_ASYM_CIPHERSettableCtxParams(ciph *EVP_ASYM_CIPHER) *OSSL_PARAM
-
-//go:linkname EVP_KEMFree C.EVP_KEM_free
-func EVP_KEMFree(wrap *EVP_KEM)
-
-//go:linkname EVP_KEMUpRef C.EVP_KEM_up_ref
-func EVP_KEMUpRef(wrap *EVP_KEM) c.Int
-
-//go:linkname EVP_KEMGet0Provider C.EVP_KEM_get0_provider
-func EVP_KEMGet0Provider(wrap *EVP_KEM) *OSSL_PROVIDER
-
-//go:linkname EVP_KEMFetch C.EVP_KEM_fetch
-func EVP_KEMFetch(ctx *OSSL_LIB_CTX, algorithm *c.Char, properties *c.Char) *EVP_KEM
-
-//go:linkname EVP_KEMIsA C.EVP_KEM_is_a
-func EVP_KEMIsA(wrap *EVP_KEM, name *c.Char) c.Int
-
-//go:linkname EVP_KEMGet0Name C.EVP_KEM_get0_name
-func EVP_KEMGet0Name(wrap *EVP_KEM) *c.Char
-
-//go:linkname EVP_KEMGet0Description C.EVP_KEM_get0_description
-func EVP_KEMGet0Description(wrap *EVP_KEM) *c.Char
-
-//go:linkname EVP_KEMDoAllProvided C.EVP_KEM_do_all_provided
-func EVP_KEMDoAllProvided(libctx *OSSL_LIB_CTX, fn func(_llcppg_param1 *EVP_KEM, _llcppg_param2 unsafe.Pointer), arg unsafe.Pointer)
-
-//go:linkname EVP_KEMNamesDoAll C.EVP_KEM_names_do_all
-func EVP_KEMNamesDoAll(wrap *EVP_KEM, fn func(_llcppg_param1 *c.Char, _llcppg_param2 unsafe.Pointer), data unsafe.Pointer) c.Int
-
-//go:linkname EVP_KEMGettableCtxParams C.EVP_KEM_gettable_ctx_params
-func EVP_KEMGettableCtxParams(kem *EVP_KEM) *OSSL_PARAM
-
-//go:linkname EVP_KEMSettableCtxParams C.EVP_KEM_settable_ctx_params
-func EVP_KEMSettableCtxParams(kem *EVP_KEM) *OSSL_PARAM
-
-//go:linkname EVP_PKEYSignInit C.EVP_PKEY_sign_init
-func EVP_PKEYSignInit(ctx *EVP_PKEY_CTX) c.Int
-
-//go:linkname EVP_PKEYSignInitEx C.EVP_PKEY_sign_init_ex
-func EVP_PKEYSignInitEx(ctx *EVP_PKEY_CTX, params *OSSL_PARAM) c.Int
-
-//go:linkname EVP_PKEYSignInitEx2 C.EVP_PKEY_sign_init_ex2
-func EVP_PKEYSignInitEx2(ctx *EVP_PKEY_CTX, algo *EVP_SIGNATURE, params *OSSL_PARAM) c.Int
-
-//go:linkname EVP_PKEYSign C.EVP_PKEY_sign
-func EVP_PKEYSign(ctx *EVP_PKEY_CTX, sig *uint8, siglen *c.SizeT, tbs *uint8, tbslen c.SizeT) c.Int
-
-//go:linkname EVP_PKEYSignMessageInit C.EVP_PKEY_sign_message_init
-func EVP_PKEYSignMessageInit(ctx *EVP_PKEY_CTX, algo *EVP_SIGNATURE, params *OSSL_PARAM) c.Int
-
-//go:linkname EVP_PKEYSignMessageUpdate C.EVP_PKEY_sign_message_update
-func EVP_PKEYSignMessageUpdate(ctx *EVP_PKEY_CTX, in *uint8, inlen c.SizeT) c.Int
-
-//go:linkname EVP_PKEYSignMessageFinal C.EVP_PKEY_sign_message_final
-func EVP_PKEYSignMessageFinal(ctx *EVP_PKEY_CTX, sig *uint8, siglen *c.SizeT) c.Int
-
-//go:linkname EVP_PKEYVerifyInit C.EVP_PKEY_verify_init
-func EVP_PKEYVerifyInit(ctx *EVP_PKEY_CTX) c.Int
-
-//go:linkname EVP_PKEYVerifyInitEx C.EVP_PKEY_verify_init_ex
-func EVP_PKEYVerifyInitEx(ctx *EVP_PKEY_CTX, params *OSSL_PARAM) c.Int
-
-//go:linkname EVP_PKEYVerifyInitEx2 C.EVP_PKEY_verify_init_ex2
-func EVP_PKEYVerifyInitEx2(ctx *EVP_PKEY_CTX, algo *EVP_SIGNATURE, params *OSSL_PARAM) c.Int
-
-//go:linkname EVP_PKEYVerify C.EVP_PKEY_verify
-func EVP_PKEYVerify(ctx *EVP_PKEY_CTX, sig *uint8, siglen c.SizeT, tbs *uint8, tbslen c.SizeT) c.Int
-
-//go:linkname EVP_PKEYVerifyMessageInit C.EVP_PKEY_verify_message_init
-func EVP_PKEYVerifyMessageInit(ctx *EVP_PKEY_CTX, algo *EVP_SIGNATURE, params *OSSL_PARAM) c.Int
-
-//go:linkname EVP_PKEYVerifyMessageUpdate C.EVP_PKEY_verify_message_update
-func EVP_PKEYVerifyMessageUpdate(ctx *EVP_PKEY_CTX, in *uint8, inlen c.SizeT) c.Int
-
-//go:linkname EVP_PKEYVerifyMessageFinal C.EVP_PKEY_verify_message_final
-func EVP_PKEYVerifyMessageFinal(ctx *EVP_PKEY_CTX) c.Int
-
-//go:linkname EVP_PKEYVerifyRecoverInit C.EVP_PKEY_verify_recover_init
-func EVP_PKEYVerifyRecoverInit(ctx *EVP_PKEY_CTX) c.Int
-
-//go:linkname EVP_PKEYVerifyRecoverInitEx C.EVP_PKEY_verify_recover_init_ex
-func EVP_PKEYVerifyRecoverInitEx(ctx *EVP_PKEY_CTX, params *OSSL_PARAM) c.Int
-
-//go:linkname EVP_PKEYVerifyRecoverInitEx2 C.EVP_PKEY_verify_recover_init_ex2
-func EVP_PKEYVerifyRecoverInitEx2(ctx *EVP_PKEY_CTX, algo *EVP_SIGNATURE, params *OSSL_PARAM) c.Int
-
-//go:linkname EVP_PKEYVerifyRecover C.EVP_PKEY_verify_recover
-func EVP_PKEYVerifyRecover(ctx *EVP_PKEY_CTX, rout *uint8, routlen *c.SizeT, sig *uint8, siglen c.SizeT) c.Int
-
-//go:linkname EVP_PKEYEncryptInit C.EVP_PKEY_encrypt_init
-func EVP_PKEYEncryptInit(ctx *EVP_PKEY_CTX) c.Int
-
-//go:linkname EVP_PKEYEncryptInitEx C.EVP_PKEY_encrypt_init_ex
-func EVP_PKEYEncryptInitEx(ctx *EVP_PKEY_CTX, params *OSSL_PARAM) c.Int
-
-//go:linkname EVP_PKEYEncrypt C.EVP_PKEY_encrypt
-func EVP_PKEYEncrypt(ctx *EVP_PKEY_CTX, out *uint8, outlen *c.SizeT, in *uint8, inlen c.SizeT) c.Int
-
-//go:linkname EVP_PKEYDecryptInit C.EVP_PKEY_decrypt_init
-func EVP_PKEYDecryptInit(ctx *EVP_PKEY_CTX) c.Int
-
-//go:linkname EVP_PKEYDecryptInitEx C.EVP_PKEY_decrypt_init_ex
-func EVP_PKEYDecryptInitEx(ctx *EVP_PKEY_CTX, params *OSSL_PARAM) c.Int
-
-//go:linkname EVP_PKEYDecrypt C.EVP_PKEY_decrypt
-func EVP_PKEYDecrypt(ctx *EVP_PKEY_CTX, out *uint8, outlen *c.SizeT, in *uint8, inlen c.SizeT) c.Int
-
-//go:linkname EVP_PKEYDeriveInit C.EVP_PKEY_derive_init
-func EVP_PKEYDeriveInit(ctx *EVP_PKEY_CTX) c.Int
-
-//go:linkname EVP_PKEYDeriveInitEx C.EVP_PKEY_derive_init_ex
-func EVP_PKEYDeriveInitEx(ctx *EVP_PKEY_CTX, params *OSSL_PARAM) c.Int
-
-//go:linkname EVP_PKEYDeriveSetPeerEx C.EVP_PKEY_derive_set_peer_ex
-func EVP_PKEYDeriveSetPeerEx(ctx *EVP_PKEY_CTX, peer *EVP_PKEY, validate_peer c.Int) c.Int
-
-//go:linkname EVP_PKEYDeriveSetPeer C.EVP_PKEY_derive_set_peer
-func EVP_PKEYDeriveSetPeer(ctx *EVP_PKEY_CTX, peer *EVP_PKEY) c.Int
-
-//go:linkname EVP_PKEYDerive C.EVP_PKEY_derive
-func EVP_PKEYDerive(ctx *EVP_PKEY_CTX, key *uint8, keylen *c.SizeT) c.Int
-
-//go:linkname EVP_PKEYDeriveSKEY C.EVP_PKEY_derive_SKEY
-func EVP_PKEYDeriveSKEY(ctx *EVP_PKEY_CTX, mgmt *EVP_SKEYMGMT, key_type *c.Char, propquery *c.Char, keylen c.SizeT, params *OSSL_PARAM) *EVP_SKEY
-
-//go:linkname EVP_PKEYEncapsulateInit C.EVP_PKEY_encapsulate_init
-func EVP_PKEYEncapsulateInit(ctx *EVP_PKEY_CTX, params *OSSL_PARAM) c.Int
-
-//go:linkname EVP_PKEYAuthEncapsulateInit C.EVP_PKEY_auth_encapsulate_init
-func EVP_PKEYAuthEncapsulateInit(ctx *EVP_PKEY_CTX, authpriv *EVP_PKEY, params *OSSL_PARAM) c.Int
-
-//go:linkname EVP_PKEYEncapsulate C.EVP_PKEY_encapsulate
-func EVP_PKEYEncapsulate(ctx *EVP_PKEY_CTX, wrappedkey *uint8, wrappedkeylen *c.SizeT, genkey *uint8, genkeylen *c.SizeT) c.Int
-
-//go:linkname EVP_PKEYDecapsulateInit C.EVP_PKEY_decapsulate_init
-func EVP_PKEYDecapsulateInit(ctx *EVP_PKEY_CTX, params *OSSL_PARAM) c.Int
-
-//go:linkname EVP_PKEYAuthDecapsulateInit C.EVP_PKEY_auth_decapsulate_init
-func EVP_PKEYAuthDecapsulateInit(ctx *EVP_PKEY_CTX, authpub *EVP_PKEY, params *OSSL_PARAM) c.Int
-
-//go:linkname EVP_PKEYDecapsulate C.EVP_PKEY_decapsulate
-func EVP_PKEYDecapsulate(ctx *EVP_PKEY_CTX, unwrapped *uint8, unwrappedlen *c.SizeT, wrapped *uint8, wrappedlen c.SizeT) c.Int
-
-//go:linkname EVP_PKEYFromdataInit C.EVP_PKEY_fromdata_init
-func EVP_PKEYFromdataInit(ctx *EVP_PKEY_CTX) c.Int
-
-//go:linkname EVP_PKEYFromdata C.EVP_PKEY_fromdata
-func EVP_PKEYFromdata(ctx *EVP_PKEY_CTX, ppkey **EVP_PKEY, selection c.Int, param *OSSL_PARAM) c.Int
-
-//go:linkname EVP_PKEYFromdataSettable C.EVP_PKEY_fromdata_settable
-func EVP_PKEYFromdataSettable(ctx *EVP_PKEY_CTX, selection c.Int) *OSSL_PARAM
-
-//go:linkname EVP_PKEYTodata C.EVP_PKEY_todata
-func EVP_PKEYTodata(pkey *EVP_PKEY, selection c.Int, params **OSSL_PARAM) c.Int
-
-//go:linkname EVP_PKEYExport C.EVP_PKEY_export
-func EVP_PKEYExport(pkey *EVP_PKEY, selection c.Int, export_cb *OSSL_CALLBACK, export_cbarg unsafe.Pointer) c.Int
-
-//go:linkname EVP_PKEYGettableParams C.EVP_PKEY_gettable_params
-func EVP_PKEYGettableParams(pkey *EVP_PKEY) *OSSL_PARAM
-
-//go:linkname EVP_PKEYGetParams C.EVP_PKEY_get_params
-func EVP_PKEYGetParams(pkey *EVP_PKEY, params *OSSL_PARAM) c.Int
-
-//go:linkname EVP_PKEYGetIntParam C.EVP_PKEY_get_int_param
-func EVP_PKEYGetIntParam(pkey *EVP_PKEY, key_name *c.Char, out *c.Int) c.Int
-
-//go:linkname EVP_PKEYGetSizeTParam C.EVP_PKEY_get_size_t_param
-func EVP_PKEYGetSizeTParam(pkey *EVP_PKEY, key_name *c.Char, out *c.SizeT) c.Int
-
-//go:linkname EVP_PKEYGetBnParam C.EVP_PKEY_get_bn_param
-func EVP_PKEYGetBnParam(pkey *EVP_PKEY, key_name *c.Char, bn **BIGNUM) c.Int
-
-//go:linkname EVP_PKEYGetUtf8StringParam C.EVP_PKEY_get_utf8_string_param
-func EVP_PKEYGetUtf8StringParam(pkey *EVP_PKEY, key_name *c.Char, str *c.Char, max_buf_sz c.SizeT, out_sz *c.SizeT) c.Int
-
-//go:linkname EVP_PKEYGetOctetStringParam C.EVP_PKEY_get_octet_string_param
-func EVP_PKEYGetOctetStringParam(pkey *EVP_PKEY, key_name *c.Char, buf *uint8, max_buf_sz c.SizeT, out_sz *c.SizeT) c.Int
-
-//go:linkname EVP_PKEYSettableParams C.EVP_PKEY_settable_params
-func EVP_PKEYSettableParams(pkey *EVP_PKEY) *OSSL_PARAM
-
-//go:linkname EVP_PKEYSetParams C.EVP_PKEY_set_params
-func EVP_PKEYSetParams(pkey *EVP_PKEY, params *OSSL_PARAM) c.Int
-
-//go:linkname EVP_PKEYSetIntParam C.EVP_PKEY_set_int_param
-func EVP_PKEYSetIntParam(pkey *EVP_PKEY, key_name *c.Char, in c.Int) c.Int
-
-//go:linkname EVP_PKEYSetSizeTParam C.EVP_PKEY_set_size_t_param
-func EVP_PKEYSetSizeTParam(pkey *EVP_PKEY, key_name *c.Char, in c.SizeT) c.Int
-
-//go:linkname EVP_PKEYSetBnParam C.EVP_PKEY_set_bn_param
-func EVP_PKEYSetBnParam(pkey *EVP_PKEY, key_name *c.Char, bn *BIGNUM) c.Int
-
-//go:linkname EVP_PKEYSetUtf8StringParam C.EVP_PKEY_set_utf8_string_param
-func EVP_PKEYSetUtf8StringParam(pkey *EVP_PKEY, key_name *c.Char, str *c.Char) c.Int
-
-//go:linkname EVP_PKEYSetOctetStringParam C.EVP_PKEY_set_octet_string_param
-func EVP_PKEYSetOctetStringParam(pkey *EVP_PKEY, key_name *c.Char, buf *uint8, bsize c.SizeT) c.Int
-
-//go:linkname EVP_PKEYGetEcPointConvForm C.EVP_PKEY_get_ec_point_conv_form
-func EVP_PKEYGetEcPointConvForm(pkey *EVP_PKEY) c.Int
-
-//go:linkname EVP_PKEYGetFieldType C.EVP_PKEY_get_field_type
-func EVP_PKEYGetFieldType(pkey *EVP_PKEY) c.Int
-
-//go:linkname EVP_PKEY_QKeygen C.EVP_PKEY_Q_keygen
-func EVP_PKEY_QKeygen(libctx *OSSL_LIB_CTX, propq *c.Char, type_ *c.Char, __llgo_va_list ...any) *EVP_PKEY
-
-//go:linkname EVP_PKEYParamgenInit C.EVP_PKEY_paramgen_init
-func EVP_PKEYParamgenInit(ctx *EVP_PKEY_CTX) c.Int
-
-//go:linkname EVP_PKEYParamgen C.EVP_PKEY_paramgen
-func EVP_PKEYParamgen(ctx *EVP_PKEY_CTX, ppkey **EVP_PKEY) c.Int
-
-//go:linkname EVP_PKEYKeygenInit C.EVP_PKEY_keygen_init
-func EVP_PKEYKeygenInit(ctx *EVP_PKEY_CTX) c.Int
-
-//go:linkname EVP_PKEYKeygen C.EVP_PKEY_keygen
-func EVP_PKEYKeygen(ctx *EVP_PKEY_CTX, ppkey **EVP_PKEY) c.Int
-
-//go:linkname EVP_PKEYGenerate C.EVP_PKEY_generate
-func EVP_PKEYGenerate(ctx *EVP_PKEY_CTX, ppkey **EVP_PKEY) c.Int
-
-//go:linkname EVP_PKEYCheck C.EVP_PKEY_check
-func EVP_PKEYCheck(ctx *EVP_PKEY_CTX) c.Int
-
-//go:linkname EVP_PKEYPublicCheck C.EVP_PKEY_public_check
-func EVP_PKEYPublicCheck(ctx *EVP_PKEY_CTX) c.Int
-
-//go:linkname EVP_PKEYPublicCheckQuick C.EVP_PKEY_public_check_quick
-func EVP_PKEYPublicCheckQuick(ctx *EVP_PKEY_CTX) c.Int
-
-//go:linkname EVP_PKEYParamCheck C.EVP_PKEY_param_check
-func EVP_PKEYParamCheck(ctx *EVP_PKEY_CTX) c.Int
-
-//go:linkname EVP_PKEYParamCheckQuick C.EVP_PKEY_param_check_quick
-func EVP_PKEYParamCheckQuick(ctx *EVP_PKEY_CTX) c.Int
-
-//go:linkname EVP_PKEYPrivateCheck C.EVP_PKEY_private_check
-func EVP_PKEYPrivateCheck(ctx *EVP_PKEY_CTX) c.Int
-
-//go:linkname EVP_PKEYPairwiseCheck C.EVP_PKEY_pairwise_check
-func EVP_PKEYPairwiseCheck(ctx *EVP_PKEY_CTX) c.Int
-
-//go:linkname EVP_PKEYSetExData C.EVP_PKEY_set_ex_data
-func EVP_PKEYSetExData(key *EVP_PKEY, idx c.Int, arg unsafe.Pointer) c.Int
-
-//go:linkname EVP_PKEYGetExData C.EVP_PKEY_get_ex_data
-func EVP_PKEYGetExData(key *EVP_PKEY, idx c.Int) unsafe.Pointer
-
-//go:linkname EVP_PKEY_CTXSetCb C.EVP_PKEY_CTX_set_cb
-func EVP_PKEY_CTXSetCb(ctx *EVP_PKEY_CTX, cb *EVP_PKEYGenCb)
-
-//go:linkname EVP_PKEY_CTXGetCb C.EVP_PKEY_CTX_get_cb
-func EVP_PKEY_CTXGetCb(ctx *EVP_PKEY_CTX) *EVP_PKEYGenCb
-
-//go:linkname EVP_PKEY_CTXGetKeygenInfo C.EVP_PKEY_CTX_get_keygen_info
-func EVP_PKEY_CTXGetKeygenInfo(ctx *EVP_PKEY_CTX, idx c.Int) c.Int
-
-//go:linkname EVP_KEYEXCHFree C.EVP_KEYEXCH_free
-func EVP_KEYEXCHFree(exchange *EVP_KEYEXCH)
-
-//go:linkname EVP_KEYEXCHUpRef C.EVP_KEYEXCH_up_ref
-func EVP_KEYEXCHUpRef(exchange *EVP_KEYEXCH) c.Int
-
-//go:linkname EVP_KEYEXCHFetch C.EVP_KEYEXCH_fetch
-func EVP_KEYEXCHFetch(ctx *OSSL_LIB_CTX, algorithm *c.Char, properties *c.Char) *EVP_KEYEXCH
-
-//go:linkname EVP_KEYEXCHGet0Provider C.EVP_KEYEXCH_get0_provider
-func EVP_KEYEXCHGet0Provider(exchange *EVP_KEYEXCH) *OSSL_PROVIDER
-
-//go:linkname EVP_KEYEXCHIsA C.EVP_KEYEXCH_is_a
-func EVP_KEYEXCHIsA(keyexch *EVP_KEYEXCH, name *c.Char) c.Int
-
-//go:linkname EVP_KEYEXCHGet0Name C.EVP_KEYEXCH_get0_name
-func EVP_KEYEXCHGet0Name(keyexch *EVP_KEYEXCH) *c.Char
-
-//go:linkname EVP_KEYEXCHGet0Description C.EVP_KEYEXCH_get0_description
-func EVP_KEYEXCHGet0Description(keyexch *EVP_KEYEXCH) *c.Char
-
-//go:linkname EVP_KEYEXCHDoAllProvided C.EVP_KEYEXCH_do_all_provided
-func EVP_KEYEXCHDoAllProvided(libctx *OSSL_LIB_CTX, fn func(_llcppg_param1 *EVP_KEYEXCH, _llcppg_param2 unsafe.Pointer), data unsafe.Pointer)
-
-//go:linkname EVP_KEYEXCHNamesDoAll C.EVP_KEYEXCH_names_do_all
-func EVP_KEYEXCHNamesDoAll(keyexch *EVP_KEYEXCH, fn func(_llcppg_param1 *c.Char, _llcppg_param2 unsafe.Pointer), data unsafe.Pointer) c.Int
-
-//go:linkname EVP_KEYEXCHGettableCtxParams C.EVP_KEYEXCH_gettable_ctx_params
-func EVP_KEYEXCHGettableCtxParams(keyexch *EVP_KEYEXCH) *OSSL_PARAM
-
-//go:linkname EVP_KEYEXCHSettableCtxParams C.EVP_KEYEXCH_settable_ctx_params
-func EVP_KEYEXCHSettableCtxParams(keyexch *EVP_KEYEXCH) *OSSL_PARAM
-
-//go:linkname EVPAddAlgModule C.EVP_add_alg_module
-func EVPAddAlgModule()
-
-//go:linkname EVP_PKEY_CTXSetGroupName C.EVP_PKEY_CTX_set_group_name
-func EVP_PKEY_CTXSetGroupName(ctx *EVP_PKEY_CTX, name *c.Char) c.Int
-
-//go:linkname EVP_PKEY_CTXGetGroupName C.EVP_PKEY_CTX_get_group_name
-func EVP_PKEY_CTXGetGroupName(ctx *EVP_PKEY_CTX, name *c.Char, namelen c.SizeT) c.Int
-
-//go:linkname EVP_PKEYGetGroupName C.EVP_PKEY_get_group_name
-func EVP_PKEYGetGroupName(pkey *EVP_PKEY, name *c.Char, name_sz c.SizeT, gname_len *c.SizeT) c.Int
-
-//go:linkname EVP_PKEY_CTXGet0Libctx C.EVP_PKEY_CTX_get0_libctx
-func EVP_PKEY_CTXGet0Libctx(ctx *EVP_PKEY_CTX) *OSSL_LIB_CTX
-
-//go:linkname EVP_PKEY_CTXGet0Propq C.EVP_PKEY_CTX_get0_propq
-func EVP_PKEY_CTXGet0Propq(ctx *EVP_PKEY_CTX) *c.Char
-
-//go:linkname EVP_PKEY_CTXGet0Provider C.EVP_PKEY_CTX_get0_provider
-func EVP_PKEY_CTXGet0Provider(ctx *EVP_PKEY_CTX) *OSSL_PROVIDER
-
-//go:linkname EVP_SKEYIsA C.EVP_SKEY_is_a
-func EVP_SKEYIsA(skey *EVP_SKEY, name *c.Char) c.Int
-
-//go:linkname EVP_SKEYImport C.EVP_SKEY_import
-func EVP_SKEYImport(libctx *OSSL_LIB_CTX, skeymgmtname *c.Char, propquery *c.Char, selection c.Int, params *OSSL_PARAM) *EVP_SKEY
-
-//go:linkname EVP_SKEYGenerate C.EVP_SKEY_generate
-func EVP_SKEYGenerate(libctx *OSSL_LIB_CTX, skeymgmtname *c.Char, propquery *c.Char, params *OSSL_PARAM) *EVP_SKEY
-
-//go:linkname EVP_SKEYImportRawKey C.EVP_SKEY_import_raw_key
-func EVP_SKEYImportRawKey(libctx *OSSL_LIB_CTX, skeymgmtname *c.Char, key *uint8, keylen c.SizeT, propquery *c.Char) *EVP_SKEY
-
-//go:linkname EVP_SKEYImportSKEYMGMT C.EVP_SKEY_import_SKEYMGMT
-func EVP_SKEYImportSKEYMGMT(libctx *OSSL_LIB_CTX, skeymgmt *EVP_SKEYMGMT, selection c.Int, params *OSSL_PARAM) *EVP_SKEY
-
-//go:linkname EVP_SKEYGet0RawKey C.EVP_SKEY_get0_raw_key
-func EVP_SKEYGet0RawKey(skey *EVP_SKEY, key **uint8, len *c.SizeT) c.Int
-
-//go:linkname EVP_SKEYGet0KeyId C.EVP_SKEY_get0_key_id
-func EVP_SKEYGet0KeyId(skey *EVP_SKEY) *c.Char
-
-//go:linkname EVP_SKEYExport C.EVP_SKEY_export
-func EVP_SKEYExport(skey *EVP_SKEY, selection c.Int, export_cb *OSSL_CALLBACK, export_cbarg unsafe.Pointer) c.Int
-
-//go:linkname EVP_SKEYUpRef C.EVP_SKEY_up_ref
-func EVP_SKEYUpRef(skey *EVP_SKEY) c.Int
-
-//go:linkname EVP_SKEYFree C.EVP_SKEY_free
-func EVP_SKEYFree(skey *EVP_SKEY)
-
-//go:linkname EVP_SKEYGet0SkeymgmtName C.EVP_SKEY_get0_skeymgmt_name
-func EVP_SKEYGet0SkeymgmtName(skey *EVP_SKEY) *c.Char
-
-//go:linkname EVP_SKEYGet0ProviderName C.EVP_SKEY_get0_provider_name
-func EVP_SKEYGet0ProviderName(skey *EVP_SKEY) *c.Char
-
-//go:linkname EVP_SKEYToProvider C.EVP_SKEY_to_provider
-func EVP_SKEYToProvider(skey *EVP_SKEY, libctx *OSSL_LIB_CTX, prov *OSSL_PROVIDER, propquery *c.Char) *EVP_SKEY
+// llgo:link (*EVP_CIPHER_CTX).PKCS5_v2_PBE_keyivgen C.PKCS5_v2_PBE_keyivgen
+func (self *EVP_CIPHER_CTX) PKCS5_v2_PBE_keyivgen(pass *c.Char, passlen c.Int, param *ASN1_TYPE, cipher *EVP_CIPHER, md *EVP_MD, en_de c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).PKCS5_v2_PBE_keyivgen_ex C.PKCS5_v2_PBE_keyivgen_ex
+func (self *EVP_CIPHER_CTX) PKCS5_v2_PBE_keyivgen_ex(pass *c.Char, passlen c.Int, param *ASN1_TYPE, cipher *EVP_CIPHER, md *EVP_MD, en_de c.Int, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int {
+	return 0
+}
+
+//go:linkname EVP_PBE_scrypt C.EVP_PBE_scrypt
+func EVP_PBE_scrypt(pass *c.Char, passlen c.SizeT, salt *uint8, saltlen c.SizeT, N c.Uint64T, r c.Uint64T, p c.Uint64T, maxmem c.Uint64T, key *uint8, keylen c.SizeT) c.Int
+
+//go:linkname EVP_PBE_scrypt_ex C.EVP_PBE_scrypt_ex
+func EVP_PBE_scrypt_ex(pass *c.Char, passlen c.SizeT, salt *uint8, saltlen c.SizeT, N c.Uint64T, r c.Uint64T, p c.Uint64T, maxmem c.Uint64T, key *uint8, keylen c.SizeT, ctx *OSSL_LIB_CTX, propq *c.Char) c.Int
+
+// llgo:link (*EVP_CIPHER_CTX).PKCS5_v2_scrypt_keyivgen C.PKCS5_v2_scrypt_keyivgen
+func (self *EVP_CIPHER_CTX) PKCS5_v2_scrypt_keyivgen(pass *c.Char, passlen c.Int, param *ASN1_TYPE, c *EVP_CIPHER, md *EVP_MD, en_de c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_CIPHER_CTX).PKCS5_v2_scrypt_keyivgen_ex C.PKCS5_v2_scrypt_keyivgen_ex
+func (self *EVP_CIPHER_CTX) PKCS5_v2_scrypt_keyivgen_ex(pass *c.Char, passlen c.Int, param *ASN1_TYPE, c *EVP_CIPHER, md *EVP_MD, en_de c.Int, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int {
+	return 0
+}
+
+//go:linkname PKCS5_PBE_add C.PKCS5_PBE_add
+func PKCS5_PBE_add()
+
+// llgo:link (*ASN1_OBJECT).EVP_PBE_CipherInit C.EVP_PBE_CipherInit
+func (self *ASN1_OBJECT) EVP_PBE_CipherInit(pass *c.Char, passlen c.Int, param *ASN1_TYPE, ctx *EVP_CIPHER_CTX, en_de c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*ASN1_OBJECT).EVP_PBE_CipherInit_ex C.EVP_PBE_CipherInit_ex
+func (self *ASN1_OBJECT) EVP_PBE_CipherInit_ex(pass *c.Char, passlen c.Int, param *ASN1_TYPE, ctx *EVP_CIPHER_CTX, en_de c.Int, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int {
+	return 0
+}
+
+//go:linkname EVP_PBE_alg_add_type C.EVP_PBE_alg_add_type
+func EVP_PBE_alg_add_type(pbe_type c.Int, pbe_nid c.Int, cipher_nid c.Int, md_nid c.Int, keygen *EVP_PBE_KEYGEN) c.Int
+
+//go:linkname EVP_PBE_alg_add C.EVP_PBE_alg_add
+func EVP_PBE_alg_add(nid c.Int, cipher *EVP_CIPHER, md *EVP_MD, keygen *EVP_PBE_KEYGEN) c.Int
+
+//go:linkname EVP_PBE_find C.EVP_PBE_find
+func EVP_PBE_find(type_ c.Int, pbe_nid c.Int, pcnid *c.Int, pmnid *c.Int, pkeygen **EVP_PBE_KEYGEN) c.Int
+
+//go:linkname EVP_PBE_find_ex C.EVP_PBE_find_ex
+func EVP_PBE_find_ex(type_ c.Int, pbe_nid c.Int, pcnid *c.Int, pmnid *c.Int, pkeygen **EVP_PBE_KEYGEN, pkeygen_ex **EVP_PBE_KEYGEN_EX) c.Int
+
+//go:linkname EVP_PBE_cleanup C.EVP_PBE_cleanup
+func EVP_PBE_cleanup()
+
+//go:linkname EVP_PBE_get C.EVP_PBE_get
+func EVP_PBE_get(ptype *c.Int, ppbe_nid *c.Int, num c.SizeT) c.Int
+
+// llgo:link (*EVP_PKEY_CTX).SignatureMd C.EVP_PKEY_CTX_get_signature_md
+func (self *EVP_PKEY_CTX) SignatureMd(md **EVP_MD) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).SetSignatureMd C.EVP_PKEY_CTX_set_signature_md
+func (self *EVP_PKEY_CTX) SetSignatureMd(md *EVP_MD) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).Set1Id C.EVP_PKEY_CTX_set1_id
+func (self *EVP_PKEY_CTX) Set1Id(id unsafe.Pointer, len c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).Get1Id C.EVP_PKEY_CTX_get1_id
+func (self *EVP_PKEY_CTX) Get1Id(id unsafe.Pointer) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).Get1IdLen C.EVP_PKEY_CTX_get1_id_len
+func (self *EVP_PKEY_CTX) Get1IdLen(id_len *c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).SetKemOp C.EVP_PKEY_CTX_set_kem_op
+func (self *EVP_PKEY_CTX) SetKemOp(op *c.Char) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY).Get0TypeName C.EVP_PKEY_get0_type_name
+func (self *EVP_PKEY) Get0TypeName() *c.Char {
+	return nil
+}
+
+// llgo:link (*EVP_PKEY_CTX).SetMacKey C.EVP_PKEY_CTX_set_mac_key
+func (self *EVP_PKEY_CTX) SetMacKey(key *uint8, keylen c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*OSSL_LIB_CTX).EVP_KEYMGMT_fetch C.EVP_KEYMGMT_fetch
+func (self *OSSL_LIB_CTX) EVP_KEYMGMT_fetch(algorithm *c.Char, properties *c.Char) *EVP_KEYMGMT {
+	return nil
+}
+
+// llgo:link (*EVP_KEYMGMT).UpRef C.EVP_KEYMGMT_up_ref
+func (self *EVP_KEYMGMT) UpRef() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_KEYMGMT).Free C.EVP_KEYMGMT_free
+func (self *EVP_KEYMGMT) Free() {
+}
+
+// llgo:link (*EVP_KEYMGMT).Get0Provider C.EVP_KEYMGMT_get0_provider
+func (self *EVP_KEYMGMT) Get0Provider() *OSSL_PROVIDER {
+	return nil
+}
+
+// llgo:link (*EVP_KEYMGMT).Get0Name C.EVP_KEYMGMT_get0_name
+func (self *EVP_KEYMGMT) Get0Name() *c.Char {
+	return nil
+}
+
+// llgo:link (*EVP_KEYMGMT).Get0Description C.EVP_KEYMGMT_get0_description
+func (self *EVP_KEYMGMT) Get0Description() *c.Char {
+	return nil
+}
+
+// llgo:link (*EVP_KEYMGMT).IsA C.EVP_KEYMGMT_is_a
+func (self *EVP_KEYMGMT) IsA(name *c.Char) c.Int {
+	return 0
+}
+
+// llgo:link (*OSSL_LIB_CTX).EVP_KEYMGMT_do_all_provided C.EVP_KEYMGMT_do_all_provided
+func (self *OSSL_LIB_CTX) EVP_KEYMGMT_do_all_provided(fn func(_llcppg_param1 *EVP_KEYMGMT, _llcppg_param2 unsafe.Pointer), arg unsafe.Pointer) {
+}
+
+// llgo:link (*EVP_KEYMGMT).NamesDoAll C.EVP_KEYMGMT_names_do_all
+func (self *EVP_KEYMGMT) NamesDoAll(fn func(_llcppg_param1 *c.Char, _llcppg_param2 unsafe.Pointer), data unsafe.Pointer) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_KEYMGMT).GettableParams C.EVP_KEYMGMT_gettable_params
+func (self *EVP_KEYMGMT) GettableParams() *OSSL_PARAM {
+	return nil
+}
+
+// llgo:link (*EVP_KEYMGMT).SettableParams C.EVP_KEYMGMT_settable_params
+func (self *EVP_KEYMGMT) SettableParams() *OSSL_PARAM {
+	return nil
+}
+
+// llgo:link (*EVP_KEYMGMT).GenSettableParams C.EVP_KEYMGMT_gen_settable_params
+func (self *EVP_KEYMGMT) GenSettableParams() *OSSL_PARAM {
+	return nil
+}
+
+// llgo:link (*EVP_KEYMGMT).GenGettableParams C.EVP_KEYMGMT_gen_gettable_params
+func (self *EVP_KEYMGMT) GenGettableParams() *OSSL_PARAM {
+	return nil
+}
+
+// llgo:link (*OSSL_LIB_CTX).EVP_SKEYMGMT_fetch C.EVP_SKEYMGMT_fetch
+func (self *OSSL_LIB_CTX) EVP_SKEYMGMT_fetch(algorithm *c.Char, properties *c.Char) *EVP_SKEYMGMT {
+	return nil
+}
+
+// llgo:link (*EVP_SKEYMGMT).UpRef C.EVP_SKEYMGMT_up_ref
+func (self *EVP_SKEYMGMT) UpRef() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_SKEYMGMT).Free C.EVP_SKEYMGMT_free
+func (self *EVP_SKEYMGMT) Free() {
+}
+
+// llgo:link (*EVP_SKEYMGMT).Get0Provider C.EVP_SKEYMGMT_get0_provider
+func (self *EVP_SKEYMGMT) Get0Provider() *OSSL_PROVIDER {
+	return nil
+}
+
+// llgo:link (*EVP_SKEYMGMT).Get0Name C.EVP_SKEYMGMT_get0_name
+func (self *EVP_SKEYMGMT) Get0Name() *c.Char {
+	return nil
+}
+
+// llgo:link (*EVP_SKEYMGMT).Get0Description C.EVP_SKEYMGMT_get0_description
+func (self *EVP_SKEYMGMT) Get0Description() *c.Char {
+	return nil
+}
+
+// llgo:link (*EVP_SKEYMGMT).IsA C.EVP_SKEYMGMT_is_a
+func (self *EVP_SKEYMGMT) IsA(name *c.Char) c.Int {
+	return 0
+}
+
+// llgo:link (*OSSL_LIB_CTX).EVP_SKEYMGMT_do_all_provided C.EVP_SKEYMGMT_do_all_provided
+func (self *OSSL_LIB_CTX) EVP_SKEYMGMT_do_all_provided(fn func(_llcppg_param1 *EVP_SKEYMGMT, _llcppg_param2 unsafe.Pointer), arg unsafe.Pointer) {
+}
+
+// llgo:link (*EVP_SKEYMGMT).NamesDoAll C.EVP_SKEYMGMT_names_do_all
+func (self *EVP_SKEYMGMT) NamesDoAll(fn func(_llcppg_param1 *c.Char, _llcppg_param2 unsafe.Pointer), data unsafe.Pointer) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_SKEYMGMT).Get0GenSettableParams C.EVP_SKEYMGMT_get0_gen_settable_params
+func (self *EVP_SKEYMGMT) Get0GenSettableParams() *OSSL_PARAM {
+	return nil
+}
+
+// llgo:link (*EVP_SKEYMGMT).Get0ImpSettableParams C.EVP_SKEYMGMT_get0_imp_settable_params
+func (self *EVP_SKEYMGMT) Get0ImpSettableParams() *OSSL_PARAM {
+	return nil
+}
+
+// llgo:link (*EVP_PKEY).CTX_new C.EVP_PKEY_CTX_new
+func (self *EVP_PKEY) CTX_new(e *ENGINE) *EVP_PKEY_CTX {
+	return nil
+}
+
+//go:linkname EVP_PKEY_CTX_new_id C.EVP_PKEY_CTX_new_id
+func EVP_PKEY_CTX_new_id(id c.Int, e *ENGINE) *EVP_PKEY_CTX
+
+// llgo:link (*OSSL_LIB_CTX).EVP_PKEY_CTX_new_from_name C.EVP_PKEY_CTX_new_from_name
+func (self *OSSL_LIB_CTX) EVP_PKEY_CTX_new_from_name(name *c.Char, propquery *c.Char) *EVP_PKEY_CTX {
+	return nil
+}
+
+// llgo:link (*OSSL_LIB_CTX).EVP_PKEY_CTX_new_from_pkey C.EVP_PKEY_CTX_new_from_pkey
+func (self *OSSL_LIB_CTX) EVP_PKEY_CTX_new_from_pkey(pkey *EVP_PKEY, propquery *c.Char) *EVP_PKEY_CTX {
+	return nil
+}
+
+// llgo:link (*EVP_PKEY_CTX).Dup C.EVP_PKEY_CTX_dup
+func (self *EVP_PKEY_CTX) Dup() *EVP_PKEY_CTX {
+	return self
+}
+
+// llgo:link (*EVP_PKEY_CTX).Free C.EVP_PKEY_CTX_free
+func (self *EVP_PKEY_CTX) Free() {
+}
+
+// llgo:link (*EVP_PKEY_CTX).IsA C.EVP_PKEY_CTX_is_a
+func (self *EVP_PKEY_CTX) IsA(keytype *c.Char) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).Params C.EVP_PKEY_CTX_get_params
+func (self *EVP_PKEY_CTX) Params(params *OSSL_PARAM) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).GettableParams C.EVP_PKEY_CTX_gettable_params
+func (self *EVP_PKEY_CTX) GettableParams() *OSSL_PARAM {
+	return nil
+}
+
+// llgo:link (*EVP_PKEY_CTX).SetParams C.EVP_PKEY_CTX_set_params
+func (self *EVP_PKEY_CTX) SetParams(params *OSSL_PARAM) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).SettableParams C.EVP_PKEY_CTX_settable_params
+func (self *EVP_PKEY_CTX) SettableParams() *OSSL_PARAM {
+	return nil
+}
+
+// llgo:link (*EVP_PKEY_CTX).SetAlgorParams C.EVP_PKEY_CTX_set_algor_params
+func (self *EVP_PKEY_CTX) SetAlgorParams(alg *X509_ALGOR) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).AlgorParams C.EVP_PKEY_CTX_get_algor_params
+func (self *EVP_PKEY_CTX) AlgorParams(alg *X509_ALGOR) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).Algor C.EVP_PKEY_CTX_get_algor
+func (self *EVP_PKEY_CTX) Algor(alg **X509_ALGOR) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).Ctrl C.EVP_PKEY_CTX_ctrl
+func (self *EVP_PKEY_CTX) Ctrl(keytype c.Int, optype c.Int, cmd c.Int, p1 c.Int, p2 unsafe.Pointer) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).CtrlStr C.EVP_PKEY_CTX_ctrl_str
+func (self *EVP_PKEY_CTX) CtrlStr(type_ *c.Char, value *c.Char) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).CtrlUint64 C.EVP_PKEY_CTX_ctrl_uint64
+func (self *EVP_PKEY_CTX) CtrlUint64(keytype c.Int, optype c.Int, cmd c.Int, value c.Uint64T) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).Str2ctrl C.EVP_PKEY_CTX_str2ctrl
+func (self *EVP_PKEY_CTX) Str2ctrl(cmd c.Int, str *c.Char) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).Hex2ctrl C.EVP_PKEY_CTX_hex2ctrl
+func (self *EVP_PKEY_CTX) Hex2ctrl(cmd c.Int, hex *c.Char) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).Md C.EVP_PKEY_CTX_md
+func (self *EVP_PKEY_CTX) Md(optype c.Int, cmd c.Int, md *c.Char) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).Operation C.EVP_PKEY_CTX_get_operation
+func (self *EVP_PKEY_CTX) Operation() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).Set0KeygenInfo C.EVP_PKEY_CTX_set0_keygen_info
+func (self *EVP_PKEY_CTX) Set0KeygenInfo(dat *c.Int, datlen c.Int) {
+}
+
+//go:linkname EVP_PKEY_new_mac_key C.EVP_PKEY_new_mac_key
+func EVP_PKEY_new_mac_key(type_ c.Int, e *ENGINE, key *uint8, keylen c.Int) *EVP_PKEY
+
+// llgo:link (*OSSL_LIB_CTX).EVP_PKEY_new_raw_private_key_ex C.EVP_PKEY_new_raw_private_key_ex
+func (self *OSSL_LIB_CTX) EVP_PKEY_new_raw_private_key_ex(keytype *c.Char, propq *c.Char, priv *uint8, len c.SizeT) *EVP_PKEY {
+	return nil
+}
+
+//go:linkname EVP_PKEY_new_raw_private_key C.EVP_PKEY_new_raw_private_key
+func EVP_PKEY_new_raw_private_key(type_ c.Int, e *ENGINE, priv *uint8, len c.SizeT) *EVP_PKEY
+
+// llgo:link (*OSSL_LIB_CTX).EVP_PKEY_new_raw_public_key_ex C.EVP_PKEY_new_raw_public_key_ex
+func (self *OSSL_LIB_CTX) EVP_PKEY_new_raw_public_key_ex(keytype *c.Char, propq *c.Char, pub *uint8, len c.SizeT) *EVP_PKEY {
+	return nil
+}
+
+//go:linkname EVP_PKEY_new_raw_public_key C.EVP_PKEY_new_raw_public_key
+func EVP_PKEY_new_raw_public_key(type_ c.Int, e *ENGINE, pub *uint8, len c.SizeT) *EVP_PKEY
+
+// llgo:link (*EVP_PKEY).RawPrivateKey C.EVP_PKEY_get_raw_private_key
+func (self *EVP_PKEY) RawPrivateKey(priv *uint8, len *c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY).RawPublicKey C.EVP_PKEY_get_raw_public_key
+func (self *EVP_PKEY) RawPublicKey(pub *uint8, len *c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*ENGINE).EVP_PKEY_new_CMAC_key C.EVP_PKEY_new_CMAC_key
+func (self *ENGINE) EVP_PKEY_new_CMAC_key(priv *uint8, len c.SizeT, cipher *EVP_CIPHER) *EVP_PKEY {
+	return nil
+}
+
+// llgo:link (*EVP_PKEY_CTX).SetData C.EVP_PKEY_CTX_set_data
+func (self *EVP_PKEY_CTX) SetData(data unsafe.Pointer) {
+}
+
+// llgo:link (*EVP_PKEY_CTX).Data C.EVP_PKEY_CTX_get_data
+func (self *EVP_PKEY_CTX) Data() unsafe.Pointer {
+	return nil
+}
+
+// llgo:link (*EVP_PKEY_CTX).Get0Pkey C.EVP_PKEY_CTX_get0_pkey
+func (self *EVP_PKEY_CTX) Get0Pkey() *EVP_PKEY {
+	return nil
+}
+
+// llgo:link (*EVP_PKEY_CTX).Get0Peerkey C.EVP_PKEY_CTX_get0_peerkey
+func (self *EVP_PKEY_CTX) Get0Peerkey() *EVP_PKEY {
+	return nil
+}
+
+// llgo:link (*EVP_PKEY_CTX).SetAppData C.EVP_PKEY_CTX_set_app_data
+func (self *EVP_PKEY_CTX) SetAppData(data unsafe.Pointer) {
+}
+
+// llgo:link (*EVP_PKEY_CTX).AppData C.EVP_PKEY_CTX_get_app_data
+func (self *EVP_PKEY_CTX) AppData() unsafe.Pointer {
+	return nil
+}
+
+// llgo:link (*EVP_PKEY_CTX).SetSignature C.EVP_PKEY_CTX_set_signature
+func (self *EVP_PKEY_CTX) SetSignature(sig *uint8, siglen c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_SIGNATURE).Free C.EVP_SIGNATURE_free
+func (self *EVP_SIGNATURE) Free() {
+}
+
+// llgo:link (*EVP_SIGNATURE).UpRef C.EVP_SIGNATURE_up_ref
+func (self *EVP_SIGNATURE) UpRef() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_SIGNATURE).Get0Provider C.EVP_SIGNATURE_get0_provider
+func (self *EVP_SIGNATURE) Get0Provider() *OSSL_PROVIDER {
+	return nil
+}
+
+// llgo:link (*OSSL_LIB_CTX).EVP_SIGNATURE_fetch C.EVP_SIGNATURE_fetch
+func (self *OSSL_LIB_CTX) EVP_SIGNATURE_fetch(algorithm *c.Char, properties *c.Char) *EVP_SIGNATURE {
+	return nil
+}
+
+// llgo:link (*EVP_SIGNATURE).IsA C.EVP_SIGNATURE_is_a
+func (self *EVP_SIGNATURE) IsA(name *c.Char) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_SIGNATURE).Get0Name C.EVP_SIGNATURE_get0_name
+func (self *EVP_SIGNATURE) Get0Name() *c.Char {
+	return nil
+}
+
+// llgo:link (*EVP_SIGNATURE).Get0Description C.EVP_SIGNATURE_get0_description
+func (self *EVP_SIGNATURE) Get0Description() *c.Char {
+	return nil
+}
+
+// llgo:link (*OSSL_LIB_CTX).EVP_SIGNATURE_do_all_provided C.EVP_SIGNATURE_do_all_provided
+func (self *OSSL_LIB_CTX) EVP_SIGNATURE_do_all_provided(fn func(_llcppg_param1 *EVP_SIGNATURE, _llcppg_param2 unsafe.Pointer), data unsafe.Pointer) {
+}
+
+// llgo:link (*EVP_SIGNATURE).NamesDoAll C.EVP_SIGNATURE_names_do_all
+func (self *EVP_SIGNATURE) NamesDoAll(fn func(_llcppg_param1 *c.Char, _llcppg_param2 unsafe.Pointer), data unsafe.Pointer) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_SIGNATURE).GettableCtxParams C.EVP_SIGNATURE_gettable_ctx_params
+func (self *EVP_SIGNATURE) GettableCtxParams() *OSSL_PARAM {
+	return nil
+}
+
+// llgo:link (*EVP_SIGNATURE).SettableCtxParams C.EVP_SIGNATURE_settable_ctx_params
+func (self *EVP_SIGNATURE) SettableCtxParams() *OSSL_PARAM {
+	return nil
+}
+
+// llgo:link (*EVP_SIGNATURE).HasMessageUpdate C.EVP_SIGNATURE_has_message_update
+func (self *EVP_SIGNATURE) HasMessageUpdate() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_ASYM_CIPHER).Free C.EVP_ASYM_CIPHER_free
+func (self *EVP_ASYM_CIPHER) Free() {
+}
+
+// llgo:link (*EVP_ASYM_CIPHER).UpRef C.EVP_ASYM_CIPHER_up_ref
+func (self *EVP_ASYM_CIPHER) UpRef() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_ASYM_CIPHER).Get0Provider C.EVP_ASYM_CIPHER_get0_provider
+func (self *EVP_ASYM_CIPHER) Get0Provider() *OSSL_PROVIDER {
+	return nil
+}
+
+// llgo:link (*OSSL_LIB_CTX).EVP_ASYM_CIPHER_fetch C.EVP_ASYM_CIPHER_fetch
+func (self *OSSL_LIB_CTX) EVP_ASYM_CIPHER_fetch(algorithm *c.Char, properties *c.Char) *EVP_ASYM_CIPHER {
+	return nil
+}
+
+// llgo:link (*EVP_ASYM_CIPHER).IsA C.EVP_ASYM_CIPHER_is_a
+func (self *EVP_ASYM_CIPHER) IsA(name *c.Char) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_ASYM_CIPHER).Get0Name C.EVP_ASYM_CIPHER_get0_name
+func (self *EVP_ASYM_CIPHER) Get0Name() *c.Char {
+	return nil
+}
+
+// llgo:link (*EVP_ASYM_CIPHER).Get0Description C.EVP_ASYM_CIPHER_get0_description
+func (self *EVP_ASYM_CIPHER) Get0Description() *c.Char {
+	return nil
+}
+
+// llgo:link (*OSSL_LIB_CTX).EVP_ASYM_CIPHER_do_all_provided C.EVP_ASYM_CIPHER_do_all_provided
+func (self *OSSL_LIB_CTX) EVP_ASYM_CIPHER_do_all_provided(fn func(_llcppg_param1 *EVP_ASYM_CIPHER, _llcppg_param2 unsafe.Pointer), arg unsafe.Pointer) {
+}
+
+// llgo:link (*EVP_ASYM_CIPHER).NamesDoAll C.EVP_ASYM_CIPHER_names_do_all
+func (self *EVP_ASYM_CIPHER) NamesDoAll(fn func(_llcppg_param1 *c.Char, _llcppg_param2 unsafe.Pointer), data unsafe.Pointer) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_ASYM_CIPHER).GettableCtxParams C.EVP_ASYM_CIPHER_gettable_ctx_params
+func (self *EVP_ASYM_CIPHER) GettableCtxParams() *OSSL_PARAM {
+	return nil
+}
+
+// llgo:link (*EVP_ASYM_CIPHER).SettableCtxParams C.EVP_ASYM_CIPHER_settable_ctx_params
+func (self *EVP_ASYM_CIPHER) SettableCtxParams() *OSSL_PARAM {
+	return nil
+}
+
+// llgo:link (*EVP_KEM).Free C.EVP_KEM_free
+func (self *EVP_KEM) Free() {
+}
+
+// llgo:link (*EVP_KEM).UpRef C.EVP_KEM_up_ref
+func (self *EVP_KEM) UpRef() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_KEM).Get0Provider C.EVP_KEM_get0_provider
+func (self *EVP_KEM) Get0Provider() *OSSL_PROVIDER {
+	return nil
+}
+
+// llgo:link (*OSSL_LIB_CTX).EVP_KEM_fetch C.EVP_KEM_fetch
+func (self *OSSL_LIB_CTX) EVP_KEM_fetch(algorithm *c.Char, properties *c.Char) *EVP_KEM {
+	return nil
+}
+
+// llgo:link (*EVP_KEM).IsA C.EVP_KEM_is_a
+func (self *EVP_KEM) IsA(name *c.Char) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_KEM).Get0Name C.EVP_KEM_get0_name
+func (self *EVP_KEM) Get0Name() *c.Char {
+	return nil
+}
+
+// llgo:link (*EVP_KEM).Get0Description C.EVP_KEM_get0_description
+func (self *EVP_KEM) Get0Description() *c.Char {
+	return nil
+}
+
+// llgo:link (*OSSL_LIB_CTX).EVP_KEM_do_all_provided C.EVP_KEM_do_all_provided
+func (self *OSSL_LIB_CTX) EVP_KEM_do_all_provided(fn func(_llcppg_param1 *EVP_KEM, _llcppg_param2 unsafe.Pointer), arg unsafe.Pointer) {
+}
+
+// llgo:link (*EVP_KEM).NamesDoAll C.EVP_KEM_names_do_all
+func (self *EVP_KEM) NamesDoAll(fn func(_llcppg_param1 *c.Char, _llcppg_param2 unsafe.Pointer), data unsafe.Pointer) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_KEM).GettableCtxParams C.EVP_KEM_gettable_ctx_params
+func (self *EVP_KEM) GettableCtxParams() *OSSL_PARAM {
+	return nil
+}
+
+// llgo:link (*EVP_KEM).SettableCtxParams C.EVP_KEM_settable_ctx_params
+func (self *EVP_KEM) SettableCtxParams() *OSSL_PARAM {
+	return nil
+}
+
+// llgo:link (*EVP_PKEY_CTX).SignInit C.EVP_PKEY_sign_init
+func (self *EVP_PKEY_CTX) SignInit() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).SignInitEx C.EVP_PKEY_sign_init_ex
+func (self *EVP_PKEY_CTX) SignInitEx(params *OSSL_PARAM) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).SignInitEx2 C.EVP_PKEY_sign_init_ex2
+func (self *EVP_PKEY_CTX) SignInitEx2(algo *EVP_SIGNATURE, params *OSSL_PARAM) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).Sign C.EVP_PKEY_sign
+func (self *EVP_PKEY_CTX) Sign(sig *uint8, siglen *c.SizeT, tbs *uint8, tbslen c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).SignMessageInit C.EVP_PKEY_sign_message_init
+func (self *EVP_PKEY_CTX) SignMessageInit(algo *EVP_SIGNATURE, params *OSSL_PARAM) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).SignMessageUpdate C.EVP_PKEY_sign_message_update
+func (self *EVP_PKEY_CTX) SignMessageUpdate(in *uint8, inlen c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).SignMessageFinal C.EVP_PKEY_sign_message_final
+func (self *EVP_PKEY_CTX) SignMessageFinal(sig *uint8, siglen *c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).VerifyInit C.EVP_PKEY_verify_init
+func (self *EVP_PKEY_CTX) VerifyInit() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).VerifyInitEx C.EVP_PKEY_verify_init_ex
+func (self *EVP_PKEY_CTX) VerifyInitEx(params *OSSL_PARAM) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).VerifyInitEx2 C.EVP_PKEY_verify_init_ex2
+func (self *EVP_PKEY_CTX) VerifyInitEx2(algo *EVP_SIGNATURE, params *OSSL_PARAM) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).Verify C.EVP_PKEY_verify
+func (self *EVP_PKEY_CTX) Verify(sig *uint8, siglen c.SizeT, tbs *uint8, tbslen c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).VerifyMessageInit C.EVP_PKEY_verify_message_init
+func (self *EVP_PKEY_CTX) VerifyMessageInit(algo *EVP_SIGNATURE, params *OSSL_PARAM) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).VerifyMessageUpdate C.EVP_PKEY_verify_message_update
+func (self *EVP_PKEY_CTX) VerifyMessageUpdate(in *uint8, inlen c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).VerifyMessageFinal C.EVP_PKEY_verify_message_final
+func (self *EVP_PKEY_CTX) VerifyMessageFinal() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).VerifyRecoverInit C.EVP_PKEY_verify_recover_init
+func (self *EVP_PKEY_CTX) VerifyRecoverInit() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).VerifyRecoverInitEx C.EVP_PKEY_verify_recover_init_ex
+func (self *EVP_PKEY_CTX) VerifyRecoverInitEx(params *OSSL_PARAM) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).VerifyRecoverInitEx2 C.EVP_PKEY_verify_recover_init_ex2
+func (self *EVP_PKEY_CTX) VerifyRecoverInitEx2(algo *EVP_SIGNATURE, params *OSSL_PARAM) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).VerifyRecover C.EVP_PKEY_verify_recover
+func (self *EVP_PKEY_CTX) VerifyRecover(rout *uint8, routlen *c.SizeT, sig *uint8, siglen c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).EncryptInit C.EVP_PKEY_encrypt_init
+func (self *EVP_PKEY_CTX) EncryptInit() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).EncryptInitEx C.EVP_PKEY_encrypt_init_ex
+func (self *EVP_PKEY_CTX) EncryptInitEx(params *OSSL_PARAM) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).Encrypt C.EVP_PKEY_encrypt
+func (self *EVP_PKEY_CTX) Encrypt(out *uint8, outlen *c.SizeT, in *uint8, inlen c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).DecryptInit C.EVP_PKEY_decrypt_init
+func (self *EVP_PKEY_CTX) DecryptInit() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).DecryptInitEx C.EVP_PKEY_decrypt_init_ex
+func (self *EVP_PKEY_CTX) DecryptInitEx(params *OSSL_PARAM) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).Decrypt C.EVP_PKEY_decrypt
+func (self *EVP_PKEY_CTX) Decrypt(out *uint8, outlen *c.SizeT, in *uint8, inlen c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).DeriveInit C.EVP_PKEY_derive_init
+func (self *EVP_PKEY_CTX) DeriveInit() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).DeriveInitEx C.EVP_PKEY_derive_init_ex
+func (self *EVP_PKEY_CTX) DeriveInitEx(params *OSSL_PARAM) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).DeriveSetPeerEx C.EVP_PKEY_derive_set_peer_ex
+func (self *EVP_PKEY_CTX) DeriveSetPeerEx(peer *EVP_PKEY, validate_peer c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).DeriveSetPeer C.EVP_PKEY_derive_set_peer
+func (self *EVP_PKEY_CTX) DeriveSetPeer(peer *EVP_PKEY) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).Derive C.EVP_PKEY_derive
+func (self *EVP_PKEY_CTX) Derive(key *uint8, keylen *c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).Derive_SKEY C.EVP_PKEY_derive_SKEY
+func (self *EVP_PKEY_CTX) Derive_SKEY(mgmt *EVP_SKEYMGMT, key_type *c.Char, propquery *c.Char, keylen c.SizeT, params *OSSL_PARAM) *EVP_SKEY {
+	return nil
+}
+
+// llgo:link (*EVP_PKEY_CTX).EncapsulateInit C.EVP_PKEY_encapsulate_init
+func (self *EVP_PKEY_CTX) EncapsulateInit(params *OSSL_PARAM) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).AuthEncapsulateInit C.EVP_PKEY_auth_encapsulate_init
+func (self *EVP_PKEY_CTX) AuthEncapsulateInit(authpriv *EVP_PKEY, params *OSSL_PARAM) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).Encapsulate C.EVP_PKEY_encapsulate
+func (self *EVP_PKEY_CTX) Encapsulate(wrappedkey *uint8, wrappedkeylen *c.SizeT, genkey *uint8, genkeylen *c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).DecapsulateInit C.EVP_PKEY_decapsulate_init
+func (self *EVP_PKEY_CTX) DecapsulateInit(params *OSSL_PARAM) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).AuthDecapsulateInit C.EVP_PKEY_auth_decapsulate_init
+func (self *EVP_PKEY_CTX) AuthDecapsulateInit(authpub *EVP_PKEY, params *OSSL_PARAM) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).Decapsulate C.EVP_PKEY_decapsulate
+func (self *EVP_PKEY_CTX) Decapsulate(unwrapped *uint8, unwrappedlen *c.SizeT, wrapped *uint8, wrappedlen c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).FromdataInit C.EVP_PKEY_fromdata_init
+func (self *EVP_PKEY_CTX) FromdataInit() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).Fromdata C.EVP_PKEY_fromdata
+func (self *EVP_PKEY_CTX) Fromdata(ppkey **EVP_PKEY, selection c.Int, param *OSSL_PARAM) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).FromdataSettable C.EVP_PKEY_fromdata_settable
+func (self *EVP_PKEY_CTX) FromdataSettable(selection c.Int) *OSSL_PARAM {
+	return nil
+}
+
+// llgo:link (*EVP_PKEY).Todata C.EVP_PKEY_todata
+func (self *EVP_PKEY) Todata(selection c.Int, params **OSSL_PARAM) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY).Export C.EVP_PKEY_export
+func (self *EVP_PKEY) Export(selection c.Int, export_cb *OSSL_CALLBACK, export_cbarg unsafe.Pointer) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY).GettableParams C.EVP_PKEY_gettable_params
+func (self *EVP_PKEY) GettableParams() *OSSL_PARAM {
+	return nil
+}
+
+// llgo:link (*EVP_PKEY).Params C.EVP_PKEY_get_params
+func (self *EVP_PKEY) Params(params *OSSL_PARAM) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY).IntParam C.EVP_PKEY_get_int_param
+func (self *EVP_PKEY) IntParam(key_name *c.Char, out *c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY).SizeTParam C.EVP_PKEY_get_size_t_param
+func (self *EVP_PKEY) SizeTParam(key_name *c.Char, out *c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY).BnParam C.EVP_PKEY_get_bn_param
+func (self *EVP_PKEY) BnParam(key_name *c.Char, bn **BIGNUM) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY).Utf8StringParam C.EVP_PKEY_get_utf8_string_param
+func (self *EVP_PKEY) Utf8StringParam(key_name *c.Char, str *c.Char, max_buf_sz c.SizeT, out_sz *c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY).OctetStringParam C.EVP_PKEY_get_octet_string_param
+func (self *EVP_PKEY) OctetStringParam(key_name *c.Char, buf *uint8, max_buf_sz c.SizeT, out_sz *c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY).SettableParams C.EVP_PKEY_settable_params
+func (self *EVP_PKEY) SettableParams() *OSSL_PARAM {
+	return nil
+}
+
+// llgo:link (*EVP_PKEY).SetParams C.EVP_PKEY_set_params
+func (self *EVP_PKEY) SetParams(params *OSSL_PARAM) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY).SetIntParam C.EVP_PKEY_set_int_param
+func (self *EVP_PKEY) SetIntParam(key_name *c.Char, in c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY).SetSizeTParam C.EVP_PKEY_set_size_t_param
+func (self *EVP_PKEY) SetSizeTParam(key_name *c.Char, in c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY).SetBnParam C.EVP_PKEY_set_bn_param
+func (self *EVP_PKEY) SetBnParam(key_name *c.Char, bn *BIGNUM) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY).SetUtf8StringParam C.EVP_PKEY_set_utf8_string_param
+func (self *EVP_PKEY) SetUtf8StringParam(key_name *c.Char, str *c.Char) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY).SetOctetStringParam C.EVP_PKEY_set_octet_string_param
+func (self *EVP_PKEY) SetOctetStringParam(key_name *c.Char, buf *uint8, bsize c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY).EcPointConvForm C.EVP_PKEY_get_ec_point_conv_form
+func (self *EVP_PKEY) EcPointConvForm() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY).FieldType C.EVP_PKEY_get_field_type
+func (self *EVP_PKEY) FieldType() c.Int {
+	return 0
+}
+
+// llgo:link (*OSSL_LIB_CTX).EVP_PKEY_Q_keygen C.EVP_PKEY_Q_keygen
+func (self *OSSL_LIB_CTX) EVP_PKEY_Q_keygen(propq *c.Char, type_ *c.Char, __llgo_va_list ...any) *EVP_PKEY {
+	return nil
+}
+
+// llgo:link (*EVP_PKEY_CTX).ParamgenInit C.EVP_PKEY_paramgen_init
+func (self *EVP_PKEY_CTX) ParamgenInit() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).Paramgen C.EVP_PKEY_paramgen
+func (self *EVP_PKEY_CTX) Paramgen(ppkey **EVP_PKEY) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).KeygenInit C.EVP_PKEY_keygen_init
+func (self *EVP_PKEY_CTX) KeygenInit() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).Keygen C.EVP_PKEY_keygen
+func (self *EVP_PKEY_CTX) Keygen(ppkey **EVP_PKEY) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).Generate C.EVP_PKEY_generate
+func (self *EVP_PKEY_CTX) Generate(ppkey **EVP_PKEY) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).Check C.EVP_PKEY_check
+func (self *EVP_PKEY_CTX) Check() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).PublicCheck C.EVP_PKEY_public_check
+func (self *EVP_PKEY_CTX) PublicCheck() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).PublicCheckQuick C.EVP_PKEY_public_check_quick
+func (self *EVP_PKEY_CTX) PublicCheckQuick() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).ParamCheck C.EVP_PKEY_param_check
+func (self *EVP_PKEY_CTX) ParamCheck() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).ParamCheckQuick C.EVP_PKEY_param_check_quick
+func (self *EVP_PKEY_CTX) ParamCheckQuick() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).PrivateCheck C.EVP_PKEY_private_check
+func (self *EVP_PKEY_CTX) PrivateCheck() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).PairwiseCheck C.EVP_PKEY_pairwise_check
+func (self *EVP_PKEY_CTX) PairwiseCheck() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY).SetExData C.EVP_PKEY_set_ex_data
+func (self *EVP_PKEY) SetExData(idx c.Int, arg unsafe.Pointer) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY).ExData C.EVP_PKEY_get_ex_data
+func (self *EVP_PKEY) ExData(idx c.Int) unsafe.Pointer {
+	return nil
+}
+
+// llgo:link (*EVP_PKEY_CTX).SetCb C.EVP_PKEY_CTX_set_cb
+func (self *EVP_PKEY_CTX) SetCb(cb *EVP_PKEY_gen_cb) {
+}
+
+// llgo:link (*EVP_PKEY_CTX).Cb C.EVP_PKEY_CTX_get_cb
+func (self *EVP_PKEY_CTX) Cb() *EVP_PKEY_gen_cb {
+	return nil
+}
+
+// llgo:link (*EVP_PKEY_CTX).KeygenInfo C.EVP_PKEY_CTX_get_keygen_info
+func (self *EVP_PKEY_CTX) KeygenInfo(idx c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_KEYEXCH).Free C.EVP_KEYEXCH_free
+func (self *EVP_KEYEXCH) Free() {
+}
+
+// llgo:link (*EVP_KEYEXCH).UpRef C.EVP_KEYEXCH_up_ref
+func (self *EVP_KEYEXCH) UpRef() c.Int {
+	return 0
+}
+
+// llgo:link (*OSSL_LIB_CTX).EVP_KEYEXCH_fetch C.EVP_KEYEXCH_fetch
+func (self *OSSL_LIB_CTX) EVP_KEYEXCH_fetch(algorithm *c.Char, properties *c.Char) *EVP_KEYEXCH {
+	return nil
+}
+
+// llgo:link (*EVP_KEYEXCH).Get0Provider C.EVP_KEYEXCH_get0_provider
+func (self *EVP_KEYEXCH) Get0Provider() *OSSL_PROVIDER {
+	return nil
+}
+
+// llgo:link (*EVP_KEYEXCH).IsA C.EVP_KEYEXCH_is_a
+func (self *EVP_KEYEXCH) IsA(name *c.Char) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_KEYEXCH).Get0Name C.EVP_KEYEXCH_get0_name
+func (self *EVP_KEYEXCH) Get0Name() *c.Char {
+	return nil
+}
+
+// llgo:link (*EVP_KEYEXCH).Get0Description C.EVP_KEYEXCH_get0_description
+func (self *EVP_KEYEXCH) Get0Description() *c.Char {
+	return nil
+}
+
+// llgo:link (*OSSL_LIB_CTX).EVP_KEYEXCH_do_all_provided C.EVP_KEYEXCH_do_all_provided
+func (self *OSSL_LIB_CTX) EVP_KEYEXCH_do_all_provided(fn func(_llcppg_param1 *EVP_KEYEXCH, _llcppg_param2 unsafe.Pointer), data unsafe.Pointer) {
+}
+
+// llgo:link (*EVP_KEYEXCH).NamesDoAll C.EVP_KEYEXCH_names_do_all
+func (self *EVP_KEYEXCH) NamesDoAll(fn func(_llcppg_param1 *c.Char, _llcppg_param2 unsafe.Pointer), data unsafe.Pointer) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_KEYEXCH).GettableCtxParams C.EVP_KEYEXCH_gettable_ctx_params
+func (self *EVP_KEYEXCH) GettableCtxParams() *OSSL_PARAM {
+	return nil
+}
+
+// llgo:link (*EVP_KEYEXCH).SettableCtxParams C.EVP_KEYEXCH_settable_ctx_params
+func (self *EVP_KEYEXCH) SettableCtxParams() *OSSL_PARAM {
+	return nil
+}
+
+//go:linkname EVP_add_alg_module C.EVP_add_alg_module
+func EVP_add_alg_module()
+
+// llgo:link (*EVP_PKEY_CTX).SetGroupName C.EVP_PKEY_CTX_set_group_name
+func (self *EVP_PKEY_CTX) SetGroupName(name *c.Char) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).GroupName C.EVP_PKEY_CTX_get_group_name
+func (self *EVP_PKEY_CTX) GroupName(name *c.Char, namelen c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY).GroupName C.EVP_PKEY_get_group_name
+func (self *EVP_PKEY) GroupName(name *c.Char, name_sz c.SizeT, gname_len *c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_PKEY_CTX).Get0Libctx C.EVP_PKEY_CTX_get0_libctx
+func (self *EVP_PKEY_CTX) Get0Libctx() *OSSL_LIB_CTX {
+	return nil
+}
+
+// llgo:link (*EVP_PKEY_CTX).Get0Propq C.EVP_PKEY_CTX_get0_propq
+func (self *EVP_PKEY_CTX) Get0Propq() *c.Char {
+	return nil
+}
+
+// llgo:link (*EVP_PKEY_CTX).Get0Provider C.EVP_PKEY_CTX_get0_provider
+func (self *EVP_PKEY_CTX) Get0Provider() *OSSL_PROVIDER {
+	return nil
+}
+
+// llgo:link (*EVP_SKEY).IsA C.EVP_SKEY_is_a
+func (self *EVP_SKEY) IsA(name *c.Char) c.Int {
+	return 0
+}
+
+// llgo:link (*OSSL_LIB_CTX).EVP_SKEY_import C.EVP_SKEY_import
+func (self *OSSL_LIB_CTX) EVP_SKEY_import(skeymgmtname *c.Char, propquery *c.Char, selection c.Int, params *OSSL_PARAM) *EVP_SKEY {
+	return nil
+}
+
+// llgo:link (*OSSL_LIB_CTX).EVP_SKEY_generate C.EVP_SKEY_generate
+func (self *OSSL_LIB_CTX) EVP_SKEY_generate(skeymgmtname *c.Char, propquery *c.Char, params *OSSL_PARAM) *EVP_SKEY {
+	return nil
+}
+
+// llgo:link (*OSSL_LIB_CTX).EVP_SKEY_import_raw_key C.EVP_SKEY_import_raw_key
+func (self *OSSL_LIB_CTX) EVP_SKEY_import_raw_key(skeymgmtname *c.Char, key *uint8, keylen c.SizeT, propquery *c.Char) *EVP_SKEY {
+	return nil
+}
+
+// llgo:link (*OSSL_LIB_CTX).EVP_SKEY_import_SKEYMGMT C.EVP_SKEY_import_SKEYMGMT
+func (self *OSSL_LIB_CTX) EVP_SKEY_import_SKEYMGMT(skeymgmt *EVP_SKEYMGMT, selection c.Int, params *OSSL_PARAM) *EVP_SKEY {
+	return nil
+}
+
+// llgo:link (*EVP_SKEY).Get0RawKey C.EVP_SKEY_get0_raw_key
+func (self *EVP_SKEY) Get0RawKey(key **uint8, len *c.SizeT) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_SKEY).Get0KeyId C.EVP_SKEY_get0_key_id
+func (self *EVP_SKEY) Get0KeyId() *c.Char {
+	return nil
+}
+
+// llgo:link (*EVP_SKEY).Export C.EVP_SKEY_export
+func (self *EVP_SKEY) Export(selection c.Int, export_cb *OSSL_CALLBACK, export_cbarg unsafe.Pointer) c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_SKEY).UpRef C.EVP_SKEY_up_ref
+func (self *EVP_SKEY) UpRef() c.Int {
+	return 0
+}
+
+// llgo:link (*EVP_SKEY).Free C.EVP_SKEY_free
+func (self *EVP_SKEY) Free() {
+}
+
+// llgo:link (*EVP_SKEY).Get0SkeymgmtName C.EVP_SKEY_get0_skeymgmt_name
+func (self *EVP_SKEY) Get0SkeymgmtName() *c.Char {
+	return nil
+}
+
+// llgo:link (*EVP_SKEY).Get0ProviderName C.EVP_SKEY_get0_provider_name
+func (self *EVP_SKEY) Get0ProviderName() *c.Char {
+	return nil
+}
+
+// llgo:link (*EVP_SKEY).ToProvider C.EVP_SKEY_to_provider
+func (self *EVP_SKEY) ToProvider(libctx *OSSL_LIB_CTX, prov *OSSL_PROVIDER, propquery *c.Char) *EVP_SKEY {
+	return self
+}

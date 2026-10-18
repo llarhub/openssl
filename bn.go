@@ -48,7 +48,7 @@ const (
 
 // default: select number of iterations based \
 // on the size of the number
-const BNPrimeChecks = 0
+const BN_prime_checks = 0
 
 // BN_BLINDING flags
 const (
@@ -58,676 +58,988 @@ const (
 
 type BN_ULONG = c.Ulong
 
-//go:linkname BNSetFlags C.BN_set_flags
-func BNSetFlags(b *BIGNUM, n c.Int)
+// llgo:link (*BIGNUM).SetFlags C.BN_set_flags
+func (self *BIGNUM) SetFlags(n c.Int) {
+}
 
-//go:linkname BNGetFlags C.BN_get_flags
-func BNGetFlags(b *BIGNUM, n c.Int) c.Int
+// llgo:link (*BIGNUM).Flags C.BN_get_flags
+func (self *BIGNUM) Flags(n c.Int) c.Int {
+	return 0
+}
 
 // get a clone of a BIGNUM with changed flags, for *temporary* use only (the
 // two BIGNUMs cannot be used in parallel!). Also only for *read only* use. The
 // value |dest| should be a newly allocated BIGNUM obtained via BN_new() that
 // has not been otherwise initialised or used.
 //
-//go:linkname BNWithFlags C.BN_with_flags
-func BNWithFlags(dest *BIGNUM, b *BIGNUM, flags c.Int)
+// llgo:link (*BIGNUM).WithFlags C.BN_with_flags
+func (self *BIGNUM) WithFlags(b *BIGNUM, flags c.Int) {
+}
 
 // Wrapper function to make using BN_GENCB easier
 //
-//go:linkname BN_GENCBCall C.BN_GENCB_call
-func BN_GENCBCall(cb *BN_GENCB, a c.Int, b c.Int) c.Int
+// llgo:link (*BN_GENCB).Call C.BN_GENCB_call
+func (self *BN_GENCB) Call(a c.Int, b c.Int) c.Int {
+	return 0
+}
 
-//go:linkname BN_GENCBNew C.BN_GENCB_new
-func BN_GENCBNew() *BN_GENCB
+//go:linkname BN_GENCB_new C.BN_GENCB_new
+func BN_GENCB_new() *BN_GENCB
 
-//go:linkname BN_GENCBFree C.BN_GENCB_free
-func BN_GENCBFree(cb *BN_GENCB)
+// llgo:link (*BN_GENCB).Free C.BN_GENCB_free
+func (self *BN_GENCB) Free() {
+}
 
 // Populate a BN_GENCB structure with an "old"-style callback
 //
-//go:linkname BN_GENCBSetOld C.BN_GENCB_set_old
-func BN_GENCBSetOld(gencb *BN_GENCB, callback func(_llcppg_param1 c.Int, _llcppg_param2 c.Int, _llcppg_param3 unsafe.Pointer), cb_arg unsafe.Pointer)
+// llgo:link (*BN_GENCB).SetOld C.BN_GENCB_set_old
+func (self *BN_GENCB) SetOld(callback func(_llcppg_param1 c.Int, _llcppg_param2 c.Int, _llcppg_param3 unsafe.Pointer), cb_arg unsafe.Pointer) {
+}
 
 // Populate a BN_GENCB structure with a "new"-style callback
 //
-//go:linkname BN_GENCBSet C.BN_GENCB_set
-func BN_GENCBSet(gencb *BN_GENCB, callback func(_llcppg_param1 c.Int, _llcppg_param2 c.Int, _llcppg_param3 *BN_GENCB) c.Int, cb_arg unsafe.Pointer)
+// llgo:link (*BN_GENCB).Set C.BN_GENCB_set
+func (self *BN_GENCB) Set(callback func(_llcppg_param1 c.Int, _llcppg_param2 c.Int, _llcppg_param3 *BN_GENCB) c.Int, cb_arg unsafe.Pointer) {
+}
 
-//go:linkname BN_GENCBGetArg C.BN_GENCB_get_arg
-func BN_GENCBGetArg(cb *BN_GENCB) unsafe.Pointer
+// llgo:link (*BN_GENCB).Arg C.BN_GENCB_get_arg
+func (self *BN_GENCB) Arg() unsafe.Pointer {
+	return nil
+}
 
-//go:linkname BNAbsIsWord C.BN_abs_is_word
-func BNAbsIsWord(a *BIGNUM, w BN_ULONG) c.Int
+// llgo:link (*BIGNUM).AbsIsWord C.BN_abs_is_word
+func (self *BIGNUM) AbsIsWord(w BN_ULONG) c.Int {
+	return 0
+}
 
-//go:linkname BNIsZero C.BN_is_zero
-func BNIsZero(a *BIGNUM) c.Int
+// llgo:link (*BIGNUM).IsZero C.BN_is_zero
+func (self *BIGNUM) IsZero() c.Int {
+	return 0
+}
 
-//go:linkname BNIsOne C.BN_is_one
-func BNIsOne(a *BIGNUM) c.Int
+// llgo:link (*BIGNUM).IsOne C.BN_is_one
+func (self *BIGNUM) IsOne() c.Int {
+	return 0
+}
 
-//go:linkname BNIsWord C.BN_is_word
-func BNIsWord(a *BIGNUM, w BN_ULONG) c.Int
+// llgo:link (*BIGNUM).IsWord C.BN_is_word
+func (self *BIGNUM) IsWord(w BN_ULONG) c.Int {
+	return 0
+}
 
-//go:linkname BNIsOdd C.BN_is_odd
-func BNIsOdd(a *BIGNUM) c.Int
+// llgo:link (*BIGNUM).IsOdd C.BN_is_odd
+func (self *BIGNUM) IsOdd() c.Int {
+	return 0
+}
 
-//go:linkname BNZeroEx C.BN_zero_ex
-func BNZeroEx(a *BIGNUM)
+// llgo:link (*BIGNUM).ZeroEx C.BN_zero_ex
+func (self *BIGNUM) ZeroEx() {
+}
 
-//go:linkname BNValueOne C.BN_value_one
-func BNValueOne() *BIGNUM
+//go:linkname BN_value_one C.BN_value_one
+func BN_value_one() *BIGNUM
 
-//go:linkname BNOptions C.BN_options
-func BNOptions() *c.Char
+//go:linkname BN_options C.BN_options
+func BN_options() *c.Char
 
-//go:linkname BN_CTXNewEx C.BN_CTX_new_ex
-func BN_CTXNewEx(ctx *OSSL_LIB_CTX) *BN_CTX
+// llgo:link (*OSSL_LIB_CTX).BN_CTX_new_ex C.BN_CTX_new_ex
+func (self *OSSL_LIB_CTX) BN_CTX_new_ex() *BN_CTX {
+	return nil
+}
 
-//go:linkname BN_CTXNew C.BN_CTX_new
-func BN_CTXNew() *BN_CTX
+//go:linkname BN_CTX_new C.BN_CTX_new
+func BN_CTX_new() *BN_CTX
 
-//go:linkname BN_CTXSecureNewEx C.BN_CTX_secure_new_ex
-func BN_CTXSecureNewEx(ctx *OSSL_LIB_CTX) *BN_CTX
+// llgo:link (*OSSL_LIB_CTX).BN_CTX_secure_new_ex C.BN_CTX_secure_new_ex
+func (self *OSSL_LIB_CTX) BN_CTX_secure_new_ex() *BN_CTX {
+	return nil
+}
 
-//go:linkname BN_CTXSecureNew C.BN_CTX_secure_new
-func BN_CTXSecureNew() *BN_CTX
+//go:linkname BN_CTX_secure_new C.BN_CTX_secure_new
+func BN_CTX_secure_new() *BN_CTX
 
-//go:linkname BN_CTXFree C.BN_CTX_free
-func BN_CTXFree(c *BN_CTX)
+// llgo:link (*BN_CTX).Free C.BN_CTX_free
+func (self *BN_CTX) Free() {
+}
 
-//go:linkname BN_CTXStart C.BN_CTX_start
-func BN_CTXStart(ctx *BN_CTX)
+// llgo:link (*BN_CTX).Start C.BN_CTX_start
+func (self *BN_CTX) Start() {
+}
 
-//go:linkname BN_CTXGet C.BN_CTX_get
-func BN_CTXGet(ctx *BN_CTX) *BIGNUM
+// llgo:link (*BN_CTX).Get C.BN_CTX_get
+func (self *BN_CTX) Get() *BIGNUM {
+	return nil
+}
 
-//go:linkname BN_CTXEnd C.BN_CTX_end
-func BN_CTXEnd(ctx *BN_CTX)
+// llgo:link (*BN_CTX).End C.BN_CTX_end
+func (self *BN_CTX) End() {
+}
 
-//go:linkname BNRandEx C.BN_rand_ex
-func BNRandEx(rnd *BIGNUM, bits c.Int, top c.Int, bottom c.Int, strength c.Uint, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).RandEx C.BN_rand_ex
+func (self *BIGNUM) RandEx(bits c.Int, top c.Int, bottom c.Int, strength c.Uint, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BNRand C.BN_rand
-func BNRand(rnd *BIGNUM, bits c.Int, top c.Int, bottom c.Int) c.Int
+// llgo:link (*BIGNUM).Rand C.BN_rand
+func (self *BIGNUM) Rand(bits c.Int, top c.Int, bottom c.Int) c.Int {
+	return 0
+}
 
-//go:linkname BNPrivRandEx C.BN_priv_rand_ex
-func BNPrivRandEx(rnd *BIGNUM, bits c.Int, top c.Int, bottom c.Int, strength c.Uint, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).PrivRandEx C.BN_priv_rand_ex
+func (self *BIGNUM) PrivRandEx(bits c.Int, top c.Int, bottom c.Int, strength c.Uint, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BNPrivRand C.BN_priv_rand
-func BNPrivRand(rnd *BIGNUM, bits c.Int, top c.Int, bottom c.Int) c.Int
+// llgo:link (*BIGNUM).PrivRand C.BN_priv_rand
+func (self *BIGNUM) PrivRand(bits c.Int, top c.Int, bottom c.Int) c.Int {
+	return 0
+}
 
-//go:linkname BNRandRangeEx C.BN_rand_range_ex
-func BNRandRangeEx(r *BIGNUM, range_ *BIGNUM, strength c.Uint, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).RandRangeEx C.BN_rand_range_ex
+func (self *BIGNUM) RandRangeEx(range_ *BIGNUM, strength c.Uint, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BNRandRange C.BN_rand_range
-func BNRandRange(rnd *BIGNUM, range_ *BIGNUM) c.Int
+// llgo:link (*BIGNUM).RandRange C.BN_rand_range
+func (self *BIGNUM) RandRange(range_ *BIGNUM) c.Int {
+	return 0
+}
 
-//go:linkname BNPrivRandRangeEx C.BN_priv_rand_range_ex
-func BNPrivRandRangeEx(r *BIGNUM, range_ *BIGNUM, strength c.Uint, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).PrivRandRangeEx C.BN_priv_rand_range_ex
+func (self *BIGNUM) PrivRandRangeEx(range_ *BIGNUM, strength c.Uint, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BNPrivRandRange C.BN_priv_rand_range
-func BNPrivRandRange(rnd *BIGNUM, range_ *BIGNUM) c.Int
+// llgo:link (*BIGNUM).PrivRandRange C.BN_priv_rand_range
+func (self *BIGNUM) PrivRandRange(range_ *BIGNUM) c.Int {
+	return 0
+}
 
-//go:linkname BNPseudoRand C.BN_pseudo_rand
-func BNPseudoRand(rnd *BIGNUM, bits c.Int, top c.Int, bottom c.Int) c.Int
+// llgo:link (*BIGNUM).PseudoRand C.BN_pseudo_rand
+func (self *BIGNUM) PseudoRand(bits c.Int, top c.Int, bottom c.Int) c.Int {
+	return 0
+}
 
-//go:linkname BNPseudoRandRange C.BN_pseudo_rand_range
-func BNPseudoRandRange(rnd *BIGNUM, range_ *BIGNUM) c.Int
+// llgo:link (*BIGNUM).PseudoRandRange C.BN_pseudo_rand_range
+func (self *BIGNUM) PseudoRandRange(range_ *BIGNUM) c.Int {
+	return 0
+}
 
-//go:linkname BNNumBits C.BN_num_bits
-func BNNumBits(a *BIGNUM) c.Int
+// llgo:link (*BIGNUM).NumBits C.BN_num_bits
+func (self *BIGNUM) NumBits() c.Int {
+	return 0
+}
 
-//go:linkname BNNumBitsWord C.BN_num_bits_word
-func BNNumBitsWord(l BN_ULONG) c.Int
+//go:linkname BN_num_bits_word C.BN_num_bits_word
+func BN_num_bits_word(l BN_ULONG) c.Int
 
-//go:linkname BNSecurityBits C.BN_security_bits
-func BNSecurityBits(L c.Int, N c.Int) c.Int
+//go:linkname BN_security_bits C.BN_security_bits
+func BN_security_bits(L c.Int, N c.Int) c.Int
 
-//go:linkname BNNew C.BN_new
-func BNNew() *BIGNUM
+//go:linkname BN_new C.BN_new
+func BN_new() *BIGNUM
 
-//go:linkname BNSecureNew C.BN_secure_new
-func BNSecureNew() *BIGNUM
+//go:linkname BN_secure_new C.BN_secure_new
+func BN_secure_new() *BIGNUM
 
-//go:linkname BNClearFree C.BN_clear_free
-func BNClearFree(a *BIGNUM)
+// llgo:link (*BIGNUM).ClearFree C.BN_clear_free
+func (self *BIGNUM) ClearFree() {
+}
 
-//go:linkname BNCopy C.BN_copy
-func BNCopy(a *BIGNUM, b *BIGNUM) *BIGNUM
+// llgo:link (*BIGNUM).Copy C.BN_copy
+func (self *BIGNUM) Copy(b *BIGNUM) *BIGNUM {
+	return self
+}
 
-//go:linkname BNSwap C.BN_swap
-func BNSwap(a *BIGNUM, b *BIGNUM)
+//go:linkname BN_swap C.BN_swap
+func BN_swap(a *BIGNUM, b *BIGNUM)
 
-//go:linkname BNBin2bn C.BN_bin2bn
-func BNBin2bn(s *uint8, len c.Int, ret *BIGNUM) *BIGNUM
+//go:linkname BN_bin2bn C.BN_bin2bn
+func BN_bin2bn(s *uint8, len c.Int, ret *BIGNUM) *BIGNUM
 
-//go:linkname BNSignedBin2bn C.BN_signed_bin2bn
-func BNSignedBin2bn(s *uint8, len c.Int, ret *BIGNUM) *BIGNUM
+//go:linkname BN_signed_bin2bn C.BN_signed_bin2bn
+func BN_signed_bin2bn(s *uint8, len c.Int, ret *BIGNUM) *BIGNUM
 
-//go:linkname BNBn2bin C.BN_bn2bin
-func BNBn2bin(a *BIGNUM, to *uint8) c.Int
+// llgo:link (*BIGNUM).Bn2bin C.BN_bn2bin
+func (self *BIGNUM) Bn2bin(to *uint8) c.Int {
+	return 0
+}
 
-//go:linkname BNBn2binpad C.BN_bn2binpad
-func BNBn2binpad(a *BIGNUM, to *uint8, tolen c.Int) c.Int
+// llgo:link (*BIGNUM).Bn2binpad C.BN_bn2binpad
+func (self *BIGNUM) Bn2binpad(to *uint8, tolen c.Int) c.Int {
+	return 0
+}
 
-//go:linkname BNSignedBn2bin C.BN_signed_bn2bin
-func BNSignedBn2bin(a *BIGNUM, to *uint8, tolen c.Int) c.Int
+// llgo:link (*BIGNUM).SignedBn2bin C.BN_signed_bn2bin
+func (self *BIGNUM) SignedBn2bin(to *uint8, tolen c.Int) c.Int {
+	return 0
+}
 
-//go:linkname BNLebin2bn C.BN_lebin2bn
-func BNLebin2bn(s *uint8, len c.Int, ret *BIGNUM) *BIGNUM
+//go:linkname BN_lebin2bn C.BN_lebin2bn
+func BN_lebin2bn(s *uint8, len c.Int, ret *BIGNUM) *BIGNUM
 
-//go:linkname BNSignedLebin2bn C.BN_signed_lebin2bn
-func BNSignedLebin2bn(s *uint8, len c.Int, ret *BIGNUM) *BIGNUM
+//go:linkname BN_signed_lebin2bn C.BN_signed_lebin2bn
+func BN_signed_lebin2bn(s *uint8, len c.Int, ret *BIGNUM) *BIGNUM
 
-//go:linkname BNBn2lebinpad C.BN_bn2lebinpad
-func BNBn2lebinpad(a *BIGNUM, to *uint8, tolen c.Int) c.Int
+// llgo:link (*BIGNUM).Bn2lebinpad C.BN_bn2lebinpad
+func (self *BIGNUM) Bn2lebinpad(to *uint8, tolen c.Int) c.Int {
+	return 0
+}
 
-//go:linkname BNSignedBn2lebin C.BN_signed_bn2lebin
-func BNSignedBn2lebin(a *BIGNUM, to *uint8, tolen c.Int) c.Int
+// llgo:link (*BIGNUM).SignedBn2lebin C.BN_signed_bn2lebin
+func (self *BIGNUM) SignedBn2lebin(to *uint8, tolen c.Int) c.Int {
+	return 0
+}
 
-//go:linkname BNNative2bn C.BN_native2bn
-func BNNative2bn(s *uint8, len c.Int, ret *BIGNUM) *BIGNUM
+//go:linkname BN_native2bn C.BN_native2bn
+func BN_native2bn(s *uint8, len c.Int, ret *BIGNUM) *BIGNUM
 
-//go:linkname BNSignedNative2bn C.BN_signed_native2bn
-func BNSignedNative2bn(s *uint8, len c.Int, ret *BIGNUM) *BIGNUM
+//go:linkname BN_signed_native2bn C.BN_signed_native2bn
+func BN_signed_native2bn(s *uint8, len c.Int, ret *BIGNUM) *BIGNUM
 
-//go:linkname BNBn2nativepad C.BN_bn2nativepad
-func BNBn2nativepad(a *BIGNUM, to *uint8, tolen c.Int) c.Int
+// llgo:link (*BIGNUM).Bn2nativepad C.BN_bn2nativepad
+func (self *BIGNUM) Bn2nativepad(to *uint8, tolen c.Int) c.Int {
+	return 0
+}
 
-//go:linkname BNSignedBn2native C.BN_signed_bn2native
-func BNSignedBn2native(a *BIGNUM, to *uint8, tolen c.Int) c.Int
+// llgo:link (*BIGNUM).SignedBn2native C.BN_signed_bn2native
+func (self *BIGNUM) SignedBn2native(to *uint8, tolen c.Int) c.Int {
+	return 0
+}
 
-//go:linkname BNMpi2bn C.BN_mpi2bn
-func BNMpi2bn(s *uint8, len c.Int, ret *BIGNUM) *BIGNUM
+//go:linkname BN_mpi2bn C.BN_mpi2bn
+func BN_mpi2bn(s *uint8, len c.Int, ret *BIGNUM) *BIGNUM
 
-//go:linkname BNBn2mpi C.BN_bn2mpi
-func BNBn2mpi(a *BIGNUM, to *uint8) c.Int
+// llgo:link (*BIGNUM).Bn2mpi C.BN_bn2mpi
+func (self *BIGNUM) Bn2mpi(to *uint8) c.Int {
+	return 0
+}
 
-//go:linkname BNSub C.BN_sub
-func BNSub(r *BIGNUM, a *BIGNUM, b *BIGNUM) c.Int
+// llgo:link (*BIGNUM).Sub C.BN_sub
+func (self *BIGNUM) Sub(a *BIGNUM, b *BIGNUM) c.Int {
+	return 0
+}
 
-//go:linkname BNUsub C.BN_usub
-func BNUsub(r *BIGNUM, a *BIGNUM, b *BIGNUM) c.Int
+// llgo:link (*BIGNUM).Usub C.BN_usub
+func (self *BIGNUM) Usub(a *BIGNUM, b *BIGNUM) c.Int {
+	return 0
+}
 
-//go:linkname BNUadd C.BN_uadd
-func BNUadd(r *BIGNUM, a *BIGNUM, b *BIGNUM) c.Int
+// llgo:link (*BIGNUM).Uadd C.BN_uadd
+func (self *BIGNUM) Uadd(a *BIGNUM, b *BIGNUM) c.Int {
+	return 0
+}
 
-//go:linkname BNAdd C.BN_add
-func BNAdd(r *BIGNUM, a *BIGNUM, b *BIGNUM) c.Int
+// llgo:link (*BIGNUM).Add C.BN_add
+func (self *BIGNUM) Add(a *BIGNUM, b *BIGNUM) c.Int {
+	return 0
+}
 
-//go:linkname BNMul C.BN_mul
-func BNMul(r *BIGNUM, a *BIGNUM, b *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).Mul C.BN_mul
+func (self *BIGNUM) Mul(a *BIGNUM, b *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // BN_set_negative sets sign of a BIGNUM
 // \param  b  pointer to the BIGNUM object
 // \param  n  0 if the BIGNUM b should be positive and a value != 0 otherwise
 //
-//go:linkname BNSqr C.BN_sqr
-func BNSqr(r *BIGNUM, a *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).Sqr C.BN_sqr
+func (self *BIGNUM) Sqr(a *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // BN_set_negative sets sign of a BIGNUM
 // \param  b  pointer to the BIGNUM object
 // \param  n  0 if the BIGNUM b should be positive and a value != 0 otherwise
 //
-//go:linkname BNSetNegative C.BN_set_negative
-func BNSetNegative(b *BIGNUM, n c.Int)
+// llgo:link (*BIGNUM).SetNegative C.BN_set_negative
+func (self *BIGNUM) SetNegative(n c.Int) {
+}
 
 // BN_is_negative returns 1 if the BIGNUM is negative
 // \param  b  pointer to the BIGNUM object
 // \return 1 if a < 0 and 0 otherwise
 //
-//go:linkname BNIsNegative C.BN_is_negative
-func BNIsNegative(b *BIGNUM) c.Int
+// llgo:link (*BIGNUM).IsNegative C.BN_is_negative
+func (self *BIGNUM) IsNegative() c.Int {
+	return 0
+}
 
-//go:linkname BNDiv C.BN_div
-func BNDiv(dv *BIGNUM, rem *BIGNUM, m *BIGNUM, d *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).Div C.BN_div
+func (self *BIGNUM) Div(rem *BIGNUM, m *BIGNUM, d *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BNNnmod C.BN_nnmod
-func BNNnmod(r *BIGNUM, a *BIGNUM, m *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).Nnmod C.BN_nnmod
+func (self *BIGNUM) Nnmod(a *BIGNUM, m *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BNModAdd C.BN_mod_add
-func BNModAdd(r *BIGNUM, a *BIGNUM, b *BIGNUM, m *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).ModAdd C.BN_mod_add
+func (self *BIGNUM) ModAdd(a *BIGNUM, b *BIGNUM, m *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BNModAddQuick C.BN_mod_add_quick
-func BNModAddQuick(r *BIGNUM, a *BIGNUM, b *BIGNUM, m *BIGNUM) c.Int
+// llgo:link (*BIGNUM).ModAddQuick C.BN_mod_add_quick
+func (self *BIGNUM) ModAddQuick(a *BIGNUM, b *BIGNUM, m *BIGNUM) c.Int {
+	return 0
+}
 
-//go:linkname BNModSub C.BN_mod_sub
-func BNModSub(r *BIGNUM, a *BIGNUM, b *BIGNUM, m *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).ModSub C.BN_mod_sub
+func (self *BIGNUM) ModSub(a *BIGNUM, b *BIGNUM, m *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BNModSubQuick C.BN_mod_sub_quick
-func BNModSubQuick(r *BIGNUM, a *BIGNUM, b *BIGNUM, m *BIGNUM) c.Int
+// llgo:link (*BIGNUM).ModSubQuick C.BN_mod_sub_quick
+func (self *BIGNUM) ModSubQuick(a *BIGNUM, b *BIGNUM, m *BIGNUM) c.Int {
+	return 0
+}
 
-//go:linkname BNModMul C.BN_mod_mul
-func BNModMul(r *BIGNUM, a *BIGNUM, b *BIGNUM, m *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).ModMul C.BN_mod_mul
+func (self *BIGNUM) ModMul(a *BIGNUM, b *BIGNUM, m *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BNModSqr C.BN_mod_sqr
-func BNModSqr(r *BIGNUM, a *BIGNUM, m *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).ModSqr C.BN_mod_sqr
+func (self *BIGNUM) ModSqr(a *BIGNUM, m *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BNModLshift1 C.BN_mod_lshift1
-func BNModLshift1(r *BIGNUM, a *BIGNUM, m *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).ModLshift1 C.BN_mod_lshift1
+func (self *BIGNUM) ModLshift1(a *BIGNUM, m *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BNModLshift1Quick C.BN_mod_lshift1_quick
-func BNModLshift1Quick(r *BIGNUM, a *BIGNUM, m *BIGNUM) c.Int
+// llgo:link (*BIGNUM).ModLshift1Quick C.BN_mod_lshift1_quick
+func (self *BIGNUM) ModLshift1Quick(a *BIGNUM, m *BIGNUM) c.Int {
+	return 0
+}
 
-//go:linkname BNModLshift C.BN_mod_lshift
-func BNModLshift(r *BIGNUM, a *BIGNUM, n c.Int, m *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).ModLshift C.BN_mod_lshift
+func (self *BIGNUM) ModLshift(a *BIGNUM, n c.Int, m *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BNModLshiftQuick C.BN_mod_lshift_quick
-func BNModLshiftQuick(r *BIGNUM, a *BIGNUM, n c.Int, m *BIGNUM) c.Int
+// llgo:link (*BIGNUM).ModLshiftQuick C.BN_mod_lshift_quick
+func (self *BIGNUM) ModLshiftQuick(a *BIGNUM, n c.Int, m *BIGNUM) c.Int {
+	return 0
+}
 
-//go:linkname BNModWord C.BN_mod_word
-func BNModWord(a *BIGNUM, w BN_ULONG) BN_ULONG
+// llgo:link (*BIGNUM).ModWord C.BN_mod_word
+func (self *BIGNUM) ModWord(w BN_ULONG) BN_ULONG {
+	return 0
+}
 
-//go:linkname BNDivWord C.BN_div_word
-func BNDivWord(a *BIGNUM, w BN_ULONG) BN_ULONG
+// llgo:link (*BIGNUM).DivWord C.BN_div_word
+func (self *BIGNUM) DivWord(w BN_ULONG) BN_ULONG {
+	return 0
+}
 
-//go:linkname BNMulWord C.BN_mul_word
-func BNMulWord(a *BIGNUM, w BN_ULONG) c.Int
+// llgo:link (*BIGNUM).MulWord C.BN_mul_word
+func (self *BIGNUM) MulWord(w BN_ULONG) c.Int {
+	return 0
+}
 
-//go:linkname BNAddWord C.BN_add_word
-func BNAddWord(a *BIGNUM, w BN_ULONG) c.Int
+// llgo:link (*BIGNUM).AddWord C.BN_add_word
+func (self *BIGNUM) AddWord(w BN_ULONG) c.Int {
+	return 0
+}
 
-//go:linkname BNSubWord C.BN_sub_word
-func BNSubWord(a *BIGNUM, w BN_ULONG) c.Int
+// llgo:link (*BIGNUM).SubWord C.BN_sub_word
+func (self *BIGNUM) SubWord(w BN_ULONG) c.Int {
+	return 0
+}
 
-//go:linkname BNSetWord C.BN_set_word
-func BNSetWord(a *BIGNUM, w BN_ULONG) c.Int
+// llgo:link (*BIGNUM).SetWord C.BN_set_word
+func (self *BIGNUM) SetWord(w BN_ULONG) c.Int {
+	return 0
+}
 
-//go:linkname BNGetWord C.BN_get_word
-func BNGetWord(a *BIGNUM) BN_ULONG
+// llgo:link (*BIGNUM).Word C.BN_get_word
+func (self *BIGNUM) Word() BN_ULONG {
+	return 0
+}
 
-//go:linkname BNCmp C.BN_cmp
-func BNCmp(a *BIGNUM, b *BIGNUM) c.Int
+//go:linkname BN_cmp C.BN_cmp
+func BN_cmp(a *BIGNUM, b *BIGNUM) c.Int
 
-//go:linkname BNFree C.BN_free
-func BNFree(a *BIGNUM)
+// llgo:link (*BIGNUM).Free C.BN_free
+func (self *BIGNUM) Free() {
+}
 
-//go:linkname BNIsBitSet C.BN_is_bit_set
-func BNIsBitSet(a *BIGNUM, n c.Int) c.Int
+// llgo:link (*BIGNUM).IsBitSet C.BN_is_bit_set
+func (self *BIGNUM) IsBitSet(n c.Int) c.Int {
+	return 0
+}
 
-//go:linkname BNLshift C.BN_lshift
-func BNLshift(r *BIGNUM, a *BIGNUM, n c.Int) c.Int
+// llgo:link (*BIGNUM).Lshift C.BN_lshift
+func (self *BIGNUM) Lshift(a *BIGNUM, n c.Int) c.Int {
+	return 0
+}
 
-//go:linkname BNLshift1 C.BN_lshift1
-func BNLshift1(r *BIGNUM, a *BIGNUM) c.Int
+// llgo:link (*BIGNUM).Lshift1 C.BN_lshift1
+func (self *BIGNUM) Lshift1(a *BIGNUM) c.Int {
+	return 0
+}
 
-//go:linkname BNExp C.BN_exp
-func BNExp(r *BIGNUM, a *BIGNUM, p *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).Exp C.BN_exp
+func (self *BIGNUM) Exp(a *BIGNUM, p *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BNModExp C.BN_mod_exp
-func BNModExp(r *BIGNUM, a *BIGNUM, p *BIGNUM, m *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).ModExp C.BN_mod_exp
+func (self *BIGNUM) ModExp(a *BIGNUM, p *BIGNUM, m *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BNModExpMont C.BN_mod_exp_mont
-func BNModExpMont(r *BIGNUM, a *BIGNUM, p *BIGNUM, m *BIGNUM, ctx *BN_CTX, m_ctx *BN_MONT_CTX) c.Int
+// llgo:link (*BIGNUM).ModExpMont C.BN_mod_exp_mont
+func (self *BIGNUM) ModExpMont(a *BIGNUM, p *BIGNUM, m *BIGNUM, ctx *BN_CTX, m_ctx *BN_MONT_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BNModExpMontConsttime C.BN_mod_exp_mont_consttime
-func BNModExpMontConsttime(rr *BIGNUM, a *BIGNUM, p *BIGNUM, m *BIGNUM, ctx *BN_CTX, in_mont *BN_MONT_CTX) c.Int
+// llgo:link (*BIGNUM).ModExpMontConsttime C.BN_mod_exp_mont_consttime
+func (self *BIGNUM) ModExpMontConsttime(a *BIGNUM, p *BIGNUM, m *BIGNUM, ctx *BN_CTX, in_mont *BN_MONT_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BNModExpMontWord C.BN_mod_exp_mont_word
-func BNModExpMontWord(r *BIGNUM, a BN_ULONG, p *BIGNUM, m *BIGNUM, ctx *BN_CTX, m_ctx *BN_MONT_CTX) c.Int
+// llgo:link (*BIGNUM).ModExpMontWord C.BN_mod_exp_mont_word
+func (self *BIGNUM) ModExpMontWord(a BN_ULONG, p *BIGNUM, m *BIGNUM, ctx *BN_CTX, m_ctx *BN_MONT_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BNModExp2Mont C.BN_mod_exp2_mont
-func BNModExp2Mont(r *BIGNUM, a1 *BIGNUM, p1 *BIGNUM, a2 *BIGNUM, p2 *BIGNUM, m *BIGNUM, ctx *BN_CTX, m_ctx *BN_MONT_CTX) c.Int
+// llgo:link (*BIGNUM).ModExp2Mont C.BN_mod_exp2_mont
+func (self *BIGNUM) ModExp2Mont(a1 *BIGNUM, p1 *BIGNUM, a2 *BIGNUM, p2 *BIGNUM, m *BIGNUM, ctx *BN_CTX, m_ctx *BN_MONT_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BNModExpSimple C.BN_mod_exp_simple
-func BNModExpSimple(r *BIGNUM, a *BIGNUM, p *BIGNUM, m *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).ModExpSimple C.BN_mod_exp_simple
+func (self *BIGNUM) ModExpSimple(a *BIGNUM, p *BIGNUM, m *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BNModExpMontConsttimeX2 C.BN_mod_exp_mont_consttime_x2
-func BNModExpMontConsttimeX2(rr1 *BIGNUM, a1 *BIGNUM, p1 *BIGNUM, m1 *BIGNUM, in_mont1 *BN_MONT_CTX, rr2 *BIGNUM, a2 *BIGNUM, p2 *BIGNUM, m2 *BIGNUM, in_mont2 *BN_MONT_CTX, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).ModExpMontConsttimeX2 C.BN_mod_exp_mont_consttime_x2
+func (self *BIGNUM) ModExpMontConsttimeX2(a1 *BIGNUM, p1 *BIGNUM, m1 *BIGNUM, in_mont1 *BN_MONT_CTX, rr2 *BIGNUM, a2 *BIGNUM, p2 *BIGNUM, m2 *BIGNUM, in_mont2 *BN_MONT_CTX, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BNMaskBits C.BN_mask_bits
-func BNMaskBits(a *BIGNUM, n c.Int) c.Int
+// llgo:link (*BIGNUM).MaskBits C.BN_mask_bits
+func (self *BIGNUM) MaskBits(n c.Int) c.Int {
+	return 0
+}
 
-//go:linkname BNPrintFp C.BN_print_fp
-func BNPrintFp(fp *c.FILE, a *BIGNUM) c.Int
+//go:linkname BN_print_fp C.BN_print_fp
+func BN_print_fp(fp *c.FILE, a *BIGNUM) c.Int
 
-//go:linkname BNPrint C.BN_print
-func BNPrint(bio *BIO, a *BIGNUM) c.Int
+// llgo:link (*BIO).BN_print C.BN_print
+func (self *BIO) BN_print(a *BIGNUM) c.Int {
+	return 0
+}
 
-//go:linkname BNReciprocal C.BN_reciprocal
-func BNReciprocal(r *BIGNUM, m *BIGNUM, len c.Int, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).Reciprocal C.BN_reciprocal
+func (self *BIGNUM) Reciprocal(m *BIGNUM, len c.Int, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BNRshift C.BN_rshift
-func BNRshift(r *BIGNUM, a *BIGNUM, n c.Int) c.Int
+// llgo:link (*BIGNUM).Rshift C.BN_rshift
+func (self *BIGNUM) Rshift(a *BIGNUM, n c.Int) c.Int {
+	return 0
+}
 
-//go:linkname BNRshift1 C.BN_rshift1
-func BNRshift1(r *BIGNUM, a *BIGNUM) c.Int
+// llgo:link (*BIGNUM).Rshift1 C.BN_rshift1
+func (self *BIGNUM) Rshift1(a *BIGNUM) c.Int {
+	return 0
+}
 
-//go:linkname BNClear C.BN_clear
-func BNClear(a *BIGNUM)
+// llgo:link (*BIGNUM).Clear C.BN_clear
+func (self *BIGNUM) Clear() {
+}
 
-//go:linkname BNDup C.BN_dup
-func BNDup(a *BIGNUM) *BIGNUM
+// llgo:link (*BIGNUM).Dup C.BN_dup
+func (self *BIGNUM) Dup() *BIGNUM {
+	return self
+}
 
-//go:linkname BNUcmp C.BN_ucmp
-func BNUcmp(a *BIGNUM, b *BIGNUM) c.Int
+//go:linkname BN_ucmp C.BN_ucmp
+func BN_ucmp(a *BIGNUM, b *BIGNUM) c.Int
 
-//go:linkname BNSetBit C.BN_set_bit
-func BNSetBit(a *BIGNUM, n c.Int) c.Int
+// llgo:link (*BIGNUM).SetBit C.BN_set_bit
+func (self *BIGNUM) SetBit(n c.Int) c.Int {
+	return 0
+}
 
-//go:linkname BNClearBit C.BN_clear_bit
-func BNClearBit(a *BIGNUM, n c.Int) c.Int
+// llgo:link (*BIGNUM).ClearBit C.BN_clear_bit
+func (self *BIGNUM) ClearBit(n c.Int) c.Int {
+	return 0
+}
 
-//go:linkname BNBn2hex C.BN_bn2hex
-func BNBn2hex(a *BIGNUM) *c.Char
+// llgo:link (*BIGNUM).Bn2hex C.BN_bn2hex
+func (self *BIGNUM) Bn2hex() *c.Char {
+	return nil
+}
 
-//go:linkname BNBn2dec C.BN_bn2dec
-func BNBn2dec(a *BIGNUM) *c.Char
+// llgo:link (*BIGNUM).Bn2dec C.BN_bn2dec
+func (self *BIGNUM) Bn2dec() *c.Char {
+	return nil
+}
 
-//go:linkname BNHex2bn C.BN_hex2bn
-func BNHex2bn(a **BIGNUM, str *c.Char) c.Int
+//go:linkname BN_hex2bn C.BN_hex2bn
+func BN_hex2bn(a **BIGNUM, str *c.Char) c.Int
 
-//go:linkname BNDec2bn C.BN_dec2bn
-func BNDec2bn(a **BIGNUM, str *c.Char) c.Int
+//go:linkname BN_dec2bn C.BN_dec2bn
+func BN_dec2bn(a **BIGNUM, str *c.Char) c.Int
 
-//go:linkname BNAsc2bn C.BN_asc2bn
-func BNAsc2bn(a **BIGNUM, str *c.Char) c.Int
+//go:linkname BN_asc2bn C.BN_asc2bn
+func BN_asc2bn(a **BIGNUM, str *c.Char) c.Int
 
-//go:linkname BNGcd C.BN_gcd
-func BNGcd(r *BIGNUM, a *BIGNUM, b *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).Gcd C.BN_gcd
+func (self *BIGNUM) Gcd(a *BIGNUM, b *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // returns
 // -2 for
 // error
 //
-//go:linkname BNKronecker C.BN_kronecker
-func BNKronecker(a *BIGNUM, b *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).Kronecker C.BN_kronecker
+func (self *BIGNUM) Kronecker(b *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BNAreCoprime C.BN_are_coprime
-func BNAreCoprime(a *BIGNUM, b *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).AreCoprime C.BN_are_coprime
+func (self *BIGNUM) AreCoprime(b *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BNModInverse C.BN_mod_inverse
-func BNModInverse(ret *BIGNUM, a *BIGNUM, n *BIGNUM, ctx *BN_CTX) *BIGNUM
+// llgo:link (*BIGNUM).ModInverse C.BN_mod_inverse
+func (self *BIGNUM) ModInverse(a *BIGNUM, n *BIGNUM, ctx *BN_CTX) *BIGNUM {
+	return self
+}
 
-//go:linkname BNModSqrt C.BN_mod_sqrt
-func BNModSqrt(ret *BIGNUM, a *BIGNUM, n *BIGNUM, ctx *BN_CTX) *BIGNUM
+// llgo:link (*BIGNUM).ModSqrt C.BN_mod_sqrt
+func (self *BIGNUM) ModSqrt(a *BIGNUM, n *BIGNUM, ctx *BN_CTX) *BIGNUM {
+	return self
+}
 
-//go:linkname BNConsttimeSwap C.BN_consttime_swap
-func BNConsttimeSwap(swap BN_ULONG, a *BIGNUM, b *BIGNUM, nwords c.Int)
+//go:linkname BN_consttime_swap C.BN_consttime_swap
+func BN_consttime_swap(swap BN_ULONG, a *BIGNUM, b *BIGNUM, nwords c.Int)
 
-//go:linkname BNGeneratePrime C.BN_generate_prime
-func BNGeneratePrime(ret *BIGNUM, bits c.Int, safe c.Int, add *BIGNUM, rem *BIGNUM, callback func(_llcppg_param1 c.Int, _llcppg_param2 c.Int, _llcppg_param3 unsafe.Pointer), cb_arg unsafe.Pointer) *BIGNUM
+// llgo:link (*BIGNUM).GeneratePrime C.BN_generate_prime
+func (self *BIGNUM) GeneratePrime(bits c.Int, safe c.Int, add *BIGNUM, rem *BIGNUM, callback func(_llcppg_param1 c.Int, _llcppg_param2 c.Int, _llcppg_param3 unsafe.Pointer), cb_arg unsafe.Pointer) *BIGNUM {
+	return self
+}
 
-//go:linkname BNIsPrime C.BN_is_prime
-func BNIsPrime(p *BIGNUM, nchecks c.Int, callback func(_llcppg_param1 c.Int, _llcppg_param2 c.Int, _llcppg_param3 unsafe.Pointer), ctx *BN_CTX, cb_arg unsafe.Pointer) c.Int
+// llgo:link (*BIGNUM).IsPrime C.BN_is_prime
+func (self *BIGNUM) IsPrime(nchecks c.Int, callback func(_llcppg_param1 c.Int, _llcppg_param2 c.Int, _llcppg_param3 unsafe.Pointer), ctx *BN_CTX, cb_arg unsafe.Pointer) c.Int {
+	return 0
+}
 
-//go:linkname BNIsPrimeFasttest C.BN_is_prime_fasttest
-func BNIsPrimeFasttest(p *BIGNUM, nchecks c.Int, callback func(_llcppg_param1 c.Int, _llcppg_param2 c.Int, _llcppg_param3 unsafe.Pointer), ctx *BN_CTX, cb_arg unsafe.Pointer, do_trial_division c.Int) c.Int
+// llgo:link (*BIGNUM).IsPrimeFasttest C.BN_is_prime_fasttest
+func (self *BIGNUM) IsPrimeFasttest(nchecks c.Int, callback func(_llcppg_param1 c.Int, _llcppg_param2 c.Int, _llcppg_param3 unsafe.Pointer), ctx *BN_CTX, cb_arg unsafe.Pointer, do_trial_division c.Int) c.Int {
+	return 0
+}
 
-//go:linkname BNIsPrimeEx C.BN_is_prime_ex
-func BNIsPrimeEx(p *BIGNUM, nchecks c.Int, ctx *BN_CTX, cb *BN_GENCB) c.Int
+// llgo:link (*BIGNUM).IsPrimeEx C.BN_is_prime_ex
+func (self *BIGNUM) IsPrimeEx(nchecks c.Int, ctx *BN_CTX, cb *BN_GENCB) c.Int {
+	return 0
+}
 
-//go:linkname BNIsPrimeFasttestEx C.BN_is_prime_fasttest_ex
-func BNIsPrimeFasttestEx(p *BIGNUM, nchecks c.Int, ctx *BN_CTX, do_trial_division c.Int, cb *BN_GENCB) c.Int
+// llgo:link (*BIGNUM).IsPrimeFasttestEx C.BN_is_prime_fasttest_ex
+func (self *BIGNUM) IsPrimeFasttestEx(nchecks c.Int, ctx *BN_CTX, do_trial_division c.Int, cb *BN_GENCB) c.Int {
+	return 0
+}
 
 // Newer versions
 //
-//go:linkname BNGeneratePrimeEx2 C.BN_generate_prime_ex2
-func BNGeneratePrimeEx2(ret *BIGNUM, bits c.Int, safe c.Int, add *BIGNUM, rem *BIGNUM, cb *BN_GENCB, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).GeneratePrimeEx2 C.BN_generate_prime_ex2
+func (self *BIGNUM) GeneratePrimeEx2(bits c.Int, safe c.Int, add *BIGNUM, rem *BIGNUM, cb *BN_GENCB, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BNGeneratePrimeEx C.BN_generate_prime_ex
-func BNGeneratePrimeEx(ret *BIGNUM, bits c.Int, safe c.Int, add *BIGNUM, rem *BIGNUM, cb *BN_GENCB) c.Int
+// llgo:link (*BIGNUM).GeneratePrimeEx C.BN_generate_prime_ex
+func (self *BIGNUM) GeneratePrimeEx(bits c.Int, safe c.Int, add *BIGNUM, rem *BIGNUM, cb *BN_GENCB) c.Int {
+	return 0
+}
 
-//go:linkname BNCheckPrime C.BN_check_prime
-func BNCheckPrime(p *BIGNUM, ctx *BN_CTX, cb *BN_GENCB) c.Int
+// llgo:link (*BIGNUM).CheckPrime C.BN_check_prime
+func (self *BIGNUM) CheckPrime(ctx *BN_CTX, cb *BN_GENCB) c.Int {
+	return 0
+}
 
-//go:linkname BNX931GenerateXpq C.BN_X931_generate_Xpq
-func BNX931GenerateXpq(Xp *BIGNUM, Xq *BIGNUM, nbits c.Int, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).X931_generate_Xpq C.BN_X931_generate_Xpq
+func (self *BIGNUM) X931_generate_Xpq(Xq *BIGNUM, nbits c.Int, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BNX931DerivePrimeEx C.BN_X931_derive_prime_ex
-func BNX931DerivePrimeEx(p *BIGNUM, p1 *BIGNUM, p2 *BIGNUM, Xp *BIGNUM, Xp1 *BIGNUM, Xp2 *BIGNUM, e *BIGNUM, ctx *BN_CTX, cb *BN_GENCB) c.Int
+// llgo:link (*BIGNUM).X931_derive_prime_ex C.BN_X931_derive_prime_ex
+func (self *BIGNUM) X931_derive_prime_ex(p1 *BIGNUM, p2 *BIGNUM, Xp *BIGNUM, Xp1 *BIGNUM, Xp2 *BIGNUM, e *BIGNUM, ctx *BN_CTX, cb *BN_GENCB) c.Int {
+	return 0
+}
 
-//go:linkname BNX931GeneratePrimeEx C.BN_X931_generate_prime_ex
-func BNX931GeneratePrimeEx(p *BIGNUM, p1 *BIGNUM, p2 *BIGNUM, Xp1 *BIGNUM, Xp2 *BIGNUM, Xp *BIGNUM, e *BIGNUM, ctx *BN_CTX, cb *BN_GENCB) c.Int
+// llgo:link (*BIGNUM).X931_generate_prime_ex C.BN_X931_generate_prime_ex
+func (self *BIGNUM) X931_generate_prime_ex(p1 *BIGNUM, p2 *BIGNUM, Xp1 *BIGNUM, Xp2 *BIGNUM, Xp *BIGNUM, e *BIGNUM, ctx *BN_CTX, cb *BN_GENCB) c.Int {
+	return 0
+}
 
-//go:linkname BN_MONT_CTXNew C.BN_MONT_CTX_new
-func BN_MONT_CTXNew() *BN_MONT_CTX
+//go:linkname BN_MONT_CTX_new C.BN_MONT_CTX_new
+func BN_MONT_CTX_new() *BN_MONT_CTX
 
-//go:linkname BNModMulMontgomery C.BN_mod_mul_montgomery
-func BNModMulMontgomery(r *BIGNUM, a *BIGNUM, b *BIGNUM, mont *BN_MONT_CTX, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).ModMulMontgomery C.BN_mod_mul_montgomery
+func (self *BIGNUM) ModMulMontgomery(a *BIGNUM, b *BIGNUM, mont *BN_MONT_CTX, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BNToMontgomery C.BN_to_montgomery
-func BNToMontgomery(r *BIGNUM, a *BIGNUM, mont *BN_MONT_CTX, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).ToMontgomery C.BN_to_montgomery
+func (self *BIGNUM) ToMontgomery(a *BIGNUM, mont *BN_MONT_CTX, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BNFromMontgomery C.BN_from_montgomery
-func BNFromMontgomery(r *BIGNUM, a *BIGNUM, mont *BN_MONT_CTX, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).FromMontgomery C.BN_from_montgomery
+func (self *BIGNUM) FromMontgomery(a *BIGNUM, mont *BN_MONT_CTX, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BN_MONT_CTXFree C.BN_MONT_CTX_free
-func BN_MONT_CTXFree(mont *BN_MONT_CTX)
+// llgo:link (*BN_MONT_CTX).Free C.BN_MONT_CTX_free
+func (self *BN_MONT_CTX) Free() {
+}
 
-//go:linkname BN_MONT_CTXSet C.BN_MONT_CTX_set
-func BN_MONT_CTXSet(mont *BN_MONT_CTX, mod *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*BN_MONT_CTX).Set C.BN_MONT_CTX_set
+func (self *BN_MONT_CTX) Set(mod *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BN_MONT_CTXCopy C.BN_MONT_CTX_copy
-func BN_MONT_CTXCopy(to *BN_MONT_CTX, from *BN_MONT_CTX) *BN_MONT_CTX
+//go:linkname BN_MONT_CTX_copy C.BN_MONT_CTX_copy
+func BN_MONT_CTX_copy(to *BN_MONT_CTX, from *BN_MONT_CTX) *BN_MONT_CTX
 
-//go:linkname BN_MONT_CTXSetLocked C.BN_MONT_CTX_set_locked
-func BN_MONT_CTXSetLocked(pmont **BN_MONT_CTX, lock *CRYPTO_RWLOCK, mod *BIGNUM, ctx *BN_CTX) *BN_MONT_CTX
+//go:linkname BN_MONT_CTX_set_locked C.BN_MONT_CTX_set_locked
+func BN_MONT_CTX_set_locked(pmont **BN_MONT_CTX, lock *CRYPTO_RWLOCK, mod *BIGNUM, ctx *BN_CTX) *BN_MONT_CTX
 
-//go:linkname BN_BLINDINGNew C.BN_BLINDING_new
-func BN_BLINDINGNew(A *BIGNUM, Ai *BIGNUM, mod *BIGNUM) *BN_BLINDING
+// llgo:link (*BIGNUM).BLINDING_new C.BN_BLINDING_new
+func (self *BIGNUM) BLINDING_new(Ai *BIGNUM, mod *BIGNUM) *BN_BLINDING {
+	return nil
+}
 
-//go:linkname BN_BLINDINGFree C.BN_BLINDING_free
-func BN_BLINDINGFree(b *BN_BLINDING)
+// llgo:link (*BN_BLINDING).Free C.BN_BLINDING_free
+func (self *BN_BLINDING) Free() {
+}
 
-//go:linkname BN_BLINDINGUpdate C.BN_BLINDING_update
-func BN_BLINDINGUpdate(b *BN_BLINDING, ctx *BN_CTX) c.Int
+// llgo:link (*BN_BLINDING).Update C.BN_BLINDING_update
+func (self *BN_BLINDING) Update(ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BN_BLINDINGConvert C.BN_BLINDING_convert
-func BN_BLINDINGConvert(n *BIGNUM, b *BN_BLINDING, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).BLINDING_convert C.BN_BLINDING_convert
+func (self *BIGNUM) BLINDING_convert(b *BN_BLINDING, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BN_BLINDINGInvert C.BN_BLINDING_invert
-func BN_BLINDINGInvert(n *BIGNUM, b *BN_BLINDING, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).BLINDING_invert C.BN_BLINDING_invert
+func (self *BIGNUM) BLINDING_invert(b *BN_BLINDING, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BN_BLINDINGConvertEx C.BN_BLINDING_convert_ex
-func BN_BLINDINGConvertEx(n *BIGNUM, r *BIGNUM, b *BN_BLINDING, _llcppg_param4 *BN_CTX) c.Int
+// llgo:link (*BIGNUM).BLINDING_convert_ex C.BN_BLINDING_convert_ex
+func (self *BIGNUM) BLINDING_convert_ex(r *BIGNUM, b *BN_BLINDING, _llcppg_param4 *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BN_BLINDINGInvertEx C.BN_BLINDING_invert_ex
-func BN_BLINDINGInvertEx(n *BIGNUM, r *BIGNUM, b *BN_BLINDING, _llcppg_param4 *BN_CTX) c.Int
+// llgo:link (*BIGNUM).BLINDING_invert_ex C.BN_BLINDING_invert_ex
+func (self *BIGNUM) BLINDING_invert_ex(r *BIGNUM, b *BN_BLINDING, _llcppg_param4 *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BN_BLINDINGIsCurrentThread C.BN_BLINDING_is_current_thread
-func BN_BLINDINGIsCurrentThread(b *BN_BLINDING) c.Int
+// llgo:link (*BN_BLINDING).IsCurrentThread C.BN_BLINDING_is_current_thread
+func (self *BN_BLINDING) IsCurrentThread() c.Int {
+	return 0
+}
 
-//go:linkname BN_BLINDINGSetCurrentThread C.BN_BLINDING_set_current_thread
-func BN_BLINDINGSetCurrentThread(b *BN_BLINDING)
+// llgo:link (*BN_BLINDING).SetCurrentThread C.BN_BLINDING_set_current_thread
+func (self *BN_BLINDING) SetCurrentThread() {
+}
 
-//go:linkname BN_BLINDINGLock C.BN_BLINDING_lock
-func BN_BLINDINGLock(b *BN_BLINDING) c.Int
+// llgo:link (*BN_BLINDING).Lock C.BN_BLINDING_lock
+func (self *BN_BLINDING) Lock() c.Int {
+	return 0
+}
 
-//go:linkname BN_BLINDINGUnlock C.BN_BLINDING_unlock
-func BN_BLINDINGUnlock(b *BN_BLINDING) c.Int
+// llgo:link (*BN_BLINDING).Unlock C.BN_BLINDING_unlock
+func (self *BN_BLINDING) Unlock() c.Int {
+	return 0
+}
 
-//go:linkname BN_BLINDINGGetFlags C.BN_BLINDING_get_flags
-func BN_BLINDINGGetFlags(_llcppg_param1 *BN_BLINDING) c.Ulong
+// llgo:link (*BN_BLINDING).Flags C.BN_BLINDING_get_flags
+func (self *BN_BLINDING) Flags() c.Ulong {
+	return 0
+}
 
-//go:linkname BN_BLINDINGSetFlags C.BN_BLINDING_set_flags
-func BN_BLINDINGSetFlags(_llcppg_param1 *BN_BLINDING, _llcppg_param2 c.Ulong)
+// llgo:link (*BN_BLINDING).SetFlags C.BN_BLINDING_set_flags
+func (self *BN_BLINDING) SetFlags(_llcppg_param2 c.Ulong) {
+}
 
-//go:linkname BN_BLINDINGCreateParam C.BN_BLINDING_create_param
-func BN_BLINDINGCreateParam(b *BN_BLINDING, e *BIGNUM, m *BIGNUM, ctx *BN_CTX, bn_mod_exp func(_llcppg_param1 *BIGNUM, _llcppg_param2 *BIGNUM, _llcppg_param3 *BIGNUM, _llcppg_param4 *BIGNUM, _llcppg_param5 *BN_CTX, _llcppg_param6 *BN_MONT_CTX) c.Int, m_ctx *BN_MONT_CTX) *BN_BLINDING
+// llgo:link (*BN_BLINDING).CreateParam C.BN_BLINDING_create_param
+func (self *BN_BLINDING) CreateParam(e *BIGNUM, m *BIGNUM, ctx *BN_CTX, bn_mod_exp func(_llcppg_param1 *BIGNUM, _llcppg_param2 *BIGNUM, _llcppg_param3 *BIGNUM, _llcppg_param4 *BIGNUM, _llcppg_param5 *BN_CTX, _llcppg_param6 *BN_MONT_CTX) c.Int, m_ctx *BN_MONT_CTX) *BN_BLINDING {
+	return self
+}
 
-//go:linkname BNSetParams C.BN_set_params
-func BNSetParams(mul c.Int, high c.Int, low c.Int, mont c.Int)
+//go:linkname BN_set_params C.BN_set_params
+func BN_set_params(mul c.Int, high c.Int, low c.Int, mont c.Int)
 
 // 0, mul, 1 high, 2 low, 3 mont
 //
-//go:linkname BNGetParams C.BN_get_params
-func BNGetParams(which c.Int) c.Int
+//go:linkname BN_get_params C.BN_get_params
+func BN_get_params(which c.Int) c.Int
 
-//go:linkname BN_RECP_CTXNew C.BN_RECP_CTX_new
-func BN_RECP_CTXNew() *BN_RECP_CTX
+//go:linkname BN_RECP_CTX_new C.BN_RECP_CTX_new
+func BN_RECP_CTX_new() *BN_RECP_CTX
 
-//go:linkname BN_RECP_CTXFree C.BN_RECP_CTX_free
-func BN_RECP_CTXFree(recp *BN_RECP_CTX)
+// llgo:link (*BN_RECP_CTX).Free C.BN_RECP_CTX_free
+func (self *BN_RECP_CTX) Free() {
+}
 
-//go:linkname BN_RECP_CTXSet C.BN_RECP_CTX_set
-func BN_RECP_CTXSet(recp *BN_RECP_CTX, rdiv *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*BN_RECP_CTX).Set C.BN_RECP_CTX_set
+func (self *BN_RECP_CTX) Set(rdiv *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BNModMulReciprocal C.BN_mod_mul_reciprocal
-func BNModMulReciprocal(r *BIGNUM, x *BIGNUM, y *BIGNUM, recp *BN_RECP_CTX, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).ModMulReciprocal C.BN_mod_mul_reciprocal
+func (self *BIGNUM) ModMulReciprocal(x *BIGNUM, y *BIGNUM, recp *BN_RECP_CTX, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BNModExpRecp C.BN_mod_exp_recp
-func BNModExpRecp(r *BIGNUM, a *BIGNUM, p *BIGNUM, m *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).ModExpRecp C.BN_mod_exp_recp
+func (self *BIGNUM) ModExpRecp(a *BIGNUM, p *BIGNUM, m *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BNDivRecp C.BN_div_recp
-func BNDivRecp(dv *BIGNUM, rem *BIGNUM, m *BIGNUM, recp *BN_RECP_CTX, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).DivRecp C.BN_div_recp
+func (self *BIGNUM) DivRecp(rem *BIGNUM, m *BIGNUM, recp *BN_RECP_CTX, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // r = a + b
 //
-//go:linkname BNGF2mAdd C.BN_GF2m_add
-func BNGF2mAdd(r *BIGNUM, a *BIGNUM, b *BIGNUM) c.Int
+// llgo:link (*BIGNUM).GF2mAdd C.BN_GF2m_add
+func (self *BIGNUM) GF2mAdd(a *BIGNUM, b *BIGNUM) c.Int {
+	return 0
+}
 
 // r=a mod p
 //
-//go:linkname BNGF2mMod C.BN_GF2m_mod
-func BNGF2mMod(r *BIGNUM, a *BIGNUM, p *BIGNUM) c.Int
+// llgo:link (*BIGNUM).GF2mMod C.BN_GF2m_mod
+func (self *BIGNUM) GF2mMod(a *BIGNUM, p *BIGNUM) c.Int {
+	return 0
+}
 
 // r = (a * b) mod p
 //
-//go:linkname BNGF2mModMul C.BN_GF2m_mod_mul
-func BNGF2mModMul(r *BIGNUM, a *BIGNUM, b *BIGNUM, p *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).GF2mModMul C.BN_GF2m_mod_mul
+func (self *BIGNUM) GF2mModMul(a *BIGNUM, b *BIGNUM, p *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // r = (a * a) mod p
 //
-//go:linkname BNGF2mModSqr C.BN_GF2m_mod_sqr
-func BNGF2mModSqr(r *BIGNUM, a *BIGNUM, p *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).GF2mModSqr C.BN_GF2m_mod_sqr
+func (self *BIGNUM) GF2mModSqr(a *BIGNUM, p *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // r = (1 / b) mod p
 //
-//go:linkname BNGF2mModInv C.BN_GF2m_mod_inv
-func BNGF2mModInv(r *BIGNUM, b *BIGNUM, p *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).GF2mModInv C.BN_GF2m_mod_inv
+func (self *BIGNUM) GF2mModInv(b *BIGNUM, p *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // r = (a / b) mod p
 //
-//go:linkname BNGF2mModDiv C.BN_GF2m_mod_div
-func BNGF2mModDiv(r *BIGNUM, a *BIGNUM, b *BIGNUM, p *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).GF2mModDiv C.BN_GF2m_mod_div
+func (self *BIGNUM) GF2mModDiv(a *BIGNUM, b *BIGNUM, p *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // r = (a ^ b) mod p
 //
-//go:linkname BNGF2mModExp C.BN_GF2m_mod_exp
-func BNGF2mModExp(r *BIGNUM, a *BIGNUM, b *BIGNUM, p *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).GF2mModExp C.BN_GF2m_mod_exp
+func (self *BIGNUM) GF2mModExp(a *BIGNUM, b *BIGNUM, p *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // r = sqrt(a) mod p
 //
-//go:linkname BNGF2mModSqrt C.BN_GF2m_mod_sqrt
-func BNGF2mModSqrt(r *BIGNUM, a *BIGNUM, p *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).GF2mModSqrt C.BN_GF2m_mod_sqrt
+func (self *BIGNUM) GF2mModSqrt(a *BIGNUM, p *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // r^2 + r = a mod p
 //
-//go:linkname BNGF2mModSolveQuad C.BN_GF2m_mod_solve_quad
-func BNGF2mModSolveQuad(r *BIGNUM, a *BIGNUM, p *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).GF2mModSolveQuad C.BN_GF2m_mod_solve_quad
+func (self *BIGNUM) GF2mModSolveQuad(a *BIGNUM, p *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // r = a mod p
 //
-//go:linkname BNGF2mModArr C.BN_GF2m_mod_arr
-func BNGF2mModArr(r *BIGNUM, a *BIGNUM, p *c.Int) c.Int
+// llgo:link (*BIGNUM).GF2mModArr C.BN_GF2m_mod_arr
+func (self *BIGNUM) GF2mModArr(a *BIGNUM, p *c.Int) c.Int {
+	return 0
+}
 
 // r = (a * b) mod p
 //
-//go:linkname BNGF2mModMulArr C.BN_GF2m_mod_mul_arr
-func BNGF2mModMulArr(r *BIGNUM, a *BIGNUM, b *BIGNUM, p *c.Int, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).GF2mModMulArr C.BN_GF2m_mod_mul_arr
+func (self *BIGNUM) GF2mModMulArr(a *BIGNUM, b *BIGNUM, p *c.Int, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // r = (a * a) mod p
 //
-//go:linkname BNGF2mModSqrArr C.BN_GF2m_mod_sqr_arr
-func BNGF2mModSqrArr(r *BIGNUM, a *BIGNUM, p *c.Int, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).GF2mModSqrArr C.BN_GF2m_mod_sqr_arr
+func (self *BIGNUM) GF2mModSqrArr(a *BIGNUM, p *c.Int, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // r = (1 / b) mod p
 //
-//go:linkname BNGF2mModInvArr C.BN_GF2m_mod_inv_arr
-func BNGF2mModInvArr(r *BIGNUM, b *BIGNUM, p *c.Int, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).GF2mModInvArr C.BN_GF2m_mod_inv_arr
+func (self *BIGNUM) GF2mModInvArr(b *BIGNUM, p *c.Int, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // r = (a / b) mod p
 //
-//go:linkname BNGF2mModDivArr C.BN_GF2m_mod_div_arr
-func BNGF2mModDivArr(r *BIGNUM, a *BIGNUM, b *BIGNUM, p *c.Int, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).GF2mModDivArr C.BN_GF2m_mod_div_arr
+func (self *BIGNUM) GF2mModDivArr(a *BIGNUM, b *BIGNUM, p *c.Int, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // r = (a ^ b) mod p
 //
-//go:linkname BNGF2mModExpArr C.BN_GF2m_mod_exp_arr
-func BNGF2mModExpArr(r *BIGNUM, a *BIGNUM, b *BIGNUM, p *c.Int, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).GF2mModExpArr C.BN_GF2m_mod_exp_arr
+func (self *BIGNUM) GF2mModExpArr(a *BIGNUM, b *BIGNUM, p *c.Int, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // r = sqrt(a) mod p
 //
-//go:linkname BNGF2mModSqrtArr C.BN_GF2m_mod_sqrt_arr
-func BNGF2mModSqrtArr(r *BIGNUM, a *BIGNUM, p *c.Int, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).GF2mModSqrtArr C.BN_GF2m_mod_sqrt_arr
+func (self *BIGNUM) GF2mModSqrtArr(a *BIGNUM, p *c.Int, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // r^2 + r = a mod p
 //
-//go:linkname BNGF2mModSolveQuadArr C.BN_GF2m_mod_solve_quad_arr
-func BNGF2mModSolveQuadArr(r *BIGNUM, a *BIGNUM, p *c.Int, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).GF2mModSolveQuadArr C.BN_GF2m_mod_solve_quad_arr
+func (self *BIGNUM) GF2mModSolveQuadArr(a *BIGNUM, p *c.Int, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BNGF2mPoly2arr C.BN_GF2m_poly2arr
-func BNGF2mPoly2arr(a *BIGNUM, p *c.Int, max c.Int) c.Int
+// llgo:link (*BIGNUM).GF2mPoly2arr C.BN_GF2m_poly2arr
+func (self *BIGNUM) GF2mPoly2arr(p *c.Int, max c.Int) c.Int {
+	return 0
+}
 
-//go:linkname BNGF2mArr2poly C.BN_GF2m_arr2poly
-func BNGF2mArr2poly(p *c.Int, a *BIGNUM) c.Int
+//go:linkname BN_GF2m_arr2poly C.BN_GF2m_arr2poly
+func BN_GF2m_arr2poly(p *c.Int, a *BIGNUM) c.Int
 
 // faster mod functions for the 'NIST primes' 0 <= a < p^2
 //
-//go:linkname BNNistMod192 C.BN_nist_mod_192
-func BNNistMod192(r *BIGNUM, a *BIGNUM, p *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).Nist_mod_192 C.BN_nist_mod_192
+func (self *BIGNUM) Nist_mod_192(a *BIGNUM, p *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BNNistMod224 C.BN_nist_mod_224
-func BNNistMod224(r *BIGNUM, a *BIGNUM, p *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).Nist_mod_224 C.BN_nist_mod_224
+func (self *BIGNUM) Nist_mod_224(a *BIGNUM, p *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BNNistMod256 C.BN_nist_mod_256
-func BNNistMod256(r *BIGNUM, a *BIGNUM, p *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).Nist_mod_256 C.BN_nist_mod_256
+func (self *BIGNUM) Nist_mod_256(a *BIGNUM, p *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BNNistMod384 C.BN_nist_mod_384
-func BNNistMod384(r *BIGNUM, a *BIGNUM, p *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).Nist_mod_384 C.BN_nist_mod_384
+func (self *BIGNUM) Nist_mod_384(a *BIGNUM, p *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BNNistMod521 C.BN_nist_mod_521
-func BNNistMod521(r *BIGNUM, a *BIGNUM, p *BIGNUM, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).Nist_mod_521 C.BN_nist_mod_521
+func (self *BIGNUM) Nist_mod_521(a *BIGNUM, p *BIGNUM, ctx *BN_CTX) c.Int {
+	return 0
+}
 
-//go:linkname BNGet0NistPrime192 C.BN_get0_nist_prime_192
-func BNGet0NistPrime192() *BIGNUM
+//go:linkname BN_get0_nist_prime_192 C.BN_get0_nist_prime_192
+func BN_get0_nist_prime_192() *BIGNUM
 
-//go:linkname BNGet0NistPrime224 C.BN_get0_nist_prime_224
-func BNGet0NistPrime224() *BIGNUM
+//go:linkname BN_get0_nist_prime_224 C.BN_get0_nist_prime_224
+func BN_get0_nist_prime_224() *BIGNUM
 
-//go:linkname BNGet0NistPrime256 C.BN_get0_nist_prime_256
-func BNGet0NistPrime256() *BIGNUM
+//go:linkname BN_get0_nist_prime_256 C.BN_get0_nist_prime_256
+func BN_get0_nist_prime_256() *BIGNUM
 
-//go:linkname BNGet0NistPrime384 C.BN_get0_nist_prime_384
-func BNGet0NistPrime384() *BIGNUM
+//go:linkname BN_get0_nist_prime_384 C.BN_get0_nist_prime_384
+func BN_get0_nist_prime_384() *BIGNUM
 
-//go:linkname BNGet0NistPrime521 C.BN_get0_nist_prime_521
-func BNGet0NistPrime521() *BIGNUM
+//go:linkname BN_get0_nist_prime_521 C.BN_get0_nist_prime_521
+func BN_get0_nist_prime_521() *BIGNUM
 
-//go:linkname BNNistModFunc C.BN_nist_mod_func
-func BNNistModFunc(p *BIGNUM) func(_llcppg_param1 *BIGNUM, _llcppg_param2 *BIGNUM, _llcppg_param3 *BIGNUM, _llcppg_param4 *BN_CTX) c.Int
+// llgo:link (*BIGNUM).NistModFunc C.BN_nist_mod_func
+func (self *BIGNUM) NistModFunc() func(_llcppg_param1 *BIGNUM, _llcppg_param2 *BIGNUM, _llcppg_param3 *BIGNUM, _llcppg_param4 *BN_CTX) c.Int {
+	return nil
+}
 
-//go:linkname BNGenerateDsaNonce C.BN_generate_dsa_nonce
-func BNGenerateDsaNonce(out *BIGNUM, range_ *BIGNUM, priv *BIGNUM, message *uint8, message_len c.SizeT, ctx *BN_CTX) c.Int
+// llgo:link (*BIGNUM).GenerateDsaNonce C.BN_generate_dsa_nonce
+func (self *BIGNUM) GenerateDsaNonce(range_ *BIGNUM, priv *BIGNUM, message *uint8, message_len c.SizeT, ctx *BN_CTX) c.Int {
+	return 0
+}
 
 // Primes from RFC 2409
 //
-//go:linkname BNGetRfc2409Prime768 C.BN_get_rfc2409_prime_768
-func BNGetRfc2409Prime768(bn *BIGNUM) *BIGNUM
+// llgo:link (*BIGNUM).Get_rfc2409_prime_768 C.BN_get_rfc2409_prime_768
+func (self *BIGNUM) Get_rfc2409_prime_768() *BIGNUM {
+	return self
+}
 
-//go:linkname BNGetRfc2409Prime1024 C.BN_get_rfc2409_prime_1024
-func BNGetRfc2409Prime1024(bn *BIGNUM) *BIGNUM
+// llgo:link (*BIGNUM).Get_rfc2409_prime_1024 C.BN_get_rfc2409_prime_1024
+func (self *BIGNUM) Get_rfc2409_prime_1024() *BIGNUM {
+	return self
+}
 
 // Primes from RFC 3526
 //
-//go:linkname BNGetRfc3526Prime1536 C.BN_get_rfc3526_prime_1536
-func BNGetRfc3526Prime1536(bn *BIGNUM) *BIGNUM
+// llgo:link (*BIGNUM).Get_rfc3526_prime_1536 C.BN_get_rfc3526_prime_1536
+func (self *BIGNUM) Get_rfc3526_prime_1536() *BIGNUM {
+	return self
+}
 
-//go:linkname BNGetRfc3526Prime2048 C.BN_get_rfc3526_prime_2048
-func BNGetRfc3526Prime2048(bn *BIGNUM) *BIGNUM
+// llgo:link (*BIGNUM).Get_rfc3526_prime_2048 C.BN_get_rfc3526_prime_2048
+func (self *BIGNUM) Get_rfc3526_prime_2048() *BIGNUM {
+	return self
+}
 
-//go:linkname BNGetRfc3526Prime3072 C.BN_get_rfc3526_prime_3072
-func BNGetRfc3526Prime3072(bn *BIGNUM) *BIGNUM
+// llgo:link (*BIGNUM).Get_rfc3526_prime_3072 C.BN_get_rfc3526_prime_3072
+func (self *BIGNUM) Get_rfc3526_prime_3072() *BIGNUM {
+	return self
+}
 
-//go:linkname BNGetRfc3526Prime4096 C.BN_get_rfc3526_prime_4096
-func BNGetRfc3526Prime4096(bn *BIGNUM) *BIGNUM
+// llgo:link (*BIGNUM).Get_rfc3526_prime_4096 C.BN_get_rfc3526_prime_4096
+func (self *BIGNUM) Get_rfc3526_prime_4096() *BIGNUM {
+	return self
+}
 
-//go:linkname BNGetRfc3526Prime6144 C.BN_get_rfc3526_prime_6144
-func BNGetRfc3526Prime6144(bn *BIGNUM) *BIGNUM
+// llgo:link (*BIGNUM).Get_rfc3526_prime_6144 C.BN_get_rfc3526_prime_6144
+func (self *BIGNUM) Get_rfc3526_prime_6144() *BIGNUM {
+	return self
+}
 
-//go:linkname BNGetRfc3526Prime8192 C.BN_get_rfc3526_prime_8192
-func BNGetRfc3526Prime8192(bn *BIGNUM) *BIGNUM
+// llgo:link (*BIGNUM).Get_rfc3526_prime_8192 C.BN_get_rfc3526_prime_8192
+func (self *BIGNUM) Get_rfc3526_prime_8192() *BIGNUM {
+	return self
+}
 
-//go:linkname BNBntestRand C.BN_bntest_rand
-func BNBntestRand(rnd *BIGNUM, bits c.Int, top c.Int, bottom c.Int) c.Int
+// llgo:link (*BIGNUM).BntestRand C.BN_bntest_rand
+func (self *BIGNUM) BntestRand(bits c.Int, top c.Int, bottom c.Int) c.Int {
+	return 0
+}

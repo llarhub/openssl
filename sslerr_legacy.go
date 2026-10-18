@@ -454,5 +454,5 @@ const (
 	SSL_R_SSLV3_ALERT_UNSUPPORTED_CERTIFICATE  = 1043
 )
 
-//go:linkname ERRLoadSSLStrings C.ERR_load_SSL_strings
-func ERRLoadSSLStrings() c.Int
+//go:linkname ERR_load_SSL_strings C.ERR_load_SSL_strings
+func ERR_load_SSL_strings() c.Int

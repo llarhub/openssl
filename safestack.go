@@ -7,11 +7,11 @@ import (
 	"unsafe"
 )
 
-type StackStOPENSSL_BLOCK struct {
+type Stack_st_OPENSSL_BLOCK struct {
 }
-type StackStOPENSSL_CSTRING struct {
+type Stack_st_OPENSSL_CSTRING struct {
 }
-type StackStOPENSSL_STRING struct {
+type Stack_st_OPENSSL_STRING struct {
 }
 
 // -
@@ -27,48 +27,48 @@ type StackStOPENSSL_STRING struct {
 // In practice, however, it appears to be hard to have a const
 // string. For now, I'm settling for dealing with the fact it is a
 // string at all.
-type OPENSSL_STRING = *c.Char
-type OPENSSL_CSTRING = *c.Char
+type STRING = *c.Char
+type CSTRING = *c.Char
 
 // clang-format off
 //
 // llgo:type C
-type SkOPENSSL_STRINGCompfunc = func(_llcppg_param1 **c.Char, _llcppg_param2 **c.Char) c.Int
+type Sk_OPENSSL_STRING_compfunc = func(_llcppg_param1 **c.Char, _llcppg_param2 **c.Char) c.Int
 
 // clang-format off
 //
 // llgo:type C
-type SkOPENSSL_STRINGFreefunc = func(_llcppg_param1 *c.Char)
+type Sk_OPENSSL_STRING_freefunc = func(_llcppg_param1 *c.Char)
 
 // clang-format off
 //
 // llgo:type C
-type SkOPENSSL_STRINGCopyfunc = func(_llcppg_param1 *c.Char) *c.Char
+type Sk_OPENSSL_STRING_copyfunc = func(_llcppg_param1 *c.Char) *c.Char
 
 // llgo:type C
-type SkOPENSSL_CSTRINGCompfunc = func(_llcppg_param1 **c.Char, _llcppg_param2 **c.Char) c.Int
+type Sk_OPENSSL_CSTRING_compfunc = func(_llcppg_param1 **c.Char, _llcppg_param2 **c.Char) c.Int
 
 // llgo:type C
-type SkOPENSSL_CSTRINGFreefunc = func(_llcppg_param1 *c.Char)
+type Sk_OPENSSL_CSTRING_freefunc = func(_llcppg_param1 *c.Char)
 
 // llgo:type C
-type SkOPENSSL_CSTRINGCopyfunc = func(_llcppg_param1 *c.Char) *c.Char
+type Sk_OPENSSL_CSTRING_copyfunc = func(_llcppg_param1 *c.Char) *c.Char
 
 // This is not used by OpenSSL.  A block of bytes,  NOT nul-terminated.
 // These should also be distinguished from "normal" stacks.
-type OPENSSL_BLOCK uintptr
+type BLOCK uintptr
 
 // clang-format off
 //
 // llgo:type C
-type SkOPENSSL_BLOCKCompfunc = func(_llcppg_param1 *unsafe.Pointer, _llcppg_param2 *unsafe.Pointer) c.Int
+type Sk_OPENSSL_BLOCK_compfunc = func(_llcppg_param1 *unsafe.Pointer, _llcppg_param2 *unsafe.Pointer) c.Int
 
 // clang-format off
 //
 // llgo:type C
-type SkOPENSSL_BLOCKFreefunc = func(_llcppg_param1 unsafe.Pointer)
+type Sk_OPENSSL_BLOCK_freefunc = func(_llcppg_param1 unsafe.Pointer)
 
 // clang-format off
 //
 // llgo:type C
-type SkOPENSSL_BLOCKCopyfunc = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
+type Sk_OPENSSL_BLOCK_copyfunc = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer

@@ -21,51 +21,51 @@ type CONF_VALUE struct {
 	Name    *c.Char
 	Value   *c.Char
 }
-type LhashStCONF_VALUE struct {
-	Dummy LhCONF_VALUEDummy
+type Lhash_st_CONF_VALUE struct {
+	Dummy Lh_CONF_VALUE_dummy
 }
 type ConfImoduleSt struct {
 }
 type ConfModuleSt struct {
 }
-type StackStCONF_IMODULE struct {
+type Stack_st_CONF_IMODULE struct {
 }
-type StackStCONF_MODULE struct {
+type Stack_st_CONF_MODULE struct {
 }
-type StackStCONF_VALUE struct {
+type Stack_st_CONF_VALUE struct {
 }
 
 // clang-format off
 //
 // llgo:type C
-type SkCONF_VALUECompfunc = func(_llcppg_param1 **CONF_VALUE, _llcppg_param2 **CONF_VALUE) c.Int
+type Sk_CONF_VALUE_compfunc = func(_llcppg_param1 **CONF_VALUE, _llcppg_param2 **CONF_VALUE) c.Int
 
 // clang-format off
 //
 // llgo:type C
-type SkCONF_VALUEFreefunc = func(_llcppg_param1 *CONF_VALUE)
+type Sk_CONF_VALUE_freefunc = func(_llcppg_param1 *CONF_VALUE)
 
 // clang-format off
 //
 // llgo:type C
-type SkCONF_VALUECopyfunc = func(_llcppg_param1 *CONF_VALUE) *CONF_VALUE
-type LhCONF_VALUEDummy struct {
+type Sk_CONF_VALUE_copyfunc = func(_llcppg_param1 *CONF_VALUE) *CONF_VALUE
+type Lh_CONF_VALUE_dummy struct {
 	_xgo_union [1]uint64
 }
 
 // llgo:type C
-type LhCONF_VALUECompfunc = func(_llcppg_param1 *CONF_VALUE, _llcppg_param2 *CONF_VALUE) c.Int
+type Lh_CONF_VALUE_compfunc = func(_llcppg_param1 *CONF_VALUE, _llcppg_param2 *CONF_VALUE) c.Int
 
 // llgo:type C
-type LhCONF_VALUEHashfunc = func(_llcppg_param1 *CONF_VALUE) c.Ulong
+type Lh_CONF_VALUE_hashfunc = func(_llcppg_param1 *CONF_VALUE) c.Ulong
 
 // llgo:type C
-type LhCONF_VALUEDoallfunc = func(_llcppg_param1 *CONF_VALUE)
+type Lh_CONF_VALUE_doallfunc = func(_llcppg_param1 *CONF_VALUE)
 type CONF_METHOD = ConfMethodSt
 
 // Module definitions
-type CONF_IMODULE = ConfImoduleSt
-type CONF_MODULE = ConfModuleSt
+type CONF_IMODULE ConfImoduleSt
+type CONF_MODULE ConfModuleSt
 
 // DSO module function typedefs
 //
@@ -75,150 +75,215 @@ type ConfInitFunc = func(_llcppg_param1 *CONF_IMODULE, _llcppg_param2 *CONF) c.I
 // llgo:type C
 type ConfFinishFunc = func(_llcppg_param1 *CONF_IMODULE)
 
-func (p *LhCONF_VALUEDummy) XGof_ref_d1() *unsafe.Pointer {
+func (p *Lh_CONF_VALUE_dummy) XGof_ref_d1() *unsafe.Pointer {
 	return (*unsafe.Pointer)(unsafe.Pointer(p))
 }
-func (p *LhCONF_VALUEDummy) XGof_ref_d2() *c.Ulong {
+func (p *Lh_CONF_VALUE_dummy) XGof_ref_d2() *c.Ulong {
 	return (*c.Ulong)(unsafe.Pointer(p))
 }
-func (p *LhCONF_VALUEDummy) XGof_ref_d3() *c.Int {
+func (p *Lh_CONF_VALUE_dummy) XGof_ref_d3() *c.Int {
 	return (*c.Int)(unsafe.Pointer(p))
 }
 
-//go:linkname CONFSetDefaultMethod C.CONF_set_default_method
-func CONFSetDefaultMethod(meth *CONF_METHOD) c.Int
+// llgo:link (*CONF_METHOD).SetDefaultMethod C.CONF_set_default_method
+func (self *CONF_METHOD) SetDefaultMethod() c.Int {
+	return 0
+}
 
-//go:linkname CONFSetNconf C.CONF_set_nconf
-func CONFSetNconf(conf *CONF, hash *LhashStCONF_VALUE)
+// llgo:link (*CONF).SetNconf C.CONF_set_nconf
+func (self *CONF) SetNconf(hash *Lhash_st_CONF_VALUE) {
+}
 
-//go:linkname CONFLoad C.CONF_load
-func CONFLoad(conf *LhashStCONF_VALUE, file *c.Char, eline *c.Long) *LhashStCONF_VALUE
+// llgo:link (*Lhash_st_CONF_VALUE).Load C.CONF_load
+func (self *Lhash_st_CONF_VALUE) Load(file *c.Char, eline *c.Long) *Lhash_st_CONF_VALUE {
+	return self
+}
 
-//go:linkname CONFLoadFp C.CONF_load_fp
-func CONFLoadFp(conf *LhashStCONF_VALUE, fp *c.FILE, eline *c.Long) *LhashStCONF_VALUE
+// llgo:link (*Lhash_st_CONF_VALUE).LoadFp C.CONF_load_fp
+func (self *Lhash_st_CONF_VALUE) LoadFp(fp *c.FILE, eline *c.Long) *Lhash_st_CONF_VALUE {
+	return self
+}
 
-//go:linkname CONFLoadBio C.CONF_load_bio
-func CONFLoadBio(conf *LhashStCONF_VALUE, bp *BIO, eline *c.Long) *LhashStCONF_VALUE
+// llgo:link (*Lhash_st_CONF_VALUE).LoadBio C.CONF_load_bio
+func (self *Lhash_st_CONF_VALUE) LoadBio(bp *BIO, eline *c.Long) *Lhash_st_CONF_VALUE {
+	return self
+}
 
-//go:linkname CONFGetSection C.CONF_get_section
-func CONFGetSection(conf *LhashStCONF_VALUE, section *c.Char) *StackStCONF_VALUE
+// llgo:link (*Lhash_st_CONF_VALUE).Section C.CONF_get_section
+func (self *Lhash_st_CONF_VALUE) Section(section *c.Char) *Stack_st_CONF_VALUE {
+	return nil
+}
 
-//go:linkname CONFGetString C.CONF_get_string
-func CONFGetString(conf *LhashStCONF_VALUE, group *c.Char, name *c.Char) *c.Char
+// llgo:link (*Lhash_st_CONF_VALUE).String C.CONF_get_string
+func (self *Lhash_st_CONF_VALUE) String(group *c.Char, name *c.Char) *c.Char {
+	return nil
+}
 
-//go:linkname CONFGetNumber C.CONF_get_number
-func CONFGetNumber(conf *LhashStCONF_VALUE, group *c.Char, name *c.Char) c.Long
+// llgo:link (*Lhash_st_CONF_VALUE).Number C.CONF_get_number
+func (self *Lhash_st_CONF_VALUE) Number(group *c.Char, name *c.Char) c.Long {
+	return 0
+}
 
-//go:linkname CONFFree C.CONF_free
-func CONFFree(conf *LhashStCONF_VALUE)
+// llgo:link (*Lhash_st_CONF_VALUE).Free C.CONF_free
+func (self *Lhash_st_CONF_VALUE) Free() {
+}
 
-//go:linkname CONFDumpFp C.CONF_dump_fp
-func CONFDumpFp(conf *LhashStCONF_VALUE, out *c.FILE) c.Int
+// llgo:link (*Lhash_st_CONF_VALUE).DumpFp C.CONF_dump_fp
+func (self *Lhash_st_CONF_VALUE) DumpFp(out *c.FILE) c.Int {
+	return 0
+}
 
-//go:linkname CONFDumpBio C.CONF_dump_bio
-func CONFDumpBio(conf *LhashStCONF_VALUE, out *BIO) c.Int
+// llgo:link (*Lhash_st_CONF_VALUE).DumpBio C.CONF_dump_bio
+func (self *Lhash_st_CONF_VALUE) DumpBio(out *BIO) c.Int {
+	return 0
+}
 
-//go:linkname OPENSSLConfig C.OPENSSL_config
-func OPENSSLConfig(config_name *c.Char)
+//go:linkname Config C.OPENSSL_config
+func Config(config_name *c.Char)
 
-//go:linkname NCONFNewEx C.NCONF_new_ex
-func NCONFNewEx(libctx *OSSL_LIB_CTX, meth *CONF_METHOD) *CONF
+// llgo:link (*OSSL_LIB_CTX).NCONF_new_ex C.NCONF_new_ex
+func (self *OSSL_LIB_CTX) NCONF_new_ex(meth *CONF_METHOD) *CONF {
+	return nil
+}
 
-//go:linkname NCONFGet0Libctx C.NCONF_get0_libctx
-func NCONFGet0Libctx(conf *CONF) *OSSL_LIB_CTX
+// llgo:link (*CONF).Get0Libctx C.NCONF_get0_libctx
+func (self *CONF) Get0Libctx() *OSSL_LIB_CTX {
+	return nil
+}
 
-//go:linkname NCONFNew C.NCONF_new
-func NCONFNew(meth *CONF_METHOD) *CONF
+// llgo:link (*CONF_METHOD).New C.NCONF_new
+func (self *CONF_METHOD) New() *CONF {
+	return nil
+}
 
-//go:linkname NCONFDefault C.NCONF_default
-func NCONFDefault() *CONF_METHOD
+//go:linkname NCONF_default C.NCONF_default
+func NCONF_default() *CONF_METHOD
 
 //go:linkname NCONF_WIN32 C.NCONF_WIN32
 func NCONF_WIN32() *CONF_METHOD
 
-//go:linkname NCONFFree C.NCONF_free
-func NCONFFree(conf *CONF)
+// llgo:link (*CONF).Free C.NCONF_free
+func (self *CONF) Free() {
+}
 
-//go:linkname NCONFFreeData C.NCONF_free_data
-func NCONFFreeData(conf *CONF)
+// llgo:link (*CONF).FreeData C.NCONF_free_data
+func (self *CONF) FreeData() {
+}
 
-//go:linkname NCONFLoad C.NCONF_load
-func NCONFLoad(conf *CONF, file *c.Char, eline *c.Long) c.Int
+// llgo:link (*CONF).Load C.NCONF_load
+func (self *CONF) Load(file *c.Char, eline *c.Long) c.Int {
+	return 0
+}
 
-//go:linkname NCONFLoadFp C.NCONF_load_fp
-func NCONFLoadFp(conf *CONF, fp *c.FILE, eline *c.Long) c.Int
+// llgo:link (*CONF).LoadFp C.NCONF_load_fp
+func (self *CONF) LoadFp(fp *c.FILE, eline *c.Long) c.Int {
+	return 0
+}
 
-//go:linkname NCONFLoadBio C.NCONF_load_bio
-func NCONFLoadBio(conf *CONF, bp *BIO, eline *c.Long) c.Int
+// llgo:link (*CONF).LoadBio C.NCONF_load_bio
+func (self *CONF) LoadBio(bp *BIO, eline *c.Long) c.Int {
+	return 0
+}
 
-//go:linkname NCONFGetSectionNames C.NCONF_get_section_names
-func NCONFGetSectionNames(conf *CONF) *StackStOPENSSL_CSTRING
+// llgo:link (*CONF).SectionNames C.NCONF_get_section_names
+func (self *CONF) SectionNames() *Stack_st_OPENSSL_CSTRING {
+	return nil
+}
 
-//go:linkname NCONFGetSection C.NCONF_get_section
-func NCONFGetSection(conf *CONF, section *c.Char) *StackStCONF_VALUE
+// llgo:link (*CONF).Section C.NCONF_get_section
+func (self *CONF) Section(section *c.Char) *Stack_st_CONF_VALUE {
+	return nil
+}
 
-//go:linkname NCONFGetString C.NCONF_get_string
-func NCONFGetString(conf *CONF, group *c.Char, name *c.Char) *c.Char
+// llgo:link (*CONF).String C.NCONF_get_string
+func (self *CONF) String(group *c.Char, name *c.Char) *c.Char {
+	return nil
+}
 
-//go:linkname NCONFGetNumberE C.NCONF_get_number_e
-func NCONFGetNumberE(conf *CONF, group *c.Char, name *c.Char, result *c.Long) c.Int
+// llgo:link (*CONF).NumberE C.NCONF_get_number_e
+func (self *CONF) NumberE(group *c.Char, name *c.Char, result *c.Long) c.Int {
+	return 0
+}
 
-//go:linkname NCONFDumpFp C.NCONF_dump_fp
-func NCONFDumpFp(conf *CONF, out *c.FILE) c.Int
+// llgo:link (*CONF).DumpFp C.NCONF_dump_fp
+func (self *CONF) DumpFp(out *c.FILE) c.Int {
+	return 0
+}
 
-//go:linkname NCONFDumpBio C.NCONF_dump_bio
-func NCONFDumpBio(conf *CONF, out *BIO) c.Int
+// llgo:link (*CONF).DumpBio C.NCONF_dump_bio
+func (self *CONF) DumpBio(out *BIO) c.Int {
+	return 0
+}
 
-//go:linkname CONFModulesLoad C.CONF_modules_load
-func CONFModulesLoad(cnf *CONF, appname *c.Char, flags c.Ulong) c.Int
+// llgo:link (*CONF).ModulesLoad C.CONF_modules_load
+func (self *CONF) ModulesLoad(appname *c.Char, flags c.Ulong) c.Int {
+	return 0
+}
 
-//go:linkname CONFModulesLoadFileEx C.CONF_modules_load_file_ex
-func CONFModulesLoadFileEx(libctx *OSSL_LIB_CTX, filename *c.Char, appname *c.Char, flags c.Ulong) c.Int
+// llgo:link (*OSSL_LIB_CTX).CONF_modules_load_file_ex C.CONF_modules_load_file_ex
+func (self *OSSL_LIB_CTX) CONF_modules_load_file_ex(filename *c.Char, appname *c.Char, flags c.Ulong) c.Int {
+	return 0
+}
 
-//go:linkname CONFModulesLoadFile C.CONF_modules_load_file
-func CONFModulesLoadFile(filename *c.Char, appname *c.Char, flags c.Ulong) c.Int
+//go:linkname CONF_modules_load_file C.CONF_modules_load_file
+func CONF_modules_load_file(filename *c.Char, appname *c.Char, flags c.Ulong) c.Int
 
-//go:linkname CONFModulesUnload C.CONF_modules_unload
-func CONFModulesUnload(all c.Int)
+//go:linkname CONF_modules_unload C.CONF_modules_unload
+func CONF_modules_unload(all c.Int)
 
-//go:linkname CONFModulesFinish C.CONF_modules_finish
-func CONFModulesFinish()
+//go:linkname CONF_modules_finish C.CONF_modules_finish
+func CONF_modules_finish()
 
-//go:linkname CONFModuleAdd C.CONF_module_add
-func CONFModuleAdd(name *c.Char, ifunc *ConfInitFunc, ffunc *ConfFinishFunc) c.Int
+//go:linkname CONF_module_add C.CONF_module_add
+func CONF_module_add(name *c.Char, ifunc *ConfInitFunc, ffunc *ConfFinishFunc) c.Int
 
-//go:linkname CONFImoduleGetName C.CONF_imodule_get_name
-func CONFImoduleGetName(md *CONF_IMODULE) *c.Char
+// llgo:link (*CONF_IMODULE).Name C.CONF_imodule_get_name
+func (self *CONF_IMODULE) Name() *c.Char {
+	return nil
+}
 
-//go:linkname CONFImoduleGetValue C.CONF_imodule_get_value
-func CONFImoduleGetValue(md *CONF_IMODULE) *c.Char
+// llgo:link (*CONF_IMODULE).Value C.CONF_imodule_get_value
+func (self *CONF_IMODULE) Value() *c.Char {
+	return nil
+}
 
-//go:linkname CONFImoduleGetUsrData C.CONF_imodule_get_usr_data
-func CONFImoduleGetUsrData(md *CONF_IMODULE) unsafe.Pointer
+// llgo:link (*CONF_IMODULE).UsrData C.CONF_imodule_get_usr_data
+func (self *CONF_IMODULE) UsrData() unsafe.Pointer {
+	return nil
+}
 
-//go:linkname CONFImoduleSetUsrData C.CONF_imodule_set_usr_data
-func CONFImoduleSetUsrData(md *CONF_IMODULE, usr_data unsafe.Pointer)
+// llgo:link (*CONF_IMODULE).SetUsrData C.CONF_imodule_set_usr_data
+func (self *CONF_IMODULE) SetUsrData(usr_data unsafe.Pointer) {
+}
 
-//go:linkname CONFImoduleGetModule C.CONF_imodule_get_module
-func CONFImoduleGetModule(md *CONF_IMODULE) *CONF_MODULE
+// llgo:link (*CONF_IMODULE).Module C.CONF_imodule_get_module
+func (self *CONF_IMODULE) Module() *CONF_MODULE {
+	return nil
+}
 
-//go:linkname CONFImoduleGetFlags C.CONF_imodule_get_flags
-func CONFImoduleGetFlags(md *CONF_IMODULE) c.Ulong
+// llgo:link (*CONF_IMODULE).Flags C.CONF_imodule_get_flags
+func (self *CONF_IMODULE) Flags() c.Ulong {
+	return 0
+}
 
-//go:linkname CONFImoduleSetFlags C.CONF_imodule_set_flags
-func CONFImoduleSetFlags(md *CONF_IMODULE, flags c.Ulong)
+// llgo:link (*CONF_IMODULE).SetFlags C.CONF_imodule_set_flags
+func (self *CONF_IMODULE) SetFlags(flags c.Ulong) {
+}
 
-//go:linkname CONFModuleGetUsrData C.CONF_module_get_usr_data
-func CONFModuleGetUsrData(pmod *CONF_MODULE) unsafe.Pointer
+// llgo:link (*CONF_MODULE).UsrData C.CONF_module_get_usr_data
+func (self *CONF_MODULE) UsrData() unsafe.Pointer {
+	return nil
+}
 
-//go:linkname CONFModuleSetUsrData C.CONF_module_set_usr_data
-func CONFModuleSetUsrData(pmod *CONF_MODULE, usr_data unsafe.Pointer)
+// llgo:link (*CONF_MODULE).SetUsrData C.CONF_module_set_usr_data
+func (self *CONF_MODULE) SetUsrData(usr_data unsafe.Pointer) {
+}
 
-//go:linkname CONFGet1DefaultConfigFile C.CONF_get1_default_config_file
-func CONFGet1DefaultConfigFile() *c.Char
+//go:linkname CONF_get1_default_config_file C.CONF_get1_default_config_file
+func CONF_get1_default_config_file() *c.Char
 
-//go:linkname CONFParseList C.CONF_parse_list
-func CONFParseList(list *c.Char, sep c.Int, nospc c.Int, list_cb func(_llcppg_param1 *c.Char, _llcppg_param2 c.Int, _llcppg_param3 unsafe.Pointer) c.Int, arg unsafe.Pointer) c.Int
+//go:linkname CONF_parse_list C.CONF_parse_list
+func CONF_parse_list(list *c.Char, sep c.Int, nospc c.Int, list_cb func(_llcppg_param1 *c.Char, _llcppg_param2 c.Int, _llcppg_param3 unsafe.Pointer) c.Int, arg unsafe.Pointer) c.Int
 
-//go:linkname OPENSSLLoadBuiltinModules C.OPENSSL_load_builtin_modules
-func OPENSSLLoadBuiltinModules()
+//go:linkname LoadBuiltinModules C.OPENSSL_load_builtin_modules
+func LoadBuiltinModules()

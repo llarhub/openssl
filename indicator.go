@@ -2,16 +2,15 @@
 
 package openssl
 
-import (
-	"github.com/goplus/lib/c"
-	_ "unsafe"
-)
+import "github.com/goplus/lib/c"
 
 // llgo:type C
 type OSSL_INDICATOR_CALLBACK = func(_llcppg_param1 *c.Char, _llcppg_param2 *c.Char, _llcppg_param3 *OSSL_PARAM) c.Int
 
-//go:linkname OSSL_INDICATORSetCallback C.OSSL_INDICATOR_set_callback
-func OSSL_INDICATORSetCallback(libctx *OSSL_LIB_CTX, cb *OSSL_INDICATOR_CALLBACK)
+// llgo:link (*OSSL_LIB_CTX).OSSL_INDICATOR_set_callback C.OSSL_INDICATOR_set_callback
+func (self *OSSL_LIB_CTX) OSSL_INDICATOR_set_callback(cb *OSSL_INDICATOR_CALLBACK) {
+}
 
-//go:linkname OSSL_INDICATORGetCallback C.OSSL_INDICATOR_get_callback
-func OSSL_INDICATORGetCallback(libctx *OSSL_LIB_CTX, cb **OSSL_INDICATOR_CALLBACK)
+// llgo:link (*OSSL_LIB_CTX).OSSL_INDICATOR_get_callback C.OSSL_INDICATOR_get_callback
+func (self *OSSL_LIB_CTX) OSSL_INDICATOR_get_callback(cb **OSSL_INDICATOR_CALLBACK) {
+}

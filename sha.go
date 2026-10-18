@@ -75,41 +75,55 @@ type _llcppg_anon_2 struct {
 }
 type SHA512_CTX = SHA512stateSt
 
-//go:linkname SHA1_Init C.SHA1_Init
-func SHA1_Init(c *SHA_CTX) c.Int
+// llgo:link (*SHA_CTX).Init C.SHA1_Init
+func (self *SHA_CTX) Init() c.Int {
+	return 0
+}
 
-//go:linkname SHA1_Update C.SHA1_Update
-func SHA1_Update(c *SHA_CTX, data unsafe.Pointer, len c.SizeT) c.Int
+// llgo:link (*SHA_CTX).Update C.SHA1_Update
+func (self *SHA_CTX) Update(data unsafe.Pointer, len c.SizeT) c.Int {
+	return 0
+}
 
 //go:linkname SHA1_Final C.SHA1_Final
 func SHA1_Final(md *uint8, c *SHA_CTX) c.Int
 
-//go:linkname SHA1_Transform C.SHA1_Transform
-func SHA1_Transform(c *SHA_CTX, data *uint8)
+// llgo:link (*SHA_CTX).Transform C.SHA1_Transform
+func (self *SHA_CTX) Transform(data *uint8) {
+}
 
 //go:linkname SHA1 C.SHA1
 func SHA1(d *uint8, n c.SizeT, md *uint8) *uint8
 
-//go:linkname SHA224_Init C.SHA224_Init
-func SHA224_Init(c *SHA256_CTX) c.Int
+// llgo:link (*SHA256_CTX).SHA224_Init C.SHA224_Init
+func (self *SHA256_CTX) SHA224_Init() c.Int {
+	return 0
+}
 
-//go:linkname SHA224_Update C.SHA224_Update
-func SHA224_Update(c *SHA256_CTX, data unsafe.Pointer, len c.SizeT) c.Int
+// llgo:link (*SHA256_CTX).SHA224_Update C.SHA224_Update
+func (self *SHA256_CTX) SHA224_Update(data unsafe.Pointer, len c.SizeT) c.Int {
+	return 0
+}
 
 //go:linkname SHA224_Final C.SHA224_Final
 func SHA224_Final(md *uint8, c *SHA256_CTX) c.Int
 
-//go:linkname SHA256_Init C.SHA256_Init
-func SHA256_Init(c *SHA256_CTX) c.Int
+// llgo:link (*SHA256_CTX).Init C.SHA256_Init
+func (self *SHA256_CTX) Init() c.Int {
+	return 0
+}
 
-//go:linkname SHA256_Update C.SHA256_Update
-func SHA256_Update(c *SHA256_CTX, data unsafe.Pointer, len c.SizeT) c.Int
+// llgo:link (*SHA256_CTX).Update C.SHA256_Update
+func (self *SHA256_CTX) Update(data unsafe.Pointer, len c.SizeT) c.Int {
+	return 0
+}
 
 //go:linkname SHA256_Final C.SHA256_Final
 func SHA256_Final(md *uint8, c *SHA256_CTX) c.Int
 
-//go:linkname SHA256_Transform C.SHA256_Transform
-func SHA256_Transform(c *SHA256_CTX, data *uint8)
+// llgo:link (*SHA256_CTX).Transform C.SHA256_Transform
+func (self *SHA256_CTX) Transform(data *uint8) {
+}
 
 //go:linkname SHA224 C.SHA224
 func SHA224(d *uint8, n c.SizeT, md *uint8) *uint8
@@ -123,26 +137,35 @@ func (p *_llcppg_anon_2) XGof_ref_p() *[128]uint8 {
 	return (*[128]uint8)(unsafe.Pointer(p))
 }
 
-//go:linkname SHA384_Init C.SHA384_Init
-func SHA384_Init(c *SHA512_CTX) c.Int
+// llgo:link (*SHA512_CTX).SHA384_Init C.SHA384_Init
+func (self *SHA512_CTX) SHA384_Init() c.Int {
+	return 0
+}
 
-//go:linkname SHA384_Update C.SHA384_Update
-func SHA384_Update(c *SHA512_CTX, data unsafe.Pointer, len c.SizeT) c.Int
+// llgo:link (*SHA512_CTX).SHA384_Update C.SHA384_Update
+func (self *SHA512_CTX) SHA384_Update(data unsafe.Pointer, len c.SizeT) c.Int {
+	return 0
+}
 
 //go:linkname SHA384_Final C.SHA384_Final
 func SHA384_Final(md *uint8, c *SHA512_CTX) c.Int
 
-//go:linkname SHA512_Init C.SHA512_Init
-func SHA512_Init(c *SHA512_CTX) c.Int
+// llgo:link (*SHA512_CTX).Init C.SHA512_Init
+func (self *SHA512_CTX) Init() c.Int {
+	return 0
+}
 
-//go:linkname SHA512_Update C.SHA512_Update
-func SHA512_Update(c *SHA512_CTX, data unsafe.Pointer, len c.SizeT) c.Int
+// llgo:link (*SHA512_CTX).Update C.SHA512_Update
+func (self *SHA512_CTX) Update(data unsafe.Pointer, len c.SizeT) c.Int {
+	return 0
+}
 
 //go:linkname SHA512_Final C.SHA512_Final
 func SHA512_Final(md *uint8, c *SHA512_CTX) c.Int
 
-//go:linkname SHA512_Transform C.SHA512_Transform
-func SHA512_Transform(c *SHA512_CTX, data *uint8)
+// llgo:link (*SHA512_CTX).Transform C.SHA512_Transform
+func (self *SHA512_CTX) Transform(data *uint8) {
+}
 
 //go:linkname SHA384 C.SHA384
 func SHA384(d *uint8, n c.SizeT, md *uint8) *uint8

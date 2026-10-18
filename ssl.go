@@ -33,46 +33,52 @@ const (
 	SSL_TXT_HIGH   = "HIGH"
 )
 const (
-	SSL_TXT_ANULL = "aNULL"
-	SSL_TXT_ENULL = "eNULL"
+	SSL_TXT_aNULL = "aNULL"
+	SSL_TXT_eNULL = "eNULL"
 	SSL_TXT_NULL  = "NULL"
 )
 const (
-	SSL_TXT_KRSA = "kRSA"
+	SSL_TXT_kRSA = "kRSA"
 	// this cipher class has been removed
-	SSL_TXTKDHr = "kDHr"
+	SSL_TXT_kDHr = "kDHr"
 	// this cipher class has been removed
-	SSL_TXTKDHd = "kDHd"
+	SSL_TXT_kDHd = "kDHd"
 	// this cipher class has been removed
-	SSL_TXT_KDH = "kDH"
+	SSL_TXT_kDH = "kDH"
 	// alias for kDHE
-	SSL_TXT_KEDH = "kEDH"
-	SSL_TXT_KDHE = "kDHE"
+	SSL_TXT_kEDH = "kEDH"
+	SSL_TXT_kDHE = "kDHE"
 	// this cipher class has been removed
-	SSL_TXTKECDHr = "kECDHr"
+	SSL_TXT_kECDHr = "kECDHr"
 	// this cipher class has been removed
-	SSL_TXT_KECDH = "kECDH"
+	SSL_TXT_kECDHe = "kECDHe"
+	// this cipher class has been removed
+	SSL_TXT_kECDH = "kECDH"
 	// alias for kECDHE
-	SSL_TXT_KEECDH    = "kEECDH"
-	SSL_TXT_KECDHE    = "kECDHE"
-	SSL_TXT_KPSK      = "kPSK"
-	SSL_TXT_KRSAPSK   = "kRSAPSK"
-	SSL_TXT_KECDHEPSK = "kECDHEPSK"
-	SSL_TXT_KDHEPSK   = "kDHEPSK"
-	SSL_TXT_KGOST     = "kGOST"
-	SSL_TXTKGOST18    = "kGOST18"
-	SSL_TXT_KSRP      = "kSRP"
+	SSL_TXT_kEECDH    = "kEECDH"
+	SSL_TXT_kECDHE    = "kECDHE"
+	SSL_TXT_kPSK      = "kPSK"
+	SSL_TXT_kRSAPSK   = "kRSAPSK"
+	SSL_TXT_kECDHEPSK = "kECDHEPSK"
+	SSL_TXT_kDHEPSK   = "kDHEPSK"
+	SSL_TXT_kGOST     = "kGOST"
+	SSL_TXT_kGOST18   = "kGOST18"
+	SSL_TXT_kSRP      = "kSRP"
 )
 const (
-	SSL_TXT_ARSA   = "aRSA"
-	SSL_TXT_ADSS   = "aDSS"
-	SSL_TXT_AECDSA = "aECDSA"
-	SSL_TXT_APSK   = "aPSK"
-	SSL_TXTAGOST94 = "aGOST94"
-	SSL_TXTAGOST01 = "aGOST01"
-	SSL_TXTAGOST12 = "aGOST12"
-	SSL_TXT_AGOST  = "aGOST"
-	SSL_TXT_ASRP   = "aSRP"
+	SSL_TXT_aRSA = "aRSA"
+	SSL_TXT_aDSS = "aDSS"
+	// this cipher class has been removed
+	SSL_TXT_aDH = "aDH"
+	// this cipher class has been removed
+	SSL_TXT_aECDH   = "aECDH"
+	SSL_TXT_aECDSA  = "aECDSA"
+	SSL_TXT_aPSK    = "aPSK"
+	SSL_TXT_aGOST94 = "aGOST94"
+	SSL_TXT_aGOST01 = "aGOST01"
+	SSL_TXT_aGOST12 = "aGOST12"
+	SSL_TXT_aGOST   = "aGOST"
+	SSL_TXT_aSRP    = "aSRP"
 )
 const (
 	SSL_TXT_DSS = "DSS"
@@ -950,7 +956,7 @@ const (
 	SSL_CT_VALIDATION_STRICT     = 1
 )
 
-type LhashStSSL_SESSION struct {
+type Lhash_st_SSL_SESSION struct {
 }
 type SslCipherSt struct {
 }
@@ -960,9 +966,9 @@ type SslMethodSt struct {
 }
 type SslSessionSt struct {
 }
-type StackStSRTP_PROTECTION_PROFILE struct {
+type Stack_st_SRTP_PROTECTION_PROFILE struct {
 }
-type StackStSSL_CIPHER struct {
+type Stack_st_SSL_CIPHER struct {
 }
 type TlsSigalgsSt struct {
 }
@@ -971,11 +977,11 @@ type TlsSigalgsSt struct {
 // function parameters used to prototype callbacks in SSL_CTX.
 type SslCrockSt = *SslSt
 type TLS_SESSION_TICKET_EXT = TlsSessionTicketExtSt
-type SSL_METHOD = SslMethodSt
-type SSL_CIPHER = SslCipherSt
-type SSL_SESSION = SslSessionSt
-type TLS_SIGALGS = TlsSigalgsSt
-type SSL_CONF_CTX = SslConfCtxSt
+type SSL_METHOD SslMethodSt
+type SSL_CIPHER SslCipherSt
+type SSL_SESSION SslSessionSt
+type TLS_SIGALGS TlsSigalgsSt
+type SSL_CONF_CTX SslConfCtxSt
 
 // SRTP protection profiles for use with the use_srtp extension (RFC 5764)
 type SRTP_PROTECTION_PROFILE = SrtpProtectionProfileSt
@@ -983,23 +989,23 @@ type SRTP_PROTECTION_PROFILE = SrtpProtectionProfileSt
 // clang-format off
 //
 // llgo:type C
-type SkSRTP_PROTECTION_PROFILECompfunc = func(_llcppg_param1 **SRTP_PROTECTION_PROFILE, _llcppg_param2 **SRTP_PROTECTION_PROFILE) c.Int
+type Sk_SRTP_PROTECTION_PROFILE_compfunc = func(_llcppg_param1 **SRTP_PROTECTION_PROFILE, _llcppg_param2 **SRTP_PROTECTION_PROFILE) c.Int
 
 // clang-format off
 //
 // llgo:type C
-type SkSRTP_PROTECTION_PROFILEFreefunc = func(_llcppg_param1 *SRTP_PROTECTION_PROFILE)
+type Sk_SRTP_PROTECTION_PROFILE_freefunc = func(_llcppg_param1 *SRTP_PROTECTION_PROFILE)
 
 // clang-format off
 //
 // llgo:type C
-type SkSRTP_PROTECTION_PROFILECopyfunc = func(_llcppg_param1 *SRTP_PROTECTION_PROFILE) *SRTP_PROTECTION_PROFILE
+type Sk_SRTP_PROTECTION_PROFILE_copyfunc = func(_llcppg_param1 *SRTP_PROTECTION_PROFILE) *SRTP_PROTECTION_PROFILE
 
 // llgo:type C
 type TlsSessionTicketExtCbFn = func(_llcppg_param1 *SSL, _llcppg_param2 *uint8, _llcppg_param3 c.Int, _llcppg_param4 unsafe.Pointer) c.Int
 
 // llgo:type C
-type TlsSessionSecretCbFn = func(_llcppg_param1 *SSL, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *c.Int, _llcppg_param4 *StackStSSL_CIPHER, _llcppg_param5 **SSL_CIPHER, _llcppg_param6 unsafe.Pointer) c.Int
+type TlsSessionSecretCbFn = func(_llcppg_param1 *SSL, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *c.Int, _llcppg_param4 *Stack_st_SSL_CIPHER, _llcppg_param5 **SSL_CIPHER, _llcppg_param6 unsafe.Pointer) c.Int
 
 // llgo:type C
 type CustomExtAddCb = func(_llcppg_param1 *SSL, _llcppg_param2 c.Uint, _llcppg_param3 **uint8, _llcppg_param4 *c.SizeT, _llcppg_param5 *c.Int, _llcppg_param6 unsafe.Pointer) c.Int
@@ -1011,23 +1017,23 @@ type CustomExtFreeCb = func(_llcppg_param1 *SSL, _llcppg_param2 c.Uint, _llcppg_
 type CustomExtParseCb = func(_llcppg_param1 *SSL, _llcppg_param2 c.Uint, _llcppg_param3 *uint8, _llcppg_param4 c.SizeT, _llcppg_param5 *c.Int, _llcppg_param6 unsafe.Pointer) c.Int
 
 // llgo:type C
-type SSLCustomExtAddCbEx = func(_llcppg_param1 *SSL, _llcppg_param2 c.Uint, _llcppg_param3 c.Uint, _llcppg_param4 **uint8, _llcppg_param5 *c.SizeT, _llcppg_param6 *X509, _llcppg_param7 c.SizeT, _llcppg_param8 *c.Int, _llcppg_param9 unsafe.Pointer) c.Int
+type SSL_custom_ext_add_cb_ex = func(_llcppg_param1 *SSL, _llcppg_param2 c.Uint, _llcppg_param3 c.Uint, _llcppg_param4 **uint8, _llcppg_param5 *c.SizeT, _llcppg_param6 *X509, _llcppg_param7 c.SizeT, _llcppg_param8 *c.Int, _llcppg_param9 unsafe.Pointer) c.Int
 
 // llgo:type C
-type SSLCustomExtFreeCbEx = func(_llcppg_param1 *SSL, _llcppg_param2 c.Uint, _llcppg_param3 c.Uint, _llcppg_param4 *uint8, _llcppg_param5 unsafe.Pointer)
+type SSL_custom_ext_free_cb_ex = func(_llcppg_param1 *SSL, _llcppg_param2 c.Uint, _llcppg_param3 c.Uint, _llcppg_param4 *uint8, _llcppg_param5 unsafe.Pointer)
 
 // llgo:type C
-type SSLCustomExtParseCbEx = func(_llcppg_param1 *SSL, _llcppg_param2 c.Uint, _llcppg_param3 c.Uint, _llcppg_param4 *uint8, _llcppg_param5 c.SizeT, _llcppg_param6 *X509, _llcppg_param7 c.SizeT, _llcppg_param8 *c.Int, _llcppg_param9 unsafe.Pointer) c.Int
+type SSL_custom_ext_parse_cb_ex = func(_llcppg_param1 *SSL, _llcppg_param2 c.Uint, _llcppg_param3 c.Uint, _llcppg_param4 *uint8, _llcppg_param5 c.SizeT, _llcppg_param6 *X509, _llcppg_param7 c.SizeT, _llcppg_param8 *c.Int, _llcppg_param9 unsafe.Pointer) c.Int
 
 // Typedef for verification callback
 //
 // llgo:type C
-type SSLVerifyCb = func(_llcppg_param1 c.Int, _llcppg_param2 *X509_STORE_CTX) c.Int
+type SSL_verify_cb = func(_llcppg_param1 c.Int, _llcppg_param2 *X509_STORE_CTX) c.Int
 
 // Typedef for SSL async callback
 //
 // llgo:type C
-type SSLAsyncCallbackFn = func(_llcppg_param1 *SSL, _llcppg_param2 unsafe.Pointer) c.Int
+type SSL_async_callback_fn = func(_llcppg_param1 *SSL, _llcppg_param2 unsafe.Pointer) c.Int
 
 // This callback type is used inside SSL_CTX, SSL, and in the functions that
 // set them. It is used to override the generation of SSL/TLS session IDs in
@@ -1044,52 +1050,52 @@ type SSLAsyncCallbackFn = func(_llcppg_param1 *SSL, _llcppg_param2 unsafe.Pointe
 type GEN_SESSION_CB = func(_llcppg_param1 *SSL, _llcppg_param2 *uint8, _llcppg_param3 *c.Uint) c.Int
 
 // llgo:type C
-type SSL_CTXNpnAdvertisedCbFunc = func(_llcppg_param1 *SSL, _llcppg_param2 **uint8, _llcppg_param3 *c.Uint, _llcppg_param4 unsafe.Pointer) c.Int
+type SSL_CTX_npn_advertised_cb_func = func(_llcppg_param1 *SSL, _llcppg_param2 **uint8, _llcppg_param3 *c.Uint, _llcppg_param4 unsafe.Pointer) c.Int
 
 // llgo:type C
-type SSL_CTXNpnSelectCbFunc = func(_llcppg_param1 *SSL, _llcppg_param2 **uint8, _llcppg_param3 *uint8, _llcppg_param4 *uint8, _llcppg_param5 c.Uint, _llcppg_param6 unsafe.Pointer) c.Int
+type SSL_CTX_npn_select_cb_func = func(_llcppg_param1 *SSL, _llcppg_param2 **uint8, _llcppg_param3 *uint8, _llcppg_param4 *uint8, _llcppg_param5 c.Uint, _llcppg_param6 unsafe.Pointer) c.Int
 
 // llgo:type C
-type SSL_CTXAlpnSelectCbFunc = func(_llcppg_param1 *SSL, _llcppg_param2 **uint8, _llcppg_param3 *uint8, _llcppg_param4 *uint8, _llcppg_param5 c.Uint, _llcppg_param6 unsafe.Pointer) c.Int
+type SSL_CTX_alpn_select_cb_func = func(_llcppg_param1 *SSL, _llcppg_param2 **uint8, _llcppg_param3 *uint8, _llcppg_param4 *uint8, _llcppg_param5 c.Uint, _llcppg_param6 unsafe.Pointer) c.Int
 
 // llgo:type C
-type SSLPskClientCbFunc = func(_llcppg_param1 *SSL, _llcppg_param2 *c.Char, _llcppg_param3 *c.Char, _llcppg_param4 c.Uint, _llcppg_param5 *uint8, _llcppg_param6 c.Uint) c.Uint
+type SSL_psk_client_cb_func = func(_llcppg_param1 *SSL, _llcppg_param2 *c.Char, _llcppg_param3 *c.Char, _llcppg_param4 c.Uint, _llcppg_param5 *uint8, _llcppg_param6 c.Uint) c.Uint
 
 // llgo:type C
-type SSLPskServerCbFunc = func(_llcppg_param1 *SSL, _llcppg_param2 *c.Char, _llcppg_param3 *uint8, _llcppg_param4 c.Uint) c.Uint
+type SSL_psk_server_cb_func = func(_llcppg_param1 *SSL, _llcppg_param2 *c.Char, _llcppg_param3 *uint8, _llcppg_param4 c.Uint) c.Uint
 
 // llgo:type C
-type SSLPskFindSessionCbFunc = func(_llcppg_param1 *SSL, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 **SSL_SESSION) c.Int
+type SSL_psk_find_session_cb_func = func(_llcppg_param1 *SSL, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 **SSL_SESSION) c.Int
 
 // llgo:type C
-type SSLPskUseSessionCbFunc = func(_llcppg_param1 *SSL, _llcppg_param2 *EVP_MD, _llcppg_param3 **uint8, _llcppg_param4 *c.SizeT, _llcppg_param5 **SSL_SESSION) c.Int
+type SSL_psk_use_session_cb_func = func(_llcppg_param1 *SSL, _llcppg_param2 *EVP_MD, _llcppg_param3 **uint8, _llcppg_param4 *c.SizeT, _llcppg_param5 **SSL_SESSION) c.Int
 
 // A callback for logging out TLS key material. This callback should log out
 // |line| followed by a newline.
 //
 // llgo:type C
-type SSL_CTXKeylogCbFunc = func(_llcppg_param1 *SSL, _llcppg_param2 *c.Char)
+type SSL_CTX_keylog_cb_func = func(_llcppg_param1 *SSL, _llcppg_param2 *c.Char)
 
 // clang-format off
 //
 // llgo:type C
-type SkSSL_CIPHERCompfunc = func(_llcppg_param1 **SSL_CIPHER, _llcppg_param2 **SSL_CIPHER) c.Int
+type Sk_SSL_CIPHER_compfunc = func(_llcppg_param1 **SSL_CIPHER, _llcppg_param2 **SSL_CIPHER) c.Int
 
 // clang-format off
 //
 // llgo:type C
-type SkSSL_CIPHERFreefunc = func(_llcppg_param1 *SSL_CIPHER)
+type Sk_SSL_CIPHER_freefunc = func(_llcppg_param1 *SSL_CIPHER)
 
 // clang-format off
 //
 // llgo:type C
-type SkSSL_CIPHERCopyfunc = func(_llcppg_param1 *SSL_CIPHER) *SSL_CIPHER
+type Sk_SSL_CIPHER_copyfunc = func(_llcppg_param1 *SSL_CIPHER) *SSL_CIPHER
 
 // llgo:type C
-type SSLClientHelloCbFn = func(_llcppg_param1 *SSL, _llcppg_param2 *c.Int, _llcppg_param3 unsafe.Pointer) c.Int
+type SSL_client_hello_cb_fn = func(_llcppg_param1 *SSL, _llcppg_param2 *c.Int, _llcppg_param3 unsafe.Pointer) c.Int
 
 // llgo:type C
-type SSLNewPendingConnCbFn = func(_llcppg_param1 *SSL_CTX, _llcppg_param2 *SSL, _llcppg_param3 unsafe.Pointer) c.Int
+type SSL_new_pending_conn_cb_fn = func(_llcppg_param1 *SSL_CTX, _llcppg_param2 *SSL, _llcppg_param3 unsafe.Pointer) c.Int
 type SSL_SHUTDOWN_EX_ARGS = SslShutdownExArgsSt
 type SSL_STREAM_RESET_ARGS = SslStreamResetArgsSt
 type SSL_CONN_CLOSE_INFO = SslConnCloseInfoSt
@@ -1101,7 +1107,7 @@ type SSL_POLL_ITEM = SslPollItemSt
 // A connection should be aborted if the SCTs are deemed insufficient.
 //
 // llgo:type C
-type SslCtValidationCb = func(_llcppg_param1 *CT_POLICY_EVAL_CTX, _llcppg_param2 *StackStSCT, _llcppg_param3 unsafe.Pointer) c.Int
+type SslCtValidationCb = func(_llcppg_param1 *CT_POLICY_EVAL_CTX, _llcppg_param2 *Stack_st_SCT, _llcppg_param3 unsafe.Pointer) c.Int
 
 // Status codes passed to the decrypt session ticket callback. Some of these
 // are for internal use only and are never passed to the callback.
@@ -1111,233 +1117,341 @@ type SSL_TICKET_STATUS = c.Int
 type SSL_TICKET_RETURN = c.Int
 
 // llgo:type C
-type SSL_CTXGenerateSessionTicketFn = func(_llcppg_param1 *SSL, _llcppg_param2 unsafe.Pointer) c.Int
+type SSL_CTX_generate_session_ticket_fn = func(_llcppg_param1 *SSL, _llcppg_param2 unsafe.Pointer) c.Int
 
 // llgo:type C
-type SSL_CTXDecryptSessionTicketFn = func(_llcppg_param1 *SSL, _llcppg_param2 *SSL_SESSION, _llcppg_param3 *uint8, _llcppg_param4 c.SizeT, _llcppg_param5 SSL_TICKET_STATUS, _llcppg_param6 unsafe.Pointer) SSL_TICKET_RETURN
+type SSL_CTX_decrypt_session_ticket_fn = func(_llcppg_param1 *SSL, _llcppg_param2 *SSL_SESSION, _llcppg_param3 *uint8, _llcppg_param4 c.SizeT, _llcppg_param5 SSL_TICKET_STATUS, _llcppg_param6 unsafe.Pointer) SSL_TICKET_RETURN
 
 // llgo:type C
-type DTLSTimerCb = func(_llcppg_param1 *SSL, _llcppg_param2 c.Uint) c.Uint
+type DTLS_timer_cb = func(_llcppg_param1 *SSL, _llcppg_param2 c.Uint) c.Uint
 
 // llgo:type C
-type SSLAllowEarlyDataCbFn = func(_llcppg_param1 *SSL, _llcppg_param2 unsafe.Pointer) c.Int
+type SSL_allow_early_data_cb_fn = func(_llcppg_param1 *SSL, _llcppg_param2 unsafe.Pointer) c.Int
 
-//go:linkname SSL_CTXGetOptions C.SSL_CTX_get_options
-func SSL_CTXGetOptions(ctx *SSL_CTX) c.Uint64T
+// llgo:link (*SSL_CTX).Options C.SSL_CTX_get_options
+func (self *SSL_CTX) Options() c.Uint64T {
+	return 0
+}
 
-//go:linkname SSLGetOptions C.SSL_get_options
-func SSLGetOptions(s *SSL) c.Uint64T
+// llgo:link (*SSL).Options C.SSL_get_options
+func (self *SSL) Options() c.Uint64T {
+	return 0
+}
 
-//go:linkname SSL_CTXClearOptions C.SSL_CTX_clear_options
-func SSL_CTXClearOptions(ctx *SSL_CTX, op c.Uint64T) c.Uint64T
+// llgo:link (*SSL_CTX).ClearOptions C.SSL_CTX_clear_options
+func (self *SSL_CTX) ClearOptions(op c.Uint64T) c.Uint64T {
+	return 0
+}
 
-//go:linkname SSLClearOptions C.SSL_clear_options
-func SSLClearOptions(s *SSL, op c.Uint64T) c.Uint64T
+// llgo:link (*SSL).ClearOptions C.SSL_clear_options
+func (self *SSL) ClearOptions(op c.Uint64T) c.Uint64T {
+	return 0
+}
 
-//go:linkname SSL_CTXSetOptions C.SSL_CTX_set_options
-func SSL_CTXSetOptions(ctx *SSL_CTX, op c.Uint64T) c.Uint64T
+// llgo:link (*SSL_CTX).SetOptions C.SSL_CTX_set_options
+func (self *SSL_CTX) SetOptions(op c.Uint64T) c.Uint64T {
+	return 0
+}
 
-//go:linkname SSLSetOptions C.SSL_set_options
-func SSLSetOptions(s *SSL, op c.Uint64T) c.Uint64T
+// llgo:link (*SSL).SetOptions C.SSL_set_options
+func (self *SSL) SetOptions(op c.Uint64T) c.Uint64T {
+	return 0
+}
 
-//go:linkname SSL_CTXSetMsgCallback C.SSL_CTX_set_msg_callback
-func SSL_CTXSetMsgCallback(ctx *SSL_CTX, cb func(_llcppg_param1 c.Int, _llcppg_param2 c.Int, _llcppg_param3 c.Int, _llcppg_param4 unsafe.Pointer, _llcppg_param5 c.SizeT, _llcppg_param6 *SSL, _llcppg_param7 unsafe.Pointer))
+// llgo:link (*SSL_CTX).SetMsgCallback C.SSL_CTX_set_msg_callback
+func (self *SSL_CTX) SetMsgCallback(cb func(_llcppg_param1 c.Int, _llcppg_param2 c.Int, _llcppg_param3 c.Int, _llcppg_param4 unsafe.Pointer, _llcppg_param5 c.SizeT, _llcppg_param6 *SSL, _llcppg_param7 unsafe.Pointer)) {
+}
 
-//go:linkname SSLSetMsgCallback C.SSL_set_msg_callback
-func SSLSetMsgCallback(ssl *SSL, cb func(_llcppg_param1 c.Int, _llcppg_param2 c.Int, _llcppg_param3 c.Int, _llcppg_param4 unsafe.Pointer, _llcppg_param5 c.SizeT, _llcppg_param6 *SSL, _llcppg_param7 unsafe.Pointer))
+// llgo:link (*SSL).SetMsgCallback C.SSL_set_msg_callback
+func (self *SSL) SetMsgCallback(cb func(_llcppg_param1 c.Int, _llcppg_param2 c.Int, _llcppg_param3 c.Int, _llcppg_param4 unsafe.Pointer, _llcppg_param5 c.SizeT, _llcppg_param6 *SSL, _llcppg_param7 unsafe.Pointer)) {
+}
 
-//go:linkname SSL_SRP_CTXInit C.SSL_SRP_CTX_init
-func SSL_SRP_CTXInit(s *SSL) c.Int
+// llgo:link (*SSL).SRP_CTX_init C.SSL_SRP_CTX_init
+func (self *SSL) SRP_CTX_init() c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTX_SRP_CTXInit C.SSL_CTX_SRP_CTX_init
-func SSL_CTX_SRP_CTXInit(ctx *SSL_CTX) c.Int
+// llgo:link (*SSL_CTX).SRP_CTX_init C.SSL_CTX_SRP_CTX_init
+func (self *SSL_CTX) SRP_CTX_init() c.Int {
+	return 0
+}
 
-//go:linkname SSL_SRP_CTXFree C.SSL_SRP_CTX_free
-func SSL_SRP_CTXFree(ctx *SSL) c.Int
+// llgo:link (*SSL).SRP_CTX_free C.SSL_SRP_CTX_free
+func (self *SSL) SRP_CTX_free() c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTX_SRP_CTXFree C.SSL_CTX_SRP_CTX_free
-func SSL_CTX_SRP_CTXFree(ctx *SSL_CTX) c.Int
+// llgo:link (*SSL_CTX).SRP_CTX_free C.SSL_CTX_SRP_CTX_free
+func (self *SSL_CTX) SRP_CTX_free() c.Int {
+	return 0
+}
 
-//go:linkname SSLSrpServerParamWithUsername C.SSL_srp_server_param_with_username
-func SSLSrpServerParamWithUsername(s *SSL, ad *c.Int) c.Int
+// llgo:link (*SSL).SrpServerParamWithUsername C.SSL_srp_server_param_with_username
+func (self *SSL) SrpServerParamWithUsername(ad *c.Int) c.Int {
+	return 0
+}
 
-//go:linkname SRPCalcAParam C.SRP_Calc_A_param
-func SRPCalcAParam(s *SSL) c.Int
+// llgo:link (*SSL).SRP_Calc_A_param C.SRP_Calc_A_param
+func (self *SSL) SRP_Calc_A_param() c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXSessions C.SSL_CTX_sessions
-func SSL_CTXSessions(ctx *SSL_CTX) *LhashStSSL_SESSION
+// llgo:link (*SSL_CTX).Sessions C.SSL_CTX_sessions
+func (self *SSL_CTX) Sessions() *Lhash_st_SSL_SESSION {
+	return nil
+}
 
-//go:linkname SSL_CTXSessSetNewCb C.SSL_CTX_sess_set_new_cb
-func SSL_CTXSessSetNewCb(ctx *SSL_CTX, new_session_cb func(_llcppg_param1 *SslSt, _llcppg_param2 *SSL_SESSION) c.Int)
+// llgo:link (*SSL_CTX).SessSetNewCb C.SSL_CTX_sess_set_new_cb
+func (self *SSL_CTX) SessSetNewCb(new_session_cb func(_llcppg_param1 *SslSt, _llcppg_param2 *SSL_SESSION) c.Int) {
+}
 
-//go:linkname SSL_CTXSessGetNewCb C.SSL_CTX_sess_get_new_cb
-func SSL_CTXSessGetNewCb(ctx *SSL_CTX) func(_llcppg_param1 *SslSt, _llcppg_param2 *SSL_SESSION) c.Int
+// llgo:link (*SSL_CTX).SessGetNewCb C.SSL_CTX_sess_get_new_cb
+func (self *SSL_CTX) SessGetNewCb() func(_llcppg_param1 *SslSt, _llcppg_param2 *SSL_SESSION) c.Int {
+	return nil
+}
 
-//go:linkname SSL_CTXSessSetRemoveCb C.SSL_CTX_sess_set_remove_cb
-func SSL_CTXSessSetRemoveCb(ctx *SSL_CTX, remove_session_cb func(_llcppg_param1 *SslCtxSt, _llcppg_param2 *SSL_SESSION))
+// llgo:link (*SSL_CTX).SessSetRemoveCb C.SSL_CTX_sess_set_remove_cb
+func (self *SSL_CTX) SessSetRemoveCb(remove_session_cb func(_llcppg_param1 *SslCtxSt, _llcppg_param2 *SSL_SESSION)) {
+}
 
-//go:linkname SSL_CTXSessGetRemoveCb C.SSL_CTX_sess_get_remove_cb
-func SSL_CTXSessGetRemoveCb(ctx *SSL_CTX) func(_llcppg_param1 *SslCtxSt, _llcppg_param2 *SSL_SESSION)
+// llgo:link (*SSL_CTX).SessGetRemoveCb C.SSL_CTX_sess_get_remove_cb
+func (self *SSL_CTX) SessGetRemoveCb() func(_llcppg_param1 *SslCtxSt, _llcppg_param2 *SSL_SESSION) {
+	return nil
+}
 
-//go:linkname SSL_CTXSessSetGetCb C.SSL_CTX_sess_set_get_cb
-func SSL_CTXSessSetGetCb(ctx *SSL_CTX, get_session_cb func(_llcppg_param1 *SslSt, _llcppg_param2 *uint8, _llcppg_param3 c.Int, _llcppg_param4 *c.Int) *SSL_SESSION)
+// llgo:link (*SSL_CTX).SessSetGetCb C.SSL_CTX_sess_set_get_cb
+func (self *SSL_CTX) SessSetGetCb(get_session_cb func(_llcppg_param1 *SslSt, _llcppg_param2 *uint8, _llcppg_param3 c.Int, _llcppg_param4 *c.Int) *SSL_SESSION) {
+}
 
-//go:linkname SSL_CTXSessGetGetCb C.SSL_CTX_sess_get_get_cb
-func SSL_CTXSessGetGetCb(ctx *SSL_CTX) func(_llcppg_param1 *SslSt, _llcppg_param2 *uint8, _llcppg_param3 c.Int, _llcppg_param4 *c.Int) *SSL_SESSION
+// llgo:link (*SSL_CTX).SessGetGetCb C.SSL_CTX_sess_get_get_cb
+func (self *SSL_CTX) SessGetGetCb() func(_llcppg_param1 *SslSt, _llcppg_param2 *uint8, _llcppg_param3 c.Int, _llcppg_param4 *c.Int) *SSL_SESSION {
+	return nil
+}
 
-//go:linkname SSL_CTXSetInfoCallback C.SSL_CTX_set_info_callback
-func SSL_CTXSetInfoCallback(ctx *SSL_CTX, cb func(_llcppg_param1 *SSL, _llcppg_param2 c.Int, _llcppg_param3 c.Int))
+// llgo:link (*SSL_CTX).SetInfoCallback C.SSL_CTX_set_info_callback
+func (self *SSL_CTX) SetInfoCallback(cb func(_llcppg_param1 *SSL, _llcppg_param2 c.Int, _llcppg_param3 c.Int)) {
+}
 
-//go:linkname SSL_CTXGetInfoCallback C.SSL_CTX_get_info_callback
-func SSL_CTXGetInfoCallback(ctx *SSL_CTX) func(_llcppg_param1 *SSL, _llcppg_param2 c.Int, _llcppg_param3 c.Int)
+// llgo:link (*SSL_CTX).InfoCallback C.SSL_CTX_get_info_callback
+func (self *SSL_CTX) InfoCallback() func(_llcppg_param1 *SSL, _llcppg_param2 c.Int, _llcppg_param3 c.Int) {
+	return nil
+}
 
-//go:linkname SSL_CTXSetClientCertCb C.SSL_CTX_set_client_cert_cb
-func SSL_CTXSetClientCertCb(ctx *SSL_CTX, client_cert_cb func(_llcppg_param1 *SSL, _llcppg_param2 **X509, _llcppg_param3 **EVP_PKEY) c.Int)
+// llgo:link (*SSL_CTX).SetClientCertCb C.SSL_CTX_set_client_cert_cb
+func (self *SSL_CTX) SetClientCertCb(client_cert_cb func(_llcppg_param1 *SSL, _llcppg_param2 **X509, _llcppg_param3 **EVP_PKEY) c.Int) {
+}
 
-//go:linkname SSL_CTXGetClientCertCb C.SSL_CTX_get_client_cert_cb
-func SSL_CTXGetClientCertCb(ctx *SSL_CTX) func(_llcppg_param1 *SSL, _llcppg_param2 **X509, _llcppg_param3 **EVP_PKEY) c.Int
+// llgo:link (*SSL_CTX).ClientCertCb C.SSL_CTX_get_client_cert_cb
+func (self *SSL_CTX) ClientCertCb() func(_llcppg_param1 *SSL, _llcppg_param2 **X509, _llcppg_param3 **EVP_PKEY) c.Int {
+	return nil
+}
 
-//go:linkname SSL_CTXSetCookieGenerateCb C.SSL_CTX_set_cookie_generate_cb
-func SSL_CTXSetCookieGenerateCb(ctx *SSL_CTX, app_gen_cookie_cb func(_llcppg_param1 *SSL, _llcppg_param2 *uint8, _llcppg_param3 *c.Uint) c.Int)
+// llgo:link (*SSL_CTX).SetCookieGenerateCb C.SSL_CTX_set_cookie_generate_cb
+func (self *SSL_CTX) SetCookieGenerateCb(app_gen_cookie_cb func(_llcppg_param1 *SSL, _llcppg_param2 *uint8, _llcppg_param3 *c.Uint) c.Int) {
+}
 
-//go:linkname SSL_CTXSetCookieVerifyCb C.SSL_CTX_set_cookie_verify_cb
-func SSL_CTXSetCookieVerifyCb(ctx *SSL_CTX, app_verify_cookie_cb func(_llcppg_param1 *SSL, _llcppg_param2 *uint8, _llcppg_param3 c.Uint) c.Int)
+// llgo:link (*SSL_CTX).SetCookieVerifyCb C.SSL_CTX_set_cookie_verify_cb
+func (self *SSL_CTX) SetCookieVerifyCb(app_verify_cookie_cb func(_llcppg_param1 *SSL, _llcppg_param2 *uint8, _llcppg_param3 c.Uint) c.Int) {
+}
 
-//go:linkname SSL_CTXSetStatelessCookieGenerateCb C.SSL_CTX_set_stateless_cookie_generate_cb
-func SSL_CTXSetStatelessCookieGenerateCb(ctx *SSL_CTX, gen_stateless_cookie_cb func(_llcppg_param1 *SSL, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT) c.Int)
+// llgo:link (*SSL_CTX).SetStatelessCookieGenerateCb C.SSL_CTX_set_stateless_cookie_generate_cb
+func (self *SSL_CTX) SetStatelessCookieGenerateCb(gen_stateless_cookie_cb func(_llcppg_param1 *SSL, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT) c.Int) {
+}
 
-//go:linkname SSL_CTXSetStatelessCookieVerifyCb C.SSL_CTX_set_stateless_cookie_verify_cb
-func SSL_CTXSetStatelessCookieVerifyCb(ctx *SSL_CTX, verify_stateless_cookie_cb func(_llcppg_param1 *SSL, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT) c.Int)
+// llgo:link (*SSL_CTX).SetStatelessCookieVerifyCb C.SSL_CTX_set_stateless_cookie_verify_cb
+func (self *SSL_CTX) SetStatelessCookieVerifyCb(verify_stateless_cookie_cb func(_llcppg_param1 *SSL, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT) c.Int) {
+}
 
-//go:linkname SSL_CTXSetNextProtosAdvertisedCb C.SSL_CTX_set_next_protos_advertised_cb
-func SSL_CTXSetNextProtosAdvertisedCb(s *SSL_CTX, cb SSL_CTXNpnAdvertisedCbFunc, arg unsafe.Pointer)
+// llgo:link (*SSL_CTX).SetNextProtosAdvertisedCb C.SSL_CTX_set_next_protos_advertised_cb
+func (self *SSL_CTX) SetNextProtosAdvertisedCb(cb SSL_CTX_npn_advertised_cb_func, arg unsafe.Pointer) {
+}
 
-//go:linkname SSL_CTXSetNextProtoSelectCb C.SSL_CTX_set_next_proto_select_cb
-func SSL_CTXSetNextProtoSelectCb(s *SSL_CTX, cb SSL_CTXNpnSelectCbFunc, arg unsafe.Pointer)
+// llgo:link (*SSL_CTX).SetNextProtoSelectCb C.SSL_CTX_set_next_proto_select_cb
+func (self *SSL_CTX) SetNextProtoSelectCb(cb SSL_CTX_npn_select_cb_func, arg unsafe.Pointer) {
+}
 
-//go:linkname SSLGet0NextProtoNegotiated C.SSL_get0_next_proto_negotiated
-func SSLGet0NextProtoNegotiated(s *SSL, data **uint8, len *c.Uint)
+// llgo:link (*SSL).Get0NextProtoNegotiated C.SSL_get0_next_proto_negotiated
+func (self *SSL) Get0NextProtoNegotiated(data **uint8, len *c.Uint) {
+}
 
-//go:linkname SSLSelectNextProto C.SSL_select_next_proto
-func SSLSelectNextProto(out **uint8, outlen *uint8, server *uint8, server_len c.Uint, client *uint8, client_len c.Uint) c.Int
+//go:linkname SSL_select_next_proto C.SSL_select_next_proto
+func SSL_select_next_proto(out **uint8, outlen *uint8, server *uint8, server_len c.Uint, client *uint8, client_len c.Uint) c.Int
 
-//go:linkname SSL_CTXSetAlpnProtos C.SSL_CTX_set_alpn_protos
-func SSL_CTXSetAlpnProtos(ctx *SSL_CTX, protos *uint8, protos_len c.Uint) c.Int
+// llgo:link (*SSL_CTX).SetAlpnProtos C.SSL_CTX_set_alpn_protos
+func (self *SSL_CTX) SetAlpnProtos(protos *uint8, protos_len c.Uint) c.Int {
+	return 0
+}
 
-//go:linkname SSLSetAlpnProtos C.SSL_set_alpn_protos
-func SSLSetAlpnProtos(ssl *SSL, protos *uint8, protos_len c.Uint) c.Int
+// llgo:link (*SSL).SetAlpnProtos C.SSL_set_alpn_protos
+func (self *SSL) SetAlpnProtos(protos *uint8, protos_len c.Uint) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXSetAlpnSelectCb C.SSL_CTX_set_alpn_select_cb
-func SSL_CTXSetAlpnSelectCb(ctx *SSL_CTX, cb SSL_CTXAlpnSelectCbFunc, arg unsafe.Pointer)
+// llgo:link (*SSL_CTX).SetAlpnSelectCb C.SSL_CTX_set_alpn_select_cb
+func (self *SSL_CTX) SetAlpnSelectCb(cb SSL_CTX_alpn_select_cb_func, arg unsafe.Pointer) {
+}
 
-//go:linkname SSLGet0AlpnSelected C.SSL_get0_alpn_selected
-func SSLGet0AlpnSelected(ssl *SSL, data **uint8, len *c.Uint)
+// llgo:link (*SSL).Get0AlpnSelected C.SSL_get0_alpn_selected
+func (self *SSL) Get0AlpnSelected(data **uint8, len *c.Uint) {
+}
 
-//go:linkname SSL_CTXGet0AlpnProtos C.SSL_CTX_get0_alpn_protos
-func SSL_CTXGet0AlpnProtos(ctx *SSL_CTX, protos **uint8, protos_len *c.Uint)
+// llgo:link (*SSL_CTX).Get0AlpnProtos C.SSL_CTX_get0_alpn_protos
+func (self *SSL_CTX) Get0AlpnProtos(protos **uint8, protos_len *c.Uint) {
+}
 
-//go:linkname SSLGet0AlpnProtos C.SSL_get0_alpn_protos
-func SSLGet0AlpnProtos(ssl *SSL, protos **uint8, protos_len *c.Uint)
+// llgo:link (*SSL).Get0AlpnProtos C.SSL_get0_alpn_protos
+func (self *SSL) Get0AlpnProtos(protos **uint8, protos_len *c.Uint) {
+}
 
-//go:linkname SSL_CTXSetPskClientCallback C.SSL_CTX_set_psk_client_callback
-func SSL_CTXSetPskClientCallback(ctx *SSL_CTX, cb SSLPskClientCbFunc)
+// llgo:link (*SSL_CTX).SetPskClientCallback C.SSL_CTX_set_psk_client_callback
+func (self *SSL_CTX) SetPskClientCallback(cb SSL_psk_client_cb_func) {
+}
 
-//go:linkname SSLSetPskClientCallback C.SSL_set_psk_client_callback
-func SSLSetPskClientCallback(ssl *SSL, cb SSLPskClientCbFunc)
+// llgo:link (*SSL).SetPskClientCallback C.SSL_set_psk_client_callback
+func (self *SSL) SetPskClientCallback(cb SSL_psk_client_cb_func) {
+}
 
-//go:linkname SSL_CTXSetPskServerCallback C.SSL_CTX_set_psk_server_callback
-func SSL_CTXSetPskServerCallback(ctx *SSL_CTX, cb SSLPskServerCbFunc)
+// llgo:link (*SSL_CTX).SetPskServerCallback C.SSL_CTX_set_psk_server_callback
+func (self *SSL_CTX) SetPskServerCallback(cb SSL_psk_server_cb_func) {
+}
 
-//go:linkname SSLSetPskServerCallback C.SSL_set_psk_server_callback
-func SSLSetPskServerCallback(ssl *SSL, cb SSLPskServerCbFunc)
+// llgo:link (*SSL).SetPskServerCallback C.SSL_set_psk_server_callback
+func (self *SSL) SetPskServerCallback(cb SSL_psk_server_cb_func) {
+}
 
-//go:linkname SSL_CTXUsePskIdentityHint C.SSL_CTX_use_psk_identity_hint
-func SSL_CTXUsePskIdentityHint(ctx *SSL_CTX, identity_hint *c.Char) c.Int
+// llgo:link (*SSL_CTX).UsePskIdentityHint C.SSL_CTX_use_psk_identity_hint
+func (self *SSL_CTX) UsePskIdentityHint(identity_hint *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname SSLUsePskIdentityHint C.SSL_use_psk_identity_hint
-func SSLUsePskIdentityHint(s *SSL, identity_hint *c.Char) c.Int
+// llgo:link (*SSL).UsePskIdentityHint C.SSL_use_psk_identity_hint
+func (self *SSL) UsePskIdentityHint(identity_hint *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname SSLGetPskIdentityHint C.SSL_get_psk_identity_hint
-func SSLGetPskIdentityHint(s *SSL) *c.Char
+// llgo:link (*SSL).PskIdentityHint C.SSL_get_psk_identity_hint
+func (self *SSL) PskIdentityHint() *c.Char {
+	return nil
+}
 
-//go:linkname SSLGetPskIdentity C.SSL_get_psk_identity
-func SSLGetPskIdentity(s *SSL) *c.Char
+// llgo:link (*SSL).PskIdentity C.SSL_get_psk_identity
+func (self *SSL) PskIdentity() *c.Char {
+	return nil
+}
 
-//go:linkname SSLSetPskFindSessionCallback C.SSL_set_psk_find_session_callback
-func SSLSetPskFindSessionCallback(s *SSL, cb SSLPskFindSessionCbFunc)
+// llgo:link (*SSL).SetPskFindSessionCallback C.SSL_set_psk_find_session_callback
+func (self *SSL) SetPskFindSessionCallback(cb SSL_psk_find_session_cb_func) {
+}
 
-//go:linkname SSL_CTXSetPskFindSessionCallback C.SSL_CTX_set_psk_find_session_callback
-func SSL_CTXSetPskFindSessionCallback(ctx *SSL_CTX, cb SSLPskFindSessionCbFunc)
+// llgo:link (*SSL_CTX).SetPskFindSessionCallback C.SSL_CTX_set_psk_find_session_callback
+func (self *SSL_CTX) SetPskFindSessionCallback(cb SSL_psk_find_session_cb_func) {
+}
 
-//go:linkname SSLSetPskUseSessionCallback C.SSL_set_psk_use_session_callback
-func SSLSetPskUseSessionCallback(s *SSL, cb SSLPskUseSessionCbFunc)
+// llgo:link (*SSL).SetPskUseSessionCallback C.SSL_set_psk_use_session_callback
+func (self *SSL) SetPskUseSessionCallback(cb SSL_psk_use_session_cb_func) {
+}
 
-//go:linkname SSL_CTXSetPskUseSessionCallback C.SSL_CTX_set_psk_use_session_callback
-func SSL_CTXSetPskUseSessionCallback(ctx *SSL_CTX, cb SSLPskUseSessionCbFunc)
+// llgo:link (*SSL_CTX).SetPskUseSessionCallback C.SSL_CTX_set_psk_use_session_callback
+func (self *SSL_CTX) SetPskUseSessionCallback(cb SSL_psk_use_session_cb_func) {
+}
 
-//go:linkname SSL_CTXHasClientCustomExt C.SSL_CTX_has_client_custom_ext
-func SSL_CTXHasClientCustomExt(ctx *SSL_CTX, ext_type c.Uint) c.Int
+// llgo:link (*SSL_CTX).HasClientCustomExt C.SSL_CTX_has_client_custom_ext
+func (self *SSL_CTX) HasClientCustomExt(ext_type c.Uint) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXAddClientCustomExt C.SSL_CTX_add_client_custom_ext
-func SSL_CTXAddClientCustomExt(ctx *SSL_CTX, ext_type c.Uint, add_cb CustomExtAddCb, free_cb CustomExtFreeCb, add_arg unsafe.Pointer, parse_cb CustomExtParseCb, parse_arg unsafe.Pointer) c.Int
+// llgo:link (*SSL_CTX).AddClientCustomExt C.SSL_CTX_add_client_custom_ext
+func (self *SSL_CTX) AddClientCustomExt(ext_type c.Uint, add_cb CustomExtAddCb, free_cb CustomExtFreeCb, add_arg unsafe.Pointer, parse_cb CustomExtParseCb, parse_arg unsafe.Pointer) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXAddServerCustomExt C.SSL_CTX_add_server_custom_ext
-func SSL_CTXAddServerCustomExt(ctx *SSL_CTX, ext_type c.Uint, add_cb CustomExtAddCb, free_cb CustomExtFreeCb, add_arg unsafe.Pointer, parse_cb CustomExtParseCb, parse_arg unsafe.Pointer) c.Int
+// llgo:link (*SSL_CTX).AddServerCustomExt C.SSL_CTX_add_server_custom_ext
+func (self *SSL_CTX) AddServerCustomExt(ext_type c.Uint, add_cb CustomExtAddCb, free_cb CustomExtFreeCb, add_arg unsafe.Pointer, parse_cb CustomExtParseCb, parse_arg unsafe.Pointer) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXAddCustomExt C.SSL_CTX_add_custom_ext
-func SSL_CTXAddCustomExt(ctx *SSL_CTX, ext_type c.Uint, context c.Uint, add_cb SSLCustomExtAddCbEx, free_cb SSLCustomExtFreeCbEx, add_arg unsafe.Pointer, parse_cb SSLCustomExtParseCbEx, parse_arg unsafe.Pointer) c.Int
+// llgo:link (*SSL_CTX).AddCustomExt C.SSL_CTX_add_custom_ext
+func (self *SSL_CTX) AddCustomExt(ext_type c.Uint, context c.Uint, add_cb SSL_custom_ext_add_cb_ex, free_cb SSL_custom_ext_free_cb_ex, add_arg unsafe.Pointer, parse_cb SSL_custom_ext_parse_cb_ex, parse_arg unsafe.Pointer) c.Int {
+	return 0
+}
 
-//go:linkname SSLExtensionSupported C.SSL_extension_supported
-func SSLExtensionSupported(ext_type c.Uint) c.Int
+//go:linkname SSL_extension_supported C.SSL_extension_supported
+func SSL_extension_supported(ext_type c.Uint) c.Int
 
 // SSL_CTX_set_keylog_callback configures a callback to log key material. This
 // is intended for debugging use with tools like Wireshark. The cb function
 // should log line followed by a newline.
 //
-//go:linkname SSL_CTXSetKeylogCallback C.SSL_CTX_set_keylog_callback
-func SSL_CTXSetKeylogCallback(ctx *SSL_CTX, cb SSL_CTXKeylogCbFunc)
+// llgo:link (*SSL_CTX).SetKeylogCallback C.SSL_CTX_set_keylog_callback
+func (self *SSL_CTX) SetKeylogCallback(cb SSL_CTX_keylog_cb_func) {
+}
 
 // SSL_CTX_get_keylog_callback returns the callback configured by
 // SSL_CTX_set_keylog_callback.
 //
-//go:linkname SSL_CTXGetKeylogCallback C.SSL_CTX_get_keylog_callback
-func SSL_CTXGetKeylogCallback(ctx *SSL_CTX) SSL_CTXKeylogCbFunc
+// llgo:link (*SSL_CTX).KeylogCallback C.SSL_CTX_get_keylog_callback
+func (self *SSL_CTX) KeylogCallback() SSL_CTX_keylog_cb_func {
+	return nil
+}
 
-//go:linkname SSL_CTXSetMaxEarlyData C.SSL_CTX_set_max_early_data
-func SSL_CTXSetMaxEarlyData(ctx *SSL_CTX, max_early_data c.Uint32T) c.Int
+// llgo:link (*SSL_CTX).SetMaxEarlyData C.SSL_CTX_set_max_early_data
+func (self *SSL_CTX) SetMaxEarlyData(max_early_data c.Uint32T) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXGetMaxEarlyData C.SSL_CTX_get_max_early_data
-func SSL_CTXGetMaxEarlyData(ctx *SSL_CTX) c.Uint32T
+// llgo:link (*SSL_CTX).MaxEarlyData C.SSL_CTX_get_max_early_data
+func (self *SSL_CTX) MaxEarlyData() c.Uint32T {
+	return 0
+}
 
-//go:linkname SSLSetMaxEarlyData C.SSL_set_max_early_data
-func SSLSetMaxEarlyData(s *SSL, max_early_data c.Uint32T) c.Int
+// llgo:link (*SSL).SetMaxEarlyData C.SSL_set_max_early_data
+func (self *SSL) SetMaxEarlyData(max_early_data c.Uint32T) c.Int {
+	return 0
+}
 
-//go:linkname SSLGetMaxEarlyData C.SSL_get_max_early_data
-func SSLGetMaxEarlyData(s *SSL) c.Uint32T
+// llgo:link (*SSL).MaxEarlyData C.SSL_get_max_early_data
+func (self *SSL) MaxEarlyData() c.Uint32T {
+	return 0
+}
 
-//go:linkname SSL_CTXSetRecvMaxEarlyData C.SSL_CTX_set_recv_max_early_data
-func SSL_CTXSetRecvMaxEarlyData(ctx *SSL_CTX, recv_max_early_data c.Uint32T) c.Int
+// llgo:link (*SSL_CTX).SetRecvMaxEarlyData C.SSL_CTX_set_recv_max_early_data
+func (self *SSL_CTX) SetRecvMaxEarlyData(recv_max_early_data c.Uint32T) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXGetRecvMaxEarlyData C.SSL_CTX_get_recv_max_early_data
-func SSL_CTXGetRecvMaxEarlyData(ctx *SSL_CTX) c.Uint32T
+// llgo:link (*SSL_CTX).RecvMaxEarlyData C.SSL_CTX_get_recv_max_early_data
+func (self *SSL_CTX) RecvMaxEarlyData() c.Uint32T {
+	return 0
+}
 
-//go:linkname SSLSetRecvMaxEarlyData C.SSL_set_recv_max_early_data
-func SSLSetRecvMaxEarlyData(s *SSL, recv_max_early_data c.Uint32T) c.Int
+// llgo:link (*SSL).SetRecvMaxEarlyData C.SSL_set_recv_max_early_data
+func (self *SSL) SetRecvMaxEarlyData(recv_max_early_data c.Uint32T) c.Int {
+	return 0
+}
 
-//go:linkname SSLGetRecvMaxEarlyData C.SSL_get_recv_max_early_data
-func SSLGetRecvMaxEarlyData(s *SSL) c.Uint32T
+// llgo:link (*SSL).RecvMaxEarlyData C.SSL_get_recv_max_early_data
+func (self *SSL) RecvMaxEarlyData() c.Uint32T {
+	return 0
+}
 
-//go:linkname SSLSetDebug C.SSL_set_debug
-func SSLSetDebug(s *SSL, debug c.Int)
+// llgo:link (*SSL).SetDebug C.SSL_set_debug
+func (self *SSL) SetDebug(debug c.Int) {
+}
 
-//go:linkname SSLInInit C.SSL_in_init
-func SSLInInit(s *SSL) c.Int
+// llgo:link (*SSL).InInit C.SSL_in_init
+func (self *SSL) InInit() c.Int {
+	return 0
+}
 
-//go:linkname SSLInBefore C.SSL_in_before
-func SSLInBefore(s *SSL) c.Int
+// llgo:link (*SSL).InBefore C.SSL_in_before
+func (self *SSL) InBefore() c.Int {
+	return 0
+}
 
-//go:linkname SSLIsInitFinished C.SSL_is_init_finished
-func SSLIsInitFinished(s *SSL) c.Int
+// llgo:link (*SSL).IsInitFinished C.SSL_is_init_finished
+func (self *SSL) IsInitFinished() c.Int {
+	return 0
+}
 
 // -
 // Obtain latest Finished message
@@ -1345,1391 +1459,2171 @@ func SSLIsInitFinished(s *SSL) c.Int
 //   -- that we expected from peer (SSL_get_peer_finished).
 // Returns length (0 == no Finished so far), copies up to 'count' bytes.
 //
-//go:linkname SSLGetFinished C.SSL_get_finished
-func SSLGetFinished(s *SSL, buf unsafe.Pointer, count c.SizeT) c.SizeT
-
-//go:linkname SSLGetPeerFinished C.SSL_get_peer_finished
-func SSLGetPeerFinished(s *SSL, buf unsafe.Pointer, count c.SizeT) c.SizeT
-
-//go:linkname PEMReadBioSSL_SESSION C.PEM_read_bio_SSL_SESSION
-func PEMReadBioSSL_SESSION(out *BIO, x **SSL_SESSION, cb *PemPasswordCb, u unsafe.Pointer) *SSL_SESSION
-
-//go:linkname PEMReadSSL_SESSION C.PEM_read_SSL_SESSION
-func PEMReadSSL_SESSION(out *c.FILE, x **SSL_SESSION, cb *PemPasswordCb, u unsafe.Pointer) *SSL_SESSION
-
-//go:linkname PEMWriteBioSSL_SESSION C.PEM_write_bio_SSL_SESSION
-func PEMWriteBioSSL_SESSION(out *BIO, x *SSL_SESSION) c.Int
-
-//go:linkname PEMWriteSSL_SESSION C.PEM_write_SSL_SESSION
-func PEMWriteSSL_SESSION(out *c.FILE, x *SSL_SESSION) c.Int
-
-//go:linkname SSLGet0GroupName C.SSL_get0_group_name
-func SSLGet0GroupName(s *SSL) *c.Char
-
-//go:linkname SSLGroupToName C.SSL_group_to_name
-func SSLGroupToName(s *SSL, id c.Int) *c.Char
-
-//go:linkname SSLSet0TmpDhPkey C.SSL_set0_tmp_dh_pkey
-func SSLSet0TmpDhPkey(s *SSL, dhpkey *EVP_PKEY) c.Int
-
-//go:linkname SSL_CTXSet0TmpDhPkey C.SSL_CTX_set0_tmp_dh_pkey
-func SSL_CTXSet0TmpDhPkey(ctx *SSL_CTX, dhpkey *EVP_PKEY) c.Int
-
-//go:linkname BIO_FSsl C.BIO_f_ssl
-func BIO_FSsl() *BIO_METHOD
-
-//go:linkname BIONewSsl C.BIO_new_ssl
-func BIONewSsl(ctx *SSL_CTX, client c.Int) *BIO
-
-//go:linkname BIONewSslConnect C.BIO_new_ssl_connect
-func BIONewSslConnect(ctx *SSL_CTX) *BIO
-
-//go:linkname BIONewBufferSslConnect C.BIO_new_buffer_ssl_connect
-func BIONewBufferSslConnect(ctx *SSL_CTX) *BIO
-
-//go:linkname BIOSslCopySessionId C.BIO_ssl_copy_session_id
-func BIOSslCopySessionId(to *BIO, from *BIO) c.Int
-
-//go:linkname BIOSslShutdown C.BIO_ssl_shutdown
-func BIOSslShutdown(ssl_bio *BIO)
-
-//go:linkname SSL_CTXSetCipherList C.SSL_CTX_set_cipher_list
-func SSL_CTXSetCipherList(_llcppg_param1 *SSL_CTX, str *c.Char) c.Int
-
-//go:linkname SSL_CTXNew C.SSL_CTX_new
-func SSL_CTXNew(meth *SSL_METHOD) *SSL_CTX
-
-//go:linkname SSL_CTXNewEx C.SSL_CTX_new_ex
-func SSL_CTXNewEx(libctx *OSSL_LIB_CTX, propq *c.Char, meth *SSL_METHOD) *SSL_CTX
-
-//go:linkname SSL_CTXUpRef C.SSL_CTX_up_ref
-func SSL_CTXUpRef(ctx *SSL_CTX) c.Int
-
-//go:linkname SSL_CTXFree C.SSL_CTX_free
-func SSL_CTXFree(_llcppg_param1 *SSL_CTX)
-
-//go:linkname SSL_CTXSetTimeout C.SSL_CTX_set_timeout
-func SSL_CTXSetTimeout(ctx *SSL_CTX, t c.Long) c.Long
-
-//go:linkname SSL_CTXGetTimeout C.SSL_CTX_get_timeout
-func SSL_CTXGetTimeout(ctx *SSL_CTX) c.Long
-
-//go:linkname SSL_CTXGetCertStore C.SSL_CTX_get_cert_store
-func SSL_CTXGetCertStore(_llcppg_param1 *SSL_CTX) *X509_STORE
-
-//go:linkname SSL_CTXSetCertStore C.SSL_CTX_set_cert_store
-func SSL_CTXSetCertStore(_llcppg_param1 *SSL_CTX, _llcppg_param2 *X509_STORE)
-
-//go:linkname SSL_CTXSet1CertStore C.SSL_CTX_set1_cert_store
-func SSL_CTXSet1CertStore(_llcppg_param1 *SSL_CTX, _llcppg_param2 *X509_STORE)
-
-//go:linkname SSLWant C.SSL_want
-func SSLWant(s *SSL) c.Int
-
-//go:linkname SSLClear C.SSL_clear
-func SSLClear(s *SSL) c.Int
-
-//go:linkname SSL_CTXFlushSessions C.SSL_CTX_flush_sessions
-func SSL_CTXFlushSessions(ctx *SSL_CTX, tm c.Long)
-
-//go:linkname SSL_CTXFlushSessionsEx C.SSL_CTX_flush_sessions_ex
-func SSL_CTXFlushSessionsEx(ctx *SSL_CTX, tm time.TimeT)
-
-//go:linkname SSLGetCurrentCipher C.SSL_get_current_cipher
-func SSLGetCurrentCipher(s *SSL) *SSL_CIPHER
-
-//go:linkname SSLGetPendingCipher C.SSL_get_pending_cipher
-func SSLGetPendingCipher(s *SSL) *SSL_CIPHER
-
-//go:linkname SSL_CIPHERGetBits C.SSL_CIPHER_get_bits
-func SSL_CIPHERGetBits(c *SSL_CIPHER, alg_bits *c.Int) c.Int
-
-//go:linkname SSL_CIPHERGetVersion C.SSL_CIPHER_get_version
-func SSL_CIPHERGetVersion(c *SSL_CIPHER) *c.Char
-
-//go:linkname SSL_CIPHERGetName C.SSL_CIPHER_get_name
-func SSL_CIPHERGetName(c *SSL_CIPHER) *c.Char
-
-//go:linkname SSL_CIPHERStandardName C.SSL_CIPHER_standard_name
-func SSL_CIPHERStandardName(c *SSL_CIPHER) *c.Char
-
-//go:linkname OPENSSLCipherName C.OPENSSL_cipher_name
-func OPENSSLCipherName(rfc_name *c.Char) *c.Char
-
-//go:linkname SSL_CIPHERGetId C.SSL_CIPHER_get_id
-func SSL_CIPHERGetId(c *SSL_CIPHER) c.Uint32T
-
-//go:linkname SSL_CIPHERGetProtocolId C.SSL_CIPHER_get_protocol_id
-func SSL_CIPHERGetProtocolId(c *SSL_CIPHER) c.Uint16T
-
-//go:linkname SSL_CIPHERGetKxNid C.SSL_CIPHER_get_kx_nid
-func SSL_CIPHERGetKxNid(c *SSL_CIPHER) c.Int
-
-//go:linkname SSL_CIPHERGetAuthNid C.SSL_CIPHER_get_auth_nid
-func SSL_CIPHERGetAuthNid(c *SSL_CIPHER) c.Int
-
-//go:linkname SSL_CIPHERGetHandshakeDigest C.SSL_CIPHER_get_handshake_digest
-func SSL_CIPHERGetHandshakeDigest(c *SSL_CIPHER) *EVP_MD
-
-//go:linkname SSL_CIPHERIsAead C.SSL_CIPHER_is_aead
-func SSL_CIPHERIsAead(c *SSL_CIPHER) c.Int
-
-//go:linkname SSLGetFd C.SSL_get_fd
-func SSLGetFd(s *SSL) c.Int
-
-//go:linkname SSLGetRfd C.SSL_get_rfd
-func SSLGetRfd(s *SSL) c.Int
-
-//go:linkname SSLGetWfd C.SSL_get_wfd
-func SSLGetWfd(s *SSL) c.Int
-
-//go:linkname SSLGetCipherList C.SSL_get_cipher_list
-func SSLGetCipherList(s *SSL, n c.Int) *c.Char
-
-//go:linkname SSLGetSharedCiphers C.SSL_get_shared_ciphers
-func SSLGetSharedCiphers(s *SSL, buf *c.Char, size c.Int) *c.Char
-
-//go:linkname SSLGetReadAhead C.SSL_get_read_ahead
-func SSLGetReadAhead(s *SSL) c.Int
-
-//go:linkname SSLPending C.SSL_pending
-func SSLPending(s *SSL) c.Int
-
-//go:linkname SSLHasPending C.SSL_has_pending
-func SSLHasPending(s *SSL) c.Int
-
-//go:linkname SSLSetFd C.SSL_set_fd
-func SSLSetFd(s *SSL, fd c.Int) c.Int
-
-//go:linkname SSLSetRfd C.SSL_set_rfd
-func SSLSetRfd(s *SSL, fd c.Int) c.Int
-
-//go:linkname SSLSetWfd C.SSL_set_wfd
-func SSLSetWfd(s *SSL, fd c.Int) c.Int
-
-//go:linkname SSLSet0Rbio C.SSL_set0_rbio
-func SSLSet0Rbio(s *SSL, rbio *BIO)
-
-//go:linkname SSLSet0Wbio C.SSL_set0_wbio
-func SSLSet0Wbio(s *SSL, wbio *BIO)
-
-//go:linkname SSLSetBio C.SSL_set_bio
-func SSLSetBio(s *SSL, rbio *BIO, wbio *BIO)
-
-//go:linkname SSLGetRbio C.SSL_get_rbio
-func SSLGetRbio(s *SSL) *BIO
-
-//go:linkname SSLGetWbio C.SSL_get_wbio
-func SSLGetWbio(s *SSL) *BIO
-
-//go:linkname SSLSetCipherList C.SSL_set_cipher_list
-func SSLSetCipherList(s *SSL, str *c.Char) c.Int
-
-//go:linkname SSL_CTXSetCiphersuites C.SSL_CTX_set_ciphersuites
-func SSL_CTXSetCiphersuites(ctx *SSL_CTX, str *c.Char) c.Int
-
-//go:linkname SSLSetCiphersuites C.SSL_set_ciphersuites
-func SSLSetCiphersuites(s *SSL, str *c.Char) c.Int
-
-//go:linkname SSLSetReadAhead C.SSL_set_read_ahead
-func SSLSetReadAhead(s *SSL, yes c.Int)
-
-//go:linkname SSLGetVerifyMode C.SSL_get_verify_mode
-func SSLGetVerifyMode(s *SSL) c.Int
-
-//go:linkname SSLGetVerifyDepth C.SSL_get_verify_depth
-func SSLGetVerifyDepth(s *SSL) c.Int
-
-//go:linkname SSLGetVerifyCallback C.SSL_get_verify_callback
-func SSLGetVerifyCallback(s *SSL) SSLVerifyCb
-
-//go:linkname SSLSetVerify C.SSL_set_verify
-func SSLSetVerify(s *SSL, mode c.Int, callback SSLVerifyCb)
-
-//go:linkname SSLSetVerifyDepth C.SSL_set_verify_depth
-func SSLSetVerifyDepth(s *SSL, depth c.Int)
-
-//go:linkname SSLSetCertCb C.SSL_set_cert_cb
-func SSLSetCertCb(s *SSL, cb func(_llcppg_param1 *SSL, _llcppg_param2 unsafe.Pointer) c.Int, arg unsafe.Pointer)
-
-//go:linkname SSLUseRSAPrivateKey C.SSL_use_RSAPrivateKey
-func SSLUseRSAPrivateKey(ssl *SSL, rsa *RSA) c.Int
-
-//go:linkname SSLUseRSAPrivateKeyASN1 C.SSL_use_RSAPrivateKey_ASN1
-func SSLUseRSAPrivateKeyASN1(ssl *SSL, d *uint8, len c.Long) c.Int
-
-//go:linkname SSLUsePrivateKey C.SSL_use_PrivateKey
-func SSLUsePrivateKey(ssl *SSL, pkey *EVP_PKEY) c.Int
-
-//go:linkname SSLUsePrivateKeyASN1 C.SSL_use_PrivateKey_ASN1
-func SSLUsePrivateKeyASN1(pk c.Int, ssl *SSL, d *uint8, len c.Long) c.Int
-
-//go:linkname SSLUseCertificate C.SSL_use_certificate
-func SSLUseCertificate(ssl *SSL, x *X509) c.Int
-
-//go:linkname SSLUseCertificateASN1 C.SSL_use_certificate_ASN1
-func SSLUseCertificateASN1(ssl *SSL, d *uint8, len c.Int) c.Int
-
-//go:linkname SSLUseCertAndKey C.SSL_use_cert_and_key
-func SSLUseCertAndKey(ssl *SSL, x509 *X509, privatekey *EVP_PKEY, chain *StackStX509, override c.Int) c.Int
+// llgo:link (*SSL).Finished C.SSL_get_finished
+func (self *SSL) Finished(buf unsafe.Pointer, count c.SizeT) c.SizeT {
+	return 0
+}
+
+// llgo:link (*SSL).PeerFinished C.SSL_get_peer_finished
+func (self *SSL) PeerFinished(buf unsafe.Pointer, count c.SizeT) c.SizeT {
+	return 0
+}
+
+// llgo:link (*BIO).PEM_read_bio_SSL_SESSION C.PEM_read_bio_SSL_SESSION
+func (self *BIO) PEM_read_bio_SSL_SESSION(x **SSL_SESSION, cb *PemPasswordCb, u unsafe.Pointer) *SSL_SESSION {
+	return nil
+}
+
+//go:linkname PEM_read_SSL_SESSION C.PEM_read_SSL_SESSION
+func PEM_read_SSL_SESSION(out *c.FILE, x **SSL_SESSION, cb *PemPasswordCb, u unsafe.Pointer) *SSL_SESSION
+
+// llgo:link (*BIO).PEM_write_bio_SSL_SESSION C.PEM_write_bio_SSL_SESSION
+func (self *BIO) PEM_write_bio_SSL_SESSION(x *SSL_SESSION) c.Int {
+	return 0
+}
+
+//go:linkname PEM_write_SSL_SESSION C.PEM_write_SSL_SESSION
+func PEM_write_SSL_SESSION(out *c.FILE, x *SSL_SESSION) c.Int
+
+// llgo:link (*SSL).Get0GroupName C.SSL_get0_group_name
+func (self *SSL) Get0GroupName() *c.Char {
+	return nil
+}
+
+// llgo:link (*SSL).GroupToName C.SSL_group_to_name
+func (self *SSL) GroupToName(id c.Int) *c.Char {
+	return nil
+}
+
+// llgo:link (*SSL).Set0TmpDhPkey C.SSL_set0_tmp_dh_pkey
+func (self *SSL) Set0TmpDhPkey(dhpkey *EVP_PKEY) c.Int {
+	return 0
+}
+
+// llgo:link (*SSL_CTX).Set0TmpDhPkey C.SSL_CTX_set0_tmp_dh_pkey
+func (self *SSL_CTX) Set0TmpDhPkey(dhpkey *EVP_PKEY) c.Int {
+	return 0
+}
+
+//go:linkname BIO_f_ssl C.BIO_f_ssl
+func BIO_f_ssl() *BIO_METHOD
+
+// llgo:link (*SSL_CTX).BIO_new_ssl C.BIO_new_ssl
+func (self *SSL_CTX) BIO_new_ssl(client c.Int) *BIO {
+	return nil
+}
+
+// llgo:link (*SSL_CTX).BIO_new_ssl_connect C.BIO_new_ssl_connect
+func (self *SSL_CTX) BIO_new_ssl_connect() *BIO {
+	return nil
+}
+
+// llgo:link (*SSL_CTX).BIO_new_buffer_ssl_connect C.BIO_new_buffer_ssl_connect
+func (self *SSL_CTX) BIO_new_buffer_ssl_connect() *BIO {
+	return nil
+}
+
+//go:linkname BIO_ssl_copy_session_id C.BIO_ssl_copy_session_id
+func BIO_ssl_copy_session_id(to *BIO, from *BIO) c.Int
+
+// llgo:link (*BIO).SslShutdown C.BIO_ssl_shutdown
+func (self *BIO) SslShutdown() {
+}
+
+// llgo:link (*SSL_CTX).SetCipherList C.SSL_CTX_set_cipher_list
+func (self *SSL_CTX) SetCipherList(str *c.Char) c.Int {
+	return 0
+}
+
+// llgo:link (*SSL_METHOD).CTX_new C.SSL_CTX_new
+func (self *SSL_METHOD) CTX_new() *SSL_CTX {
+	return nil
+}
+
+// llgo:link (*OSSL_LIB_CTX).SSL_CTX_new_ex C.SSL_CTX_new_ex
+func (self *OSSL_LIB_CTX) SSL_CTX_new_ex(propq *c.Char, meth *SSL_METHOD) *SSL_CTX {
+	return nil
+}
+
+// llgo:link (*SSL_CTX).UpRef C.SSL_CTX_up_ref
+func (self *SSL_CTX) UpRef() c.Int {
+	return 0
+}
+
+// llgo:link (*SSL_CTX).Free C.SSL_CTX_free
+func (self *SSL_CTX) Free() {
+}
+
+// llgo:link (*SSL_CTX).SetTimeout C.SSL_CTX_set_timeout
+func (self *SSL_CTX) SetTimeout(t c.Long) c.Long {
+	return 0
+}
+
+// llgo:link (*SSL_CTX).Timeout C.SSL_CTX_get_timeout
+func (self *SSL_CTX) Timeout() c.Long {
+	return 0
+}
+
+// llgo:link (*SSL_CTX).CertStore C.SSL_CTX_get_cert_store
+func (self *SSL_CTX) CertStore() *X509_STORE {
+	return nil
+}
+
+// llgo:link (*SSL_CTX).SetCertStore C.SSL_CTX_set_cert_store
+func (self *SSL_CTX) SetCertStore(_llcppg_param2 *X509_STORE) {
+}
+
+// llgo:link (*SSL_CTX).Set1CertStore C.SSL_CTX_set1_cert_store
+func (self *SSL_CTX) Set1CertStore(_llcppg_param2 *X509_STORE) {
+}
+
+// llgo:link (*SSL).Want C.SSL_want
+func (self *SSL) Want() c.Int {
+	return 0
+}
+
+// llgo:link (*SSL).Clear C.SSL_clear
+func (self *SSL) Clear() c.Int {
+	return 0
+}
+
+// llgo:link (*SSL_CTX).FlushSessions C.SSL_CTX_flush_sessions
+func (self *SSL_CTX) FlushSessions(tm c.Long) {
+}
+
+// llgo:link (*SSL_CTX).FlushSessionsEx C.SSL_CTX_flush_sessions_ex
+func (self *SSL_CTX) FlushSessionsEx(tm time.TimeT) {
+}
+
+// llgo:link (*SSL).CurrentCipher C.SSL_get_current_cipher
+func (self *SSL) CurrentCipher() *SSL_CIPHER {
+	return nil
+}
+
+// llgo:link (*SSL).PendingCipher C.SSL_get_pending_cipher
+func (self *SSL) PendingCipher() *SSL_CIPHER {
+	return nil
+}
+
+// llgo:link (*SSL_CIPHER).Bits C.SSL_CIPHER_get_bits
+func (self *SSL_CIPHER) Bits(alg_bits *c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*SSL_CIPHER).Version C.SSL_CIPHER_get_version
+func (self *SSL_CIPHER) Version() *c.Char {
+	return nil
+}
+
+// llgo:link (*SSL_CIPHER).Name C.SSL_CIPHER_get_name
+func (self *SSL_CIPHER) Name() *c.Char {
+	return nil
+}
+
+// llgo:link (*SSL_CIPHER).StandardName C.SSL_CIPHER_standard_name
+func (self *SSL_CIPHER) StandardName() *c.Char {
+	return nil
+}
+
+//go:linkname CipherName C.OPENSSL_cipher_name
+func CipherName(rfc_name *c.Char) *c.Char
+
+// llgo:link (*SSL_CIPHER).Id C.SSL_CIPHER_get_id
+func (self *SSL_CIPHER) Id() c.Uint32T {
+	return 0
+}
+
+// llgo:link (*SSL_CIPHER).ProtocolId C.SSL_CIPHER_get_protocol_id
+func (self *SSL_CIPHER) ProtocolId() c.Uint16T {
+	return 0
+}
+
+// llgo:link (*SSL_CIPHER).KxNid C.SSL_CIPHER_get_kx_nid
+func (self *SSL_CIPHER) KxNid() c.Int {
+	return 0
+}
+
+// llgo:link (*SSL_CIPHER).AuthNid C.SSL_CIPHER_get_auth_nid
+func (self *SSL_CIPHER) AuthNid() c.Int {
+	return 0
+}
+
+// llgo:link (*SSL_CIPHER).HandshakeDigest C.SSL_CIPHER_get_handshake_digest
+func (self *SSL_CIPHER) HandshakeDigest() *EVP_MD {
+	return nil
+}
+
+// llgo:link (*SSL_CIPHER).IsAead C.SSL_CIPHER_is_aead
+func (self *SSL_CIPHER) IsAead() c.Int {
+	return 0
+}
+
+// llgo:link (*SSL).Fd C.SSL_get_fd
+func (self *SSL) Fd() c.Int {
+	return 0
+}
+
+// llgo:link (*SSL).Rfd C.SSL_get_rfd
+func (self *SSL) Rfd() c.Int {
+	return 0
+}
+
+// llgo:link (*SSL).Wfd C.SSL_get_wfd
+func (self *SSL) Wfd() c.Int {
+	return 0
+}
+
+// llgo:link (*SSL).CipherList C.SSL_get_cipher_list
+func (self *SSL) CipherList(n c.Int) *c.Char {
+	return nil
+}
+
+// llgo:link (*SSL).SharedCiphers C.SSL_get_shared_ciphers
+func (self *SSL) SharedCiphers(buf *c.Char, size c.Int) *c.Char {
+	return nil
+}
+
+// llgo:link (*SSL).ReadAhead C.SSL_get_read_ahead
+func (self *SSL) ReadAhead() c.Int {
+	return 0
+}
+
+// llgo:link (*SSL).Pending C.SSL_pending
+func (self *SSL) Pending() c.Int {
+	return 0
+}
+
+// llgo:link (*SSL).HasPending C.SSL_has_pending
+func (self *SSL) HasPending() c.Int {
+	return 0
+}
+
+// llgo:link (*SSL).SetFd C.SSL_set_fd
+func (self *SSL) SetFd(fd c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*SSL).SetRfd C.SSL_set_rfd
+func (self *SSL) SetRfd(fd c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*SSL).SetWfd C.SSL_set_wfd
+func (self *SSL) SetWfd(fd c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*SSL).Set0Rbio C.SSL_set0_rbio
+func (self *SSL) Set0Rbio(rbio *BIO) {
+}
+
+// llgo:link (*SSL).Set0Wbio C.SSL_set0_wbio
+func (self *SSL) Set0Wbio(wbio *BIO) {
+}
+
+// llgo:link (*SSL).SetBio C.SSL_set_bio
+func (self *SSL) SetBio(rbio *BIO, wbio *BIO) {
+}
+
+// llgo:link (*SSL).Rbio C.SSL_get_rbio
+func (self *SSL) Rbio() *BIO {
+	return nil
+}
+
+// llgo:link (*SSL).Wbio C.SSL_get_wbio
+func (self *SSL) Wbio() *BIO {
+	return nil
+}
+
+// llgo:link (*SSL).SetCipherList C.SSL_set_cipher_list
+func (self *SSL) SetCipherList(str *c.Char) c.Int {
+	return 0
+}
+
+// llgo:link (*SSL_CTX).SetCiphersuites C.SSL_CTX_set_ciphersuites
+func (self *SSL_CTX) SetCiphersuites(str *c.Char) c.Int {
+	return 0
+}
+
+// llgo:link (*SSL).SetCiphersuites C.SSL_set_ciphersuites
+func (self *SSL) SetCiphersuites(str *c.Char) c.Int {
+	return 0
+}
+
+// llgo:link (*SSL).SetReadAhead C.SSL_set_read_ahead
+func (self *SSL) SetReadAhead(yes c.Int) {
+}
+
+// llgo:link (*SSL).VerifyMode C.SSL_get_verify_mode
+func (self *SSL) VerifyMode() c.Int {
+	return 0
+}
+
+// llgo:link (*SSL).VerifyDepth C.SSL_get_verify_depth
+func (self *SSL) VerifyDepth() c.Int {
+	return 0
+}
+
+// llgo:link (*SSL).VerifyCallback C.SSL_get_verify_callback
+func (self *SSL) VerifyCallback() SSL_verify_cb {
+	return nil
+}
+
+// llgo:link (*SSL).SetVerify C.SSL_set_verify
+func (self *SSL) SetVerify(mode c.Int, callback SSL_verify_cb) {
+}
+
+// llgo:link (*SSL).SetVerifyDepth C.SSL_set_verify_depth
+func (self *SSL) SetVerifyDepth(depth c.Int) {
+}
+
+// llgo:link (*SSL).SetCertCb C.SSL_set_cert_cb
+func (self *SSL) SetCertCb(cb func(_llcppg_param1 *SSL, _llcppg_param2 unsafe.Pointer) c.Int, arg unsafe.Pointer) {
+}
+
+// llgo:link (*SSL).UseRSAPrivateKey C.SSL_use_RSAPrivateKey
+func (self *SSL) UseRSAPrivateKey(rsa *RSA) c.Int {
+	return 0
+}
+
+// llgo:link (*SSL).Use_RSAPrivateKey_ASN1 C.SSL_use_RSAPrivateKey_ASN1
+func (self *SSL) Use_RSAPrivateKey_ASN1(d *uint8, len c.Long) c.Int {
+	return 0
+}
+
+// llgo:link (*SSL).UsePrivateKey C.SSL_use_PrivateKey
+func (self *SSL) UsePrivateKey(pkey *EVP_PKEY) c.Int {
+	return 0
+}
+
+//go:linkname SSL_use_PrivateKey_ASN1 C.SSL_use_PrivateKey_ASN1
+func SSL_use_PrivateKey_ASN1(pk c.Int, ssl *SSL, d *uint8, len c.Long) c.Int
+
+// llgo:link (*SSL).UseCertificate C.SSL_use_certificate
+func (self *SSL) UseCertificate(x *X509) c.Int {
+	return 0
+}
+
+// llgo:link (*SSL).Use_certificate_ASN1 C.SSL_use_certificate_ASN1
+func (self *SSL) Use_certificate_ASN1(d *uint8, len c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*SSL).UseCertAndKey C.SSL_use_cert_and_key
+func (self *SSL) UseCertAndKey(x509 *X509, privatekey *EVP_PKEY, chain *Stack_st_X509, override c.Int) c.Int {
+	return 0
+}
 
 // Set serverinfo data for the current active cert.
 //
-//go:linkname SSL_CTXUseServerinfo C.SSL_CTX_use_serverinfo
-func SSL_CTXUseServerinfo(ctx *SSL_CTX, serverinfo *uint8, serverinfo_length c.SizeT) c.Int
+// llgo:link (*SSL_CTX).UseServerinfo C.SSL_CTX_use_serverinfo
+func (self *SSL_CTX) UseServerinfo(serverinfo *uint8, serverinfo_length c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXUseServerinfoEx C.SSL_CTX_use_serverinfo_ex
-func SSL_CTXUseServerinfoEx(ctx *SSL_CTX, version c.Uint, serverinfo *uint8, serverinfo_length c.SizeT) c.Int
+// llgo:link (*SSL_CTX).UseServerinfoEx C.SSL_CTX_use_serverinfo_ex
+func (self *SSL_CTX) UseServerinfoEx(version c.Uint, serverinfo *uint8, serverinfo_length c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXUseServerinfoFile C.SSL_CTX_use_serverinfo_file
-func SSL_CTXUseServerinfoFile(ctx *SSL_CTX, file *c.Char) c.Int
+// llgo:link (*SSL_CTX).UseServerinfoFile C.SSL_CTX_use_serverinfo_file
+func (self *SSL_CTX) UseServerinfoFile(file *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname SSLUseRSAPrivateKeyFile C.SSL_use_RSAPrivateKey_file
-func SSLUseRSAPrivateKeyFile(ssl *SSL, file *c.Char, type_ c.Int) c.Int
+// llgo:link (*SSL).UseRSAPrivateKeyFile C.SSL_use_RSAPrivateKey_file
+func (self *SSL) UseRSAPrivateKeyFile(file *c.Char, type_ c.Int) c.Int {
+	return 0
+}
 
-//go:linkname SSLUsePrivateKeyFile C.SSL_use_PrivateKey_file
-func SSLUsePrivateKeyFile(ssl *SSL, file *c.Char, type_ c.Int) c.Int
+// llgo:link (*SSL).UsePrivateKeyFile C.SSL_use_PrivateKey_file
+func (self *SSL) UsePrivateKeyFile(file *c.Char, type_ c.Int) c.Int {
+	return 0
+}
 
-//go:linkname SSLUseCertificateFile C.SSL_use_certificate_file
-func SSLUseCertificateFile(ssl *SSL, file *c.Char, type_ c.Int) c.Int
+// llgo:link (*SSL).UseCertificateFile C.SSL_use_certificate_file
+func (self *SSL) UseCertificateFile(file *c.Char, type_ c.Int) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXUseRSAPrivateKeyFile C.SSL_CTX_use_RSAPrivateKey_file
-func SSL_CTXUseRSAPrivateKeyFile(ctx *SSL_CTX, file *c.Char, type_ c.Int) c.Int
+// llgo:link (*SSL_CTX).UseRSAPrivateKeyFile C.SSL_CTX_use_RSAPrivateKey_file
+func (self *SSL_CTX) UseRSAPrivateKeyFile(file *c.Char, type_ c.Int) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXUsePrivateKeyFile C.SSL_CTX_use_PrivateKey_file
-func SSL_CTXUsePrivateKeyFile(ctx *SSL_CTX, file *c.Char, type_ c.Int) c.Int
+// llgo:link (*SSL_CTX).UsePrivateKeyFile C.SSL_CTX_use_PrivateKey_file
+func (self *SSL_CTX) UsePrivateKeyFile(file *c.Char, type_ c.Int) c.Int {
+	return 0
+}
 
 // PEM type
 //
-//go:linkname SSL_CTXUseCertificateFile C.SSL_CTX_use_certificate_file
-func SSL_CTXUseCertificateFile(ctx *SSL_CTX, file *c.Char, type_ c.Int) c.Int
+// llgo:link (*SSL_CTX).UseCertificateFile C.SSL_CTX_use_certificate_file
+func (self *SSL_CTX) UseCertificateFile(file *c.Char, type_ c.Int) c.Int {
+	return 0
+}
 
 // PEM type
 //
-//go:linkname SSL_CTXUseCertificateChainFile C.SSL_CTX_use_certificate_chain_file
-func SSL_CTXUseCertificateChainFile(ctx *SSL_CTX, file *c.Char) c.Int
+// llgo:link (*SSL_CTX).UseCertificateChainFile C.SSL_CTX_use_certificate_chain_file
+func (self *SSL_CTX) UseCertificateChainFile(file *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname SSLUseCertificateChainFile C.SSL_use_certificate_chain_file
-func SSLUseCertificateChainFile(ssl *SSL, file *c.Char) c.Int
+// llgo:link (*SSL).UseCertificateChainFile C.SSL_use_certificate_chain_file
+func (self *SSL) UseCertificateChainFile(file *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname SSLLoadClientCAFile C.SSL_load_client_CA_file
-func SSLLoadClientCAFile(file *c.Char) *StackStX509NAME
+//go:linkname SSL_load_client_CA_file C.SSL_load_client_CA_file
+func SSL_load_client_CA_file(file *c.Char) *Stack_st_X509_NAME
 
-//go:linkname SSLLoadClientCAFileEx C.SSL_load_client_CA_file_ex
-func SSLLoadClientCAFileEx(file *c.Char, libctx *OSSL_LIB_CTX, propq *c.Char) *StackStX509NAME
+//go:linkname SSL_load_client_CA_file_ex C.SSL_load_client_CA_file_ex
+func SSL_load_client_CA_file_ex(file *c.Char, libctx *OSSL_LIB_CTX, propq *c.Char) *Stack_st_X509_NAME
 
-//go:linkname SSLAddFileCertSubjectsToStack C.SSL_add_file_cert_subjects_to_stack
-func SSLAddFileCertSubjectsToStack(stackCAs *StackStX509NAME, file *c.Char) c.Int
+// llgo:link (*Stack_st_X509_NAME).SSL_add_file_cert_subjects_to_stack C.SSL_add_file_cert_subjects_to_stack
+func (self *Stack_st_X509_NAME) SSL_add_file_cert_subjects_to_stack(file *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname SSLAddDirCertSubjectsToStack C.SSL_add_dir_cert_subjects_to_stack
-func SSLAddDirCertSubjectsToStack(stackCAs *StackStX509NAME, dir *c.Char) c.Int
+// llgo:link (*Stack_st_X509_NAME).SSL_add_dir_cert_subjects_to_stack C.SSL_add_dir_cert_subjects_to_stack
+func (self *Stack_st_X509_NAME) SSL_add_dir_cert_subjects_to_stack(dir *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname SSLAddStoreCertSubjectsToStack C.SSL_add_store_cert_subjects_to_stack
-func SSLAddStoreCertSubjectsToStack(stackCAs *StackStX509NAME, uri *c.Char) c.Int
+// llgo:link (*Stack_st_X509_NAME).SSL_add_store_cert_subjects_to_stack C.SSL_add_store_cert_subjects_to_stack
+func (self *Stack_st_X509_NAME) SSL_add_store_cert_subjects_to_stack(uri *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname SSLStateString C.SSL_state_string
-func SSLStateString(s *SSL) *c.Char
+// llgo:link (*SSL).StateString C.SSL_state_string
+func (self *SSL) StateString() *c.Char {
+	return nil
+}
 
-//go:linkname SSLRstateString C.SSL_rstate_string
-func SSLRstateString(s *SSL) *c.Char
+// llgo:link (*SSL).RstateString C.SSL_rstate_string
+func (self *SSL) RstateString() *c.Char {
+	return nil
+}
 
-//go:linkname SSLStateStringLong C.SSL_state_string_long
-func SSLStateStringLong(s *SSL) *c.Char
+// llgo:link (*SSL).StateStringLong C.SSL_state_string_long
+func (self *SSL) StateStringLong() *c.Char {
+	return nil
+}
 
-//go:linkname SSLRstateStringLong C.SSL_rstate_string_long
-func SSLRstateStringLong(s *SSL) *c.Char
+// llgo:link (*SSL).RstateStringLong C.SSL_rstate_string_long
+func (self *SSL) RstateStringLong() *c.Char {
+	return nil
+}
 
-//go:linkname SSL_SESSIONGetTime C.SSL_SESSION_get_time
-func SSL_SESSIONGetTime(s *SSL_SESSION) c.Long
+// llgo:link (*SSL_SESSION).Time C.SSL_SESSION_get_time
+func (self *SSL_SESSION) Time() c.Long {
+	return 0
+}
 
-//go:linkname SSL_SESSIONSetTime C.SSL_SESSION_set_time
-func SSL_SESSIONSetTime(s *SSL_SESSION, t c.Long) c.Long
+// llgo:link (*SSL_SESSION).SetTime C.SSL_SESSION_set_time
+func (self *SSL_SESSION) SetTime(t c.Long) c.Long {
+	return 0
+}
 
-//go:linkname SSL_SESSIONGetTimeout C.SSL_SESSION_get_timeout
-func SSL_SESSIONGetTimeout(s *SSL_SESSION) c.Long
+// llgo:link (*SSL_SESSION).Timeout C.SSL_SESSION_get_timeout
+func (self *SSL_SESSION) Timeout() c.Long {
+	return 0
+}
 
-//go:linkname SSL_SESSIONSetTimeout C.SSL_SESSION_set_timeout
-func SSL_SESSIONSetTimeout(s *SSL_SESSION, t c.Long) c.Long
+// llgo:link (*SSL_SESSION).SetTimeout C.SSL_SESSION_set_timeout
+func (self *SSL_SESSION) SetTimeout(t c.Long) c.Long {
+	return 0
+}
 
-//go:linkname SSL_SESSIONGetProtocolVersion C.SSL_SESSION_get_protocol_version
-func SSL_SESSIONGetProtocolVersion(s *SSL_SESSION) c.Int
+// llgo:link (*SSL_SESSION).ProtocolVersion C.SSL_SESSION_get_protocol_version
+func (self *SSL_SESSION) ProtocolVersion() c.Int {
+	return 0
+}
 
-//go:linkname SSL_SESSIONSetProtocolVersion C.SSL_SESSION_set_protocol_version
-func SSL_SESSIONSetProtocolVersion(s *SSL_SESSION, version c.Int) c.Int
+// llgo:link (*SSL_SESSION).SetProtocolVersion C.SSL_SESSION_set_protocol_version
+func (self *SSL_SESSION) SetProtocolVersion(version c.Int) c.Int {
+	return 0
+}
 
-//go:linkname SSL_SESSIONGetTimeEx C.SSL_SESSION_get_time_ex
-func SSL_SESSIONGetTimeEx(s *SSL_SESSION) time.TimeT
+// llgo:link (*SSL_SESSION).TimeEx C.SSL_SESSION_get_time_ex
+func (self *SSL_SESSION) TimeEx() time.TimeT {
+	return 0
+}
 
-//go:linkname SSL_SESSIONSetTimeEx C.SSL_SESSION_set_time_ex
-func SSL_SESSIONSetTimeEx(s *SSL_SESSION, t time.TimeT) time.TimeT
+// llgo:link (*SSL_SESSION).SetTimeEx C.SSL_SESSION_set_time_ex
+func (self *SSL_SESSION) SetTimeEx(t time.TimeT) time.TimeT {
+	return 0
+}
 
-//go:linkname SSL_SESSIONGet0Hostname C.SSL_SESSION_get0_hostname
-func SSL_SESSIONGet0Hostname(s *SSL_SESSION) *c.Char
+// llgo:link (*SSL_SESSION).Get0Hostname C.SSL_SESSION_get0_hostname
+func (self *SSL_SESSION) Get0Hostname() *c.Char {
+	return nil
+}
 
-//go:linkname SSL_SESSIONSet1Hostname C.SSL_SESSION_set1_hostname
-func SSL_SESSIONSet1Hostname(s *SSL_SESSION, hostname *c.Char) c.Int
+// llgo:link (*SSL_SESSION).Set1Hostname C.SSL_SESSION_set1_hostname
+func (self *SSL_SESSION) Set1Hostname(hostname *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname SSL_SESSIONGet0AlpnSelected C.SSL_SESSION_get0_alpn_selected
-func SSL_SESSIONGet0AlpnSelected(s *SSL_SESSION, alpn **uint8, len *c.SizeT)
+// llgo:link (*SSL_SESSION).Get0AlpnSelected C.SSL_SESSION_get0_alpn_selected
+func (self *SSL_SESSION) Get0AlpnSelected(alpn **uint8, len *c.SizeT) {
+}
 
-//go:linkname SSL_SESSIONSet1AlpnSelected C.SSL_SESSION_set1_alpn_selected
-func SSL_SESSIONSet1AlpnSelected(s *SSL_SESSION, alpn *uint8, len c.SizeT) c.Int
+// llgo:link (*SSL_SESSION).Set1AlpnSelected C.SSL_SESSION_set1_alpn_selected
+func (self *SSL_SESSION) Set1AlpnSelected(alpn *uint8, len c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSL_SESSIONGet0Cipher C.SSL_SESSION_get0_cipher
-func SSL_SESSIONGet0Cipher(s *SSL_SESSION) *SSL_CIPHER
+// llgo:link (*SSL_SESSION).Get0Cipher C.SSL_SESSION_get0_cipher
+func (self *SSL_SESSION) Get0Cipher() *SSL_CIPHER {
+	return nil
+}
 
-//go:linkname SSL_SESSIONSetCipher C.SSL_SESSION_set_cipher
-func SSL_SESSIONSetCipher(s *SSL_SESSION, cipher *SSL_CIPHER) c.Int
+// llgo:link (*SSL_SESSION).SetCipher C.SSL_SESSION_set_cipher
+func (self *SSL_SESSION) SetCipher(cipher *SSL_CIPHER) c.Int {
+	return 0
+}
 
-//go:linkname SSL_SESSIONHasTicket C.SSL_SESSION_has_ticket
-func SSL_SESSIONHasTicket(s *SSL_SESSION) c.Int
+// llgo:link (*SSL_SESSION).HasTicket C.SSL_SESSION_has_ticket
+func (self *SSL_SESSION) HasTicket() c.Int {
+	return 0
+}
 
-//go:linkname SSL_SESSIONGetTicketLifetimeHint C.SSL_SESSION_get_ticket_lifetime_hint
-func SSL_SESSIONGetTicketLifetimeHint(s *SSL_SESSION) c.Ulong
+// llgo:link (*SSL_SESSION).TicketLifetimeHint C.SSL_SESSION_get_ticket_lifetime_hint
+func (self *SSL_SESSION) TicketLifetimeHint() c.Ulong {
+	return 0
+}
 
-//go:linkname SSL_SESSIONGet0Ticket C.SSL_SESSION_get0_ticket
-func SSL_SESSIONGet0Ticket(s *SSL_SESSION, tick **uint8, len *c.SizeT)
+// llgo:link (*SSL_SESSION).Get0Ticket C.SSL_SESSION_get0_ticket
+func (self *SSL_SESSION) Get0Ticket(tick **uint8, len *c.SizeT) {
+}
 
-//go:linkname SSL_SESSIONGetMaxEarlyData C.SSL_SESSION_get_max_early_data
-func SSL_SESSIONGetMaxEarlyData(s *SSL_SESSION) c.Uint32T
+// llgo:link (*SSL_SESSION).MaxEarlyData C.SSL_SESSION_get_max_early_data
+func (self *SSL_SESSION) MaxEarlyData() c.Uint32T {
+	return 0
+}
 
-//go:linkname SSL_SESSIONSetMaxEarlyData C.SSL_SESSION_set_max_early_data
-func SSL_SESSIONSetMaxEarlyData(s *SSL_SESSION, max_early_data c.Uint32T) c.Int
+// llgo:link (*SSL_SESSION).SetMaxEarlyData C.SSL_SESSION_set_max_early_data
+func (self *SSL_SESSION) SetMaxEarlyData(max_early_data c.Uint32T) c.Int {
+	return 0
+}
 
-//go:linkname SSLCopySessionId C.SSL_copy_session_id
-func SSLCopySessionId(to *SSL, from *SSL) c.Int
+// llgo:link (*SSL).CopySessionId C.SSL_copy_session_id
+func (self *SSL) CopySessionId(from *SSL) c.Int {
+	return 0
+}
 
-//go:linkname SSL_SESSIONGet0Peer C.SSL_SESSION_get0_peer
-func SSL_SESSIONGet0Peer(s *SSL_SESSION) *X509
+// llgo:link (*SSL_SESSION).Get0Peer C.SSL_SESSION_get0_peer
+func (self *SSL_SESSION) Get0Peer() *X509 {
+	return nil
+}
 
-//go:linkname SSL_SESSIONSet1IdContext C.SSL_SESSION_set1_id_context
-func SSL_SESSIONSet1IdContext(s *SSL_SESSION, sid_ctx *uint8, sid_ctx_len c.Uint) c.Int
+// llgo:link (*SSL_SESSION).Set1IdContext C.SSL_SESSION_set1_id_context
+func (self *SSL_SESSION) Set1IdContext(sid_ctx *uint8, sid_ctx_len c.Uint) c.Int {
+	return 0
+}
 
-//go:linkname SSL_SESSIONSet1Id C.SSL_SESSION_set1_id
-func SSL_SESSIONSet1Id(s *SSL_SESSION, sid *uint8, sid_len c.Uint) c.Int
+// llgo:link (*SSL_SESSION).Set1Id C.SSL_SESSION_set1_id
+func (self *SSL_SESSION) Set1Id(sid *uint8, sid_len c.Uint) c.Int {
+	return 0
+}
 
-//go:linkname SSL_SESSIONIsResumable C.SSL_SESSION_is_resumable
-func SSL_SESSIONIsResumable(s *SSL_SESSION) c.Int
+// llgo:link (*SSL_SESSION).IsResumable C.SSL_SESSION_is_resumable
+func (self *SSL_SESSION) IsResumable() c.Int {
+	return 0
+}
 
-//go:linkname SSL_SESSIONNew C.SSL_SESSION_new
-func SSL_SESSIONNew() *SSL_SESSION
+//go:linkname SSL_SESSION_new C.SSL_SESSION_new
+func SSL_SESSION_new() *SSL_SESSION
 
-//go:linkname SSL_SESSIONDup C.SSL_SESSION_dup
-func SSL_SESSIONDup(src *SSL_SESSION) *SSL_SESSION
+// llgo:link (*SSL_SESSION).Dup C.SSL_SESSION_dup
+func (self *SSL_SESSION) Dup() *SSL_SESSION {
+	return self
+}
 
-//go:linkname SSL_SESSIONGetId C.SSL_SESSION_get_id
-func SSL_SESSIONGetId(s *SSL_SESSION, len *c.Uint) *uint8
+// llgo:link (*SSL_SESSION).Id C.SSL_SESSION_get_id
+func (self *SSL_SESSION) Id(len *c.Uint) *uint8 {
+	return nil
+}
 
-//go:linkname SSL_SESSIONGet0IdContext C.SSL_SESSION_get0_id_context
-func SSL_SESSIONGet0IdContext(s *SSL_SESSION, len *c.Uint) *uint8
+// llgo:link (*SSL_SESSION).Get0IdContext C.SSL_SESSION_get0_id_context
+func (self *SSL_SESSION) Get0IdContext(len *c.Uint) *uint8 {
+	return nil
+}
 
-//go:linkname SSL_SESSIONGetCompressId C.SSL_SESSION_get_compress_id
-func SSL_SESSIONGetCompressId(s *SSL_SESSION) c.Uint
+// llgo:link (*SSL_SESSION).CompressId C.SSL_SESSION_get_compress_id
+func (self *SSL_SESSION) CompressId() c.Uint {
+	return 0
+}
 
-//go:linkname SSL_SESSIONPrintFp C.SSL_SESSION_print_fp
-func SSL_SESSIONPrintFp(fp *c.FILE, ses *SSL_SESSION) c.Int
+//go:linkname SSL_SESSION_print_fp C.SSL_SESSION_print_fp
+func SSL_SESSION_print_fp(fp *c.FILE, ses *SSL_SESSION) c.Int
 
-//go:linkname SSL_SESSIONPrint C.SSL_SESSION_print
-func SSL_SESSIONPrint(fp *BIO, ses *SSL_SESSION) c.Int
+// llgo:link (*BIO).SSL_SESSION_print C.SSL_SESSION_print
+func (self *BIO) SSL_SESSION_print(ses *SSL_SESSION) c.Int {
+	return 0
+}
 
-//go:linkname SSL_SESSIONPrintKeylog C.SSL_SESSION_print_keylog
-func SSL_SESSIONPrintKeylog(bp *BIO, x *SSL_SESSION) c.Int
+// llgo:link (*BIO).SSL_SESSION_print_keylog C.SSL_SESSION_print_keylog
+func (self *BIO) SSL_SESSION_print_keylog(x *SSL_SESSION) c.Int {
+	return 0
+}
 
-//go:linkname SSL_SESSIONUpRef C.SSL_SESSION_up_ref
-func SSL_SESSIONUpRef(ses *SSL_SESSION) c.Int
+// llgo:link (*SSL_SESSION).UpRef C.SSL_SESSION_up_ref
+func (self *SSL_SESSION) UpRef() c.Int {
+	return 0
+}
 
-//go:linkname SSL_SESSIONFree C.SSL_SESSION_free
-func SSL_SESSIONFree(ses *SSL_SESSION)
+// llgo:link (*SSL_SESSION).Free C.SSL_SESSION_free
+func (self *SSL_SESSION) Free() {
+}
 
-//go:linkname I2dSSL_SESSION C.i2d_SSL_SESSION
-func I2dSSL_SESSION(in *SSL_SESSION, pp **uint8) c.Int
+// llgo:link (*SSL_SESSION).I2d C.i2d_SSL_SESSION
+func (self *SSL_SESSION) I2d(pp **uint8) c.Int {
+	return 0
+}
 
-//go:linkname SSLSetSession C.SSL_set_session
-func SSLSetSession(to *SSL, session *SSL_SESSION) c.Int
+// llgo:link (*SSL).SetSession C.SSL_set_session
+func (self *SSL) SetSession(session *SSL_SESSION) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXAddSession C.SSL_CTX_add_session
-func SSL_CTXAddSession(ctx *SSL_CTX, session *SSL_SESSION) c.Int
+// llgo:link (*SSL_CTX).AddSession C.SSL_CTX_add_session
+func (self *SSL_CTX) AddSession(session *SSL_SESSION) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXRemoveSession C.SSL_CTX_remove_session
-func SSL_CTXRemoveSession(ctx *SSL_CTX, session *SSL_SESSION) c.Int
+// llgo:link (*SSL_CTX).RemoveSession C.SSL_CTX_remove_session
+func (self *SSL_CTX) RemoveSession(session *SSL_SESSION) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXSetGenerateSessionId C.SSL_CTX_set_generate_session_id
-func SSL_CTXSetGenerateSessionId(ctx *SSL_CTX, cb GEN_SESSION_CB) c.Int
+// llgo:link (*SSL_CTX).SetGenerateSessionId C.SSL_CTX_set_generate_session_id
+func (self *SSL_CTX) SetGenerateSessionId(cb GEN_SESSION_CB) c.Int {
+	return 0
+}
 
-//go:linkname SSLSetGenerateSessionId C.SSL_set_generate_session_id
-func SSLSetGenerateSessionId(s *SSL, cb GEN_SESSION_CB) c.Int
+// llgo:link (*SSL).SetGenerateSessionId C.SSL_set_generate_session_id
+func (self *SSL) SetGenerateSessionId(cb GEN_SESSION_CB) c.Int {
+	return 0
+}
 
-//go:linkname SSLHasMatchingSessionId C.SSL_has_matching_session_id
-func SSLHasMatchingSessionId(s *SSL, id *uint8, id_len c.Uint) c.Int
+// llgo:link (*SSL).HasMatchingSessionId C.SSL_has_matching_session_id
+func (self *SSL) HasMatchingSessionId(id *uint8, id_len c.Uint) c.Int {
+	return 0
+}
 
-//go:linkname D2iSSL_SESSION C.d2i_SSL_SESSION
-func D2iSSL_SESSION(a **SSL_SESSION, pp **uint8, length c.Long) *SSL_SESSION
+//go:linkname D2i_SSL_SESSION C.d2i_SSL_SESSION
+func D2i_SSL_SESSION(a **SSL_SESSION, pp **uint8, length c.Long) *SSL_SESSION
 
-//go:linkname D2iSSL_SESSIONEx C.d2i_SSL_SESSION_ex
-func D2iSSL_SESSIONEx(a **SSL_SESSION, pp **uint8, length c.Long, libctx *OSSL_LIB_CTX, propq *c.Char) *SSL_SESSION
+//go:linkname D2i_SSL_SESSION_ex C.d2i_SSL_SESSION_ex
+func D2i_SSL_SESSION_ex(a **SSL_SESSION, pp **uint8, length c.Long, libctx *OSSL_LIB_CTX, propq *c.Char) *SSL_SESSION
 
-//go:linkname SSLGet0PeerCertificate C.SSL_get0_peer_certificate
-func SSLGet0PeerCertificate(s *SSL) *X509
+// llgo:link (*SSL).Get0PeerCertificate C.SSL_get0_peer_certificate
+func (self *SSL) Get0PeerCertificate() *X509 {
+	return nil
+}
 
 // Deprecated in 3.0.0
 //
-//go:linkname SSLGet1PeerCertificate C.SSL_get1_peer_certificate
-func SSLGet1PeerCertificate(s *SSL) *X509
+// llgo:link (*SSL).Get1PeerCertificate C.SSL_get1_peer_certificate
+func (self *SSL) Get1PeerCertificate() *X509 {
+	return nil
+}
 
-//go:linkname SSLGetPeerCertChain C.SSL_get_peer_cert_chain
-func SSLGetPeerCertChain(s *SSL) *StackStX509
+// llgo:link (*SSL).PeerCertChain C.SSL_get_peer_cert_chain
+func (self *SSL) PeerCertChain() *Stack_st_X509 {
+	return nil
+}
 
-//go:linkname SSL_CTXGetVerifyMode C.SSL_CTX_get_verify_mode
-func SSL_CTXGetVerifyMode(ctx *SSL_CTX) c.Int
+// llgo:link (*SSL_CTX).VerifyMode C.SSL_CTX_get_verify_mode
+func (self *SSL_CTX) VerifyMode() c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXGetVerifyDepth C.SSL_CTX_get_verify_depth
-func SSL_CTXGetVerifyDepth(ctx *SSL_CTX) c.Int
+// llgo:link (*SSL_CTX).VerifyDepth C.SSL_CTX_get_verify_depth
+func (self *SSL_CTX) VerifyDepth() c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXGetVerifyCallback C.SSL_CTX_get_verify_callback
-func SSL_CTXGetVerifyCallback(ctx *SSL_CTX) SSLVerifyCb
+// llgo:link (*SSL_CTX).VerifyCallback C.SSL_CTX_get_verify_callback
+func (self *SSL_CTX) VerifyCallback() SSL_verify_cb {
+	return nil
+}
 
-//go:linkname SSL_CTXSetVerify C.SSL_CTX_set_verify
-func SSL_CTXSetVerify(ctx *SSL_CTX, mode c.Int, callback SSLVerifyCb)
+// llgo:link (*SSL_CTX).SetVerify C.SSL_CTX_set_verify
+func (self *SSL_CTX) SetVerify(mode c.Int, callback SSL_verify_cb) {
+}
 
-//go:linkname SSL_CTXSetVerifyDepth C.SSL_CTX_set_verify_depth
-func SSL_CTXSetVerifyDepth(ctx *SSL_CTX, depth c.Int)
+// llgo:link (*SSL_CTX).SetVerifyDepth C.SSL_CTX_set_verify_depth
+func (self *SSL_CTX) SetVerifyDepth(depth c.Int) {
+}
 
-//go:linkname SSL_CTXSetCertVerifyCallback C.SSL_CTX_set_cert_verify_callback
-func SSL_CTXSetCertVerifyCallback(ctx *SSL_CTX, cb func(_llcppg_param1 *X509_STORE_CTX, _llcppg_param2 unsafe.Pointer) c.Int, arg unsafe.Pointer)
+// llgo:link (*SSL_CTX).SetCertVerifyCallback C.SSL_CTX_set_cert_verify_callback
+func (self *SSL_CTX) SetCertVerifyCallback(cb func(_llcppg_param1 *X509_STORE_CTX, _llcppg_param2 unsafe.Pointer) c.Int, arg unsafe.Pointer) {
+}
 
-//go:linkname SSL_CTXSetCertCb C.SSL_CTX_set_cert_cb
-func SSL_CTXSetCertCb(c *SSL_CTX, cb func(_llcppg_param1 *SSL, _llcppg_param2 unsafe.Pointer) c.Int, arg unsafe.Pointer)
+// llgo:link (*SSL_CTX).SetCertCb C.SSL_CTX_set_cert_cb
+func (self *SSL_CTX) SetCertCb(cb func(_llcppg_param1 *SSL, _llcppg_param2 unsafe.Pointer) c.Int, arg unsafe.Pointer) {
+}
 
-//go:linkname SSL_CTXUseRSAPrivateKey C.SSL_CTX_use_RSAPrivateKey
-func SSL_CTXUseRSAPrivateKey(ctx *SSL_CTX, rsa *RSA) c.Int
+// llgo:link (*SSL_CTX).UseRSAPrivateKey C.SSL_CTX_use_RSAPrivateKey
+func (self *SSL_CTX) UseRSAPrivateKey(rsa *RSA) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXUseRSAPrivateKeyASN1 C.SSL_CTX_use_RSAPrivateKey_ASN1
-func SSL_CTXUseRSAPrivateKeyASN1(ctx *SSL_CTX, d *uint8, len c.Long) c.Int
+// llgo:link (*SSL_CTX).Use_RSAPrivateKey_ASN1 C.SSL_CTX_use_RSAPrivateKey_ASN1
+func (self *SSL_CTX) Use_RSAPrivateKey_ASN1(d *uint8, len c.Long) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXUsePrivateKey C.SSL_CTX_use_PrivateKey
-func SSL_CTXUsePrivateKey(ctx *SSL_CTX, pkey *EVP_PKEY) c.Int
+// llgo:link (*SSL_CTX).UsePrivateKey C.SSL_CTX_use_PrivateKey
+func (self *SSL_CTX) UsePrivateKey(pkey *EVP_PKEY) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXUsePrivateKeyASN1 C.SSL_CTX_use_PrivateKey_ASN1
-func SSL_CTXUsePrivateKeyASN1(pk c.Int, ctx *SSL_CTX, d *uint8, len c.Long) c.Int
+//go:linkname SSL_CTX_use_PrivateKey_ASN1 C.SSL_CTX_use_PrivateKey_ASN1
+func SSL_CTX_use_PrivateKey_ASN1(pk c.Int, ctx *SSL_CTX, d *uint8, len c.Long) c.Int
 
-//go:linkname SSL_CTXUseCertificate C.SSL_CTX_use_certificate
-func SSL_CTXUseCertificate(ctx *SSL_CTX, x *X509) c.Int
+// llgo:link (*SSL_CTX).UseCertificate C.SSL_CTX_use_certificate
+func (self *SSL_CTX) UseCertificate(x *X509) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXUseCertificateASN1 C.SSL_CTX_use_certificate_ASN1
-func SSL_CTXUseCertificateASN1(ctx *SSL_CTX, len c.Int, d *uint8) c.Int
+// llgo:link (*SSL_CTX).Use_certificate_ASN1 C.SSL_CTX_use_certificate_ASN1
+func (self *SSL_CTX) Use_certificate_ASN1(len c.Int, d *uint8) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXUseCertAndKey C.SSL_CTX_use_cert_and_key
-func SSL_CTXUseCertAndKey(ctx *SSL_CTX, x509 *X509, privatekey *EVP_PKEY, chain *StackStX509, override c.Int) c.Int
+// llgo:link (*SSL_CTX).UseCertAndKey C.SSL_CTX_use_cert_and_key
+func (self *SSL_CTX) UseCertAndKey(x509 *X509, privatekey *EVP_PKEY, chain *Stack_st_X509, override c.Int) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXSetDefaultPasswdCb C.SSL_CTX_set_default_passwd_cb
-func SSL_CTXSetDefaultPasswdCb(ctx *SSL_CTX, cb *PemPasswordCb)
+// llgo:link (*SSL_CTX).SetDefaultPasswdCb C.SSL_CTX_set_default_passwd_cb
+func (self *SSL_CTX) SetDefaultPasswdCb(cb *PemPasswordCb) {
+}
 
-//go:linkname SSL_CTXSetDefaultPasswdCbUserdata C.SSL_CTX_set_default_passwd_cb_userdata
-func SSL_CTXSetDefaultPasswdCbUserdata(ctx *SSL_CTX, u unsafe.Pointer)
+// llgo:link (*SSL_CTX).SetDefaultPasswdCbUserdata C.SSL_CTX_set_default_passwd_cb_userdata
+func (self *SSL_CTX) SetDefaultPasswdCbUserdata(u unsafe.Pointer) {
+}
 
-//go:linkname SSL_CTXGetDefaultPasswdCb C.SSL_CTX_get_default_passwd_cb
-func SSL_CTXGetDefaultPasswdCb(ctx *SSL_CTX) *PemPasswordCb
+// llgo:link (*SSL_CTX).DefaultPasswdCb C.SSL_CTX_get_default_passwd_cb
+func (self *SSL_CTX) DefaultPasswdCb() *PemPasswordCb {
+	return nil
+}
 
-//go:linkname SSL_CTXGetDefaultPasswdCbUserdata C.SSL_CTX_get_default_passwd_cb_userdata
-func SSL_CTXGetDefaultPasswdCbUserdata(ctx *SSL_CTX) unsafe.Pointer
+// llgo:link (*SSL_CTX).DefaultPasswdCbUserdata C.SSL_CTX_get_default_passwd_cb_userdata
+func (self *SSL_CTX) DefaultPasswdCbUserdata() unsafe.Pointer {
+	return nil
+}
 
-//go:linkname SSLSetDefaultPasswdCb C.SSL_set_default_passwd_cb
-func SSLSetDefaultPasswdCb(s *SSL, cb *PemPasswordCb)
+// llgo:link (*SSL).SetDefaultPasswdCb C.SSL_set_default_passwd_cb
+func (self *SSL) SetDefaultPasswdCb(cb *PemPasswordCb) {
+}
 
-//go:linkname SSLSetDefaultPasswdCbUserdata C.SSL_set_default_passwd_cb_userdata
-func SSLSetDefaultPasswdCbUserdata(s *SSL, u unsafe.Pointer)
+// llgo:link (*SSL).SetDefaultPasswdCbUserdata C.SSL_set_default_passwd_cb_userdata
+func (self *SSL) SetDefaultPasswdCbUserdata(u unsafe.Pointer) {
+}
 
-//go:linkname SSLGetDefaultPasswdCb C.SSL_get_default_passwd_cb
-func SSLGetDefaultPasswdCb(s *SSL) *PemPasswordCb
+// llgo:link (*SSL).DefaultPasswdCb C.SSL_get_default_passwd_cb
+func (self *SSL) DefaultPasswdCb() *PemPasswordCb {
+	return nil
+}
 
-//go:linkname SSLGetDefaultPasswdCbUserdata C.SSL_get_default_passwd_cb_userdata
-func SSLGetDefaultPasswdCbUserdata(s *SSL) unsafe.Pointer
+// llgo:link (*SSL).DefaultPasswdCbUserdata C.SSL_get_default_passwd_cb_userdata
+func (self *SSL) DefaultPasswdCbUserdata() unsafe.Pointer {
+	return nil
+}
 
-//go:linkname SSL_CTXCheckPrivateKey C.SSL_CTX_check_private_key
-func SSL_CTXCheckPrivateKey(ctx *SSL_CTX) c.Int
+// llgo:link (*SSL_CTX).CheckPrivateKey C.SSL_CTX_check_private_key
+func (self *SSL_CTX) CheckPrivateKey() c.Int {
+	return 0
+}
 
-//go:linkname SSLCheckPrivateKey C.SSL_check_private_key
-func SSLCheckPrivateKey(ctx *SSL) c.Int
+// llgo:link (*SSL).CheckPrivateKey C.SSL_check_private_key
+func (self *SSL) CheckPrivateKey() c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXSetSessionIdContext C.SSL_CTX_set_session_id_context
-func SSL_CTXSetSessionIdContext(ctx *SSL_CTX, sid_ctx *uint8, sid_ctx_len c.Uint) c.Int
+// llgo:link (*SSL_CTX).SetSessionIdContext C.SSL_CTX_set_session_id_context
+func (self *SSL_CTX) SetSessionIdContext(sid_ctx *uint8, sid_ctx_len c.Uint) c.Int {
+	return 0
+}
 
-//go:linkname SSLNew C.SSL_new
-func SSLNew(ctx *SSL_CTX) *SSL
+// llgo:link (*SSL_CTX).SSL_new C.SSL_new
+func (self *SSL_CTX) SSL_new() *SSL {
+	return nil
+}
 
-//go:linkname SSLUpRef C.SSL_up_ref
-func SSLUpRef(s *SSL) c.Int
+// llgo:link (*SSL).UpRef C.SSL_up_ref
+func (self *SSL) UpRef() c.Int {
+	return 0
+}
 
-//go:linkname SSLIsDtls C.SSL_is_dtls
-func SSLIsDtls(s *SSL) c.Int
+// llgo:link (*SSL).IsDtls C.SSL_is_dtls
+func (self *SSL) IsDtls() c.Int {
+	return 0
+}
 
-//go:linkname SSLIsTls C.SSL_is_tls
-func SSLIsTls(s *SSL) c.Int
+// llgo:link (*SSL).IsTls C.SSL_is_tls
+func (self *SSL) IsTls() c.Int {
+	return 0
+}
 
-//go:linkname SSLIsQuic C.SSL_is_quic
-func SSLIsQuic(s *SSL) c.Int
+// llgo:link (*SSL).IsQuic C.SSL_is_quic
+func (self *SSL) IsQuic() c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXIsQuic C.SSL_CTX_is_quic
-func SSL_CTXIsQuic(c *SSL_CTX) c.Int
+// llgo:link (*SSL_CTX).IsQuic C.SSL_CTX_is_quic
+func (self *SSL_CTX) IsQuic() c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXIsServer C.SSL_CTX_is_server
-func SSL_CTXIsServer(c *SSL_CTX) c.Int
+// llgo:link (*SSL_CTX).IsServer C.SSL_CTX_is_server
+func (self *SSL_CTX) IsServer() c.Int {
+	return 0
+}
 
-//go:linkname SSLSetSessionIdContext C.SSL_set_session_id_context
-func SSLSetSessionIdContext(ssl *SSL, sid_ctx *uint8, sid_ctx_len c.Uint) c.Int
+// llgo:link (*SSL).SetSessionIdContext C.SSL_set_session_id_context
+func (self *SSL) SetSessionIdContext(sid_ctx *uint8, sid_ctx_len c.Uint) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXSetPurpose C.SSL_CTX_set_purpose
-func SSL_CTXSetPurpose(ctx *SSL_CTX, purpose c.Int) c.Int
+// llgo:link (*SSL_CTX).SetPurpose C.SSL_CTX_set_purpose
+func (self *SSL_CTX) SetPurpose(purpose c.Int) c.Int {
+	return 0
+}
 
-//go:linkname SSLSetPurpose C.SSL_set_purpose
-func SSLSetPurpose(ssl *SSL, purpose c.Int) c.Int
+// llgo:link (*SSL).SetPurpose C.SSL_set_purpose
+func (self *SSL) SetPurpose(purpose c.Int) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXSetTrust C.SSL_CTX_set_trust
-func SSL_CTXSetTrust(ctx *SSL_CTX, trust c.Int) c.Int
+// llgo:link (*SSL_CTX).SetTrust C.SSL_CTX_set_trust
+func (self *SSL_CTX) SetTrust(trust c.Int) c.Int {
+	return 0
+}
 
-//go:linkname SSLSetTrust C.SSL_set_trust
-func SSLSetTrust(ssl *SSL, trust c.Int) c.Int
+// llgo:link (*SSL).SetTrust C.SSL_set_trust
+func (self *SSL) SetTrust(trust c.Int) c.Int {
+	return 0
+}
 
-//go:linkname SSLSet1Host C.SSL_set1_host
-func SSLSet1Host(s *SSL, host *c.Char) c.Int
+// llgo:link (*SSL).Set1Host C.SSL_set1_host
+func (self *SSL) Set1Host(host *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname SSLAdd1Host C.SSL_add1_host
-func SSLAdd1Host(s *SSL, host *c.Char) c.Int
+// llgo:link (*SSL).Add1Host C.SSL_add1_host
+func (self *SSL) Add1Host(host *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname SSLSet1Dnsname C.SSL_set1_dnsname
-func SSLSet1Dnsname(s *SSL, dnsname *c.Char) c.Int
+// llgo:link (*SSL).Set1Dnsname C.SSL_set1_dnsname
+func (self *SSL) Set1Dnsname(dnsname *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname SSLAdd1Dnsname C.SSL_add1_dnsname
-func SSLAdd1Dnsname(s *SSL, dnsname *c.Char) c.Int
+// llgo:link (*SSL).Add1Dnsname C.SSL_add1_dnsname
+func (self *SSL) Add1Dnsname(dnsname *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname SSLSet1Ipaddr C.SSL_set1_ipaddr
-func SSLSet1Ipaddr(s *SSL, ipaddr *c.Char) c.Int
+// llgo:link (*SSL).Set1Ipaddr C.SSL_set1_ipaddr
+func (self *SSL) Set1Ipaddr(ipaddr *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname SSLAdd1Ipaddr C.SSL_add1_ipaddr
-func SSLAdd1Ipaddr(s *SSL, ipaddr *c.Char) c.Int
+// llgo:link (*SSL).Add1Ipaddr C.SSL_add1_ipaddr
+func (self *SSL) Add1Ipaddr(ipaddr *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname SSLGet0Peername C.SSL_get0_peername
-func SSLGet0Peername(s *SSL) *c.Char
+// llgo:link (*SSL).Get0Peername C.SSL_get0_peername
+func (self *SSL) Get0Peername() *c.Char {
+	return nil
+}
 
-//go:linkname SSLSetHostflags C.SSL_set_hostflags
-func SSLSetHostflags(s *SSL, flags c.Uint)
+// llgo:link (*SSL).SetHostflags C.SSL_set_hostflags
+func (self *SSL) SetHostflags(flags c.Uint) {
+}
 
-//go:linkname SSL_CTXDaneEnable C.SSL_CTX_dane_enable
-func SSL_CTXDaneEnable(ctx *SSL_CTX) c.Int
+// llgo:link (*SSL_CTX).DaneEnable C.SSL_CTX_dane_enable
+func (self *SSL_CTX) DaneEnable() c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXDaneMtypeSet C.SSL_CTX_dane_mtype_set
-func SSL_CTXDaneMtypeSet(ctx *SSL_CTX, md *EVP_MD, mtype c.Uint8T, ord c.Uint8T) c.Int
+// llgo:link (*SSL_CTX).DaneMtypeSet C.SSL_CTX_dane_mtype_set
+func (self *SSL_CTX) DaneMtypeSet(md *EVP_MD, mtype c.Uint8T, ord c.Uint8T) c.Int {
+	return 0
+}
 
-//go:linkname SSLDaneEnable C.SSL_dane_enable
-func SSLDaneEnable(s *SSL, basedomain *c.Char) c.Int
+// llgo:link (*SSL).DaneEnable C.SSL_dane_enable
+func (self *SSL) DaneEnable(basedomain *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname SSLDaneTlsaAdd C.SSL_dane_tlsa_add
-func SSLDaneTlsaAdd(s *SSL, usage c.Uint8T, selector c.Uint8T, mtype c.Uint8T, data *uint8, dlen c.SizeT) c.Int
+// llgo:link (*SSL).DaneTlsaAdd C.SSL_dane_tlsa_add
+func (self *SSL) DaneTlsaAdd(usage c.Uint8T, selector c.Uint8T, mtype c.Uint8T, data *uint8, dlen c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSLGet0DaneAuthority C.SSL_get0_dane_authority
-func SSLGet0DaneAuthority(s *SSL, mcert **X509, mspki **EVP_PKEY) c.Int
+// llgo:link (*SSL).Get0DaneAuthority C.SSL_get0_dane_authority
+func (self *SSL) Get0DaneAuthority(mcert **X509, mspki **EVP_PKEY) c.Int {
+	return 0
+}
 
 // Bridge opacity barrier between libcrypt and libssl, also needed to support
 // offline testing in test/danetest.c
 //
-//go:linkname SSLGet0DaneTlsa C.SSL_get0_dane_tlsa
-func SSLGet0DaneTlsa(s *SSL, usage *c.Uint8T, selector *c.Uint8T, mtype *c.Uint8T, data **uint8, dlen *c.SizeT) c.Int
+// llgo:link (*SSL).Get0DaneTlsa C.SSL_get0_dane_tlsa
+func (self *SSL) Get0DaneTlsa(usage *c.Uint8T, selector *c.Uint8T, mtype *c.Uint8T, data **uint8, dlen *c.SizeT) c.Int {
+	return 0
+}
 
 // Bridge opacity barrier between libcrypt and libssl, also needed to support
 // offline testing in test/danetest.c
 //
-//go:linkname SSLGet0Dane C.SSL_get0_dane
-func SSLGet0Dane(ssl *SSL) *SSL_DANE
+// llgo:link (*SSL).Get0Dane C.SSL_get0_dane
+func (self *SSL) Get0Dane() *SSL_DANE {
+	return nil
+}
 
 // DANE flags
 //
-//go:linkname SSL_CTXDaneSetFlags C.SSL_CTX_dane_set_flags
-func SSL_CTXDaneSetFlags(ctx *SSL_CTX, flags c.Ulong) c.Ulong
+// llgo:link (*SSL_CTX).DaneSetFlags C.SSL_CTX_dane_set_flags
+func (self *SSL_CTX) DaneSetFlags(flags c.Ulong) c.Ulong {
+	return 0
+}
 
-//go:linkname SSL_CTXDaneClearFlags C.SSL_CTX_dane_clear_flags
-func SSL_CTXDaneClearFlags(ctx *SSL_CTX, flags c.Ulong) c.Ulong
+// llgo:link (*SSL_CTX).DaneClearFlags C.SSL_CTX_dane_clear_flags
+func (self *SSL_CTX) DaneClearFlags(flags c.Ulong) c.Ulong {
+	return 0
+}
 
-//go:linkname SSLDaneSetFlags C.SSL_dane_set_flags
-func SSLDaneSetFlags(ssl *SSL, flags c.Ulong) c.Ulong
+// llgo:link (*SSL).DaneSetFlags C.SSL_dane_set_flags
+func (self *SSL) DaneSetFlags(flags c.Ulong) c.Ulong {
+	return 0
+}
 
-//go:linkname SSLDaneClearFlags C.SSL_dane_clear_flags
-func SSLDaneClearFlags(ssl *SSL, flags c.Ulong) c.Ulong
+// llgo:link (*SSL).DaneClearFlags C.SSL_dane_clear_flags
+func (self *SSL) DaneClearFlags(flags c.Ulong) c.Ulong {
+	return 0
+}
 
-//go:linkname SSL_CTXSet1Param C.SSL_CTX_set1_param
-func SSL_CTXSet1Param(ctx *SSL_CTX, vpm *X509_VERIFY_PARAM) c.Int
+// llgo:link (*SSL_CTX).Set1Param C.SSL_CTX_set1_param
+func (self *SSL_CTX) Set1Param(vpm *X509_VERIFY_PARAM) c.Int {
+	return 0
+}
 
-//go:linkname SSLSet1Param C.SSL_set1_param
-func SSLSet1Param(ssl *SSL, vpm *X509_VERIFY_PARAM) c.Int
+// llgo:link (*SSL).Set1Param C.SSL_set1_param
+func (self *SSL) Set1Param(vpm *X509_VERIFY_PARAM) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXGet0Param C.SSL_CTX_get0_param
-func SSL_CTXGet0Param(ctx *SSL_CTX) *X509_VERIFY_PARAM
+// llgo:link (*SSL_CTX).Get0Param C.SSL_CTX_get0_param
+func (self *SSL_CTX) Get0Param() *X509_VERIFY_PARAM {
+	return nil
+}
 
-//go:linkname SSLGet0Param C.SSL_get0_param
-func SSLGet0Param(ssl *SSL) *X509_VERIFY_PARAM
+// llgo:link (*SSL).Get0Param C.SSL_get0_param
+func (self *SSL) Get0Param() *X509_VERIFY_PARAM {
+	return nil
+}
 
-//go:linkname SSL_CTXSetSrpUsername C.SSL_CTX_set_srp_username
-func SSL_CTXSetSrpUsername(ctx *SSL_CTX, name *c.Char) c.Int
+// llgo:link (*SSL_CTX).SetSrpUsername C.SSL_CTX_set_srp_username
+func (self *SSL_CTX) SetSrpUsername(name *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXSetSrpPassword C.SSL_CTX_set_srp_password
-func SSL_CTXSetSrpPassword(ctx *SSL_CTX, password *c.Char) c.Int
+// llgo:link (*SSL_CTX).SetSrpPassword C.SSL_CTX_set_srp_password
+func (self *SSL_CTX) SetSrpPassword(password *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXSetSrpStrength C.SSL_CTX_set_srp_strength
-func SSL_CTXSetSrpStrength(ctx *SSL_CTX, strength c.Int) c.Int
+// llgo:link (*SSL_CTX).SetSrpStrength C.SSL_CTX_set_srp_strength
+func (self *SSL_CTX) SetSrpStrength(strength c.Int) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXSetSrpClientPwdCallback C.SSL_CTX_set_srp_client_pwd_callback
-func SSL_CTXSetSrpClientPwdCallback(ctx *SSL_CTX, cb func(_llcppg_param1 *SSL, _llcppg_param2 unsafe.Pointer) *c.Char) c.Int
+// llgo:link (*SSL_CTX).SetSrpClientPwdCallback C.SSL_CTX_set_srp_client_pwd_callback
+func (self *SSL_CTX) SetSrpClientPwdCallback(cb func(_llcppg_param1 *SSL, _llcppg_param2 unsafe.Pointer) *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXSetSrpVerifyParamCallback C.SSL_CTX_set_srp_verify_param_callback
-func SSL_CTXSetSrpVerifyParamCallback(ctx *SSL_CTX, cb func(_llcppg_param1 *SSL, _llcppg_param2 unsafe.Pointer) c.Int) c.Int
+// llgo:link (*SSL_CTX).SetSrpVerifyParamCallback C.SSL_CTX_set_srp_verify_param_callback
+func (self *SSL_CTX) SetSrpVerifyParamCallback(cb func(_llcppg_param1 *SSL, _llcppg_param2 unsafe.Pointer) c.Int) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXSetSrpUsernameCallback C.SSL_CTX_set_srp_username_callback
-func SSL_CTXSetSrpUsernameCallback(ctx *SSL_CTX, cb func(_llcppg_param1 *SSL, _llcppg_param2 *c.Int, _llcppg_param3 unsafe.Pointer) c.Int) c.Int
+// llgo:link (*SSL_CTX).SetSrpUsernameCallback C.SSL_CTX_set_srp_username_callback
+func (self *SSL_CTX) SetSrpUsernameCallback(cb func(_llcppg_param1 *SSL, _llcppg_param2 *c.Int, _llcppg_param3 unsafe.Pointer) c.Int) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXSetSrpCbArg C.SSL_CTX_set_srp_cb_arg
-func SSL_CTXSetSrpCbArg(ctx *SSL_CTX, arg unsafe.Pointer) c.Int
+// llgo:link (*SSL_CTX).SetSrpCbArg C.SSL_CTX_set_srp_cb_arg
+func (self *SSL_CTX) SetSrpCbArg(arg unsafe.Pointer) c.Int {
+	return 0
+}
 
-//go:linkname SSLSetSrpServerParam C.SSL_set_srp_server_param
-func SSLSetSrpServerParam(s *SSL, N *BIGNUM, g *BIGNUM, sa *BIGNUM, v *BIGNUM, info *c.Char) c.Int
+// llgo:link (*SSL).SetSrpServerParam C.SSL_set_srp_server_param
+func (self *SSL) SetSrpServerParam(N *BIGNUM, g *BIGNUM, sa *BIGNUM, v *BIGNUM, info *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname SSLSetSrpServerParamPw C.SSL_set_srp_server_param_pw
-func SSLSetSrpServerParamPw(s *SSL, user *c.Char, pass *c.Char, grp *c.Char) c.Int
+// llgo:link (*SSL).SetSrpServerParamPw C.SSL_set_srp_server_param_pw
+func (self *SSL) SetSrpServerParamPw(user *c.Char, pass *c.Char, grp *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname SSLGetSrpG C.SSL_get_srp_g
-func SSLGetSrpG(s *SSL) *BIGNUM
+// llgo:link (*SSL).SrpG C.SSL_get_srp_g
+func (self *SSL) SrpG() *BIGNUM {
+	return nil
+}
 
-//go:linkname SSLGetSrpN C.SSL_get_srp_N
-func SSLGetSrpN(s *SSL) *BIGNUM
+// llgo:link (*SSL).SrpN C.SSL_get_srp_N
+func (self *SSL) SrpN() *BIGNUM {
+	return nil
+}
 
-//go:linkname SSLGetSrpUsername C.SSL_get_srp_username
-func SSLGetSrpUsername(s *SSL) *c.Char
+// llgo:link (*SSL).SrpUsername C.SSL_get_srp_username
+func (self *SSL) SrpUsername() *c.Char {
+	return nil
+}
 
-//go:linkname SSLGetSrpUserinfo C.SSL_get_srp_userinfo
-func SSLGetSrpUserinfo(s *SSL) *c.Char
+// llgo:link (*SSL).SrpUserinfo C.SSL_get_srp_userinfo
+func (self *SSL) SrpUserinfo() *c.Char {
+	return nil
+}
 
-//go:linkname SSL_CTXSetClientHelloCb C.SSL_CTX_set_client_hello_cb
-func SSL_CTXSetClientHelloCb(c *SSL_CTX, cb SSLClientHelloCbFn, arg unsafe.Pointer)
+// llgo:link (*SSL_CTX).SetClientHelloCb C.SSL_CTX_set_client_hello_cb
+func (self *SSL_CTX) SetClientHelloCb(cb SSL_client_hello_cb_fn, arg unsafe.Pointer) {
+}
 
-//go:linkname SSL_CTXSetNewPendingConnCb C.SSL_CTX_set_new_pending_conn_cb
-func SSL_CTXSetNewPendingConnCb(c *SSL_CTX, cb SSLNewPendingConnCbFn, arg unsafe.Pointer)
+// llgo:link (*SSL_CTX).SetNewPendingConnCb C.SSL_CTX_set_new_pending_conn_cb
+func (self *SSL_CTX) SetNewPendingConnCb(cb SSL_new_pending_conn_cb_fn, arg unsafe.Pointer) {
+}
 
-//go:linkname SSLClientHelloIsv2 C.SSL_client_hello_isv2
-func SSLClientHelloIsv2(s *SSL) c.Int
+// llgo:link (*SSL).ClientHelloIsv2 C.SSL_client_hello_isv2
+func (self *SSL) ClientHelloIsv2() c.Int {
+	return 0
+}
 
-//go:linkname SSLClientHelloGet0LegacyVersion C.SSL_client_hello_get0_legacy_version
-func SSLClientHelloGet0LegacyVersion(s *SSL) c.Uint
+// llgo:link (*SSL).ClientHelloGet0LegacyVersion C.SSL_client_hello_get0_legacy_version
+func (self *SSL) ClientHelloGet0LegacyVersion() c.Uint {
+	return 0
+}
 
-//go:linkname SSLClientHelloGet0Random C.SSL_client_hello_get0_random
-func SSLClientHelloGet0Random(s *SSL, out **uint8) c.SizeT
+// llgo:link (*SSL).ClientHelloGet0Random C.SSL_client_hello_get0_random
+func (self *SSL) ClientHelloGet0Random(out **uint8) c.SizeT {
+	return 0
+}
 
-//go:linkname SSLClientHelloGet0SessionId C.SSL_client_hello_get0_session_id
-func SSLClientHelloGet0SessionId(s *SSL, out **uint8) c.SizeT
+// llgo:link (*SSL).ClientHelloGet0SessionId C.SSL_client_hello_get0_session_id
+func (self *SSL) ClientHelloGet0SessionId(out **uint8) c.SizeT {
+	return 0
+}
 
-//go:linkname SSLClientHelloGet0Ciphers C.SSL_client_hello_get0_ciphers
-func SSLClientHelloGet0Ciphers(s *SSL, out **uint8) c.SizeT
+// llgo:link (*SSL).ClientHelloGet0Ciphers C.SSL_client_hello_get0_ciphers
+func (self *SSL) ClientHelloGet0Ciphers(out **uint8) c.SizeT {
+	return 0
+}
 
-//go:linkname SSLClientHelloGet0CompressionMethods C.SSL_client_hello_get0_compression_methods
-func SSLClientHelloGet0CompressionMethods(s *SSL, out **uint8) c.SizeT
+// llgo:link (*SSL).ClientHelloGet0CompressionMethods C.SSL_client_hello_get0_compression_methods
+func (self *SSL) ClientHelloGet0CompressionMethods(out **uint8) c.SizeT {
+	return 0
+}
 
-//go:linkname SSLClientHelloGet1ExtensionsPresent C.SSL_client_hello_get1_extensions_present
-func SSLClientHelloGet1ExtensionsPresent(s *SSL, out **c.Int, outlen *c.SizeT) c.Int
+// llgo:link (*SSL).ClientHelloGet1ExtensionsPresent C.SSL_client_hello_get1_extensions_present
+func (self *SSL) ClientHelloGet1ExtensionsPresent(out **c.Int, outlen *c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSLClientHelloGetExtensionOrder C.SSL_client_hello_get_extension_order
-func SSLClientHelloGetExtensionOrder(s *SSL, exts *c.Uint16T, num_exts *c.SizeT) c.Int
+// llgo:link (*SSL).ClientHelloGetExtensionOrder C.SSL_client_hello_get_extension_order
+func (self *SSL) ClientHelloGetExtensionOrder(exts *c.Uint16T, num_exts *c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSLClientHelloGet0Ext C.SSL_client_hello_get0_ext
-func SSLClientHelloGet0Ext(s *SSL, type_ c.Uint, out **uint8, outlen *c.SizeT) c.Int
+// llgo:link (*SSL).ClientHelloGet0Ext C.SSL_client_hello_get0_ext
+func (self *SSL) ClientHelloGet0Ext(type_ c.Uint, out **uint8, outlen *c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSLCertsClear C.SSL_certs_clear
-func SSLCertsClear(s *SSL)
+// llgo:link (*SSL).CertsClear C.SSL_certs_clear
+func (self *SSL) CertsClear() {
+}
 
-//go:linkname SSLFree C.SSL_free
-func SSLFree(ssl *SSL)
+// llgo:link (*SSL).Free C.SSL_free
+func (self *SSL) Free() {
+}
 
 // Windows application developer has to include windows.h to use these.
 //
-//go:linkname SSLWaitingForAsync C.SSL_waiting_for_async
-func SSLWaitingForAsync(s *SSL) c.Int
+// llgo:link (*SSL).WaitingForAsync C.SSL_waiting_for_async
+func (self *SSL) WaitingForAsync() c.Int {
+	return 0
+}
 
-//go:linkname SSLGetAllAsyncFds C.SSL_get_all_async_fds
-func SSLGetAllAsyncFds(s *SSL, fds *c.Int, numfds *c.SizeT) c.Int
+// llgo:link (*SSL).AllAsyncFds C.SSL_get_all_async_fds
+func (self *SSL) AllAsyncFds(fds *c.Int, numfds *c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSLGetChangedAsyncFds C.SSL_get_changed_async_fds
-func SSLGetChangedAsyncFds(s *SSL, addfd *c.Int, numaddfds *c.SizeT, delfd *c.Int, numdelfds *c.SizeT) c.Int
+// llgo:link (*SSL).ChangedAsyncFds C.SSL_get_changed_async_fds
+func (self *SSL) ChangedAsyncFds(addfd *c.Int, numaddfds *c.SizeT, delfd *c.Int, numdelfds *c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXSetAsyncCallback C.SSL_CTX_set_async_callback
-func SSL_CTXSetAsyncCallback(ctx *SSL_CTX, callback SSLAsyncCallbackFn) c.Int
+// llgo:link (*SSL_CTX).SetAsyncCallback C.SSL_CTX_set_async_callback
+func (self *SSL_CTX) SetAsyncCallback(callback SSL_async_callback_fn) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXSetAsyncCallbackArg C.SSL_CTX_set_async_callback_arg
-func SSL_CTXSetAsyncCallbackArg(ctx *SSL_CTX, arg unsafe.Pointer) c.Int
+// llgo:link (*SSL_CTX).SetAsyncCallbackArg C.SSL_CTX_set_async_callback_arg
+func (self *SSL_CTX) SetAsyncCallbackArg(arg unsafe.Pointer) c.Int {
+	return 0
+}
 
-//go:linkname SSLSetAsyncCallback C.SSL_set_async_callback
-func SSLSetAsyncCallback(s *SSL, callback SSLAsyncCallbackFn) c.Int
+// llgo:link (*SSL).SetAsyncCallback C.SSL_set_async_callback
+func (self *SSL) SetAsyncCallback(callback SSL_async_callback_fn) c.Int {
+	return 0
+}
 
-//go:linkname SSLSetAsyncCallbackArg C.SSL_set_async_callback_arg
-func SSLSetAsyncCallbackArg(s *SSL, arg unsafe.Pointer) c.Int
+// llgo:link (*SSL).SetAsyncCallbackArg C.SSL_set_async_callback_arg
+func (self *SSL) SetAsyncCallbackArg(arg unsafe.Pointer) c.Int {
+	return 0
+}
 
-//go:linkname SSLGetAsyncStatus C.SSL_get_async_status
-func SSLGetAsyncStatus(s *SSL, status *c.Int) c.Int
+// llgo:link (*SSL).AsyncStatus C.SSL_get_async_status
+func (self *SSL) AsyncStatus(status *c.Int) c.Int {
+	return 0
+}
 
-//go:linkname SSLAccept C.SSL_accept
-func SSLAccept(ssl *SSL) c.Int
+// llgo:link (*SSL).Accept C.SSL_accept
+func (self *SSL) Accept() c.Int {
+	return 0
+}
 
-//go:linkname SSLStateless C.SSL_stateless
-func SSLStateless(s *SSL) c.Int
+// llgo:link (*SSL).Stateless C.SSL_stateless
+func (self *SSL) Stateless() c.Int {
+	return 0
+}
 
-//go:linkname SSLConnect C.SSL_connect
-func SSLConnect(ssl *SSL) c.Int
+// llgo:link (*SSL).Connect C.SSL_connect
+func (self *SSL) Connect() c.Int {
+	return 0
+}
 
-//go:linkname SSLRead C.SSL_read
-func SSLRead(ssl *SSL, buf unsafe.Pointer, num c.Int) c.Int
+// llgo:link (*SSL).Read C.SSL_read
+func (self *SSL) Read(buf unsafe.Pointer, num c.Int) c.Int {
+	return 0
+}
 
-//go:linkname SSLReadEx C.SSL_read_ex
-func SSLReadEx(ssl *SSL, buf unsafe.Pointer, num c.SizeT, readbytes *c.SizeT) c.Int
+// llgo:link (*SSL).ReadEx C.SSL_read_ex
+func (self *SSL) ReadEx(buf unsafe.Pointer, num c.SizeT, readbytes *c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSLReadEarlyData C.SSL_read_early_data
-func SSLReadEarlyData(s *SSL, buf unsafe.Pointer, num c.SizeT, readbytes *c.SizeT) c.Int
+// llgo:link (*SSL).ReadEarlyData C.SSL_read_early_data
+func (self *SSL) ReadEarlyData(buf unsafe.Pointer, num c.SizeT, readbytes *c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSLPeek C.SSL_peek
-func SSLPeek(ssl *SSL, buf unsafe.Pointer, num c.Int) c.Int
+// llgo:link (*SSL).Peek C.SSL_peek
+func (self *SSL) Peek(buf unsafe.Pointer, num c.Int) c.Int {
+	return 0
+}
 
-//go:linkname SSLPeekEx C.SSL_peek_ex
-func SSLPeekEx(ssl *SSL, buf unsafe.Pointer, num c.SizeT, readbytes *c.SizeT) c.Int
+// llgo:link (*SSL).PeekEx C.SSL_peek_ex
+func (self *SSL) PeekEx(buf unsafe.Pointer, num c.SizeT, readbytes *c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSLSendfile C.SSL_sendfile
-func SSLSendfile(s *SSL, fd c.Int, offset os.OffT, size c.SizeT, flags c.Int) OsslSsizeT
+// llgo:link (*SSL).Sendfile C.SSL_sendfile
+func (self *SSL) Sendfile(fd c.Int, offset os.OffT, size c.SizeT, flags c.Int) OsslSsizeT {
+	return 0
+}
 
-//go:linkname SSLWrite C.SSL_write
-func SSLWrite(ssl *SSL, buf unsafe.Pointer, num c.Int) c.Int
+// llgo:link (*SSL).Write C.SSL_write
+func (self *SSL) Write(buf unsafe.Pointer, num c.Int) c.Int {
+	return 0
+}
 
-//go:linkname SSLWriteEx C.SSL_write_ex
-func SSLWriteEx(s *SSL, buf unsafe.Pointer, num c.SizeT, written *c.SizeT) c.Int
+// llgo:link (*SSL).WriteEx C.SSL_write_ex
+func (self *SSL) WriteEx(buf unsafe.Pointer, num c.SizeT, written *c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSLWriteEarlyData C.SSL_write_early_data
-func SSLWriteEarlyData(s *SSL, buf unsafe.Pointer, num c.SizeT, written *c.SizeT) c.Int
+// llgo:link (*SSL).WriteEarlyData C.SSL_write_early_data
+func (self *SSL) WriteEarlyData(buf unsafe.Pointer, num c.SizeT, written *c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSLCtrl C.SSL_ctrl
-func SSLCtrl(ssl *SSL, cmd c.Int, larg c.Long, parg unsafe.Pointer) c.Long
+// llgo:link (*SSL).Ctrl C.SSL_ctrl
+func (self *SSL) Ctrl(cmd c.Int, larg c.Long, parg unsafe.Pointer) c.Long {
+	return 0
+}
 
-//go:linkname SSLCallbackCtrl C.SSL_callback_ctrl
-func SSLCallbackCtrl(_llcppg_param1 *SSL, _llcppg_param2 c.Int, _llcppg_param3 func()) c.Long
+// llgo:link (*SSL).CallbackCtrl C.SSL_callback_ctrl
+func (self *SSL) CallbackCtrl(_llcppg_param2 c.Int, _llcppg_param3 func()) c.Long {
+	return 0
+}
 
-//go:linkname SSL_CTXCtrl C.SSL_CTX_ctrl
-func SSL_CTXCtrl(ctx *SSL_CTX, cmd c.Int, larg c.Long, parg unsafe.Pointer) c.Long
+// llgo:link (*SSL_CTX).Ctrl C.SSL_CTX_ctrl
+func (self *SSL_CTX) Ctrl(cmd c.Int, larg c.Long, parg unsafe.Pointer) c.Long {
+	return 0
+}
 
-//go:linkname SSL_CTXCallbackCtrl C.SSL_CTX_callback_ctrl
-func SSL_CTXCallbackCtrl(_llcppg_param1 *SSL_CTX, _llcppg_param2 c.Int, _llcppg_param3 func()) c.Long
+// llgo:link (*SSL_CTX).CallbackCtrl C.SSL_CTX_callback_ctrl
+func (self *SSL_CTX) CallbackCtrl(_llcppg_param2 c.Int, _llcppg_param3 func()) c.Long {
+	return 0
+}
 
-//go:linkname SSLWriteEx2 C.SSL_write_ex2
-func SSLWriteEx2(s *SSL, buf unsafe.Pointer, num c.SizeT, flags c.Uint64T, written *c.SizeT) c.Int
+// llgo:link (*SSL).WriteEx2 C.SSL_write_ex2
+func (self *SSL) WriteEx2(buf unsafe.Pointer, num c.SizeT, flags c.Uint64T, written *c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSLGetEarlyDataStatus C.SSL_get_early_data_status
-func SSLGetEarlyDataStatus(s *SSL) c.Int
+// llgo:link (*SSL).EarlyDataStatus C.SSL_get_early_data_status
+func (self *SSL) EarlyDataStatus() c.Int {
+	return 0
+}
 
-//go:linkname SSLGetError C.SSL_get_error
-func SSLGetError(s *SSL, ret_code c.Int) c.Int
+// llgo:link (*SSL).Error C.SSL_get_error
+func (self *SSL) Error(ret_code c.Int) c.Int {
+	return 0
+}
 
-//go:linkname SSLGetVersion C.SSL_get_version
-func SSLGetVersion(s *SSL) *c.Char
+// llgo:link (*SSL).GetVersion C.SSL_get_version
+func (self *SSL) GetVersion() *c.Char {
+	return nil
+}
 
-//go:linkname SSLGetHandshakeRtt C.SSL_get_handshake_rtt
-func SSLGetHandshakeRtt(s *SSL, rtt *c.Uint64T) c.Int
+// llgo:link (*SSL).HandshakeRtt C.SSL_get_handshake_rtt
+func (self *SSL) HandshakeRtt(rtt *c.Uint64T) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXSetSslVersion C.SSL_CTX_set_ssl_version
-func SSL_CTXSetSslVersion(ctx *SSL_CTX, meth *SSL_METHOD) c.Int
+// llgo:link (*SSL_CTX).SetSslVersion C.SSL_CTX_set_ssl_version
+func (self *SSL_CTX) SetSslVersion(meth *SSL_METHOD) c.Int {
+	return 0
+}
 
 // Negotiate highest available SSL/TLS version
 //
-//go:linkname TLSMethod C.TLS_method
-func TLSMethod() *SSL_METHOD
+//go:linkname TLS_method C.TLS_method
+func TLS_method() *SSL_METHOD
 
-//go:linkname TLSServerMethod C.TLS_server_method
-func TLSServerMethod() *SSL_METHOD
+//go:linkname TLS_server_method C.TLS_server_method
+func TLS_server_method() *SSL_METHOD
 
-//go:linkname TLSClientMethod C.TLS_client_method
-func TLSClientMethod() *SSL_METHOD
-
-// DTLS 1.0 and 1.2
-//
-//go:linkname DTLSMethod C.DTLS_method
-func DTLSMethod() *SSL_METHOD
+//go:linkname TLS_client_method C.TLS_client_method
+func TLS_client_method() *SSL_METHOD
 
 // DTLS 1.0 and 1.2
 //
-//go:linkname DTLSServerMethod C.DTLS_server_method
-func DTLSServerMethod() *SSL_METHOD
+//go:linkname DTLS_method C.DTLS_method
+func DTLS_method() *SSL_METHOD
 
 // DTLS 1.0 and 1.2
 //
-//go:linkname DTLSClientMethod C.DTLS_client_method
-func DTLSClientMethod() *SSL_METHOD
+//go:linkname DTLS_server_method C.DTLS_server_method
+func DTLS_server_method() *SSL_METHOD
 
-//go:linkname DTLSGetDataMtu C.DTLS_get_data_mtu
-func DTLSGetDataMtu(s *SSL) c.SizeT
+// DTLS 1.0 and 1.2
+//
+//go:linkname DTLS_client_method C.DTLS_client_method
+func DTLS_client_method() *SSL_METHOD
 
-//go:linkname SSLGetCiphers C.SSL_get_ciphers
-func SSLGetCiphers(s *SSL) *StackStSSL_CIPHER
+// llgo:link (*SSL).DTLS_get_data_mtu C.DTLS_get_data_mtu
+func (self *SSL) DTLS_get_data_mtu() c.SizeT {
+	return 0
+}
 
-//go:linkname SSL_CTXGetCiphers C.SSL_CTX_get_ciphers
-func SSL_CTXGetCiphers(ctx *SSL_CTX) *StackStSSL_CIPHER
+// llgo:link (*SSL).Ciphers C.SSL_get_ciphers
+func (self *SSL) Ciphers() *Stack_st_SSL_CIPHER {
+	return nil
+}
 
-//go:linkname SSLGetClientCiphers C.SSL_get_client_ciphers
-func SSLGetClientCiphers(s *SSL) *StackStSSL_CIPHER
+// llgo:link (*SSL_CTX).Ciphers C.SSL_CTX_get_ciphers
+func (self *SSL_CTX) Ciphers() *Stack_st_SSL_CIPHER {
+	return nil
+}
 
-//go:linkname SSLGet1SupportedCiphers C.SSL_get1_supported_ciphers
-func SSLGet1SupportedCiphers(s *SSL) *StackStSSL_CIPHER
+// llgo:link (*SSL).ClientCiphers C.SSL_get_client_ciphers
+func (self *SSL) ClientCiphers() *Stack_st_SSL_CIPHER {
+	return nil
+}
 
-//go:linkname SSLDoHandshake C.SSL_do_handshake
-func SSLDoHandshake(s *SSL) c.Int
+// llgo:link (*SSL).Get1SupportedCiphers C.SSL_get1_supported_ciphers
+func (self *SSL) Get1SupportedCiphers() *Stack_st_SSL_CIPHER {
+	return nil
+}
 
-//go:linkname SSLKeyUpdate C.SSL_key_update
-func SSLKeyUpdate(s *SSL, updatetype c.Int) c.Int
+// llgo:link (*SSL).DoHandshake C.SSL_do_handshake
+func (self *SSL) DoHandshake() c.Int {
+	return 0
+}
 
-//go:linkname SSLGetKeyUpdateType C.SSL_get_key_update_type
-func SSLGetKeyUpdateType(s *SSL) c.Int
+// llgo:link (*SSL).KeyUpdate C.SSL_key_update
+func (self *SSL) KeyUpdate(updatetype c.Int) c.Int {
+	return 0
+}
 
-//go:linkname SSLRenegotiate C.SSL_renegotiate
-func SSLRenegotiate(s *SSL) c.Int
+// llgo:link (*SSL).KeyUpdateType C.SSL_get_key_update_type
+func (self *SSL) KeyUpdateType() c.Int {
+	return 0
+}
 
-//go:linkname SSLRenegotiateAbbreviated C.SSL_renegotiate_abbreviated
-func SSLRenegotiateAbbreviated(s *SSL) c.Int
+// llgo:link (*SSL).Renegotiate C.SSL_renegotiate
+func (self *SSL) Renegotiate() c.Int {
+	return 0
+}
 
-//go:linkname SSLRenegotiatePending C.SSL_renegotiate_pending
-func SSLRenegotiatePending(s *SSL) c.Int
+// llgo:link (*SSL).RenegotiateAbbreviated C.SSL_renegotiate_abbreviated
+func (self *SSL) RenegotiateAbbreviated() c.Int {
+	return 0
+}
 
-//go:linkname SSLNewSessionTicket C.SSL_new_session_ticket
-func SSLNewSessionTicket(s *SSL) c.Int
+// llgo:link (*SSL).RenegotiatePending C.SSL_renegotiate_pending
+func (self *SSL) RenegotiatePending() c.Int {
+	return 0
+}
 
-//go:linkname SSLShutdown C.SSL_shutdown
-func SSLShutdown(s *SSL) c.Int
+// llgo:link (*SSL).NewSessionTicket C.SSL_new_session_ticket
+func (self *SSL) NewSessionTicket() c.Int {
+	return 0
+}
 
-//go:linkname SSLVerifyClientPostHandshake C.SSL_verify_client_post_handshake
-func SSLVerifyClientPostHandshake(s *SSL) c.Int
+// llgo:link (*SSL).Shutdown C.SSL_shutdown
+func (self *SSL) Shutdown() c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXSetPostHandshakeAuth C.SSL_CTX_set_post_handshake_auth
-func SSL_CTXSetPostHandshakeAuth(ctx *SSL_CTX, val c.Int)
+// llgo:link (*SSL).VerifyClientPostHandshake C.SSL_verify_client_post_handshake
+func (self *SSL) VerifyClientPostHandshake() c.Int {
+	return 0
+}
 
-//go:linkname SSLSetPostHandshakeAuth C.SSL_set_post_handshake_auth
-func SSLSetPostHandshakeAuth(s *SSL, val c.Int)
+// llgo:link (*SSL_CTX).SetPostHandshakeAuth C.SSL_CTX_set_post_handshake_auth
+func (self *SSL_CTX) SetPostHandshakeAuth(val c.Int) {
+}
 
-//go:linkname SSL_CTXGetSslMethod C.SSL_CTX_get_ssl_method
-func SSL_CTXGetSslMethod(ctx *SSL_CTX) *SSL_METHOD
+// llgo:link (*SSL).SetPostHandshakeAuth C.SSL_set_post_handshake_auth
+func (self *SSL) SetPostHandshakeAuth(val c.Int) {
+}
 
-//go:linkname SSLGetSslMethod C.SSL_get_ssl_method
-func SSLGetSslMethod(s *SSL) *SSL_METHOD
+// llgo:link (*SSL_CTX).SslMethod C.SSL_CTX_get_ssl_method
+func (self *SSL_CTX) SslMethod() *SSL_METHOD {
+	return nil
+}
 
-//go:linkname SSLSetSslMethod C.SSL_set_ssl_method
-func SSLSetSslMethod(s *SSL, method *SSL_METHOD) c.Int
+// llgo:link (*SSL).SslMethod C.SSL_get_ssl_method
+func (self *SSL) SslMethod() *SSL_METHOD {
+	return nil
+}
 
-//go:linkname SSLAlertTypeStringLong C.SSL_alert_type_string_long
-func SSLAlertTypeStringLong(value c.Int) *c.Char
+// llgo:link (*SSL).SetSslMethod C.SSL_set_ssl_method
+func (self *SSL) SetSslMethod(method *SSL_METHOD) c.Int {
+	return 0
+}
 
-//go:linkname SSLAlertTypeString C.SSL_alert_type_string
-func SSLAlertTypeString(value c.Int) *c.Char
+//go:linkname SSL_alert_type_string_long C.SSL_alert_type_string_long
+func SSL_alert_type_string_long(value c.Int) *c.Char
 
-//go:linkname SSLAlertDescStringLong C.SSL_alert_desc_string_long
-func SSLAlertDescStringLong(value c.Int) *c.Char
+//go:linkname SSL_alert_type_string C.SSL_alert_type_string
+func SSL_alert_type_string(value c.Int) *c.Char
 
-//go:linkname SSLAlertDescString C.SSL_alert_desc_string
-func SSLAlertDescString(value c.Int) *c.Char
+//go:linkname SSL_alert_desc_string_long C.SSL_alert_desc_string_long
+func SSL_alert_desc_string_long(value c.Int) *c.Char
 
-//go:linkname SSLSet0CAList C.SSL_set0_CA_list
-func SSLSet0CAList(s *SSL, name_list *StackStX509NAME)
+//go:linkname SSL_alert_desc_string C.SSL_alert_desc_string
+func SSL_alert_desc_string(value c.Int) *c.Char
 
-//go:linkname SSL_CTXSet0CAList C.SSL_CTX_set0_CA_list
-func SSL_CTXSet0CAList(ctx *SSL_CTX, name_list *StackStX509NAME)
+// llgo:link (*SSL).Set0_CA_list C.SSL_set0_CA_list
+func (self *SSL) Set0_CA_list(name_list *Stack_st_X509_NAME) {
+}
 
-//go:linkname SSLGet0CAList C.SSL_get0_CA_list
-func SSLGet0CAList(s *SSL) *StackStX509NAME
+// llgo:link (*SSL_CTX).Set0_CA_list C.SSL_CTX_set0_CA_list
+func (self *SSL_CTX) Set0_CA_list(name_list *Stack_st_X509_NAME) {
+}
 
-//go:linkname SSL_CTXGet0CAList C.SSL_CTX_get0_CA_list
-func SSL_CTXGet0CAList(ctx *SSL_CTX) *StackStX509NAME
+// llgo:link (*SSL).Get0_CA_list C.SSL_get0_CA_list
+func (self *SSL) Get0_CA_list() *Stack_st_X509_NAME {
+	return nil
+}
 
-//go:linkname SSLAdd1ToCAList C.SSL_add1_to_CA_list
-func SSLAdd1ToCAList(ssl *SSL, x *X509) c.Int
+// llgo:link (*SSL_CTX).Get0_CA_list C.SSL_CTX_get0_CA_list
+func (self *SSL_CTX) Get0_CA_list() *Stack_st_X509_NAME {
+	return nil
+}
 
-//go:linkname SSL_CTXAdd1ToCAList C.SSL_CTX_add1_to_CA_list
-func SSL_CTXAdd1ToCAList(ctx *SSL_CTX, x *X509) c.Int
+// llgo:link (*SSL).Add1_to_CA_list C.SSL_add1_to_CA_list
+func (self *SSL) Add1_to_CA_list(x *X509) c.Int {
+	return 0
+}
 
-//go:linkname SSLGet0PeerCAList C.SSL_get0_peer_CA_list
-func SSLGet0PeerCAList(s *SSL) *StackStX509NAME
+// llgo:link (*SSL_CTX).Add1_to_CA_list C.SSL_CTX_add1_to_CA_list
+func (self *SSL_CTX) Add1_to_CA_list(x *X509) c.Int {
+	return 0
+}
 
-//go:linkname SSLSetClientCAList C.SSL_set_client_CA_list
-func SSLSetClientCAList(s *SSL, name_list *StackStX509NAME)
+// llgo:link (*SSL).Get0_peer_CA_list C.SSL_get0_peer_CA_list
+func (self *SSL) Get0_peer_CA_list() *Stack_st_X509_NAME {
+	return nil
+}
 
-//go:linkname SSL_CTXSetClientCAList C.SSL_CTX_set_client_CA_list
-func SSL_CTXSetClientCAList(ctx *SSL_CTX, name_list *StackStX509NAME)
+// llgo:link (*SSL).Set_client_CA_list C.SSL_set_client_CA_list
+func (self *SSL) Set_client_CA_list(name_list *Stack_st_X509_NAME) {
+}
 
-//go:linkname SSLGetClientCAList C.SSL_get_client_CA_list
-func SSLGetClientCAList(s *SSL) *StackStX509NAME
+// llgo:link (*SSL_CTX).Set_client_CA_list C.SSL_CTX_set_client_CA_list
+func (self *SSL_CTX) Set_client_CA_list(name_list *Stack_st_X509_NAME) {
+}
 
-//go:linkname SSL_CTXGetClientCAList C.SSL_CTX_get_client_CA_list
-func SSL_CTXGetClientCAList(s *SSL_CTX) *StackStX509NAME
+// llgo:link (*SSL).Get_client_CA_list C.SSL_get_client_CA_list
+func (self *SSL) Get_client_CA_list() *Stack_st_X509_NAME {
+	return nil
+}
 
-//go:linkname SSLAddClientCA C.SSL_add_client_CA
-func SSLAddClientCA(ssl *SSL, x *X509) c.Int
+// llgo:link (*SSL_CTX).Get_client_CA_list C.SSL_CTX_get_client_CA_list
+func (self *SSL_CTX) Get_client_CA_list() *Stack_st_X509_NAME {
+	return nil
+}
 
-//go:linkname SSL_CTXAddClientCA C.SSL_CTX_add_client_CA
-func SSL_CTXAddClientCA(ctx *SSL_CTX, x *X509) c.Int
+// llgo:link (*SSL).Add_client_CA C.SSL_add_client_CA
+func (self *SSL) Add_client_CA(x *X509) c.Int {
+	return 0
+}
 
-//go:linkname SSLSetConnectState C.SSL_set_connect_state
-func SSLSetConnectState(s *SSL)
+// llgo:link (*SSL_CTX).Add_client_CA C.SSL_CTX_add_client_CA
+func (self *SSL_CTX) Add_client_CA(x *X509) c.Int {
+	return 0
+}
 
-//go:linkname SSLSetAcceptState C.SSL_set_accept_state
-func SSLSetAcceptState(s *SSL)
+// llgo:link (*SSL).SetConnectState C.SSL_set_connect_state
+func (self *SSL) SetConnectState() {
+}
 
-//go:linkname SSLGetDefaultTimeout C.SSL_get_default_timeout
-func SSLGetDefaultTimeout(s *SSL) c.Long
+// llgo:link (*SSL).SetAcceptState C.SSL_set_accept_state
+func (self *SSL) SetAcceptState() {
+}
 
-//go:linkname SSL_CIPHERDescription C.SSL_CIPHER_description
-func SSL_CIPHERDescription(_llcppg_param1 *SSL_CIPHER, buf *c.Char, size c.Int) *c.Char
+// llgo:link (*SSL).DefaultTimeout C.SSL_get_default_timeout
+func (self *SSL) DefaultTimeout() c.Long {
+	return 0
+}
 
-//go:linkname SSLDupCAList C.SSL_dup_CA_list
-func SSLDupCAList(sk *StackStX509NAME) *StackStX509NAME
+// llgo:link (*SSL_CIPHER).Description C.SSL_CIPHER_description
+func (self *SSL_CIPHER) Description(buf *c.Char, size c.Int) *c.Char {
+	return nil
+}
 
-//go:linkname SSLDup C.SSL_dup
-func SSLDup(ssl *SSL) *SSL
+// llgo:link (*Stack_st_X509_NAME).SSL_dup_CA_list C.SSL_dup_CA_list
+func (self *Stack_st_X509_NAME) SSL_dup_CA_list() *Stack_st_X509_NAME {
+	return self
+}
+
+// llgo:link (*SSL).Dup C.SSL_dup
+func (self *SSL) Dup() *SSL {
+	return self
+}
 
 // EVP_PKEY
 //
-//go:linkname SSLGetCertificate C.SSL_get_certificate
-func SSLGetCertificate(ssl *SSL) *X509
+// llgo:link (*SSL).Certificate C.SSL_get_certificate
+func (self *SSL) Certificate() *X509 {
+	return nil
+}
 
 // EVP_PKEY
 //
-//go:linkname SSLGetPrivatekey C.SSL_get_privatekey
-func SSLGetPrivatekey(ssl *SSL) *EvpPkeySt
+// llgo:link (*SSL).Privatekey C.SSL_get_privatekey
+func (self *SSL) Privatekey() *EvpPkeySt {
+	return nil
+}
 
-//go:linkname SSL_CTXGet0Certificate C.SSL_CTX_get0_certificate
-func SSL_CTXGet0Certificate(ctx *SSL_CTX) *X509
+// llgo:link (*SSL_CTX).Get0Certificate C.SSL_CTX_get0_certificate
+func (self *SSL_CTX) Get0Certificate() *X509 {
+	return nil
+}
 
-//go:linkname SSL_CTXGet0Privatekey C.SSL_CTX_get0_privatekey
-func SSL_CTXGet0Privatekey(ctx *SSL_CTX) *EVP_PKEY
+// llgo:link (*SSL_CTX).Get0Privatekey C.SSL_CTX_get0_privatekey
+func (self *SSL_CTX) Get0Privatekey() *EVP_PKEY {
+	return nil
+}
 
-//go:linkname SSL_CTXSetQuietShutdown C.SSL_CTX_set_quiet_shutdown
-func SSL_CTXSetQuietShutdown(ctx *SSL_CTX, mode c.Int)
+// llgo:link (*SSL_CTX).SetQuietShutdown C.SSL_CTX_set_quiet_shutdown
+func (self *SSL_CTX) SetQuietShutdown(mode c.Int) {
+}
 
-//go:linkname SSL_CTXGetQuietShutdown C.SSL_CTX_get_quiet_shutdown
-func SSL_CTXGetQuietShutdown(ctx *SSL_CTX) c.Int
+// llgo:link (*SSL_CTX).QuietShutdown C.SSL_CTX_get_quiet_shutdown
+func (self *SSL_CTX) QuietShutdown() c.Int {
+	return 0
+}
 
-//go:linkname SSLSetQuietShutdown C.SSL_set_quiet_shutdown
-func SSLSetQuietShutdown(ssl *SSL, mode c.Int)
+// llgo:link (*SSL).SetQuietShutdown C.SSL_set_quiet_shutdown
+func (self *SSL) SetQuietShutdown(mode c.Int) {
+}
 
-//go:linkname SSLGetQuietShutdown C.SSL_get_quiet_shutdown
-func SSLGetQuietShutdown(ssl *SSL) c.Int
+// llgo:link (*SSL).QuietShutdown C.SSL_get_quiet_shutdown
+func (self *SSL) QuietShutdown() c.Int {
+	return 0
+}
 
-//go:linkname SSLSetShutdown C.SSL_set_shutdown
-func SSLSetShutdown(ssl *SSL, mode c.Int)
+// llgo:link (*SSL).SetShutdown C.SSL_set_shutdown
+func (self *SSL) SetShutdown(mode c.Int) {
+}
 
-//go:linkname SSLGetShutdown C.SSL_get_shutdown
-func SSLGetShutdown(ssl *SSL) c.Int
+// llgo:link (*SSL).GetShutdown C.SSL_get_shutdown
+func (self *SSL) GetShutdown() c.Int {
+	return 0
+}
 
-//go:linkname SSLVersion C.SSL_version
-func SSLVersion(ssl *SSL) c.Int
+// llgo:link (*SSL).Version C.SSL_version
+func (self *SSL) Version() c.Int {
+	return 0
+}
 
-//go:linkname SSLClientVersion C.SSL_client_version
-func SSLClientVersion(s *SSL) c.Int
+// llgo:link (*SSL).ClientVersion C.SSL_client_version
+func (self *SSL) ClientVersion() c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXSetDefaultVerifyPaths C.SSL_CTX_set_default_verify_paths
-func SSL_CTXSetDefaultVerifyPaths(ctx *SSL_CTX) c.Int
+// llgo:link (*SSL_CTX).SetDefaultVerifyPaths C.SSL_CTX_set_default_verify_paths
+func (self *SSL_CTX) SetDefaultVerifyPaths() c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXSetDefaultVerifyDir C.SSL_CTX_set_default_verify_dir
-func SSL_CTXSetDefaultVerifyDir(ctx *SSL_CTX) c.Int
+// llgo:link (*SSL_CTX).SetDefaultVerifyDir C.SSL_CTX_set_default_verify_dir
+func (self *SSL_CTX) SetDefaultVerifyDir() c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXSetDefaultVerifyFile C.SSL_CTX_set_default_verify_file
-func SSL_CTXSetDefaultVerifyFile(ctx *SSL_CTX) c.Int
+// llgo:link (*SSL_CTX).SetDefaultVerifyFile C.SSL_CTX_set_default_verify_file
+func (self *SSL_CTX) SetDefaultVerifyFile() c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXSetDefaultVerifyStore C.SSL_CTX_set_default_verify_store
-func SSL_CTXSetDefaultVerifyStore(ctx *SSL_CTX) c.Int
+// llgo:link (*SSL_CTX).SetDefaultVerifyStore C.SSL_CTX_set_default_verify_store
+func (self *SSL_CTX) SetDefaultVerifyStore() c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXLoadVerifyFile C.SSL_CTX_load_verify_file
-func SSL_CTXLoadVerifyFile(ctx *SSL_CTX, CAfile *c.Char) c.Int
+// llgo:link (*SSL_CTX).LoadVerifyFile C.SSL_CTX_load_verify_file
+func (self *SSL_CTX) LoadVerifyFile(CAfile *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXLoadVerifyDir C.SSL_CTX_load_verify_dir
-func SSL_CTXLoadVerifyDir(ctx *SSL_CTX, CApath *c.Char) c.Int
+// llgo:link (*SSL_CTX).LoadVerifyDir C.SSL_CTX_load_verify_dir
+func (self *SSL_CTX) LoadVerifyDir(CApath *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXLoadVerifyStore C.SSL_CTX_load_verify_store
-func SSL_CTXLoadVerifyStore(ctx *SSL_CTX, CAstore *c.Char) c.Int
+// llgo:link (*SSL_CTX).LoadVerifyStore C.SSL_CTX_load_verify_store
+func (self *SSL_CTX) LoadVerifyStore(CAstore *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXLoadVerifyLocations C.SSL_CTX_load_verify_locations
-func SSL_CTXLoadVerifyLocations(ctx *SSL_CTX, CAfile *c.Char, CApath *c.Char) c.Int
+// llgo:link (*SSL_CTX).LoadVerifyLocations C.SSL_CTX_load_verify_locations
+func (self *SSL_CTX) LoadVerifyLocations(CAfile *c.Char, CApath *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname SSLGetSession C.SSL_get_session
-func SSLGetSession(ssl *SSL) *SSL_SESSION
+// llgo:link (*SSL).Session C.SSL_get_session
+func (self *SSL) Session() *SSL_SESSION {
+	return nil
+}
 
 // obtain a reference count
 //
-//go:linkname SSLGet1Session C.SSL_get1_session
-func SSLGet1Session(ssl *SSL) *SSL_SESSION
+// llgo:link (*SSL).Get1Session C.SSL_get1_session
+func (self *SSL) Get1Session() *SSL_SESSION {
+	return nil
+}
 
-//go:linkname SSLGetSSL_CTX C.SSL_get_SSL_CTX
-func SSLGetSSL_CTX(ssl *SSL) *SSL_CTX
+// llgo:link (*SSL).Get_SSL_CTX C.SSL_get_SSL_CTX
+func (self *SSL) Get_SSL_CTX() *SSL_CTX {
+	return nil
+}
 
-//go:linkname SSLSetSSL_CTX C.SSL_set_SSL_CTX
-func SSLSetSSL_CTX(ssl *SSL, ctx *SSL_CTX) *SSL_CTX
+// llgo:link (*SSL).Set_SSL_CTX C.SSL_set_SSL_CTX
+func (self *SSL) Set_SSL_CTX(ctx *SSL_CTX) *SSL_CTX {
+	return nil
+}
 
-//go:linkname SSLSetInfoCallback C.SSL_set_info_callback
-func SSLSetInfoCallback(ssl *SSL, cb func(_llcppg_param1 *SSL, _llcppg_param2 c.Int, _llcppg_param3 c.Int))
+// llgo:link (*SSL).SetInfoCallback C.SSL_set_info_callback
+func (self *SSL) SetInfoCallback(cb func(_llcppg_param1 *SSL, _llcppg_param2 c.Int, _llcppg_param3 c.Int)) {
+}
 
-//go:linkname SSLGetInfoCallback C.SSL_get_info_callback
-func SSLGetInfoCallback(ssl *SSL) func(_llcppg_param1 *SSL, _llcppg_param2 c.Int, _llcppg_param3 c.Int)
+// llgo:link (*SSL).InfoCallback C.SSL_get_info_callback
+func (self *SSL) InfoCallback() func(_llcppg_param1 *SSL, _llcppg_param2 c.Int, _llcppg_param3 c.Int) {
+	return nil
+}
 
-//go:linkname SSLGetState C.SSL_get_state
-func SSLGetState(ssl *SSL) OSSL_HANDSHAKE_STATE
+// llgo:link (*SSL).State C.SSL_get_state
+func (self *SSL) State() OSSL_HANDSHAKE_STATE {
+	return 0
+}
 
-//go:linkname SSLSetVerifyResult C.SSL_set_verify_result
-func SSLSetVerifyResult(ssl *SSL, v c.Long)
+// llgo:link (*SSL).SetVerifyResult C.SSL_set_verify_result
+func (self *SSL) SetVerifyResult(v c.Long) {
+}
 
-//go:linkname SSLGetVerifyResult C.SSL_get_verify_result
-func SSLGetVerifyResult(ssl *SSL) c.Long
+// llgo:link (*SSL).VerifyResult C.SSL_get_verify_result
+func (self *SSL) VerifyResult() c.Long {
+	return 0
+}
 
-//go:linkname SSLGet0VerifiedChain C.SSL_get0_verified_chain
-func SSLGet0VerifiedChain(s *SSL) *StackStX509
+// llgo:link (*SSL).Get0VerifiedChain C.SSL_get0_verified_chain
+func (self *SSL) Get0VerifiedChain() *Stack_st_X509 {
+	return nil
+}
 
-//go:linkname SSLGetClientRandom C.SSL_get_client_random
-func SSLGetClientRandom(ssl *SSL, out *uint8, outlen c.SizeT) c.SizeT
+// llgo:link (*SSL).ClientRandom C.SSL_get_client_random
+func (self *SSL) ClientRandom(out *uint8, outlen c.SizeT) c.SizeT {
+	return 0
+}
 
-//go:linkname SSLGetServerRandom C.SSL_get_server_random
-func SSLGetServerRandom(ssl *SSL, out *uint8, outlen c.SizeT) c.SizeT
+// llgo:link (*SSL).ServerRandom C.SSL_get_server_random
+func (self *SSL) ServerRandom(out *uint8, outlen c.SizeT) c.SizeT {
+	return 0
+}
 
-//go:linkname SSL_SESSIONGetMasterKey C.SSL_SESSION_get_master_key
-func SSL_SESSIONGetMasterKey(sess *SSL_SESSION, out *uint8, outlen c.SizeT) c.SizeT
+// llgo:link (*SSL_SESSION).MasterKey C.SSL_SESSION_get_master_key
+func (self *SSL_SESSION) MasterKey(out *uint8, outlen c.SizeT) c.SizeT {
+	return 0
+}
 
-//go:linkname SSL_SESSIONSet1MasterKey C.SSL_SESSION_set1_master_key
-func SSL_SESSIONSet1MasterKey(sess *SSL_SESSION, in *uint8, len c.SizeT) c.Int
+// llgo:link (*SSL_SESSION).Set1MasterKey C.SSL_SESSION_set1_master_key
+func (self *SSL_SESSION) Set1MasterKey(in *uint8, len c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSL_SESSIONGetMaxFragmentLength C.SSL_SESSION_get_max_fragment_length
-func SSL_SESSIONGetMaxFragmentLength(sess *SSL_SESSION) c.Uint8T
+// llgo:link (*SSL_SESSION).MaxFragmentLength C.SSL_SESSION_get_max_fragment_length
+func (self *SSL_SESSION) MaxFragmentLength() c.Uint8T {
+	return 0
+}
 
-//go:linkname SSLSetExData C.SSL_set_ex_data
-func SSLSetExData(ssl *SSL, idx c.Int, data unsafe.Pointer) c.Int
+// llgo:link (*SSL).SetExData C.SSL_set_ex_data
+func (self *SSL) SetExData(idx c.Int, data unsafe.Pointer) c.Int {
+	return 0
+}
 
-//go:linkname SSLGetExData C.SSL_get_ex_data
-func SSLGetExData(ssl *SSL, idx c.Int) unsafe.Pointer
+// llgo:link (*SSL).ExData C.SSL_get_ex_data
+func (self *SSL) ExData(idx c.Int) unsafe.Pointer {
+	return nil
+}
 
-//go:linkname SSL_SESSIONSetExData C.SSL_SESSION_set_ex_data
-func SSL_SESSIONSetExData(ss *SSL_SESSION, idx c.Int, data unsafe.Pointer) c.Int
+// llgo:link (*SSL_SESSION).SetExData C.SSL_SESSION_set_ex_data
+func (self *SSL_SESSION) SetExData(idx c.Int, data unsafe.Pointer) c.Int {
+	return 0
+}
 
-//go:linkname SSL_SESSIONGetExData C.SSL_SESSION_get_ex_data
-func SSL_SESSIONGetExData(ss *SSL_SESSION, idx c.Int) unsafe.Pointer
+// llgo:link (*SSL_SESSION).ExData C.SSL_SESSION_get_ex_data
+func (self *SSL_SESSION) ExData(idx c.Int) unsafe.Pointer {
+	return nil
+}
 
-//go:linkname SSL_CTXSetExData C.SSL_CTX_set_ex_data
-func SSL_CTXSetExData(ssl *SSL_CTX, idx c.Int, data unsafe.Pointer) c.Int
+// llgo:link (*SSL_CTX).SetExData C.SSL_CTX_set_ex_data
+func (self *SSL_CTX) SetExData(idx c.Int, data unsafe.Pointer) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXGetExData C.SSL_CTX_get_ex_data
-func SSL_CTXGetExData(ssl *SSL_CTX, idx c.Int) unsafe.Pointer
+// llgo:link (*SSL_CTX).ExData C.SSL_CTX_get_ex_data
+func (self *SSL_CTX) ExData(idx c.Int) unsafe.Pointer {
+	return nil
+}
 
-//go:linkname SSLGetExDataX509STORE_CTXIdx C.SSL_get_ex_data_X509_STORE_CTX_idx
-func SSLGetExDataX509STORE_CTXIdx() c.Int
+//go:linkname SSL_get_ex_data_X509_STORE_CTX_idx C.SSL_get_ex_data_X509_STORE_CTX_idx
+func SSL_get_ex_data_X509_STORE_CTX_idx() c.Int
 
-//go:linkname SSL_CTXSetDefaultReadBufferLen C.SSL_CTX_set_default_read_buffer_len
-func SSL_CTXSetDefaultReadBufferLen(ctx *SSL_CTX, len c.SizeT)
+// llgo:link (*SSL_CTX).SetDefaultReadBufferLen C.SSL_CTX_set_default_read_buffer_len
+func (self *SSL_CTX) SetDefaultReadBufferLen(len c.SizeT) {
+}
 
-//go:linkname SSLSetDefaultReadBufferLen C.SSL_set_default_read_buffer_len
-func SSLSetDefaultReadBufferLen(s *SSL, len c.SizeT)
+// llgo:link (*SSL).SetDefaultReadBufferLen C.SSL_set_default_read_buffer_len
+func (self *SSL) SetDefaultReadBufferLen(len c.SizeT) {
+}
 
 // NB: the |keylength| is only applicable when is_export is true
 //
-//go:linkname SSL_CTXSetTmpDhCallback C.SSL_CTX_set_tmp_dh_callback
-func SSL_CTXSetTmpDhCallback(ctx *SSL_CTX, dh func(_llcppg_param1 *SSL, _llcppg_param2 c.Int, _llcppg_param3 c.Int) *DH)
+// llgo:link (*SSL_CTX).SetTmpDhCallback C.SSL_CTX_set_tmp_dh_callback
+func (self *SSL_CTX) SetTmpDhCallback(dh func(_llcppg_param1 *SSL, _llcppg_param2 c.Int, _llcppg_param3 c.Int) *DH) {
+}
 
-//go:linkname SSLSetTmpDhCallback C.SSL_set_tmp_dh_callback
-func SSLSetTmpDhCallback(ssl *SSL, dh func(_llcppg_param1 *SSL, _llcppg_param2 c.Int, _llcppg_param3 c.Int) *DH)
+// llgo:link (*SSL).SetTmpDhCallback C.SSL_set_tmp_dh_callback
+func (self *SSL) SetTmpDhCallback(dh func(_llcppg_param1 *SSL, _llcppg_param2 c.Int, _llcppg_param3 c.Int) *DH) {
+}
 
-//go:linkname SSLGetCurrentCompression C.SSL_get_current_compression
-func SSLGetCurrentCompression(s *SSL) *COMP_METHOD
+// llgo:link (*SSL).CurrentCompression C.SSL_get_current_compression
+func (self *SSL) CurrentCompression() *COMP_METHOD {
+	return nil
+}
 
-//go:linkname SSLGetCurrentExpansion C.SSL_get_current_expansion
-func SSLGetCurrentExpansion(s *SSL) *COMP_METHOD
+// llgo:link (*SSL).CurrentExpansion C.SSL_get_current_expansion
+func (self *SSL) CurrentExpansion() *COMP_METHOD {
+	return nil
+}
 
-//go:linkname SSL_COMPGetName C.SSL_COMP_get_name
-func SSL_COMPGetName(comp *COMP_METHOD) *c.Char
+// llgo:link (*COMP_METHOD).SSL_Name C.SSL_COMP_get_name
+func (self *COMP_METHOD) SSL_Name() *c.Char {
+	return nil
+}
 
-//go:linkname SSL_COMPGet0Name C.SSL_COMP_get0_name
-func SSL_COMPGet0Name(comp *SSL_COMP) *c.Char
+// llgo:link (*SSL_COMP).Get0Name C.SSL_COMP_get0_name
+func (self *SSL_COMP) Get0Name() *c.Char {
+	return nil
+}
 
-//go:linkname SSL_COMPGetId C.SSL_COMP_get_id
-func SSL_COMPGetId(comp *SSL_COMP) c.Int
+// llgo:link (*SSL_COMP).Id C.SSL_COMP_get_id
+func (self *SSL_COMP) Id() c.Int {
+	return 0
+}
 
-//go:linkname SSL_COMPGetCompressionMethods C.SSL_COMP_get_compression_methods
-func SSL_COMPGetCompressionMethods() *StackStSSL_COMP
+//go:linkname SSL_COMP_get_compression_methods C.SSL_COMP_get_compression_methods
+func SSL_COMP_get_compression_methods() *Stack_st_SSL_COMP
 
-//go:linkname SSL_COMPSet0CompressionMethods C.SSL_COMP_set0_compression_methods
-func SSL_COMPSet0CompressionMethods(meths *StackStSSL_COMP) *StackStSSL_COMP
+// llgo:link (*Stack_st_SSL_COMP).SSL_COMP_set0_compression_methods C.SSL_COMP_set0_compression_methods
+func (self *Stack_st_SSL_COMP) SSL_COMP_set0_compression_methods() *Stack_st_SSL_COMP {
+	return self
+}
 
-//go:linkname SSL_COMPAddCompressionMethod C.SSL_COMP_add_compression_method
-func SSL_COMPAddCompressionMethod(id c.Int, cm *COMP_METHOD) c.Int
+//go:linkname SSL_COMP_add_compression_method C.SSL_COMP_add_compression_method
+func SSL_COMP_add_compression_method(id c.Int, cm *COMP_METHOD) c.Int
 
-//go:linkname SSL_CIPHERFind C.SSL_CIPHER_find
-func SSL_CIPHERFind(ssl *SSL, ptr *uint8) *SSL_CIPHER
+// llgo:link (*SSL).CIPHER_find C.SSL_CIPHER_find
+func (self *SSL) CIPHER_find(ptr *uint8) *SSL_CIPHER {
+	return nil
+}
 
-//go:linkname SSL_CIPHERGetCipherNid C.SSL_CIPHER_get_cipher_nid
-func SSL_CIPHERGetCipherNid(c *SSL_CIPHER) c.Int
+// llgo:link (*SSL_CIPHER).CipherNid C.SSL_CIPHER_get_cipher_nid
+func (self *SSL_CIPHER) CipherNid() c.Int {
+	return 0
+}
 
-//go:linkname SSL_CIPHERGetDigestNid C.SSL_CIPHER_get_digest_nid
-func SSL_CIPHERGetDigestNid(c *SSL_CIPHER) c.Int
+// llgo:link (*SSL_CIPHER).DigestNid C.SSL_CIPHER_get_digest_nid
+func (self *SSL_CIPHER) DigestNid() c.Int {
+	return 0
+}
 
-//go:linkname SSLBytesToCipherList C.SSL_bytes_to_cipher_list
-func SSLBytesToCipherList(s *SSL, bytes *uint8, len c.SizeT, isv2format c.Int, sk **StackStSSL_CIPHER, scsvs **StackStSSL_CIPHER) c.Int
+// llgo:link (*SSL).BytesToCipherList C.SSL_bytes_to_cipher_list
+func (self *SSL) BytesToCipherList(bytes *uint8, len c.SizeT, isv2format c.Int, sk **Stack_st_SSL_CIPHER, scsvs **Stack_st_SSL_CIPHER) c.Int {
+	return 0
+}
 
 // TLS extensions functions
 //
-//go:linkname SSLSetSessionTicketExt C.SSL_set_session_ticket_ext
-func SSLSetSessionTicketExt(s *SSL, ext_data unsafe.Pointer, ext_len c.Int) c.Int
+// llgo:link (*SSL).SetSessionTicketExt C.SSL_set_session_ticket_ext
+func (self *SSL) SetSessionTicketExt(ext_data unsafe.Pointer, ext_len c.Int) c.Int {
+	return 0
+}
 
-//go:linkname SSLSetSessionTicketExtCb C.SSL_set_session_ticket_ext_cb
-func SSLSetSessionTicketExtCb(s *SSL, cb TlsSessionTicketExtCbFn, arg unsafe.Pointer) c.Int
+// llgo:link (*SSL).SetSessionTicketExtCb C.SSL_set_session_ticket_ext_cb
+func (self *SSL) SetSessionTicketExtCb(cb TlsSessionTicketExtCbFn, arg unsafe.Pointer) c.Int {
+	return 0
+}
 
 // Pre-shared secret session resumption functions
 //
-//go:linkname SSLSetSessionSecretCb C.SSL_set_session_secret_cb
-func SSLSetSessionSecretCb(s *SSL, session_secret_cb TlsSessionSecretCbFn, arg unsafe.Pointer) c.Int
+// llgo:link (*SSL).SetSessionSecretCb C.SSL_set_session_secret_cb
+func (self *SSL) SetSessionSecretCb(session_secret_cb TlsSessionSecretCbFn, arg unsafe.Pointer) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXSetNotResumableSessionCallback C.SSL_CTX_set_not_resumable_session_callback
-func SSL_CTXSetNotResumableSessionCallback(ctx *SSL_CTX, cb func(_llcppg_param1 *SSL, _llcppg_param2 c.Int) c.Int)
+// llgo:link (*SSL_CTX).SetNotResumableSessionCallback C.SSL_CTX_set_not_resumable_session_callback
+func (self *SSL_CTX) SetNotResumableSessionCallback(cb func(_llcppg_param1 *SSL, _llcppg_param2 c.Int) c.Int) {
+}
 
-//go:linkname SSLSetNotResumableSessionCallback C.SSL_set_not_resumable_session_callback
-func SSLSetNotResumableSessionCallback(ssl *SSL, cb func(_llcppg_param1 *SSL, _llcppg_param2 c.Int) c.Int)
+// llgo:link (*SSL).SetNotResumableSessionCallback C.SSL_set_not_resumable_session_callback
+func (self *SSL) SetNotResumableSessionCallback(cb func(_llcppg_param1 *SSL, _llcppg_param2 c.Int) c.Int) {
+}
 
-//go:linkname SSL_CTXSetRecordPaddingCallback C.SSL_CTX_set_record_padding_callback
-func SSL_CTXSetRecordPaddingCallback(ctx *SSL_CTX, cb func(_llcppg_param1 *SSL, _llcppg_param2 c.Int, _llcppg_param3 c.SizeT, _llcppg_param4 unsafe.Pointer) c.SizeT)
+// llgo:link (*SSL_CTX).SetRecordPaddingCallback C.SSL_CTX_set_record_padding_callback
+func (self *SSL_CTX) SetRecordPaddingCallback(cb func(_llcppg_param1 *SSL, _llcppg_param2 c.Int, _llcppg_param3 c.SizeT, _llcppg_param4 unsafe.Pointer) c.SizeT) {
+}
 
-//go:linkname SSL_CTXSetRecordPaddingCallbackArg C.SSL_CTX_set_record_padding_callback_arg
-func SSL_CTXSetRecordPaddingCallbackArg(ctx *SSL_CTX, arg unsafe.Pointer)
+// llgo:link (*SSL_CTX).SetRecordPaddingCallbackArg C.SSL_CTX_set_record_padding_callback_arg
+func (self *SSL_CTX) SetRecordPaddingCallbackArg(arg unsafe.Pointer) {
+}
 
-//go:linkname SSL_CTXGetRecordPaddingCallbackArg C.SSL_CTX_get_record_padding_callback_arg
-func SSL_CTXGetRecordPaddingCallbackArg(ctx *SSL_CTX) unsafe.Pointer
+// llgo:link (*SSL_CTX).RecordPaddingCallbackArg C.SSL_CTX_get_record_padding_callback_arg
+func (self *SSL_CTX) RecordPaddingCallbackArg() unsafe.Pointer {
+	return nil
+}
 
-//go:linkname SSL_CTXSetBlockPadding C.SSL_CTX_set_block_padding
-func SSL_CTXSetBlockPadding(ctx *SSL_CTX, block_size c.SizeT) c.Int
+// llgo:link (*SSL_CTX).SetBlockPadding C.SSL_CTX_set_block_padding
+func (self *SSL_CTX) SetBlockPadding(block_size c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXSetBlockPaddingEx C.SSL_CTX_set_block_padding_ex
-func SSL_CTXSetBlockPaddingEx(ctx *SSL_CTX, app_block_size c.SizeT, hs_block_size c.SizeT) c.Int
+// llgo:link (*SSL_CTX).SetBlockPaddingEx C.SSL_CTX_set_block_padding_ex
+func (self *SSL_CTX) SetBlockPaddingEx(app_block_size c.SizeT, hs_block_size c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSLSetRecordPaddingCallback C.SSL_set_record_padding_callback
-func SSLSetRecordPaddingCallback(ssl *SSL, cb func(_llcppg_param1 *SSL, _llcppg_param2 c.Int, _llcppg_param3 c.SizeT, _llcppg_param4 unsafe.Pointer) c.SizeT) c.Int
+// llgo:link (*SSL).SetRecordPaddingCallback C.SSL_set_record_padding_callback
+func (self *SSL) SetRecordPaddingCallback(cb func(_llcppg_param1 *SSL, _llcppg_param2 c.Int, _llcppg_param3 c.SizeT, _llcppg_param4 unsafe.Pointer) c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSLSetRecordPaddingCallbackArg C.SSL_set_record_padding_callback_arg
-func SSLSetRecordPaddingCallbackArg(ssl *SSL, arg unsafe.Pointer)
+// llgo:link (*SSL).SetRecordPaddingCallbackArg C.SSL_set_record_padding_callback_arg
+func (self *SSL) SetRecordPaddingCallbackArg(arg unsafe.Pointer) {
+}
 
-//go:linkname SSLGetRecordPaddingCallbackArg C.SSL_get_record_padding_callback_arg
-func SSLGetRecordPaddingCallbackArg(ssl *SSL) unsafe.Pointer
+// llgo:link (*SSL).RecordPaddingCallbackArg C.SSL_get_record_padding_callback_arg
+func (self *SSL) RecordPaddingCallbackArg() unsafe.Pointer {
+	return nil
+}
 
-//go:linkname SSLSetBlockPadding C.SSL_set_block_padding
-func SSLSetBlockPadding(ssl *SSL, block_size c.SizeT) c.Int
+// llgo:link (*SSL).SetBlockPadding C.SSL_set_block_padding
+func (self *SSL) SetBlockPadding(block_size c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSLSetBlockPaddingEx C.SSL_set_block_padding_ex
-func SSLSetBlockPaddingEx(ssl *SSL, app_block_size c.SizeT, hs_block_size c.SizeT) c.Int
+// llgo:link (*SSL).SetBlockPaddingEx C.SSL_set_block_padding_ex
+func (self *SSL) SetBlockPaddingEx(app_block_size c.SizeT, hs_block_size c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSLSetNumTickets C.SSL_set_num_tickets
-func SSLSetNumTickets(s *SSL, num_tickets c.SizeT) c.Int
+// llgo:link (*SSL).SetNumTickets C.SSL_set_num_tickets
+func (self *SSL) SetNumTickets(num_tickets c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSLGetNumTickets C.SSL_get_num_tickets
-func SSLGetNumTickets(s *SSL) c.SizeT
+// llgo:link (*SSL).NumTickets C.SSL_get_num_tickets
+func (self *SSL) NumTickets() c.SizeT {
+	return 0
+}
 
-//go:linkname SSL_CTXSetNumTickets C.SSL_CTX_set_num_tickets
-func SSL_CTXSetNumTickets(ctx *SSL_CTX, num_tickets c.SizeT) c.Int
+// llgo:link (*SSL_CTX).SetNumTickets C.SSL_CTX_set_num_tickets
+func (self *SSL_CTX) SetNumTickets(num_tickets c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXGetNumTickets C.SSL_CTX_get_num_tickets
-func SSL_CTXGetNumTickets(ctx *SSL_CTX) c.SizeT
+// llgo:link (*SSL_CTX).NumTickets C.SSL_CTX_get_num_tickets
+func (self *SSL_CTX) NumTickets() c.SizeT {
+	return 0
+}
 
 // QUIC support
 //
-//go:linkname SSLHandleEvents C.SSL_handle_events
-func SSLHandleEvents(s *SSL) c.Int
+// llgo:link (*SSL).HandleEvents C.SSL_handle_events
+func (self *SSL) HandleEvents() c.Int {
+	return 0
+}
 
 type Timeval = syscall.Timeval
 
-//go:linkname SSLGetEventTimeout C.SSL_get_event_timeout
-func SSLGetEventTimeout(s *SSL, tv *Timeval, is_infinite *c.Int) c.Int
+// llgo:link (*SSL).EventTimeout C.SSL_get_event_timeout
+func (self *SSL) EventTimeout(tv *Timeval, is_infinite *c.Int) c.Int {
+	return 0
+}
 
-//go:linkname SSLGetPeerAddr C.SSL_get_peer_addr
-func SSLGetPeerAddr(ssl *SSL, peer_addr *BIO_ADDR) c.Int
+// llgo:link (*SSL).PeerAddr C.SSL_get_peer_addr
+func (self *SSL) PeerAddr(peer_addr *BIO_ADDR) c.Int {
+	return 0
+}
 
-//go:linkname SSLGetRpollDescriptor C.SSL_get_rpoll_descriptor
-func SSLGetRpollDescriptor(s *SSL, desc *BIO_POLL_DESCRIPTOR) c.Int
+// llgo:link (*SSL).RpollDescriptor C.SSL_get_rpoll_descriptor
+func (self *SSL) RpollDescriptor(desc *BIO_POLL_DESCRIPTOR) c.Int {
+	return 0
+}
 
-//go:linkname SSLGetWpollDescriptor C.SSL_get_wpoll_descriptor
-func SSLGetWpollDescriptor(s *SSL, desc *BIO_POLL_DESCRIPTOR) c.Int
+// llgo:link (*SSL).WpollDescriptor C.SSL_get_wpoll_descriptor
+func (self *SSL) WpollDescriptor(desc *BIO_POLL_DESCRIPTOR) c.Int {
+	return 0
+}
 
-//go:linkname SSLNetReadDesired C.SSL_net_read_desired
-func SSLNetReadDesired(s *SSL) c.Int
+// llgo:link (*SSL).NetReadDesired C.SSL_net_read_desired
+func (self *SSL) NetReadDesired() c.Int {
+	return 0
+}
 
-//go:linkname SSLNetWriteDesired C.SSL_net_write_desired
-func SSLNetWriteDesired(s *SSL) c.Int
+// llgo:link (*SSL).NetWriteDesired C.SSL_net_write_desired
+func (self *SSL) NetWriteDesired() c.Int {
+	return 0
+}
 
-//go:linkname SSLSetBlockingMode C.SSL_set_blocking_mode
-func SSLSetBlockingMode(s *SSL, blocking c.Int) c.Int
+// llgo:link (*SSL).SetBlockingMode C.SSL_set_blocking_mode
+func (self *SSL) SetBlockingMode(blocking c.Int) c.Int {
+	return 0
+}
 
-//go:linkname SSLGetBlockingMode C.SSL_get_blocking_mode
-func SSLGetBlockingMode(s *SSL) c.Int
+// llgo:link (*SSL).BlockingMode C.SSL_get_blocking_mode
+func (self *SSL) BlockingMode() c.Int {
+	return 0
+}
 
-//go:linkname SSLSet1InitialPeerAddr C.SSL_set1_initial_peer_addr
-func SSLSet1InitialPeerAddr(s *SSL, peer_addr *BIO_ADDR) c.Int
+// llgo:link (*SSL).Set1InitialPeerAddr C.SSL_set1_initial_peer_addr
+func (self *SSL) Set1InitialPeerAddr(peer_addr *BIO_ADDR) c.Int {
+	return 0
+}
 
-//go:linkname SSLGet0Connection C.SSL_get0_connection
-func SSLGet0Connection(s *SSL) *SSL
+// llgo:link (*SSL).Get0Connection C.SSL_get0_connection
+func (self *SSL) Get0Connection() *SSL {
+	return self
+}
 
-//go:linkname SSLIsConnection C.SSL_is_connection
-func SSLIsConnection(s *SSL) c.Int
+// llgo:link (*SSL).IsConnection C.SSL_is_connection
+func (self *SSL) IsConnection() c.Int {
+	return 0
+}
 
-//go:linkname SSLIsListener C.SSL_is_listener
-func SSLIsListener(ssl *SSL) c.Int
+// llgo:link (*SSL).IsListener C.SSL_is_listener
+func (self *SSL) IsListener() c.Int {
+	return 0
+}
 
-//go:linkname SSLGet0Listener C.SSL_get0_listener
-func SSLGet0Listener(s *SSL) *SSL
+// llgo:link (*SSL).Get0Listener C.SSL_get0_listener
+func (self *SSL) Get0Listener() *SSL {
+	return self
+}
 
-//go:linkname SSLNewListener C.SSL_new_listener
-func SSLNewListener(ctx *SSL_CTX, flags c.Uint64T) *SSL
+// llgo:link (*SSL_CTX).SSL_new_listener C.SSL_new_listener
+func (self *SSL_CTX) SSL_new_listener(flags c.Uint64T) *SSL {
+	return nil
+}
 
-//go:linkname SSLNewListenerFrom C.SSL_new_listener_from
-func SSLNewListenerFrom(ssl *SSL, flags c.Uint64T) *SSL
+// llgo:link (*SSL).NewListenerFrom C.SSL_new_listener_from
+func (self *SSL) NewListenerFrom(flags c.Uint64T) *SSL {
+	return self
+}
 
-//go:linkname SSLNewFromListener C.SSL_new_from_listener
-func SSLNewFromListener(ssl *SSL, flags c.Uint64T) *SSL
+// llgo:link (*SSL).NewFromListener C.SSL_new_from_listener
+func (self *SSL) NewFromListener(flags c.Uint64T) *SSL {
+	return self
+}
 
-//go:linkname SSLAcceptConnection C.SSL_accept_connection
-func SSLAcceptConnection(ssl *SSL, flags c.Uint64T) *SSL
+// llgo:link (*SSL).AcceptConnection C.SSL_accept_connection
+func (self *SSL) AcceptConnection(flags c.Uint64T) *SSL {
+	return self
+}
 
-//go:linkname SSLGetAcceptConnectionQueueLen C.SSL_get_accept_connection_queue_len
-func SSLGetAcceptConnectionQueueLen(ssl *SSL) c.SizeT
+// llgo:link (*SSL).AcceptConnectionQueueLen C.SSL_get_accept_connection_queue_len
+func (self *SSL) AcceptConnectionQueueLen() c.SizeT {
+	return 0
+}
 
-//go:linkname SSLListen C.SSL_listen
-func SSLListen(ssl *SSL) c.Int
+// llgo:link (*SSL).Listen C.SSL_listen
+func (self *SSL) Listen() c.Int {
+	return 0
+}
 
-//go:linkname SSLIsDomain C.SSL_is_domain
-func SSLIsDomain(s *SSL) c.Int
+// llgo:link (*SSL).IsDomain C.SSL_is_domain
+func (self *SSL) IsDomain() c.Int {
+	return 0
+}
 
-//go:linkname SSLGet0Domain C.SSL_get0_domain
-func SSLGet0Domain(s *SSL) *SSL
+// llgo:link (*SSL).Get0Domain C.SSL_get0_domain
+func (self *SSL) Get0Domain() *SSL {
+	return self
+}
 
-//go:linkname SSLNewDomain C.SSL_new_domain
-func SSLNewDomain(ctx *SSL_CTX, flags c.Uint64T) *SSL
+// llgo:link (*SSL_CTX).SSL_new_domain C.SSL_new_domain
+func (self *SSL_CTX) SSL_new_domain(flags c.Uint64T) *SSL {
+	return nil
+}
 
-//go:linkname SSL_CTXSetDomainFlags C.SSL_CTX_set_domain_flags
-func SSL_CTXSetDomainFlags(ctx *SSL_CTX, domain_flags c.Uint64T) c.Int
+// llgo:link (*SSL_CTX).SetDomainFlags C.SSL_CTX_set_domain_flags
+func (self *SSL_CTX) SetDomainFlags(domain_flags c.Uint64T) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXGetDomainFlags C.SSL_CTX_get_domain_flags
-func SSL_CTXGetDomainFlags(ctx *SSL_CTX, domain_flags *c.Uint64T) c.Int
+// llgo:link (*SSL_CTX).DomainFlags C.SSL_CTX_get_domain_flags
+func (self *SSL_CTX) DomainFlags(domain_flags *c.Uint64T) c.Int {
+	return 0
+}
 
-//go:linkname SSLGetDomainFlags C.SSL_get_domain_flags
-func SSLGetDomainFlags(ssl *SSL, domain_flags *c.Uint64T) c.Int
+// llgo:link (*SSL).DomainFlags C.SSL_get_domain_flags
+func (self *SSL) DomainFlags(domain_flags *c.Uint64T) c.Int {
+	return 0
+}
 
-//go:linkname SSLGetStreamType C.SSL_get_stream_type
-func SSLGetStreamType(s *SSL) c.Int
+// llgo:link (*SSL).StreamType C.SSL_get_stream_type
+func (self *SSL) StreamType() c.Int {
+	return 0
+}
 
-//go:linkname SSLGetStreamId C.SSL_get_stream_id
-func SSLGetStreamId(s *SSL) c.Uint64T
+// llgo:link (*SSL).StreamId C.SSL_get_stream_id
+func (self *SSL) StreamId() c.Uint64T {
+	return 0
+}
 
-//go:linkname SSLIsStreamLocal C.SSL_is_stream_local
-func SSLIsStreamLocal(s *SSL) c.Int
+// llgo:link (*SSL).IsStreamLocal C.SSL_is_stream_local
+func (self *SSL) IsStreamLocal() c.Int {
+	return 0
+}
 
-//go:linkname SSLSetDefaultStreamMode C.SSL_set_default_stream_mode
-func SSLSetDefaultStreamMode(s *SSL, mode c.Uint32T) c.Int
+// llgo:link (*SSL).SetDefaultStreamMode C.SSL_set_default_stream_mode
+func (self *SSL) SetDefaultStreamMode(mode c.Uint32T) c.Int {
+	return 0
+}
 
-//go:linkname SSLNewStream C.SSL_new_stream
-func SSLNewStream(s *SSL, flags c.Uint64T) *SSL
+// llgo:link (*SSL).NewStream C.SSL_new_stream
+func (self *SSL) NewStream(flags c.Uint64T) *SSL {
+	return self
+}
 
-//go:linkname SSLSetIncomingStreamPolicy C.SSL_set_incoming_stream_policy
-func SSLSetIncomingStreamPolicy(s *SSL, policy c.Int, aec c.Uint64T) c.Int
+// llgo:link (*SSL).SetIncomingStreamPolicy C.SSL_set_incoming_stream_policy
+func (self *SSL) SetIncomingStreamPolicy(policy c.Int, aec c.Uint64T) c.Int {
+	return 0
+}
 
-//go:linkname SSLAcceptStream C.SSL_accept_stream
-func SSLAcceptStream(s *SSL, flags c.Uint64T) *SSL
+// llgo:link (*SSL).AcceptStream C.SSL_accept_stream
+func (self *SSL) AcceptStream(flags c.Uint64T) *SSL {
+	return self
+}
 
-//go:linkname SSLGetAcceptStreamQueueLen C.SSL_get_accept_stream_queue_len
-func SSLGetAcceptStreamQueueLen(s *SSL) c.SizeT
+// llgo:link (*SSL).AcceptStreamQueueLen C.SSL_get_accept_stream_queue_len
+func (self *SSL) AcceptStreamQueueLen() c.SizeT {
+	return 0
+}
 
-//go:linkname SSLInjectNetDgram C.SSL_inject_net_dgram
-func SSLInjectNetDgram(s *SSL, buf *uint8, buf_len c.SizeT, peer *BIO_ADDR, local *BIO_ADDR) c.Int
+// llgo:link (*SSL).InjectNetDgram C.SSL_inject_net_dgram
+func (self *SSL) InjectNetDgram(buf *uint8, buf_len c.SizeT, peer *BIO_ADDR, local *BIO_ADDR) c.Int {
+	return 0
+}
 
-//go:linkname SSLShutdownEx C.SSL_shutdown_ex
-func SSLShutdownEx(ssl *SSL, flags c.Uint64T, args *SSL_SHUTDOWN_EX_ARGS, args_len c.SizeT) c.Int
+// llgo:link (*SSL).ShutdownEx C.SSL_shutdown_ex
+func (self *SSL) ShutdownEx(flags c.Uint64T, args *SSL_SHUTDOWN_EX_ARGS, args_len c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSLStreamConclude C.SSL_stream_conclude
-func SSLStreamConclude(ssl *SSL, flags c.Uint64T) c.Int
+// llgo:link (*SSL).StreamConclude C.SSL_stream_conclude
+func (self *SSL) StreamConclude(flags c.Uint64T) c.Int {
+	return 0
+}
 
-//go:linkname SSLStreamReset C.SSL_stream_reset
-func SSLStreamReset(ssl *SSL, args *SSL_STREAM_RESET_ARGS, args_len c.SizeT) c.Int
+// llgo:link (*SSL).StreamReset C.SSL_stream_reset
+func (self *SSL) StreamReset(args *SSL_STREAM_RESET_ARGS, args_len c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSLGetStreamReadState C.SSL_get_stream_read_state
-func SSLGetStreamReadState(ssl *SSL) c.Int
+// llgo:link (*SSL).StreamReadState C.SSL_get_stream_read_state
+func (self *SSL) StreamReadState() c.Int {
+	return 0
+}
 
-//go:linkname SSLGetStreamWriteState C.SSL_get_stream_write_state
-func SSLGetStreamWriteState(ssl *SSL) c.Int
+// llgo:link (*SSL).StreamWriteState C.SSL_get_stream_write_state
+func (self *SSL) StreamWriteState() c.Int {
+	return 0
+}
 
-//go:linkname SSLGetStreamReadErrorCode C.SSL_get_stream_read_error_code
-func SSLGetStreamReadErrorCode(ssl *SSL, app_error_code *c.Uint64T) c.Int
+// llgo:link (*SSL).StreamReadErrorCode C.SSL_get_stream_read_error_code
+func (self *SSL) StreamReadErrorCode(app_error_code *c.Uint64T) c.Int {
+	return 0
+}
 
-//go:linkname SSLGetStreamWriteErrorCode C.SSL_get_stream_write_error_code
-func SSLGetStreamWriteErrorCode(ssl *SSL, app_error_code *c.Uint64T) c.Int
+// llgo:link (*SSL).StreamWriteErrorCode C.SSL_get_stream_write_error_code
+func (self *SSL) StreamWriteErrorCode(app_error_code *c.Uint64T) c.Int {
+	return 0
+}
 
-//go:linkname SSLGetConnCloseInfo C.SSL_get_conn_close_info
-func SSLGetConnCloseInfo(ssl *SSL, info *SSL_CONN_CLOSE_INFO, info_len c.SizeT) c.Int
+// llgo:link (*SSL).ConnCloseInfo C.SSL_get_conn_close_info
+func (self *SSL) ConnCloseInfo(info *SSL_CONN_CLOSE_INFO, info_len c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSLGetValueUint C.SSL_get_value_uint
-func SSLGetValueUint(s *SSL, class_ c.Uint32T, id c.Uint32T, v *c.Uint64T) c.Int
+// llgo:link (*SSL).ValueUint C.SSL_get_value_uint
+func (self *SSL) ValueUint(class_ c.Uint32T, id c.Uint32T, v *c.Uint64T) c.Int {
+	return 0
+}
 
-//go:linkname SSLSetValueUint C.SSL_set_value_uint
-func SSLSetValueUint(s *SSL, class_ c.Uint32T, id c.Uint32T, v c.Uint64T) c.Int
+// llgo:link (*SSL).SetValueUint C.SSL_set_value_uint
+func (self *SSL) SetValueUint(class_ c.Uint32T, id c.Uint32T, v c.Uint64T) c.Int {
+	return 0
+}
 
-//go:linkname SSLPoll C.SSL_poll
-func SSLPoll(items *SSL_POLL_ITEM, num_items c.SizeT, stride c.SizeT, timeout *Timeval, flags c.Uint64T, result_count *c.SizeT) c.Int
+//go:linkname SSL_poll C.SSL_poll
+func SSL_poll(items *SSL_POLL_ITEM, num_items c.SizeT, stride c.SizeT, timeout *Timeval, flags c.Uint64T, result_count *c.SizeT) c.Int
 
-//go:linkname SSLSessionReused C.SSL_session_reused
-func SSLSessionReused(s *SSL) c.Int
+// llgo:link (*SSL).SessionReused C.SSL_session_reused
+func (self *SSL) SessionReused() c.Int {
+	return 0
+}
 
-//go:linkname SSLIsServer C.SSL_is_server
-func SSLIsServer(s *SSL) c.Int
+// llgo:link (*SSL).IsServer C.SSL_is_server
+func (self *SSL) IsServer() c.Int {
+	return 0
+}
 
-//go:linkname SSL_CONF_CTXNew C.SSL_CONF_CTX_new
-func SSL_CONF_CTXNew() *SSL_CONF_CTX
+//go:linkname SSL_CONF_CTX_new C.SSL_CONF_CTX_new
+func SSL_CONF_CTX_new() *SSL_CONF_CTX
 
-//go:linkname SSL_CONF_CTXFinish C.SSL_CONF_CTX_finish
-func SSL_CONF_CTXFinish(cctx *SSL_CONF_CTX) c.Int
+// llgo:link (*SSL_CONF_CTX).Finish C.SSL_CONF_CTX_finish
+func (self *SSL_CONF_CTX) Finish() c.Int {
+	return 0
+}
 
-//go:linkname SSL_CONF_CTXFree C.SSL_CONF_CTX_free
-func SSL_CONF_CTXFree(cctx *SSL_CONF_CTX)
+// llgo:link (*SSL_CONF_CTX).Free C.SSL_CONF_CTX_free
+func (self *SSL_CONF_CTX) Free() {
+}
 
-//go:linkname SSL_CONF_CTXSetFlags C.SSL_CONF_CTX_set_flags
-func SSL_CONF_CTXSetFlags(cctx *SSL_CONF_CTX, flags c.Uint) c.Uint
+// llgo:link (*SSL_CONF_CTX).SetFlags C.SSL_CONF_CTX_set_flags
+func (self *SSL_CONF_CTX) SetFlags(flags c.Uint) c.Uint {
+	return 0
+}
 
-//go:linkname SSL_CONF_CTXClearFlags C.SSL_CONF_CTX_clear_flags
-func SSL_CONF_CTXClearFlags(cctx *SSL_CONF_CTX, flags c.Uint) c.Uint
+// llgo:link (*SSL_CONF_CTX).ClearFlags C.SSL_CONF_CTX_clear_flags
+func (self *SSL_CONF_CTX) ClearFlags(flags c.Uint) c.Uint {
+	return 0
+}
 
-//go:linkname SSL_CONF_CTXSet1Prefix C.SSL_CONF_CTX_set1_prefix
-func SSL_CONF_CTXSet1Prefix(cctx *SSL_CONF_CTX, pre *c.Char) c.Int
+// llgo:link (*SSL_CONF_CTX).Set1Prefix C.SSL_CONF_CTX_set1_prefix
+func (self *SSL_CONF_CTX) Set1Prefix(pre *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CONF_CTXSetSsl C.SSL_CONF_CTX_set_ssl
-func SSL_CONF_CTXSetSsl(cctx *SSL_CONF_CTX, ssl *SSL)
+// llgo:link (*SSL_CONF_CTX).SetSsl C.SSL_CONF_CTX_set_ssl
+func (self *SSL_CONF_CTX) SetSsl(ssl *SSL) {
+}
 
-//go:linkname SSL_CONF_CTXSetSslCtx C.SSL_CONF_CTX_set_ssl_ctx
-func SSL_CONF_CTXSetSslCtx(cctx *SSL_CONF_CTX, ctx *SSL_CTX)
+// llgo:link (*SSL_CONF_CTX).SetSslCtx C.SSL_CONF_CTX_set_ssl_ctx
+func (self *SSL_CONF_CTX) SetSslCtx(ctx *SSL_CTX) {
+}
 
-//go:linkname SSL_CONFCmd C.SSL_CONF_cmd
-func SSL_CONFCmd(cctx *SSL_CONF_CTX, cmd *c.Char, value *c.Char) c.Int
+// llgo:link (*SSL_CONF_CTX).Cmd C.SSL_CONF_cmd
+func (self *SSL_CONF_CTX) Cmd(cmd *c.Char, value *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CONFCmdArgv C.SSL_CONF_cmd_argv
-func SSL_CONFCmdArgv(cctx *SSL_CONF_CTX, pargc *c.Int, pargv ***c.Char) c.Int
+// llgo:link (*SSL_CONF_CTX).CmdArgv C.SSL_CONF_cmd_argv
+func (self *SSL_CONF_CTX) CmdArgv(pargc *c.Int, pargv ***c.Char) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CONFCmdValueType C.SSL_CONF_cmd_value_type
-func SSL_CONFCmdValueType(cctx *SSL_CONF_CTX, cmd *c.Char) c.Int
+// llgo:link (*SSL_CONF_CTX).CmdValueType C.SSL_CONF_cmd_value_type
+func (self *SSL_CONF_CTX) CmdValueType(cmd *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname SSLAddSslModule C.SSL_add_ssl_module
-func SSLAddSslModule()
+//go:linkname SSL_add_ssl_module C.SSL_add_ssl_module
+func SSL_add_ssl_module()
 
-//go:linkname SSLConfig C.SSL_config
-func SSLConfig(s *SSL, name *c.Char) c.Int
+// llgo:link (*SSL).Config C.SSL_config
+func (self *SSL) Config(name *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXConfig C.SSL_CTX_config
-func SSL_CTXConfig(ctx *SSL_CTX, name *c.Char) c.Int
+// llgo:link (*SSL_CTX).Config C.SSL_CTX_config
+func (self *SSL_CTX) Config(name *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname SSLTrace C.SSL_trace
-func SSLTrace(write_p c.Int, version c.Int, content_type c.Int, buf unsafe.Pointer, len c.SizeT, ssl *SSL, arg unsafe.Pointer)
+//go:linkname SSL_trace C.SSL_trace
+func SSL_trace(write_p c.Int, version c.Int, content_type c.Int, buf unsafe.Pointer, len c.SizeT, ssl *SSL, arg unsafe.Pointer)
 
-//go:linkname DTLSv1Listen C.DTLSv1_listen
-func DTLSv1Listen(s *SSL, client *BIO_ADDR) c.Int
+// llgo:link (*SSL).DTLSv1Listen C.DTLSv1_listen
+func (self *SSL) DTLSv1Listen(client *BIO_ADDR) c.Int {
+	return 0
+}
 
-//go:linkname SSLListenEx C.SSL_listen_ex
-func SSLListenEx(listener *SSL, new_conn *SSL) c.Int
+//go:linkname SSL_listen_ex C.SSL_listen_ex
+func SSL_listen_ex(listener *SSL, new_conn *SSL) c.Int
 
 // Sets a |callback| that is invoked upon receipt of ServerHelloDone to validate
 // the received SCTs.
@@ -2742,11 +3636,15 @@ func SSLListenEx(listener *SSL, new_conn *SSL) c.Int
 // NOTE: A side-effect of setting a CT callback is that an OCSP stapled response
 //       will be requested.
 //
-//go:linkname SSLSetCtValidationCallback C.SSL_set_ct_validation_callback
-func SSLSetCtValidationCallback(s *SSL, callback SslCtValidationCb, arg unsafe.Pointer) c.Int
+// llgo:link (*SSL).SetCtValidationCallback C.SSL_set_ct_validation_callback
+func (self *SSL) SetCtValidationCallback(callback SslCtValidationCb, arg unsafe.Pointer) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXSetCtValidationCallback C.SSL_CTX_set_ct_validation_callback
-func SSL_CTXSetCtValidationCallback(ctx *SSL_CTX, callback SslCtValidationCb, arg unsafe.Pointer) c.Int
+// llgo:link (*SSL_CTX).SetCtValidationCallback C.SSL_CTX_set_ct_validation_callback
+func (self *SSL_CTX) SetCtValidationCallback(callback SslCtValidationCb, arg unsafe.Pointer) c.Int {
+	return 0
+}
 
 // Enable CT by setting up a callback that implements one of the built-in
 // validation variants.  The SSL_CT_VALIDATION_PERMISSIVE variant always
@@ -2755,24 +3653,34 @@ func SSL_CTXSetCtValidationCallback(ctx *SSL_CTX, callback SslCtValidationCb, ar
 // least one valid SCT, or else handshake termination will be requested.  The
 // handshake may continue anyway if SSL_VERIFY_NONE is in effect.
 //
-//go:linkname SSLEnableCt C.SSL_enable_ct
-func SSLEnableCt(s *SSL, validation_mode c.Int) c.Int
+// llgo:link (*SSL).EnableCt C.SSL_enable_ct
+func (self *SSL) EnableCt(validation_mode c.Int) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXEnableCt C.SSL_CTX_enable_ct
-func SSL_CTXEnableCt(ctx *SSL_CTX, validation_mode c.Int) c.Int
+// llgo:link (*SSL_CTX).EnableCt C.SSL_CTX_enable_ct
+func (self *SSL_CTX) EnableCt(validation_mode c.Int) c.Int {
+	return 0
+}
 
 // Report whether a non-NULL callback is enabled.
 //
-//go:linkname SSLCtIsEnabled C.SSL_ct_is_enabled
-func SSLCtIsEnabled(s *SSL) c.Int
+// llgo:link (*SSL).CtIsEnabled C.SSL_ct_is_enabled
+func (self *SSL) CtIsEnabled() c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXCtIsEnabled C.SSL_CTX_ct_is_enabled
-func SSL_CTXCtIsEnabled(ctx *SSL_CTX) c.Int
+// llgo:link (*SSL_CTX).CtIsEnabled C.SSL_CTX_ct_is_enabled
+func (self *SSL_CTX) CtIsEnabled() c.Int {
+	return 0
+}
 
 // Gets the SCTs received from a connection
 //
-//go:linkname SSLGet0PeerScts C.SSL_get0_peer_scts
-func SSLGet0PeerScts(s *SSL) *StackStSCT
+// llgo:link (*SSL).Get0PeerScts C.SSL_get0_peer_scts
+func (self *SSL) Get0PeerScts() *Stack_st_SCT {
+	return nil
+}
 
 // Loads the CT log list from the default location.
 // If a CTLOG_STORE has previously been set using SSL_CTX_set_ctlog_store,
@@ -2780,8 +3688,10 @@ func SSLGet0PeerScts(s *SSL) *StackStSCT
 // CTLOG_STORE.
 // Returns 1 on success, 0 otherwise.
 //
-//go:linkname SSL_CTXSetDefaultCtlogListFile C.SSL_CTX_set_default_ctlog_list_file
-func SSL_CTXSetDefaultCtlogListFile(ctx *SSL_CTX) c.Int
+// llgo:link (*SSL_CTX).SetDefaultCtlogListFile C.SSL_CTX_set_default_ctlog_list_file
+func (self *SSL_CTX) SetDefaultCtlogListFile() c.Int {
+	return 0
+}
 
 // Loads the CT log list from the specified file path.
 // If a CTLOG_STORE has previously been set using SSL_CTX_set_ctlog_store,
@@ -2789,14 +3699,17 @@ func SSL_CTXSetDefaultCtlogListFile(ctx *SSL_CTX) c.Int
 // CTLOG_STORE.
 // Returns 1 on success, 0 otherwise.
 //
-//go:linkname SSL_CTXSetCtlogListFile C.SSL_CTX_set_ctlog_list_file
-func SSL_CTXSetCtlogListFile(ctx *SSL_CTX, path *c.Char) c.Int
+// llgo:link (*SSL_CTX).SetCtlogListFile C.SSL_CTX_set_ctlog_list_file
+func (self *SSL_CTX) SetCtlogListFile(path *c.Char) c.Int {
+	return 0
+}
 
 // Sets the CT log list used by all SSL connections created from this SSL_CTX.
 // Ownership of the CTLOG_STORE is transferred to the SSL_CTX.
 //
-//go:linkname SSL_CTXSet0CtlogStore C.SSL_CTX_set0_ctlog_store
-func SSL_CTXSet0CtlogStore(ctx *SSL_CTX, logs *CTLOG_STORE)
+// llgo:link (*SSL_CTX).Set0CtlogStore C.SSL_CTX_set0_ctlog_store
+func (self *SSL_CTX) Set0CtlogStore(logs *CTLOG_STORE) {
+}
 
 // Gets the CT log list used by all SSL connections created from this SSL_CTX.
 // This will be NULL unless one of the following functions has been called:
@@ -2804,148 +3717,229 @@ func SSL_CTXSet0CtlogStore(ctx *SSL_CTX, logs *CTLOG_STORE)
 // - SSL_CTX_set_ctlog_list_file
 // - SSL_CTX_set_ctlog_store
 //
-//go:linkname SSL_CTXGet0CtlogStore C.SSL_CTX_get0_ctlog_store
-func SSL_CTXGet0CtlogStore(ctx *SSL_CTX) *CTLOG_STORE
+// llgo:link (*SSL_CTX).Get0CtlogStore C.SSL_CTX_get0_ctlog_store
+func (self *SSL_CTX) Get0CtlogStore() *CTLOG_STORE {
+	return nil
+}
 
-//go:linkname SSLSetSecurityLevel C.SSL_set_security_level
-func SSLSetSecurityLevel(s *SSL, level c.Int)
+// llgo:link (*SSL).SetSecurityLevel C.SSL_set_security_level
+func (self *SSL) SetSecurityLevel(level c.Int) {
+}
 
-//go:linkname SSLGetSecurityLevel C.SSL_get_security_level
-func SSLGetSecurityLevel(s *SSL) c.Int
+// llgo:link (*SSL).SecurityLevel C.SSL_get_security_level
+func (self *SSL) SecurityLevel() c.Int {
+	return 0
+}
 
-//go:linkname SSLSetSecurityCallback C.SSL_set_security_callback
-func SSLSetSecurityCallback(s *SSL, cb func(_llcppg_param1 *SSL, _llcppg_param2 *SSL_CTX, _llcppg_param3 c.Int, _llcppg_param4 c.Int, _llcppg_param5 c.Int, _llcppg_param6 unsafe.Pointer, _llcppg_param7 unsafe.Pointer) c.Int)
+// llgo:link (*SSL).SetSecurityCallback C.SSL_set_security_callback
+func (self *SSL) SetSecurityCallback(cb func(_llcppg_param1 *SSL, _llcppg_param2 *SSL_CTX, _llcppg_param3 c.Int, _llcppg_param4 c.Int, _llcppg_param5 c.Int, _llcppg_param6 unsafe.Pointer, _llcppg_param7 unsafe.Pointer) c.Int) {
+}
 
-//go:linkname SSLGetSecurityCallback C.SSL_get_security_callback
-func SSLGetSecurityCallback(s *SSL) func(_llcppg_param1 *SSL, _llcppg_param2 *SSL_CTX, _llcppg_param3 c.Int, _llcppg_param4 c.Int, _llcppg_param5 c.Int, _llcppg_param6 unsafe.Pointer, _llcppg_param7 unsafe.Pointer) c.Int
+// llgo:link (*SSL).SecurityCallback C.SSL_get_security_callback
+func (self *SSL) SecurityCallback() func(_llcppg_param1 *SSL, _llcppg_param2 *SSL_CTX, _llcppg_param3 c.Int, _llcppg_param4 c.Int, _llcppg_param5 c.Int, _llcppg_param6 unsafe.Pointer, _llcppg_param7 unsafe.Pointer) c.Int {
+	return nil
+}
 
-//go:linkname SSLSet0SecurityExData C.SSL_set0_security_ex_data
-func SSLSet0SecurityExData(s *SSL, ex unsafe.Pointer)
+// llgo:link (*SSL).Set0SecurityExData C.SSL_set0_security_ex_data
+func (self *SSL) Set0SecurityExData(ex unsafe.Pointer) {
+}
 
-//go:linkname SSLGet0SecurityExData C.SSL_get0_security_ex_data
-func SSLGet0SecurityExData(s *SSL) unsafe.Pointer
+// llgo:link (*SSL).Get0SecurityExData C.SSL_get0_security_ex_data
+func (self *SSL) Get0SecurityExData() unsafe.Pointer {
+	return nil
+}
 
-//go:linkname SSL_CTXSetSecurityLevel C.SSL_CTX_set_security_level
-func SSL_CTXSetSecurityLevel(ctx *SSL_CTX, level c.Int)
+// llgo:link (*SSL_CTX).SetSecurityLevel C.SSL_CTX_set_security_level
+func (self *SSL_CTX) SetSecurityLevel(level c.Int) {
+}
 
-//go:linkname SSL_CTXGetSecurityLevel C.SSL_CTX_get_security_level
-func SSL_CTXGetSecurityLevel(ctx *SSL_CTX) c.Int
+// llgo:link (*SSL_CTX).SecurityLevel C.SSL_CTX_get_security_level
+func (self *SSL_CTX) SecurityLevel() c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXSetSecurityCallback C.SSL_CTX_set_security_callback
-func SSL_CTXSetSecurityCallback(ctx *SSL_CTX, cb func(_llcppg_param1 *SSL, _llcppg_param2 *SSL_CTX, _llcppg_param3 c.Int, _llcppg_param4 c.Int, _llcppg_param5 c.Int, _llcppg_param6 unsafe.Pointer, _llcppg_param7 unsafe.Pointer) c.Int)
+// llgo:link (*SSL_CTX).SetSecurityCallback C.SSL_CTX_set_security_callback
+func (self *SSL_CTX) SetSecurityCallback(cb func(_llcppg_param1 *SSL, _llcppg_param2 *SSL_CTX, _llcppg_param3 c.Int, _llcppg_param4 c.Int, _llcppg_param5 c.Int, _llcppg_param6 unsafe.Pointer, _llcppg_param7 unsafe.Pointer) c.Int) {
+}
 
-//go:linkname SSL_CTXGetSecurityCallback C.SSL_CTX_get_security_callback
-func SSL_CTXGetSecurityCallback(ctx *SSL_CTX) func(_llcppg_param1 *SSL, _llcppg_param2 *SSL_CTX, _llcppg_param3 c.Int, _llcppg_param4 c.Int, _llcppg_param5 c.Int, _llcppg_param6 unsafe.Pointer, _llcppg_param7 unsafe.Pointer) c.Int
+// llgo:link (*SSL_CTX).SecurityCallback C.SSL_CTX_get_security_callback
+func (self *SSL_CTX) SecurityCallback() func(_llcppg_param1 *SSL, _llcppg_param2 *SSL_CTX, _llcppg_param3 c.Int, _llcppg_param4 c.Int, _llcppg_param5 c.Int, _llcppg_param6 unsafe.Pointer, _llcppg_param7 unsafe.Pointer) c.Int {
+	return nil
+}
 
-//go:linkname SSL_CTXSet0SecurityExData C.SSL_CTX_set0_security_ex_data
-func SSL_CTXSet0SecurityExData(ctx *SSL_CTX, ex unsafe.Pointer)
+// llgo:link (*SSL_CTX).Set0SecurityExData C.SSL_CTX_set0_security_ex_data
+func (self *SSL_CTX) Set0SecurityExData(ex unsafe.Pointer) {
+}
 
-//go:linkname SSL_CTXGet0SecurityExData C.SSL_CTX_get0_security_ex_data
-func SSL_CTXGet0SecurityExData(ctx *SSL_CTX) unsafe.Pointer
+// llgo:link (*SSL_CTX).Get0SecurityExData C.SSL_CTX_get0_security_ex_data
+func (self *SSL_CTX) Get0SecurityExData() unsafe.Pointer {
+	return nil
+}
 
-//go:linkname OPENSSLInitSsl C.OPENSSL_init_ssl
-func OPENSSLInitSsl(opts c.Uint64T, settings *OPENSSL_INIT_SETTINGS) c.Int
+//go:linkname InitSsl C.OPENSSL_init_ssl
+func InitSsl(opts c.Uint64T, settings *INIT_SETTINGS) c.Int
 
-//go:linkname SSLFreeBuffers C.SSL_free_buffers
-func SSLFreeBuffers(ssl *SSL) c.Int
+// llgo:link (*SSL).FreeBuffers C.SSL_free_buffers
+func (self *SSL) FreeBuffers() c.Int {
+	return 0
+}
 
-//go:linkname SSLAllocBuffers C.SSL_alloc_buffers
-func SSLAllocBuffers(ssl *SSL) c.Int
+// llgo:link (*SSL).AllocBuffers C.SSL_alloc_buffers
+func (self *SSL) AllocBuffers() c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXSetSessionTicketCb C.SSL_CTX_set_session_ticket_cb
-func SSL_CTXSetSessionTicketCb(ctx *SSL_CTX, gen_cb SSL_CTXGenerateSessionTicketFn, dec_cb SSL_CTXDecryptSessionTicketFn, arg unsafe.Pointer) c.Int
+// llgo:link (*SSL_CTX).SetSessionTicketCb C.SSL_CTX_set_session_ticket_cb
+func (self *SSL_CTX) SetSessionTicketCb(gen_cb SSL_CTX_generate_session_ticket_fn, dec_cb SSL_CTX_decrypt_session_ticket_fn, arg unsafe.Pointer) c.Int {
+	return 0
+}
 
-//go:linkname SSL_SESSIONSet1TicketAppdata C.SSL_SESSION_set1_ticket_appdata
-func SSL_SESSIONSet1TicketAppdata(ss *SSL_SESSION, data unsafe.Pointer, len c.SizeT) c.Int
+// llgo:link (*SSL_SESSION).Set1TicketAppdata C.SSL_SESSION_set1_ticket_appdata
+func (self *SSL_SESSION) Set1TicketAppdata(data unsafe.Pointer, len c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSL_SESSIONGet0TicketAppdata C.SSL_SESSION_get0_ticket_appdata
-func SSL_SESSIONGet0TicketAppdata(ss *SSL_SESSION, data *unsafe.Pointer, len *c.SizeT) c.Int
+// llgo:link (*SSL_SESSION).Get0TicketAppdata C.SSL_SESSION_get0_ticket_appdata
+func (self *SSL_SESSION) Get0TicketAppdata(data *unsafe.Pointer, len *c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname DTLSSetTimerCb C.DTLS_set_timer_cb
-func DTLSSetTimerCb(s *SSL, cb DTLSTimerCb)
+// llgo:link (*SSL).DTLS_set_timer_cb C.DTLS_set_timer_cb
+func (self *SSL) DTLS_set_timer_cb(cb DTLS_timer_cb) {
+}
 
-//go:linkname SSL_CTXSetAllowEarlyDataCb C.SSL_CTX_set_allow_early_data_cb
-func SSL_CTXSetAllowEarlyDataCb(ctx *SSL_CTX, cb SSLAllowEarlyDataCbFn, arg unsafe.Pointer)
+// llgo:link (*SSL_CTX).SetAllowEarlyDataCb C.SSL_CTX_set_allow_early_data_cb
+func (self *SSL_CTX) SetAllowEarlyDataCb(cb SSL_allow_early_data_cb_fn, arg unsafe.Pointer) {
+}
 
-//go:linkname SSLSetAllowEarlyDataCb C.SSL_set_allow_early_data_cb
-func SSLSetAllowEarlyDataCb(s *SSL, cb SSLAllowEarlyDataCbFn, arg unsafe.Pointer)
+// llgo:link (*SSL).SetAllowEarlyDataCb C.SSL_set_allow_early_data_cb
+func (self *SSL) SetAllowEarlyDataCb(cb SSL_allow_early_data_cb_fn, arg unsafe.Pointer) {
+}
 
 // store the default cipher strings inside the library
 //
-//go:linkname OSSLDefaultCipherList C.OSSL_default_cipher_list
-func OSSLDefaultCipherList() *c.Char
+//go:linkname OSSL_default_cipher_list C.OSSL_default_cipher_list
+func OSSL_default_cipher_list() *c.Char
 
-//go:linkname OSSLDefaultCiphersuites C.OSSL_default_ciphersuites
-func OSSLDefaultCiphersuites() *c.Char
+//go:linkname OSSL_default_ciphersuites C.OSSL_default_ciphersuites
+func OSSL_default_ciphersuites() *c.Char
 
-//go:linkname SSL_CTXCompressCerts C.SSL_CTX_compress_certs
-func SSL_CTXCompressCerts(ctx *SSL_CTX, alg c.Int) c.Int
+// llgo:link (*SSL_CTX).CompressCerts C.SSL_CTX_compress_certs
+func (self *SSL_CTX) CompressCerts(alg c.Int) c.Int {
+	return 0
+}
 
-//go:linkname SSLCompressCerts C.SSL_compress_certs
-func SSLCompressCerts(ssl *SSL, alg c.Int) c.Int
+// llgo:link (*SSL).CompressCerts C.SSL_compress_certs
+func (self *SSL) CompressCerts(alg c.Int) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXSet1CertCompPreference C.SSL_CTX_set1_cert_comp_preference
-func SSL_CTXSet1CertCompPreference(ctx *SSL_CTX, algs *c.Int, len c.SizeT) c.Int
+// llgo:link (*SSL_CTX).Set1CertCompPreference C.SSL_CTX_set1_cert_comp_preference
+func (self *SSL_CTX) Set1CertCompPreference(algs *c.Int, len c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSLSet1CertCompPreference C.SSL_set1_cert_comp_preference
-func SSLSet1CertCompPreference(ssl *SSL, algs *c.Int, len c.SizeT) c.Int
+// llgo:link (*SSL).Set1CertCompPreference C.SSL_set1_cert_comp_preference
+func (self *SSL) Set1CertCompPreference(algs *c.Int, len c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXSet1CompressedCert C.SSL_CTX_set1_compressed_cert
-func SSL_CTXSet1CompressedCert(ctx *SSL_CTX, algorithm c.Int, comp_data *uint8, comp_length c.SizeT, orig_length c.SizeT) c.Int
+// llgo:link (*SSL_CTX).Set1CompressedCert C.SSL_CTX_set1_compressed_cert
+func (self *SSL_CTX) Set1CompressedCert(algorithm c.Int, comp_data *uint8, comp_length c.SizeT, orig_length c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSLSet1CompressedCert C.SSL_set1_compressed_cert
-func SSLSet1CompressedCert(ssl *SSL, algorithm c.Int, comp_data *uint8, comp_length c.SizeT, orig_length c.SizeT) c.Int
+// llgo:link (*SSL).Set1CompressedCert C.SSL_set1_compressed_cert
+func (self *SSL) Set1CompressedCert(algorithm c.Int, comp_data *uint8, comp_length c.SizeT, orig_length c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXGet1CompressedCert C.SSL_CTX_get1_compressed_cert
-func SSL_CTXGet1CompressedCert(ctx *SSL_CTX, alg c.Int, data **uint8, orig_len *c.SizeT) c.SizeT
+// llgo:link (*SSL_CTX).Get1CompressedCert C.SSL_CTX_get1_compressed_cert
+func (self *SSL_CTX) Get1CompressedCert(alg c.Int, data **uint8, orig_len *c.SizeT) c.SizeT {
+	return 0
+}
 
-//go:linkname SSLGet1CompressedCert C.SSL_get1_compressed_cert
-func SSLGet1CompressedCert(ssl *SSL, alg c.Int, data **uint8, orig_len *c.SizeT) c.SizeT
+// llgo:link (*SSL).Get1CompressedCert C.SSL_get1_compressed_cert
+func (self *SSL) Get1CompressedCert(alg c.Int, data **uint8, orig_len *c.SizeT) c.SizeT {
+	return 0
+}
 
-//go:linkname SSLAddExpectedRpk C.SSL_add_expected_rpk
-func SSLAddExpectedRpk(s *SSL, rpk *EVP_PKEY) c.Int
+// llgo:link (*SSL).AddExpectedRpk C.SSL_add_expected_rpk
+func (self *SSL) AddExpectedRpk(rpk *EVP_PKEY) c.Int {
+	return 0
+}
 
-//go:linkname SSLGet0PeerRpk C.SSL_get0_peer_rpk
-func SSLGet0PeerRpk(s *SSL) *EVP_PKEY
+// llgo:link (*SSL).Get0PeerRpk C.SSL_get0_peer_rpk
+func (self *SSL) Get0PeerRpk() *EVP_PKEY {
+	return nil
+}
 
-//go:linkname SSL_SESSIONGet0PeerRpk C.SSL_SESSION_get0_peer_rpk
-func SSL_SESSIONGet0PeerRpk(s *SSL_SESSION) *EVP_PKEY
+// llgo:link (*SSL_SESSION).Get0PeerRpk C.SSL_SESSION_get0_peer_rpk
+func (self *SSL_SESSION) Get0PeerRpk() *EVP_PKEY {
+	return nil
+}
 
-//go:linkname SSLGetNegotiatedClientCertType C.SSL_get_negotiated_client_cert_type
-func SSLGetNegotiatedClientCertType(s *SSL) c.Int
+// llgo:link (*SSL).NegotiatedClientCertType C.SSL_get_negotiated_client_cert_type
+func (self *SSL) NegotiatedClientCertType() c.Int {
+	return 0
+}
 
-//go:linkname SSLGetNegotiatedServerCertType C.SSL_get_negotiated_server_cert_type
-func SSLGetNegotiatedServerCertType(s *SSL) c.Int
+// llgo:link (*SSL).NegotiatedServerCertType C.SSL_get_negotiated_server_cert_type
+func (self *SSL) NegotiatedServerCertType() c.Int {
+	return 0
+}
 
-//go:linkname SSLSet1ClientCertType C.SSL_set1_client_cert_type
-func SSLSet1ClientCertType(s *SSL, val *uint8, len c.SizeT) c.Int
+// llgo:link (*SSL).Set1ClientCertType C.SSL_set1_client_cert_type
+func (self *SSL) Set1ClientCertType(val *uint8, len c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSLSet1ServerCertType C.SSL_set1_server_cert_type
-func SSLSet1ServerCertType(s *SSL, val *uint8, len c.SizeT) c.Int
+// llgo:link (*SSL).Set1ServerCertType C.SSL_set1_server_cert_type
+func (self *SSL) Set1ServerCertType(val *uint8, len c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXSet1ClientCertType C.SSL_CTX_set1_client_cert_type
-func SSL_CTXSet1ClientCertType(ctx *SSL_CTX, val *uint8, len c.SizeT) c.Int
+// llgo:link (*SSL_CTX).Set1ClientCertType C.SSL_CTX_set1_client_cert_type
+func (self *SSL_CTX) Set1ClientCertType(val *uint8, len c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXSet1ServerCertType C.SSL_CTX_set1_server_cert_type
-func SSL_CTXSet1ServerCertType(ctx *SSL_CTX, val *uint8, len c.SizeT) c.Int
+// llgo:link (*SSL_CTX).Set1ServerCertType C.SSL_CTX_set1_server_cert_type
+func (self *SSL_CTX) Set1ServerCertType(val *uint8, len c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSLGet0ClientCertType C.SSL_get0_client_cert_type
-func SSLGet0ClientCertType(s *SSL, t **uint8, len *c.SizeT) c.Int
+// llgo:link (*SSL).Get0ClientCertType C.SSL_get0_client_cert_type
+func (self *SSL) Get0ClientCertType(t **uint8, len *c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSLGet0ServerCertType C.SSL_get0_server_cert_type
-func SSLGet0ServerCertType(s *SSL, t **uint8, len *c.SizeT) c.Int
+// llgo:link (*SSL).Get0ServerCertType C.SSL_get0_server_cert_type
+func (self *SSL) Get0ServerCertType(t **uint8, len *c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXGet0ClientCertType C.SSL_CTX_get0_client_cert_type
-func SSL_CTXGet0ClientCertType(ctx *SSL_CTX, t **uint8, len *c.SizeT) c.Int
+// llgo:link (*SSL_CTX).Get0ClientCertType C.SSL_CTX_get0_client_cert_type
+func (self *SSL_CTX) Get0ClientCertType(t **uint8, len *c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXGet0ServerCertType C.SSL_CTX_get0_server_cert_type
-func SSL_CTXGet0ServerCertType(s *SSL_CTX, t **uint8, len *c.SizeT) c.Int
+// llgo:link (*SSL_CTX).Get0ServerCertType C.SSL_CTX_get0_server_cert_type
+func (self *SSL_CTX) Get0ServerCertType(t **uint8, len *c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSLSetQuicTlsCbs C.SSL_set_quic_tls_cbs
-func SSLSetQuicTlsCbs(s *SSL, qtdis *OSSL_DISPATCH, arg unsafe.Pointer) c.Int
+// llgo:link (*SSL).SetQuicTlsCbs C.SSL_set_quic_tls_cbs
+func (self *SSL) SetQuicTlsCbs(qtdis *OSSL_DISPATCH, arg unsafe.Pointer) c.Int {
+	return 0
+}
 
-//go:linkname SSLSetQuicTlsTransportParams C.SSL_set_quic_tls_transport_params
-func SSLSetQuicTlsTransportParams(s *SSL, params *uint8, params_len c.SizeT) c.Int
+// llgo:link (*SSL).SetQuicTlsTransportParams C.SSL_set_quic_tls_transport_params
+func (self *SSL) SetQuicTlsTransportParams(params *uint8, params_len c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSLSetQuicTlsEarlyDataEnabled C.SSL_set_quic_tls_early_data_enabled
-func SSLSetQuicTlsEarlyDataEnabled(s *SSL, enabled c.Int) c.Int
+// llgo:link (*SSL).SetQuicTlsEarlyDataEnabled C.SSL_set_quic_tls_early_data_enabled
+func (self *SSL) SetQuicTlsEarlyDataEnabled(enabled c.Int) c.Int {
+	return 0
+}

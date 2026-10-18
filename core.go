@@ -135,9 +135,9 @@ type OsslCoreHandleSt struct {
 }
 
 // Opaque handles to be used with core upcall functions from providers
-type OSSL_CORE_HANDLE = OsslCoreHandleSt
-type OPENSSL_CORE_CTX = OpensslCoreCtxSt
-type OSSL_CORE_BIO = OsslCoreBioSt
+type OSSL_CORE_HANDLE OsslCoreHandleSt
+type CORE_CTX OpensslCoreCtxSt
+type OSSL_CORE_BIO OsslCoreBioSt
 
 // Typedef for the thread stop handling callback. Used both internally and by
 // providers.
@@ -149,7 +149,7 @@ type OSSL_CORE_BIO = OsslCoreBioSt
 // be the provider side context object.
 //
 // llgo:type C
-type OSSLThreadStopHandlerFn = func(_llcppg_param1 unsafe.Pointer)
+type OSSL_thread_stop_handler_fn = func(_llcppg_param1 unsafe.Pointer)
 
 // -
 // |handle|     pointer to opaque type OSSL_CORE_HANDLE.  This can be used
@@ -162,7 +162,7 @@ type OSSLThreadStopHandlerFn = func(_llcppg_param1 unsafe.Pointer)
 //              functions, notably other context constructors.
 //
 // llgo:type C
-type OSSLProviderInitFn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 *OSSL_DISPATCH, _llcppg_param3 **OSSL_DISPATCH, _llcppg_param4 *unsafe.Pointer) c.Int
+type OSSL_provider_init_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 *OSSL_DISPATCH, _llcppg_param3 **OSSL_DISPATCH, _llcppg_param4 *unsafe.Pointer) c.Int
 
 // Generic callback function signature.
 //
@@ -195,5 +195,7 @@ type OSSL_INOUT_CALLBACK = func(_llcppg_param1 *OSSL_PARAM, _llcppg_param2 *OSSL
 // llgo:type C
 type OSSL_PASSPHRASE_CALLBACK = func(_llcppg_param1 *c.Char, _llcppg_param2 c.SizeT, _llcppg_param3 *c.SizeT, _llcppg_param4 *OSSL_PARAM, _llcppg_param5 unsafe.Pointer) c.Int
 
-//go:linkname OSSLProviderInit C.OSSL_provider_init
-func OSSLProviderInit(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 *OSSL_DISPATCH, _llcppg_param3 **OSSL_DISPATCH, _llcppg_param4 *unsafe.Pointer) c.Int
+// llgo:link (*OSSL_CORE_HANDLE).ProviderInit C.OSSL_provider_init
+func (self *OSSL_CORE_HANDLE) ProviderInit(_llcppg_param2 *OSSL_DISPATCH, _llcppg_param3 **OSSL_DISPATCH, _llcppg_param4 *unsafe.Pointer) c.Int {
+	return 0
+}

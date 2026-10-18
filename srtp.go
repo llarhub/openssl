@@ -2,10 +2,7 @@
 
 package openssl
 
-import (
-	"github.com/goplus/lib/c"
-	_ "unsafe"
-)
+import "github.com/goplus/lib/c"
 
 const (
 	SRTP_AES128_CM_SHA1_80 = 1
@@ -38,14 +35,22 @@ const (
 	SRTP_AEAD_ARIA_256_GCM         = 16
 )
 
-//go:linkname SSL_CTXSetTlsextUseSrtp C.SSL_CTX_set_tlsext_use_srtp
-func SSL_CTXSetTlsextUseSrtp(ctx *SSL_CTX, profiles *c.Char) c.Int
+// llgo:link (*SSL_CTX).SetTlsextUseSrtp C.SSL_CTX_set_tlsext_use_srtp
+func (self *SSL_CTX) SetTlsextUseSrtp(profiles *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname SSLSetTlsextUseSrtp C.SSL_set_tlsext_use_srtp
-func SSLSetTlsextUseSrtp(ssl *SSL, profiles *c.Char) c.Int
+// llgo:link (*SSL).SetTlsextUseSrtp C.SSL_set_tlsext_use_srtp
+func (self *SSL) SetTlsextUseSrtp(profiles *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname SSLGetSrtpProfiles C.SSL_get_srtp_profiles
-func SSLGetSrtpProfiles(ssl *SSL) *StackStSRTP_PROTECTION_PROFILE
+// llgo:link (*SSL).SrtpProfiles C.SSL_get_srtp_profiles
+func (self *SSL) SrtpProfiles() *Stack_st_SRTP_PROTECTION_PROFILE {
+	return nil
+}
 
-//go:linkname SSLGetSelectedSrtpProfile C.SSL_get_selected_srtp_profile
-func SSLGetSelectedSrtpProfile(s *SSL) *SRTP_PROTECTION_PROFILE
+// llgo:link (*SSL).SelectedSrtpProfile C.SSL_get_selected_srtp_profile
+func (self *SSL) SelectedSrtpProfile() *SRTP_PROTECTION_PROFILE {
+	return nil
+}

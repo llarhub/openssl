@@ -10,38 +10,56 @@ import (
 // Deprecated
 const HMAC_MAX_MD_CBLOCK = 200
 
-//go:linkname HMACSize C.HMAC_size
-func HMACSize(e *HMAC_CTX) c.SizeT
+// llgo:link (*HMAC_CTX).Size C.HMAC_size
+func (self *HMAC_CTX) Size() c.SizeT {
+	return 0
+}
 
-//go:linkname HMAC_CTXNew C.HMAC_CTX_new
-func HMAC_CTXNew() *HMAC_CTX
+//go:linkname HMAC_CTX_new C.HMAC_CTX_new
+func HMAC_CTX_new() *HMAC_CTX
 
-//go:linkname HMAC_CTXReset C.HMAC_CTX_reset
-func HMAC_CTXReset(ctx *HMAC_CTX) c.Int
+// llgo:link (*HMAC_CTX).Reset C.HMAC_CTX_reset
+func (self *HMAC_CTX) Reset() c.Int {
+	return 0
+}
 
-//go:linkname HMAC_CTXFree C.HMAC_CTX_free
-func HMAC_CTXFree(ctx *HMAC_CTX)
+// llgo:link (*HMAC_CTX).Free C.HMAC_CTX_free
+func (self *HMAC_CTX) Free() {
+}
 
-//go:linkname HMAC_Init C.HMAC_Init
-func HMAC_Init(ctx *HMAC_CTX, key unsafe.Pointer, len c.Int, md *EVP_MD) c.Int
+// llgo:link (*HMAC_CTX).Init C.HMAC_Init
+func (self *HMAC_CTX) Init(key unsafe.Pointer, len c.Int, md *EVP_MD) c.Int {
+	return 0
+}
 
-//go:linkname HMACInitEx C.HMAC_Init_ex
-func HMACInitEx(ctx *HMAC_CTX, key unsafe.Pointer, len c.Int, md *EVP_MD, impl *ENGINE) c.Int
+// llgo:link (*HMAC_CTX).InitEx C.HMAC_Init_ex
+func (self *HMAC_CTX) InitEx(key unsafe.Pointer, len c.Int, md *EVP_MD, impl *ENGINE) c.Int {
+	return 0
+}
 
-//go:linkname HMAC_Update C.HMAC_Update
-func HMAC_Update(ctx *HMAC_CTX, data *uint8, len c.SizeT) c.Int
+// llgo:link (*HMAC_CTX).Update C.HMAC_Update
+func (self *HMAC_CTX) Update(data *uint8, len c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname HMAC_Final C.HMAC_Final
-func HMAC_Final(ctx *HMAC_CTX, md *uint8, len *c.Uint) c.Int
+// llgo:link (*HMAC_CTX).Final C.HMAC_Final
+func (self *HMAC_CTX) Final(md *uint8, len *c.Uint) c.Int {
+	return 0
+}
 
-//go:linkname HMAC_CTXCopy C.HMAC_CTX_copy
-func HMAC_CTXCopy(dctx *HMAC_CTX, sctx *HMAC_CTX) c.Int
+//go:linkname HMAC_CTX_copy C.HMAC_CTX_copy
+func HMAC_CTX_copy(dctx *HMAC_CTX, sctx *HMAC_CTX) c.Int
 
-//go:linkname HMAC_CTXSetFlags C.HMAC_CTX_set_flags
-func HMAC_CTXSetFlags(ctx *HMAC_CTX, flags c.Ulong)
+// llgo:link (*HMAC_CTX).SetFlags C.HMAC_CTX_set_flags
+func (self *HMAC_CTX) SetFlags(flags c.Ulong) {
+}
 
-//go:linkname HMAC_CTXGetMd C.HMAC_CTX_get_md
-func HMAC_CTXGetMd(ctx *HMAC_CTX) *EVP_MD
+// llgo:link (*HMAC_CTX).Md C.HMAC_CTX_get_md
+func (self *HMAC_CTX) Md() *EVP_MD {
+	return nil
+}
 
-//go:linkname HMAC C.HMAC
-func HMAC(evp_md *EVP_MD, key unsafe.Pointer, key_len c.Int, data *uint8, data_len c.SizeT, md *uint8, md_len *c.Uint) *uint8
+// llgo:link (*EVP_MD).HMAC C.HMAC
+func (self *EVP_MD) HMAC(key unsafe.Pointer, key_len c.Int, data *uint8, data_len c.SizeT, md *uint8, md_len *c.Uint) *uint8 {
+	return nil
+}

@@ -33,20 +33,20 @@ const (
 
 // Method used for non-thread-assisted QUIC client operation.
 //
-//go:linkname OSSL_QUICClientMethod C.OSSL_QUIC_client_method
-func OSSL_QUICClientMethod() *SSL_METHOD
+//go:linkname OSSL_QUIC_client_method C.OSSL_QUIC_client_method
+func OSSL_QUIC_client_method() *SSL_METHOD
 
 // Method used for thread-assisted QUIC client operation.
 //
-//go:linkname OSSL_QUICClientThreadMethod C.OSSL_QUIC_client_thread_method
-func OSSL_QUICClientThreadMethod() *SSL_METHOD
+//go:linkname OSSL_QUIC_client_thread_method C.OSSL_QUIC_client_thread_method
+func OSSL_QUIC_client_thread_method() *SSL_METHOD
 
 // Method used for QUIC server operation.
 //
-//go:linkname OSSL_QUICServerMethod C.OSSL_QUIC_server_method
-func OSSL_QUICServerMethod() *SSL_METHOD
+//go:linkname OSSL_QUIC_server_method C.OSSL_QUIC_server_method
+func OSSL_QUIC_server_method() *SSL_METHOD
 
 // Method used for QUIC client/server connection
 //
-//go:linkname OSSL_QUICMethod C.OSSL_QUIC_method
-func OSSL_QUICMethod() *SSL_METHOD
+//go:linkname OSSL_QUIC_method C.OSSL_QUIC_method
+func OSSL_QUIC_method() *SSL_METHOD

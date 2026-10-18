@@ -25,80 +25,101 @@ type AsyncJobSt struct {
 }
 type AsyncWaitCtxSt struct {
 }
-type ASYNC_JOB = AsyncJobSt
-type ASYNC_WAIT_CTX = AsyncWaitCtxSt
+type ASYNC_JOB AsyncJobSt
+type ASYNC_WAIT_CTX AsyncWaitCtxSt
 
 // llgo:type C
-type ASYNCCallbackFn = func(_llcppg_param1 unsafe.Pointer) c.Int
+type ASYNC_callback_fn = func(_llcppg_param1 unsafe.Pointer) c.Int
 
 // llgo:type C
-type ASYNCStackAllocFn = func(_llcppg_param1 *c.SizeT) unsafe.Pointer
+type ASYNC_stack_alloc_fn = func(_llcppg_param1 *c.SizeT) unsafe.Pointer
 
 // llgo:type C
-type ASYNCStackFreeFn = func(_llcppg_param1 unsafe.Pointer)
+type ASYNC_stack_free_fn = func(_llcppg_param1 unsafe.Pointer)
 
-//go:linkname ASYNCInitThread C.ASYNC_init_thread
-func ASYNCInitThread(max_size c.SizeT, init_size c.SizeT) c.Int
+//go:linkname ASYNC_init_thread C.ASYNC_init_thread
+func ASYNC_init_thread(max_size c.SizeT, init_size c.SizeT) c.Int
 
-//go:linkname ASYNCCleanupThread C.ASYNC_cleanup_thread
-func ASYNCCleanupThread()
+//go:linkname ASYNC_cleanup_thread C.ASYNC_cleanup_thread
+func ASYNC_cleanup_thread()
 
-//go:linkname ASYNC_WAIT_CTXNew C.ASYNC_WAIT_CTX_new
-func ASYNC_WAIT_CTXNew() *ASYNC_WAIT_CTX
+//go:linkname ASYNC_WAIT_CTX_new C.ASYNC_WAIT_CTX_new
+func ASYNC_WAIT_CTX_new() *ASYNC_WAIT_CTX
 
-//go:linkname ASYNC_WAIT_CTXFree C.ASYNC_WAIT_CTX_free
-func ASYNC_WAIT_CTXFree(ctx *ASYNC_WAIT_CTX)
+// llgo:link (*ASYNC_WAIT_CTX).Free C.ASYNC_WAIT_CTX_free
+func (self *ASYNC_WAIT_CTX) Free() {
+}
 
-//go:linkname ASYNC_WAIT_CTXSetWaitFd C.ASYNC_WAIT_CTX_set_wait_fd
-func ASYNC_WAIT_CTXSetWaitFd(ctx *ASYNC_WAIT_CTX, key unsafe.Pointer, fd c.Int, custom_data unsafe.Pointer, cleanup func(_llcppg_param1 *ASYNC_WAIT_CTX, _llcppg_param2 unsafe.Pointer, _llcppg_param3 c.Int, _llcppg_param4 unsafe.Pointer)) c.Int
+// llgo:link (*ASYNC_WAIT_CTX).SetWaitFd C.ASYNC_WAIT_CTX_set_wait_fd
+func (self *ASYNC_WAIT_CTX) SetWaitFd(key unsafe.Pointer, fd c.Int, custom_data unsafe.Pointer, cleanup func(_llcppg_param1 *ASYNC_WAIT_CTX, _llcppg_param2 unsafe.Pointer, _llcppg_param3 c.Int, _llcppg_param4 unsafe.Pointer)) c.Int {
+	return 0
+}
 
-//go:linkname ASYNC_WAIT_CTXGetFd C.ASYNC_WAIT_CTX_get_fd
-func ASYNC_WAIT_CTXGetFd(ctx *ASYNC_WAIT_CTX, key unsafe.Pointer, fd *c.Int, custom_data *unsafe.Pointer) c.Int
+// llgo:link (*ASYNC_WAIT_CTX).Fd C.ASYNC_WAIT_CTX_get_fd
+func (self *ASYNC_WAIT_CTX) Fd(key unsafe.Pointer, fd *c.Int, custom_data *unsafe.Pointer) c.Int {
+	return 0
+}
 
-//go:linkname ASYNC_WAIT_CTXGetAllFds C.ASYNC_WAIT_CTX_get_all_fds
-func ASYNC_WAIT_CTXGetAllFds(ctx *ASYNC_WAIT_CTX, fd *c.Int, numfds *c.SizeT) c.Int
+// llgo:link (*ASYNC_WAIT_CTX).AllFds C.ASYNC_WAIT_CTX_get_all_fds
+func (self *ASYNC_WAIT_CTX) AllFds(fd *c.Int, numfds *c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname ASYNC_WAIT_CTXGetCallback C.ASYNC_WAIT_CTX_get_callback
-func ASYNC_WAIT_CTXGetCallback(ctx *ASYNC_WAIT_CTX, callback *ASYNCCallbackFn, callback_arg *unsafe.Pointer) c.Int
+// llgo:link (*ASYNC_WAIT_CTX).Callback C.ASYNC_WAIT_CTX_get_callback
+func (self *ASYNC_WAIT_CTX) Callback(callback *ASYNC_callback_fn, callback_arg *unsafe.Pointer) c.Int {
+	return 0
+}
 
-//go:linkname ASYNC_WAIT_CTXSetCallback C.ASYNC_WAIT_CTX_set_callback
-func ASYNC_WAIT_CTXSetCallback(ctx *ASYNC_WAIT_CTX, callback ASYNCCallbackFn, callback_arg unsafe.Pointer) c.Int
+// llgo:link (*ASYNC_WAIT_CTX).SetCallback C.ASYNC_WAIT_CTX_set_callback
+func (self *ASYNC_WAIT_CTX) SetCallback(callback ASYNC_callback_fn, callback_arg unsafe.Pointer) c.Int {
+	return 0
+}
 
-//go:linkname ASYNC_WAIT_CTXSetStatus C.ASYNC_WAIT_CTX_set_status
-func ASYNC_WAIT_CTXSetStatus(ctx *ASYNC_WAIT_CTX, status c.Int) c.Int
+// llgo:link (*ASYNC_WAIT_CTX).SetStatus C.ASYNC_WAIT_CTX_set_status
+func (self *ASYNC_WAIT_CTX) SetStatus(status c.Int) c.Int {
+	return 0
+}
 
-//go:linkname ASYNC_WAIT_CTXGetStatus C.ASYNC_WAIT_CTX_get_status
-func ASYNC_WAIT_CTXGetStatus(ctx *ASYNC_WAIT_CTX) c.Int
+// llgo:link (*ASYNC_WAIT_CTX).Status C.ASYNC_WAIT_CTX_get_status
+func (self *ASYNC_WAIT_CTX) Status() c.Int {
+	return 0
+}
 
-//go:linkname ASYNC_WAIT_CTXGetChangedFds C.ASYNC_WAIT_CTX_get_changed_fds
-func ASYNC_WAIT_CTXGetChangedFds(ctx *ASYNC_WAIT_CTX, addfd *c.Int, numaddfds *c.SizeT, delfd *c.Int, numdelfds *c.SizeT) c.Int
+// llgo:link (*ASYNC_WAIT_CTX).ChangedFds C.ASYNC_WAIT_CTX_get_changed_fds
+func (self *ASYNC_WAIT_CTX) ChangedFds(addfd *c.Int, numaddfds *c.SizeT, delfd *c.Int, numdelfds *c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname ASYNC_WAIT_CTXClearFd C.ASYNC_WAIT_CTX_clear_fd
-func ASYNC_WAIT_CTXClearFd(ctx *ASYNC_WAIT_CTX, key unsafe.Pointer) c.Int
+// llgo:link (*ASYNC_WAIT_CTX).ClearFd C.ASYNC_WAIT_CTX_clear_fd
+func (self *ASYNC_WAIT_CTX) ClearFd(key unsafe.Pointer) c.Int {
+	return 0
+}
 
-//go:linkname ASYNCIsCapable C.ASYNC_is_capable
-func ASYNCIsCapable() c.Int
+//go:linkname ASYNC_is_capable C.ASYNC_is_capable
+func ASYNC_is_capable() c.Int
 
-//go:linkname ASYNCSetMemFunctions C.ASYNC_set_mem_functions
-func ASYNCSetMemFunctions(alloc_fn ASYNCStackAllocFn, free_fn ASYNCStackFreeFn) c.Int
+//go:linkname ASYNC_set_mem_functions C.ASYNC_set_mem_functions
+func ASYNC_set_mem_functions(alloc_fn ASYNC_stack_alloc_fn, free_fn ASYNC_stack_free_fn) c.Int
 
-//go:linkname ASYNCGetMemFunctions C.ASYNC_get_mem_functions
-func ASYNCGetMemFunctions(alloc_fn *ASYNCStackAllocFn, free_fn *ASYNCStackFreeFn)
+//go:linkname ASYNC_get_mem_functions C.ASYNC_get_mem_functions
+func ASYNC_get_mem_functions(alloc_fn *ASYNC_stack_alloc_fn, free_fn *ASYNC_stack_free_fn)
 
-//go:linkname ASYNCStartJob C.ASYNC_start_job
-func ASYNCStartJob(job **ASYNC_JOB, ctx *ASYNC_WAIT_CTX, ret *c.Int, func_ func(_llcppg_param1 unsafe.Pointer) c.Int, args unsafe.Pointer, size c.SizeT) c.Int
+//go:linkname ASYNC_start_job C.ASYNC_start_job
+func ASYNC_start_job(job **ASYNC_JOB, ctx *ASYNC_WAIT_CTX, ret *c.Int, func_ func(_llcppg_param1 unsafe.Pointer) c.Int, args unsafe.Pointer, size c.SizeT) c.Int
 
-//go:linkname ASYNCPauseJob C.ASYNC_pause_job
-func ASYNCPauseJob() c.Int
+//go:linkname ASYNC_pause_job C.ASYNC_pause_job
+func ASYNC_pause_job() c.Int
 
-//go:linkname ASYNCGetCurrentJob C.ASYNC_get_current_job
-func ASYNCGetCurrentJob() *ASYNC_JOB
+//go:linkname ASYNC_get_current_job C.ASYNC_get_current_job
+func ASYNC_get_current_job() *ASYNC_JOB
 
-//go:linkname ASYNCGetWaitCtx C.ASYNC_get_wait_ctx
-func ASYNCGetWaitCtx(job *ASYNC_JOB) *ASYNC_WAIT_CTX
+// llgo:link (*ASYNC_JOB).ASYNC_get_wait_ctx C.ASYNC_get_wait_ctx
+func (self *ASYNC_JOB) ASYNC_get_wait_ctx() *ASYNC_WAIT_CTX {
+	return nil
+}
 
-//go:linkname ASYNCBlockPause C.ASYNC_block_pause
-func ASYNCBlockPause()
+//go:linkname ASYNC_block_pause C.ASYNC_block_pause
+func ASYNC_block_pause()
 
-//go:linkname ASYNCUnblockPause C.ASYNC_unblock_pause
-func ASYNCUnblockPause()
+//go:linkname ASYNC_unblock_pause C.ASYNC_unblock_pause
+func ASYNC_unblock_pause()

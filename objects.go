@@ -22,7 +22,7 @@ const (
 	OBJ_BSEARCH_VALUE_ON_NOMATCH     = 1
 	OBJ_BSEARCH_FIRST_VALUE_ON_MATCH = 2
 )
-const SNAcAuditEntity = "ac-auditIdentity"
+const SN_ac_auditEntity = "ac-auditIdentity"
 
 type ObjNameSt struct {
 	Type  c.Int
@@ -32,97 +32,109 @@ type ObjNameSt struct {
 }
 type OBJ_NAME = ObjNameSt
 
-//go:linkname OBJ_NAMEInit C.OBJ_NAME_init
-func OBJ_NAMEInit() c.Int
+//go:linkname OBJ_NAME_init C.OBJ_NAME_init
+func OBJ_NAME_init() c.Int
 
-//go:linkname OBJ_NAMENewIndex C.OBJ_NAME_new_index
-func OBJ_NAMENewIndex(hash_func func(_llcppg_param1 *c.Char) c.Ulong, cmp_func func(_llcppg_param1 *c.Char, _llcppg_param2 *c.Char) c.Int, free_func func(_llcppg_param1 *c.Char, _llcppg_param2 c.Int, _llcppg_param3 *c.Char)) c.Int
+//go:linkname OBJ_NAME_new_index C.OBJ_NAME_new_index
+func OBJ_NAME_new_index(hash_func func(_llcppg_param1 *c.Char) c.Ulong, cmp_func func(_llcppg_param1 *c.Char, _llcppg_param2 *c.Char) c.Int, free_func func(_llcppg_param1 *c.Char, _llcppg_param2 c.Int, _llcppg_param3 *c.Char)) c.Int
 
-//go:linkname OBJ_NAMEGet C.OBJ_NAME_get
-func OBJ_NAMEGet(name *c.Char, type_ c.Int) *c.Char
+//go:linkname OBJ_NAME_get C.OBJ_NAME_get
+func OBJ_NAME_get(name *c.Char, type_ c.Int) *c.Char
 
-//go:linkname OBJ_NAMEAdd C.OBJ_NAME_add
-func OBJ_NAMEAdd(name *c.Char, type_ c.Int, data *c.Char) c.Int
+//go:linkname OBJ_NAME_add C.OBJ_NAME_add
+func OBJ_NAME_add(name *c.Char, type_ c.Int, data *c.Char) c.Int
 
-//go:linkname OBJ_NAMERemove C.OBJ_NAME_remove
-func OBJ_NAMERemove(name *c.Char, type_ c.Int) c.Int
+//go:linkname OBJ_NAME_remove C.OBJ_NAME_remove
+func OBJ_NAME_remove(name *c.Char, type_ c.Int) c.Int
 
 // -1 for everything
 //
-//go:linkname OBJ_NAMECleanup C.OBJ_NAME_cleanup
-func OBJ_NAMECleanup(type_ c.Int)
+//go:linkname OBJ_NAME_cleanup C.OBJ_NAME_cleanup
+func OBJ_NAME_cleanup(type_ c.Int)
 
-//go:linkname OBJ_NAMEDoAll C.OBJ_NAME_do_all
-func OBJ_NAMEDoAll(type_ c.Int, fn func(_llcppg_param1 *OBJ_NAME, _llcppg_param2 unsafe.Pointer), arg unsafe.Pointer)
+//go:linkname OBJ_NAME_do_all C.OBJ_NAME_do_all
+func OBJ_NAME_do_all(type_ c.Int, fn func(_llcppg_param1 *OBJ_NAME, _llcppg_param2 unsafe.Pointer), arg unsafe.Pointer)
 
-//go:linkname OBJ_NAMEDoAllSorted C.OBJ_NAME_do_all_sorted
-func OBJ_NAMEDoAllSorted(type_ c.Int, fn func(_llcppg_param1 *OBJ_NAME, _llcppg_param2 unsafe.Pointer), arg unsafe.Pointer)
+//go:linkname OBJ_NAME_do_all_sorted C.OBJ_NAME_do_all_sorted
+func OBJ_NAME_do_all_sorted(type_ c.Int, fn func(_llcppg_param1 *OBJ_NAME, _llcppg_param2 unsafe.Pointer), arg unsafe.Pointer)
 
-//go:linkname OBJDup C.OBJ_dup
-func OBJDup(a *ASN1_OBJECT) *ASN1_OBJECT
+// llgo:link (*ASN1_OBJECT).Dup C.OBJ_dup
+func (self *ASN1_OBJECT) Dup() *ASN1_OBJECT {
+	return self
+}
 
-//go:linkname OBJNid2obj C.OBJ_nid2obj
-func OBJNid2obj(n c.Int) *ASN1_OBJECT
+//go:linkname OBJ_nid2obj C.OBJ_nid2obj
+func OBJ_nid2obj(n c.Int) *ASN1_OBJECT
 
-//go:linkname OBJNid2ln C.OBJ_nid2ln
-func OBJNid2ln(n c.Int) *c.Char
+//go:linkname OBJ_nid2ln C.OBJ_nid2ln
+func OBJ_nid2ln(n c.Int) *c.Char
 
-//go:linkname OBJNid2sn C.OBJ_nid2sn
-func OBJNid2sn(n c.Int) *c.Char
+//go:linkname OBJ_nid2sn C.OBJ_nid2sn
+func OBJ_nid2sn(n c.Int) *c.Char
 
-//go:linkname OBJObj2nid C.OBJ_obj2nid
-func OBJObj2nid(o *ASN1_OBJECT) c.Int
+// llgo:link (*ASN1_OBJECT).Obj2nid C.OBJ_obj2nid
+func (self *ASN1_OBJECT) Obj2nid() c.Int {
+	return 0
+}
 
-//go:linkname OBJTxt2obj C.OBJ_txt2obj
-func OBJTxt2obj(s *c.Char, no_name c.Int) *ASN1_OBJECT
+//go:linkname OBJ_txt2obj C.OBJ_txt2obj
+func OBJ_txt2obj(s *c.Char, no_name c.Int) *ASN1_OBJECT
 
-//go:linkname OBJObj2txt C.OBJ_obj2txt
-func OBJObj2txt(buf *c.Char, buf_len c.Int, a *ASN1_OBJECT, no_name c.Int) c.Int
+//go:linkname OBJ_obj2txt C.OBJ_obj2txt
+func OBJ_obj2txt(buf *c.Char, buf_len c.Int, a *ASN1_OBJECT, no_name c.Int) c.Int
 
-//go:linkname OBJTxt2nid C.OBJ_txt2nid
-func OBJTxt2nid(s *c.Char) c.Int
+//go:linkname OBJ_txt2nid C.OBJ_txt2nid
+func OBJ_txt2nid(s *c.Char) c.Int
 
-//go:linkname OBJLn2nid C.OBJ_ln2nid
-func OBJLn2nid(s *c.Char) c.Int
+//go:linkname OBJ_ln2nid C.OBJ_ln2nid
+func OBJ_ln2nid(s *c.Char) c.Int
 
-//go:linkname OBJSn2nid C.OBJ_sn2nid
-func OBJSn2nid(s *c.Char) c.Int
+//go:linkname OBJ_sn2nid C.OBJ_sn2nid
+func OBJ_sn2nid(s *c.Char) c.Int
 
-//go:linkname OBJCmp C.OBJ_cmp
-func OBJCmp(a *ASN1_OBJECT, b *ASN1_OBJECT) c.Int
+//go:linkname OBJ_cmp C.OBJ_cmp
+func OBJ_cmp(a *ASN1_OBJECT, b *ASN1_OBJECT) c.Int
 
-//go:linkname OBJBsearch_ C.OBJ_bsearch_
-func OBJBsearch_(key unsafe.Pointer, base unsafe.Pointer, num c.Int, size c.Int, cmp func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) c.Int) unsafe.Pointer
+//go:linkname OBJ_bsearch_ C.OBJ_bsearch_
+func OBJ_bsearch_(key unsafe.Pointer, base unsafe.Pointer, num c.Int, size c.Int, cmp func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) c.Int) unsafe.Pointer
 
-//go:linkname OBJBsearchEx_ C.OBJ_bsearch_ex_
-func OBJBsearchEx_(key unsafe.Pointer, base unsafe.Pointer, num c.Int, size c.Int, cmp func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) c.Int, flags c.Int) unsafe.Pointer
+//go:linkname OBJ_bsearch_ex_ C.OBJ_bsearch_ex_
+func OBJ_bsearch_ex_(key unsafe.Pointer, base unsafe.Pointer, num c.Int, size c.Int, cmp func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) c.Int, flags c.Int) unsafe.Pointer
 
-//go:linkname OBJNewNid C.OBJ_new_nid
-func OBJNewNid(num c.Int) c.Int
+//go:linkname OBJ_new_nid C.OBJ_new_nid
+func OBJ_new_nid(num c.Int) c.Int
 
-//go:linkname OBJAddObject C.OBJ_add_object
-func OBJAddObject(obj *ASN1_OBJECT) c.Int
+// llgo:link (*ASN1_OBJECT).AddObject C.OBJ_add_object
+func (self *ASN1_OBJECT) AddObject() c.Int {
+	return 0
+}
 
-//go:linkname OBJCreate C.OBJ_create
-func OBJCreate(oid *c.Char, sn *c.Char, ln *c.Char) c.Int
+//go:linkname OBJ_create C.OBJ_create
+func OBJ_create(oid *c.Char, sn *c.Char, ln *c.Char) c.Int
 
-//go:linkname OBJCreateObjects C.OBJ_create_objects
-func OBJCreateObjects(in *BIO) c.Int
+// llgo:link (*BIO).OBJ_create_objects C.OBJ_create_objects
+func (self *BIO) OBJ_create_objects() c.Int {
+	return 0
+}
 
-//go:linkname OBJLength C.OBJ_length
-func OBJLength(obj *ASN1_OBJECT) c.SizeT
+// llgo:link (*ASN1_OBJECT).Length C.OBJ_length
+func (self *ASN1_OBJECT) Length() c.SizeT {
+	return 0
+}
 
-//go:linkname OBJGet0Data C.OBJ_get0_data
-func OBJGet0Data(obj *ASN1_OBJECT) *uint8
+// llgo:link (*ASN1_OBJECT).Get0Data C.OBJ_get0_data
+func (self *ASN1_OBJECT) Get0Data() *uint8 {
+	return nil
+}
 
-//go:linkname OBJFindSigidAlgs C.OBJ_find_sigid_algs
-func OBJFindSigidAlgs(signid c.Int, pdig_nid *c.Int, ppkey_nid *c.Int) c.Int
+//go:linkname OBJ_find_sigid_algs C.OBJ_find_sigid_algs
+func OBJ_find_sigid_algs(signid c.Int, pdig_nid *c.Int, ppkey_nid *c.Int) c.Int
 
-//go:linkname OBJFindSigidByAlgs C.OBJ_find_sigid_by_algs
-func OBJFindSigidByAlgs(psignid *c.Int, dig_nid c.Int, pkey_nid c.Int) c.Int
+//go:linkname OBJ_find_sigid_by_algs C.OBJ_find_sigid_by_algs
+func OBJ_find_sigid_by_algs(psignid *c.Int, dig_nid c.Int, pkey_nid c.Int) c.Int
 
-//go:linkname OBJAddSigid C.OBJ_add_sigid
-func OBJAddSigid(signid c.Int, dig_id c.Int, pkey_id c.Int) c.Int
+//go:linkname OBJ_add_sigid C.OBJ_add_sigid
+func OBJ_add_sigid(signid c.Int, dig_id c.Int, pkey_id c.Int) c.Int
 
-//go:linkname OBJSigidFree C.OBJ_sigid_free
-func OBJSigidFree()
+//go:linkname OBJ_sigid_free C.OBJ_sigid_free
+func OBJ_sigid_free()

@@ -7,31 +7,31 @@ import (
 	"unsafe"
 )
 
-type ASN1ITEMSt struct {
+type ASN1_ITEM_st struct {
 }
-type AUTHORITY_KEYIDSt struct {
+type AUTHORITY_KEYID_st struct {
 }
-type DIST_POINTSt struct {
+type DIST_POINT_st struct {
 }
-type ISSUING_DIST_POINTSt struct {
+type ISSUING_DIST_POINT_st struct {
 }
-type NAME_CONSTRAINTSSt struct {
+type NAME_CONSTRAINTS_st struct {
 }
-type X509POLICY_CACHESt struct {
+type X509_POLICY_CACHE_st struct {
 }
-type X509POLICY_LEVELSt struct {
+type X509_POLICY_LEVEL_st struct {
 }
-type X509POLICY_NODESt struct {
+type X509_POLICY_NODE_st struct {
 }
-type X509POLICY_TREESt struct {
+type X509_POLICY_TREE_st struct {
 }
-type X509VERIFY_PARAMSt struct {
+type X509_VERIFY_PARAM_st struct {
 }
-type X509CrlSt struct {
+type X509_crl_st struct {
 }
-type X509NameSt struct {
+type X509_name_st struct {
 }
-type X509PubkeySt struct {
+type X509_pubkey_st struct {
 }
 type Asn1ObjectSt struct {
 }
@@ -177,9 +177,9 @@ type SslDaneSt struct {
 }
 type SslSt struct {
 }
-type StackStBIGNUM struct {
+type Stack_st_BIGNUM struct {
 }
-type StackStBIGNUMConst struct {
+type Stack_st_BIGNUM_const struct {
 }
 type UiMethodSt struct {
 }
@@ -207,134 +207,134 @@ type X509StoreSt struct {
 }
 
 // Provider Object
-type OSSL_PROVIDER = OsslProviderSt
-type ASN1_INTEGER = Asn1StringSt
-type ASN1_ENUMERATED = Asn1StringSt
-type ASN1_BIT_STRING = Asn1StringSt
-type ASN1_OCTET_STRING = Asn1StringSt
-type ASN1_PRINTABLESTRING = Asn1StringSt
-type ASN1_T61STRING = Asn1StringSt
-type ASN1_IA5STRING = Asn1StringSt
-type ASN1_GENERALSTRING = Asn1StringSt
-type ASN1_UNIVERSALSTRING = Asn1StringSt
-type ASN1_BMPSTRING = Asn1StringSt
-type ASN1_UTCTIME = Asn1StringSt
-type ASN1_TIME = Asn1StringSt
-type ASN1_GENERALIZEDTIME = Asn1StringSt
-type ASN1_VISIBLESTRING = Asn1StringSt
-type ASN1_UTF8STRING = Asn1StringSt
-type ASN1_STRING = Asn1StringSt
+type OSSL_PROVIDER OsslProviderSt
+type ASN1_INTEGER Asn1StringSt
+type ASN1_ENUMERATED Asn1StringSt
+type ASN1_BIT_STRING Asn1StringSt
+type ASN1_OCTET_STRING Asn1StringSt
+type ASN1_PRINTABLESTRING Asn1StringSt
+type ASN1_T61STRING Asn1StringSt
+type ASN1_IA5STRING Asn1StringSt
+type ASN1_GENERALSTRING Asn1StringSt
+type ASN1_UNIVERSALSTRING Asn1StringSt
+type ASN1_BMPSTRING Asn1StringSt
+type ASN1_UTCTIME Asn1StringSt
+type ASN1_TIME Asn1StringSt
+type ASN1_GENERALIZEDTIME Asn1StringSt
+type ASN1_VISIBLESTRING Asn1StringSt
+type ASN1_UTF8STRING Asn1StringSt
+type ASN1_STRING Asn1StringSt
 type ASN1_BOOLEAN = c.Int
 type ASN1_NULL = c.Int
 type ASN1_TYPE = Asn1TypeSt
-type ASN1_OBJECT = Asn1ObjectSt
+type ASN1_OBJECT Asn1ObjectSt
 type ASN1_STRING_TABLE = Asn1StringTableSt
-type ASN1_ITEM = ASN1ITEMSt
-type ASN1_PCTX = Asn1PctxSt
-type ASN1_SCTX = Asn1SctxSt
-type BIO = BioSt
-type BIGNUM = BignumSt
-type BN_CTX = BignumCtx
-type BN_BLINDING = BnBlindingSt
-type BN_MONT_CTX = BnMontCtxSt
-type BN_RECP_CTX = BnRecpCtxSt
-type BN_GENCB = BnGencbSt
+type ASN1_ITEM ASN1_ITEM_st
+type ASN1_PCTX Asn1PctxSt
+type ASN1_SCTX Asn1SctxSt
+type BIO BioSt
+type BIGNUM BignumSt
+type BN_CTX BignumCtx
+type BN_BLINDING BnBlindingSt
+type BN_MONT_CTX BnMontCtxSt
+type BN_RECP_CTX BnRecpCtxSt
+type BN_GENCB BnGencbSt
 type BUF_MEM = BufMemSt
-type ERR_STATE = ErrStateSt
-type EVP_CIPHER = EvpCipherSt
-type EVP_CIPHER_CTX = EvpCipherCtxSt
-type EVP_MD = EvpMdSt
-type EVP_MD_CTX = EvpMdCtxSt
-type EVP_MAC = EvpMacSt
-type EVP_MAC_CTX = EvpMacCtxSt
-type EVP_PKEY = EvpPkeySt
-type EVP_SKEY = EvpSkeySt
-type EVP_PKEY_ASN1_METHOD = EvpPkeyAsn1MethodSt
-type EVP_PKEY_METHOD = EvpPkeyMethodSt
-type EVP_PKEY_CTX = EvpPkeyCtxSt
-type EVP_KEYMGMT = EvpKeymgmtSt
-type EVP_KDF = EvpKdfSt
-type EVP_KDF_CTX = EvpKdfCtxSt
-type EVP_RAND = EvpRandSt
-type EVP_RAND_CTX = EvpRandCtxSt
-type EVP_KEYEXCH = EvpKeyexchSt
-type EVP_SIGNATURE = EvpSignatureSt
-type EVP_SKEYMGMT = EvpSkeymgmtSt
-type EVP_ASYM_CIPHER = EvpAsymCipherSt
-type EVP_KEM = EvpKemSt
-type EVP_ENCODE_CTX = EvpEncodeCtxSt
-type HMAC_CTX = HmacCtxSt
-type DH = DhSt
-type DH_METHOD = DhMethod
-type DSA = DsaSt
-type DSA_METHOD = DsaMethod
-type RSA = RsaSt
-type RSA_METHOD = RsaMethSt
+type ERR_STATE ErrStateSt
+type EVP_CIPHER EvpCipherSt
+type EVP_CIPHER_CTX EvpCipherCtxSt
+type EVP_MD EvpMdSt
+type EVP_MD_CTX EvpMdCtxSt
+type EVP_MAC EvpMacSt
+type EVP_MAC_CTX EvpMacCtxSt
+type EVP_PKEY EvpPkeySt
+type EVP_SKEY EvpSkeySt
+type EVP_PKEY_ASN1_METHOD EvpPkeyAsn1MethodSt
+type EVP_PKEY_METHOD EvpPkeyMethodSt
+type EVP_PKEY_CTX EvpPkeyCtxSt
+type EVP_KEYMGMT EvpKeymgmtSt
+type EVP_KDF EvpKdfSt
+type EVP_KDF_CTX EvpKdfCtxSt
+type EVP_RAND EvpRandSt
+type EVP_RAND_CTX EvpRandCtxSt
+type EVP_KEYEXCH EvpKeyexchSt
+type EVP_SIGNATURE EvpSignatureSt
+type EVP_SKEYMGMT EvpSkeymgmtSt
+type EVP_ASYM_CIPHER EvpAsymCipherSt
+type EVP_KEM EvpKemSt
+type EVP_ENCODE_CTX EvpEncodeCtxSt
+type HMAC_CTX HmacCtxSt
+type DH DhSt
+type DH_METHOD DhMethod
+type DSA DsaSt
+type DSA_METHOD DsaMethod
+type RSA RsaSt
+type RSA_METHOD RsaMethSt
 type RSA_PSS_PARAMS = RsaPssParamsSt
 type RSA_OAEP_PARAMS = RsaOaepParamsSt
-type EC_KEY = EcKeySt
-type EC_KEY_METHOD = EcKeyMethodSt
-type RAND_METHOD = RandMethSt
-type SSL_DANE = SslDaneSt
-type X509 = X509St
-type X509_ALGOR = X509AlgorSt
-type X509_CRL = X509CrlSt
-type X509_CRL_METHOD = X509CrlMethodSt
-type X509_REVOKED = X509RevokedSt
-type X509_NAME = X509NameSt
-type X509_PUBKEY = X509PubkeySt
-type X509_STORE = X509StoreSt
-type X509_STORE_CTX = X509StoreCtxSt
-type X509_OBJECT = X509ObjectSt
-type X509_LOOKUP = X509LookupSt
-type X509_LOOKUP_METHOD = X509LookupMethodSt
-type X509_VERIFY_PARAM = X509VERIFY_PARAMSt
-type X509_SIG_INFO = X509SigInfoSt
-type PKCS8_PRIV_KEY_INFO = Pkcs8PrivKeyInfoSt
-type X509V3_CTX = V3ExtCtx
+type EC_KEY EcKeySt
+type EC_KEY_METHOD EcKeyMethodSt
+type RAND_METHOD RandMethSt
+type SSL_DANE SslDaneSt
+type X509 X509St
+type X509_ALGOR = X509_algor_st
+type X509_CRL X509_crl_st
+type X509_CRL_METHOD X509CrlMethodSt
+type X509_REVOKED X509RevokedSt
+type X509_NAME X509_name_st
+type X509_PUBKEY X509_pubkey_st
+type X509_STORE X509StoreSt
+type X509_STORE_CTX X509StoreCtxSt
+type X509_OBJECT X509ObjectSt
+type X509_LOOKUP X509LookupSt
+type X509_LOOKUP_METHOD X509LookupMethodSt
+type X509_VERIFY_PARAM X509_VERIFY_PARAM_st
+type X509_SIG_INFO X509SigInfoSt
+type PKCS8_PRIV_KEY_INFO Pkcs8PrivKeyInfoSt
+type X509V3_CTX V3ExtCtx
 type CONF = ConfSt
-type OPENSSL_INIT_SETTINGS = OsslInitSettingsSt
-type UI = UiSt
-type UI_METHOD = UiMethodSt
-type ENGINE = EngineSt
-type SSL = SslSt
-type SSL_CTX = SslCtxSt
-type COMP_CTX = CompCtxSt
-type COMP_METHOD = CompMethodSt
-type X509_POLICY_NODE = X509POLICY_NODESt
-type X509_POLICY_LEVEL = X509POLICY_LEVELSt
-type X509_POLICY_TREE = X509POLICY_TREESt
-type X509_POLICY_CACHE = X509POLICY_CACHESt
-type AUTHORITY_KEYID = AUTHORITY_KEYIDSt
-type DIST_POINT = DIST_POINTSt
-type ISSUING_DIST_POINT = ISSUING_DIST_POINTSt
-type NAME_CONSTRAINTS = NAME_CONSTRAINTSSt
+type INIT_SETTINGS OsslInitSettingsSt
+type UI UiSt
+type UI_METHOD UiMethodSt
+type ENGINE EngineSt
+type SSL SslSt
+type SSL_CTX SslCtxSt
+type COMP_CTX CompCtxSt
+type COMP_METHOD CompMethodSt
+type X509_POLICY_NODE X509_POLICY_NODE_st
+type X509_POLICY_LEVEL X509_POLICY_LEVEL_st
+type X509_POLICY_TREE X509_POLICY_TREE_st
+type X509_POLICY_CACHE X509_POLICY_CACHE_st
+type AUTHORITY_KEYID AUTHORITY_KEYID_st
+type DIST_POINT DIST_POINT_st
+type ISSUING_DIST_POINT ISSUING_DIST_POINT_st
+type NAME_CONSTRAINTS NAME_CONSTRAINTS_st
 type CRYPTO_EX_DATA = CryptoExDataSt
-type OSSL_HTTP_REQ_CTX = OsslHttpReqCtxSt
-type OCSP_RESPONSE = OcspResponseSt
-type OCSP_RESPID = OcspResponderIdSt
-type SCT = SctSt
-type SCT_CTX = SctCtxSt
-type CTLOG = CtlogSt
-type CTLOG_STORE = CtlogStoreSt
-type CT_POLICY_EVAL_CTX = CtPolicyEvalCtxSt
-type OSSL_STORE_INFO = OsslStoreInfoSt
-type OSSL_STORE_SEARCH = OsslStoreSearchSt
-type OSSL_STORE_LOADER = OsslStoreLoaderSt
-type OSSL_LIB_CTX = OsslLibCtxSt
+type OSSL_HTTP_REQ_CTX OsslHttpReqCtxSt
+type OCSP_RESPONSE OcspResponseSt
+type OCSP_RESPID OcspResponderIdSt
+type SCT SctSt
+type SCT_CTX SctCtxSt
+type CTLOG CtlogSt
+type CTLOG_STORE CtlogStoreSt
+type CT_POLICY_EVAL_CTX CtPolicyEvalCtxSt
+type OSSL_STORE_INFO OsslStoreInfoSt
+type OSSL_STORE_SEARCH OsslStoreSearchSt
+type OSSL_STORE_LOADER OsslStoreLoaderSt
+type OSSL_LIB_CTX OsslLibCtxSt
 type OSSL_DISPATCH = OsslDispatchSt
 type OSSL_ITEM = OsslItemSt
 type OSSL_ALGORITHM = OsslAlgorithmSt
 type OSSL_PARAM = OsslParamSt
-type OSSL_PARAM_BLD = OsslParamBldSt
+type OSSL_PARAM_BLD OsslParamBldSt
 
 // llgo:type C
 type PemPasswordCb = func(_llcppg_param1 *c.Char, _llcppg_param2 c.Int, _llcppg_param3 c.Int, _llcppg_param4 unsafe.Pointer) c.Int
-type OSSL_ENCODER = OsslEncoderSt
-type OSSL_ENCODER_CTX = OsslEncoderCtxSt
-type OSSL_DECODER = OsslDecoderSt
-type OSSL_DECODER_CTX = OsslDecoderCtxSt
-type OSSL_SELF_TEST = OsslSelfTestSt
+type OSSL_ENCODER OsslEncoderSt
+type OSSL_ENCODER_CTX OsslEncoderCtxSt
+type OSSL_DECODER OsslDecoderSt
+type OSSL_DECODER_CTX OsslDecoderCtxSt
+type OSSL_SELF_TEST OsslSelfTestSt
 
 // opaque type for ECH related information
-type OSSL_ECHSTORE = OsslEchstoreSt
+type OSSL_ECHSTORE OsslEchstoreSt

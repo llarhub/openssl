@@ -50,7 +50,7 @@ const (
 // CRLF ASCII canonicalisation
 const SMIME_ASCIICRLF = 524288
 
-type PKCS7CTXSt struct {
+type PKCS7_CTX_st struct {
 	Libctx *OSSL_LIB_CTX
 	Propq  *c.Char
 }
@@ -62,10 +62,10 @@ type Pkcs7SignerInfoSt struct {
 	Version         *ASN1_INTEGER
 	IssuerAndSerial *PKCS7_ISSUER_AND_SERIAL
 	DigestAlg       *X509_ALGOR
-	AuthAttr        *StackStX509ATTRIBUTE
+	AuthAttr        *Stack_st_X509_ATTRIBUTE
 	DigestEncAlg    *X509_ALGOR
 	EncDigest       *ASN1_OCTET_STRING
-	UnauthAttr      *StackStX509ATTRIBUTE
+	UnauthAttr      *Stack_st_X509_ATTRIBUTE
 	Pkey            *EVP_PKEY
 	Ctx             *PKCS7_CTX
 }
@@ -79,10 +79,10 @@ type Pkcs7RecipInfoSt struct {
 }
 type Pkcs7SignedSt struct {
 	Version    *ASN1_INTEGER
-	MdAlgs     *StackStX509ALGOR
-	Cert       *StackStX509
-	Crl        *StackStX509CRL
-	SignerInfo *StackStPKCS7SIGNER_INFO
+	MdAlgs     *Stack_st_X509_ALGOR
+	Cert       *Stack_st_X509
+	Crl        *Stack_st_X509_CRL
+	SignerInfo *Stack_st_PKCS7_SIGNER_INFO
 	Contents   *Pkcs7St
 }
 type Pkcs7EncContentSt struct {
@@ -94,17 +94,17 @@ type Pkcs7EncContentSt struct {
 }
 type Pkcs7EnvelopedSt struct {
 	Version       *ASN1_INTEGER
-	Recipientinfo *StackStPKCS7RECIP_INFO
+	Recipientinfo *Stack_st_PKCS7_RECIP_INFO
 	EncData       *PKCS7_ENC_CONTENT
 }
 type Pkcs7SignedandenvelopedSt struct {
 	Version       *ASN1_INTEGER
-	MdAlgs        *StackStX509ALGOR
-	Cert          *StackStX509
-	Crl           *StackStX509CRL
-	SignerInfo    *StackStPKCS7SIGNER_INFO
+	MdAlgs        *Stack_st_X509_ALGOR
+	Cert          *Stack_st_X509
+	Crl           *Stack_st_X509_CRL
+	SignerInfo    *Stack_st_PKCS7_SIGNER_INFO
 	EncData       *PKCS7_ENC_CONTENT
-	Recipientinfo *StackStPKCS7RECIP_INFO
+	Recipientinfo *Stack_st_PKCS7_RECIP_INFO
 }
 type Pkcs7DigestSt struct {
 	Version  *ASN1_INTEGER
@@ -125,13 +125,13 @@ type Pkcs7St struct {
 	D        _llcppg_anon_3
 	Ctx      PKCS7_CTX
 }
-type StackStPKCS7 struct {
+type Stack_st_PKCS7 struct {
 }
-type StackStPKCS7RECIP_INFO struct {
+type Stack_st_PKCS7_RECIP_INFO struct {
 }
-type StackStPKCS7SIGNER_INFO struct {
+type Stack_st_PKCS7_SIGNER_INFO struct {
 }
-type PKCS7_CTX = PKCS7CTXSt
+type PKCS7_CTX = PKCS7_CTX_st
 type PKCS7_ISSUER_AND_SERIAL = Pkcs7IssuerAndSerialSt
 
 // clang-format off
@@ -140,17 +140,17 @@ type PKCS7_SIGNER_INFO = Pkcs7SignerInfoSt
 // clang-format off
 //
 // llgo:type C
-type SkPKCS7SIGNER_INFOCompfunc = func(_llcppg_param1 **PKCS7_SIGNER_INFO, _llcppg_param2 **PKCS7_SIGNER_INFO) c.Int
+type Sk_PKCS7_SIGNER_INFO_compfunc = func(_llcppg_param1 **PKCS7_SIGNER_INFO, _llcppg_param2 **PKCS7_SIGNER_INFO) c.Int
 
 // clang-format off
 //
 // llgo:type C
-type SkPKCS7SIGNER_INFOFreefunc = func(_llcppg_param1 *PKCS7_SIGNER_INFO)
+type Sk_PKCS7_SIGNER_INFO_freefunc = func(_llcppg_param1 *PKCS7_SIGNER_INFO)
 
 // clang-format off
 //
 // llgo:type C
-type SkPKCS7SIGNER_INFOCopyfunc = func(_llcppg_param1 *PKCS7_SIGNER_INFO) *PKCS7_SIGNER_INFO
+type Sk_PKCS7_SIGNER_INFO_copyfunc = func(_llcppg_param1 *PKCS7_SIGNER_INFO) *PKCS7_SIGNER_INFO
 
 // clang-format off
 type PKCS7_RECIP_INFO = Pkcs7RecipInfoSt
@@ -158,17 +158,17 @@ type PKCS7_RECIP_INFO = Pkcs7RecipInfoSt
 // clang-format off
 //
 // llgo:type C
-type SkPKCS7RECIP_INFOCompfunc = func(_llcppg_param1 **PKCS7_RECIP_INFO, _llcppg_param2 **PKCS7_RECIP_INFO) c.Int
+type Sk_PKCS7_RECIP_INFO_compfunc = func(_llcppg_param1 **PKCS7_RECIP_INFO, _llcppg_param2 **PKCS7_RECIP_INFO) c.Int
 
 // clang-format off
 //
 // llgo:type C
-type SkPKCS7RECIP_INFOFreefunc = func(_llcppg_param1 *PKCS7_RECIP_INFO)
+type Sk_PKCS7_RECIP_INFO_freefunc = func(_llcppg_param1 *PKCS7_RECIP_INFO)
 
 // clang-format off
 //
 // llgo:type C
-type SkPKCS7RECIP_INFOCopyfunc = func(_llcppg_param1 *PKCS7_RECIP_INFO) *PKCS7_RECIP_INFO
+type Sk_PKCS7_RECIP_INFO_copyfunc = func(_llcppg_param1 *PKCS7_RECIP_INFO) *PKCS7_RECIP_INFO
 
 // The above structure is very very similar to PKCS7_SIGN_ENVELOPE. How about
 // merging the two
@@ -225,23 +225,28 @@ func (p *_llcppg_anon_3) XGof_ref_other() **ASN1_TYPE {
 	return (**ASN1_TYPE)(unsafe.Pointer(p))
 }
 
-//go:linkname PKCS7ISSUER_AND_SERIALNew C.PKCS7_ISSUER_AND_SERIAL_new
-func PKCS7ISSUER_AND_SERIALNew() *PKCS7_ISSUER_AND_SERIAL
+//go:linkname PKCS7_ISSUER_AND_SERIAL_new C.PKCS7_ISSUER_AND_SERIAL_new
+func PKCS7_ISSUER_AND_SERIAL_new() *PKCS7_ISSUER_AND_SERIAL
 
-//go:linkname PKCS7ISSUER_AND_SERIALFree C.PKCS7_ISSUER_AND_SERIAL_free
-func PKCS7ISSUER_AND_SERIALFree(a *PKCS7_ISSUER_AND_SERIAL)
+// llgo:link (*PKCS7_ISSUER_AND_SERIAL).Free C.PKCS7_ISSUER_AND_SERIAL_free
+func (self *PKCS7_ISSUER_AND_SERIAL) Free() {
+}
 
-//go:linkname D2iPKCS7ISSUER_AND_SERIAL C.d2i_PKCS7_ISSUER_AND_SERIAL
-func D2iPKCS7ISSUER_AND_SERIAL(a **PKCS7_ISSUER_AND_SERIAL, in **uint8, len c.Long) *PKCS7_ISSUER_AND_SERIAL
+//go:linkname D2i_PKCS7_ISSUER_AND_SERIAL C.d2i_PKCS7_ISSUER_AND_SERIAL
+func D2i_PKCS7_ISSUER_AND_SERIAL(a **PKCS7_ISSUER_AND_SERIAL, in **uint8, len c.Long) *PKCS7_ISSUER_AND_SERIAL
 
-//go:linkname I2dPKCS7ISSUER_AND_SERIAL C.i2d_PKCS7_ISSUER_AND_SERIAL
-func I2dPKCS7ISSUER_AND_SERIAL(a *PKCS7_ISSUER_AND_SERIAL, out **uint8) c.Int
+// llgo:link (*PKCS7_ISSUER_AND_SERIAL).I2d C.i2d_PKCS7_ISSUER_AND_SERIAL
+func (self *PKCS7_ISSUER_AND_SERIAL) I2d(out **uint8) c.Int {
+	return 0
+}
 
-//go:linkname PKCS7ISSUER_AND_SERIALIt C.PKCS7_ISSUER_AND_SERIAL_it
-func PKCS7ISSUER_AND_SERIALIt() *ASN1_ITEM
+//go:linkname PKCS7_ISSUER_AND_SERIAL_it C.PKCS7_ISSUER_AND_SERIAL_it
+func PKCS7_ISSUER_AND_SERIAL_it() *ASN1_ITEM
 
-//go:linkname PKCS7ISSUER_AND_SERIALDigest C.PKCS7_ISSUER_AND_SERIAL_digest
-func PKCS7ISSUER_AND_SERIALDigest(data *PKCS7_ISSUER_AND_SERIAL, type_ *EVP_MD, md *uint8, len *c.Uint) c.Int
+// llgo:link (*PKCS7_ISSUER_AND_SERIAL).Digest C.PKCS7_ISSUER_AND_SERIAL_digest
+func (self *PKCS7_ISSUER_AND_SERIAL) Digest(type_ *EVP_MD, md *uint8, len *c.Uint) c.Int {
+	return 0
+}
 
 //go:linkname D2iPKCS7Fp C.d2i_PKCS7_fp
 func D2iPKCS7Fp(fp *c.FILE, p7 **PKCS7) *PKCS7
@@ -249,332 +254,479 @@ func D2iPKCS7Fp(fp *c.FILE, p7 **PKCS7) *PKCS7
 //go:linkname I2dPKCS7Fp C.i2d_PKCS7_fp
 func I2dPKCS7Fp(fp *c.FILE, p7 *PKCS7) c.Int
 
-//go:linkname PKCS7Dup C.PKCS7_dup
-func PKCS7Dup(a *PKCS7) *PKCS7
+// llgo:link (*PKCS7).Dup C.PKCS7_dup
+func (self *PKCS7) Dup() *PKCS7 {
+	return self
+}
 
-//go:linkname D2iPKCS7Bio C.d2i_PKCS7_bio
-func D2iPKCS7Bio(bp *BIO, p7 **PKCS7) *PKCS7
+// llgo:link (*BIO).D2iPKCS7Bio C.d2i_PKCS7_bio
+func (self *BIO) D2iPKCS7Bio(p7 **PKCS7) *PKCS7 {
+	return nil
+}
 
-//go:linkname I2dPKCS7Bio C.i2d_PKCS7_bio
-func I2dPKCS7Bio(bp *BIO, p7 *PKCS7) c.Int
+// llgo:link (*BIO).I2dPKCS7Bio C.i2d_PKCS7_bio
+func (self *BIO) I2dPKCS7Bio(p7 *PKCS7) c.Int {
+	return 0
+}
 
-//go:linkname I2dPKCS7BioStream C.i2d_PKCS7_bio_stream
-func I2dPKCS7BioStream(out *BIO, p7 *PKCS7, in *BIO, flags c.Int) c.Int
+// llgo:link (*BIO).I2dPKCS7BioStream C.i2d_PKCS7_bio_stream
+func (self *BIO) I2dPKCS7BioStream(p7 *PKCS7, in *BIO, flags c.Int) c.Int {
+	return 0
+}
 
-//go:linkname PEMWriteBioPKCS7Stream C.PEM_write_bio_PKCS7_stream
-func PEMWriteBioPKCS7Stream(out *BIO, p7 *PKCS7, in *BIO, flags c.Int) c.Int
+// llgo:link (*BIO).PEM_write_bio_PKCS7_stream C.PEM_write_bio_PKCS7_stream
+func (self *BIO) PEM_write_bio_PKCS7_stream(p7 *PKCS7, in *BIO, flags c.Int) c.Int {
+	return 0
+}
 
-//go:linkname PKCS7SIGNER_INFONew C.PKCS7_SIGNER_INFO_new
-func PKCS7SIGNER_INFONew() *PKCS7_SIGNER_INFO
+//go:linkname PKCS7_SIGNER_INFO_new C.PKCS7_SIGNER_INFO_new
+func PKCS7_SIGNER_INFO_new() *PKCS7_SIGNER_INFO
 
-//go:linkname PKCS7SIGNER_INFOFree C.PKCS7_SIGNER_INFO_free
-func PKCS7SIGNER_INFOFree(a *PKCS7_SIGNER_INFO)
+// llgo:link (*PKCS7_SIGNER_INFO).Free C.PKCS7_SIGNER_INFO_free
+func (self *PKCS7_SIGNER_INFO) Free() {
+}
 
-//go:linkname D2iPKCS7SIGNER_INFO C.d2i_PKCS7_SIGNER_INFO
-func D2iPKCS7SIGNER_INFO(a **PKCS7_SIGNER_INFO, in **uint8, len c.Long) *PKCS7_SIGNER_INFO
+//go:linkname D2i_PKCS7_SIGNER_INFO C.d2i_PKCS7_SIGNER_INFO
+func D2i_PKCS7_SIGNER_INFO(a **PKCS7_SIGNER_INFO, in **uint8, len c.Long) *PKCS7_SIGNER_INFO
 
-//go:linkname I2dPKCS7SIGNER_INFO C.i2d_PKCS7_SIGNER_INFO
-func I2dPKCS7SIGNER_INFO(a *PKCS7_SIGNER_INFO, out **uint8) c.Int
+// llgo:link (*PKCS7_SIGNER_INFO).I2d C.i2d_PKCS7_SIGNER_INFO
+func (self *PKCS7_SIGNER_INFO) I2d(out **uint8) c.Int {
+	return 0
+}
 
-//go:linkname PKCS7SIGNER_INFOIt C.PKCS7_SIGNER_INFO_it
-func PKCS7SIGNER_INFOIt() *ASN1_ITEM
+//go:linkname PKCS7_SIGNER_INFO_it C.PKCS7_SIGNER_INFO_it
+func PKCS7_SIGNER_INFO_it() *ASN1_ITEM
 
-//go:linkname PKCS7RECIP_INFONew C.PKCS7_RECIP_INFO_new
-func PKCS7RECIP_INFONew() *PKCS7_RECIP_INFO
+//go:linkname PKCS7_RECIP_INFO_new C.PKCS7_RECIP_INFO_new
+func PKCS7_RECIP_INFO_new() *PKCS7_RECIP_INFO
 
-//go:linkname PKCS7RECIP_INFOFree C.PKCS7_RECIP_INFO_free
-func PKCS7RECIP_INFOFree(a *PKCS7_RECIP_INFO)
+// llgo:link (*PKCS7_RECIP_INFO).Free C.PKCS7_RECIP_INFO_free
+func (self *PKCS7_RECIP_INFO) Free() {
+}
 
-//go:linkname D2iPKCS7RECIP_INFO C.d2i_PKCS7_RECIP_INFO
-func D2iPKCS7RECIP_INFO(a **PKCS7_RECIP_INFO, in **uint8, len c.Long) *PKCS7_RECIP_INFO
+//go:linkname D2i_PKCS7_RECIP_INFO C.d2i_PKCS7_RECIP_INFO
+func D2i_PKCS7_RECIP_INFO(a **PKCS7_RECIP_INFO, in **uint8, len c.Long) *PKCS7_RECIP_INFO
 
-//go:linkname I2dPKCS7RECIP_INFO C.i2d_PKCS7_RECIP_INFO
-func I2dPKCS7RECIP_INFO(a *PKCS7_RECIP_INFO, out **uint8) c.Int
+// llgo:link (*PKCS7_RECIP_INFO).I2d C.i2d_PKCS7_RECIP_INFO
+func (self *PKCS7_RECIP_INFO) I2d(out **uint8) c.Int {
+	return 0
+}
 
-//go:linkname PKCS7RECIP_INFOIt C.PKCS7_RECIP_INFO_it
-func PKCS7RECIP_INFOIt() *ASN1_ITEM
+//go:linkname PKCS7_RECIP_INFO_it C.PKCS7_RECIP_INFO_it
+func PKCS7_RECIP_INFO_it() *ASN1_ITEM
 
-//go:linkname PKCS7SIGNEDNew C.PKCS7_SIGNED_new
-func PKCS7SIGNEDNew() *PKCS7_SIGNED
+//go:linkname PKCS7_SIGNED_new C.PKCS7_SIGNED_new
+func PKCS7_SIGNED_new() *PKCS7_SIGNED
 
-//go:linkname PKCS7SIGNEDFree C.PKCS7_SIGNED_free
-func PKCS7SIGNEDFree(a *PKCS7_SIGNED)
+// llgo:link (*PKCS7_SIGNED).Free C.PKCS7_SIGNED_free
+func (self *PKCS7_SIGNED) Free() {
+}
 
-//go:linkname D2iPKCS7SIGNED C.d2i_PKCS7_SIGNED
-func D2iPKCS7SIGNED(a **PKCS7_SIGNED, in **uint8, len c.Long) *PKCS7_SIGNED
+//go:linkname D2i_PKCS7_SIGNED C.d2i_PKCS7_SIGNED
+func D2i_PKCS7_SIGNED(a **PKCS7_SIGNED, in **uint8, len c.Long) *PKCS7_SIGNED
 
-//go:linkname I2dPKCS7SIGNED C.i2d_PKCS7_SIGNED
-func I2dPKCS7SIGNED(a *PKCS7_SIGNED, out **uint8) c.Int
+// llgo:link (*PKCS7_SIGNED).I2d C.i2d_PKCS7_SIGNED
+func (self *PKCS7_SIGNED) I2d(out **uint8) c.Int {
+	return 0
+}
 
-//go:linkname PKCS7SIGNEDIt C.PKCS7_SIGNED_it
-func PKCS7SIGNEDIt() *ASN1_ITEM
+//go:linkname PKCS7_SIGNED_it C.PKCS7_SIGNED_it
+func PKCS7_SIGNED_it() *ASN1_ITEM
 
-//go:linkname PKCS7ENC_CONTENTNew C.PKCS7_ENC_CONTENT_new
-func PKCS7ENC_CONTENTNew() *PKCS7_ENC_CONTENT
+//go:linkname PKCS7_ENC_CONTENT_new C.PKCS7_ENC_CONTENT_new
+func PKCS7_ENC_CONTENT_new() *PKCS7_ENC_CONTENT
 
-//go:linkname PKCS7ENC_CONTENTFree C.PKCS7_ENC_CONTENT_free
-func PKCS7ENC_CONTENTFree(a *PKCS7_ENC_CONTENT)
+// llgo:link (*PKCS7_ENC_CONTENT).Free C.PKCS7_ENC_CONTENT_free
+func (self *PKCS7_ENC_CONTENT) Free() {
+}
 
-//go:linkname D2iPKCS7ENC_CONTENT C.d2i_PKCS7_ENC_CONTENT
-func D2iPKCS7ENC_CONTENT(a **PKCS7_ENC_CONTENT, in **uint8, len c.Long) *PKCS7_ENC_CONTENT
+//go:linkname D2i_PKCS7_ENC_CONTENT C.d2i_PKCS7_ENC_CONTENT
+func D2i_PKCS7_ENC_CONTENT(a **PKCS7_ENC_CONTENT, in **uint8, len c.Long) *PKCS7_ENC_CONTENT
 
-//go:linkname I2dPKCS7ENC_CONTENT C.i2d_PKCS7_ENC_CONTENT
-func I2dPKCS7ENC_CONTENT(a *PKCS7_ENC_CONTENT, out **uint8) c.Int
+// llgo:link (*PKCS7_ENC_CONTENT).I2d C.i2d_PKCS7_ENC_CONTENT
+func (self *PKCS7_ENC_CONTENT) I2d(out **uint8) c.Int {
+	return 0
+}
 
-//go:linkname PKCS7ENC_CONTENTIt C.PKCS7_ENC_CONTENT_it
-func PKCS7ENC_CONTENTIt() *ASN1_ITEM
+//go:linkname PKCS7_ENC_CONTENT_it C.PKCS7_ENC_CONTENT_it
+func PKCS7_ENC_CONTENT_it() *ASN1_ITEM
 
-//go:linkname PKCS7ENVELOPENew C.PKCS7_ENVELOPE_new
-func PKCS7ENVELOPENew() *PKCS7_ENVELOPE
+//go:linkname PKCS7_ENVELOPE_new C.PKCS7_ENVELOPE_new
+func PKCS7_ENVELOPE_new() *PKCS7_ENVELOPE
 
-//go:linkname PKCS7ENVELOPEFree C.PKCS7_ENVELOPE_free
-func PKCS7ENVELOPEFree(a *PKCS7_ENVELOPE)
+// llgo:link (*PKCS7_ENVELOPE).Free C.PKCS7_ENVELOPE_free
+func (self *PKCS7_ENVELOPE) Free() {
+}
 
-//go:linkname D2iPKCS7ENVELOPE C.d2i_PKCS7_ENVELOPE
-func D2iPKCS7ENVELOPE(a **PKCS7_ENVELOPE, in **uint8, len c.Long) *PKCS7_ENVELOPE
+//go:linkname D2i_PKCS7_ENVELOPE C.d2i_PKCS7_ENVELOPE
+func D2i_PKCS7_ENVELOPE(a **PKCS7_ENVELOPE, in **uint8, len c.Long) *PKCS7_ENVELOPE
 
-//go:linkname I2dPKCS7ENVELOPE C.i2d_PKCS7_ENVELOPE
-func I2dPKCS7ENVELOPE(a *PKCS7_ENVELOPE, out **uint8) c.Int
+// llgo:link (*PKCS7_ENVELOPE).I2d C.i2d_PKCS7_ENVELOPE
+func (self *PKCS7_ENVELOPE) I2d(out **uint8) c.Int {
+	return 0
+}
 
-//go:linkname PKCS7ENVELOPEIt C.PKCS7_ENVELOPE_it
-func PKCS7ENVELOPEIt() *ASN1_ITEM
+//go:linkname PKCS7_ENVELOPE_it C.PKCS7_ENVELOPE_it
+func PKCS7_ENVELOPE_it() *ASN1_ITEM
 
-//go:linkname PKCS7SIGN_ENVELOPENew C.PKCS7_SIGN_ENVELOPE_new
-func PKCS7SIGN_ENVELOPENew() *PKCS7_SIGN_ENVELOPE
+//go:linkname PKCS7_SIGN_ENVELOPE_new C.PKCS7_SIGN_ENVELOPE_new
+func PKCS7_SIGN_ENVELOPE_new() *PKCS7_SIGN_ENVELOPE
 
-//go:linkname PKCS7SIGN_ENVELOPEFree C.PKCS7_SIGN_ENVELOPE_free
-func PKCS7SIGN_ENVELOPEFree(a *PKCS7_SIGN_ENVELOPE)
+// llgo:link (*PKCS7_SIGN_ENVELOPE).Free C.PKCS7_SIGN_ENVELOPE_free
+func (self *PKCS7_SIGN_ENVELOPE) Free() {
+}
 
-//go:linkname D2iPKCS7SIGN_ENVELOPE C.d2i_PKCS7_SIGN_ENVELOPE
-func D2iPKCS7SIGN_ENVELOPE(a **PKCS7_SIGN_ENVELOPE, in **uint8, len c.Long) *PKCS7_SIGN_ENVELOPE
+//go:linkname D2i_PKCS7_SIGN_ENVELOPE C.d2i_PKCS7_SIGN_ENVELOPE
+func D2i_PKCS7_SIGN_ENVELOPE(a **PKCS7_SIGN_ENVELOPE, in **uint8, len c.Long) *PKCS7_SIGN_ENVELOPE
 
-//go:linkname I2dPKCS7SIGN_ENVELOPE C.i2d_PKCS7_SIGN_ENVELOPE
-func I2dPKCS7SIGN_ENVELOPE(a *PKCS7_SIGN_ENVELOPE, out **uint8) c.Int
+// llgo:link (*PKCS7_SIGN_ENVELOPE).I2d C.i2d_PKCS7_SIGN_ENVELOPE
+func (self *PKCS7_SIGN_ENVELOPE) I2d(out **uint8) c.Int {
+	return 0
+}
 
-//go:linkname PKCS7SIGN_ENVELOPEIt C.PKCS7_SIGN_ENVELOPE_it
-func PKCS7SIGN_ENVELOPEIt() *ASN1_ITEM
+//go:linkname PKCS7_SIGN_ENVELOPE_it C.PKCS7_SIGN_ENVELOPE_it
+func PKCS7_SIGN_ENVELOPE_it() *ASN1_ITEM
 
-//go:linkname PKCS7DIGESTNew C.PKCS7_DIGEST_new
-func PKCS7DIGESTNew() *PKCS7_DIGEST
+//go:linkname PKCS7_DIGEST_new C.PKCS7_DIGEST_new
+func PKCS7_DIGEST_new() *PKCS7_DIGEST
 
-//go:linkname PKCS7DIGESTFree C.PKCS7_DIGEST_free
-func PKCS7DIGESTFree(a *PKCS7_DIGEST)
+// llgo:link (*PKCS7_DIGEST).Free C.PKCS7_DIGEST_free
+func (self *PKCS7_DIGEST) Free() {
+}
 
-//go:linkname D2iPKCS7DIGEST C.d2i_PKCS7_DIGEST
-func D2iPKCS7DIGEST(a **PKCS7_DIGEST, in **uint8, len c.Long) *PKCS7_DIGEST
+//go:linkname D2i_PKCS7_DIGEST C.d2i_PKCS7_DIGEST
+func D2i_PKCS7_DIGEST(a **PKCS7_DIGEST, in **uint8, len c.Long) *PKCS7_DIGEST
 
-//go:linkname I2dPKCS7DIGEST C.i2d_PKCS7_DIGEST
-func I2dPKCS7DIGEST(a *PKCS7_DIGEST, out **uint8) c.Int
+// llgo:link (*PKCS7_DIGEST).I2d C.i2d_PKCS7_DIGEST
+func (self *PKCS7_DIGEST) I2d(out **uint8) c.Int {
+	return 0
+}
 
-//go:linkname PKCS7DIGESTIt C.PKCS7_DIGEST_it
-func PKCS7DIGESTIt() *ASN1_ITEM
-
-//go:linkname PKCS7ENCRYPTNew C.PKCS7_ENCRYPT_new
-func PKCS7ENCRYPTNew() *PKCS7_ENCRYPT
-
-//go:linkname PKCS7ENCRYPTFree C.PKCS7_ENCRYPT_free
-func PKCS7ENCRYPTFree(a *PKCS7_ENCRYPT)
-
-//go:linkname D2iPKCS7ENCRYPT C.d2i_PKCS7_ENCRYPT
-func D2iPKCS7ENCRYPT(a **PKCS7_ENCRYPT, in **uint8, len c.Long) *PKCS7_ENCRYPT
-
-//go:linkname I2dPKCS7ENCRYPT C.i2d_PKCS7_ENCRYPT
-func I2dPKCS7ENCRYPT(a *PKCS7_ENCRYPT, out **uint8) c.Int
-
-//go:linkname PKCS7ENCRYPTIt C.PKCS7_ENCRYPT_it
-func PKCS7ENCRYPTIt() *ASN1_ITEM
-
-//go:linkname PKCS7New C.PKCS7_new
-func PKCS7New() *PKCS7
-
-//go:linkname PKCS7Free C.PKCS7_free
-func PKCS7Free(a *PKCS7)
-
-//go:linkname D2iPKCS7 C.d2i_PKCS7
-func D2iPKCS7(a **PKCS7, in **uint8, len c.Long) *PKCS7
-
-//go:linkname I2dPKCS7 C.i2d_PKCS7
-func I2dPKCS7(a *PKCS7, out **uint8) c.Int
-
-//go:linkname PKCS7It C.PKCS7_it
-func PKCS7It() *ASN1_ITEM
-
-//go:linkname PKCS7NewEx C.PKCS7_new_ex
-func PKCS7NewEx(libctx *OSSL_LIB_CTX, propq *c.Char) *PKCS7
-
-//go:linkname PKCS7ATTR_SIGNIt C.PKCS7_ATTR_SIGN_it
-func PKCS7ATTR_SIGNIt() *ASN1_ITEM
-
-//go:linkname PKCS7ATTR_VERIFYIt C.PKCS7_ATTR_VERIFY_it
-func PKCS7ATTR_VERIFYIt() *ASN1_ITEM
-
-//go:linkname I2dPKCS7NDEF C.i2d_PKCS7_NDEF
-func I2dPKCS7NDEF(a *PKCS7, out **uint8) c.Int
-
-//go:linkname PKCS7PrintCtx C.PKCS7_print_ctx
-func PKCS7PrintCtx(out *BIO, x *PKCS7, indent c.Int, pctx *ASN1_PCTX) c.Int
-
-//go:linkname PKCS7Ctrl C.PKCS7_ctrl
-func PKCS7Ctrl(p7 *PKCS7, cmd c.Int, larg c.Long, parg *c.Char) c.Long
-
-//go:linkname PKCS7TypeIsOther C.PKCS7_type_is_other
-func PKCS7TypeIsOther(p7 *PKCS7) c.Int
-
-//go:linkname PKCS7SetType C.PKCS7_set_type
-func PKCS7SetType(p7 *PKCS7, type_ c.Int) c.Int
-
-//go:linkname PKCS7Set0TypeOther C.PKCS7_set0_type_other
-func PKCS7Set0TypeOther(p7 *PKCS7, type_ c.Int, other *ASN1_TYPE) c.Int
-
-//go:linkname PKCS7SetContent C.PKCS7_set_content
-func PKCS7SetContent(p7 *PKCS7, p7_data *PKCS7) c.Int
-
-//go:linkname PKCS7SIGNER_INFOSet C.PKCS7_SIGNER_INFO_set
-func PKCS7SIGNER_INFOSet(p7i *PKCS7_SIGNER_INFO, x509 *X509, pkey *EVP_PKEY, dgst *EVP_MD) c.Int
-
-//go:linkname PKCS7SIGNER_INFOSign C.PKCS7_SIGNER_INFO_sign
-func PKCS7SIGNER_INFOSign(si *PKCS7_SIGNER_INFO) c.Int
-
-//go:linkname PKCS7AddSigner C.PKCS7_add_signer
-func PKCS7AddSigner(p7 *PKCS7, p7i *PKCS7_SIGNER_INFO) c.Int
-
-//go:linkname PKCS7AddCertificate C.PKCS7_add_certificate
-func PKCS7AddCertificate(p7 *PKCS7, cert *X509) c.Int
-
-//go:linkname PKCS7AddCrl C.PKCS7_add_crl
-func PKCS7AddCrl(p7 *PKCS7, crl *X509_CRL) c.Int
-
-//go:linkname PKCS7ContentNew C.PKCS7_content_new
-func PKCS7ContentNew(p7 *PKCS7, nid c.Int) c.Int
-
-//go:linkname PKCS7DataVerify C.PKCS7_dataVerify
-func PKCS7DataVerify(cert_store *X509_STORE, ctx *X509_STORE_CTX, bio *BIO, p7 *PKCS7, si *PKCS7_SIGNER_INFO) c.Int
-
-//go:linkname PKCS7SignatureVerify C.PKCS7_signatureVerify
-func PKCS7SignatureVerify(bio *BIO, p7 *PKCS7, si *PKCS7_SIGNER_INFO, signer *X509) c.Int
-
-//go:linkname PKCS7DataInit C.PKCS7_dataInit
-func PKCS7DataInit(p7 *PKCS7, bio *BIO) *BIO
-
-//go:linkname PKCS7DataFinal C.PKCS7_dataFinal
-func PKCS7DataFinal(p7 *PKCS7, bio *BIO) c.Int
-
-//go:linkname PKCS7DataDecode C.PKCS7_dataDecode
-func PKCS7DataDecode(p7 *PKCS7, pkey *EVP_PKEY, in_bio *BIO, pcert *X509) *BIO
-
-//go:linkname PKCS7AddSignature C.PKCS7_add_signature
-func PKCS7AddSignature(p7 *PKCS7, x509 *X509, pkey *EVP_PKEY, dgst *EVP_MD) *PKCS7_SIGNER_INFO
-
-//go:linkname PKCS7CertFromSignerInfo C.PKCS7_cert_from_signer_info
-func PKCS7CertFromSignerInfo(p7 *PKCS7, si *PKCS7_SIGNER_INFO) *X509
-
-//go:linkname PKCS7SetDigest C.PKCS7_set_digest
-func PKCS7SetDigest(p7 *PKCS7, md *EVP_MD) c.Int
-
-//go:linkname PKCS7GetSignerInfo C.PKCS7_get_signer_info
-func PKCS7GetSignerInfo(p7 *PKCS7) *StackStPKCS7SIGNER_INFO
-
-//go:linkname PKCS7AddRecipient C.PKCS7_add_recipient
-func PKCS7AddRecipient(p7 *PKCS7, x509 *X509) *PKCS7_RECIP_INFO
-
-//go:linkname PKCS7SIGNER_INFOGet0Algs C.PKCS7_SIGNER_INFO_get0_algs
-func PKCS7SIGNER_INFOGet0Algs(si *PKCS7_SIGNER_INFO, pk **EVP_PKEY, pdig **X509_ALGOR, psig **X509_ALGOR)
-
-//go:linkname PKCS7RECIP_INFOGet0Alg C.PKCS7_RECIP_INFO_get0_alg
-func PKCS7RECIP_INFOGet0Alg(ri *PKCS7_RECIP_INFO, penc **X509_ALGOR)
-
-//go:linkname PKCS7AddRecipientInfo C.PKCS7_add_recipient_info
-func PKCS7AddRecipientInfo(p7 *PKCS7, ri *PKCS7_RECIP_INFO) c.Int
-
-//go:linkname PKCS7RECIP_INFOSet C.PKCS7_RECIP_INFO_set
-func PKCS7RECIP_INFOSet(p7i *PKCS7_RECIP_INFO, x509 *X509) c.Int
-
-//go:linkname PKCS7SetCipher C.PKCS7_set_cipher
-func PKCS7SetCipher(p7 *PKCS7, cipher *EVP_CIPHER) c.Int
-
-//go:linkname PKCS7Stream C.PKCS7_stream
-func PKCS7Stream(boundary ***uint8, p7 *PKCS7) c.Int
-
-//go:linkname PKCS7GetIssuerAndSerial C.PKCS7_get_issuer_and_serial
-func PKCS7GetIssuerAndSerial(p7 *PKCS7, idx c.Int) *PKCS7_ISSUER_AND_SERIAL
-
-//go:linkname PKCS7GetOctetString C.PKCS7_get_octet_string
-func PKCS7GetOctetString(p7 *PKCS7) *ASN1_OCTET_STRING
-
-//go:linkname PKCS7DigestFromAttributes C.PKCS7_digest_from_attributes
-func PKCS7DigestFromAttributes(sk *StackStX509ATTRIBUTE) *ASN1_OCTET_STRING
-
-//go:linkname PKCS7AddSignedAttribute C.PKCS7_add_signed_attribute
-func PKCS7AddSignedAttribute(p7si *PKCS7_SIGNER_INFO, nid c.Int, type_ c.Int, data unsafe.Pointer) c.Int
-
-//go:linkname PKCS7AddAttribute C.PKCS7_add_attribute
-func PKCS7AddAttribute(p7si *PKCS7_SIGNER_INFO, nid c.Int, atrtype c.Int, value unsafe.Pointer) c.Int
-
-//go:linkname PKCS7GetAttribute C.PKCS7_get_attribute
-func PKCS7GetAttribute(si *PKCS7_SIGNER_INFO, nid c.Int) *ASN1_TYPE
-
-//go:linkname PKCS7GetSignedAttribute C.PKCS7_get_signed_attribute
-func PKCS7GetSignedAttribute(si *PKCS7_SIGNER_INFO, nid c.Int) *ASN1_TYPE
-
-//go:linkname PKCS7SetSignedAttributes C.PKCS7_set_signed_attributes
-func PKCS7SetSignedAttributes(p7si *PKCS7_SIGNER_INFO, sk *StackStX509ATTRIBUTE) c.Int
-
-//go:linkname PKCS7SetAttributes C.PKCS7_set_attributes
-func PKCS7SetAttributes(p7si *PKCS7_SIGNER_INFO, sk *StackStX509ATTRIBUTE) c.Int
-
-//go:linkname PKCS7Sign C.PKCS7_sign
-func PKCS7Sign(signcert *X509, pkey *EVP_PKEY, certs *StackStX509, data *BIO, flags c.Int) *PKCS7
-
-//go:linkname PKCS7SignEx C.PKCS7_sign_ex
-func PKCS7SignEx(signcert *X509, pkey *EVP_PKEY, certs *StackStX509, data *BIO, flags c.Int, libctx *OSSL_LIB_CTX, propq *c.Char) *PKCS7
-
-//go:linkname PKCS7SignAddSigner C.PKCS7_sign_add_signer
-func PKCS7SignAddSigner(p7 *PKCS7, signcert *X509, pkey *EVP_PKEY, md *EVP_MD, flags c.Int) *PKCS7_SIGNER_INFO
-
-//go:linkname PKCS7Final C.PKCS7_final
-func PKCS7Final(p7 *PKCS7, data *BIO, flags c.Int) c.Int
-
-//go:linkname PKCS7Verify C.PKCS7_verify
-func PKCS7Verify(p7 *PKCS7, certs *StackStX509, store *X509_STORE, indata *BIO, out *BIO, flags c.Int) c.Int
-
-//go:linkname PKCS7Get0Signers C.PKCS7_get0_signers
-func PKCS7Get0Signers(p7 *PKCS7, certs *StackStX509, flags c.Int) *StackStX509
-
-//go:linkname PKCS7Encrypt C.PKCS7_encrypt
-func PKCS7Encrypt(certs *StackStX509, in *BIO, cipher *EVP_CIPHER, flags c.Int) *PKCS7
-
-//go:linkname PKCS7EncryptEx C.PKCS7_encrypt_ex
-func PKCS7EncryptEx(certs *StackStX509, in *BIO, cipher *EVP_CIPHER, flags c.Int, libctx *OSSL_LIB_CTX, propq *c.Char) *PKCS7
-
-//go:linkname PKCS7Decrypt C.PKCS7_decrypt
-func PKCS7Decrypt(p7 *PKCS7, pkey *EVP_PKEY, cert *X509, data *BIO, flags c.Int) c.Int
-
-//go:linkname PKCS7AddAttribSmimecap C.PKCS7_add_attrib_smimecap
-func PKCS7AddAttribSmimecap(si *PKCS7_SIGNER_INFO, cap *StackStX509ALGOR) c.Int
-
-//go:linkname PKCS7GetSmimecap C.PKCS7_get_smimecap
-func PKCS7GetSmimecap(si *PKCS7_SIGNER_INFO) *StackStX509ALGOR
-
-//go:linkname PKCS7SimpleSmimecap C.PKCS7_simple_smimecap
-func PKCS7SimpleSmimecap(sk *StackStX509ALGOR, nid c.Int, arg c.Int) c.Int
-
-//go:linkname PKCS7AddAttribContentType C.PKCS7_add_attrib_content_type
-func PKCS7AddAttribContentType(si *PKCS7_SIGNER_INFO, coid *ASN1_OBJECT) c.Int
-
-//go:linkname PKCS7Add0AttribSigningTime C.PKCS7_add0_attrib_signing_time
-func PKCS7Add0AttribSigningTime(si *PKCS7_SIGNER_INFO, t *ASN1_TIME) c.Int
-
-//go:linkname PKCS7Add1AttribDigest C.PKCS7_add1_attrib_digest
-func PKCS7Add1AttribDigest(si *PKCS7_SIGNER_INFO, md *uint8, mdlen c.Int) c.Int
-
-//go:linkname SMIMEWritePKCS7 C.SMIME_write_PKCS7
-func SMIMEWritePKCS7(bio *BIO, p7 *PKCS7, data *BIO, flags c.Int) c.Int
-
-//go:linkname SMIMEReadPKCS7Ex C.SMIME_read_PKCS7_ex
-func SMIMEReadPKCS7Ex(bio *BIO, bcont **BIO, p7 **PKCS7) *PKCS7
-
-//go:linkname SMIMEReadPKCS7 C.SMIME_read_PKCS7
-func SMIMEReadPKCS7(bio *BIO, bcont **BIO) *PKCS7
-
-//go:linkname BIONewPKCS7 C.BIO_new_PKCS7
-func BIONewPKCS7(out *BIO, p7 *PKCS7) *BIO
+//go:linkname PKCS7_DIGEST_it C.PKCS7_DIGEST_it
+func PKCS7_DIGEST_it() *ASN1_ITEM
+
+//go:linkname PKCS7_ENCRYPT_new C.PKCS7_ENCRYPT_new
+func PKCS7_ENCRYPT_new() *PKCS7_ENCRYPT
+
+// llgo:link (*PKCS7_ENCRYPT).Free C.PKCS7_ENCRYPT_free
+func (self *PKCS7_ENCRYPT) Free() {
+}
+
+//go:linkname D2i_PKCS7_ENCRYPT C.d2i_PKCS7_ENCRYPT
+func D2i_PKCS7_ENCRYPT(a **PKCS7_ENCRYPT, in **uint8, len c.Long) *PKCS7_ENCRYPT
+
+// llgo:link (*PKCS7_ENCRYPT).I2d C.i2d_PKCS7_ENCRYPT
+func (self *PKCS7_ENCRYPT) I2d(out **uint8) c.Int {
+	return 0
+}
+
+//go:linkname PKCS7_ENCRYPT_it C.PKCS7_ENCRYPT_it
+func PKCS7_ENCRYPT_it() *ASN1_ITEM
+
+//go:linkname PKCS7_new C.PKCS7_new
+func PKCS7_new() *PKCS7
+
+// llgo:link (*PKCS7).Free C.PKCS7_free
+func (self *PKCS7) Free() {
+}
+
+//go:linkname D2i_PKCS7 C.d2i_PKCS7
+func D2i_PKCS7(a **PKCS7, in **uint8, len c.Long) *PKCS7
+
+// llgo:link (*PKCS7).I2d C.i2d_PKCS7
+func (self *PKCS7) I2d(out **uint8) c.Int {
+	return 0
+}
+
+//go:linkname PKCS7_it C.PKCS7_it
+func PKCS7_it() *ASN1_ITEM
+
+// llgo:link (*OSSL_LIB_CTX).PKCS7_new_ex C.PKCS7_new_ex
+func (self *OSSL_LIB_CTX) PKCS7_new_ex(propq *c.Char) *PKCS7 {
+	return nil
+}
+
+//go:linkname PKCS7_ATTR_SIGN_it C.PKCS7_ATTR_SIGN_it
+func PKCS7_ATTR_SIGN_it() *ASN1_ITEM
+
+//go:linkname PKCS7_ATTR_VERIFY_it C.PKCS7_ATTR_VERIFY_it
+func PKCS7_ATTR_VERIFY_it() *ASN1_ITEM
+
+// llgo:link (*PKCS7).I2d_PKCS7_NDEF C.i2d_PKCS7_NDEF
+func (self *PKCS7) I2d_PKCS7_NDEF(out **uint8) c.Int {
+	return 0
+}
+
+// llgo:link (*BIO).PKCS7_print_ctx C.PKCS7_print_ctx
+func (self *BIO) PKCS7_print_ctx(x *PKCS7, indent c.Int, pctx *ASN1_PCTX) c.Int {
+	return 0
+}
+
+// llgo:link (*PKCS7).Ctrl C.PKCS7_ctrl
+func (self *PKCS7) Ctrl(cmd c.Int, larg c.Long, parg *c.Char) c.Long {
+	return 0
+}
+
+// llgo:link (*PKCS7).TypeIsOther C.PKCS7_type_is_other
+func (self *PKCS7) TypeIsOther() c.Int {
+	return 0
+}
+
+// llgo:link (*PKCS7).SetType C.PKCS7_set_type
+func (self *PKCS7) SetType(type_ c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*PKCS7).Set0TypeOther C.PKCS7_set0_type_other
+func (self *PKCS7) Set0TypeOther(type_ c.Int, other *ASN1_TYPE) c.Int {
+	return 0
+}
+
+//go:linkname PKCS7_set_content C.PKCS7_set_content
+func PKCS7_set_content(p7 *PKCS7, p7_data *PKCS7) c.Int
+
+// llgo:link (*PKCS7_SIGNER_INFO).Set C.PKCS7_SIGNER_INFO_set
+func (self *PKCS7_SIGNER_INFO) Set(x509 *X509, pkey *EVP_PKEY, dgst *EVP_MD) c.Int {
+	return 0
+}
+
+// llgo:link (*PKCS7_SIGNER_INFO).Sign C.PKCS7_SIGNER_INFO_sign
+func (self *PKCS7_SIGNER_INFO) Sign() c.Int {
+	return 0
+}
+
+// llgo:link (*PKCS7).AddSigner C.PKCS7_add_signer
+func (self *PKCS7) AddSigner(p7i *PKCS7_SIGNER_INFO) c.Int {
+	return 0
+}
+
+// llgo:link (*PKCS7).AddCertificate C.PKCS7_add_certificate
+func (self *PKCS7) AddCertificate(cert *X509) c.Int {
+	return 0
+}
+
+// llgo:link (*PKCS7).AddCrl C.PKCS7_add_crl
+func (self *PKCS7) AddCrl(crl *X509_CRL) c.Int {
+	return 0
+}
+
+// llgo:link (*PKCS7).ContentNew C.PKCS7_content_new
+func (self *PKCS7) ContentNew(nid c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*X509_STORE).PKCS7_dataVerify C.PKCS7_dataVerify
+func (self *X509_STORE) PKCS7_dataVerify(ctx *X509_STORE_CTX, bio *BIO, p7 *PKCS7, si *PKCS7_SIGNER_INFO) c.Int {
+	return 0
+}
+
+// llgo:link (*BIO).PKCS7_signatureVerify C.PKCS7_signatureVerify
+func (self *BIO) PKCS7_signatureVerify(p7 *PKCS7, si *PKCS7_SIGNER_INFO, signer *X509) c.Int {
+	return 0
+}
+
+// llgo:link (*PKCS7).DataInit C.PKCS7_dataInit
+func (self *PKCS7) DataInit(bio *BIO) *BIO {
+	return nil
+}
+
+// llgo:link (*PKCS7).DataFinal C.PKCS7_dataFinal
+func (self *PKCS7) DataFinal(bio *BIO) c.Int {
+	return 0
+}
+
+// llgo:link (*PKCS7).DataDecode C.PKCS7_dataDecode
+func (self *PKCS7) DataDecode(pkey *EVP_PKEY, in_bio *BIO, pcert *X509) *BIO {
+	return nil
+}
+
+// llgo:link (*PKCS7).AddSignature C.PKCS7_add_signature
+func (self *PKCS7) AddSignature(x509 *X509, pkey *EVP_PKEY, dgst *EVP_MD) *PKCS7_SIGNER_INFO {
+	return nil
+}
+
+// llgo:link (*PKCS7).CertFromSignerInfo C.PKCS7_cert_from_signer_info
+func (self *PKCS7) CertFromSignerInfo(si *PKCS7_SIGNER_INFO) *X509 {
+	return nil
+}
+
+// llgo:link (*PKCS7).SetDigest C.PKCS7_set_digest
+func (self *PKCS7) SetDigest(md *EVP_MD) c.Int {
+	return 0
+}
+
+// llgo:link (*PKCS7).SignerInfo C.PKCS7_get_signer_info
+func (self *PKCS7) SignerInfo() *Stack_st_PKCS7_SIGNER_INFO {
+	return nil
+}
+
+// llgo:link (*PKCS7).AddRecipient C.PKCS7_add_recipient
+func (self *PKCS7) AddRecipient(x509 *X509) *PKCS7_RECIP_INFO {
+	return nil
+}
+
+// llgo:link (*PKCS7_SIGNER_INFO).Get0Algs C.PKCS7_SIGNER_INFO_get0_algs
+func (self *PKCS7_SIGNER_INFO) Get0Algs(pk **EVP_PKEY, pdig **X509_ALGOR, psig **X509_ALGOR) {
+}
+
+// llgo:link (*PKCS7_RECIP_INFO).Get0Alg C.PKCS7_RECIP_INFO_get0_alg
+func (self *PKCS7_RECIP_INFO) Get0Alg(penc **X509_ALGOR) {
+}
+
+// llgo:link (*PKCS7).AddRecipientInfo C.PKCS7_add_recipient_info
+func (self *PKCS7) AddRecipientInfo(ri *PKCS7_RECIP_INFO) c.Int {
+	return 0
+}
+
+// llgo:link (*PKCS7_RECIP_INFO).Set C.PKCS7_RECIP_INFO_set
+func (self *PKCS7_RECIP_INFO) Set(x509 *X509) c.Int {
+	return 0
+}
+
+// llgo:link (*PKCS7).SetCipher C.PKCS7_set_cipher
+func (self *PKCS7) SetCipher(cipher *EVP_CIPHER) c.Int {
+	return 0
+}
+
+//go:linkname PKCS7_stream C.PKCS7_stream
+func PKCS7_stream(boundary ***uint8, p7 *PKCS7) c.Int
+
+// llgo:link (*PKCS7).IssuerAndSerial C.PKCS7_get_issuer_and_serial
+func (self *PKCS7) IssuerAndSerial(idx c.Int) *PKCS7_ISSUER_AND_SERIAL {
+	return nil
+}
+
+// llgo:link (*PKCS7).OctetString C.PKCS7_get_octet_string
+func (self *PKCS7) OctetString() *ASN1_OCTET_STRING {
+	return nil
+}
+
+// llgo:link (*Stack_st_X509_ATTRIBUTE).PKCS7_digest_from_attributes C.PKCS7_digest_from_attributes
+func (self *Stack_st_X509_ATTRIBUTE) PKCS7_digest_from_attributes() *ASN1_OCTET_STRING {
+	return nil
+}
+
+// llgo:link (*PKCS7_SIGNER_INFO).AddSignedAttribute C.PKCS7_add_signed_attribute
+func (self *PKCS7_SIGNER_INFO) AddSignedAttribute(nid c.Int, type_ c.Int, data unsafe.Pointer) c.Int {
+	return 0
+}
+
+// llgo:link (*PKCS7_SIGNER_INFO).AddAttribute C.PKCS7_add_attribute
+func (self *PKCS7_SIGNER_INFO) AddAttribute(nid c.Int, atrtype c.Int, value unsafe.Pointer) c.Int {
+	return 0
+}
+
+// llgo:link (*PKCS7_SIGNER_INFO).Attribute C.PKCS7_get_attribute
+func (self *PKCS7_SIGNER_INFO) Attribute(nid c.Int) *ASN1_TYPE {
+	return nil
+}
+
+// llgo:link (*PKCS7_SIGNER_INFO).SignedAttribute C.PKCS7_get_signed_attribute
+func (self *PKCS7_SIGNER_INFO) SignedAttribute(nid c.Int) *ASN1_TYPE {
+	return nil
+}
+
+// llgo:link (*PKCS7_SIGNER_INFO).SetSignedAttributes C.PKCS7_set_signed_attributes
+func (self *PKCS7_SIGNER_INFO) SetSignedAttributes(sk *Stack_st_X509_ATTRIBUTE) c.Int {
+	return 0
+}
+
+// llgo:link (*PKCS7_SIGNER_INFO).SetAttributes C.PKCS7_set_attributes
+func (self *PKCS7_SIGNER_INFO) SetAttributes(sk *Stack_st_X509_ATTRIBUTE) c.Int {
+	return 0
+}
+
+// llgo:link (*X509).PKCS7_sign C.PKCS7_sign
+func (self *X509) PKCS7_sign(pkey *EVP_PKEY, certs *Stack_st_X509, data *BIO, flags c.Int) *PKCS7 {
+	return nil
+}
+
+// llgo:link (*X509).PKCS7_sign_ex C.PKCS7_sign_ex
+func (self *X509) PKCS7_sign_ex(pkey *EVP_PKEY, certs *Stack_st_X509, data *BIO, flags c.Int, libctx *OSSL_LIB_CTX, propq *c.Char) *PKCS7 {
+	return nil
+}
+
+// llgo:link (*PKCS7).SignAddSigner C.PKCS7_sign_add_signer
+func (self *PKCS7) SignAddSigner(signcert *X509, pkey *EVP_PKEY, md *EVP_MD, flags c.Int) *PKCS7_SIGNER_INFO {
+	return nil
+}
+
+// llgo:link (*PKCS7).Final C.PKCS7_final
+func (self *PKCS7) Final(data *BIO, flags c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*PKCS7).Verify C.PKCS7_verify
+func (self *PKCS7) Verify(certs *Stack_st_X509, store *X509_STORE, indata *BIO, out *BIO, flags c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*PKCS7).Get0Signers C.PKCS7_get0_signers
+func (self *PKCS7) Get0Signers(certs *Stack_st_X509, flags c.Int) *Stack_st_X509 {
+	return nil
+}
+
+// llgo:link (*Stack_st_X509).PKCS7_encrypt C.PKCS7_encrypt
+func (self *Stack_st_X509) PKCS7_encrypt(in *BIO, cipher *EVP_CIPHER, flags c.Int) *PKCS7 {
+	return nil
+}
+
+// llgo:link (*Stack_st_X509).PKCS7_encrypt_ex C.PKCS7_encrypt_ex
+func (self *Stack_st_X509) PKCS7_encrypt_ex(in *BIO, cipher *EVP_CIPHER, flags c.Int, libctx *OSSL_LIB_CTX, propq *c.Char) *PKCS7 {
+	return nil
+}
+
+// llgo:link (*PKCS7).Decrypt C.PKCS7_decrypt
+func (self *PKCS7) Decrypt(pkey *EVP_PKEY, cert *X509, data *BIO, flags c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*PKCS7_SIGNER_INFO).AddAttribSmimecap C.PKCS7_add_attrib_smimecap
+func (self *PKCS7_SIGNER_INFO) AddAttribSmimecap(cap *Stack_st_X509_ALGOR) c.Int {
+	return 0
+}
+
+// llgo:link (*PKCS7_SIGNER_INFO).Smimecap C.PKCS7_get_smimecap
+func (self *PKCS7_SIGNER_INFO) Smimecap() *Stack_st_X509_ALGOR {
+	return nil
+}
+
+// llgo:link (*Stack_st_X509_ALGOR).PKCS7_simple_smimecap C.PKCS7_simple_smimecap
+func (self *Stack_st_X509_ALGOR) PKCS7_simple_smimecap(nid c.Int, arg c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*PKCS7_SIGNER_INFO).AddAttribContentType C.PKCS7_add_attrib_content_type
+func (self *PKCS7_SIGNER_INFO) AddAttribContentType(coid *ASN1_OBJECT) c.Int {
+	return 0
+}
+
+// llgo:link (*PKCS7_SIGNER_INFO).Add0AttribSigningTime C.PKCS7_add0_attrib_signing_time
+func (self *PKCS7_SIGNER_INFO) Add0AttribSigningTime(t *ASN1_TIME) c.Int {
+	return 0
+}
+
+// llgo:link (*PKCS7_SIGNER_INFO).Add1AttribDigest C.PKCS7_add1_attrib_digest
+func (self *PKCS7_SIGNER_INFO) Add1AttribDigest(md *uint8, mdlen c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*BIO).SMIME_write_PKCS7 C.SMIME_write_PKCS7
+func (self *BIO) SMIME_write_PKCS7(p7 *PKCS7, data *BIO, flags c.Int) c.Int {
+	return 0
+}
+
+// llgo:link (*BIO).SMIME_read_PKCS7_ex C.SMIME_read_PKCS7_ex
+func (self *BIO) SMIME_read_PKCS7_ex(bcont **BIO, p7 **PKCS7) *PKCS7 {
+	return nil
+}
+
+// llgo:link (*BIO).SMIME_read_PKCS7 C.SMIME_read_PKCS7
+func (self *BIO) SMIME_read_PKCS7(bcont **BIO) *PKCS7 {
+	return nil
+}
+
+// llgo:link (*BIO).New_PKCS7 C.BIO_new_PKCS7
+func (self *BIO) New_PKCS7(p7 *PKCS7) *BIO {
+	return self
+}

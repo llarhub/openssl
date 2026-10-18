@@ -28,281 +28,412 @@ const (
 // have one value here we set the number of checks to 64 which is the 128 bit
 // security level that is the highest level and valid for creating a 3072 bit
 // DSA key.
-const DSSPrimeChecks = 64
+const DSS_prime_checks = 64
 
-type DSA_SIGSt struct {
+type DSA_SIG_st struct {
 }
-type DSA_SIG = DSA_SIGSt
+type DSA_SIG DSA_SIG_st
 
-//go:linkname EVP_PKEY_CTXSetDsaParamgenBits C.EVP_PKEY_CTX_set_dsa_paramgen_bits
-func EVP_PKEY_CTXSetDsaParamgenBits(ctx *EVP_PKEY_CTX, nbits c.Int) c.Int
+// llgo:link (*EVP_PKEY_CTX).SetDsaParamgenBits C.EVP_PKEY_CTX_set_dsa_paramgen_bits
+func (self *EVP_PKEY_CTX) SetDsaParamgenBits(nbits c.Int) c.Int {
+	return 0
+}
 
-//go:linkname EVP_PKEY_CTXSetDsaParamgenQBits C.EVP_PKEY_CTX_set_dsa_paramgen_q_bits
-func EVP_PKEY_CTXSetDsaParamgenQBits(ctx *EVP_PKEY_CTX, qbits c.Int) c.Int
+// llgo:link (*EVP_PKEY_CTX).SetDsaParamgenQBits C.EVP_PKEY_CTX_set_dsa_paramgen_q_bits
+func (self *EVP_PKEY_CTX) SetDsaParamgenQBits(qbits c.Int) c.Int {
+	return 0
+}
 
-//go:linkname EVP_PKEY_CTXSetDsaParamgenMdProps C.EVP_PKEY_CTX_set_dsa_paramgen_md_props
-func EVP_PKEY_CTXSetDsaParamgenMdProps(ctx *EVP_PKEY_CTX, md_name *c.Char, md_properties *c.Char) c.Int
+// llgo:link (*EVP_PKEY_CTX).SetDsaParamgenMdProps C.EVP_PKEY_CTX_set_dsa_paramgen_md_props
+func (self *EVP_PKEY_CTX) SetDsaParamgenMdProps(md_name *c.Char, md_properties *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname EVP_PKEY_CTXSetDsaParamgenGindex C.EVP_PKEY_CTX_set_dsa_paramgen_gindex
-func EVP_PKEY_CTXSetDsaParamgenGindex(ctx *EVP_PKEY_CTX, gindex c.Int) c.Int
+// llgo:link (*EVP_PKEY_CTX).SetDsaParamgenGindex C.EVP_PKEY_CTX_set_dsa_paramgen_gindex
+func (self *EVP_PKEY_CTX) SetDsaParamgenGindex(gindex c.Int) c.Int {
+	return 0
+}
 
-//go:linkname EVP_PKEY_CTXSetDsaParamgenType C.EVP_PKEY_CTX_set_dsa_paramgen_type
-func EVP_PKEY_CTXSetDsaParamgenType(ctx *EVP_PKEY_CTX, name *c.Char) c.Int
+// llgo:link (*EVP_PKEY_CTX).SetDsaParamgenType C.EVP_PKEY_CTX_set_dsa_paramgen_type
+func (self *EVP_PKEY_CTX) SetDsaParamgenType(name *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname EVP_PKEY_CTXSetDsaParamgenSeed C.EVP_PKEY_CTX_set_dsa_paramgen_seed
-func EVP_PKEY_CTXSetDsaParamgenSeed(ctx *EVP_PKEY_CTX, seed *uint8, seedlen c.SizeT) c.Int
+// llgo:link (*EVP_PKEY_CTX).SetDsaParamgenSeed C.EVP_PKEY_CTX_set_dsa_paramgen_seed
+func (self *EVP_PKEY_CTX) SetDsaParamgenSeed(seed *uint8, seedlen c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname EVP_PKEY_CTXSetDsaParamgenMd C.EVP_PKEY_CTX_set_dsa_paramgen_md
-func EVP_PKEY_CTXSetDsaParamgenMd(ctx *EVP_PKEY_CTX, md *EVP_MD) c.Int
+// llgo:link (*EVP_PKEY_CTX).SetDsaParamgenMd C.EVP_PKEY_CTX_set_dsa_paramgen_md
+func (self *EVP_PKEY_CTX) SetDsaParamgenMd(md *EVP_MD) c.Int {
+	return 0
+}
 
-//go:linkname DSA_SIGNew C.DSA_SIG_new
-func DSA_SIGNew() *DSA_SIG
+//go:linkname DSA_SIG_new C.DSA_SIG_new
+func DSA_SIG_new() *DSA_SIG
 
-//go:linkname DSA_SIGFree C.DSA_SIG_free
-func DSA_SIGFree(a *DSA_SIG)
+// llgo:link (*DSA_SIG).Free C.DSA_SIG_free
+func (self *DSA_SIG) Free() {
+}
 
-//go:linkname D2iDSA_SIG C.d2i_DSA_SIG
-func D2iDSA_SIG(a **DSA_SIG, in **uint8, len c.Long) *DSA_SIG
+//go:linkname D2i_DSA_SIG C.d2i_DSA_SIG
+func D2i_DSA_SIG(a **DSA_SIG, in **uint8, len c.Long) *DSA_SIG
 
-//go:linkname I2dDSA_SIG C.i2d_DSA_SIG
-func I2dDSA_SIG(a *DSA_SIG, out **uint8) c.Int
+// llgo:link (*DSA_SIG).I2d C.i2d_DSA_SIG
+func (self *DSA_SIG) I2d(out **uint8) c.Int {
+	return 0
+}
 
-//go:linkname DSA_SIGGet0 C.DSA_SIG_get0
-func DSA_SIGGet0(sig *DSA_SIG, pr **BIGNUM, ps **BIGNUM)
+// llgo:link (*DSA_SIG).Get0 C.DSA_SIG_get0
+func (self *DSA_SIG) Get0(pr **BIGNUM, ps **BIGNUM) {
+}
 
-//go:linkname DSA_SIGSet0 C.DSA_SIG_set0
-func DSA_SIGSet0(sig *DSA_SIG, r *BIGNUM, s *BIGNUM) c.Int
+// llgo:link (*DSA_SIG).Set0 C.DSA_SIG_set0
+func (self *DSA_SIG) Set0(r *BIGNUM, s *BIGNUM) c.Int {
+	return 0
+}
 
-//go:linkname DSAparamsDup C.DSAparams_dup
-func DSAparamsDup(a *DSA) *DSA
+// llgo:link (*DSA).DSAparamsDup C.DSAparams_dup
+func (self *DSA) DSAparamsDup() *DSA {
+	return self
+}
 
-//go:linkname DSADoSign C.DSA_do_sign
-func DSADoSign(dgst *uint8, dlen c.Int, dsa *DSA) *DSA_SIG
+//go:linkname DSA_do_sign C.DSA_do_sign
+func DSA_do_sign(dgst *uint8, dlen c.Int, dsa *DSA) *DSA_SIG
 
-//go:linkname DSADoVerify C.DSA_do_verify
-func DSADoVerify(dgst *uint8, dgst_len c.Int, sig *DSA_SIG, dsa *DSA) c.Int
+//go:linkname DSA_do_verify C.DSA_do_verify
+func DSA_do_verify(dgst *uint8, dgst_len c.Int, sig *DSA_SIG, dsa *DSA) c.Int
 
 //go:linkname DSA_OpenSSL C.DSA_OpenSSL
 func DSA_OpenSSL() *DSA_METHOD
 
-//go:linkname DSASetDefaultMethod C.DSA_set_default_method
-func DSASetDefaultMethod(_llcppg_param1 *DSA_METHOD)
+// llgo:link (*DSA_METHOD).DSA_set_default_method C.DSA_set_default_method
+func (self *DSA_METHOD) DSA_set_default_method() {
+}
 
-//go:linkname DSAGetDefaultMethod C.DSA_get_default_method
-func DSAGetDefaultMethod() *DSA_METHOD
+//go:linkname DSA_get_default_method C.DSA_get_default_method
+func DSA_get_default_method() *DSA_METHOD
 
-//go:linkname DSASetMethod C.DSA_set_method
-func DSASetMethod(dsa *DSA, _llcppg_param2 *DSA_METHOD) c.Int
+// llgo:link (*DSA).SetMethod C.DSA_set_method
+func (self *DSA) SetMethod(_llcppg_param2 *DSA_METHOD) c.Int {
+	return 0
+}
 
-//go:linkname DSAGetMethod C.DSA_get_method
-func DSAGetMethod(d *DSA) *DSA_METHOD
+// llgo:link (*DSA).Method C.DSA_get_method
+func (self *DSA) Method() *DSA_METHOD {
+	return nil
+}
 
-//go:linkname DSANew C.DSA_new
-func DSANew() *DSA
+//go:linkname DSA_new C.DSA_new
+func DSA_new() *DSA
 
-//go:linkname DSANewMethod C.DSA_new_method
-func DSANewMethod(engine *ENGINE) *DSA
+// llgo:link (*ENGINE).DSA_new_method C.DSA_new_method
+func (self *ENGINE) DSA_new_method() *DSA {
+	return nil
+}
 
 // "up" the DSA object's reference count
 //
-//go:linkname DSAFree C.DSA_free
-func DSAFree(r *DSA)
+// llgo:link (*DSA).Free C.DSA_free
+func (self *DSA) Free() {
+}
 
 // "up" the DSA object's reference count
 //
-//go:linkname DSAUpRef C.DSA_up_ref
-func DSAUpRef(r *DSA) c.Int
+// llgo:link (*DSA).UpRef C.DSA_up_ref
+func (self *DSA) UpRef() c.Int {
+	return 0
+}
 
-//go:linkname DSASize C.DSA_size
-func DSASize(_llcppg_param1 *DSA) c.Int
+// llgo:link (*DSA).Size C.DSA_size
+func (self *DSA) Size() c.Int {
+	return 0
+}
 
-//go:linkname DSABits C.DSA_bits
-func DSABits(d *DSA) c.Int
+// llgo:link (*DSA).Bits C.DSA_bits
+func (self *DSA) Bits() c.Int {
+	return 0
+}
 
 // next 4 return -1 on error
 //
-//go:linkname DSASecurityBits C.DSA_security_bits
-func DSASecurityBits(d *DSA) c.Int
+// llgo:link (*DSA).SecurityBits C.DSA_security_bits
+func (self *DSA) SecurityBits() c.Int {
+	return 0
+}
 
 // next 4 return -1 on error
 //
-//go:linkname DSASignSetup C.DSA_sign_setup
-func DSASignSetup(dsa *DSA, ctx_in *BN_CTX, kinvp **BIGNUM, rp **BIGNUM) c.Int
+// llgo:link (*DSA).SignSetup C.DSA_sign_setup
+func (self *DSA) SignSetup(ctx_in *BN_CTX, kinvp **BIGNUM, rp **BIGNUM) c.Int {
+	return 0
+}
 
-//go:linkname DSASign C.DSA_sign
-func DSASign(type_ c.Int, dgst *uint8, dlen c.Int, sig *uint8, siglen *c.Uint, dsa *DSA) c.Int
+//go:linkname DSA_sign C.DSA_sign
+func DSA_sign(type_ c.Int, dgst *uint8, dlen c.Int, sig *uint8, siglen *c.Uint, dsa *DSA) c.Int
 
-//go:linkname DSAVerify C.DSA_verify
-func DSAVerify(type_ c.Int, dgst *uint8, dgst_len c.Int, sigbuf *uint8, siglen c.Int, dsa *DSA) c.Int
+//go:linkname DSA_verify C.DSA_verify
+func DSA_verify(type_ c.Int, dgst *uint8, dgst_len c.Int, sigbuf *uint8, siglen c.Int, dsa *DSA) c.Int
 
-//go:linkname DSASetExData C.DSA_set_ex_data
-func DSASetExData(d *DSA, idx c.Int, arg unsafe.Pointer) c.Int
+// llgo:link (*DSA).SetExData C.DSA_set_ex_data
+func (self *DSA) SetExData(idx c.Int, arg unsafe.Pointer) c.Int {
+	return 0
+}
 
-//go:linkname DSAGetExData C.DSA_get_ex_data
-func DSAGetExData(d *DSA, idx c.Int) unsafe.Pointer
+// llgo:link (*DSA).ExData C.DSA_get_ex_data
+func (self *DSA) ExData(idx c.Int) unsafe.Pointer {
+	return nil
+}
 
 //go:linkname D2iDSAPublicKey C.d2i_DSAPublicKey
 func D2iDSAPublicKey(a **DSA, in **uint8, len c.Long) *DSA
 
-//go:linkname I2dDSAPublicKey C.i2d_DSAPublicKey
-func I2dDSAPublicKey(a *DSA, out **uint8) c.Int
+// llgo:link (*DSA).I2dDSAPublicKey C.i2d_DSAPublicKey
+func (self *DSA) I2dDSAPublicKey(out **uint8) c.Int {
+	return 0
+}
 
 //go:linkname D2iDSAPrivateKey C.d2i_DSAPrivateKey
 func D2iDSAPrivateKey(a **DSA, in **uint8, len c.Long) *DSA
 
-//go:linkname I2dDSAPrivateKey C.i2d_DSAPrivateKey
-func I2dDSAPrivateKey(a *DSA, out **uint8) c.Int
+// llgo:link (*DSA).I2dDSAPrivateKey C.i2d_DSAPrivateKey
+func (self *DSA) I2dDSAPrivateKey(out **uint8) c.Int {
+	return 0
+}
 
 //go:linkname D2iDSAparams C.d2i_DSAparams
 func D2iDSAparams(a **DSA, in **uint8, len c.Long) *DSA
 
-//go:linkname I2dDSAparams C.i2d_DSAparams
-func I2dDSAparams(a *DSA, out **uint8) c.Int
+// llgo:link (*DSA).I2dDSAparams C.i2d_DSAparams
+func (self *DSA) I2dDSAparams(out **uint8) c.Int {
+	return 0
+}
 
 // Deprecated version
 //
-//go:linkname DSAGenerateParameters C.DSA_generate_parameters
-func DSAGenerateParameters(bits c.Int, seed *uint8, seed_len c.Int, counter_ret *c.Int, h_ret *c.Ulong, callback func(_llcppg_param1 c.Int, _llcppg_param2 c.Int, _llcppg_param3 unsafe.Pointer), cb_arg unsafe.Pointer) *DSA
+//go:linkname DSA_generate_parameters C.DSA_generate_parameters
+func DSA_generate_parameters(bits c.Int, seed *uint8, seed_len c.Int, counter_ret *c.Int, h_ret *c.Ulong, callback func(_llcppg_param1 c.Int, _llcppg_param2 c.Int, _llcppg_param3 unsafe.Pointer), cb_arg unsafe.Pointer) *DSA
 
 // New version
 //
-//go:linkname DSAGenerateParametersEx C.DSA_generate_parameters_ex
-func DSAGenerateParametersEx(dsa *DSA, bits c.Int, seed *uint8, seed_len c.Int, counter_ret *c.Int, h_ret *c.Ulong, cb *BN_GENCB) c.Int
+// llgo:link (*DSA).GenerateParametersEx C.DSA_generate_parameters_ex
+func (self *DSA) GenerateParametersEx(bits c.Int, seed *uint8, seed_len c.Int, counter_ret *c.Int, h_ret *c.Ulong, cb *BN_GENCB) c.Int {
+	return 0
+}
 
-//go:linkname DSAGenerateKey C.DSA_generate_key
-func DSAGenerateKey(a *DSA) c.Int
+// llgo:link (*DSA).GenerateKey C.DSA_generate_key
+func (self *DSA) GenerateKey() c.Int {
+	return 0
+}
 
-//go:linkname DSAparamsPrint C.DSAparams_print
-func DSAparamsPrint(bp *BIO, x *DSA) c.Int
+// llgo:link (*BIO).DSAparamsPrint C.DSAparams_print
+func (self *BIO) DSAparamsPrint(x *DSA) c.Int {
+	return 0
+}
 
-//go:linkname DSAPrint C.DSA_print
-func DSAPrint(bp *BIO, x *DSA, off c.Int) c.Int
+// llgo:link (*BIO).DSA_print C.DSA_print
+func (self *BIO) DSA_print(x *DSA, off c.Int) c.Int {
+	return 0
+}
 
 //go:linkname DSAparamsPrintFp C.DSAparams_print_fp
 func DSAparamsPrintFp(fp *c.FILE, x *DSA) c.Int
 
-//go:linkname DSAPrintFp C.DSA_print_fp
-func DSAPrintFp(bp *c.FILE, x *DSA, off c.Int) c.Int
+//go:linkname DSA_print_fp C.DSA_print_fp
+func DSA_print_fp(bp *c.FILE, x *DSA, off c.Int) c.Int
 
 // Convert DSA structure (key or just parameters) into DH structure (be
 // careful to avoid small subgroup attacks when using this!)
 //
-//go:linkname DSADupDH C.DSA_dup_DH
-func DSADupDH(r *DSA) *DH
+// llgo:link (*DSA).Dup_DH C.DSA_dup_DH
+func (self *DSA) Dup_DH() *DH {
+	return nil
+}
 
-//go:linkname DSAGet0Pqg C.DSA_get0_pqg
-func DSAGet0Pqg(d *DSA, p **BIGNUM, q **BIGNUM, g **BIGNUM)
+// llgo:link (*DSA).Get0Pqg C.DSA_get0_pqg
+func (self *DSA) Get0Pqg(p **BIGNUM, q **BIGNUM, g **BIGNUM) {
+}
 
-//go:linkname DSASet0Pqg C.DSA_set0_pqg
-func DSASet0Pqg(d *DSA, p *BIGNUM, q *BIGNUM, g *BIGNUM) c.Int
+// llgo:link (*DSA).Set0Pqg C.DSA_set0_pqg
+func (self *DSA) Set0Pqg(p *BIGNUM, q *BIGNUM, g *BIGNUM) c.Int {
+	return 0
+}
 
-//go:linkname DSAGet0Key C.DSA_get0_key
-func DSAGet0Key(d *DSA, pub_key **BIGNUM, priv_key **BIGNUM)
+// llgo:link (*DSA).Get0Key C.DSA_get0_key
+func (self *DSA) Get0Key(pub_key **BIGNUM, priv_key **BIGNUM) {
+}
 
-//go:linkname DSASet0Key C.DSA_set0_key
-func DSASet0Key(d *DSA, pub_key *BIGNUM, priv_key *BIGNUM) c.Int
+// llgo:link (*DSA).Set0Key C.DSA_set0_key
+func (self *DSA) Set0Key(pub_key *BIGNUM, priv_key *BIGNUM) c.Int {
+	return 0
+}
 
-//go:linkname DSAGet0P C.DSA_get0_p
-func DSAGet0P(d *DSA) *BIGNUM
+// llgo:link (*DSA).Get0P C.DSA_get0_p
+func (self *DSA) Get0P() *BIGNUM {
+	return nil
+}
 
-//go:linkname DSAGet0Q C.DSA_get0_q
-func DSAGet0Q(d *DSA) *BIGNUM
+// llgo:link (*DSA).Get0Q C.DSA_get0_q
+func (self *DSA) Get0Q() *BIGNUM {
+	return nil
+}
 
-//go:linkname DSAGet0G C.DSA_get0_g
-func DSAGet0G(d *DSA) *BIGNUM
+// llgo:link (*DSA).Get0G C.DSA_get0_g
+func (self *DSA) Get0G() *BIGNUM {
+	return nil
+}
 
-//go:linkname DSAGet0PubKey C.DSA_get0_pub_key
-func DSAGet0PubKey(d *DSA) *BIGNUM
+// llgo:link (*DSA).Get0PubKey C.DSA_get0_pub_key
+func (self *DSA) Get0PubKey() *BIGNUM {
+	return nil
+}
 
-//go:linkname DSAGet0PrivKey C.DSA_get0_priv_key
-func DSAGet0PrivKey(d *DSA) *BIGNUM
+// llgo:link (*DSA).Get0PrivKey C.DSA_get0_priv_key
+func (self *DSA) Get0PrivKey() *BIGNUM {
+	return nil
+}
 
-//go:linkname DSAClearFlags C.DSA_clear_flags
-func DSAClearFlags(d *DSA, flags c.Int)
+// llgo:link (*DSA).ClearFlags C.DSA_clear_flags
+func (self *DSA) ClearFlags(flags c.Int) {
+}
 
-//go:linkname DSATestFlags C.DSA_test_flags
-func DSATestFlags(d *DSA, flags c.Int) c.Int
+// llgo:link (*DSA).TestFlags C.DSA_test_flags
+func (self *DSA) TestFlags(flags c.Int) c.Int {
+	return 0
+}
 
-//go:linkname DSASetFlags C.DSA_set_flags
-func DSASetFlags(d *DSA, flags c.Int)
+// llgo:link (*DSA).SetFlags C.DSA_set_flags
+func (self *DSA) SetFlags(flags c.Int) {
+}
 
-//go:linkname DSAMethNew C.DSA_meth_new
-func DSAMethNew(name *c.Char, flags c.Int) *DSA_METHOD
+//go:linkname DSA_meth_new C.DSA_meth_new
+func DSA_meth_new(name *c.Char, flags c.Int) *DSA_METHOD
 
-//go:linkname DSAMethFree C.DSA_meth_free
-func DSAMethFree(dsam *DSA_METHOD)
+// llgo:link (*DSA_METHOD).Free C.DSA_meth_free
+func (self *DSA_METHOD) Free() {
+}
 
-//go:linkname DSAMethDup C.DSA_meth_dup
-func DSAMethDup(dsam *DSA_METHOD) *DSA_METHOD
+// llgo:link (*DSA_METHOD).Dup C.DSA_meth_dup
+func (self *DSA_METHOD) Dup() *DSA_METHOD {
+	return self
+}
 
-//go:linkname DSAMethGet0Name C.DSA_meth_get0_name
-func DSAMethGet0Name(dsam *DSA_METHOD) *c.Char
+// llgo:link (*DSA_METHOD).Get0Name C.DSA_meth_get0_name
+func (self *DSA_METHOD) Get0Name() *c.Char {
+	return nil
+}
 
-//go:linkname DSAMethSet1Name C.DSA_meth_set1_name
-func DSAMethSet1Name(dsam *DSA_METHOD, name *c.Char) c.Int
+// llgo:link (*DSA_METHOD).Set1Name C.DSA_meth_set1_name
+func (self *DSA_METHOD) Set1Name(name *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname DSAMethGetFlags C.DSA_meth_get_flags
-func DSAMethGetFlags(dsam *DSA_METHOD) c.Int
+// llgo:link (*DSA_METHOD).Flags C.DSA_meth_get_flags
+func (self *DSA_METHOD) Flags() c.Int {
+	return 0
+}
 
-//go:linkname DSAMethSetFlags C.DSA_meth_set_flags
-func DSAMethSetFlags(dsam *DSA_METHOD, flags c.Int) c.Int
+// llgo:link (*DSA_METHOD).SetFlags C.DSA_meth_set_flags
+func (self *DSA_METHOD) SetFlags(flags c.Int) c.Int {
+	return 0
+}
 
-//go:linkname DSAMethGet0AppData C.DSA_meth_get0_app_data
-func DSAMethGet0AppData(dsam *DSA_METHOD) unsafe.Pointer
+// llgo:link (*DSA_METHOD).Get0AppData C.DSA_meth_get0_app_data
+func (self *DSA_METHOD) Get0AppData() unsafe.Pointer {
+	return nil
+}
 
-//go:linkname DSAMethSet0AppData C.DSA_meth_set0_app_data
-func DSAMethSet0AppData(dsam *DSA_METHOD, app_data unsafe.Pointer) c.Int
+// llgo:link (*DSA_METHOD).Set0AppData C.DSA_meth_set0_app_data
+func (self *DSA_METHOD) Set0AppData(app_data unsafe.Pointer) c.Int {
+	return 0
+}
 
-//go:linkname DSAMethGetSign C.DSA_meth_get_sign
-func DSAMethGetSign(dsam *DSA_METHOD) func(_llcppg_param1 *uint8, _llcppg_param2 c.Int, _llcppg_param3 *DSA) *DSA_SIG
+// llgo:link (*DSA_METHOD).Sign C.DSA_meth_get_sign
+func (self *DSA_METHOD) Sign() func(_llcppg_param1 *uint8, _llcppg_param2 c.Int, _llcppg_param3 *DSA) *DSA_SIG {
+	return nil
+}
 
-//go:linkname DSAMethSetSign C.DSA_meth_set_sign
-func DSAMethSetSign(dsam *DSA_METHOD, sign func(_llcppg_param1 *uint8, _llcppg_param2 c.Int, _llcppg_param3 *DSA) *DSA_SIG) c.Int
+// llgo:link (*DSA_METHOD).SetSign C.DSA_meth_set_sign
+func (self *DSA_METHOD) SetSign(sign func(_llcppg_param1 *uint8, _llcppg_param2 c.Int, _llcppg_param3 *DSA) *DSA_SIG) c.Int {
+	return 0
+}
 
-//go:linkname DSAMethGetSignSetup C.DSA_meth_get_sign_setup
-func DSAMethGetSignSetup(dsam *DSA_METHOD) func(_llcppg_param1 *DSA, _llcppg_param2 *BN_CTX, _llcppg_param3 **BIGNUM, _llcppg_param4 **BIGNUM) c.Int
+// llgo:link (*DSA_METHOD).SignSetup C.DSA_meth_get_sign_setup
+func (self *DSA_METHOD) SignSetup() func(_llcppg_param1 *DSA, _llcppg_param2 *BN_CTX, _llcppg_param3 **BIGNUM, _llcppg_param4 **BIGNUM) c.Int {
+	return nil
+}
 
-//go:linkname DSAMethSetSignSetup C.DSA_meth_set_sign_setup
-func DSAMethSetSignSetup(dsam *DSA_METHOD, sign_setup func(_llcppg_param1 *DSA, _llcppg_param2 *BN_CTX, _llcppg_param3 **BIGNUM, _llcppg_param4 **BIGNUM) c.Int) c.Int
+// llgo:link (*DSA_METHOD).SetSignSetup C.DSA_meth_set_sign_setup
+func (self *DSA_METHOD) SetSignSetup(sign_setup func(_llcppg_param1 *DSA, _llcppg_param2 *BN_CTX, _llcppg_param3 **BIGNUM, _llcppg_param4 **BIGNUM) c.Int) c.Int {
+	return 0
+}
 
-//go:linkname DSAMethGetVerify C.DSA_meth_get_verify
-func DSAMethGetVerify(dsam *DSA_METHOD) func(_llcppg_param1 *uint8, _llcppg_param2 c.Int, _llcppg_param3 *DSA_SIG, _llcppg_param4 *DSA) c.Int
+// llgo:link (*DSA_METHOD).Verify C.DSA_meth_get_verify
+func (self *DSA_METHOD) Verify() func(_llcppg_param1 *uint8, _llcppg_param2 c.Int, _llcppg_param3 *DSA_SIG, _llcppg_param4 *DSA) c.Int {
+	return nil
+}
 
-//go:linkname DSAMethSetVerify C.DSA_meth_set_verify
-func DSAMethSetVerify(dsam *DSA_METHOD, verify func(_llcppg_param1 *uint8, _llcppg_param2 c.Int, _llcppg_param3 *DSA_SIG, _llcppg_param4 *DSA) c.Int) c.Int
+// llgo:link (*DSA_METHOD).SetVerify C.DSA_meth_set_verify
+func (self *DSA_METHOD) SetVerify(verify func(_llcppg_param1 *uint8, _llcppg_param2 c.Int, _llcppg_param3 *DSA_SIG, _llcppg_param4 *DSA) c.Int) c.Int {
+	return 0
+}
 
-//go:linkname DSAMethGetModExp C.DSA_meth_get_mod_exp
-func DSAMethGetModExp(dsam *DSA_METHOD) func(_llcppg_param1 *DSA, _llcppg_param2 *BIGNUM, _llcppg_param3 *BIGNUM, _llcppg_param4 *BIGNUM, _llcppg_param5 *BIGNUM, _llcppg_param6 *BIGNUM, _llcppg_param7 *BIGNUM, _llcppg_param8 *BN_CTX, _llcppg_param9 *BN_MONT_CTX) c.Int
+// llgo:link (*DSA_METHOD).ModExp C.DSA_meth_get_mod_exp
+func (self *DSA_METHOD) ModExp() func(_llcppg_param1 *DSA, _llcppg_param2 *BIGNUM, _llcppg_param3 *BIGNUM, _llcppg_param4 *BIGNUM, _llcppg_param5 *BIGNUM, _llcppg_param6 *BIGNUM, _llcppg_param7 *BIGNUM, _llcppg_param8 *BN_CTX, _llcppg_param9 *BN_MONT_CTX) c.Int {
+	return nil
+}
 
-//go:linkname DSAMethSetModExp C.DSA_meth_set_mod_exp
-func DSAMethSetModExp(dsam *DSA_METHOD, mod_exp func(_llcppg_param1 *DSA, _llcppg_param2 *BIGNUM, _llcppg_param3 *BIGNUM, _llcppg_param4 *BIGNUM, _llcppg_param5 *BIGNUM, _llcppg_param6 *BIGNUM, _llcppg_param7 *BIGNUM, _llcppg_param8 *BN_CTX, _llcppg_param9 *BN_MONT_CTX) c.Int) c.Int
+// llgo:link (*DSA_METHOD).SetModExp C.DSA_meth_set_mod_exp
+func (self *DSA_METHOD) SetModExp(mod_exp func(_llcppg_param1 *DSA, _llcppg_param2 *BIGNUM, _llcppg_param3 *BIGNUM, _llcppg_param4 *BIGNUM, _llcppg_param5 *BIGNUM, _llcppg_param6 *BIGNUM, _llcppg_param7 *BIGNUM, _llcppg_param8 *BN_CTX, _llcppg_param9 *BN_MONT_CTX) c.Int) c.Int {
+	return 0
+}
 
-//go:linkname DSAMethGetBnModExp C.DSA_meth_get_bn_mod_exp
-func DSAMethGetBnModExp(dsam *DSA_METHOD) func(_llcppg_param1 *DSA, _llcppg_param2 *BIGNUM, _llcppg_param3 *BIGNUM, _llcppg_param4 *BIGNUM, _llcppg_param5 *BIGNUM, _llcppg_param6 *BN_CTX, _llcppg_param7 *BN_MONT_CTX) c.Int
+// llgo:link (*DSA_METHOD).BnModExp C.DSA_meth_get_bn_mod_exp
+func (self *DSA_METHOD) BnModExp() func(_llcppg_param1 *DSA, _llcppg_param2 *BIGNUM, _llcppg_param3 *BIGNUM, _llcppg_param4 *BIGNUM, _llcppg_param5 *BIGNUM, _llcppg_param6 *BN_CTX, _llcppg_param7 *BN_MONT_CTX) c.Int {
+	return nil
+}
 
-//go:linkname DSAMethSetBnModExp C.DSA_meth_set_bn_mod_exp
-func DSAMethSetBnModExp(dsam *DSA_METHOD, bn_mod_exp func(_llcppg_param1 *DSA, _llcppg_param2 *BIGNUM, _llcppg_param3 *BIGNUM, _llcppg_param4 *BIGNUM, _llcppg_param5 *BIGNUM, _llcppg_param6 *BN_CTX, _llcppg_param7 *BN_MONT_CTX) c.Int) c.Int
+// llgo:link (*DSA_METHOD).SetBnModExp C.DSA_meth_set_bn_mod_exp
+func (self *DSA_METHOD) SetBnModExp(bn_mod_exp func(_llcppg_param1 *DSA, _llcppg_param2 *BIGNUM, _llcppg_param3 *BIGNUM, _llcppg_param4 *BIGNUM, _llcppg_param5 *BIGNUM, _llcppg_param6 *BN_CTX, _llcppg_param7 *BN_MONT_CTX) c.Int) c.Int {
+	return 0
+}
 
-//go:linkname DSAMethGetInit C.DSA_meth_get_init
-func DSAMethGetInit(dsam *DSA_METHOD) func(_llcppg_param1 *DSA) c.Int
+// llgo:link (*DSA_METHOD).Init C.DSA_meth_get_init
+func (self *DSA_METHOD) Init() func(_llcppg_param1 *DSA) c.Int {
+	return nil
+}
 
-//go:linkname DSAMethSetInit C.DSA_meth_set_init
-func DSAMethSetInit(dsam *DSA_METHOD, init func(_llcppg_param1 *DSA) c.Int) c.Int
+// llgo:link (*DSA_METHOD).SetInit C.DSA_meth_set_init
+func (self *DSA_METHOD) SetInit(init func(_llcppg_param1 *DSA) c.Int) c.Int {
+	return 0
+}
 
-//go:linkname DSAMethGetFinish C.DSA_meth_get_finish
-func DSAMethGetFinish(dsam *DSA_METHOD) func(_llcppg_param1 *DSA) c.Int
+// llgo:link (*DSA_METHOD).Finish C.DSA_meth_get_finish
+func (self *DSA_METHOD) Finish() func(_llcppg_param1 *DSA) c.Int {
+	return nil
+}
 
-//go:linkname DSAMethSetFinish C.DSA_meth_set_finish
-func DSAMethSetFinish(dsam *DSA_METHOD, finish func(_llcppg_param1 *DSA) c.Int) c.Int
+// llgo:link (*DSA_METHOD).SetFinish C.DSA_meth_set_finish
+func (self *DSA_METHOD) SetFinish(finish func(_llcppg_param1 *DSA) c.Int) c.Int {
+	return 0
+}
 
-//go:linkname DSAMethGetParamgen C.DSA_meth_get_paramgen
-func DSAMethGetParamgen(dsam *DSA_METHOD) func(_llcppg_param1 *DSA, _llcppg_param2 c.Int, _llcppg_param3 *uint8, _llcppg_param4 c.Int, _llcppg_param5 *c.Int, _llcppg_param6 *c.Ulong, _llcppg_param7 *BN_GENCB) c.Int
+// llgo:link (*DSA_METHOD).Paramgen C.DSA_meth_get_paramgen
+func (self *DSA_METHOD) Paramgen() func(_llcppg_param1 *DSA, _llcppg_param2 c.Int, _llcppg_param3 *uint8, _llcppg_param4 c.Int, _llcppg_param5 *c.Int, _llcppg_param6 *c.Ulong, _llcppg_param7 *BN_GENCB) c.Int {
+	return nil
+}
 
-//go:linkname DSAMethSetParamgen C.DSA_meth_set_paramgen
-func DSAMethSetParamgen(dsam *DSA_METHOD, paramgen func(_llcppg_param1 *DSA, _llcppg_param2 c.Int, _llcppg_param3 *uint8, _llcppg_param4 c.Int, _llcppg_param5 *c.Int, _llcppg_param6 *c.Ulong, _llcppg_param7 *BN_GENCB) c.Int) c.Int
+// llgo:link (*DSA_METHOD).SetParamgen C.DSA_meth_set_paramgen
+func (self *DSA_METHOD) SetParamgen(paramgen func(_llcppg_param1 *DSA, _llcppg_param2 c.Int, _llcppg_param3 *uint8, _llcppg_param4 c.Int, _llcppg_param5 *c.Int, _llcppg_param6 *c.Ulong, _llcppg_param7 *BN_GENCB) c.Int) c.Int {
+	return 0
+}
 
-//go:linkname DSAMethGetKeygen C.DSA_meth_get_keygen
-func DSAMethGetKeygen(dsam *DSA_METHOD) func(_llcppg_param1 *DSA) c.Int
+// llgo:link (*DSA_METHOD).Keygen C.DSA_meth_get_keygen
+func (self *DSA_METHOD) Keygen() func(_llcppg_param1 *DSA) c.Int {
+	return nil
+}
 
-//go:linkname DSAMethSetKeygen C.DSA_meth_set_keygen
-func DSAMethSetKeygen(dsam *DSA_METHOD, keygen func(_llcppg_param1 *DSA) c.Int) c.Int
+// llgo:link (*DSA_METHOD).SetKeygen C.DSA_meth_set_keygen
+func (self *DSA_METHOD) SetKeygen(keygen func(_llcppg_param1 *DSA) c.Int) c.Int {
+	return 0
+}

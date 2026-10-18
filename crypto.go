@@ -77,7 +77,7 @@ const OPENSSL_INIT_ENGINE_ALL_BUILTIN = 0
 
 // Old type for allocating dynamic locks. No longer used. Use the new thread
 // API instead.
-type CRYPTODynlock struct {
+type CRYPTO_dynlock struct {
 	Dummy c.Int
 }
 type CryptoExDataSt struct {
@@ -109,289 +109,293 @@ type SkVoidFreefunc = func(_llcppg_param1 unsafe.Pointer)
 type SkVoidCopyfunc = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
 // llgo:type C
-type CRYPTO_EXNew = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *CRYPTO_EX_DATA, _llcppg_param4 c.Int, _llcppg_param5 c.Long, _llcppg_param6 unsafe.Pointer)
+type CRYPTO_EX_new = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *CRYPTO_EX_DATA, _llcppg_param4 c.Int, _llcppg_param5 c.Long, _llcppg_param6 unsafe.Pointer)
 
 // llgo:type C
-type CRYPTO_EXFree = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *CRYPTO_EX_DATA, _llcppg_param4 c.Int, _llcppg_param5 c.Long, _llcppg_param6 unsafe.Pointer)
+type CRYPTO_EX_free = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *CRYPTO_EX_DATA, _llcppg_param4 c.Int, _llcppg_param5 c.Long, _llcppg_param6 unsafe.Pointer)
 
 // llgo:type C
-type CRYPTO_EXDup = func(_llcppg_param1 *CRYPTO_EX_DATA, _llcppg_param2 *CRYPTO_EX_DATA, _llcppg_param3 *unsafe.Pointer, _llcppg_param4 c.Int, _llcppg_param5 c.Long, _llcppg_param6 unsafe.Pointer) c.Int
+type CRYPTO_EX_dup = func(_llcppg_param1 *CRYPTO_EX_DATA, _llcppg_param2 *CRYPTO_EX_DATA, _llcppg_param3 *unsafe.Pointer, _llcppg_param4 c.Int, _llcppg_param5 c.Long, _llcppg_param6 unsafe.Pointer) c.Int
 
 // This structure is no longer used
 type CRYPTO_THREADID = CryptoThreadidSt
 
 // llgo:type C
-type CRYPTOMallocFn = func(_llcppg_param1 c.SizeT, _llcppg_param2 *c.Char, _llcppg_param3 c.Int) unsafe.Pointer
+type CRYPTO_malloc_fn = func(_llcppg_param1 c.SizeT, _llcppg_param2 *c.Char, _llcppg_param3 c.Int) unsafe.Pointer
 
 // llgo:type C
-type CRYPTOReallocFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.SizeT, _llcppg_param3 *c.Char, _llcppg_param4 c.Int) unsafe.Pointer
+type CRYPTO_realloc_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.SizeT, _llcppg_param3 *c.Char, _llcppg_param4 c.Int) unsafe.Pointer
 
 // llgo:type C
-type CRYPTOFreeFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char, _llcppg_param3 c.Int)
+type CRYPTO_free_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char, _llcppg_param3 c.Int)
 type CRYPTO_ONCE = sync.Once
 type CRYPTO_THREAD_LOCAL = pthread.Key
 type CRYPTO_THREAD_ID = pthread.Thread
 
-//go:linkname CRYPTO_THREADLockNew C.CRYPTO_THREAD_lock_new
-func CRYPTO_THREADLockNew() *CRYPTO_RWLOCK
+//go:linkname CRYPTO_THREAD_lock_new C.CRYPTO_THREAD_lock_new
+func CRYPTO_THREAD_lock_new() *CRYPTO_RWLOCK
 
-//go:linkname CRYPTO_THREADReadLock C.CRYPTO_THREAD_read_lock
-func CRYPTO_THREADReadLock(lock *CRYPTO_RWLOCK) c.Int
+//go:linkname CRYPTO_THREAD_read_lock C.CRYPTO_THREAD_read_lock
+func CRYPTO_THREAD_read_lock(lock *CRYPTO_RWLOCK) c.Int
 
-//go:linkname CRYPTO_THREADWriteLock C.CRYPTO_THREAD_write_lock
-func CRYPTO_THREADWriteLock(lock *CRYPTO_RWLOCK) c.Int
+//go:linkname CRYPTO_THREAD_write_lock C.CRYPTO_THREAD_write_lock
+func CRYPTO_THREAD_write_lock(lock *CRYPTO_RWLOCK) c.Int
 
-//go:linkname CRYPTO_THREADUnlock C.CRYPTO_THREAD_unlock
-func CRYPTO_THREADUnlock(lock *CRYPTO_RWLOCK) c.Int
+//go:linkname CRYPTO_THREAD_unlock C.CRYPTO_THREAD_unlock
+func CRYPTO_THREAD_unlock(lock *CRYPTO_RWLOCK) c.Int
 
-//go:linkname CRYPTO_THREADLockFree C.CRYPTO_THREAD_lock_free
-func CRYPTO_THREADLockFree(lock *CRYPTO_RWLOCK)
+//go:linkname CRYPTO_THREAD_lock_free C.CRYPTO_THREAD_lock_free
+func CRYPTO_THREAD_lock_free(lock *CRYPTO_RWLOCK)
 
-//go:linkname CRYPTOAtomicAdd C.CRYPTO_atomic_add
-func CRYPTOAtomicAdd(val *c.Int, amount c.Int, ret *c.Int, lock *CRYPTO_RWLOCK) c.Int
+//go:linkname CRYPTO_atomic_add C.CRYPTO_atomic_add
+func CRYPTO_atomic_add(val *c.Int, amount c.Int, ret *c.Int, lock *CRYPTO_RWLOCK) c.Int
 
-//go:linkname CRYPTOAtomicAdd64 C.CRYPTO_atomic_add64
-func CRYPTOAtomicAdd64(val *c.Uint64T, op c.Uint64T, ret *c.Uint64T, lock *CRYPTO_RWLOCK) c.Int
+//go:linkname CRYPTO_atomic_add64 C.CRYPTO_atomic_add64
+func CRYPTO_atomic_add64(val *c.Uint64T, op c.Uint64T, ret *c.Uint64T, lock *CRYPTO_RWLOCK) c.Int
 
-//go:linkname CRYPTOAtomicAnd C.CRYPTO_atomic_and
-func CRYPTOAtomicAnd(val *c.Uint64T, op c.Uint64T, ret *c.Uint64T, lock *CRYPTO_RWLOCK) c.Int
+//go:linkname CRYPTO_atomic_and C.CRYPTO_atomic_and
+func CRYPTO_atomic_and(val *c.Uint64T, op c.Uint64T, ret *c.Uint64T, lock *CRYPTO_RWLOCK) c.Int
 
-//go:linkname CRYPTOAtomicOr C.CRYPTO_atomic_or
-func CRYPTOAtomicOr(val *c.Uint64T, op c.Uint64T, ret *c.Uint64T, lock *CRYPTO_RWLOCK) c.Int
+//go:linkname CRYPTO_atomic_or C.CRYPTO_atomic_or
+func CRYPTO_atomic_or(val *c.Uint64T, op c.Uint64T, ret *c.Uint64T, lock *CRYPTO_RWLOCK) c.Int
 
-//go:linkname CRYPTOAtomicLoad C.CRYPTO_atomic_load
-func CRYPTOAtomicLoad(val *c.Uint64T, ret *c.Uint64T, lock *CRYPTO_RWLOCK) c.Int
+//go:linkname CRYPTO_atomic_load C.CRYPTO_atomic_load
+func CRYPTO_atomic_load(val *c.Uint64T, ret *c.Uint64T, lock *CRYPTO_RWLOCK) c.Int
 
-//go:linkname CRYPTOAtomicLoadInt C.CRYPTO_atomic_load_int
-func CRYPTOAtomicLoadInt(val *c.Int, ret *c.Int, lock *CRYPTO_RWLOCK) c.Int
+//go:linkname CRYPTO_atomic_load_int C.CRYPTO_atomic_load_int
+func CRYPTO_atomic_load_int(val *c.Int, ret *c.Int, lock *CRYPTO_RWLOCK) c.Int
 
-//go:linkname CRYPTOAtomicStore C.CRYPTO_atomic_store
-func CRYPTOAtomicStore(dst *c.Uint64T, val c.Uint64T, lock *CRYPTO_RWLOCK) c.Int
+//go:linkname CRYPTO_atomic_store C.CRYPTO_atomic_store
+func CRYPTO_atomic_store(dst *c.Uint64T, val c.Uint64T, lock *CRYPTO_RWLOCK) c.Int
 
-//go:linkname CRYPTOAtomicStoreInt C.CRYPTO_atomic_store_int
-func CRYPTOAtomicStoreInt(dst *c.Int, val c.Int, lock *CRYPTO_RWLOCK) c.Int
+//go:linkname CRYPTO_atomic_store_int C.CRYPTO_atomic_store_int
+func CRYPTO_atomic_store_int(dst *c.Int, val c.Int, lock *CRYPTO_RWLOCK) c.Int
 
-//go:linkname OPENSSLStrlcpy C.OPENSSL_strlcpy
-func OPENSSLStrlcpy(dst *c.Char, src *c.Char, siz c.SizeT) c.SizeT
+//go:linkname Strlcpy C.OPENSSL_strlcpy
+func Strlcpy(dst *c.Char, src *c.Char, siz c.SizeT) c.SizeT
 
-//go:linkname OPENSSLStrlcat C.OPENSSL_strlcat
-func OPENSSLStrlcat(dst *c.Char, src *c.Char, siz c.SizeT) c.SizeT
+//go:linkname Strlcat C.OPENSSL_strlcat
+func Strlcat(dst *c.Char, src *c.Char, siz c.SizeT) c.SizeT
 
-//go:linkname OPENSSLStrnlen C.OPENSSL_strnlen
-func OPENSSLStrnlen(str *c.Char, maxlen c.SizeT) c.SizeT
+//go:linkname Strnlen C.OPENSSL_strnlen
+func Strnlen(str *c.Char, maxlen c.SizeT) c.SizeT
 
-//go:linkname OPENSSLStrtoul C.OPENSSL_strtoul
-func OPENSSLStrtoul(str *c.Char, endptr **c.Char, base c.Int, num *c.Ulong) c.Int
+//go:linkname Strtoul C.OPENSSL_strtoul
+func Strtoul(str *c.Char, endptr **c.Char, base c.Int, num *c.Ulong) c.Int
 
-//go:linkname OPENSSLBuf2hexstrEx C.OPENSSL_buf2hexstr_ex
-func OPENSSLBuf2hexstrEx(str *c.Char, str_n c.SizeT, strlength *c.SizeT, buf *uint8, buflen c.SizeT, sep c.Char) c.Int
+//go:linkname Buf2hexstrEx C.OPENSSL_buf2hexstr_ex
+func Buf2hexstrEx(str *c.Char, str_n c.SizeT, strlength *c.SizeT, buf *uint8, buflen c.SizeT, sep c.Char) c.Int
 
-//go:linkname OPENSSLBuf2hexstr C.OPENSSL_buf2hexstr
-func OPENSSLBuf2hexstr(buf *uint8, buflen c.Long) *c.Char
+//go:linkname Buf2hexstr C.OPENSSL_buf2hexstr
+func Buf2hexstr(buf *uint8, buflen c.Long) *c.Char
 
-//go:linkname OPENSSLHexstr2bufEx C.OPENSSL_hexstr2buf_ex
-func OPENSSLHexstr2bufEx(buf *uint8, buf_n c.SizeT, buflen *c.SizeT, str *c.Char, sep c.Char) c.Int
+//go:linkname Hexstr2bufEx C.OPENSSL_hexstr2buf_ex
+func Hexstr2bufEx(buf *uint8, buf_n c.SizeT, buflen *c.SizeT, str *c.Char, sep c.Char) c.Int
 
-//go:linkname OPENSSLHexstr2buf C.OPENSSL_hexstr2buf
-func OPENSSLHexstr2buf(str *c.Char, buflen *c.Long) *uint8
+//go:linkname Hexstr2buf C.OPENSSL_hexstr2buf
+func Hexstr2buf(str *c.Char, buflen *c.Long) *uint8
 
-//go:linkname OPENSSLHexchar2int C.OPENSSL_hexchar2int
-func OPENSSLHexchar2int(c uint8) c.Int
+//go:linkname Hexchar2int C.OPENSSL_hexchar2int
+func Hexchar2int(c uint8) c.Int
 
-//go:linkname OPENSSLStrcasecmp C.OPENSSL_strcasecmp
-func OPENSSLStrcasecmp(s1 *c.Char, s2 *c.Char) c.Int
+//go:linkname Strcasecmp C.OPENSSL_strcasecmp
+func Strcasecmp(s1 *c.Char, s2 *c.Char) c.Int
 
-//go:linkname OPENSSLStrncasecmp C.OPENSSL_strncasecmp
-func OPENSSLStrncasecmp(s1 *c.Char, s2 *c.Char, n c.SizeT) c.Int
+//go:linkname Strncasecmp C.OPENSSL_strncasecmp
+func Strncasecmp(s1 *c.Char, s2 *c.Char, n c.SizeT) c.Int
 
 // These functions return the values of OPENSSL_VERSION_MAJOR,
 // OPENSSL_VERSION_MINOR, OPENSSL_VERSION_PATCH, OPENSSL_VERSION_PRE_RELEASE
 // and OPENSSL_VERSION_BUILD_METADATA, respectively.
 //
-//go:linkname OPENSSLVersionMajor C.OPENSSL_version_major
-func OPENSSLVersionMajor() c.Uint
+//go:linkname VersionMajor C.OPENSSL_version_major
+func VersionMajor() c.Uint
 
-//go:linkname OPENSSLVersionMinor C.OPENSSL_version_minor
-func OPENSSLVersionMinor() c.Uint
+//go:linkname VersionMinor C.OPENSSL_version_minor
+func VersionMinor() c.Uint
 
-//go:linkname OPENSSLVersionPatch C.OPENSSL_version_patch
-func OPENSSLVersionPatch() c.Uint
+//go:linkname VersionPatch C.OPENSSL_version_patch
+func VersionPatch() c.Uint
 
-//go:linkname OPENSSLVersionPreRelease C.OPENSSL_version_pre_release
-func OPENSSLVersionPreRelease() *c.Char
+//go:linkname VersionPreRelease C.OPENSSL_version_pre_release
+func VersionPreRelease() *c.Char
 
-//go:linkname OPENSSLVersionBuildMetadata C.OPENSSL_version_build_metadata
-func OPENSSLVersionBuildMetadata() *c.Char
+//go:linkname VersionBuildMetadata C.OPENSSL_version_build_metadata
+func VersionBuildMetadata() *c.Char
 
-//go:linkname OpenSSLVersionNum C.OpenSSL_version_num
-func OpenSSLVersionNum() c.Ulong
+//go:linkname OpenSSL_version_num C.OpenSSL_version_num
+func OpenSSL_version_num() c.Ulong
 
-//go:linkname OpenSSLVersion C.OpenSSL_version
-func OpenSSLVersion(type_ c.Int) *c.Char
+//go:linkname OpenSSL_version C.OpenSSL_version
+func OpenSSL_version(type_ c.Int) *c.Char
 
 // The series starts at 1001 to avoid confusion with the OpenSSL_version
 // types.
 //
-//go:linkname OPENSSLInfo C.OPENSSL_info
-func OPENSSLInfo(type_ c.Int) *c.Char
+//go:linkname Info C.OPENSSL_info
+func Info(type_ c.Int) *c.Char
 
-//go:linkname OPENSSLIssetugid C.OPENSSL_issetugid
-func OPENSSLIssetugid() c.Int
-
-// No longer use an index.
-//
-//go:linkname CRYPTOGetExNewIndex C.CRYPTO_get_ex_new_index
-func CRYPTOGetExNewIndex(class_index c.Int, argl c.Long, argp unsafe.Pointer, new_func *CRYPTO_EXNew, dup_func *CRYPTO_EXDup, free_func *CRYPTO_EXFree) c.Int
+//go:linkname Issetugid C.OPENSSL_issetugid
+func Issetugid() c.Int
 
 // No longer use an index.
 //
-//go:linkname CRYPTOFreeExIndex C.CRYPTO_free_ex_index
-func CRYPTOFreeExIndex(class_index c.Int, idx c.Int) c.Int
+//go:linkname CRYPTO_get_ex_new_index C.CRYPTO_get_ex_new_index
+func CRYPTO_get_ex_new_index(class_index c.Int, argl c.Long, argp unsafe.Pointer, new_func *CRYPTO_EX_new, dup_func *CRYPTO_EX_dup, free_func *CRYPTO_EX_free) c.Int
+
+// No longer use an index.
+//
+//go:linkname CRYPTO_free_ex_index C.CRYPTO_free_ex_index
+func CRYPTO_free_ex_index(class_index c.Int, idx c.Int) c.Int
 
 // Initialise/duplicate/free CRYPTO_EX_DATA variables corresponding to a
 // given class (invokes whatever per-class callbacks are applicable)
 //
-//go:linkname CRYPTONewExData C.CRYPTO_new_ex_data
-func CRYPTONewExData(class_index c.Int, obj unsafe.Pointer, ad *CRYPTO_EX_DATA) c.Int
+//go:linkname CRYPTO_new_ex_data C.CRYPTO_new_ex_data
+func CRYPTO_new_ex_data(class_index c.Int, obj unsafe.Pointer, ad *CRYPTO_EX_DATA) c.Int
 
-//go:linkname CRYPTODupExData C.CRYPTO_dup_ex_data
-func CRYPTODupExData(class_index c.Int, to *CRYPTO_EX_DATA, from *CRYPTO_EX_DATA) c.Int
+//go:linkname CRYPTO_dup_ex_data C.CRYPTO_dup_ex_data
+func CRYPTO_dup_ex_data(class_index c.Int, to *CRYPTO_EX_DATA, from *CRYPTO_EX_DATA) c.Int
 
-//go:linkname CRYPTOFreeExData C.CRYPTO_free_ex_data
-func CRYPTOFreeExData(class_index c.Int, obj unsafe.Pointer, ad *CRYPTO_EX_DATA)
+//go:linkname CRYPTO_free_ex_data C.CRYPTO_free_ex_data
+func CRYPTO_free_ex_data(class_index c.Int, obj unsafe.Pointer, ad *CRYPTO_EX_DATA)
 
 // Allocate a single item in the CRYPTO_EX_DATA variable
 //
-//go:linkname CRYPTOAllocExData C.CRYPTO_alloc_ex_data
-func CRYPTOAllocExData(class_index c.Int, obj unsafe.Pointer, ad *CRYPTO_EX_DATA, idx c.Int) c.Int
+//go:linkname CRYPTO_alloc_ex_data C.CRYPTO_alloc_ex_data
+func CRYPTO_alloc_ex_data(class_index c.Int, obj unsafe.Pointer, ad *CRYPTO_EX_DATA, idx c.Int) c.Int
 
 // Get/set data in a CRYPTO_EX_DATA variable corresponding to a particular
 // index (relative to the class type involved)
 //
-//go:linkname CRYPTOSetExData C.CRYPTO_set_ex_data
-func CRYPTOSetExData(ad *CRYPTO_EX_DATA, idx c.Int, val unsafe.Pointer) c.Int
+// llgo:link (*CRYPTO_EX_DATA).SetExData C.CRYPTO_set_ex_data
+func (self *CRYPTO_EX_DATA) SetExData(idx c.Int, val unsafe.Pointer) c.Int {
+	return 0
+}
 
-//go:linkname CRYPTOGetExData C.CRYPTO_get_ex_data
-func CRYPTOGetExData(ad *CRYPTO_EX_DATA, idx c.Int) unsafe.Pointer
+// llgo:link (*CRYPTO_EX_DATA).ExData C.CRYPTO_get_ex_data
+func (self *CRYPTO_EX_DATA) ExData(idx c.Int) unsafe.Pointer {
+	return nil
+}
 
-//go:linkname CRYPTOSetMemFunctions C.CRYPTO_set_mem_functions
-func CRYPTOSetMemFunctions(malloc_fn CRYPTOMallocFn, realloc_fn CRYPTOReallocFn, free_fn CRYPTOFreeFn) c.Int
+//go:linkname CRYPTO_set_mem_functions C.CRYPTO_set_mem_functions
+func CRYPTO_set_mem_functions(malloc_fn CRYPTO_malloc_fn, realloc_fn CRYPTO_realloc_fn, free_fn CRYPTO_free_fn) c.Int
 
-//go:linkname CRYPTOGetMemFunctions C.CRYPTO_get_mem_functions
-func CRYPTOGetMemFunctions(malloc_fn *CRYPTOMallocFn, realloc_fn *CRYPTOReallocFn, free_fn *CRYPTOFreeFn)
+//go:linkname CRYPTO_get_mem_functions C.CRYPTO_get_mem_functions
+func CRYPTO_get_mem_functions(malloc_fn *CRYPTO_malloc_fn, realloc_fn *CRYPTO_realloc_fn, free_fn *CRYPTO_free_fn)
 
-//go:linkname CRYPTOMalloc C.CRYPTO_malloc
-func CRYPTOMalloc(num c.SizeT, file *c.Char, line c.Int) unsafe.Pointer
+//go:linkname CRYPTO_malloc C.CRYPTO_malloc
+func CRYPTO_malloc(num c.SizeT, file *c.Char, line c.Int) unsafe.Pointer
 
-//go:linkname CRYPTOZalloc C.CRYPTO_zalloc
-func CRYPTOZalloc(num c.SizeT, file *c.Char, line c.Int) unsafe.Pointer
+//go:linkname CRYPTO_zalloc C.CRYPTO_zalloc
+func CRYPTO_zalloc(num c.SizeT, file *c.Char, line c.Int) unsafe.Pointer
 
-//go:linkname CRYPTOMallocArray C.CRYPTO_malloc_array
-func CRYPTOMallocArray(num c.SizeT, size c.SizeT, file *c.Char, line c.Int) unsafe.Pointer
+//go:linkname CRYPTO_malloc_array C.CRYPTO_malloc_array
+func CRYPTO_malloc_array(num c.SizeT, size c.SizeT, file *c.Char, line c.Int) unsafe.Pointer
 
-//go:linkname CRYPTOCalloc C.CRYPTO_calloc
-func CRYPTOCalloc(num c.SizeT, size c.SizeT, file *c.Char, line c.Int) unsafe.Pointer
+//go:linkname CRYPTO_calloc C.CRYPTO_calloc
+func CRYPTO_calloc(num c.SizeT, size c.SizeT, file *c.Char, line c.Int) unsafe.Pointer
 
-//go:linkname CRYPTOAlignedAlloc C.CRYPTO_aligned_alloc
-func CRYPTOAlignedAlloc(num c.SizeT, align c.SizeT, freeptr *unsafe.Pointer, file *c.Char, line c.Int) unsafe.Pointer
+//go:linkname CRYPTO_aligned_alloc C.CRYPTO_aligned_alloc
+func CRYPTO_aligned_alloc(num c.SizeT, align c.SizeT, freeptr *unsafe.Pointer, file *c.Char, line c.Int) unsafe.Pointer
 
-//go:linkname CRYPTOAlignedAllocArray C.CRYPTO_aligned_alloc_array
-func CRYPTOAlignedAllocArray(num c.SizeT, size c.SizeT, align c.SizeT, freeptr *unsafe.Pointer, file *c.Char, line c.Int) unsafe.Pointer
+//go:linkname CRYPTO_aligned_alloc_array C.CRYPTO_aligned_alloc_array
+func CRYPTO_aligned_alloc_array(num c.SizeT, size c.SizeT, align c.SizeT, freeptr *unsafe.Pointer, file *c.Char, line c.Int) unsafe.Pointer
 
-//go:linkname CRYPTOMemdup C.CRYPTO_memdup
-func CRYPTOMemdup(str unsafe.Pointer, siz c.SizeT, file *c.Char, line c.Int) unsafe.Pointer
+//go:linkname CRYPTO_memdup C.CRYPTO_memdup
+func CRYPTO_memdup(str unsafe.Pointer, siz c.SizeT, file *c.Char, line c.Int) unsafe.Pointer
 
-//go:linkname CRYPTOStrdup C.CRYPTO_strdup
-func CRYPTOStrdup(str *c.Char, file *c.Char, line c.Int) *c.Char
+//go:linkname CRYPTO_strdup C.CRYPTO_strdup
+func CRYPTO_strdup(str *c.Char, file *c.Char, line c.Int) *c.Char
 
-//go:linkname CRYPTOStrndup C.CRYPTO_strndup
-func CRYPTOStrndup(str *c.Char, s c.SizeT, file *c.Char, line c.Int) *c.Char
+//go:linkname CRYPTO_strndup C.CRYPTO_strndup
+func CRYPTO_strndup(str *c.Char, s c.SizeT, file *c.Char, line c.Int) *c.Char
 
-//go:linkname CRYPTOFree C.CRYPTO_free
-func CRYPTOFree(ptr unsafe.Pointer, file *c.Char, line c.Int)
+//go:linkname CRYPTO_free C.CRYPTO_free
+func CRYPTO_free(ptr unsafe.Pointer, file *c.Char, line c.Int)
 
-//go:linkname CRYPTOClearFree C.CRYPTO_clear_free
-func CRYPTOClearFree(ptr unsafe.Pointer, num c.SizeT, file *c.Char, line c.Int)
+//go:linkname CRYPTO_clear_free C.CRYPTO_clear_free
+func CRYPTO_clear_free(ptr unsafe.Pointer, num c.SizeT, file *c.Char, line c.Int)
 
-//go:linkname CRYPTORealloc C.CRYPTO_realloc
-func CRYPTORealloc(addr unsafe.Pointer, num c.SizeT, file *c.Char, line c.Int) unsafe.Pointer
+//go:linkname CRYPTO_realloc C.CRYPTO_realloc
+func CRYPTO_realloc(addr unsafe.Pointer, num c.SizeT, file *c.Char, line c.Int) unsafe.Pointer
 
-//go:linkname CRYPTOClearRealloc C.CRYPTO_clear_realloc
-func CRYPTOClearRealloc(addr unsafe.Pointer, old_num c.SizeT, num c.SizeT, file *c.Char, line c.Int) unsafe.Pointer
+//go:linkname CRYPTO_clear_realloc C.CRYPTO_clear_realloc
+func CRYPTO_clear_realloc(addr unsafe.Pointer, old_num c.SizeT, num c.SizeT, file *c.Char, line c.Int) unsafe.Pointer
 
-//go:linkname CRYPTOReallocArray C.CRYPTO_realloc_array
-func CRYPTOReallocArray(addr unsafe.Pointer, num c.SizeT, size c.SizeT, file *c.Char, line c.Int) unsafe.Pointer
+//go:linkname CRYPTO_realloc_array C.CRYPTO_realloc_array
+func CRYPTO_realloc_array(addr unsafe.Pointer, num c.SizeT, size c.SizeT, file *c.Char, line c.Int) unsafe.Pointer
 
-//go:linkname CRYPTOClearReallocArray C.CRYPTO_clear_realloc_array
-func CRYPTOClearReallocArray(addr unsafe.Pointer, old_num c.SizeT, num c.SizeT, size c.SizeT, file *c.Char, line c.Int) unsafe.Pointer
+//go:linkname CRYPTO_clear_realloc_array C.CRYPTO_clear_realloc_array
+func CRYPTO_clear_realloc_array(addr unsafe.Pointer, old_num c.SizeT, num c.SizeT, size c.SizeT, file *c.Char, line c.Int) unsafe.Pointer
 
-//go:linkname CRYPTOSecureMallocInit C.CRYPTO_secure_malloc_init
-func CRYPTOSecureMallocInit(sz c.SizeT, minsize c.SizeT) c.Int
+//go:linkname CRYPTO_secure_malloc_init C.CRYPTO_secure_malloc_init
+func CRYPTO_secure_malloc_init(sz c.SizeT, minsize c.SizeT) c.Int
 
-//go:linkname CRYPTOSecureMallocDone C.CRYPTO_secure_malloc_done
-func CRYPTOSecureMallocDone() c.Int
+//go:linkname CRYPTO_secure_malloc_done C.CRYPTO_secure_malloc_done
+func CRYPTO_secure_malloc_done() c.Int
 
-//go:linkname CRYPTOSecureMalloc C.CRYPTO_secure_malloc
-func CRYPTOSecureMalloc(num c.SizeT, file *c.Char, line c.Int) unsafe.Pointer
+//go:linkname CRYPTO_secure_malloc C.CRYPTO_secure_malloc
+func CRYPTO_secure_malloc(num c.SizeT, file *c.Char, line c.Int) unsafe.Pointer
 
-//go:linkname CRYPTOSecureZalloc C.CRYPTO_secure_zalloc
-func CRYPTOSecureZalloc(num c.SizeT, file *c.Char, line c.Int) unsafe.Pointer
+//go:linkname CRYPTO_secure_zalloc C.CRYPTO_secure_zalloc
+func CRYPTO_secure_zalloc(num c.SizeT, file *c.Char, line c.Int) unsafe.Pointer
 
-//go:linkname CRYPTOSecureMallocArray C.CRYPTO_secure_malloc_array
-func CRYPTOSecureMallocArray(num c.SizeT, size c.SizeT, file *c.Char, line c.Int) unsafe.Pointer
+//go:linkname CRYPTO_secure_malloc_array C.CRYPTO_secure_malloc_array
+func CRYPTO_secure_malloc_array(num c.SizeT, size c.SizeT, file *c.Char, line c.Int) unsafe.Pointer
 
-//go:linkname CRYPTOSecureCalloc C.CRYPTO_secure_calloc
-func CRYPTOSecureCalloc(num c.SizeT, size c.SizeT, file *c.Char, line c.Int) unsafe.Pointer
+//go:linkname CRYPTO_secure_calloc C.CRYPTO_secure_calloc
+func CRYPTO_secure_calloc(num c.SizeT, size c.SizeT, file *c.Char, line c.Int) unsafe.Pointer
 
-//go:linkname CRYPTOSecureFree C.CRYPTO_secure_free
-func CRYPTOSecureFree(ptr unsafe.Pointer, file *c.Char, line c.Int)
+//go:linkname CRYPTO_secure_free C.CRYPTO_secure_free
+func CRYPTO_secure_free(ptr unsafe.Pointer, file *c.Char, line c.Int)
 
-//go:linkname CRYPTOSecureClearFree C.CRYPTO_secure_clear_free
-func CRYPTOSecureClearFree(ptr unsafe.Pointer, num c.SizeT, file *c.Char, line c.Int)
+//go:linkname CRYPTO_secure_clear_free C.CRYPTO_secure_clear_free
+func CRYPTO_secure_clear_free(ptr unsafe.Pointer, num c.SizeT, file *c.Char, line c.Int)
 
-//go:linkname CRYPTOSecureAllocated C.CRYPTO_secure_allocated
-func CRYPTOSecureAllocated(ptr unsafe.Pointer) c.Int
+//go:linkname CRYPTO_secure_allocated C.CRYPTO_secure_allocated
+func CRYPTO_secure_allocated(ptr unsafe.Pointer) c.Int
 
-//go:linkname CRYPTOSecureMallocInitialized C.CRYPTO_secure_malloc_initialized
-func CRYPTOSecureMallocInitialized() c.Int
+//go:linkname CRYPTO_secure_malloc_initialized C.CRYPTO_secure_malloc_initialized
+func CRYPTO_secure_malloc_initialized() c.Int
 
-//go:linkname CRYPTOSecureActualSize C.CRYPTO_secure_actual_size
-func CRYPTOSecureActualSize(ptr unsafe.Pointer) c.SizeT
+//go:linkname CRYPTO_secure_actual_size C.CRYPTO_secure_actual_size
+func CRYPTO_secure_actual_size(ptr unsafe.Pointer) c.SizeT
 
-//go:linkname CRYPTOSecureUsed C.CRYPTO_secure_used
-func CRYPTOSecureUsed() c.SizeT
+//go:linkname CRYPTO_secure_used C.CRYPTO_secure_used
+func CRYPTO_secure_used() c.SizeT
 
-//go:linkname OPENSSLCleanse C.OPENSSL_cleanse
-func OPENSSLCleanse(ptr unsafe.Pointer, len c.SizeT)
+//go:linkname Cleanse C.OPENSSL_cleanse
+func Cleanse(ptr unsafe.Pointer, len c.SizeT)
 
 // die if we have to
 //
-//go:linkname OPENSSLDie C.OPENSSL_die
-func OPENSSLDie(assertion *c.Char, file *c.Char, line c.Int)
+//go:linkname Die C.OPENSSL_die
+func Die(assertion *c.Char, file *c.Char, line c.Int)
 
-//go:linkname OPENSSLIsservice C.OPENSSL_isservice
-func OPENSSLIsservice() c.Int
+//go:linkname Isservice C.OPENSSL_isservice
+func Isservice() c.Int
 
-//go:linkname OPENSSLInit C.OPENSSL_init
-func OPENSSLInit()
+//go:linkname Init C.OPENSSL_init
+func Init()
 
-//go:linkname OPENSSLForkPrepare C.OPENSSL_fork_prepare
-func OPENSSLForkPrepare()
+//go:linkname ForkPrepare C.OPENSSL_fork_prepare
+func ForkPrepare()
 
-//go:linkname OPENSSLForkParent C.OPENSSL_fork_parent
-func OPENSSLForkParent()
+//go:linkname ForkParent C.OPENSSL_fork_parent
+func ForkParent()
 
-//go:linkname OPENSSLForkChild C.OPENSSL_fork_child
-func OPENSSLForkChild()
+//go:linkname ForkChild C.OPENSSL_fork_child
+func ForkChild()
 
-//go:linkname OPENSSLGmtime C.OPENSSL_gmtime
-func OPENSSLGmtime(timer *time.TimeT, result *time.Tm) *time.Tm
+//go:linkname Gmtime C.OPENSSL_gmtime
+func Gmtime(timer *time.TimeT, result *time.Tm) *time.Tm
 
-//go:linkname OPENSSLGmtimeAdj C.OPENSSL_gmtime_adj
-func OPENSSLGmtimeAdj(tm *time.Tm, offset_day c.Int, offset_sec c.Long) c.Int
+//go:linkname GmtimeAdj C.OPENSSL_gmtime_adj
+func GmtimeAdj(tm *time.Tm, offset_day c.Int, offset_sec c.Long) c.Int
 
-//go:linkname OPENSSLGmtimeDiff C.OPENSSL_gmtime_diff
-func OPENSSLGmtimeDiff(pday *c.Int, psec *c.Int, from *time.Tm, to *time.Tm) c.Int
+//go:linkname GmtimeDiff C.OPENSSL_gmtime_diff
+func GmtimeDiff(pday *c.Int, psec *c.Int, from *time.Tm, to *time.Tm) c.Int
 
 // CRYPTO_memcmp returns zero iff the |len| bytes at |a| and |b| are equal.
 // It takes an amount of time dependent on |len|, but independent of the
@@ -399,90 +403,111 @@ func OPENSSLGmtimeDiff(pday *c.Int, psec *c.Int, from *time.Tm, to *time.Tm) c.I
 // into a defined order as the return value when a != b is undefined, other
 // than to be non-zero.
 //
-//go:linkname CRYPTOMemcmp C.CRYPTO_memcmp
-func CRYPTOMemcmp(in_a unsafe.Pointer, in_b unsafe.Pointer, len c.SizeT) c.Int
+//go:linkname CRYPTO_memcmp C.CRYPTO_memcmp
+func CRYPTO_memcmp(in_a unsafe.Pointer, in_b unsafe.Pointer, len c.SizeT) c.Int
 
 // Library initialisation functions
 //
-//go:linkname OPENSSLCleanup C.OPENSSL_cleanup
-func OPENSSLCleanup()
+//go:linkname Cleanup C.OPENSSL_cleanup
+func Cleanup()
 
-//go:linkname OPENSSLInitCrypto C.OPENSSL_init_crypto
-func OPENSSLInitCrypto(opts c.Uint64T, settings *OPENSSL_INIT_SETTINGS) c.Int
+//go:linkname InitCrypto C.OPENSSL_init_crypto
+func InitCrypto(opts c.Uint64T, settings *INIT_SETTINGS) c.Int
 
-//go:linkname OPENSSLThreadStop C.OPENSSL_thread_stop
-func OPENSSLThreadStop()
+//go:linkname ThreadStop C.OPENSSL_thread_stop
+func ThreadStop()
 
-//go:linkname OPENSSLThreadStopEx C.OPENSSL_thread_stop_ex
-func OPENSSLThreadStopEx(ctx *OSSL_LIB_CTX)
+// llgo:link (*OSSL_LIB_CTX).ThreadStopEx C.OPENSSL_thread_stop_ex
+func (self *OSSL_LIB_CTX) ThreadStopEx() {
+}
 
 // Low-level control of initialization
 //
-//go:linkname OPENSSL_INITNew C.OPENSSL_INIT_new
-func OPENSSL_INITNew() *OPENSSL_INIT_SETTINGS
+//go:linkname INIT_new C.OPENSSL_INIT_new
+func INIT_new() *INIT_SETTINGS
 
-//go:linkname OPENSSL_INITSetConfigFilename C.OPENSSL_INIT_set_config_filename
-func OPENSSL_INITSetConfigFilename(settings *OPENSSL_INIT_SETTINGS, config_filename *c.Char) c.Int
+// llgo:link (*INIT_SETTINGS).SetConfigFilename C.OPENSSL_INIT_set_config_filename
+func (self *INIT_SETTINGS) SetConfigFilename(config_filename *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname OPENSSL_INITSetConfigFileFlags C.OPENSSL_INIT_set_config_file_flags
-func OPENSSL_INITSetConfigFileFlags(settings *OPENSSL_INIT_SETTINGS, flags c.Ulong)
+// llgo:link (*INIT_SETTINGS).SetConfigFileFlags C.OPENSSL_INIT_set_config_file_flags
+func (self *INIT_SETTINGS) SetConfigFileFlags(flags c.Ulong) {
+}
 
-//go:linkname OPENSSL_INITSetConfigAppname C.OPENSSL_INIT_set_config_appname
-func OPENSSL_INITSetConfigAppname(settings *OPENSSL_INIT_SETTINGS, config_appname *c.Char) c.Int
+// llgo:link (*INIT_SETTINGS).SetConfigAppname C.OPENSSL_INIT_set_config_appname
+func (self *INIT_SETTINGS) SetConfigAppname(config_appname *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname OPENSSL_INITFree C.OPENSSL_INIT_free
-func OPENSSL_INITFree(settings *OPENSSL_INIT_SETTINGS)
+// llgo:link (*INIT_SETTINGS).Free C.OPENSSL_INIT_free
+func (self *INIT_SETTINGS) Free() {
+}
 
-//go:linkname CRYPTO_THREADRunOnce C.CRYPTO_THREAD_run_once
-func CRYPTO_THREADRunOnce(once *CRYPTO_ONCE, init func()) c.Int
+//go:linkname CRYPTO_THREAD_run_once C.CRYPTO_THREAD_run_once
+func CRYPTO_THREAD_run_once(once *CRYPTO_ONCE, init func()) c.Int
 
-//go:linkname CRYPTO_THREADInitLocal C.CRYPTO_THREAD_init_local
-func CRYPTO_THREADInitLocal(key *CRYPTO_THREAD_LOCAL, cleanup func(_llcppg_param1 unsafe.Pointer)) c.Int
+//go:linkname CRYPTO_THREAD_init_local C.CRYPTO_THREAD_init_local
+func CRYPTO_THREAD_init_local(key *CRYPTO_THREAD_LOCAL, cleanup func(_llcppg_param1 unsafe.Pointer)) c.Int
 
-//go:linkname CRYPTO_THREADGetLocal C.CRYPTO_THREAD_get_local
-func CRYPTO_THREADGetLocal(key *CRYPTO_THREAD_LOCAL) unsafe.Pointer
+//go:linkname CRYPTO_THREAD_get_local C.CRYPTO_THREAD_get_local
+func CRYPTO_THREAD_get_local(key *CRYPTO_THREAD_LOCAL) unsafe.Pointer
 
-//go:linkname CRYPTO_THREADSetLocal C.CRYPTO_THREAD_set_local
-func CRYPTO_THREADSetLocal(key *CRYPTO_THREAD_LOCAL, val unsafe.Pointer) c.Int
+//go:linkname CRYPTO_THREAD_set_local C.CRYPTO_THREAD_set_local
+func CRYPTO_THREAD_set_local(key *CRYPTO_THREAD_LOCAL, val unsafe.Pointer) c.Int
 
-//go:linkname CRYPTO_THREADCleanupLocal C.CRYPTO_THREAD_cleanup_local
-func CRYPTO_THREADCleanupLocal(key *CRYPTO_THREAD_LOCAL) c.Int
+//go:linkname CRYPTO_THREAD_cleanup_local C.CRYPTO_THREAD_cleanup_local
+func CRYPTO_THREAD_cleanup_local(key *CRYPTO_THREAD_LOCAL) c.Int
 
-//go:linkname CRYPTO_THREADGetCurrentId C.CRYPTO_THREAD_get_current_id
-func CRYPTO_THREADGetCurrentId() CRYPTO_THREAD_ID
+//go:linkname CRYPTO_THREAD_get_current_id C.CRYPTO_THREAD_get_current_id
+func CRYPTO_THREAD_get_current_id() CRYPTO_THREAD_ID
 
-//go:linkname CRYPTO_THREADCompareId C.CRYPTO_THREAD_compare_id
-func CRYPTO_THREADCompareId(a CRYPTO_THREAD_ID, b CRYPTO_THREAD_ID) c.Int
+//go:linkname CRYPTO_THREAD_compare_id C.CRYPTO_THREAD_compare_id
+func CRYPTO_THREAD_compare_id(a CRYPTO_THREAD_ID, b CRYPTO_THREAD_ID) c.Int
 
-//go:linkname OSSL_LIB_CTXNew C.OSSL_LIB_CTX_new
-func OSSL_LIB_CTXNew() *OSSL_LIB_CTX
+//go:linkname OSSL_LIB_CTX_new C.OSSL_LIB_CTX_new
+func OSSL_LIB_CTX_new() *OSSL_LIB_CTX
 
-//go:linkname OSSL_LIB_CTXNewFromDispatch C.OSSL_LIB_CTX_new_from_dispatch
-func OSSL_LIB_CTXNewFromDispatch(handle *OSSL_CORE_HANDLE, in *OSSL_DISPATCH) *OSSL_LIB_CTX
+// llgo:link (*OSSL_CORE_HANDLE).LIB_CTX_new_from_dispatch C.OSSL_LIB_CTX_new_from_dispatch
+func (self *OSSL_CORE_HANDLE) LIB_CTX_new_from_dispatch(in *OSSL_DISPATCH) *OSSL_LIB_CTX {
+	return nil
+}
 
-//go:linkname OSSL_LIB_CTXNewChild C.OSSL_LIB_CTX_new_child
-func OSSL_LIB_CTXNewChild(handle *OSSL_CORE_HANDLE, in *OSSL_DISPATCH) *OSSL_LIB_CTX
+// llgo:link (*OSSL_CORE_HANDLE).LIB_CTX_new_child C.OSSL_LIB_CTX_new_child
+func (self *OSSL_CORE_HANDLE) LIB_CTX_new_child(in *OSSL_DISPATCH) *OSSL_LIB_CTX {
+	return nil
+}
 
-//go:linkname OSSL_LIB_CTXLoadConfig C.OSSL_LIB_CTX_load_config
-func OSSL_LIB_CTXLoadConfig(ctx *OSSL_LIB_CTX, config_file *c.Char) c.Int
+// llgo:link (*OSSL_LIB_CTX).LoadConfig C.OSSL_LIB_CTX_load_config
+func (self *OSSL_LIB_CTX) LoadConfig(config_file *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_LIB_CTXFree C.OSSL_LIB_CTX_free
-func OSSL_LIB_CTXFree(_llcppg_param1 *OSSL_LIB_CTX)
+// llgo:link (*OSSL_LIB_CTX).Free C.OSSL_LIB_CTX_free
+func (self *OSSL_LIB_CTX) Free() {
+}
 
-//go:linkname OSSL_LIB_CTXGet0GlobalDefault C.OSSL_LIB_CTX_get0_global_default
-func OSSL_LIB_CTXGet0GlobalDefault() *OSSL_LIB_CTX
+//go:linkname OSSL_LIB_CTX_get0_global_default C.OSSL_LIB_CTX_get0_global_default
+func OSSL_LIB_CTX_get0_global_default() *OSSL_LIB_CTX
 
-//go:linkname OSSL_LIB_CTXSet0Default C.OSSL_LIB_CTX_set0_default
-func OSSL_LIB_CTXSet0Default(libctx *OSSL_LIB_CTX) *OSSL_LIB_CTX
+// llgo:link (*OSSL_LIB_CTX).Set0Default C.OSSL_LIB_CTX_set0_default
+func (self *OSSL_LIB_CTX) Set0Default() *OSSL_LIB_CTX {
+	return self
+}
 
-//go:linkname OSSL_LIB_CTXGetConfDiagnostics C.OSSL_LIB_CTX_get_conf_diagnostics
-func OSSL_LIB_CTXGetConfDiagnostics(ctx *OSSL_LIB_CTX) c.Int
+// llgo:link (*OSSL_LIB_CTX).ConfDiagnostics C.OSSL_LIB_CTX_get_conf_diagnostics
+func (self *OSSL_LIB_CTX) ConfDiagnostics() c.Int {
+	return 0
+}
 
-//go:linkname OSSL_LIB_CTXSetConfDiagnostics C.OSSL_LIB_CTX_set_conf_diagnostics
-func OSSL_LIB_CTXSetConfDiagnostics(ctx *OSSL_LIB_CTX, value c.Int)
+// llgo:link (*OSSL_LIB_CTX).SetConfDiagnostics C.OSSL_LIB_CTX_set_conf_diagnostics
+func (self *OSSL_LIB_CTX) SetConfDiagnostics(value c.Int) {
+}
 
-//go:linkname OSSLSleep C.OSSL_sleep
-func OSSLSleep(millis c.Uint64T)
+//go:linkname OSSL_sleep C.OSSL_sleep
+func OSSL_sleep(millis c.Uint64T)
 
-//go:linkname OSSL_LIB_CTXGetData C.OSSL_LIB_CTX_get_data
-func OSSL_LIB_CTXGetData(ctx *OSSL_LIB_CTX, index c.Int) unsafe.Pointer
+// llgo:link (*OSSL_LIB_CTX).Data C.OSSL_LIB_CTX_get_data
+func (self *OSSL_LIB_CTX) Data(index c.Int) unsafe.Pointer {
+	return nil
+}

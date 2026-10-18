@@ -1322,86 +1322,86 @@ const (
 	X509V3_F_X509_PURPOSE_SET                = 0
 )
 
-//go:linkname ERRLoadASN1Strings C.ERR_load_ASN1_strings
-func ERRLoadASN1Strings() c.Int
+//go:linkname ERR_load_ASN1_strings C.ERR_load_ASN1_strings
+func ERR_load_ASN1_strings() c.Int
 
-//go:linkname ERRLoadASYNCStrings C.ERR_load_ASYNC_strings
-func ERRLoadASYNCStrings() c.Int
+//go:linkname ERR_load_ASYNC_strings C.ERR_load_ASYNC_strings
+func ERR_load_ASYNC_strings() c.Int
 
-//go:linkname ERRLoadBIOStrings C.ERR_load_BIO_strings
-func ERRLoadBIOStrings() c.Int
+//go:linkname ERR_load_BIO_strings C.ERR_load_BIO_strings
+func ERR_load_BIO_strings() c.Int
 
-//go:linkname ERRLoadBNStrings C.ERR_load_BN_strings
-func ERRLoadBNStrings() c.Int
+//go:linkname ERR_load_BN_strings C.ERR_load_BN_strings
+func ERR_load_BN_strings() c.Int
 
-//go:linkname ERRLoadBUFStrings C.ERR_load_BUF_strings
-func ERRLoadBUFStrings() c.Int
+//go:linkname ERR_load_BUF_strings C.ERR_load_BUF_strings
+func ERR_load_BUF_strings() c.Int
 
-//go:linkname ERRLoadCMSStrings C.ERR_load_CMS_strings
-func ERRLoadCMSStrings() c.Int
+//go:linkname ERR_load_CMS_strings C.ERR_load_CMS_strings
+func ERR_load_CMS_strings() c.Int
 
-//go:linkname ERRLoadCOMPStrings C.ERR_load_COMP_strings
-func ERRLoadCOMPStrings() c.Int
+//go:linkname ERR_load_COMP_strings C.ERR_load_COMP_strings
+func ERR_load_COMP_strings() c.Int
 
-//go:linkname ERRLoadCONFStrings C.ERR_load_CONF_strings
-func ERRLoadCONFStrings() c.Int
+//go:linkname ERR_load_CONF_strings C.ERR_load_CONF_strings
+func ERR_load_CONF_strings() c.Int
 
-//go:linkname ERRLoadCRYPTOStrings C.ERR_load_CRYPTO_strings
-func ERRLoadCRYPTOStrings() c.Int
+//go:linkname ERR_load_CRYPTO_strings C.ERR_load_CRYPTO_strings
+func ERR_load_CRYPTO_strings() c.Int
 
-//go:linkname ERRLoadCTStrings C.ERR_load_CT_strings
-func ERRLoadCTStrings() c.Int
+//go:linkname ERR_load_CT_strings C.ERR_load_CT_strings
+func ERR_load_CT_strings() c.Int
 
-//go:linkname ERRLoadDHStrings C.ERR_load_DH_strings
-func ERRLoadDHStrings() c.Int
+//go:linkname ERR_load_DH_strings C.ERR_load_DH_strings
+func ERR_load_DH_strings() c.Int
 
-//go:linkname ERRLoadDSAStrings C.ERR_load_DSA_strings
-func ERRLoadDSAStrings() c.Int
+//go:linkname ERR_load_DSA_strings C.ERR_load_DSA_strings
+func ERR_load_DSA_strings() c.Int
 
-//go:linkname ERRLoadECStrings C.ERR_load_EC_strings
-func ERRLoadECStrings() c.Int
+//go:linkname ERR_load_EC_strings C.ERR_load_EC_strings
+func ERR_load_EC_strings() c.Int
 
-//go:linkname ERRLoadERRStrings C.ERR_load_ERR_strings
-func ERRLoadERRStrings() c.Int
+//go:linkname ERR_load_ERR_strings C.ERR_load_ERR_strings
+func ERR_load_ERR_strings() c.Int
 
-//go:linkname ERRLoadEVPStrings C.ERR_load_EVP_strings
-func ERRLoadEVPStrings() c.Int
+//go:linkname ERR_load_EVP_strings C.ERR_load_EVP_strings
+func ERR_load_EVP_strings() c.Int
 
-//go:linkname ERRLoadKDFStrings C.ERR_load_KDF_strings
-func ERRLoadKDFStrings() c.Int
+//go:linkname ERR_load_KDF_strings C.ERR_load_KDF_strings
+func ERR_load_KDF_strings() c.Int
 
-//go:linkname ERRLoadOBJStrings C.ERR_load_OBJ_strings
-func ERRLoadOBJStrings() c.Int
+//go:linkname ERR_load_OBJ_strings C.ERR_load_OBJ_strings
+func ERR_load_OBJ_strings() c.Int
 
-//go:linkname ERRLoadOCSPStrings C.ERR_load_OCSP_strings
-func ERRLoadOCSPStrings() c.Int
+//go:linkname ERR_load_OCSP_strings C.ERR_load_OCSP_strings
+func ERR_load_OCSP_strings() c.Int
 
-//go:linkname ERRLoadPEMStrings C.ERR_load_PEM_strings
-func ERRLoadPEMStrings() c.Int
+//go:linkname ERR_load_PEM_strings C.ERR_load_PEM_strings
+func ERR_load_PEM_strings() c.Int
 
-//go:linkname ERRLoadPKCS12Strings C.ERR_load_PKCS12_strings
-func ERRLoadPKCS12Strings() c.Int
+//go:linkname ERR_load_PKCS12_strings C.ERR_load_PKCS12_strings
+func ERR_load_PKCS12_strings() c.Int
 
-//go:linkname ERRLoadPKCS7Strings C.ERR_load_PKCS7_strings
-func ERRLoadPKCS7Strings() c.Int
+//go:linkname ERR_load_PKCS7_strings C.ERR_load_PKCS7_strings
+func ERR_load_PKCS7_strings() c.Int
 
-//go:linkname ERRLoadRANDStrings C.ERR_load_RAND_strings
-func ERRLoadRANDStrings() c.Int
+//go:linkname ERR_load_RAND_strings C.ERR_load_RAND_strings
+func ERR_load_RAND_strings() c.Int
 
-//go:linkname ERRLoadRSAStrings C.ERR_load_RSA_strings
-func ERRLoadRSAStrings() c.Int
+//go:linkname ERR_load_RSA_strings C.ERR_load_RSA_strings
+func ERR_load_RSA_strings() c.Int
 
-//go:linkname ERRLoadOSSL_STOREStrings C.ERR_load_OSSL_STORE_strings
-func ERRLoadOSSL_STOREStrings() c.Int
+//go:linkname ERR_load_OSSL_STORE_strings C.ERR_load_OSSL_STORE_strings
+func ERR_load_OSSL_STORE_strings() c.Int
 
-//go:linkname ERRLoadTSStrings C.ERR_load_TS_strings
-func ERRLoadTSStrings() c.Int
+//go:linkname ERR_load_TS_strings C.ERR_load_TS_strings
+func ERR_load_TS_strings() c.Int
 
-//go:linkname ERRLoadUIStrings C.ERR_load_UI_strings
-func ERRLoadUIStrings() c.Int
+//go:linkname ERR_load_UI_strings C.ERR_load_UI_strings
+func ERR_load_UI_strings() c.Int
 
-//go:linkname ERRLoadX509Strings C.ERR_load_X509_strings
-func ERRLoadX509Strings() c.Int
+//go:linkname ERR_load_X509_strings C.ERR_load_X509_strings
+func ERR_load_X509_strings() c.Int
 
-//go:linkname ERRLoadX509V3Strings C.ERR_load_X509V3_strings
-func ERRLoadX509V3Strings() c.Int
+//go:linkname ERR_load_X509V3_strings C.ERR_load_X509V3_strings
+func ERR_load_X509V3_strings() c.Int

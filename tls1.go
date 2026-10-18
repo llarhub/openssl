@@ -75,187 +75,187 @@ const TLS1_AD_ECH_REQUIRED = 121
 
 // ExtensionType values from RFC3546 / RFC4366 / RFC6066
 const (
-	TLSEXT_TYPEServerName           = 0
-	TLSEXT_TYPEMaxFragmentLength    = 1
-	TLSEXT_TYPEClientCertificateUrl = 2
-	TLSEXT_TYPETrustedCaKeys        = 3
-	TLSEXT_TYPETruncatedHmac        = 4
+	TLSEXT_TYPE_server_name            = 0
+	TLSEXT_TYPE_max_fragment_length    = 1
+	TLSEXT_TYPE_client_certificate_url = 2
+	TLSEXT_TYPE_trusted_ca_keys        = 3
+	TLSEXT_TYPE_truncated_hmac         = 4
 	// ExtensionType values from RFC4681
-	TLSEXT_TYPEStatusRequest = 5
+	TLSEXT_TYPE_status_request = 5
 )
 
 // ExtensionType values from RFC4681
-const TLSEXT_TYPEUserMapping = 6
+const TLSEXT_TYPE_user_mapping = 6
 
 // ExtensionType values from RFC5878
 const (
-	TLSEXT_TYPEClientAuthz = 7
+	TLSEXT_TYPE_client_authz = 7
 	// ExtensionType values from RFC6091
-	TLSEXT_TYPEServerAuthz = 8
+	TLSEXT_TYPE_server_authz = 8
 )
 
 // ExtensionType values from RFC6091
-const TLSEXT_TYPECertType = 9
+const TLSEXT_TYPE_cert_type = 9
 
 // Prior to TLSv1.3 the supported_groups extension was known as
 // elliptic_curves
 const (
-	TLSEXT_TYPESupportedGroups = 10
-	TLSEXT_TYPEEllipticCurves  = 10
-	TLSEXT_TYPEEcPointFormats  = 11
+	TLSEXT_TYPE_supported_groups = 10
+	TLSEXT_TYPE_elliptic_curves  = 10
+	TLSEXT_TYPE_ec_point_formats = 11
 )
 
 // ExtensionType value from RFC5054
-const TLSEXT_TYPESrp = 12
+const TLSEXT_TYPE_srp = 12
 
 // ExtensionType values from RFC5246
-const TLSEXT_TYPESignatureAlgorithms = 13
+const TLSEXT_TYPE_signature_algorithms = 13
 
 // ExtensionType value from RFC5764
-const TLSEXT_TYPEUseSrtp = 14
+const TLSEXT_TYPE_use_srtp = 14
 
 // ExtensionType value from RFC7301
-const TLSEXT_TYPEApplicationLayerProtocolNegotiation = 16
+const TLSEXT_TYPE_application_layer_protocol_negotiation = 16
 
 // Extension type for Certificate Transparency
 // https://tools.ietf.org/html/rfc6962#section-3.3.1
-const TLSEXT_TYPESignedCertificateTimestamp = 18
+const TLSEXT_TYPE_signed_certificate_timestamp = 18
 
 // Extension type for Raw Public Keys
 // https://tools.ietf.org/html/rfc7250
 // https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml
 const (
-	TLSEXT_TYPEClientCertType = 19
-	TLSEXT_TYPEServerCertType = 20
+	TLSEXT_TYPE_client_cert_type = 19
+	TLSEXT_TYPE_server_cert_type = 20
 )
 
 // ExtensionType value for TLS padding extension.
 // http://tools.ietf.org/html/draft-agl-tls-padding
-const TLSEXT_TYPEPadding = 21
+const TLSEXT_TYPE_padding = 21
 
 // ExtensionType value from RFC7366
-const TLSEXT_TYPEEncryptThenMac = 22
+const TLSEXT_TYPE_encrypt_then_mac = 22
 
 // ExtensionType value from RFC7627
-const TLSEXT_TYPEExtendedMasterSecret = 23
+const TLSEXT_TYPE_extended_master_secret = 23
 
 // ExtensionType value from RFC8879
-const TLSEXT_TYPECompressCertificate = 27
+const TLSEXT_TYPE_compress_certificate = 27
 
 // ExtensionType value from RFC4507
-const TLSEXT_TYPESessionTicket = 35
+const TLSEXT_TYPE_session_ticket = 35
 
 // As defined for TLS1.3
 const (
-	TLSEXT_TYPEPsk                     = 41
-	TLSEXT_TYPEEarlyData               = 42
-	TLSEXT_TYPESupportedVersions       = 43
-	TLSEXT_TYPECookie                  = 44
-	TLSEXT_TYPEPskKexModes             = 45
-	TLSEXT_TYPECertificateAuthorities  = 47
-	TLSEXT_TYPEPostHandshakeAuth       = 49
-	TLSEXT_TYPESignatureAlgorithmsCert = 50
-	TLSEXT_TYPEKeyShare                = 51
-	TLSEXT_TYPEQuicTransportParameters = 57
+	TLSEXT_TYPE_psk                       = 41
+	TLSEXT_TYPE_early_data                = 42
+	TLSEXT_TYPE_supported_versions        = 43
+	TLSEXT_TYPE_cookie                    = 44
+	TLSEXT_TYPE_psk_kex_modes             = 45
+	TLSEXT_TYPE_certificate_authorities   = 47
+	TLSEXT_TYPE_post_handshake_auth       = 49
+	TLSEXT_TYPE_signature_algorithms_cert = 50
+	TLSEXT_TYPE_key_share                 = 51
+	TLSEXT_TYPE_quic_transport_parameters = 57
 )
 
 // Temporary extension type
-const TLSEXT_TYPERenegotiate = 65281
+const TLSEXT_TYPE_renegotiate = 65281
 
 // This is not an IANA defined extension number
-const TLSEXT_TYPENextProtoNeg = 13172
+const TLSEXT_TYPE_next_proto_neg = 13172
 const (
-	TLSEXT_TYPEEch             = 65037
-	TLSEXT_TYPEOuterExtensions = 64768
+	TLSEXT_TYPE_ech              = 65037
+	TLSEXT_TYPE_outer_extensions = 64768
 )
 
 // NameType value from RFC3546
-const TLSEXT_NAMETYPEHostName = 0
+const TLSEXT_NAMETYPE_host_name = 0
 
 // status request value from RFC3546
-const TLSEXT_STATUSTYPEOcsp = 1
+const TLSEXT_STATUSTYPE_ocsp = 1
 
 // ECPointFormat values from RFC4492
 const (
-	TLSEXT_ECPOINTFORMATFirst                   = 0
-	TLSEXT_ECPOINTFORMATUncompressed            = 0
-	TLSEXT_ECPOINTFORMATAnsiX962CompressedPrime = 1
-	TLSEXT_ECPOINTFORMATAnsiX962CompressedChar2 = 2
-	TLSEXT_ECPOINTFORMATLast                    = 2
+	TLSEXT_ECPOINTFORMAT_first                     = 0
+	TLSEXT_ECPOINTFORMAT_uncompressed              = 0
+	TLSEXT_ECPOINTFORMAT_ansiX962_compressed_prime = 1
+	TLSEXT_ECPOINTFORMAT_ansiX962_compressed_char2 = 2
+	TLSEXT_ECPOINTFORMAT_last                      = 2
 )
 
 // Signature and hash algorithms from RFC5246
 const (
-	TLSEXTSignatureAnonymous        = 0
-	TLSEXTSignatureRsa              = 1
-	TLSEXTSignatureDsa              = 2
-	TLSEXTSignatureEcdsa            = 3
-	TLSEXTSignatureGostr34102001    = 237
-	TLSEXTSignatureGostr34102012256 = 238
-	TLSEXTSignatureGostr34102012512 = 239
+	TLSEXT_signature_anonymous         = 0
+	TLSEXT_signature_rsa               = 1
+	TLSEXT_signature_dsa               = 2
+	TLSEXT_signature_ecdsa             = 3
+	TLSEXT_signature_gostr34102001     = 237
+	TLSEXT_signature_gostr34102012_256 = 238
+	TLSEXT_signature_gostr34102012_512 = 239
 )
 
 // Total number of different signature algorithms
-const TLSEXTSignatureNum = 7
+const TLSEXT_signature_num = 7
 const (
-	TLSEXTHashNone             = 0
-	TLSEXTHashMd5              = 1
-	TLSEXTHashSha1             = 2
-	TLSEXTHashSha224           = 3
-	TLSEXTHashSha256           = 4
-	TLSEXTHashSha384           = 5
-	TLSEXTHashSha512           = 6
-	TLSEXTHashGostr3411        = 237
-	TLSEXTHashGostr34112012256 = 238
-	TLSEXTHashGostr34112012512 = 239
+	TLSEXT_hash_none              = 0
+	TLSEXT_hash_md5               = 1
+	TLSEXT_hash_sha1              = 2
+	TLSEXT_hash_sha224            = 3
+	TLSEXT_hash_sha256            = 4
+	TLSEXT_hash_sha384            = 5
+	TLSEXT_hash_sha512            = 6
+	TLSEXT_hash_gostr3411         = 237
+	TLSEXT_hash_gostr34112012_256 = 238
+	TLSEXT_hash_gostr34112012_512 = 239
 )
-const TLSEXTHashNum = 10
+const TLSEXT_hash_num = 10
 
 // Not defined in RFC8879, but used internally for no-compression
 const (
-	TLSEXTCompCertNone   = 0
-	TLSEXTCompCertZlib   = 1
-	TLSEXTCompCertBrotli = 2
+	TLSEXT_comp_cert_none   = 0
+	TLSEXT_comp_cert_zlib   = 1
+	TLSEXT_comp_cert_brotli = 2
 	// one more than the number of defined values - used as size of 0-terminated array
-	TLSEXTCompCertZstd = 3
+	TLSEXT_comp_cert_zstd = 3
 )
 
 // one more than the number of defined values - used as size of 0-terminated array
-const TLSEXTCompCertLimit = 4
+const TLSEXT_comp_cert_limit = 4
 
 // Flag set for unrecognised algorithms
-const TLSEXTNidUnknown = 16777216
+const TLSEXT_nid_unknown = 16777216
 const (
-	TLSEXTCurveP256 = 23
-	TLSEXTCurveP384 = 24
+	TLSEXT_curve_P_256 = 23
+	TLSEXT_curve_P_384 = 24
 )
 
 // OpenSSL value to disable maximum fragment length extension
-const TLSEXTMaxFragmentLengthDISABLED = 0
+const TLSEXT_max_fragment_length_DISABLED = 0
 
 // Allowed values for max fragment length extension
 const (
-	TLSEXTMaxFragmentLength512  = 1
-	TLSEXTMaxFragmentLength1024 = 2
-	TLSEXTMaxFragmentLength2048 = 3
+	TLSEXT_max_fragment_length_512  = 1
+	TLSEXT_max_fragment_length_1024 = 2
+	TLSEXT_max_fragment_length_2048 = 3
 	// OpenSSL value for unset maximum fragment length extension
-	TLSEXTMaxFragmentLength4096 = 4
+	TLSEXT_max_fragment_length_4096 = 4
 )
 
 // OpenSSL value for unset maximum fragment length extension
-const TLSEXTMaxFragmentLengthUNSPECIFIED = 255
+const TLSEXT_max_fragment_length_UNSPECIFIED = 255
 
 // TLS Certificate Type (for RFC7250)
 // https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#tls-extensiontype-values-3
 const (
-	TLSEXTCertTypeX509 = 0
+	TLSEXT_cert_type_x509 = 0
 	// recognized, but not supported
-	TLSEXTCertTypePgp = 1
-	TLSEXTCertTypeRpk = 2
+	TLSEXT_cert_type_pgp = 1
+	TLSEXT_cert_type_rpk = 2
 	// recognized, but not supported
-	TLSEXTCertType1609dot2 = 3
+	TLSEXT_cert_type_1609dot2 = 3
 )
-const TLSEXT_MAXLENHostName = 255
+const TLSEXT_MAXLEN_host_name = 255
 const (
 	SSL_TLSEXT_ERR_OK            = 0
 	SSL_TLSEXT_ERR_ALERT_WARNING = 1
@@ -467,11 +467,11 @@ const (
 	TLS1_CK_ECDHE_RSA_WITH_AES_256_CBC_SHA  = 50380820
 )
 const (
-	TLS1CK_ECDHAnonWITH_NULL_SHA      = 50380821
-	TLS1CK_ECDHAnonWITHRC4128SHA      = 50380822
-	TLS1CK_ECDHAnonWITH_DES192CBC3SHA = 50380823
-	TLS1CK_ECDHAnonWITH_AES128CBC_SHA = 50380824
-	TLS1CK_ECDHAnonWITH_AES256CBC_SHA = 50380825
+	TLS1_CK_ECDH_anon_WITH_NULL_SHA         = 50380821
+	TLS1_CK_ECDH_anon_WITH_RC4_128_SHA      = 50380822
+	TLS1_CK_ECDH_anon_WITH_DES_192_CBC3_SHA = 50380823
+	TLS1_CK_ECDH_anon_WITH_AES_128_CBC_SHA  = 50380824
+	TLS1_CK_ECDH_anon_WITH_AES_256_CBC_SHA  = 50380825
 )
 
 // SRP ciphersuites from RFC 5054
@@ -590,8 +590,8 @@ const (
 	TLS1_CK_DHE_DSS_WITH_ARIA_256_GCM_SHA384     = 50380887
 	TLS1_CK_DH_DSS_WITH_ARIA_128_GCM_SHA256      = 50380888
 	TLS1_CK_DH_DSS_WITH_ARIA_256_GCM_SHA384      = 50380889
-	TLS1CK_DHAnonWITH_ARIA128GCMSHA256           = 50380890
-	TLS1CK_DHAnonWITH_ARIA256GCMSHA384           = 50380891
+	TLS1_CK_DH_anon_WITH_ARIA_128_GCM_SHA256     = 50380890
+	TLS1_CK_DH_anon_WITH_ARIA_256_GCM_SHA384     = 50380891
 	TLS1_CK_ECDHE_ECDSA_WITH_ARIA_128_GCM_SHA256 = 50380892
 	TLS1_CK_ECDHE_ECDSA_WITH_ARIA_256_GCM_SHA384 = 50380893
 	TLS1_CK_ECDH_ECDSA_WITH_ARIA_128_GCM_SHA256  = 50380894
@@ -676,10 +676,10 @@ const (
 	TLS1_RFC_ECDHE_RSA_WITH_DES_192_CBC3_SHA          = "TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA"
 	TLS1_RFC_ECDHE_RSA_WITH_AES_128_CBC_SHA           = "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"
 	TLS1_RFC_ECDHE_RSA_WITH_AES_256_CBC_SHA           = "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA"
-	TLS1RFC_ECDHAnonWITH_NULL_SHA                     = "TLS_ECDH_anon_WITH_NULL_SHA"
-	TLS1RFC_ECDHAnonWITH_DES192CBC3SHA                = "TLS_ECDH_anon_WITH_3DES_EDE_CBC_SHA"
-	TLS1RFC_ECDHAnonWITH_AES128CBC_SHA                = "TLS_ECDH_anon_WITH_AES_128_CBC_SHA"
-	TLS1RFC_ECDHAnonWITH_AES256CBC_SHA                = "TLS_ECDH_anon_WITH_AES_256_CBC_SHA"
+	TLS1_RFC_ECDH_anon_WITH_NULL_SHA                  = "TLS_ECDH_anon_WITH_NULL_SHA"
+	TLS1_RFC_ECDH_anon_WITH_DES_192_CBC3_SHA          = "TLS_ECDH_anon_WITH_3DES_EDE_CBC_SHA"
+	TLS1_RFC_ECDH_anon_WITH_AES_128_CBC_SHA           = "TLS_ECDH_anon_WITH_AES_128_CBC_SHA"
+	TLS1_RFC_ECDH_anon_WITH_AES_256_CBC_SHA           = "TLS_ECDH_anon_WITH_AES_256_CBC_SHA"
 	TLS1_RFC_ECDHE_ECDSA_WITH_AES_128_SHA256          = "TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256"
 	TLS1_RFC_ECDHE_ECDSA_WITH_AES_256_SHA384          = "TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384"
 	TLS1_RFC_ECDHE_RSA_WITH_AES_128_SHA256            = "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256"
@@ -775,7 +775,7 @@ const (
 	TLS1_RFC_DHE_RSA_WITH_SEED_SHA                    = "TLS_DHE_RSA_WITH_SEED_CBC_SHA"
 	TLS1_RFC_ADH_WITH_SEED_SHA                        = "TLS_DH_anon_WITH_SEED_CBC_SHA"
 	TLS1_RFC_ECDHE_PSK_WITH_RC4_128_SHA               = "TLS_ECDHE_PSK_WITH_RC4_128_SHA"
-	TLS1RFC_ECDHAnonWITHRC4128SHA                     = "TLS_ECDH_anon_WITH_RC4_128_SHA"
+	TLS1_RFC_ECDH_anon_WITH_RC4_128_SHA               = "TLS_ECDH_anon_WITH_RC4_128_SHA"
 	TLS1_RFC_ECDHE_ECDSA_WITH_RC4_128_SHA             = "TLS_ECDHE_ECDSA_WITH_RC4_128_SHA"
 	TLS1_RFC_ECDHE_RSA_WITH_RC4_128_SHA               = "TLS_ECDHE_RSA_WITH_RC4_128_SHA"
 	TLS1_RFC_PSK_WITH_RC4_128_SHA                     = "TLS_PSK_WITH_RC4_128_SHA"
@@ -791,8 +791,8 @@ const (
 	TLS1_RFC_DHE_DSS_WITH_ARIA_256_GCM_SHA384         = "TLS_DHE_DSS_WITH_ARIA_256_GCM_SHA384"
 	TLS1_RFC_DH_DSS_WITH_ARIA_128_GCM_SHA256          = "TLS_DH_DSS_WITH_ARIA_128_GCM_SHA256"
 	TLS1_RFC_DH_DSS_WITH_ARIA_256_GCM_SHA384          = "TLS_DH_DSS_WITH_ARIA_256_GCM_SHA384"
-	TLS1RFC_DHAnonWITH_ARIA128GCMSHA256               = "TLS_DH_anon_WITH_ARIA_128_GCM_SHA256"
-	TLS1RFC_DHAnonWITH_ARIA256GCMSHA384               = "TLS_DH_anon_WITH_ARIA_256_GCM_SHA384"
+	TLS1_RFC_DH_anon_WITH_ARIA_128_GCM_SHA256         = "TLS_DH_anon_WITH_ARIA_128_GCM_SHA256"
+	TLS1_RFC_DH_anon_WITH_ARIA_256_GCM_SHA384         = "TLS_DH_anon_WITH_ARIA_256_GCM_SHA384"
 	TLS1_RFC_ECDHE_ECDSA_WITH_ARIA_128_GCM_SHA256     = "TLS_ECDHE_ECDSA_WITH_ARIA_128_GCM_SHA256"
 	TLS1_RFC_ECDHE_ECDSA_WITH_ARIA_256_GCM_SHA384     = "TLS_ECDHE_ECDSA_WITH_ARIA_256_GCM_SHA384"
 	TLS1_RFC_ECDH_ECDSA_WITH_ARIA_128_GCM_SHA256      = "TLS_ECDH_ECDSA_WITH_ARIA_128_GCM_SHA256"
@@ -870,11 +870,11 @@ const (
 	TLS1_TXT_ECDHE_RSA_WITH_AES_256_CBC_SHA  = "ECDHE-RSA-AES256-SHA"
 )
 const (
-	TLS1TXT_ECDHAnonWITH_NULL_SHA      = "AECDH-NULL-SHA"
-	TLS1TXT_ECDHAnonWITHRC4128SHA      = "AECDH-RC4-SHA"
-	TLS1TXT_ECDHAnonWITH_DES192CBC3SHA = "AECDH-DES-CBC3-SHA"
-	TLS1TXT_ECDHAnonWITH_AES128CBC_SHA = "AECDH-AES128-SHA"
-	TLS1TXT_ECDHAnonWITH_AES256CBC_SHA = "AECDH-AES256-SHA"
+	TLS1_TXT_ECDH_anon_WITH_NULL_SHA         = "AECDH-NULL-SHA"
+	TLS1_TXT_ECDH_anon_WITH_RC4_128_SHA      = "AECDH-RC4-SHA"
+	TLS1_TXT_ECDH_anon_WITH_DES_192_CBC3_SHA = "AECDH-DES-CBC3-SHA"
+	TLS1_TXT_ECDH_anon_WITH_AES_128_CBC_SHA  = "AECDH-AES128-SHA"
+	TLS1_TXT_ECDH_anon_WITH_AES_256_CBC_SHA  = "AECDH-AES256-SHA"
 )
 
 // PSK ciphersuites from RFC 4279
@@ -1135,8 +1135,8 @@ const (
 	TLS1_TXT_DHE_DSS_WITH_ARIA_256_GCM_SHA384     = "DHE-DSS-ARIA256-GCM-SHA384"
 	TLS1_TXT_DH_DSS_WITH_ARIA_128_GCM_SHA256      = "DH-DSS-ARIA128-GCM-SHA256"
 	TLS1_TXT_DH_DSS_WITH_ARIA_256_GCM_SHA384      = "DH-DSS-ARIA256-GCM-SHA384"
-	TLS1TXT_DHAnonWITH_ARIA128GCMSHA256           = "ADH-ARIA128-GCM-SHA256"
-	TLS1TXT_DHAnonWITH_ARIA256GCMSHA384           = "ADH-ARIA256-GCM-SHA384"
+	TLS1_TXT_DH_anon_WITH_ARIA_128_GCM_SHA256     = "ADH-ARIA128-GCM-SHA256"
+	TLS1_TXT_DH_anon_WITH_ARIA_256_GCM_SHA384     = "ADH-ARIA256-GCM-SHA384"
 	TLS1_TXT_ECDHE_ECDSA_WITH_ARIA_128_GCM_SHA256 = "ECDHE-ECDSA-ARIA128-GCM-SHA256"
 	TLS1_TXT_ECDHE_ECDSA_WITH_ARIA_256_GCM_SHA384 = "ECDHE-ECDSA-ARIA256-GCM-SHA384"
 	TLS1_TXT_ECDH_ECDSA_WITH_ARIA_128_GCM_SHA256  = "ECDH-ECDSA-ARIA128-GCM-SHA256"
@@ -1238,23 +1238,20 @@ type TlsSessionTicketExtSt struct {
 	Data   unsafe.Pointer
 }
 
-//go:linkname SSL_CTXSetTlsextMaxFragmentLength C.SSL_CTX_set_tlsext_max_fragment_length
-func SSL_CTXSetTlsextMaxFragmentLength(ctx *SSL_CTX, mode c.Uint8T) c.Int
+// llgo:link (*SSL_CTX).SetTlsextMaxFragmentLength C.SSL_CTX_set_tlsext_max_fragment_length
+func (self *SSL_CTX) SetTlsextMaxFragmentLength(mode c.Uint8T) c.Int {
+	return 0
+}
 
-//go:linkname SSLSetTlsextMaxFragmentLength C.SSL_set_tlsext_max_fragment_length
-func SSLSetTlsextMaxFragmentLength(ssl *SSL, mode c.Uint8T) c.Int
+// llgo:link (*SSL).SetTlsextMaxFragmentLength C.SSL_set_tlsext_max_fragment_length
+func (self *SSL) SetTlsextMaxFragmentLength(mode c.Uint8T) c.Int {
+	return 0
+}
 
-//go:linkname SSLGetServername C.SSL_get_servername
-func SSLGetServername(s *SSL, type_ c.Int) *c.Char
-
-// SSL_export_keying_material exports a value derived from the master secret,
-// as specified in RFC 5705. It writes |olen| bytes to |out| given a label and
-// optional context. (Since a zero length context is allowed, the |use_context|
-// flag controls whether a context is included.) It returns 1 on success and
-// 0 or -1 otherwise.
-//
-//go:linkname SSLGetServernameType C.SSL_get_servername_type
-func SSLGetServernameType(s *SSL) c.Int
+// llgo:link (*SSL).Servername C.SSL_get_servername
+func (self *SSL) Servername(type_ c.Int) *c.Char {
+	return nil
+}
 
 // SSL_export_keying_material exports a value derived from the master secret,
 // as specified in RFC 5705. It writes |olen| bytes to |out| given a label and
@@ -1262,8 +1259,21 @@ func SSLGetServernameType(s *SSL) c.Int
 // flag controls whether a context is included.) It returns 1 on success and
 // 0 or -1 otherwise.
 //
-//go:linkname SSLExportKeyingMaterial C.SSL_export_keying_material
-func SSLExportKeyingMaterial(s *SSL, out *uint8, olen c.SizeT, label *c.Char, llen c.SizeT, context *uint8, contextlen c.SizeT, use_context c.Int) c.Int
+// llgo:link (*SSL).ServernameType C.SSL_get_servername_type
+func (self *SSL) ServernameType() c.Int {
+	return 0
+}
+
+// SSL_export_keying_material exports a value derived from the master secret,
+// as specified in RFC 5705. It writes |olen| bytes to |out| given a label and
+// optional context. (Since a zero length context is allowed, the |use_context|
+// flag controls whether a context is included.) It returns 1 on success and
+// 0 or -1 otherwise.
+//
+// llgo:link (*SSL).ExportKeyingMaterial C.SSL_export_keying_material
+func (self *SSL) ExportKeyingMaterial(out *uint8, olen c.SizeT, label *c.Char, llen c.SizeT, context *uint8, contextlen c.SizeT, use_context c.Int) c.Int {
+	return 0
+}
 
 // SSL_export_keying_material_early exports a value derived from the
 // early exporter master secret, as specified in
@@ -1271,32 +1281,52 @@ func SSLExportKeyingMaterial(s *SSL, out *uint8, olen c.SizeT, label *c.Char, ll
 // |olen| bytes to |out| given a label and optional context. It
 // returns 1 on success and 0 otherwise.
 //
-//go:linkname SSLExportKeyingMaterialEarly C.SSL_export_keying_material_early
-func SSLExportKeyingMaterialEarly(s *SSL, out *uint8, olen c.SizeT, label *c.Char, llen c.SizeT, context *uint8, contextlen c.SizeT) c.Int
+// llgo:link (*SSL).ExportKeyingMaterialEarly C.SSL_export_keying_material_early
+func (self *SSL) ExportKeyingMaterialEarly(out *uint8, olen c.SizeT, label *c.Char, llen c.SizeT, context *uint8, contextlen c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname SSLGetPeerSignatureTypeNid C.SSL_get_peer_signature_type_nid
-func SSLGetPeerSignatureTypeNid(s *SSL, pnid *c.Int) c.Int
+// llgo:link (*SSL).PeerSignatureTypeNid C.SSL_get_peer_signature_type_nid
+func (self *SSL) PeerSignatureTypeNid(pnid *c.Int) c.Int {
+	return 0
+}
 
-//go:linkname SSLGetSignatureTypeNid C.SSL_get_signature_type_nid
-func SSLGetSignatureTypeNid(s *SSL, pnid *c.Int) c.Int
+// llgo:link (*SSL).SignatureTypeNid C.SSL_get_signature_type_nid
+func (self *SSL) SignatureTypeNid(pnid *c.Int) c.Int {
+	return 0
+}
 
-//go:linkname SSLGet0Sigalg C.SSL_get0_sigalg
-func SSLGet0Sigalg(s *SSL, idx c.Int, codepoint *c.Uint, name **c.Char) c.Int
+// llgo:link (*SSL).Get0Sigalg C.SSL_get0_sigalg
+func (self *SSL) Get0Sigalg(idx c.Int, codepoint *c.Uint, name **c.Char) c.Int {
+	return 0
+}
 
-//go:linkname SSLGet0SharedSigalg C.SSL_get0_shared_sigalg
-func SSLGet0SharedSigalg(s *SSL, idx c.Int, codepoint *c.Uint, name **c.Char) c.Int
+// llgo:link (*SSL).Get0SharedSigalg C.SSL_get0_shared_sigalg
+func (self *SSL) Get0SharedSigalg(idx c.Int, codepoint *c.Uint, name **c.Char) c.Int {
+	return 0
+}
 
-//go:linkname SSLGetSigalgs C.SSL_get_sigalgs
-func SSLGetSigalgs(s *SSL, idx c.Int, psign *c.Int, phash *c.Int, psignandhash *c.Int, rsig *uint8, rhash *uint8) c.Int
+// llgo:link (*SSL).Sigalgs C.SSL_get_sigalgs
+func (self *SSL) Sigalgs(idx c.Int, psign *c.Int, phash *c.Int, psignandhash *c.Int, rsig *uint8, rhash *uint8) c.Int {
+	return 0
+}
 
-//go:linkname SSLGet1BuiltinSigalgs C.SSL_get1_builtin_sigalgs
-func SSLGet1BuiltinSigalgs(libctx *OSSL_LIB_CTX) *c.Char
+// llgo:link (*OSSL_LIB_CTX).SSL_get1_builtin_sigalgs C.SSL_get1_builtin_sigalgs
+func (self *OSSL_LIB_CTX) SSL_get1_builtin_sigalgs() *c.Char {
+	return nil
+}
 
-//go:linkname SSLGetSharedSigalgs C.SSL_get_shared_sigalgs
-func SSLGetSharedSigalgs(s *SSL, idx c.Int, psign *c.Int, phash *c.Int, psignandhash *c.Int, rsig *uint8, rhash *uint8) c.Int
+// llgo:link (*SSL).SharedSigalgs C.SSL_get_shared_sigalgs
+func (self *SSL) SharedSigalgs(idx c.Int, psign *c.Int, phash *c.Int, psignandhash *c.Int, rsig *uint8, rhash *uint8) c.Int {
+	return 0
+}
 
-//go:linkname SSLCheckChain C.SSL_check_chain
-func SSLCheckChain(s *SSL, x *X509, pk *EVP_PKEY, chain *StackStX509) c.Int
+// llgo:link (*SSL).CheckChain C.SSL_check_chain
+func (self *SSL) CheckChain(x *X509, pk *EVP_PKEY, chain *Stack_st_X509) c.Int {
+	return 0
+}
 
-//go:linkname SSL_CTXSetTlsextTicketKeyEvpCb C.SSL_CTX_set_tlsext_ticket_key_evp_cb
-func SSL_CTXSetTlsextTicketKeyEvpCb(ctx *SSL_CTX, fp func(_llcppg_param1 *SSL, _llcppg_param2 *uint8, _llcppg_param3 *uint8, _llcppg_param4 *EVP_CIPHER_CTX, _llcppg_param5 *EVP_MAC_CTX, _llcppg_param6 c.Int) c.Int) c.Int
+// llgo:link (*SSL_CTX).SetTlsextTicketKeyEvpCb C.SSL_CTX_set_tlsext_ticket_key_evp_cb
+func (self *SSL_CTX) SetTlsextTicketKeyEvpCb(fp func(_llcppg_param1 *SSL, _llcppg_param2 *uint8, _llcppg_param3 *uint8, _llcppg_param4 *EVP_CIPHER_CTX, _llcppg_param5 *EVP_MAC_CTX, _llcppg_param6 c.Int) c.Int) c.Int {
+	return 0
+}

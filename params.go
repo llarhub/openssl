@@ -10,190 +10,275 @@ import (
 
 // Search an OSSL_PARAM array for a matching name
 //
-//go:linkname OSSL_PARAMLocate C.OSSL_PARAM_locate
-func OSSL_PARAMLocate(p *OSSL_PARAM, key *c.Char) *OSSL_PARAM
+// llgo:link (*OSSL_PARAM).Locate C.OSSL_PARAM_locate
+func (self *OSSL_PARAM) Locate(key *c.Char) *OSSL_PARAM {
+	return self
+}
 
-//go:linkname OSSL_PARAMLocateConst C.OSSL_PARAM_locate_const
-func OSSL_PARAMLocateConst(p *OSSL_PARAM, key *c.Char) *OSSL_PARAM
+// llgo:link (*OSSL_PARAM).LocateConst C.OSSL_PARAM_locate_const
+func (self *OSSL_PARAM) LocateConst(key *c.Char) *OSSL_PARAM {
+	return self
+}
 
 // Basic parameter type run-time construction
 //
-//go:linkname OSSL_PARAMConstructInt C.OSSL_PARAM_construct_int
-func OSSL_PARAMConstructInt(key *c.Char, buf *c.Int) OSSL_PARAM
+//go:linkname OSSL_PARAM_construct_int C.OSSL_PARAM_construct_int
+func OSSL_PARAM_construct_int(key *c.Char, buf *c.Int) OSSL_PARAM
 
-//go:linkname OSSL_PARAMConstructUint C.OSSL_PARAM_construct_uint
-func OSSL_PARAMConstructUint(key *c.Char, buf *c.Uint) OSSL_PARAM
+//go:linkname OSSL_PARAM_construct_uint C.OSSL_PARAM_construct_uint
+func OSSL_PARAM_construct_uint(key *c.Char, buf *c.Uint) OSSL_PARAM
 
-//go:linkname OSSL_PARAMConstructLong C.OSSL_PARAM_construct_long
-func OSSL_PARAMConstructLong(key *c.Char, buf *c.Long) OSSL_PARAM
+//go:linkname OSSL_PARAM_construct_long C.OSSL_PARAM_construct_long
+func OSSL_PARAM_construct_long(key *c.Char, buf *c.Long) OSSL_PARAM
 
-//go:linkname OSSL_PARAMConstructUlong C.OSSL_PARAM_construct_ulong
-func OSSL_PARAMConstructUlong(key *c.Char, buf *c.Ulong) OSSL_PARAM
+//go:linkname OSSL_PARAM_construct_ulong C.OSSL_PARAM_construct_ulong
+func OSSL_PARAM_construct_ulong(key *c.Char, buf *c.Ulong) OSSL_PARAM
 
-//go:linkname OSSL_PARAMConstructInt32 C.OSSL_PARAM_construct_int32
-func OSSL_PARAMConstructInt32(key *c.Char, buf *c.Int32T) OSSL_PARAM
+//go:linkname OSSL_PARAM_construct_int32 C.OSSL_PARAM_construct_int32
+func OSSL_PARAM_construct_int32(key *c.Char, buf *c.Int32T) OSSL_PARAM
 
-//go:linkname OSSL_PARAMConstructUint32 C.OSSL_PARAM_construct_uint32
-func OSSL_PARAMConstructUint32(key *c.Char, buf *c.Uint32T) OSSL_PARAM
+//go:linkname OSSL_PARAM_construct_uint32 C.OSSL_PARAM_construct_uint32
+func OSSL_PARAM_construct_uint32(key *c.Char, buf *c.Uint32T) OSSL_PARAM
 
-//go:linkname OSSL_PARAMConstructInt64 C.OSSL_PARAM_construct_int64
-func OSSL_PARAMConstructInt64(key *c.Char, buf *c.Int64T) OSSL_PARAM
+//go:linkname OSSL_PARAM_construct_int64 C.OSSL_PARAM_construct_int64
+func OSSL_PARAM_construct_int64(key *c.Char, buf *c.Int64T) OSSL_PARAM
 
-//go:linkname OSSL_PARAMConstructUint64 C.OSSL_PARAM_construct_uint64
-func OSSL_PARAMConstructUint64(key *c.Char, buf *c.Uint64T) OSSL_PARAM
+//go:linkname OSSL_PARAM_construct_uint64 C.OSSL_PARAM_construct_uint64
+func OSSL_PARAM_construct_uint64(key *c.Char, buf *c.Uint64T) OSSL_PARAM
 
-//go:linkname OSSL_PARAMConstructSizeT C.OSSL_PARAM_construct_size_t
-func OSSL_PARAMConstructSizeT(key *c.Char, buf *c.SizeT) OSSL_PARAM
+//go:linkname OSSL_PARAM_construct_size_t C.OSSL_PARAM_construct_size_t
+func OSSL_PARAM_construct_size_t(key *c.Char, buf *c.SizeT) OSSL_PARAM
 
-//go:linkname OSSL_PARAMConstructTimeT C.OSSL_PARAM_construct_time_t
-func OSSL_PARAMConstructTimeT(key *c.Char, buf *time.TimeT) OSSL_PARAM
+//go:linkname OSSL_PARAM_construct_time_t C.OSSL_PARAM_construct_time_t
+func OSSL_PARAM_construct_time_t(key *c.Char, buf *time.TimeT) OSSL_PARAM
 
-//go:linkname OSSL_PARAMConstructBN C.OSSL_PARAM_construct_BN
-func OSSL_PARAMConstructBN(key *c.Char, buf *uint8, bsize c.SizeT) OSSL_PARAM
+//go:linkname OSSL_PARAM_construct_BN C.OSSL_PARAM_construct_BN
+func OSSL_PARAM_construct_BN(key *c.Char, buf *uint8, bsize c.SizeT) OSSL_PARAM
 
-//go:linkname OSSL_PARAMConstructDouble C.OSSL_PARAM_construct_double
-func OSSL_PARAMConstructDouble(key *c.Char, buf *c.Double) OSSL_PARAM
+//go:linkname OSSL_PARAM_construct_double C.OSSL_PARAM_construct_double
+func OSSL_PARAM_construct_double(key *c.Char, buf *c.Double) OSSL_PARAM
 
-//go:linkname OSSL_PARAMConstructUtf8String C.OSSL_PARAM_construct_utf8_string
-func OSSL_PARAMConstructUtf8String(key *c.Char, buf *c.Char, bsize c.SizeT) OSSL_PARAM
+//go:linkname OSSL_PARAM_construct_utf8_string C.OSSL_PARAM_construct_utf8_string
+func OSSL_PARAM_construct_utf8_string(key *c.Char, buf *c.Char, bsize c.SizeT) OSSL_PARAM
 
-//go:linkname OSSL_PARAMConstructUtf8Ptr C.OSSL_PARAM_construct_utf8_ptr
-func OSSL_PARAMConstructUtf8Ptr(key *c.Char, buf **c.Char, bsize c.SizeT) OSSL_PARAM
+//go:linkname OSSL_PARAM_construct_utf8_ptr C.OSSL_PARAM_construct_utf8_ptr
+func OSSL_PARAM_construct_utf8_ptr(key *c.Char, buf **c.Char, bsize c.SizeT) OSSL_PARAM
 
-//go:linkname OSSL_PARAMConstructOctetString C.OSSL_PARAM_construct_octet_string
-func OSSL_PARAMConstructOctetString(key *c.Char, buf unsafe.Pointer, bsize c.SizeT) OSSL_PARAM
+//go:linkname OSSL_PARAM_construct_octet_string C.OSSL_PARAM_construct_octet_string
+func OSSL_PARAM_construct_octet_string(key *c.Char, buf unsafe.Pointer, bsize c.SizeT) OSSL_PARAM
 
-//go:linkname OSSL_PARAMConstructOctetPtr C.OSSL_PARAM_construct_octet_ptr
-func OSSL_PARAMConstructOctetPtr(key *c.Char, buf *unsafe.Pointer, bsize c.SizeT) OSSL_PARAM
+//go:linkname OSSL_PARAM_construct_octet_ptr C.OSSL_PARAM_construct_octet_ptr
+func OSSL_PARAM_construct_octet_ptr(key *c.Char, buf *unsafe.Pointer, bsize c.SizeT) OSSL_PARAM
 
-//go:linkname OSSL_PARAMConstructEnd C.OSSL_PARAM_construct_end
-func OSSL_PARAMConstructEnd() OSSL_PARAM
+//go:linkname OSSL_PARAM_construct_end C.OSSL_PARAM_construct_end
+func OSSL_PARAM_construct_end() OSSL_PARAM
 
-//go:linkname OSSL_PARAMAllocateFromText C.OSSL_PARAM_allocate_from_text
-func OSSL_PARAMAllocateFromText(to *OSSL_PARAM, paramdefs *OSSL_PARAM, key *c.Char, value *c.Char, value_n c.SizeT, found *c.Int) c.Int
+// llgo:link (*OSSL_PARAM).AllocateFromText C.OSSL_PARAM_allocate_from_text
+func (self *OSSL_PARAM) AllocateFromText(paramdefs *OSSL_PARAM, key *c.Char, value *c.Char, value_n c.SizeT, found *c.Int) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_PARAMPrintToBio C.OSSL_PARAM_print_to_bio
-func OSSL_PARAMPrintToBio(params *OSSL_PARAM, bio *BIO, print_values c.Int) c.Int
+// llgo:link (*OSSL_PARAM).PrintToBio C.OSSL_PARAM_print_to_bio
+func (self *OSSL_PARAM) PrintToBio(bio *BIO, print_values c.Int) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_PARAMGetInt C.OSSL_PARAM_get_int
-func OSSL_PARAMGetInt(p *OSSL_PARAM, val *c.Int) c.Int
+// llgo:link (*OSSL_PARAM).Int C.OSSL_PARAM_get_int
+func (self *OSSL_PARAM) Int(val *c.Int) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_PARAMGetUint C.OSSL_PARAM_get_uint
-func OSSL_PARAMGetUint(p *OSSL_PARAM, val *c.Uint) c.Int
+// llgo:link (*OSSL_PARAM).Uint C.OSSL_PARAM_get_uint
+func (self *OSSL_PARAM) Uint(val *c.Uint) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_PARAMGetLong C.OSSL_PARAM_get_long
-func OSSL_PARAMGetLong(p *OSSL_PARAM, val *c.Long) c.Int
+// llgo:link (*OSSL_PARAM).Long C.OSSL_PARAM_get_long
+func (self *OSSL_PARAM) Long(val *c.Long) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_PARAMGetUlong C.OSSL_PARAM_get_ulong
-func OSSL_PARAMGetUlong(p *OSSL_PARAM, val *c.Ulong) c.Int
+// llgo:link (*OSSL_PARAM).Ulong C.OSSL_PARAM_get_ulong
+func (self *OSSL_PARAM) Ulong(val *c.Ulong) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_PARAMGetInt32 C.OSSL_PARAM_get_int32
-func OSSL_PARAMGetInt32(p *OSSL_PARAM, val *c.Int32T) c.Int
+// llgo:link (*OSSL_PARAM).Int32 C.OSSL_PARAM_get_int32
+func (self *OSSL_PARAM) Int32(val *c.Int32T) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_PARAMGetUint32 C.OSSL_PARAM_get_uint32
-func OSSL_PARAMGetUint32(p *OSSL_PARAM, val *c.Uint32T) c.Int
+// llgo:link (*OSSL_PARAM).Uint32 C.OSSL_PARAM_get_uint32
+func (self *OSSL_PARAM) Uint32(val *c.Uint32T) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_PARAMGetInt64 C.OSSL_PARAM_get_int64
-func OSSL_PARAMGetInt64(p *OSSL_PARAM, val *c.Int64T) c.Int
+// llgo:link (*OSSL_PARAM).Int64 C.OSSL_PARAM_get_int64
+func (self *OSSL_PARAM) Int64(val *c.Int64T) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_PARAMGetUint64 C.OSSL_PARAM_get_uint64
-func OSSL_PARAMGetUint64(p *OSSL_PARAM, val *c.Uint64T) c.Int
+// llgo:link (*OSSL_PARAM).Uint64 C.OSSL_PARAM_get_uint64
+func (self *OSSL_PARAM) Uint64(val *c.Uint64T) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_PARAMGetSizeT C.OSSL_PARAM_get_size_t
-func OSSL_PARAMGetSizeT(p *OSSL_PARAM, val *c.SizeT) c.Int
+// llgo:link (*OSSL_PARAM).SizeT C.OSSL_PARAM_get_size_t
+func (self *OSSL_PARAM) SizeT(val *c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_PARAMGetTimeT C.OSSL_PARAM_get_time_t
-func OSSL_PARAMGetTimeT(p *OSSL_PARAM, val *time.TimeT) c.Int
+// llgo:link (*OSSL_PARAM).TimeT C.OSSL_PARAM_get_time_t
+func (self *OSSL_PARAM) TimeT(val *time.TimeT) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_PARAMSetInt C.OSSL_PARAM_set_int
-func OSSL_PARAMSetInt(p *OSSL_PARAM, val c.Int) c.Int
+// llgo:link (*OSSL_PARAM).SetInt C.OSSL_PARAM_set_int
+func (self *OSSL_PARAM) SetInt(val c.Int) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_PARAMSetUint C.OSSL_PARAM_set_uint
-func OSSL_PARAMSetUint(p *OSSL_PARAM, val c.Uint) c.Int
+// llgo:link (*OSSL_PARAM).SetUint C.OSSL_PARAM_set_uint
+func (self *OSSL_PARAM) SetUint(val c.Uint) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_PARAMSetLong C.OSSL_PARAM_set_long
-func OSSL_PARAMSetLong(p *OSSL_PARAM, val c.Long) c.Int
+// llgo:link (*OSSL_PARAM).SetLong C.OSSL_PARAM_set_long
+func (self *OSSL_PARAM) SetLong(val c.Long) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_PARAMSetUlong C.OSSL_PARAM_set_ulong
-func OSSL_PARAMSetUlong(p *OSSL_PARAM, val c.Ulong) c.Int
+// llgo:link (*OSSL_PARAM).SetUlong C.OSSL_PARAM_set_ulong
+func (self *OSSL_PARAM) SetUlong(val c.Ulong) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_PARAMSetInt32 C.OSSL_PARAM_set_int32
-func OSSL_PARAMSetInt32(p *OSSL_PARAM, val c.Int32T) c.Int
+// llgo:link (*OSSL_PARAM).SetInt32 C.OSSL_PARAM_set_int32
+func (self *OSSL_PARAM) SetInt32(val c.Int32T) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_PARAMSetUint32 C.OSSL_PARAM_set_uint32
-func OSSL_PARAMSetUint32(p *OSSL_PARAM, val c.Uint32T) c.Int
+// llgo:link (*OSSL_PARAM).SetUint32 C.OSSL_PARAM_set_uint32
+func (self *OSSL_PARAM) SetUint32(val c.Uint32T) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_PARAMSetInt64 C.OSSL_PARAM_set_int64
-func OSSL_PARAMSetInt64(p *OSSL_PARAM, val c.Int64T) c.Int
+// llgo:link (*OSSL_PARAM).SetInt64 C.OSSL_PARAM_set_int64
+func (self *OSSL_PARAM) SetInt64(val c.Int64T) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_PARAMSetUint64 C.OSSL_PARAM_set_uint64
-func OSSL_PARAMSetUint64(p *OSSL_PARAM, val c.Uint64T) c.Int
+// llgo:link (*OSSL_PARAM).SetUint64 C.OSSL_PARAM_set_uint64
+func (self *OSSL_PARAM) SetUint64(val c.Uint64T) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_PARAMSetSizeT C.OSSL_PARAM_set_size_t
-func OSSL_PARAMSetSizeT(p *OSSL_PARAM, val c.SizeT) c.Int
+// llgo:link (*OSSL_PARAM).SetSizeT C.OSSL_PARAM_set_size_t
+func (self *OSSL_PARAM) SetSizeT(val c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_PARAMSetTimeT C.OSSL_PARAM_set_time_t
-func OSSL_PARAMSetTimeT(p *OSSL_PARAM, val time.TimeT) c.Int
+// llgo:link (*OSSL_PARAM).SetTimeT C.OSSL_PARAM_set_time_t
+func (self *OSSL_PARAM) SetTimeT(val time.TimeT) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_PARAMGetDouble C.OSSL_PARAM_get_double
-func OSSL_PARAMGetDouble(p *OSSL_PARAM, val *c.Double) c.Int
+// llgo:link (*OSSL_PARAM).Double C.OSSL_PARAM_get_double
+func (self *OSSL_PARAM) Double(val *c.Double) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_PARAMSetDouble C.OSSL_PARAM_set_double
-func OSSL_PARAMSetDouble(p *OSSL_PARAM, val c.Double) c.Int
+// llgo:link (*OSSL_PARAM).SetDouble C.OSSL_PARAM_set_double
+func (self *OSSL_PARAM) SetDouble(val c.Double) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_PARAMGetBN C.OSSL_PARAM_get_BN
-func OSSL_PARAMGetBN(p *OSSL_PARAM, val **BIGNUM) c.Int
+// llgo:link (*OSSL_PARAM).Get_BN C.OSSL_PARAM_get_BN
+func (self *OSSL_PARAM) Get_BN(val **BIGNUM) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_PARAMSetBN C.OSSL_PARAM_set_BN
-func OSSL_PARAMSetBN(p *OSSL_PARAM, val *BIGNUM) c.Int
+// llgo:link (*OSSL_PARAM).Set_BN C.OSSL_PARAM_set_BN
+func (self *OSSL_PARAM) Set_BN(val *BIGNUM) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_PARAMGetUtf8String C.OSSL_PARAM_get_utf8_string
-func OSSL_PARAMGetUtf8String(p *OSSL_PARAM, val **c.Char, max_len c.SizeT) c.Int
+// llgo:link (*OSSL_PARAM).Utf8String C.OSSL_PARAM_get_utf8_string
+func (self *OSSL_PARAM) Utf8String(val **c.Char, max_len c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_PARAMSetUtf8String C.OSSL_PARAM_set_utf8_string
-func OSSL_PARAMSetUtf8String(p *OSSL_PARAM, val *c.Char) c.Int
+// llgo:link (*OSSL_PARAM).SetUtf8String C.OSSL_PARAM_set_utf8_string
+func (self *OSSL_PARAM) SetUtf8String(val *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_PARAMGetOctetString C.OSSL_PARAM_get_octet_string
-func OSSL_PARAMGetOctetString(p *OSSL_PARAM, val *unsafe.Pointer, max_len c.SizeT, used_len *c.SizeT) c.Int
+// llgo:link (*OSSL_PARAM).OctetString C.OSSL_PARAM_get_octet_string
+func (self *OSSL_PARAM) OctetString(val *unsafe.Pointer, max_len c.SizeT, used_len *c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_PARAMSetOctetString C.OSSL_PARAM_set_octet_string
-func OSSL_PARAMSetOctetString(p *OSSL_PARAM, val unsafe.Pointer, len c.SizeT) c.Int
+// llgo:link (*OSSL_PARAM).SetOctetString C.OSSL_PARAM_set_octet_string
+func (self *OSSL_PARAM) SetOctetString(val unsafe.Pointer, len c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_PARAMGetUtf8Ptr C.OSSL_PARAM_get_utf8_ptr
-func OSSL_PARAMGetUtf8Ptr(p *OSSL_PARAM, val **c.Char) c.Int
+// llgo:link (*OSSL_PARAM).Utf8Ptr C.OSSL_PARAM_get_utf8_ptr
+func (self *OSSL_PARAM) Utf8Ptr(val **c.Char) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_PARAMSetUtf8Ptr C.OSSL_PARAM_set_utf8_ptr
-func OSSL_PARAMSetUtf8Ptr(p *OSSL_PARAM, val *c.Char) c.Int
+// llgo:link (*OSSL_PARAM).SetUtf8Ptr C.OSSL_PARAM_set_utf8_ptr
+func (self *OSSL_PARAM) SetUtf8Ptr(val *c.Char) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_PARAMGetOctetPtr C.OSSL_PARAM_get_octet_ptr
-func OSSL_PARAMGetOctetPtr(p *OSSL_PARAM, val *unsafe.Pointer, used_len *c.SizeT) c.Int
+// llgo:link (*OSSL_PARAM).OctetPtr C.OSSL_PARAM_get_octet_ptr
+func (self *OSSL_PARAM) OctetPtr(val *unsafe.Pointer, used_len *c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_PARAMSetOctetPtr C.OSSL_PARAM_set_octet_ptr
-func OSSL_PARAMSetOctetPtr(p *OSSL_PARAM, val unsafe.Pointer, used_len c.SizeT) c.Int
+// llgo:link (*OSSL_PARAM).SetOctetPtr C.OSSL_PARAM_set_octet_ptr
+func (self *OSSL_PARAM) SetOctetPtr(val unsafe.Pointer, used_len c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_PARAMGetUtf8StringPtr C.OSSL_PARAM_get_utf8_string_ptr
-func OSSL_PARAMGetUtf8StringPtr(p *OSSL_PARAM, val **c.Char) c.Int
+// llgo:link (*OSSL_PARAM).Utf8StringPtr C.OSSL_PARAM_get_utf8_string_ptr
+func (self *OSSL_PARAM) Utf8StringPtr(val **c.Char) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_PARAMGetOctetStringPtr C.OSSL_PARAM_get_octet_string_ptr
-func OSSL_PARAMGetOctetStringPtr(p *OSSL_PARAM, val *unsafe.Pointer, used_len *c.SizeT) c.Int
+// llgo:link (*OSSL_PARAM).OctetStringPtr C.OSSL_PARAM_get_octet_string_ptr
+func (self *OSSL_PARAM) OctetStringPtr(val *unsafe.Pointer, used_len *c.SizeT) c.Int {
+	return 0
+}
 
-//go:linkname OSSL_PARAMModified C.OSSL_PARAM_modified
-func OSSL_PARAMModified(p *OSSL_PARAM) c.Int
+// llgo:link (*OSSL_PARAM).Modified C.OSSL_PARAM_modified
+func (self *OSSL_PARAM) Modified() c.Int {
+	return 0
+}
 
-//go:linkname OSSL_PARAMSetAllUnmodified C.OSSL_PARAM_set_all_unmodified
-func OSSL_PARAMSetAllUnmodified(p *OSSL_PARAM)
+// llgo:link (*OSSL_PARAM).SetAllUnmodified C.OSSL_PARAM_set_all_unmodified
+func (self *OSSL_PARAM) SetAllUnmodified() {
+}
 
-//go:linkname OSSL_PARAMDup C.OSSL_PARAM_dup
-func OSSL_PARAMDup(p *OSSL_PARAM) *OSSL_PARAM
+// llgo:link (*OSSL_PARAM).Dup C.OSSL_PARAM_dup
+func (self *OSSL_PARAM) Dup() *OSSL_PARAM {
+	return self
+}
 
-//go:linkname OSSL_PARAMMerge C.OSSL_PARAM_merge
-func OSSL_PARAMMerge(p1 *OSSL_PARAM, p2 *OSSL_PARAM) *OSSL_PARAM
+//go:linkname OSSL_PARAM_merge C.OSSL_PARAM_merge
+func OSSL_PARAM_merge(p1 *OSSL_PARAM, p2 *OSSL_PARAM) *OSSL_PARAM
 
-//go:linkname OSSL_PARAMFree C.OSSL_PARAM_free
-func OSSL_PARAMFree(p *OSSL_PARAM)
+// llgo:link (*OSSL_PARAM).Free C.OSSL_PARAM_free
+func (self *OSSL_PARAM) Free() {
+}
 
-//go:linkname OSSL_PARAMClearFree C.OSSL_PARAM_clear_free
-func OSSL_PARAMClearFree(p *OSSL_PARAM)
+// llgo:link (*OSSL_PARAM).ClearFree C.OSSL_PARAM_clear_free
+func (self *OSSL_PARAM) ClearFree() {
+}
 
-//go:linkname OSSL_PARAMSetOctetStringOrPtr C.OSSL_PARAM_set_octet_string_or_ptr
-func OSSL_PARAMSetOctetStringOrPtr(p *OSSL_PARAM, val unsafe.Pointer, len c.SizeT) c.Int
+// llgo:link (*OSSL_PARAM).SetOctetStringOrPtr C.OSSL_PARAM_set_octet_string_or_ptr
+func (self *OSSL_PARAM) SetOctetStringOrPtr(val unsafe.Pointer, len c.SizeT) c.Int {
+	return 0
+}

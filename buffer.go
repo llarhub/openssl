@@ -16,20 +16,25 @@ type BufMemSt struct {
 	Flags  c.Ulong
 }
 
-//go:linkname BUF_MEMNew C.BUF_MEM_new
-func BUF_MEMNew() *BUF_MEM
+//go:linkname BUF_MEM_new C.BUF_MEM_new
+func BUF_MEM_new() *BUF_MEM
 
-//go:linkname BUF_MEMNewEx C.BUF_MEM_new_ex
-func BUF_MEMNewEx(flags c.Ulong) *BUF_MEM
+//go:linkname BUF_MEM_new_ex C.BUF_MEM_new_ex
+func BUF_MEM_new_ex(flags c.Ulong) *BUF_MEM
 
-//go:linkname BUF_MEMFree C.BUF_MEM_free
-func BUF_MEMFree(a *BUF_MEM)
+// llgo:link (*BUF_MEM).Free C.BUF_MEM_free
+func (self *BUF_MEM) Free() {
+}
 
-//go:linkname BUF_MEMGrow C.BUF_MEM_grow
-func BUF_MEMGrow(str *BUF_MEM, len c.SizeT) c.SizeT
+// llgo:link (*BUF_MEM).Grow C.BUF_MEM_grow
+func (self *BUF_MEM) Grow(len c.SizeT) c.SizeT {
+	return 0
+}
 
-//go:linkname BUF_MEMGrowClean C.BUF_MEM_grow_clean
-func BUF_MEMGrowClean(str *BUF_MEM, len c.SizeT) c.SizeT
+// llgo:link (*BUF_MEM).GrowClean C.BUF_MEM_grow_clean
+func (self *BUF_MEM) GrowClean(len c.SizeT) c.SizeT {
+	return 0
+}
 
-//go:linkname BUFReverse C.BUF_reverse
-func BUFReverse(out *uint8, in *uint8, siz c.SizeT)
+//go:linkname BUF_reverse C.BUF_reverse
+func BUF_reverse(out *uint8, in *uint8, siz c.SizeT)

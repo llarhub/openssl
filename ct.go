@@ -48,256 +48,313 @@ const (
 	SCT_VALIDATION_STATUS_UNKNOWN_VERSION SctValidationStatusT = 5
 )
 
-type StackStCTLOG struct {
+type Stack_st_CTLOG struct {
 }
-type StackStSCT struct {
+type Stack_st_SCT struct {
 }
 
 // clang-format off
 //
 // llgo:type C
-type SkSCTCompfunc = func(_llcppg_param1 **SCT, _llcppg_param2 **SCT) c.Int
+type Sk_SCT_compfunc = func(_llcppg_param1 **SCT, _llcppg_param2 **SCT) c.Int
 
 // clang-format off
 //
 // llgo:type C
-type SkSCTFreefunc = func(_llcppg_param1 *SCT)
+type Sk_SCT_freefunc = func(_llcppg_param1 *SCT)
 
 // clang-format off
 //
 // llgo:type C
-type SkSCTCopyfunc = func(_llcppg_param1 *SCT) *SCT
+type Sk_SCT_copyfunc = func(_llcppg_param1 *SCT) *SCT
 
 // llgo:type C
-type SkCTLOGCompfunc = func(_llcppg_param1 **CTLOG, _llcppg_param2 **CTLOG) c.Int
+type Sk_CTLOG_compfunc = func(_llcppg_param1 **CTLOG, _llcppg_param2 **CTLOG) c.Int
 
 // llgo:type C
-type SkCTLOGFreefunc = func(_llcppg_param1 *CTLOG)
+type Sk_CTLOG_freefunc = func(_llcppg_param1 *CTLOG)
 
 // llgo:type C
-type SkCTLOGCopyfunc = func(_llcppg_param1 *CTLOG) *CTLOG
+type Sk_CTLOG_copyfunc = func(_llcppg_param1 *CTLOG) *CTLOG
 
 // Creates a new, empty policy evaluation context associated with the given
 // library context and property query string.
 // The caller is responsible for calling CT_POLICY_EVAL_CTX_free when finished
 // with the CT_POLICY_EVAL_CTX.
 //
-//go:linkname CT_POLICY_EVAL_CTXNewEx C.CT_POLICY_EVAL_CTX_new_ex
-func CT_POLICY_EVAL_CTXNewEx(libctx *OSSL_LIB_CTX, propq *c.Char) *CT_POLICY_EVAL_CTX
+// llgo:link (*OSSL_LIB_CTX).CT_POLICY_EVAL_CTX_new_ex C.CT_POLICY_EVAL_CTX_new_ex
+func (self *OSSL_LIB_CTX) CT_POLICY_EVAL_CTX_new_ex(propq *c.Char) *CT_POLICY_EVAL_CTX {
+	return nil
+}
 
 // The same as CT_POLICY_EVAL_CTX_new_ex() but the default library
 // context and property query string is used.
 //
-//go:linkname CT_POLICY_EVAL_CTXNew C.CT_POLICY_EVAL_CTX_new
-func CT_POLICY_EVAL_CTXNew() *CT_POLICY_EVAL_CTX
+//go:linkname CT_POLICY_EVAL_CTX_new C.CT_POLICY_EVAL_CTX_new
+func CT_POLICY_EVAL_CTX_new() *CT_POLICY_EVAL_CTX
 
 // Deletes a policy evaluation context and anything it owns.
 //
-//go:linkname CT_POLICY_EVAL_CTXFree C.CT_POLICY_EVAL_CTX_free
-func CT_POLICY_EVAL_CTXFree(ctx *CT_POLICY_EVAL_CTX)
+// llgo:link (*CT_POLICY_EVAL_CTX).Free C.CT_POLICY_EVAL_CTX_free
+func (self *CT_POLICY_EVAL_CTX) Free() {
+}
 
 // Gets the peer certificate that the SCTs are for
 //
-//go:linkname CT_POLICY_EVAL_CTXGet0Cert C.CT_POLICY_EVAL_CTX_get0_cert
-func CT_POLICY_EVAL_CTXGet0Cert(ctx *CT_POLICY_EVAL_CTX) *X509
+// llgo:link (*CT_POLICY_EVAL_CTX).Get0Cert C.CT_POLICY_EVAL_CTX_get0_cert
+func (self *CT_POLICY_EVAL_CTX) Get0Cert() *X509 {
+	return nil
+}
 
 // Sets the certificate associated with the received SCTs.
 // Increments the reference count of cert.
 // Returns 1 on success, 0 otherwise.
 //
-//go:linkname CT_POLICY_EVAL_CTXSet1Cert C.CT_POLICY_EVAL_CTX_set1_cert
-func CT_POLICY_EVAL_CTXSet1Cert(ctx *CT_POLICY_EVAL_CTX, cert *X509) c.Int
+// llgo:link (*CT_POLICY_EVAL_CTX).Set1Cert C.CT_POLICY_EVAL_CTX_set1_cert
+func (self *CT_POLICY_EVAL_CTX) Set1Cert(cert *X509) c.Int {
+	return 0
+}
 
 // Gets the issuer of the aforementioned certificate
 //
-//go:linkname CT_POLICY_EVAL_CTXGet0Issuer C.CT_POLICY_EVAL_CTX_get0_issuer
-func CT_POLICY_EVAL_CTXGet0Issuer(ctx *CT_POLICY_EVAL_CTX) *X509
+// llgo:link (*CT_POLICY_EVAL_CTX).Get0Issuer C.CT_POLICY_EVAL_CTX_get0_issuer
+func (self *CT_POLICY_EVAL_CTX) Get0Issuer() *X509 {
+	return nil
+}
 
 // Sets the issuer of the certificate associated with the received SCTs.
 // Increments the reference count of issuer.
 // Returns 1 on success, 0 otherwise.
 //
-//go:linkname CT_POLICY_EVAL_CTXSet1Issuer C.CT_POLICY_EVAL_CTX_set1_issuer
-func CT_POLICY_EVAL_CTXSet1Issuer(ctx *CT_POLICY_EVAL_CTX, issuer *X509) c.Int
+// llgo:link (*CT_POLICY_EVAL_CTX).Set1Issuer C.CT_POLICY_EVAL_CTX_set1_issuer
+func (self *CT_POLICY_EVAL_CTX) Set1Issuer(issuer *X509) c.Int {
+	return 0
+}
 
 // Gets the CT logs that are trusted sources of SCTs
 //
-//go:linkname CT_POLICY_EVAL_CTXGet0LogStore C.CT_POLICY_EVAL_CTX_get0_log_store
-func CT_POLICY_EVAL_CTXGet0LogStore(ctx *CT_POLICY_EVAL_CTX) *CTLOG_STORE
+// llgo:link (*CT_POLICY_EVAL_CTX).Get0LogStore C.CT_POLICY_EVAL_CTX_get0_log_store
+func (self *CT_POLICY_EVAL_CTX) Get0LogStore() *CTLOG_STORE {
+	return nil
+}
 
 // Sets the log store that is in use. It must outlive the CT_POLICY_EVAL_CTX.
 //
-//go:linkname CT_POLICY_EVAL_CTXSetSharedCTLOG_STORE C.CT_POLICY_EVAL_CTX_set_shared_CTLOG_STORE
-func CT_POLICY_EVAL_CTXSetSharedCTLOG_STORE(ctx *CT_POLICY_EVAL_CTX, log_store *CTLOG_STORE)
+// llgo:link (*CT_POLICY_EVAL_CTX).Set_shared_CTLOG_STORE C.CT_POLICY_EVAL_CTX_set_shared_CTLOG_STORE
+func (self *CT_POLICY_EVAL_CTX) Set_shared_CTLOG_STORE(log_store *CTLOG_STORE) {
+}
 
 // Gets the time, in milliseconds since the Unix epoch, that will be used as the
 // current time when checking whether an SCT was issued in the future.
 // Such SCTs will fail validation, as required by RFC6962.
 //
-//go:linkname CT_POLICY_EVAL_CTXGetTime C.CT_POLICY_EVAL_CTX_get_time
-func CT_POLICY_EVAL_CTXGetTime(ctx *CT_POLICY_EVAL_CTX) c.Uint64T
+// llgo:link (*CT_POLICY_EVAL_CTX).Time C.CT_POLICY_EVAL_CTX_get_time
+func (self *CT_POLICY_EVAL_CTX) Time() c.Uint64T {
+	return 0
+}
 
 // Sets the time to evaluate SCTs against, in milliseconds since the Unix epoch.
 // If an SCT's timestamp is after this time, it will be interpreted as having
 // been issued in the future. RFC6962 states that "TLS clients MUST reject SCTs
 // whose timestamp is in the future", so an SCT will not validate in this case.
 //
-//go:linkname CT_POLICY_EVAL_CTXSetTime C.CT_POLICY_EVAL_CTX_set_time
-func CT_POLICY_EVAL_CTXSetTime(ctx *CT_POLICY_EVAL_CTX, time_in_ms c.Uint64T)
+// llgo:link (*CT_POLICY_EVAL_CTX).SetTime C.CT_POLICY_EVAL_CTX_set_time
+func (self *CT_POLICY_EVAL_CTX) SetTime(time_in_ms c.Uint64T) {
+}
 
 // Creates a new, blank SCT.
 // The caller is responsible for calling SCT_free when finished with the SCT.
 //
-//go:linkname SCTNew C.SCT_new
-func SCTNew() *SCT
+//go:linkname SCT_new C.SCT_new
+func SCT_new() *SCT
 
 // Creates a new SCT from some base64-encoded strings.
 // The caller is responsible for calling SCT_free when finished with the SCT.
 //
-//go:linkname SCTNewFromBase64 C.SCT_new_from_base64
-func SCTNewFromBase64(version uint8, logid_base64 *c.Char, entry_type CtLogEntryTypeT, timestamp c.Uint64T, extensions_base64 *c.Char, signature_base64 *c.Char) *SCT
+//go:linkname SCT_new_from_base64 C.SCT_new_from_base64
+func SCT_new_from_base64(version uint8, logid_base64 *c.Char, entry_type CtLogEntryTypeT, timestamp c.Uint64T, extensions_base64 *c.Char, signature_base64 *c.Char) *SCT
 
 // Frees the SCT and the underlying data structures.
 //
-//go:linkname SCTFree C.SCT_free
-func SCTFree(sct *SCT)
+// llgo:link (*SCT).Free C.SCT_free
+func (self *SCT) Free() {
+}
 
 // Free a stack of SCTs, and the underlying SCTs themselves.
 // Intended to be compatible with X509V3_EXT_FREE.
 //
-//go:linkname SCT_LISTFree C.SCT_LIST_free
-func SCT_LISTFree(a *StackStSCT)
+// llgo:link (*Stack_st_SCT).SCT_LIST_free C.SCT_LIST_free
+func (self *Stack_st_SCT) SCT_LIST_free() {
+}
 
 // Returns the version of the SCT.
 //
-//go:linkname SCTGetVersion C.SCT_get_version
-func SCTGetVersion(sct *SCT) SctVersionT
+// llgo:link (*SCT).Version C.SCT_get_version
+func (self *SCT) Version() SctVersionT {
+	return 0
+}
 
 // Set the version of an SCT.
 // Returns 1 on success, 0 if the version is unrecognized.
 //
-//go:linkname SCTSetVersion C.SCT_set_version
-func SCTSetVersion(sct *SCT, version SctVersionT) c.Int
+// llgo:link (*SCT).SetVersion C.SCT_set_version
+func (self *SCT) SetVersion(version SctVersionT) c.Int {
+	return 0
+}
 
 // Returns the log entry type of the SCT.
 //
-//go:linkname SCTGetLogEntryType C.SCT_get_log_entry_type
-func SCTGetLogEntryType(sct *SCT) CtLogEntryTypeT
+// llgo:link (*SCT).LogEntryType C.SCT_get_log_entry_type
+func (self *SCT) LogEntryType() CtLogEntryTypeT {
+	return 0
+}
 
 // Set the log entry type of an SCT.
 // Returns 1 on success, 0 otherwise.
 //
-//go:linkname SCTSetLogEntryType C.SCT_set_log_entry_type
-func SCTSetLogEntryType(sct *SCT, entry_type CtLogEntryTypeT) c.Int
+// llgo:link (*SCT).SetLogEntryType C.SCT_set_log_entry_type
+func (self *SCT) SetLogEntryType(entry_type CtLogEntryTypeT) c.Int {
+	return 0
+}
 
 // Gets the ID of the log that an SCT came from.
 // Ownership of the log ID remains with the SCT.
 // Returns the length of the log ID.
 //
-//go:linkname SCTGet0LogId C.SCT_get0_log_id
-func SCTGet0LogId(sct *SCT, log_id **uint8) c.SizeT
+// llgo:link (*SCT).Get0LogId C.SCT_get0_log_id
+func (self *SCT) Get0LogId(log_id **uint8) c.SizeT {
+	return 0
+}
 
 // Set the log ID of an SCT to point directly to the *log_id specified.
 // The SCT takes ownership of the specified pointer.
 // Returns 1 on success, 0 otherwise.
 //
-//go:linkname SCTSet0LogId C.SCT_set0_log_id
-func SCTSet0LogId(sct *SCT, log_id *uint8, log_id_len c.SizeT) c.Int
+// llgo:link (*SCT).Set0LogId C.SCT_set0_log_id
+func (self *SCT) Set0LogId(log_id *uint8, log_id_len c.SizeT) c.Int {
+	return 0
+}
 
 // Set the log ID of an SCT.
 // This makes a copy of the log_id.
 // Returns 1 on success, 0 otherwise.
 //
-//go:linkname SCTSet1LogId C.SCT_set1_log_id
-func SCTSet1LogId(sct *SCT, log_id *uint8, log_id_len c.SizeT) c.Int
+// llgo:link (*SCT).Set1LogId C.SCT_set1_log_id
+func (self *SCT) Set1LogId(log_id *uint8, log_id_len c.SizeT) c.Int {
+	return 0
+}
 
 // Returns the timestamp for the SCT (epoch time in milliseconds).
 //
-//go:linkname SCTGetTimestamp C.SCT_get_timestamp
-func SCTGetTimestamp(sct *SCT) c.Uint64T
+// llgo:link (*SCT).Timestamp C.SCT_get_timestamp
+func (self *SCT) Timestamp() c.Uint64T {
+	return 0
+}
 
 // Set the timestamp of an SCT (epoch time in milliseconds).
 //
-//go:linkname SCTSetTimestamp C.SCT_set_timestamp
-func SCTSetTimestamp(sct *SCT, timestamp c.Uint64T)
+// llgo:link (*SCT).SetTimestamp C.SCT_set_timestamp
+func (self *SCT) SetTimestamp(timestamp c.Uint64T) {
+}
 
 // Return the NID for the signature used by the SCT.
 // For CT v1, this will be either NID_sha256WithRSAEncryption or
 // NID_ecdsa_with_SHA256 (or NID_undef if incorrect/unset).
 //
-//go:linkname SCTGetSignatureNid C.SCT_get_signature_nid
-func SCTGetSignatureNid(sct *SCT) c.Int
+// llgo:link (*SCT).SignatureNid C.SCT_get_signature_nid
+func (self *SCT) SignatureNid() c.Int {
+	return 0
+}
 
 // Set the signature type of an SCT
 // For CT v1, this should be either NID_sha256WithRSAEncryption or
 // NID_ecdsa_with_SHA256.
 // Returns 1 on success, 0 otherwise.
 //
-//go:linkname SCTSetSignatureNid C.SCT_set_signature_nid
-func SCTSetSignatureNid(sct *SCT, nid c.Int) c.Int
+// llgo:link (*SCT).SetSignatureNid C.SCT_set_signature_nid
+func (self *SCT) SetSignatureNid(nid c.Int) c.Int {
+	return 0
+}
 
 // Set *ext to point to the extension data for the SCT. ext must not be NULL.
 // The SCT retains ownership of this pointer.
 // Returns length of the data pointed to.
 //
-//go:linkname SCTGet0Extensions C.SCT_get0_extensions
-func SCTGet0Extensions(sct *SCT, ext **uint8) c.SizeT
+// llgo:link (*SCT).Get0Extensions C.SCT_get0_extensions
+func (self *SCT) Get0Extensions(ext **uint8) c.SizeT {
+	return 0
+}
 
 // Set the extensions of an SCT to point directly to the *ext specified.
 // The SCT takes ownership of the specified pointer.
 //
-//go:linkname SCTSet0Extensions C.SCT_set0_extensions
-func SCTSet0Extensions(sct *SCT, ext *uint8, ext_len c.SizeT)
+// llgo:link (*SCT).Set0Extensions C.SCT_set0_extensions
+func (self *SCT) Set0Extensions(ext *uint8, ext_len c.SizeT) {
+}
 
 // Set the extensions of an SCT.
 // This takes a copy of the ext.
 // Returns 1 on success, 0 otherwise.
 //
-//go:linkname SCTSet1Extensions C.SCT_set1_extensions
-func SCTSet1Extensions(sct *SCT, ext *uint8, ext_len c.SizeT) c.Int
+// llgo:link (*SCT).Set1Extensions C.SCT_set1_extensions
+func (self *SCT) Set1Extensions(ext *uint8, ext_len c.SizeT) c.Int {
+	return 0
+}
 
 // Set *sig to point to the signature for the SCT. sig must not be NULL.
 // The SCT retains ownership of this pointer.
 // Returns length of the data pointed to.
 //
-//go:linkname SCTGet0Signature C.SCT_get0_signature
-func SCTGet0Signature(sct *SCT, sig **uint8) c.SizeT
+// llgo:link (*SCT).Get0Signature C.SCT_get0_signature
+func (self *SCT) Get0Signature(sig **uint8) c.SizeT {
+	return 0
+}
 
 // Set the signature of an SCT to point directly to the *sig specified.
 // The SCT takes ownership of the specified pointer.
 //
-//go:linkname SCTSet0Signature C.SCT_set0_signature
-func SCTSet0Signature(sct *SCT, sig *uint8, sig_len c.SizeT)
+// llgo:link (*SCT).Set0Signature C.SCT_set0_signature
+func (self *SCT) Set0Signature(sig *uint8, sig_len c.SizeT) {
+}
 
 // Set the signature of an SCT to be a copy of the *sig specified.
 // Returns 1 on success, 0 otherwise.
 //
-//go:linkname SCTSet1Signature C.SCT_set1_signature
-func SCTSet1Signature(sct *SCT, sig *uint8, sig_len c.SizeT) c.Int
+// llgo:link (*SCT).Set1Signature C.SCT_set1_signature
+func (self *SCT) Set1Signature(sig *uint8, sig_len c.SizeT) c.Int {
+	return 0
+}
 
 // The origin of this SCT, e.g. TLS extension, OCSP response, etc.
 //
-//go:linkname SCTGetSource C.SCT_get_source
-func SCTGetSource(sct *SCT) SctSourceT
+// llgo:link (*SCT).Source C.SCT_get_source
+func (self *SCT) Source() SctSourceT {
+	return 0
+}
 
 // Set the origin of this SCT, e.g. TLS extension, OCSP response, etc.
 // Returns 1 on success, 0 otherwise.
 //
-//go:linkname SCTSetSource C.SCT_set_source
-func SCTSetSource(sct *SCT, source SctSourceT) c.Int
+// llgo:link (*SCT).SetSource C.SCT_set_source
+func (self *SCT) SetSource(source SctSourceT) c.Int {
+	return 0
+}
 
 // Returns a text string describing the validation status of |sct|.
 //
-//go:linkname SCTValidationStatusString C.SCT_validation_status_string
-func SCTValidationStatusString(sct *SCT) *c.Char
+// llgo:link (*SCT).ValidationStatusString C.SCT_validation_status_string
+func (self *SCT) ValidationStatusString() *c.Char {
+	return nil
+}
 
 // Pretty-prints an |sct| to |out|.
 // It will be indented by the number of spaces specified by |indent|.
 // If |logs| is not NULL, it will be used to lookup the CT log that the SCT came
 // from, so that the log name can be printed.
 //
-//go:linkname SCTPrint C.SCT_print
-func SCTPrint(sct *SCT, out *BIO, indent c.Int, logs *CTLOG_STORE)
+// llgo:link (*SCT).Print C.SCT_print
+func (self *SCT) Print(out *BIO, indent c.Int, logs *CTLOG_STORE) {
+}
 
 // Pretty-prints an |sct_list| to |out|.
 // It will be indented by the number of spaces specified by |indent|.
@@ -305,14 +362,17 @@ func SCTPrint(sct *SCT, out *BIO, indent c.Int, logs *CTLOG_STORE)
 // If |logs| is not NULL, it will be used to lookup the CT log that each SCT
 // came from, so that the log names can be printed.
 //
-//go:linkname SCT_LISTPrint C.SCT_LIST_print
-func SCT_LISTPrint(sct_list *StackStSCT, out *BIO, indent c.Int, separator *c.Char, logs *CTLOG_STORE)
+// llgo:link (*Stack_st_SCT).SCT_LIST_print C.SCT_LIST_print
+func (self *Stack_st_SCT) SCT_LIST_print(out *BIO, indent c.Int, separator *c.Char, logs *CTLOG_STORE) {
+}
 
 // Gets the last result of validating this SCT.
 // If it has not been validated yet, returns SCT_VALIDATION_STATUS_NOT_SET.
 //
-//go:linkname SCTGetValidationStatus C.SCT_get_validation_status
-func SCTGetValidationStatus(sct *SCT) SctValidationStatusT
+// llgo:link (*SCT).ValidationStatus C.SCT_get_validation_status
+func (self *SCT) ValidationStatus() SctValidationStatusT {
+	return 0
+}
 
 // Validates the given SCT with the provided context.
 // Sets the "validation_status" field of the SCT.
@@ -320,8 +380,10 @@ func SCTGetValidationStatus(sct *SCT) SctValidationStatusT
 // Returns 0 if the SCT is invalid or could not be verified.
 // Returns -1 if an error occurs.
 //
-//go:linkname SCTValidate C.SCT_validate
-func SCTValidate(sct *SCT, ctx *CT_POLICY_EVAL_CTX) c.Int
+// llgo:link (*SCT).Validate C.SCT_validate
+func (self *SCT) Validate(ctx *CT_POLICY_EVAL_CTX) c.Int {
+	return 0
+}
 
 // Validates the given list of SCTs with the provided context.
 // Sets the "validation_status" field of each SCT.
@@ -329,8 +391,10 @@ func SCTValidate(sct *SCT, ctx *CT_POLICY_EVAL_CTX) c.Int
 // Returns 0 if at least one SCT is invalid or could not be verified.
 // Returns a negative integer if an error occurs.
 //
-//go:linkname SCT_LISTValidate C.SCT_LIST_validate
-func SCT_LISTValidate(scts *StackStSCT, ctx *CT_POLICY_EVAL_CTX) c.Int
+// llgo:link (*Stack_st_SCT).SCT_LIST_validate C.SCT_LIST_validate
+func (self *Stack_st_SCT) SCT_LIST_validate(ctx *CT_POLICY_EVAL_CTX) c.Int {
+	return 0
+}
 
 // Serialize (to TLS format) a stack of SCTs and return the length.
 // "a" must not be NULL.
@@ -343,8 +407,10 @@ func SCT_LISTValidate(scts *StackStSCT, ctx *CT_POLICY_EVAL_CTX) c.Int
 // Returns < 0 on error, >= 0 indicating bytes written (or would have been)
 // on success.
 //
-//go:linkname I2oSCT_LIST C.i2o_SCT_LIST
-func I2oSCT_LIST(a *StackStSCT, pp **uint8) c.Int
+// llgo:link (*Stack_st_SCT).I2o_SCT_LIST C.i2o_SCT_LIST
+func (self *Stack_st_SCT) I2o_SCT_LIST(pp **uint8) c.Int {
+	return 0
+}
 
 // Convert TLS format SCT list to a stack of SCTs.
 // If "a" or "*a" is NULL, a new stack will be created that the caller is
@@ -355,8 +421,8 @@ func I2oSCT_LIST(a *StackStSCT, pp **uint8) c.Int
 // Upon failure, a NULL pointer will be returned, and the position of "*pp" is
 // not defined.
 //
-//go:linkname O2iSCT_LIST C.o2i_SCT_LIST
-func O2iSCT_LIST(a **StackStSCT, pp **uint8, len c.SizeT) *StackStSCT
+//go:linkname O2i_SCT_LIST C.o2i_SCT_LIST
+func O2i_SCT_LIST(a **Stack_st_SCT, pp **uint8, len c.SizeT) *Stack_st_SCT
 
 // Serialize (to DER format) a stack of SCTs and return the length.
 // "a" must not be NULL.
@@ -369,8 +435,10 @@ func O2iSCT_LIST(a **StackStSCT, pp **uint8, len c.SizeT) *StackStSCT
 // Returns < 0 on error, >= 0 indicating bytes written (or would have been)
 // on success.
 //
-//go:linkname I2dSCT_LIST C.i2d_SCT_LIST
-func I2dSCT_LIST(a *StackStSCT, pp **uint8) c.Int
+// llgo:link (*Stack_st_SCT).I2d_SCT_LIST C.i2d_SCT_LIST
+func (self *Stack_st_SCT) I2d_SCT_LIST(pp **uint8) c.Int {
+	return 0
+}
 
 // Parses an SCT list in DER format and returns it.
 // If "a" or "*a" is NULL, a new stack will be created that the caller is
@@ -381,8 +449,8 @@ func I2dSCT_LIST(a *StackStSCT, pp **uint8) c.Int
 // Upon failure, a NULL pointer will be returned, and the position of "*pp" is
 // not defined.
 //
-//go:linkname D2iSCT_LIST C.d2i_SCT_LIST
-func D2iSCT_LIST(a **StackStSCT, pp **uint8, len c.Long) *StackStSCT
+//go:linkname D2i_SCT_LIST C.d2i_SCT_LIST
+func D2i_SCT_LIST(a **Stack_st_SCT, pp **uint8, len c.Long) *Stack_st_SCT
 
 // Serialize (to TLS format) an |sct| and write it to |out|.
 // If |out| is null, no SCT will be output but the length will still be returned.
@@ -392,8 +460,10 @@ func D2iSCT_LIST(a **StackStSCT, pp **uint8, len c.Long) *StackStSCT
 // to it.
 // The length of the SCT in TLS format will be returned.
 //
-//go:linkname I2oSCT C.i2o_SCT
-func I2oSCT(sct *SCT, out **uint8) c.Int
+// llgo:link (*SCT).I2o C.i2o_SCT
+func (self *SCT) I2o(out **uint8) c.Int {
+	return 0
+}
 
 // Parses an SCT in TLS format and returns it.
 // If |psct| is not null, it will end up pointing to the parsed SCT. If it
@@ -405,8 +475,8 @@ func I2oSCT(sct *SCT, out **uint8) c.Int
 // If the SCT is an unsupported version, only the SCT's 'sct' and 'sct_len'
 // fields will be populated (with |in| and |len| respectively).
 //
-//go:linkname O2iSCT C.o2i_SCT
-func O2iSCT(psct **SCT, in **uint8, len c.SizeT) *SCT
+//go:linkname O2i_SCT C.o2i_SCT
+func O2i_SCT(psct **SCT, in **uint8, len c.SizeT) *SCT
 
 // Creates a new CT log instance with the given |public_key| and |name| and
 // associates it with the give library context |libctx| and property query
@@ -415,14 +485,18 @@ func O2iSCT(psct **SCT, in **uint8, len c.SizeT) *SCT
 // Returns NULL if malloc fails or if |public_key| cannot be converted to DER.
 // Should be deleted by the caller using CTLOG_free when no longer needed.
 //
-//go:linkname CTLOGNewEx C.CTLOG_new_ex
-func CTLOGNewEx(public_key *EVP_PKEY, name *c.Char, libctx *OSSL_LIB_CTX, propq *c.Char) *CTLOG
+// llgo:link (*EVP_PKEY).CTLOG_new_ex C.CTLOG_new_ex
+func (self *EVP_PKEY) CTLOG_new_ex(name *c.Char, libctx *OSSL_LIB_CTX, propq *c.Char) *CTLOG {
+	return nil
+}
 
 // The same as CTLOG_new_ex except that the default library context and
 // property query string are used.
 //
-//go:linkname CTLOGNew C.CTLOG_new
-func CTLOGNew(public_key *EVP_PKEY, name *c.Char) *CTLOG
+// llgo:link (*EVP_PKEY).CTLOG_new C.CTLOG_new
+func (self *EVP_PKEY) CTLOG_new(name *c.Char) *CTLOG {
+	return nil
+}
 
 // Creates a new CTLOG instance with the base64-encoded SubjectPublicKeyInfo DER
 // in |pkey_base64| and associated with the given library context |libctx| and
@@ -431,69 +505,84 @@ func CTLOGNew(public_key *EVP_PKEY, name *c.Char) *CTLOG
 // Returns 1 on success, 0 on failure.
 // Should be deleted by the caller using CTLOG_free when no longer needed.
 //
-//go:linkname CTLOGNewFromBase64Ex C.CTLOG_new_from_base64_ex
-func CTLOGNewFromBase64Ex(ct_log **CTLOG, pkey_base64 *c.Char, name *c.Char, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int
+//go:linkname CTLOG_new_from_base64_ex C.CTLOG_new_from_base64_ex
+func CTLOG_new_from_base64_ex(ct_log **CTLOG, pkey_base64 *c.Char, name *c.Char, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int
 
 // The same as CTLOG_new_from_base64_ex() except that the default
 // library context and property query string are used.
 // Returns 1 on success, 0 on failure.
 //
-//go:linkname CTLOGNewFromBase64 C.CTLOG_new_from_base64
-func CTLOGNewFromBase64(ct_log **CTLOG, pkey_base64 *c.Char, name *c.Char) c.Int
+//go:linkname CTLOG_new_from_base64 C.CTLOG_new_from_base64
+func CTLOG_new_from_base64(ct_log **CTLOG, pkey_base64 *c.Char, name *c.Char) c.Int
 
 // Deletes a CT log instance and its fields.
 //
-//go:linkname CTLOGFree C.CTLOG_free
-func CTLOGFree(log *CTLOG)
+// llgo:link (*CTLOG).Free C.CTLOG_free
+func (self *CTLOG) Free() {
+}
 
 // Gets the name of the CT log
 //
-//go:linkname CTLOGGet0Name C.CTLOG_get0_name
-func CTLOGGet0Name(log *CTLOG) *c.Char
+// llgo:link (*CTLOG).Get0Name C.CTLOG_get0_name
+func (self *CTLOG) Get0Name() *c.Char {
+	return nil
+}
 
 // Gets the ID of the CT log
 //
-//go:linkname CTLOGGet0LogId C.CTLOG_get0_log_id
-func CTLOGGet0LogId(log *CTLOG, log_id **c.Uint8T, log_id_len *c.SizeT)
+// llgo:link (*CTLOG).Get0LogId C.CTLOG_get0_log_id
+func (self *CTLOG) Get0LogId(log_id **c.Uint8T, log_id_len *c.SizeT) {
+}
 
 // Gets the public key of the CT log
 //
-//go:linkname CTLOGGet0PublicKey C.CTLOG_get0_public_key
-func CTLOGGet0PublicKey(log *CTLOG) *EVP_PKEY
+// llgo:link (*CTLOG).Get0PublicKey C.CTLOG_get0_public_key
+func (self *CTLOG) Get0PublicKey() *EVP_PKEY {
+	return nil
+}
 
 // Creates a new CT log store and associates it with the given libctx and
 // property query string.
 // Should be deleted by the caller using CTLOG_STORE_free when no longer needed.
 //
-//go:linkname CTLOG_STORENewEx C.CTLOG_STORE_new_ex
-func CTLOG_STORENewEx(libctx *OSSL_LIB_CTX, propq *c.Char) *CTLOG_STORE
+// llgo:link (*OSSL_LIB_CTX).CTLOG_STORE_new_ex C.CTLOG_STORE_new_ex
+func (self *OSSL_LIB_CTX) CTLOG_STORE_new_ex(propq *c.Char) *CTLOG_STORE {
+	return nil
+}
 
 // Same as CTLOG_STORE_new_ex except that the default libctx and
 // property query string are used.
 // Should be deleted by the caller using CTLOG_STORE_free when no longer needed.
 //
-//go:linkname CTLOG_STORENew C.CTLOG_STORE_new
-func CTLOG_STORENew() *CTLOG_STORE
+//go:linkname CTLOG_STORE_new C.CTLOG_STORE_new
+func CTLOG_STORE_new() *CTLOG_STORE
 
 // Deletes a CT log store and all of the CT log instances held within.
 //
-//go:linkname CTLOG_STOREFree C.CTLOG_STORE_free
-func CTLOG_STOREFree(store *CTLOG_STORE)
+// llgo:link (*CTLOG_STORE).Free C.CTLOG_STORE_free
+func (self *CTLOG_STORE) Free() {
+}
 
 // Finds a CT log in the store based on its log ID.
 // Returns the CT log, or NULL if no match is found.
 //
-//go:linkname CTLOG_STOREGet0LogById C.CTLOG_STORE_get0_log_by_id
-func CTLOG_STOREGet0LogById(store *CTLOG_STORE, log_id *c.Uint8T, log_id_len c.SizeT) *CTLOG
+// llgo:link (*CTLOG_STORE).Get0LogById C.CTLOG_STORE_get0_log_by_id
+func (self *CTLOG_STORE) Get0LogById(log_id *c.Uint8T, log_id_len c.SizeT) *CTLOG {
+	return nil
+}
 
 // Loads a CT log list into a |store| from a |file|.
 // Returns 1 if loading is successful, or 0 otherwise.
 //
-//go:linkname CTLOG_STORELoadFile C.CTLOG_STORE_load_file
-func CTLOG_STORELoadFile(store *CTLOG_STORE, file *c.Char) c.Int
+// llgo:link (*CTLOG_STORE).LoadFile C.CTLOG_STORE_load_file
+func (self *CTLOG_STORE) LoadFile(file *c.Char) c.Int {
+	return 0
+}
 
 // Loads the default CT log list into a |store|.
 // Returns 1 if loading is successful, or 0 otherwise.
 //
-//go:linkname CTLOG_STORELoadDefaultFile C.CTLOG_STORE_load_default_file
-func CTLOG_STORELoadDefaultFile(store *CTLOG_STORE) c.Int
+// llgo:link (*CTLOG_STORE).LoadDefaultFile C.CTLOG_STORE_load_default_file
+func (self *CTLOG_STORE) LoadDefaultFile() c.Int {
+	return 0
+}

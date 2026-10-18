@@ -442,847 +442,847 @@ const (
 type OSSL_FUNC = func()
 
 // llgo:type C
-type OSSL_FUNCCoreGettableParamsFn = func(_llcppg_param1 *OSSL_CORE_HANDLE) *OSSL_PARAM
+type OSSL_FUNC_core_gettable_params_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCCoreGetParamsFn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 *OSSL_PARAM) c.Int
+type OSSL_FUNC_core_get_params_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCCoreThreadStartFn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 OSSLThreadStopHandlerFn, _llcppg_param3 unsafe.Pointer) c.Int
+type OSSL_FUNC_core_thread_start_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 OSSL_thread_stop_handler_fn, _llcppg_param3 unsafe.Pointer) c.Int
 
 // llgo:type C
-type OSSL_FUNCCoreGetLibctxFn = func(_llcppg_param1 *OSSL_CORE_HANDLE) *OPENSSL_CORE_CTX
+type OSSL_FUNC_core_get_libctx_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE) *CORE_CTX
 
 // llgo:type C
-type OSSL_FUNCCoreNewErrorFn = func(_llcppg_param1 *OSSL_CORE_HANDLE)
+type OSSL_FUNC_core_new_error_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE)
 
 // llgo:type C
-type OSSL_FUNCCoreSetErrorDebugFn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 *c.Char, _llcppg_param3 c.Int, _llcppg_param4 *c.Char)
+type OSSL_FUNC_core_set_error_debug_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 *c.Char, _llcppg_param3 c.Int, _llcppg_param4 *c.Char)
 
 // llgo:type C
-type OSSL_FUNCCoreVsetErrorFn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 c.Uint32T, _llcppg_param3 *c.Char, _llcppg_param4 c.VaList)
+type OSSL_FUNC_core_vset_error_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 c.Uint32T, _llcppg_param3 *c.Char, _llcppg_param4 c.VaList)
 
 // llgo:type C
-type OSSL_FUNCCoreSetErrorMarkFn = func(_llcppg_param1 *OSSL_CORE_HANDLE) c.Int
+type OSSL_FUNC_core_set_error_mark_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE) c.Int
 
 // llgo:type C
-type OSSL_FUNCCoreClearLastErrorMarkFn = func(_llcppg_param1 *OSSL_CORE_HANDLE) c.Int
+type OSSL_FUNC_core_clear_last_error_mark_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE) c.Int
 
 // llgo:type C
-type OSSL_FUNCCorePopErrorToMarkFn = func(_llcppg_param1 *OSSL_CORE_HANDLE) c.Int
+type OSSL_FUNC_core_pop_error_to_mark_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE) c.Int
 
 // llgo:type C
-type OSSL_FUNCCoreObjAddSigidFn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 *c.Char, _llcppg_param3 *c.Char, _llcppg_param4 *c.Char) c.Int
+type OSSL_FUNC_core_obj_add_sigid_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 *c.Char, _llcppg_param3 *c.Char, _llcppg_param4 *c.Char) c.Int
 
 // llgo:type C
-type OSSL_FUNCCoreObjCreateFn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 *c.Char, _llcppg_param3 *c.Char, _llcppg_param4 *c.Char) c.Int
+type OSSL_FUNC_core_obj_create_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 *c.Char, _llcppg_param3 *c.Char, _llcppg_param4 *c.Char) c.Int
 
 // llgo:type C
-type OSSL_FUNC_CRYPTOMallocFn = func(_llcppg_param1 c.SizeT, _llcppg_param2 *c.Char, _llcppg_param3 c.Int) unsafe.Pointer
+type OSSL_FUNC_CRYPTO_malloc_fn = func(_llcppg_param1 c.SizeT, _llcppg_param2 *c.Char, _llcppg_param3 c.Int) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNC_CRYPTOZallocFn = func(_llcppg_param1 c.SizeT, _llcppg_param2 *c.Char, _llcppg_param3 c.Int) unsafe.Pointer
+type OSSL_FUNC_CRYPTO_zalloc_fn = func(_llcppg_param1 c.SizeT, _llcppg_param2 *c.Char, _llcppg_param3 c.Int) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNC_CRYPTOFreeFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char, _llcppg_param3 c.Int)
+type OSSL_FUNC_CRYPTO_free_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char, _llcppg_param3 c.Int)
 
 // llgo:type C
-type OSSL_FUNC_CRYPTOClearFreeFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.SizeT, _llcppg_param3 *c.Char, _llcppg_param4 c.Int)
+type OSSL_FUNC_CRYPTO_clear_free_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.SizeT, _llcppg_param3 *c.Char, _llcppg_param4 c.Int)
 
 // llgo:type C
-type OSSL_FUNC_CRYPTOReallocFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.SizeT, _llcppg_param3 *c.Char, _llcppg_param4 c.Int) unsafe.Pointer
+type OSSL_FUNC_CRYPTO_realloc_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.SizeT, _llcppg_param3 *c.Char, _llcppg_param4 c.Int) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNC_CRYPTOClearReallocFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.SizeT, _llcppg_param3 c.SizeT, _llcppg_param4 *c.Char, _llcppg_param5 c.Int) unsafe.Pointer
+type OSSL_FUNC_CRYPTO_clear_realloc_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.SizeT, _llcppg_param3 c.SizeT, _llcppg_param4 *c.Char, _llcppg_param5 c.Int) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNC_CRYPTOSecureMallocFn = func(_llcppg_param1 c.SizeT, _llcppg_param2 *c.Char, _llcppg_param3 c.Int) unsafe.Pointer
+type OSSL_FUNC_CRYPTO_secure_malloc_fn = func(_llcppg_param1 c.SizeT, _llcppg_param2 *c.Char, _llcppg_param3 c.Int) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNC_CRYPTOSecureZallocFn = func(_llcppg_param1 c.SizeT, _llcppg_param2 *c.Char, _llcppg_param3 c.Int) unsafe.Pointer
+type OSSL_FUNC_CRYPTO_secure_zalloc_fn = func(_llcppg_param1 c.SizeT, _llcppg_param2 *c.Char, _llcppg_param3 c.Int) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNC_CRYPTOSecureFreeFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char, _llcppg_param3 c.Int)
+type OSSL_FUNC_CRYPTO_secure_free_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char, _llcppg_param3 c.Int)
 
 // llgo:type C
-type OSSL_FUNC_CRYPTOSecureClearFreeFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.SizeT, _llcppg_param3 *c.Char, _llcppg_param4 c.Int)
+type OSSL_FUNC_CRYPTO_secure_clear_free_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.SizeT, _llcppg_param3 *c.Char, _llcppg_param4 c.Int)
 
 // llgo:type C
-type OSSL_FUNC_CRYPTOSecureAllocatedFn = func(_llcppg_param1 unsafe.Pointer) c.Int
+type OSSL_FUNC_CRYPTO_secure_allocated_fn = func(_llcppg_param1 unsafe.Pointer) c.Int
 
 // llgo:type C
-type OSSL_FUNC_OPENSSLCleanseFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.SizeT)
+type OSSL_FUNC_OPENSSL_cleanse_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.SizeT)
 
 // llgo:type C
-type OSSL_FUNC_BIONewFileFn = func(_llcppg_param1 *c.Char, _llcppg_param2 *c.Char) *OSSL_CORE_BIO
+type OSSL_FUNC_BIO_new_file_fn = func(_llcppg_param1 *c.Char, _llcppg_param2 *c.Char) *OSSL_CORE_BIO
 
 // llgo:type C
-type OSSL_FUNC_BIONewMembufFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int) *OSSL_CORE_BIO
+type OSSL_FUNC_BIO_new_membuf_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int) *OSSL_CORE_BIO
 
 // llgo:type C
-type OSSL_FUNC_BIOReadExFn = func(_llcppg_param1 *OSSL_CORE_BIO, _llcppg_param2 unsafe.Pointer, _llcppg_param3 c.SizeT, _llcppg_param4 *c.SizeT) c.Int
+type OSSL_FUNC_BIO_read_ex_fn = func(_llcppg_param1 *OSSL_CORE_BIO, _llcppg_param2 unsafe.Pointer, _llcppg_param3 c.SizeT, _llcppg_param4 *c.SizeT) c.Int
 
 // llgo:type C
-type OSSL_FUNC_BIOWriteExFn = func(_llcppg_param1 *OSSL_CORE_BIO, _llcppg_param2 unsafe.Pointer, _llcppg_param3 c.SizeT, _llcppg_param4 *c.SizeT) c.Int
+type OSSL_FUNC_BIO_write_ex_fn = func(_llcppg_param1 *OSSL_CORE_BIO, _llcppg_param2 unsafe.Pointer, _llcppg_param3 c.SizeT, _llcppg_param4 *c.SizeT) c.Int
 
 // llgo:type C
-type OSSL_FUNC_BIOGetsFn = func(_llcppg_param1 *OSSL_CORE_BIO, _llcppg_param2 *c.Char, _llcppg_param3 c.Int) c.Int
+type OSSL_FUNC_BIO_gets_fn = func(_llcppg_param1 *OSSL_CORE_BIO, _llcppg_param2 *c.Char, _llcppg_param3 c.Int) c.Int
 
 // llgo:type C
-type OSSL_FUNC_BIOPutsFn = func(_llcppg_param1 *OSSL_CORE_BIO, _llcppg_param2 *c.Char) c.Int
+type OSSL_FUNC_BIO_puts_fn = func(_llcppg_param1 *OSSL_CORE_BIO, _llcppg_param2 *c.Char) c.Int
 
 // llgo:type C
-type OSSL_FUNC_BIOUpRefFn = func(_llcppg_param1 *OSSL_CORE_BIO) c.Int
+type OSSL_FUNC_BIO_up_ref_fn = func(_llcppg_param1 *OSSL_CORE_BIO) c.Int
 
 // llgo:type C
-type OSSL_FUNC_BIOFreeFn = func(_llcppg_param1 *OSSL_CORE_BIO) c.Int
+type OSSL_FUNC_BIO_free_fn = func(_llcppg_param1 *OSSL_CORE_BIO) c.Int
 
 // llgo:type C
-type OSSL_FUNC_BIOVprintfFn = func(_llcppg_param1 *OSSL_CORE_BIO, _llcppg_param2 *c.Char, _llcppg_param3 c.VaList) c.Int
+type OSSL_FUNC_BIO_vprintf_fn = func(_llcppg_param1 *OSSL_CORE_BIO, _llcppg_param2 *c.Char, _llcppg_param3 c.VaList) c.Int
 
 // llgo:type C
-type OSSL_FUNC_BIOVsnprintfFn = func(_llcppg_param1 *c.Char, _llcppg_param2 c.SizeT, _llcppg_param3 *c.Char, _llcppg_param4 c.VaList) c.Int
+type OSSL_FUNC_BIO_vsnprintf_fn = func(_llcppg_param1 *c.Char, _llcppg_param2 c.SizeT, _llcppg_param3 *c.Char, _llcppg_param4 c.VaList) c.Int
 
 // llgo:type C
-type OSSL_FUNC_BIOCtrlFn = func(_llcppg_param1 *OSSL_CORE_BIO, _llcppg_param2 c.Int, _llcppg_param3 c.Long, _llcppg_param4 unsafe.Pointer) c.Int
+type OSSL_FUNC_BIO_ctrl_fn = func(_llcppg_param1 *OSSL_CORE_BIO, _llcppg_param2 c.Int, _llcppg_param3 c.Long, _llcppg_param4 unsafe.Pointer) c.Int
 
 // llgo:type C
-type OSSL_FUNCIndicatorCbFn = func(_llcppg_param1 *OPENSSL_CORE_CTX, _llcppg_param2 **OSSL_INDICATOR_CALLBACK)
+type OSSL_FUNC_indicator_cb_fn = func(_llcppg_param1 *CORE_CTX, _llcppg_param2 **OSSL_INDICATOR_CALLBACK)
 
 // llgo:type C
-type OSSL_FUNCSelfTestCbFn = func(_llcppg_param1 *OPENSSL_CORE_CTX, _llcppg_param2 **OSSL_CALLBACK, _llcppg_param3 *unsafe.Pointer)
+type OSSL_FUNC_self_test_cb_fn = func(_llcppg_param1 *CORE_CTX, _llcppg_param2 **OSSL_CALLBACK, _llcppg_param3 *unsafe.Pointer)
 
 // llgo:type C
-type OSSL_FUNCGetEntropyFn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 **uint8, _llcppg_param3 c.Int, _llcppg_param4 c.SizeT, _llcppg_param5 c.SizeT) c.SizeT
+type OSSL_FUNC_get_entropy_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 **uint8, _llcppg_param3 c.Int, _llcppg_param4 c.SizeT, _llcppg_param5 c.SizeT) c.SizeT
 
 // llgo:type C
-type OSSL_FUNCGetUserEntropyFn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 **uint8, _llcppg_param3 c.Int, _llcppg_param4 c.SizeT, _llcppg_param5 c.SizeT) c.SizeT
+type OSSL_FUNC_get_user_entropy_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 **uint8, _llcppg_param3 c.Int, _llcppg_param4 c.SizeT, _llcppg_param5 c.SizeT) c.SizeT
 
 // llgo:type C
-type OSSL_FUNCCleanupEntropyFn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT)
+type OSSL_FUNC_cleanup_entropy_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT)
 
 // llgo:type C
-type OSSL_FUNCCleanupUserEntropyFn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT)
+type OSSL_FUNC_cleanup_user_entropy_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT)
 
 // llgo:type C
-type OSSL_FUNCGetNonceFn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 **uint8, _llcppg_param3 c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 unsafe.Pointer, _llcppg_param6 c.SizeT) c.SizeT
+type OSSL_FUNC_get_nonce_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 **uint8, _llcppg_param3 c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 unsafe.Pointer, _llcppg_param6 c.SizeT) c.SizeT
 
 // llgo:type C
-type OSSL_FUNCGetUserNonceFn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 **uint8, _llcppg_param3 c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 unsafe.Pointer, _llcppg_param6 c.SizeT) c.SizeT
+type OSSL_FUNC_get_user_nonce_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 **uint8, _llcppg_param3 c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 unsafe.Pointer, _llcppg_param6 c.SizeT) c.SizeT
 
 // llgo:type C
-type OSSL_FUNCCleanupNonceFn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT)
+type OSSL_FUNC_cleanup_nonce_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT)
 
 // llgo:type C
-type OSSL_FUNCCleanupUserNonceFn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT)
+type OSSL_FUNC_cleanup_user_nonce_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT)
 
 // llgo:type C
-type OSSL_FUNCProviderRegisterChildCbFn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 unsafe.Pointer) c.Int, _llcppg_param3 func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 unsafe.Pointer) c.Int, _llcppg_param4 func(_llcppg_param1 *c.Char, _llcppg_param2 unsafe.Pointer) c.Int, _llcppg_param5 unsafe.Pointer) c.Int
+type OSSL_FUNC_provider_register_child_cb_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 unsafe.Pointer) c.Int, _llcppg_param3 func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 unsafe.Pointer) c.Int, _llcppg_param4 func(_llcppg_param1 *c.Char, _llcppg_param2 unsafe.Pointer) c.Int, _llcppg_param5 unsafe.Pointer) c.Int
 
 // llgo:type C
-type OSSL_FUNCProviderDeregisterChildCbFn = func(_llcppg_param1 *OSSL_CORE_HANDLE)
+type OSSL_FUNC_provider_deregister_child_cb_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE)
 
 // llgo:type C
-type OSSL_FUNCProviderNameFn = func(_llcppg_param1 *OSSL_CORE_HANDLE) *c.Char
+type OSSL_FUNC_provider_name_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE) *c.Char
 
 // llgo:type C
-type OSSL_FUNCProviderGet0ProviderCtxFn = func(_llcppg_param1 *OSSL_CORE_HANDLE) unsafe.Pointer
+type OSSL_FUNC_provider_get0_provider_ctx_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNCProviderGet0DispatchFn = func(_llcppg_param1 *OSSL_CORE_HANDLE) *OSSL_DISPATCH
+type OSSL_FUNC_provider_get0_dispatch_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE) *OSSL_DISPATCH
 
 // llgo:type C
-type OSSL_FUNCProviderUpRefFn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 c.Int) c.Int
+type OSSL_FUNC_provider_up_ref_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 c.Int) c.Int
 
 // llgo:type C
-type OSSL_FUNCProviderFreeFn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 c.Int) c.Int
+type OSSL_FUNC_provider_free_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 c.Int) c.Int
 
 // llgo:type C
-type OSSL_FUNCCoreCountToMarkFn = func(_llcppg_param1 *OSSL_CORE_HANDLE) c.Int
+type OSSL_FUNC_core_count_to_mark_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE) c.Int
 
 // llgo:type C
-type OSSL_FUNCProviderTeardownFn = func(_llcppg_param1 unsafe.Pointer)
+type OSSL_FUNC_provider_teardown_fn = func(_llcppg_param1 unsafe.Pointer)
 
 // llgo:type C
-type OSSL_FUNCProviderGettableParamsFn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
+type OSSL_FUNC_provider_gettable_params_fn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCProviderGetParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
+type OSSL_FUNC_provider_get_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCProviderQueryOperationFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 *c.Int) *OSSL_ALGORITHM
+type OSSL_FUNC_provider_query_operation_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 *c.Int) *OSSL_ALGORITHM
 
 // llgo:type C
-type OSSL_FUNCProviderUnqueryOperationFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 *OSSL_ALGORITHM)
+type OSSL_FUNC_provider_unquery_operation_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 *OSSL_ALGORITHM)
 
 // llgo:type C
-type OSSL_FUNCProviderGetReasonStringsFn = func(_llcppg_param1 unsafe.Pointer) *OSSL_ITEM
+type OSSL_FUNC_provider_get_reason_strings_fn = func(_llcppg_param1 unsafe.Pointer) *OSSL_ITEM
 
 // llgo:type C
-type OSSL_FUNCProviderGetCapabilitiesFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char, _llcppg_param3 *OSSL_CALLBACK, _llcppg_param4 unsafe.Pointer) c.Int
+type OSSL_FUNC_provider_get_capabilities_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char, _llcppg_param3 *OSSL_CALLBACK, _llcppg_param4 unsafe.Pointer) c.Int
 
 // llgo:type C
-type OSSL_FUNCProviderSelfTestFn = func(_llcppg_param1 unsafe.Pointer) c.Int
+type OSSL_FUNC_provider_self_test_fn = func(_llcppg_param1 unsafe.Pointer) c.Int
 
 // llgo:type C
-type OSSL_FUNCProviderRandomBytesFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 unsafe.Pointer, _llcppg_param4 c.SizeT, _llcppg_param5 c.Uint) c.Int
+type OSSL_FUNC_provider_random_bytes_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 unsafe.Pointer, _llcppg_param4 c.SizeT, _llcppg_param5 c.Uint) c.Int
 
 // llgo:type C
-type OSSL_FUNC_SSL_QUIC_TLSCryptoSendFn = func(_llcppg_param1 *SSL, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 *c.SizeT, _llcppg_param5 unsafe.Pointer) c.Int
+type OSSL_FUNC_SSL_QUIC_TLS_crypto_send_fn = func(_llcppg_param1 *SSL, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 *c.SizeT, _llcppg_param5 unsafe.Pointer) c.Int
 
 // llgo:type C
-type OSSL_FUNC_SSL_QUIC_TLSCryptoRecvRcdFn = func(_llcppg_param1 *SSL, _llcppg_param2 **uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 unsafe.Pointer) c.Int
+type OSSL_FUNC_SSL_QUIC_TLS_crypto_recv_rcd_fn = func(_llcppg_param1 *SSL, _llcppg_param2 **uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 unsafe.Pointer) c.Int
 
 // llgo:type C
-type OSSL_FUNC_SSL_QUIC_TLSCryptoReleaseRcdFn = func(_llcppg_param1 *SSL, _llcppg_param2 c.SizeT, _llcppg_param3 unsafe.Pointer) c.Int
+type OSSL_FUNC_SSL_QUIC_TLS_crypto_release_rcd_fn = func(_llcppg_param1 *SSL, _llcppg_param2 c.SizeT, _llcppg_param3 unsafe.Pointer) c.Int
 
 // llgo:type C
-type OSSL_FUNC_SSL_QUIC_TLSYieldSecretFn = func(_llcppg_param1 *SSL, _llcppg_param2 c.Uint32T, _llcppg_param3 c.Int, _llcppg_param4 *uint8, _llcppg_param5 c.SizeT, _llcppg_param6 unsafe.Pointer) c.Int
+type OSSL_FUNC_SSL_QUIC_TLS_yield_secret_fn = func(_llcppg_param1 *SSL, _llcppg_param2 c.Uint32T, _llcppg_param3 c.Int, _llcppg_param4 *uint8, _llcppg_param5 c.SizeT, _llcppg_param6 unsafe.Pointer) c.Int
 
 // llgo:type C
-type OSSL_FUNC_SSL_QUIC_TLSGotTransportParamsFn = func(_llcppg_param1 *SSL, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 unsafe.Pointer) c.Int
+type OSSL_FUNC_SSL_QUIC_TLS_got_transport_params_fn = func(_llcppg_param1 *SSL, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 unsafe.Pointer) c.Int
 
 // llgo:type C
-type OSSL_FUNC_SSL_QUIC_TLSAlertFn = func(_llcppg_param1 *SSL, _llcppg_param2 uint8, _llcppg_param3 unsafe.Pointer) c.Int
+type OSSL_FUNC_SSL_QUIC_TLS_alert_fn = func(_llcppg_param1 *SSL, _llcppg_param2 uint8, _llcppg_param3 unsafe.Pointer) c.Int
 
 // llgo:type C
-type OSSL_FUNCDigestNewctxFn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
+type OSSL_FUNC_digest_newctx_fn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNCDigestInitFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
+type OSSL_FUNC_digest_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCDigestUpdateFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT) c.Int
+type OSSL_FUNC_digest_update_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT) c.Int
 
 // llgo:type C
-type OSSL_FUNCDigestFinalFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT) c.Int
+type OSSL_FUNC_digest_final_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT) c.Int
 
 // llgo:type C
-type OSSL_FUNCDigestSqueezeFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT) c.Int
+type OSSL_FUNC_digest_squeeze_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT) c.Int
 
 // llgo:type C
-type OSSL_FUNCDigestDigestFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 *uint8, _llcppg_param5 *c.SizeT, _llcppg_param6 c.SizeT) c.Int
+type OSSL_FUNC_digest_digest_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 *uint8, _llcppg_param5 *c.SizeT, _llcppg_param6 c.SizeT) c.Int
 
 // llgo:type C
-type OSSL_FUNCDigestFreectxFn = func(_llcppg_param1 unsafe.Pointer)
+type OSSL_FUNC_digest_freectx_fn = func(_llcppg_param1 unsafe.Pointer)
 
 // llgo:type C
-type OSSL_FUNCDigestDupctxFn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
+type OSSL_FUNC_digest_dupctx_fn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNCDigestCopyctxFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer)
+type OSSL_FUNC_digest_copyctx_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer)
 
 // llgo:type C
-type OSSL_FUNCDigestGetParamsFn = func(_llcppg_param1 *OSSL_PARAM) c.Int
+type OSSL_FUNC_digest_get_params_fn = func(_llcppg_param1 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCDigestSetCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
+type OSSL_FUNC_digest_set_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCDigestGetCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
+type OSSL_FUNC_digest_get_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCDigestGettableParamsFn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
+type OSSL_FUNC_digest_gettable_params_fn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCDigestSettableCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
+type OSSL_FUNC_digest_settable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCDigestGettableCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
+type OSSL_FUNC_digest_gettable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCDigestSerializeFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT) c.Int
+type OSSL_FUNC_digest_serialize_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT) c.Int
 
 // llgo:type C
-type OSSL_FUNCDigestDeserializeFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT) c.Int
+type OSSL_FUNC_digest_deserialize_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT) c.Int
 
 // llgo:type C
-type OSSL_FUNCCipherNewctxFn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
+type OSSL_FUNC_cipher_newctx_fn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNCCipherEncryptInitFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 *uint8, _llcppg_param5 c.SizeT, _llcppg_param6 *OSSL_PARAM) c.Int
+type OSSL_FUNC_cipher_encrypt_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 *uint8, _llcppg_param5 c.SizeT, _llcppg_param6 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCCipherDecryptInitFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 *uint8, _llcppg_param5 c.SizeT, _llcppg_param6 *OSSL_PARAM) c.Int
+type OSSL_FUNC_cipher_decrypt_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 *uint8, _llcppg_param5 c.SizeT, _llcppg_param6 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCCipherUpdateFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 *uint8, _llcppg_param6 c.SizeT) c.Int
+type OSSL_FUNC_cipher_update_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 *uint8, _llcppg_param6 c.SizeT) c.Int
 
 // llgo:type C
-type OSSL_FUNCCipherFinalFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT) c.Int
+type OSSL_FUNC_cipher_final_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT) c.Int
 
 // llgo:type C
-type OSSL_FUNCCipherCipherFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 *uint8, _llcppg_param6 c.SizeT) c.Int
+type OSSL_FUNC_cipher_cipher_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 *uint8, _llcppg_param6 c.SizeT) c.Int
 
 // llgo:type C
-type OSSL_FUNCCipherPipelineEncryptInitFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 **uint8, _llcppg_param6 c.SizeT, _llcppg_param7 *OSSL_PARAM) c.Int
+type OSSL_FUNC_cipher_pipeline_encrypt_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 **uint8, _llcppg_param6 c.SizeT, _llcppg_param7 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCCipherPipelineDecryptInitFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 **uint8, _llcppg_param6 c.SizeT, _llcppg_param7 *OSSL_PARAM) c.Int
+type OSSL_FUNC_cipher_pipeline_decrypt_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 **uint8, _llcppg_param6 c.SizeT, _llcppg_param7 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCCipherPipelineUpdateFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.SizeT, _llcppg_param3 **uint8, _llcppg_param4 *c.SizeT, _llcppg_param5 *c.SizeT, _llcppg_param6 **uint8, _llcppg_param7 *c.SizeT) c.Int
+type OSSL_FUNC_cipher_pipeline_update_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.SizeT, _llcppg_param3 **uint8, _llcppg_param4 *c.SizeT, _llcppg_param5 *c.SizeT, _llcppg_param6 **uint8, _llcppg_param7 *c.SizeT) c.Int
 
 // llgo:type C
-type OSSL_FUNCCipherPipelineFinalFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.SizeT, _llcppg_param3 **uint8, _llcppg_param4 *c.SizeT, _llcppg_param5 *c.SizeT) c.Int
+type OSSL_FUNC_cipher_pipeline_final_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.SizeT, _llcppg_param3 **uint8, _llcppg_param4 *c.SizeT, _llcppg_param5 *c.SizeT) c.Int
 
 // llgo:type C
-type OSSL_FUNCCipherFreectxFn = func(_llcppg_param1 unsafe.Pointer)
+type OSSL_FUNC_cipher_freectx_fn = func(_llcppg_param1 unsafe.Pointer)
 
 // llgo:type C
-type OSSL_FUNCCipherDupctxFn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
+type OSSL_FUNC_cipher_dupctx_fn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNCCipherGetParamsFn = func(_llcppg_param1 *OSSL_PARAM) c.Int
+type OSSL_FUNC_cipher_get_params_fn = func(_llcppg_param1 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCCipherGetCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
+type OSSL_FUNC_cipher_get_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCCipherSetCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
+type OSSL_FUNC_cipher_set_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCCipherGettableParamsFn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
+type OSSL_FUNC_cipher_gettable_params_fn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCCipherSettableCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
+type OSSL_FUNC_cipher_settable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCCipherGettableCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
+type OSSL_FUNC_cipher_gettable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCCipherEncryptSkeyInitFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *uint8, _llcppg_param4 c.SizeT, _llcppg_param5 *OSSL_PARAM) c.Int
+type OSSL_FUNC_cipher_encrypt_skey_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *uint8, _llcppg_param4 c.SizeT, _llcppg_param5 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCCipherDecryptSkeyInitFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *uint8, _llcppg_param4 c.SizeT, _llcppg_param5 *OSSL_PARAM) c.Int
+type OSSL_FUNC_cipher_decrypt_skey_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *uint8, _llcppg_param4 c.SizeT, _llcppg_param5 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCMacNewctxFn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
+type OSSL_FUNC_mac_newctx_fn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNCMacDupctxFn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
+type OSSL_FUNC_mac_dupctx_fn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNCMacFreectxFn = func(_llcppg_param1 unsafe.Pointer)
+type OSSL_FUNC_mac_freectx_fn = func(_llcppg_param1 unsafe.Pointer)
 
 // llgo:type C
-type OSSL_FUNCMacInitFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 *OSSL_PARAM) c.Int
+type OSSL_FUNC_mac_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCMacUpdateFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT) c.Int
+type OSSL_FUNC_mac_update_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT) c.Int
 
 // llgo:type C
-type OSSL_FUNCMacFinalFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT) c.Int
+type OSSL_FUNC_mac_final_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT) c.Int
 
 // llgo:type C
-type OSSL_FUNCMacGettableParamsFn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
+type OSSL_FUNC_mac_gettable_params_fn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCMacGettableCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
+type OSSL_FUNC_mac_gettable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCMacSettableCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
+type OSSL_FUNC_mac_settable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCMacGetParamsFn = func(_llcppg_param1 *OSSL_PARAM) c.Int
+type OSSL_FUNC_mac_get_params_fn = func(_llcppg_param1 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCMacGetCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
+type OSSL_FUNC_mac_get_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCMacSetCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
+type OSSL_FUNC_mac_set_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCMacInitSkeyFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *OSSL_PARAM) c.Int
+type OSSL_FUNC_mac_init_skey_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCSkeymgmtFreeFn = func(_llcppg_param1 unsafe.Pointer)
+type OSSL_FUNC_skeymgmt_free_fn = func(_llcppg_param1 unsafe.Pointer)
 
 // llgo:type C
-type OSSL_FUNCSkeymgmtImpSettableParamsFn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
+type OSSL_FUNC_skeymgmt_imp_settable_params_fn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCSkeymgmtImportFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 *OSSL_PARAM) unsafe.Pointer
+type OSSL_FUNC_skeymgmt_import_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 *OSSL_PARAM) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNCSkeymgmtExportFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 *OSSL_CALLBACK, _llcppg_param4 unsafe.Pointer) c.Int
+type OSSL_FUNC_skeymgmt_export_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 *OSSL_CALLBACK, _llcppg_param4 unsafe.Pointer) c.Int
 
 // llgo:type C
-type OSSL_FUNCSkeymgmtGenSettableParamsFn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
+type OSSL_FUNC_skeymgmt_gen_settable_params_fn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCSkeymgmtGenerateFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) unsafe.Pointer
+type OSSL_FUNC_skeymgmt_generate_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNCSkeymgmtGetKeyIdFn = func(_llcppg_param1 unsafe.Pointer) *c.Char
+type OSSL_FUNC_skeymgmt_get_key_id_fn = func(_llcppg_param1 unsafe.Pointer) *c.Char
 
 // llgo:type C
-type OSSL_FUNCKdfNewctxFn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
+type OSSL_FUNC_kdf_newctx_fn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNCKdfDupctxFn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
+type OSSL_FUNC_kdf_dupctx_fn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNCKdfFreectxFn = func(_llcppg_param1 unsafe.Pointer)
+type OSSL_FUNC_kdf_freectx_fn = func(_llcppg_param1 unsafe.Pointer)
 
 // llgo:type C
-type OSSL_FUNCKdfResetFn = func(_llcppg_param1 unsafe.Pointer)
+type OSSL_FUNC_kdf_reset_fn = func(_llcppg_param1 unsafe.Pointer)
 
 // llgo:type C
-type OSSL_FUNCKdfDeriveFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 *OSSL_PARAM) c.Int
+type OSSL_FUNC_kdf_derive_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCKdfGettableParamsFn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
+type OSSL_FUNC_kdf_gettable_params_fn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCKdfGettableCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
+type OSSL_FUNC_kdf_gettable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCKdfSettableCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
+type OSSL_FUNC_kdf_settable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCKdfGetParamsFn = func(_llcppg_param1 *OSSL_PARAM) c.Int
+type OSSL_FUNC_kdf_get_params_fn = func(_llcppg_param1 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCKdfGetCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
+type OSSL_FUNC_kdf_get_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCKdfSetCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
+type OSSL_FUNC_kdf_set_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCKdfSetSkeyFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *c.Char) c.Int
+type OSSL_FUNC_kdf_set_skey_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *c.Char) c.Int
 
 // llgo:type C
-type OSSL_FUNCKdfDeriveSkeyFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char, _llcppg_param3 unsafe.Pointer, _llcppg_param4 *OSSL_FUNCSkeymgmtImportFn, _llcppg_param5 c.SizeT, _llcppg_param6 *OSSL_PARAM) unsafe.Pointer
+type OSSL_FUNC_kdf_derive_skey_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char, _llcppg_param3 unsafe.Pointer, _llcppg_param4 *OSSL_FUNC_skeymgmt_import_fn, _llcppg_param5 c.SizeT, _llcppg_param6 *OSSL_PARAM) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNCRandNewctxFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *OSSL_DISPATCH) unsafe.Pointer
+type OSSL_FUNC_rand_newctx_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *OSSL_DISPATCH) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNCRandFreectxFn = func(_llcppg_param1 unsafe.Pointer)
+type OSSL_FUNC_rand_freectx_fn = func(_llcppg_param1 unsafe.Pointer)
 
 // llgo:type C
-type OSSL_FUNCRandInstantiateFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Uint, _llcppg_param3 c.Int, _llcppg_param4 *uint8, _llcppg_param5 c.SizeT, _llcppg_param6 *OSSL_PARAM) c.Int
+type OSSL_FUNC_rand_instantiate_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Uint, _llcppg_param3 c.Int, _llcppg_param4 *uint8, _llcppg_param5 c.SizeT, _llcppg_param6 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCRandUninstantiateFn = func(_llcppg_param1 unsafe.Pointer) c.Int
+type OSSL_FUNC_rand_uninstantiate_fn = func(_llcppg_param1 unsafe.Pointer) c.Int
 
 // llgo:type C
-type OSSL_FUNCRandGenerateFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 c.Uint, _llcppg_param5 c.Int, _llcppg_param6 *uint8, _llcppg_param7 c.SizeT) c.Int
+type OSSL_FUNC_rand_generate_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 c.Uint, _llcppg_param5 c.Int, _llcppg_param6 *uint8, _llcppg_param7 c.SizeT) c.Int
 
 // llgo:type C
-type OSSL_FUNCRandReseedFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 *uint8, _llcppg_param4 c.SizeT, _llcppg_param5 *uint8, _llcppg_param6 c.SizeT) c.Int
+type OSSL_FUNC_rand_reseed_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 *uint8, _llcppg_param4 c.SizeT, _llcppg_param5 *uint8, _llcppg_param6 c.SizeT) c.Int
 
 // llgo:type C
-type OSSL_FUNCRandNonceFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.Uint, _llcppg_param4 c.SizeT, _llcppg_param5 c.SizeT) c.SizeT
+type OSSL_FUNC_rand_nonce_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.Uint, _llcppg_param4 c.SizeT, _llcppg_param5 c.SizeT) c.SizeT
 
 // llgo:type C
-type OSSL_FUNCRandEnableLockingFn = func(_llcppg_param1 unsafe.Pointer) c.Int
+type OSSL_FUNC_rand_enable_locking_fn = func(_llcppg_param1 unsafe.Pointer) c.Int
 
 // llgo:type C
-type OSSL_FUNCRandLockFn = func(_llcppg_param1 unsafe.Pointer) c.Int
+type OSSL_FUNC_rand_lock_fn = func(_llcppg_param1 unsafe.Pointer) c.Int
 
 // llgo:type C
-type OSSL_FUNCRandUnlockFn = func(_llcppg_param1 unsafe.Pointer)
+type OSSL_FUNC_rand_unlock_fn = func(_llcppg_param1 unsafe.Pointer)
 
 // llgo:type C
-type OSSL_FUNCRandGettableParamsFn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
+type OSSL_FUNC_rand_gettable_params_fn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCRandGettableCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
+type OSSL_FUNC_rand_gettable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCRandSettableCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
+type OSSL_FUNC_rand_settable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCRandGetParamsFn = func(_llcppg_param1 *OSSL_PARAM) c.Int
+type OSSL_FUNC_rand_get_params_fn = func(_llcppg_param1 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCRandGetCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
+type OSSL_FUNC_rand_get_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCRandSetCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
+type OSSL_FUNC_rand_set_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCRandSetCallbacksFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_INOUT_CALLBACK, _llcppg_param3 *OSSL_CALLBACK, _llcppg_param4 *OSSL_INOUT_CALLBACK, _llcppg_param5 *OSSL_CALLBACK, _llcppg_param6 unsafe.Pointer)
+type OSSL_FUNC_rand_set_callbacks_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_INOUT_CALLBACK, _llcppg_param3 *OSSL_CALLBACK, _llcppg_param4 *OSSL_INOUT_CALLBACK, _llcppg_param5 *OSSL_CALLBACK, _llcppg_param6 unsafe.Pointer)
 
 // llgo:type C
-type OSSL_FUNCRandVerifyZeroizationFn = func(_llcppg_param1 unsafe.Pointer) c.Int
+type OSSL_FUNC_rand_verify_zeroization_fn = func(_llcppg_param1 unsafe.Pointer) c.Int
 
 // llgo:type C
-type OSSL_FUNCRandGetSeedFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 **uint8, _llcppg_param3 c.Int, _llcppg_param4 c.SizeT, _llcppg_param5 c.SizeT, _llcppg_param6 c.Int, _llcppg_param7 *uint8, _llcppg_param8 c.SizeT) c.SizeT
+type OSSL_FUNC_rand_get_seed_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 **uint8, _llcppg_param3 c.Int, _llcppg_param4 c.SizeT, _llcppg_param5 c.SizeT, _llcppg_param6 c.Int, _llcppg_param7 *uint8, _llcppg_param8 c.SizeT) c.SizeT
 
 // llgo:type C
-type OSSL_FUNCRandClearSeedFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT)
+type OSSL_FUNC_rand_clear_seed_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT)
 
 // llgo:type C
-type OSSL_FUNCKeymgmtNewFn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
+type OSSL_FUNC_keymgmt_new_fn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNCKeymgmtNewExFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) unsafe.Pointer
+type OSSL_FUNC_keymgmt_new_ex_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNCKeymgmtGenInitFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 *OSSL_PARAM) unsafe.Pointer
+type OSSL_FUNC_keymgmt_gen_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 *OSSL_PARAM) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNCKeymgmtGenSetTemplateFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) c.Int
+type OSSL_FUNC_keymgmt_gen_set_template_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) c.Int
 
 // llgo:type C
-type OSSL_FUNCKeymgmtGenSetParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
+type OSSL_FUNC_keymgmt_gen_set_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCKeymgmtGenSettableParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
+type OSSL_FUNC_keymgmt_gen_settable_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCKeymgmtGenGetParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
+type OSSL_FUNC_keymgmt_gen_get_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCKeymgmtGenGettableParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
+type OSSL_FUNC_keymgmt_gen_gettable_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCKeymgmtGenFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_CALLBACK, _llcppg_param3 unsafe.Pointer) unsafe.Pointer
+type OSSL_FUNC_keymgmt_gen_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_CALLBACK, _llcppg_param3 unsafe.Pointer) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNCKeymgmtGenCleanupFn = func(_llcppg_param1 unsafe.Pointer)
+type OSSL_FUNC_keymgmt_gen_cleanup_fn = func(_llcppg_param1 unsafe.Pointer)
 
 // llgo:type C
-type OSSL_FUNCKeymgmtLoadFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.SizeT) unsafe.Pointer
+type OSSL_FUNC_keymgmt_load_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.SizeT) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNCKeymgmtFreeFn = func(_llcppg_param1 unsafe.Pointer)
+type OSSL_FUNC_keymgmt_free_fn = func(_llcppg_param1 unsafe.Pointer)
 
 // llgo:type C
-type OSSL_FUNCKeymgmtGetParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
+type OSSL_FUNC_keymgmt_get_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCKeymgmtGettableParamsFn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
+type OSSL_FUNC_keymgmt_gettable_params_fn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCKeymgmtSetParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
+type OSSL_FUNC_keymgmt_set_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCKeymgmtSettableParamsFn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
+type OSSL_FUNC_keymgmt_settable_params_fn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCKeymgmtQueryOperationNameFn = func(_llcppg_param1 c.Int) *c.Char
+type OSSL_FUNC_keymgmt_query_operation_name_fn = func(_llcppg_param1 c.Int) *c.Char
 
 // llgo:type C
-type OSSL_FUNCKeymgmtHasFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int) c.Int
+type OSSL_FUNC_keymgmt_has_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int) c.Int
 
 // llgo:type C
-type OSSL_FUNCKeymgmtValidateFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 c.Int) c.Int
+type OSSL_FUNC_keymgmt_validate_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 c.Int) c.Int
 
 // llgo:type C
-type OSSL_FUNCKeymgmtMatchFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 c.Int) c.Int
+type OSSL_FUNC_keymgmt_match_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 c.Int) c.Int
 
 // llgo:type C
-type OSSL_FUNCKeymgmtImportFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 *OSSL_PARAM) c.Int
+type OSSL_FUNC_keymgmt_import_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCKeymgmtImportTypesFn = func(_llcppg_param1 c.Int) *OSSL_PARAM
+type OSSL_FUNC_keymgmt_import_types_fn = func(_llcppg_param1 c.Int) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCKeymgmtExportFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 *OSSL_CALLBACK, _llcppg_param4 unsafe.Pointer) c.Int
+type OSSL_FUNC_keymgmt_export_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 *OSSL_CALLBACK, _llcppg_param4 unsafe.Pointer) c.Int
 
 // llgo:type C
-type OSSL_FUNCKeymgmtExportTypesFn = func(_llcppg_param1 c.Int) *OSSL_PARAM
+type OSSL_FUNC_keymgmt_export_types_fn = func(_llcppg_param1 c.Int) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCKeymgmtDupFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int) unsafe.Pointer
+type OSSL_FUNC_keymgmt_dup_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNCKeymgmtImportTypesExFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int) *OSSL_PARAM
+type OSSL_FUNC_keymgmt_import_types_ex_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCKeymgmtExportTypesExFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int) *OSSL_PARAM
+type OSSL_FUNC_keymgmt_export_types_ex_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCKeyexchNewctxFn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
+type OSSL_FUNC_keyexch_newctx_fn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNCKeyexchInitFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *OSSL_PARAM) c.Int
+type OSSL_FUNC_keyexch_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCKeyexchDeriveFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT) c.Int
+type OSSL_FUNC_keyexch_derive_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT) c.Int
 
 // llgo:type C
-type OSSL_FUNCKeyexchSetPeerFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) c.Int
+type OSSL_FUNC_keyexch_set_peer_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) c.Int
 
 // llgo:type C
-type OSSL_FUNCKeyexchFreectxFn = func(_llcppg_param1 unsafe.Pointer)
+type OSSL_FUNC_keyexch_freectx_fn = func(_llcppg_param1 unsafe.Pointer)
 
 // llgo:type C
-type OSSL_FUNCKeyexchDupctxFn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
+type OSSL_FUNC_keyexch_dupctx_fn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNCKeyexchSetCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
+type OSSL_FUNC_keyexch_set_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCKeyexchSettableCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
+type OSSL_FUNC_keyexch_settable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCKeyexchGetCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
+type OSSL_FUNC_keyexch_get_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCKeyexchGettableCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
+type OSSL_FUNC_keyexch_gettable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCKeyexchDeriveSkeyFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char, _llcppg_param3 unsafe.Pointer, _llcppg_param4 *OSSL_FUNCSkeymgmtImportFn, _llcppg_param5 c.SizeT, _llcppg_param6 *OSSL_PARAM) unsafe.Pointer
+type OSSL_FUNC_keyexch_derive_skey_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char, _llcppg_param3 unsafe.Pointer, _llcppg_param4 *OSSL_FUNC_skeymgmt_import_fn, _llcppg_param5 c.SizeT, _llcppg_param6 *OSSL_PARAM) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNCSignatureNewctxFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char) unsafe.Pointer
+type OSSL_FUNC_signature_newctx_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNCSignatureSignInitFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *OSSL_PARAM) c.Int
+type OSSL_FUNC_signature_sign_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCSignatureSignFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 *uint8, _llcppg_param6 c.SizeT) c.Int
+type OSSL_FUNC_signature_sign_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 *uint8, _llcppg_param6 c.SizeT) c.Int
 
 // llgo:type C
-type OSSL_FUNCSignatureSignMessageInitFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *OSSL_PARAM) c.Int
+type OSSL_FUNC_signature_sign_message_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCSignatureSignMessageUpdateFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT) c.Int
+type OSSL_FUNC_signature_sign_message_update_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT) c.Int
 
 // llgo:type C
-type OSSL_FUNCSignatureSignMessageFinalFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT) c.Int
+type OSSL_FUNC_signature_sign_message_final_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT) c.Int
 
 // llgo:type C
-type OSSL_FUNCSignatureVerifyInitFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *OSSL_PARAM) c.Int
+type OSSL_FUNC_signature_verify_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCSignatureVerifyFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 *uint8, _llcppg_param5 c.SizeT) c.Int
+type OSSL_FUNC_signature_verify_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 *uint8, _llcppg_param5 c.SizeT) c.Int
 
 // llgo:type C
-type OSSL_FUNCSignatureVerifyMessageInitFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *OSSL_PARAM) c.Int
+type OSSL_FUNC_signature_verify_message_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCSignatureVerifyMessageUpdateFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT) c.Int
+type OSSL_FUNC_signature_verify_message_update_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT) c.Int
 
 // signature_verify_final requires that the signature to be verified against
 // is specified via an OSSL_PARAM.
 //
 // llgo:type C
-type OSSL_FUNCSignatureVerifyMessageFinalFn = func(_llcppg_param1 unsafe.Pointer) c.Int
+type OSSL_FUNC_signature_verify_message_final_fn = func(_llcppg_param1 unsafe.Pointer) c.Int
 
 // llgo:type C
-type OSSL_FUNCSignatureVerifyRecoverInitFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *OSSL_PARAM) c.Int
+type OSSL_FUNC_signature_verify_recover_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCSignatureVerifyRecoverFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 *uint8, _llcppg_param6 c.SizeT) c.Int
+type OSSL_FUNC_signature_verify_recover_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 *uint8, _llcppg_param6 c.SizeT) c.Int
 
 // llgo:type C
-type OSSL_FUNCSignatureDigestSignInitFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char, _llcppg_param3 unsafe.Pointer, _llcppg_param4 *OSSL_PARAM) c.Int
+type OSSL_FUNC_signature_digest_sign_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char, _llcppg_param3 unsafe.Pointer, _llcppg_param4 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCSignatureDigestSignUpdateFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT) c.Int
+type OSSL_FUNC_signature_digest_sign_update_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT) c.Int
 
 // llgo:type C
-type OSSL_FUNCSignatureDigestSignFinalFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT) c.Int
+type OSSL_FUNC_signature_digest_sign_final_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT) c.Int
 
 // llgo:type C
-type OSSL_FUNCSignatureDigestSignFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 *uint8, _llcppg_param6 c.SizeT) c.Int
+type OSSL_FUNC_signature_digest_sign_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 *uint8, _llcppg_param6 c.SizeT) c.Int
 
 // llgo:type C
-type OSSL_FUNCSignatureDigestVerifyInitFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char, _llcppg_param3 unsafe.Pointer, _llcppg_param4 *OSSL_PARAM) c.Int
+type OSSL_FUNC_signature_digest_verify_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char, _llcppg_param3 unsafe.Pointer, _llcppg_param4 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCSignatureDigestVerifyUpdateFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT) c.Int
+type OSSL_FUNC_signature_digest_verify_update_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT) c.Int
 
 // llgo:type C
-type OSSL_FUNCSignatureDigestVerifyFinalFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT) c.Int
+type OSSL_FUNC_signature_digest_verify_final_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT) c.Int
 
 // llgo:type C
-type OSSL_FUNCSignatureDigestVerifyFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 *uint8, _llcppg_param5 c.SizeT) c.Int
+type OSSL_FUNC_signature_digest_verify_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 *uint8, _llcppg_param5 c.SizeT) c.Int
 
 // llgo:type C
-type OSSL_FUNCSignatureFreectxFn = func(_llcppg_param1 unsafe.Pointer)
+type OSSL_FUNC_signature_freectx_fn = func(_llcppg_param1 unsafe.Pointer)
 
 // llgo:type C
-type OSSL_FUNCSignatureDupctxFn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
+type OSSL_FUNC_signature_dupctx_fn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNCSignatureGetCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
+type OSSL_FUNC_signature_get_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCSignatureGettableCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
+type OSSL_FUNC_signature_gettable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCSignatureSetCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
+type OSSL_FUNC_signature_set_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCSignatureSettableCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
+type OSSL_FUNC_signature_settable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCSignatureGetCtxMdParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
+type OSSL_FUNC_signature_get_ctx_md_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCSignatureGettableCtxMdParamsFn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
+type OSSL_FUNC_signature_gettable_ctx_md_params_fn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCSignatureSetCtxMdParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
+type OSSL_FUNC_signature_set_ctx_md_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCSignatureSettableCtxMdParamsFn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
+type OSSL_FUNC_signature_settable_ctx_md_params_fn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCSignatureQueryKeyTypesFn = func() **c.Char
+type OSSL_FUNC_signature_query_key_types_fn = func() **c.Char
 
 // llgo:type C
-type OSSL_FUNCAsymCipherNewctxFn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
+type OSSL_FUNC_asym_cipher_newctx_fn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNCAsymCipherEncryptInitFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *OSSL_PARAM) c.Int
+type OSSL_FUNC_asym_cipher_encrypt_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCAsymCipherEncryptFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 *uint8, _llcppg_param6 c.SizeT) c.Int
+type OSSL_FUNC_asym_cipher_encrypt_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 *uint8, _llcppg_param6 c.SizeT) c.Int
 
 // llgo:type C
-type OSSL_FUNCAsymCipherDecryptInitFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *OSSL_PARAM) c.Int
+type OSSL_FUNC_asym_cipher_decrypt_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCAsymCipherDecryptFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 *uint8, _llcppg_param6 c.SizeT) c.Int
+type OSSL_FUNC_asym_cipher_decrypt_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 *uint8, _llcppg_param6 c.SizeT) c.Int
 
 // llgo:type C
-type OSSL_FUNCAsymCipherFreectxFn = func(_llcppg_param1 unsafe.Pointer)
+type OSSL_FUNC_asym_cipher_freectx_fn = func(_llcppg_param1 unsafe.Pointer)
 
 // llgo:type C
-type OSSL_FUNCAsymCipherDupctxFn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
+type OSSL_FUNC_asym_cipher_dupctx_fn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNCAsymCipherGetCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
+type OSSL_FUNC_asym_cipher_get_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCAsymCipherGettableCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
+type OSSL_FUNC_asym_cipher_gettable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCAsymCipherSetCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
+type OSSL_FUNC_asym_cipher_set_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCAsymCipherSettableCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
+type OSSL_FUNC_asym_cipher_settable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCKemNewctxFn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
+type OSSL_FUNC_kem_newctx_fn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNCKemEncapsulateInitFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *OSSL_PARAM) c.Int
+type OSSL_FUNC_kem_encapsulate_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCKemAuthEncapsulateInitFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 unsafe.Pointer, _llcppg_param4 *OSSL_PARAM) c.Int
+type OSSL_FUNC_kem_auth_encapsulate_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 unsafe.Pointer, _llcppg_param4 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCKemEncapsulateFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 *uint8, _llcppg_param5 *c.SizeT) c.Int
+type OSSL_FUNC_kem_encapsulate_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 *uint8, _llcppg_param5 *c.SizeT) c.Int
 
 // llgo:type C
-type OSSL_FUNCKemDecapsulateInitFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *OSSL_PARAM) c.Int
+type OSSL_FUNC_kem_decapsulate_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCKemAuthDecapsulateInitFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 unsafe.Pointer, _llcppg_param4 *OSSL_PARAM) c.Int
+type OSSL_FUNC_kem_auth_decapsulate_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 unsafe.Pointer, _llcppg_param4 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCKemDecapsulateFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 *uint8, _llcppg_param5 c.SizeT) c.Int
+type OSSL_FUNC_kem_decapsulate_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 *uint8, _llcppg_param5 c.SizeT) c.Int
 
 // llgo:type C
-type OSSL_FUNCKemFreectxFn = func(_llcppg_param1 unsafe.Pointer)
+type OSSL_FUNC_kem_freectx_fn = func(_llcppg_param1 unsafe.Pointer)
 
 // llgo:type C
-type OSSL_FUNCKemDupctxFn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
+type OSSL_FUNC_kem_dupctx_fn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNCKemGetCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
+type OSSL_FUNC_kem_get_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCKemGettableCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
+type OSSL_FUNC_kem_gettable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCKemSetCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
+type OSSL_FUNC_kem_set_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCKemSettableCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
+type OSSL_FUNC_kem_settable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCEncoderNewctxFn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
+type OSSL_FUNC_encoder_newctx_fn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNCEncoderFreectxFn = func(_llcppg_param1 unsafe.Pointer)
+type OSSL_FUNC_encoder_freectx_fn = func(_llcppg_param1 unsafe.Pointer)
 
 // llgo:type C
-type OSSL_FUNCEncoderGetParamsFn = func(_llcppg_param1 *OSSL_PARAM) c.Int
+type OSSL_FUNC_encoder_get_params_fn = func(_llcppg_param1 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCEncoderGettableParamsFn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
+type OSSL_FUNC_encoder_gettable_params_fn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCEncoderSetCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
+type OSSL_FUNC_encoder_set_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCEncoderSettableCtxParamsFn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
+type OSSL_FUNC_encoder_settable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCEncoderDoesSelectionFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int) c.Int
+type OSSL_FUNC_encoder_does_selection_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int) c.Int
 
 // llgo:type C
-type OSSL_FUNCEncoderEncodeFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_CORE_BIO, _llcppg_param3 unsafe.Pointer, _llcppg_param4 *OSSL_PARAM, _llcppg_param5 c.Int, _llcppg_param6 *OSSL_PASSPHRASE_CALLBACK, _llcppg_param7 unsafe.Pointer) c.Int
+type OSSL_FUNC_encoder_encode_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_CORE_BIO, _llcppg_param3 unsafe.Pointer, _llcppg_param4 *OSSL_PARAM, _llcppg_param5 c.Int, _llcppg_param6 *OSSL_PASSPHRASE_CALLBACK, _llcppg_param7 unsafe.Pointer) c.Int
 
 // llgo:type C
-type OSSL_FUNCEncoderImportObjectFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 *OSSL_PARAM) unsafe.Pointer
+type OSSL_FUNC_encoder_import_object_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 *OSSL_PARAM) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNCEncoderFreeObjectFn = func(_llcppg_param1 unsafe.Pointer)
+type OSSL_FUNC_encoder_free_object_fn = func(_llcppg_param1 unsafe.Pointer)
 
 // llgo:type C
-type OSSL_FUNCDecoderNewctxFn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
+type OSSL_FUNC_decoder_newctx_fn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNCDecoderFreectxFn = func(_llcppg_param1 unsafe.Pointer)
+type OSSL_FUNC_decoder_freectx_fn = func(_llcppg_param1 unsafe.Pointer)
 
 // llgo:type C
-type OSSL_FUNCDecoderGetParamsFn = func(_llcppg_param1 *OSSL_PARAM) c.Int
+type OSSL_FUNC_decoder_get_params_fn = func(_llcppg_param1 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCDecoderGettableParamsFn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
+type OSSL_FUNC_decoder_gettable_params_fn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCDecoderSetCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
+type OSSL_FUNC_decoder_set_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCDecoderSettableCtxParamsFn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
+type OSSL_FUNC_decoder_settable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCDecoderDoesSelectionFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int) c.Int
+type OSSL_FUNC_decoder_does_selection_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int) c.Int
 
 // llgo:type C
-type OSSL_FUNCDecoderDecodeFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_CORE_BIO, _llcppg_param3 c.Int, _llcppg_param4 *OSSL_CALLBACK, _llcppg_param5 unsafe.Pointer, _llcppg_param6 *OSSL_PASSPHRASE_CALLBACK, _llcppg_param7 unsafe.Pointer) c.Int
+type OSSL_FUNC_decoder_decode_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_CORE_BIO, _llcppg_param3 c.Int, _llcppg_param4 *OSSL_CALLBACK, _llcppg_param5 unsafe.Pointer, _llcppg_param6 *OSSL_PASSPHRASE_CALLBACK, _llcppg_param7 unsafe.Pointer) c.Int
 
 // llgo:type C
-type OSSL_FUNCDecoderExportObjectFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 c.SizeT, _llcppg_param4 *OSSL_CALLBACK, _llcppg_param5 unsafe.Pointer) c.Int
+type OSSL_FUNC_decoder_export_object_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 c.SizeT, _llcppg_param4 *OSSL_CALLBACK, _llcppg_param5 unsafe.Pointer) c.Int
 
 // llgo:type C
-type OSSL_FUNCStoreOpenFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char) unsafe.Pointer
+type OSSL_FUNC_store_open_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNCStoreAttachFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_CORE_BIO) unsafe.Pointer
+type OSSL_FUNC_store_attach_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_CORE_BIO) unsafe.Pointer
 
 // llgo:type C
-type OSSL_FUNCStoreSettableCtxParamsFn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
+type OSSL_FUNC_store_settable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
 
 // llgo:type C
-type OSSL_FUNCStoreSetCtxParamsFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
+type OSSL_FUNC_store_set_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
 // llgo:type C
-type OSSL_FUNCStoreLoadFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_CALLBACK, _llcppg_param3 unsafe.Pointer, _llcppg_param4 *OSSL_PASSPHRASE_CALLBACK, _llcppg_param5 unsafe.Pointer) c.Int
+type OSSL_FUNC_store_load_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_CALLBACK, _llcppg_param3 unsafe.Pointer, _llcppg_param4 *OSSL_PASSPHRASE_CALLBACK, _llcppg_param5 unsafe.Pointer) c.Int
 
 // llgo:type C
-type OSSL_FUNCStoreEofFn = func(_llcppg_param1 unsafe.Pointer) c.Int
+type OSSL_FUNC_store_eof_fn = func(_llcppg_param1 unsafe.Pointer) c.Int
 
 // llgo:type C
-type OSSL_FUNCStoreCloseFn = func(_llcppg_param1 unsafe.Pointer) c.Int
+type OSSL_FUNC_store_close_fn = func(_llcppg_param1 unsafe.Pointer) c.Int
 
 // llgo:type C
-type OSSL_FUNCStoreExportObjectFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 c.SizeT, _llcppg_param4 *OSSL_CALLBACK, _llcppg_param5 unsafe.Pointer) c.Int
+type OSSL_FUNC_store_export_object_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 c.SizeT, _llcppg_param4 *OSSL_CALLBACK, _llcppg_param5 unsafe.Pointer) c.Int
 
 // llgo:type C
-type OSSL_FUNCStoreDeleteFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char, _llcppg_param3 *OSSL_PARAM, _llcppg_param4 *OSSL_PASSPHRASE_CALLBACK, _llcppg_param5 unsafe.Pointer) c.Int
+type OSSL_FUNC_store_delete_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char, _llcppg_param3 *OSSL_PARAM, _llcppg_param4 *OSSL_PASSPHRASE_CALLBACK, _llcppg_param5 unsafe.Pointer) c.Int
 
 // llgo:type C
-type OSSL_FUNCStoreOpenExFn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char, _llcppg_param3 *OSSL_PARAM, _llcppg_param4 *OSSL_PASSPHRASE_CALLBACK, _llcppg_param5 unsafe.Pointer) unsafe.Pointer
+type OSSL_FUNC_store_open_ex_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char, _llcppg_param3 *OSSL_PARAM, _llcppg_param4 *OSSL_PASSPHRASE_CALLBACK, _llcppg_param5 unsafe.Pointer) unsafe.Pointer
