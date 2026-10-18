@@ -7,18 +7,18 @@ import (
 )
 
 func TestOpenSSLVersionAndTLSContext(t *testing.T) {
-	if got := openssl.OPENSSLVersionMajor(); got < 1 {
+	if got := openssl.VersionMajor(); got < 1 {
 		t.Fatalf("OpenSSL major version = %d", got)
 	}
 
-	method := openssl.TLSMethod()
+	method := openssl.TLS_method()
 	if method == nil {
-		t.Fatal("TLSMethod returned nil")
+		t.Fatal("TLS_method returned nil")
 	}
 
-	ctx := openssl.SSL_CTXNew(method)
+	ctx := method.CTX_new()
 	if ctx == nil {
-		t.Fatal("SSL_CTXNew returned nil")
+		t.Fatal("CTX_new returned nil")
 	}
-	openssl.SSL_CTXFree(ctx)
+	ctx.Free()
 }
