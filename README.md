@@ -40,12 +40,12 @@ package main
 import "github.com/llarhub/openssl"
 
 func main() {
-	method := openssl.TLSMethod()
-	ctx := openssl.SSL_CTXNew(method)
+	method := openssl.TLS_method()
+	ctx := method.CTX_new()
 	if ctx == nil {
-		panic("could not create OpenSSL TLS context")
+		panic("CTX_new returned nil")
 	}
-	openssl.SSL_CTXFree(ctx)
+	ctx.Free()
 }
 ```
 
