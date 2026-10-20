@@ -3,6 +3,7 @@
 [![Go Reference](https://pkg.go.dev/badge/github.com/llarhub/openssl.svg)](https://pkg.go.dev/github.com/llarhub/openssl)
 [![GitHub release](https://img.shields.io/github/v/tag/llarhub/openssl.svg?label=release)](https://github.com/llarhub/openssl/releases)
 [![LLGo](https://img.shields.io/badge/powered_by-LLGo-green.svg)](https://github.com/xgo-dev/llgo)
+[![LLGo bindings](https://img.shields.io/badge/llarhub-LLGo_Bindings-brightgreen.svg)](https://github.com/xgo-dev/llgo/blob/main/doc/LLGo-Bindings.md)
 [![XGo](https://img.shields.io/badge/project-XGo-blue.svg)](https://github.com/goplus/xgo)
 
 LLGo bindings for the OpenSSL C API. The generated package includes TLS/SSL, EVP, BIO, X.509, RSA, EC, BN, hashing, and related public APIs reachable from `openssl/ssl.h`.
