@@ -341,9 +341,9 @@ const (
 	SSL_SESS_CACHE_UPDATE_TIME        = 1024
 )
 const (
-	OPENSSL_NPN_UNSUPPORTED = 0
-	OPENSSL_NPN_NEGOTIATED  = 1
-	OPENSSL_NPN_NO_OVERLAP  = 2
+	NPN_UNSUPPORTED = 0
+	NPN_NEGOTIATED  = 1
+	NPN_NO_OVERLAP  = 2
 )
 
 // the maximum length of the buffer given to callbacks containing the

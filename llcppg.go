@@ -54,28 +54,28 @@ func SHA1_String(data string, md *byte) *byte {
 	return SHA1((*byte)(unsafe.StringData(data)), uintptr(len(data)), md)
 }
 
-func (c *SHA256_CTX) UpdateBytes(data []byte) c.Int {
-	return c.Update(unsafe.Pointer(unsafe.SliceData(data)), uintptr(len(data)))
+func (self *SHA256_CTX) UpdateBytes(data []byte) c.Int {
+	return self.Update(unsafe.Pointer(unsafe.SliceData(data)), uintptr(len(data)))
 }
 
-func (c *SHA256_CTX) UpdateString(data string) c.Int {
-	return c.Update(unsafe.Pointer(unsafe.StringData(data)), uintptr(len(data)))
+func (self *SHA256_CTX) UpdateString(data string) c.Int {
+	return self.Update(unsafe.Pointer(unsafe.StringData(data)), uintptr(len(data)))
 }
 
-func (c *SHA256_CTX) Final(md *byte) c.Int {
-	return SHA256_Final(md, c)
+func (self *SHA256_CTX) Final(md *byte) c.Int {
+	return SHA256_Final(md, self)
 }
 
-func (c *SHA256_CTX) SHA224_UpdateBytes(data []byte) c.Int {
-	return c.SHA224_Update(unsafe.Pointer(unsafe.SliceData(data)), uintptr(len(data)))
+func (self *SHA256_CTX) SHA224_UpdateBytes(data []byte) c.Int {
+	return self.SHA224_Update(unsafe.Pointer(unsafe.SliceData(data)), uintptr(len(data)))
 }
 
-func (c *SHA256_CTX) SHA224_UpdateString(data string) c.Int {
-	return c.SHA224_Update(unsafe.Pointer(unsafe.StringData(data)), uintptr(len(data)))
+func (self *SHA256_CTX) SHA224_UpdateString(data string) c.Int {
+	return self.SHA224_Update(unsafe.Pointer(unsafe.StringData(data)), uintptr(len(data)))
 }
 
-func (c *SHA256_CTX) SHA224_Final(md *byte) c.Int {
-	return SHA224_Final(md, c)
+func (self *SHA256_CTX) SHA224_Final(md *byte) c.Int {
+	return SHA224_Final(md, self)
 }
 
 func SHA256_Bytes(data []byte, md *byte) *byte {
@@ -94,28 +94,28 @@ func SHA224_String(data string, md *byte) *byte {
 	return SHA224((*byte)(unsafe.StringData(data)), uintptr(len(data)), md)
 }
 
-func (c *SHA512_CTX) UpdateBytes(data []byte) c.Int {
-	return c.Update(unsafe.Pointer(unsafe.SliceData(data)), uintptr(len(data)))
+func (self *SHA512_CTX) UpdateBytes(data []byte) c.Int {
+	return self.Update(unsafe.Pointer(unsafe.SliceData(data)), uintptr(len(data)))
 }
 
-func (c *SHA512_CTX) UpdateString(data string) c.Int {
-	return c.Update(unsafe.Pointer(unsafe.StringData(data)), uintptr(len(data)))
+func (self *SHA512_CTX) UpdateString(data string) c.Int {
+	return self.Update(unsafe.Pointer(unsafe.StringData(data)), uintptr(len(data)))
 }
 
-func (c *SHA512_CTX) Final(md *byte) c.Int {
-	return SHA512_Final(md, c)
+func (self *SHA512_CTX) Final(md *byte) c.Int {
+	return SHA512_Final(md, self)
 }
 
-func (c *SHA512_CTX) SHA384_UpdateBytes(data []byte) c.Int {
-	return c.SHA384_Update(unsafe.Pointer(unsafe.SliceData(data)), uintptr(len(data)))
+func (self *SHA512_CTX) SHA384_UpdateBytes(data []byte) c.Int {
+	return self.SHA384_Update(unsafe.Pointer(unsafe.SliceData(data)), uintptr(len(data)))
 }
 
-func (c *SHA512_CTX) SHA384_UpdateString(data string) c.Int {
-	return c.SHA384_Update(unsafe.Pointer(unsafe.StringData(data)), uintptr(len(data)))
+func (self *SHA512_CTX) SHA384_UpdateString(data string) c.Int {
+	return self.SHA384_Update(unsafe.Pointer(unsafe.StringData(data)), uintptr(len(data)))
 }
 
-func (c *SHA512_CTX) SHA384_Final(md *byte) c.Int {
-	return SHA384_Final(md, c)
+func (self *SHA512_CTX) SHA384_Final(md *byte) c.Int {
+	return SHA384_Final(md, self)
 }
 
 func SHA512_Bytes(data []byte, md *byte) *byte {
@@ -150,6 +150,6 @@ func (self *BIGNUM) Cmp(b *BIGNUM) c.Int {
 // call FreeCStr to free.
 //
 // llgo:link (*BIGNUM).ToCStr C.BN_bn2dec
-func (*BIGNUM) ToCStr() *c.Char {
+func (self *BIGNUM) ToCStr() *c.Char {
 	return nil
 }

@@ -2,5 +2,5 @@
 
 package openssl
 
-const OPENSSL_SYS_MACOSX = 1
-const OPENSSL_CONFIGURED_API = 40000
+const SYS_MACOSX = 1
+const CONFIGURED_API = 40000

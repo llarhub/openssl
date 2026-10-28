@@ -3,31 +3,31 @@
 package openssl
 
 // clang-format off
-const OPENSSL_VERSION_MAJOR = 4
+const VERSION_MAJOR = 4
 
 // clang-format off
-const OPENSSL_VERSION_MINOR = 0
+const VERSION_MINOR = 0
 
 // clang-format off
-const OPENSSL_VERSION_PATCH = 3
+const VERSION_PATCH = 3
 
 // clang-format off
-const OPENSSL_VERSION_PRE_RELEASE = ""
+const VERSION_PRE_RELEASE = ""
 
 // clang-format off
-const OPENSSL_VERSION_BUILD_METADATA = ""
+const VERSION_BUILD_METADATA = ""
 
 // clang-format off
-const OPENSSL_SHLIB_VERSION = 4
+const SHLIB_VERSION = 4
 
 // clang-format off
-const OPENSSL_VERSION_STR = "4.0.3"
+const VERSION_STR = "4.0.3"
 
 // clang-format off
-const OPENSSL_FULL_VERSION_STR = "4.0.3"
+const FULL_VERSION_STR = "4.0.3"
 
 // clang-format off
-const OPENSSL_RELEASE_DATE = "29 Sep 2026"
+const RELEASE_DATE = "29 Sep 2026"
 
 // clang-format off
-const OPENSSL_VERSION_TEXT = "OpenSSL 4.0.3 29 Sep 2026"
+const VERSION_TEXT = "OpenSSL 4.0.3 29 Sep 2026"

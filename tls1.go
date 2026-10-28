@@ -7,7 +7,7 @@ import (
 	"unsafe"
 )
 
-const OPENSSL_TLS_SECURITY_LEVEL = 2
+const TLS_SECURITY_LEVEL = 2
 const TLS_MAX_VERSION = 772
 
 // Special value for method supporting multiple versions

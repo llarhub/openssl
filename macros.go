@@ -2,4 +2,4 @@
 
 package openssl
 
-const OPENSSL_API_LEVEL = 40000
+const API_LEVEL = 40000

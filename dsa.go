@@ -12,8 +12,8 @@ const (
 	EVP_PKEY_CTRL_DSA_PARAMGEN_Q_BITS = 4098
 	EVP_PKEY_CTRL_DSA_PARAMGEN_MD     = 4099
 )
-const OPENSSL_DSA_MAX_MODULUS_BITS = 10000
-const OPENSSL_DSA_FIPS_MIN_MODULUS_BITS = 1024
+const DSA_MAX_MODULUS_BITS = 10000
+const DSA_FIPS_MIN_MODULUS_BITS = 1024
 
 // Does nothing. Previously this switched off constant time behaviour.
 const DSA_FLAG_NO_EXP_CONSTTIME = 0

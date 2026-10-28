@@ -11,31 +11,31 @@ import (
 )
 
 const (
-	OPENSSL_VERSION             = 0
-	OPENSSL_CFLAGS              = 1
-	OPENSSL_BUILT_ON            = 2
-	OPENSSL_PLATFORM            = 3
-	OPENSSL_DIR                 = 4
-	OPENSSL_ENGINES_DIR         = 5
-	OPENSSL_VERSION_STRING      = 6
-	OPENSSL_FULL_VERSION_STRING = 7
-	OPENSSL_MODULES_DIR         = 8
-	OPENSSL_CPU_INFO            = 9
-	OPENSSL_WINCTX              = 10
+	VERSION             = 0
+	CFLAGS              = 1
+	BUILT_ON            = 2
+	PLATFORM            = 3
+	DIR                 = 4
+	ENGINES_DIR         = 5
+	VERSION_STRING      = 6
+	FULL_VERSION_STRING = 7
+	MODULES_DIR         = 8
+	CPU_INFO            = 9
+	WINCTX              = 10
 )
 
 // The series starts at 1001 to avoid confusion with the OpenSSL_version
 // types.
 const (
-	OPENSSL_INFO_CONFIG_DIR             = 1001
-	OPENSSL_INFO_ENGINES_DIR            = 1002
-	OPENSSL_INFO_MODULES_DIR            = 1003
-	OPENSSL_INFO_DSO_EXTENSION          = 1004
-	OPENSSL_INFO_DIR_FILENAME_SEPARATOR = 1005
-	OPENSSL_INFO_LIST_SEPARATOR         = 1006
-	OPENSSL_INFO_SEED_SOURCE            = 1007
-	OPENSSL_INFO_CPU_SETTINGS           = 1008
-	OPENSSL_INFO_WINDOWS_CONTEXT        = 1009
+	INFO_CONFIG_DIR             = 1001
+	INFO_ENGINES_DIR            = 1002
+	INFO_MODULES_DIR            = 1003
+	INFO_DSO_EXTENSION          = 1004
+	INFO_DIR_FILENAME_SEPARATOR = 1005
+	INFO_LIST_SEPARATOR         = 1006
+	INFO_SEED_SOURCE            = 1007
+	INFO_CPU_SETTINGS           = 1008
+	INFO_WINDOWS_CONTEXT        = 1009
 )
 
 // Per class, we have a STACK of function pointers.
@@ -73,7 +73,7 @@ const (
 )
 
 // ENGINEs are no longer available
-const OPENSSL_INIT_ENGINE_ALL_BUILTIN = 0
+const INIT_ENGINE_ALL_BUILTIN = 0
 
 // Old type for allocating dynamic locks. No longer used. Use the new thread
 // API instead.
@@ -223,11 +223,11 @@ func VersionPreRelease() *c.Char
 //go:linkname VersionBuildMetadata C.OPENSSL_version_build_metadata
 func VersionBuildMetadata() *c.Char
 
-//go:linkname OpenSSL_version_num C.OpenSSL_version_num
-func OpenSSL_version_num() c.Ulong
+//go:linkname VersionNum C.OpenSSL_version_num
+func VersionNum() c.Ulong
 
-//go:linkname OpenSSL_version C.OpenSSL_version
-func OpenSSL_version(type_ c.Int) *c.Char
+//go:linkname Version C.OpenSSL_version
+func Version(type_ c.Int) *c.Char
 
 // The series starts at 1001 to avoid confusion with the OpenSSL_version
 // types.
@@ -513,7 +513,4 @@ func (self *OSSL_LIB_CTX) Data(index c.Int) unsafe.Pointer {
 }
 func SecureActualSize(ptr unsafe.Pointer) c.SizeT {
 	return CRYPTO_secure_actual_size(ptr)
-}
-func OpenSSLDie(f *c.Char, l c.Int, a *c.Char) {
-	Die(a, f, l)
 }

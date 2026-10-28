@@ -9,8 +9,8 @@ import (
 
 // Values for EVP_PKEY_CTX_set_ec_param_enc()
 const (
-	OPENSSL_EC_EXPLICIT_CURVE = 0
-	OPENSSL_EC_NAMED_CURVE    = 1
+	EC_EXPLICIT_CURVE = 0
+	EC_NAMED_CURVE    = 1
 )
 const (
 	EVP_PKEY_CTRL_EC_PARAMGEN_CURVE_NID = 4097
@@ -40,7 +40,7 @@ const (
 //  it is actually specified in ANSI X9.63.
 //  This identifier is retained for backwards compatibility
 const EVP_PKEY_ECDH_KDF_X9_62 = 2
-const OPENSSL_ECC_MAX_FIELD_BITS = 661
+const ECC_MAX_FIELD_BITS = 661
 
 // some values for the encoding_flag
 const (
