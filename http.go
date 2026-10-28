@@ -25,7 +25,7 @@ const (
 
 // High-level HTTP API
 //
-// llgo:type C
+//llgo:cdecl
 type OSSL_HTTP_bio_cb_t = func(_llcppg_param1 *BIO, _llcppg_param2 unsafe.Pointer, _llcppg_param3 c.Int, _llcppg_param4 c.Int) *BIO
 
 // We want to have this even in case of OPENSSL_NO_HTTP
@@ -35,69 +35,69 @@ func OSSL_parse_url(url *c.Char, pscheme **c.Char, puser **c.Char, phost **c.Cha
 
 // Low-level HTTP API
 //
-// llgo:link (*BIO).OSSL_HTTP_REQ_CTX_new C.OSSL_HTTP_REQ_CTX_new
+//llgo:link (*BIO).OSSL_HTTP_REQ_CTX_new C.OSSL_HTTP_REQ_CTX_new
 func (self *BIO) OSSL_HTTP_REQ_CTX_new(rbio *BIO, buf_size c.Int) *OSSL_HTTP_REQ_CTX {
 	return nil
 }
 
-// llgo:link (*OSSL_HTTP_REQ_CTX).Free C.OSSL_HTTP_REQ_CTX_free
+//llgo:link (*OSSL_HTTP_REQ_CTX).Free C.OSSL_HTTP_REQ_CTX_free
 func (self *OSSL_HTTP_REQ_CTX) Free() {
 }
 
-// llgo:link (*OSSL_HTTP_REQ_CTX).SetRequestLine C.OSSL_HTTP_REQ_CTX_set_request_line
+//llgo:link (*OSSL_HTTP_REQ_CTX).SetRequestLine C.OSSL_HTTP_REQ_CTX_set_request_line
 func (self *OSSL_HTTP_REQ_CTX) SetRequestLine(method_POST c.Int, server *c.Char, port *c.Char, path *c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_HTTP_REQ_CTX).Add1Header C.OSSL_HTTP_REQ_CTX_add1_header
+//llgo:link (*OSSL_HTTP_REQ_CTX).Add1Header C.OSSL_HTTP_REQ_CTX_add1_header
 func (self *OSSL_HTTP_REQ_CTX) Add1Header(name *c.Char, value *c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_HTTP_REQ_CTX).SetExpected C.OSSL_HTTP_REQ_CTX_set_expected
+//llgo:link (*OSSL_HTTP_REQ_CTX).SetExpected C.OSSL_HTTP_REQ_CTX_set_expected
 func (self *OSSL_HTTP_REQ_CTX) SetExpected(content_type *c.Char, asn1 c.Int, timeout c.Int, keep_alive c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_HTTP_REQ_CTX).Set1Req C.OSSL_HTTP_REQ_CTX_set1_req
+//llgo:link (*OSSL_HTTP_REQ_CTX).Set1Req C.OSSL_HTTP_REQ_CTX_set1_req
 func (self *OSSL_HTTP_REQ_CTX) Set1Req(content_type *c.Char, it *ASN1_ITEM, req *ASN1_VALUE) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_HTTP_REQ_CTX).Nbio C.OSSL_HTTP_REQ_CTX_nbio
+//llgo:link (*OSSL_HTTP_REQ_CTX).Nbio C.OSSL_HTTP_REQ_CTX_nbio
 func (self *OSSL_HTTP_REQ_CTX) Nbio() c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_HTTP_REQ_CTX).NbioD2i C.OSSL_HTTP_REQ_CTX_nbio_d2i
+//llgo:link (*OSSL_HTTP_REQ_CTX).NbioD2i C.OSSL_HTTP_REQ_CTX_nbio_d2i
 func (self *OSSL_HTTP_REQ_CTX) NbioD2i(pval **ASN1_VALUE, it *ASN1_ITEM) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_HTTP_REQ_CTX).Exchange C.OSSL_HTTP_REQ_CTX_exchange
+//llgo:link (*OSSL_HTTP_REQ_CTX).Exchange C.OSSL_HTTP_REQ_CTX_exchange
 func (self *OSSL_HTTP_REQ_CTX) Exchange() *BIO {
 	return nil
 }
 
-// llgo:link (*OSSL_HTTP_REQ_CTX).Get0MemBio C.OSSL_HTTP_REQ_CTX_get0_mem_bio
+//llgo:link (*OSSL_HTTP_REQ_CTX).Get0MemBio C.OSSL_HTTP_REQ_CTX_get0_mem_bio
 func (self *OSSL_HTTP_REQ_CTX) Get0MemBio() *BIO {
 	return nil
 }
 
-// llgo:link (*OSSL_HTTP_REQ_CTX).RespLen C.OSSL_HTTP_REQ_CTX_get_resp_len
+//llgo:link (*OSSL_HTTP_REQ_CTX).RespLen C.OSSL_HTTP_REQ_CTX_get_resp_len
 func (self *OSSL_HTTP_REQ_CTX) RespLen() c.SizeT {
 	return 0
 }
 
-// llgo:link (*OSSL_HTTP_REQ_CTX).SetMaxResponseLength C.OSSL_HTTP_REQ_CTX_set_max_response_length
+//llgo:link (*OSSL_HTTP_REQ_CTX).SetMaxResponseLength C.OSSL_HTTP_REQ_CTX_set_max_response_length
 func (self *OSSL_HTTP_REQ_CTX) SetMaxResponseLength(len c.Ulong) {
 }
 
-// llgo:link (*OSSL_HTTP_REQ_CTX).SetMaxResponseHdrLines C.OSSL_HTTP_REQ_CTX_set_max_response_hdr_lines
+//llgo:link (*OSSL_HTTP_REQ_CTX).SetMaxResponseHdrLines C.OSSL_HTTP_REQ_CTX_set_max_response_hdr_lines
 func (self *OSSL_HTTP_REQ_CTX) SetMaxResponseHdrLines(count c.SizeT) {
 }
 
-// llgo:link (*OSSL_HTTP_REQ_CTX).IsAlive C.OSSL_HTTP_is_alive
+//llgo:link (*OSSL_HTTP_REQ_CTX).IsAlive C.OSSL_HTTP_is_alive
 func (self *OSSL_HTTP_REQ_CTX) IsAlive() c.Int {
 	return 0
 }
@@ -105,17 +105,17 @@ func (self *OSSL_HTTP_REQ_CTX) IsAlive() c.Int {
 //go:linkname OSSL_HTTP_open C.OSSL_HTTP_open
 func OSSL_HTTP_open(server *c.Char, port *c.Char, proxy *c.Char, no_proxy *c.Char, use_ssl c.Int, bio *BIO, rbio *BIO, bio_update_fn OSSL_HTTP_bio_cb_t, arg unsafe.Pointer, buf_size c.Int, overall_timeout c.Int) *OSSL_HTTP_REQ_CTX
 
-// llgo:link (*BIO).OSSL_HTTP_proxy_connect C.OSSL_HTTP_proxy_connect
+//llgo:link (*BIO).OSSL_HTTP_proxy_connect C.OSSL_HTTP_proxy_connect
 func (self *BIO) OSSL_HTTP_proxy_connect(server *c.Char, port *c.Char, proxyuser *c.Char, proxypass *c.Char, timeout c.Int, bio_err *BIO, prog *c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_HTTP_REQ_CTX).Set1Request C.OSSL_HTTP_set1_request
+//llgo:link (*OSSL_HTTP_REQ_CTX).Set1Request C.OSSL_HTTP_set1_request
 func (self *OSSL_HTTP_REQ_CTX) Set1Request(path *c.Char, headers *Stack_st_CONF_VALUE, content_type *c.Char, req *BIO, expected_content_type *c.Char, expect_asn1 c.Int, max_resp_len c.SizeT, timeout c.Int, keep_alive c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_HTTP_REQ_CTX).HTTP_exchange C.OSSL_HTTP_exchange
+//llgo:link (*OSSL_HTTP_REQ_CTX).HTTP_exchange C.OSSL_HTTP_exchange
 func (self *OSSL_HTTP_REQ_CTX) HTTP_exchange(redirection_url **c.Char) *BIO {
 	return nil
 }
@@ -126,7 +126,7 @@ func OSSL_HTTP_get(url *c.Char, proxy *c.Char, no_proxy *c.Char, bio *BIO, rbio 
 //go:linkname OSSL_HTTP_transfer C.OSSL_HTTP_transfer
 func OSSL_HTTP_transfer(prctx **OSSL_HTTP_REQ_CTX, server *c.Char, port *c.Char, path *c.Char, use_ssl c.Int, proxy *c.Char, no_proxy *c.Char, bio *BIO, rbio *BIO, bio_update_fn OSSL_HTTP_bio_cb_t, arg unsafe.Pointer, buf_size c.Int, headers *Stack_st_CONF_VALUE, content_type *c.Char, req *BIO, expected_content_type *c.Char, expect_asn1 c.Int, max_resp_len c.SizeT, timeout c.Int, keep_alive c.Int) *BIO
 
-// llgo:link (*OSSL_HTTP_REQ_CTX).Close C.OSSL_HTTP_close
+//llgo:link (*OSSL_HTTP_REQ_CTX).Close C.OSSL_HTTP_close
 func (self *OSSL_HTTP_REQ_CTX) Close(ok c.Int) c.Int {
 	return 0
 }

@@ -4,13 +4,13 @@ package openssl
 
 import "github.com/goplus/lib/c"
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_INDICATOR_CALLBACK = func(_llcppg_param1 *c.Char, _llcppg_param2 *c.Char, _llcppg_param3 *OSSL_PARAM) c.Int
 
-// llgo:link (*OSSL_LIB_CTX).OSSL_INDICATOR_set_callback C.OSSL_INDICATOR_set_callback
+//llgo:link (*OSSL_LIB_CTX).OSSL_INDICATOR_set_callback C.OSSL_INDICATOR_set_callback
 func (self *OSSL_LIB_CTX) OSSL_INDICATOR_set_callback(cb *OSSL_INDICATOR_CALLBACK) {
 }
 
-// llgo:link (*OSSL_LIB_CTX).OSSL_INDICATOR_get_callback C.OSSL_INDICATOR_get_callback
+//llgo:link (*OSSL_LIB_CTX).OSSL_INDICATOR_get_callback C.OSSL_INDICATOR_get_callback
 func (self *OSSL_LIB_CTX) OSSL_INDICATOR_get_callback(cb **OSSL_INDICATOR_CALLBACK) {
 }

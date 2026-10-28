@@ -22,19 +22,28 @@ func BUF_MEM_new() *BUF_MEM
 //go:linkname BUF_MEM_new_ex C.BUF_MEM_new_ex
 func BUF_MEM_new_ex(flags c.Ulong) *BUF_MEM
 
-// llgo:link (*BUF_MEM).Free C.BUF_MEM_free
+//llgo:link (*BUF_MEM).Free C.BUF_MEM_free
 func (self *BUF_MEM) Free() {
 }
 
-// llgo:link (*BUF_MEM).Grow C.BUF_MEM_grow
+//llgo:link (*BUF_MEM).Grow C.BUF_MEM_grow
 func (self *BUF_MEM) Grow(len c.SizeT) c.SizeT {
 	return 0
 }
 
-// llgo:link (*BUF_MEM).GrowClean C.BUF_MEM_grow_clean
+//llgo:link (*BUF_MEM).GrowClean C.BUF_MEM_grow_clean
 func (self *BUF_MEM) GrowClean(len c.SizeT) c.SizeT {
 	return 0
 }
 
 //go:linkname BUF_reverse C.BUF_reverse
 func BUF_reverse(out *uint8, in *uint8, siz c.SizeT)
+func BUF_strlcpy(dst *c.Char, src *c.Char, size c.SizeT) c.SizeT {
+	return Strlcpy(dst, src, size)
+}
+func BUF_strlcat(dst *c.Char, src *c.Char, size c.SizeT) c.SizeT {
+	return Strlcat(dst, src, size)
+}
+func BUF_strnlen(str *c.Char, maxlen c.SizeT) c.SizeT {
+	return Strnlen(str, maxlen)
+}

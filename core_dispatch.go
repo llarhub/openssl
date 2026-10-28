@@ -438,851 +438,851 @@ const (
 // functions of various signatures must occupy a common slot in an array of
 // structures.
 //
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC = func()
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_core_gettable_params_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_core_get_params_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_core_thread_start_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 OSSL_thread_stop_handler_fn, _llcppg_param3 unsafe.Pointer) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_core_get_libctx_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE) *CORE_CTX
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_core_new_error_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE)
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_core_set_error_debug_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 *c.Char, _llcppg_param3 c.Int, _llcppg_param4 *c.Char)
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_core_vset_error_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 c.Uint32T, _llcppg_param3 *c.Char, _llcppg_param4 c.VaList)
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_core_set_error_mark_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_core_clear_last_error_mark_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_core_pop_error_to_mark_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_core_obj_add_sigid_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 *c.Char, _llcppg_param3 *c.Char, _llcppg_param4 *c.Char) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_core_obj_create_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 *c.Char, _llcppg_param3 *c.Char, _llcppg_param4 *c.Char) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_CRYPTO_malloc_fn = func(_llcppg_param1 c.SizeT, _llcppg_param2 *c.Char, _llcppg_param3 c.Int) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_CRYPTO_zalloc_fn = func(_llcppg_param1 c.SizeT, _llcppg_param2 *c.Char, _llcppg_param3 c.Int) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_CRYPTO_free_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char, _llcppg_param3 c.Int)
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_CRYPTO_clear_free_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.SizeT, _llcppg_param3 *c.Char, _llcppg_param4 c.Int)
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_CRYPTO_realloc_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.SizeT, _llcppg_param3 *c.Char, _llcppg_param4 c.Int) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_CRYPTO_clear_realloc_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.SizeT, _llcppg_param3 c.SizeT, _llcppg_param4 *c.Char, _llcppg_param5 c.Int) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_CRYPTO_secure_malloc_fn = func(_llcppg_param1 c.SizeT, _llcppg_param2 *c.Char, _llcppg_param3 c.Int) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_CRYPTO_secure_zalloc_fn = func(_llcppg_param1 c.SizeT, _llcppg_param2 *c.Char, _llcppg_param3 c.Int) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_CRYPTO_secure_free_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char, _llcppg_param3 c.Int)
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_CRYPTO_secure_clear_free_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.SizeT, _llcppg_param3 *c.Char, _llcppg_param4 c.Int)
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_CRYPTO_secure_allocated_fn = func(_llcppg_param1 unsafe.Pointer) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_OPENSSL_cleanse_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.SizeT)
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_BIO_new_file_fn = func(_llcppg_param1 *c.Char, _llcppg_param2 *c.Char) *OSSL_CORE_BIO
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_BIO_new_membuf_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int) *OSSL_CORE_BIO
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_BIO_read_ex_fn = func(_llcppg_param1 *OSSL_CORE_BIO, _llcppg_param2 unsafe.Pointer, _llcppg_param3 c.SizeT, _llcppg_param4 *c.SizeT) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_BIO_write_ex_fn = func(_llcppg_param1 *OSSL_CORE_BIO, _llcppg_param2 unsafe.Pointer, _llcppg_param3 c.SizeT, _llcppg_param4 *c.SizeT) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_BIO_gets_fn = func(_llcppg_param1 *OSSL_CORE_BIO, _llcppg_param2 *c.Char, _llcppg_param3 c.Int) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_BIO_puts_fn = func(_llcppg_param1 *OSSL_CORE_BIO, _llcppg_param2 *c.Char) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_BIO_up_ref_fn = func(_llcppg_param1 *OSSL_CORE_BIO) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_BIO_free_fn = func(_llcppg_param1 *OSSL_CORE_BIO) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_BIO_vprintf_fn = func(_llcppg_param1 *OSSL_CORE_BIO, _llcppg_param2 *c.Char, _llcppg_param3 c.VaList) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_BIO_vsnprintf_fn = func(_llcppg_param1 *c.Char, _llcppg_param2 c.SizeT, _llcppg_param3 *c.Char, _llcppg_param4 c.VaList) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_BIO_ctrl_fn = func(_llcppg_param1 *OSSL_CORE_BIO, _llcppg_param2 c.Int, _llcppg_param3 c.Long, _llcppg_param4 unsafe.Pointer) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_indicator_cb_fn = func(_llcppg_param1 *CORE_CTX, _llcppg_param2 **OSSL_INDICATOR_CALLBACK)
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_self_test_cb_fn = func(_llcppg_param1 *CORE_CTX, _llcppg_param2 **OSSL_CALLBACK, _llcppg_param3 *unsafe.Pointer)
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_get_entropy_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 **uint8, _llcppg_param3 c.Int, _llcppg_param4 c.SizeT, _llcppg_param5 c.SizeT) c.SizeT
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_get_user_entropy_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 **uint8, _llcppg_param3 c.Int, _llcppg_param4 c.SizeT, _llcppg_param5 c.SizeT) c.SizeT
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_cleanup_entropy_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT)
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_cleanup_user_entropy_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT)
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_get_nonce_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 **uint8, _llcppg_param3 c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 unsafe.Pointer, _llcppg_param6 c.SizeT) c.SizeT
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_get_user_nonce_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 **uint8, _llcppg_param3 c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 unsafe.Pointer, _llcppg_param6 c.SizeT) c.SizeT
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_cleanup_nonce_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT)
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_cleanup_user_nonce_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT)
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_provider_register_child_cb_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 unsafe.Pointer) c.Int, _llcppg_param3 func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 unsafe.Pointer) c.Int, _llcppg_param4 func(_llcppg_param1 *c.Char, _llcppg_param2 unsafe.Pointer) c.Int, _llcppg_param5 unsafe.Pointer) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_provider_deregister_child_cb_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE)
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_provider_name_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE) *c.Char
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_provider_get0_provider_ctx_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_provider_get0_dispatch_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE) *OSSL_DISPATCH
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_provider_up_ref_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 c.Int) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_provider_free_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 c.Int) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_core_count_to_mark_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_provider_teardown_fn = func(_llcppg_param1 unsafe.Pointer)
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_provider_gettable_params_fn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_provider_get_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_provider_query_operation_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 *c.Int) *OSSL_ALGORITHM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_provider_unquery_operation_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 *OSSL_ALGORITHM)
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_provider_get_reason_strings_fn = func(_llcppg_param1 unsafe.Pointer) *OSSL_ITEM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_provider_get_capabilities_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char, _llcppg_param3 *OSSL_CALLBACK, _llcppg_param4 unsafe.Pointer) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_provider_self_test_fn = func(_llcppg_param1 unsafe.Pointer) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_provider_random_bytes_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 unsafe.Pointer, _llcppg_param4 c.SizeT, _llcppg_param5 c.Uint) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_SSL_QUIC_TLS_crypto_send_fn = func(_llcppg_param1 *SSL, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 *c.SizeT, _llcppg_param5 unsafe.Pointer) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_SSL_QUIC_TLS_crypto_recv_rcd_fn = func(_llcppg_param1 *SSL, _llcppg_param2 **uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 unsafe.Pointer) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_SSL_QUIC_TLS_crypto_release_rcd_fn = func(_llcppg_param1 *SSL, _llcppg_param2 c.SizeT, _llcppg_param3 unsafe.Pointer) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_SSL_QUIC_TLS_yield_secret_fn = func(_llcppg_param1 *SSL, _llcppg_param2 c.Uint32T, _llcppg_param3 c.Int, _llcppg_param4 *uint8, _llcppg_param5 c.SizeT, _llcppg_param6 unsafe.Pointer) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_SSL_QUIC_TLS_got_transport_params_fn = func(_llcppg_param1 *SSL, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 unsafe.Pointer) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_SSL_QUIC_TLS_alert_fn = func(_llcppg_param1 *SSL, _llcppg_param2 uint8, _llcppg_param3 unsafe.Pointer) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_digest_newctx_fn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_digest_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_digest_update_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_digest_final_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_digest_squeeze_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_digest_digest_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 *uint8, _llcppg_param5 *c.SizeT, _llcppg_param6 c.SizeT) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_digest_freectx_fn = func(_llcppg_param1 unsafe.Pointer)
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_digest_dupctx_fn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_digest_copyctx_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer)
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_digest_get_params_fn = func(_llcppg_param1 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_digest_set_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_digest_get_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_digest_gettable_params_fn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_digest_settable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_digest_gettable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_digest_serialize_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_digest_deserialize_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_cipher_newctx_fn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_cipher_encrypt_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 *uint8, _llcppg_param5 c.SizeT, _llcppg_param6 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_cipher_decrypt_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 *uint8, _llcppg_param5 c.SizeT, _llcppg_param6 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_cipher_update_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 *uint8, _llcppg_param6 c.SizeT) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_cipher_final_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_cipher_cipher_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 *uint8, _llcppg_param6 c.SizeT) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_cipher_pipeline_encrypt_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 **uint8, _llcppg_param6 c.SizeT, _llcppg_param7 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_cipher_pipeline_decrypt_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 **uint8, _llcppg_param6 c.SizeT, _llcppg_param7 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_cipher_pipeline_update_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.SizeT, _llcppg_param3 **uint8, _llcppg_param4 *c.SizeT, _llcppg_param5 *c.SizeT, _llcppg_param6 **uint8, _llcppg_param7 *c.SizeT) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_cipher_pipeline_final_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.SizeT, _llcppg_param3 **uint8, _llcppg_param4 *c.SizeT, _llcppg_param5 *c.SizeT) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_cipher_freectx_fn = func(_llcppg_param1 unsafe.Pointer)
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_cipher_dupctx_fn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_cipher_get_params_fn = func(_llcppg_param1 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_cipher_get_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_cipher_set_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_cipher_gettable_params_fn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_cipher_settable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_cipher_gettable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_cipher_encrypt_skey_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *uint8, _llcppg_param4 c.SizeT, _llcppg_param5 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_cipher_decrypt_skey_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *uint8, _llcppg_param4 c.SizeT, _llcppg_param5 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_mac_newctx_fn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_mac_dupctx_fn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_mac_freectx_fn = func(_llcppg_param1 unsafe.Pointer)
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_mac_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_mac_update_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_mac_final_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_mac_gettable_params_fn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_mac_gettable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_mac_settable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_mac_get_params_fn = func(_llcppg_param1 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_mac_get_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_mac_set_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_mac_init_skey_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_skeymgmt_free_fn = func(_llcppg_param1 unsafe.Pointer)
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_skeymgmt_imp_settable_params_fn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_skeymgmt_import_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 *OSSL_PARAM) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_skeymgmt_export_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 *OSSL_CALLBACK, _llcppg_param4 unsafe.Pointer) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_skeymgmt_gen_settable_params_fn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_skeymgmt_generate_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_skeymgmt_get_key_id_fn = func(_llcppg_param1 unsafe.Pointer) *c.Char
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_kdf_newctx_fn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_kdf_dupctx_fn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_kdf_freectx_fn = func(_llcppg_param1 unsafe.Pointer)
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_kdf_reset_fn = func(_llcppg_param1 unsafe.Pointer)
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_kdf_derive_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_kdf_gettable_params_fn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_kdf_gettable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_kdf_settable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_kdf_get_params_fn = func(_llcppg_param1 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_kdf_get_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_kdf_set_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_kdf_set_skey_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *c.Char) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_kdf_derive_skey_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char, _llcppg_param3 unsafe.Pointer, _llcppg_param4 *OSSL_FUNC_skeymgmt_import_fn, _llcppg_param5 c.SizeT, _llcppg_param6 *OSSL_PARAM) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_rand_newctx_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *OSSL_DISPATCH) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_rand_freectx_fn = func(_llcppg_param1 unsafe.Pointer)
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_rand_instantiate_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Uint, _llcppg_param3 c.Int, _llcppg_param4 *uint8, _llcppg_param5 c.SizeT, _llcppg_param6 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_rand_uninstantiate_fn = func(_llcppg_param1 unsafe.Pointer) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_rand_generate_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 c.Uint, _llcppg_param5 c.Int, _llcppg_param6 *uint8, _llcppg_param7 c.SizeT) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_rand_reseed_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 *uint8, _llcppg_param4 c.SizeT, _llcppg_param5 *uint8, _llcppg_param6 c.SizeT) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_rand_nonce_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.Uint, _llcppg_param4 c.SizeT, _llcppg_param5 c.SizeT) c.SizeT
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_rand_enable_locking_fn = func(_llcppg_param1 unsafe.Pointer) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_rand_lock_fn = func(_llcppg_param1 unsafe.Pointer) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_rand_unlock_fn = func(_llcppg_param1 unsafe.Pointer)
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_rand_gettable_params_fn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_rand_gettable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_rand_settable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_rand_get_params_fn = func(_llcppg_param1 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_rand_get_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_rand_set_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_rand_set_callbacks_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_INOUT_CALLBACK, _llcppg_param3 *OSSL_CALLBACK, _llcppg_param4 *OSSL_INOUT_CALLBACK, _llcppg_param5 *OSSL_CALLBACK, _llcppg_param6 unsafe.Pointer)
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_rand_verify_zeroization_fn = func(_llcppg_param1 unsafe.Pointer) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_rand_get_seed_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 **uint8, _llcppg_param3 c.Int, _llcppg_param4 c.SizeT, _llcppg_param5 c.SizeT, _llcppg_param6 c.Int, _llcppg_param7 *uint8, _llcppg_param8 c.SizeT) c.SizeT
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_rand_clear_seed_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT)
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keymgmt_new_fn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keymgmt_new_ex_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keymgmt_gen_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 *OSSL_PARAM) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keymgmt_gen_set_template_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keymgmt_gen_set_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keymgmt_gen_settable_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keymgmt_gen_get_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keymgmt_gen_gettable_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keymgmt_gen_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_CALLBACK, _llcppg_param3 unsafe.Pointer) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keymgmt_gen_cleanup_fn = func(_llcppg_param1 unsafe.Pointer)
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keymgmt_load_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.SizeT) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keymgmt_free_fn = func(_llcppg_param1 unsafe.Pointer)
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keymgmt_get_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keymgmt_gettable_params_fn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keymgmt_set_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keymgmt_settable_params_fn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keymgmt_query_operation_name_fn = func(_llcppg_param1 c.Int) *c.Char
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keymgmt_has_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keymgmt_validate_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 c.Int) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keymgmt_match_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 c.Int) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keymgmt_import_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keymgmt_import_types_fn = func(_llcppg_param1 c.Int) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keymgmt_export_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 *OSSL_CALLBACK, _llcppg_param4 unsafe.Pointer) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keymgmt_export_types_fn = func(_llcppg_param1 c.Int) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keymgmt_dup_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keymgmt_import_types_ex_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keymgmt_export_types_ex_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keyexch_newctx_fn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keyexch_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keyexch_derive_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keyexch_set_peer_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keyexch_freectx_fn = func(_llcppg_param1 unsafe.Pointer)
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keyexch_dupctx_fn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keyexch_set_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keyexch_settable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keyexch_get_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keyexch_gettable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_keyexch_derive_skey_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char, _llcppg_param3 unsafe.Pointer, _llcppg_param4 *OSSL_FUNC_skeymgmt_import_fn, _llcppg_param5 c.SizeT, _llcppg_param6 *OSSL_PARAM) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_signature_newctx_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_signature_sign_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_signature_sign_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 *uint8, _llcppg_param6 c.SizeT) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_signature_sign_message_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_signature_sign_message_update_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_signature_sign_message_final_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_signature_verify_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_signature_verify_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 *uint8, _llcppg_param5 c.SizeT) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_signature_verify_message_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_signature_verify_message_update_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT) c.Int
 
 // signature_verify_final requires that the signature to be verified against
 // is specified via an OSSL_PARAM.
 //
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_signature_verify_message_final_fn = func(_llcppg_param1 unsafe.Pointer) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_signature_verify_recover_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_signature_verify_recover_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 *uint8, _llcppg_param6 c.SizeT) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_signature_digest_sign_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char, _llcppg_param3 unsafe.Pointer, _llcppg_param4 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_signature_digest_sign_update_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_signature_digest_sign_final_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_signature_digest_sign_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 *uint8, _llcppg_param6 c.SizeT) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_signature_digest_verify_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char, _llcppg_param3 unsafe.Pointer, _llcppg_param4 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_signature_digest_verify_update_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_signature_digest_verify_final_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_signature_digest_verify_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 c.SizeT, _llcppg_param4 *uint8, _llcppg_param5 c.SizeT) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_signature_freectx_fn = func(_llcppg_param1 unsafe.Pointer)
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_signature_dupctx_fn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_signature_get_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_signature_gettable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_signature_set_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_signature_settable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_signature_get_ctx_md_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_signature_gettable_ctx_md_params_fn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_signature_set_ctx_md_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_signature_settable_ctx_md_params_fn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_signature_query_key_types_fn = func() **c.Char
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_asym_cipher_newctx_fn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_asym_cipher_encrypt_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_asym_cipher_encrypt_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 *uint8, _llcppg_param6 c.SizeT) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_asym_cipher_decrypt_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_asym_cipher_decrypt_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 c.SizeT, _llcppg_param5 *uint8, _llcppg_param6 c.SizeT) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_asym_cipher_freectx_fn = func(_llcppg_param1 unsafe.Pointer)
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_asym_cipher_dupctx_fn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_asym_cipher_get_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_asym_cipher_gettable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_asym_cipher_set_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_asym_cipher_settable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_kem_newctx_fn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_kem_encapsulate_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_kem_auth_encapsulate_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 unsafe.Pointer, _llcppg_param4 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_kem_encapsulate_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 *uint8, _llcppg_param5 *c.SizeT) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_kem_decapsulate_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_kem_auth_decapsulate_init_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 unsafe.Pointer, _llcppg_param4 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_kem_decapsulate_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *uint8, _llcppg_param3 *c.SizeT, _llcppg_param4 *uint8, _llcppg_param5 c.SizeT) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_kem_freectx_fn = func(_llcppg_param1 unsafe.Pointer)
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_kem_dupctx_fn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_kem_get_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_kem_gettable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_kem_set_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_kem_settable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_encoder_newctx_fn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_encoder_freectx_fn = func(_llcppg_param1 unsafe.Pointer)
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_encoder_get_params_fn = func(_llcppg_param1 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_encoder_gettable_params_fn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_encoder_set_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_encoder_settable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_encoder_does_selection_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_encoder_encode_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_CORE_BIO, _llcppg_param3 unsafe.Pointer, _llcppg_param4 *OSSL_PARAM, _llcppg_param5 c.Int, _llcppg_param6 *OSSL_PASSPHRASE_CALLBACK, _llcppg_param7 unsafe.Pointer) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_encoder_import_object_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 *OSSL_PARAM) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_encoder_free_object_fn = func(_llcppg_param1 unsafe.Pointer)
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_decoder_newctx_fn = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_decoder_freectx_fn = func(_llcppg_param1 unsafe.Pointer)
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_decoder_get_params_fn = func(_llcppg_param1 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_decoder_gettable_params_fn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_decoder_set_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_decoder_settable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_decoder_does_selection_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_decoder_decode_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_CORE_BIO, _llcppg_param3 c.Int, _llcppg_param4 *OSSL_CALLBACK, _llcppg_param5 unsafe.Pointer, _llcppg_param6 *OSSL_PASSPHRASE_CALLBACK, _llcppg_param7 unsafe.Pointer) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_decoder_export_object_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 c.SizeT, _llcppg_param4 *OSSL_CALLBACK, _llcppg_param5 unsafe.Pointer) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_store_open_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_store_attach_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_CORE_BIO) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_store_settable_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer) *OSSL_PARAM
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_store_set_ctx_params_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_store_load_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *OSSL_CALLBACK, _llcppg_param3 unsafe.Pointer, _llcppg_param4 *OSSL_PASSPHRASE_CALLBACK, _llcppg_param5 unsafe.Pointer) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_store_eof_fn = func(_llcppg_param1 unsafe.Pointer) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_store_close_fn = func(_llcppg_param1 unsafe.Pointer) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_store_export_object_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 c.SizeT, _llcppg_param4 *OSSL_CALLBACK, _llcppg_param5 unsafe.Pointer) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_store_delete_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char, _llcppg_param3 *OSSL_PARAM, _llcppg_param4 *OSSL_PASSPHRASE_CALLBACK, _llcppg_param5 unsafe.Pointer) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_FUNC_store_open_ex_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char, _llcppg_param3 *OSSL_PARAM, _llcppg_param4 *OSSL_PASSPHRASE_CALLBACK, _llcppg_param5 unsafe.Pointer) unsafe.Pointer

@@ -1238,17 +1238,17 @@ type TlsSessionTicketExtSt struct {
 	Data   unsafe.Pointer
 }
 
-// llgo:link (*SSL_CTX).SetTlsextMaxFragmentLength C.SSL_CTX_set_tlsext_max_fragment_length
+//llgo:link (*SSL_CTX).SetTlsextMaxFragmentLength C.SSL_CTX_set_tlsext_max_fragment_length
 func (self *SSL_CTX) SetTlsextMaxFragmentLength(mode c.Uint8T) c.Int {
 	return 0
 }
 
-// llgo:link (*SSL).SetTlsextMaxFragmentLength C.SSL_set_tlsext_max_fragment_length
+//llgo:link (*SSL).SetTlsextMaxFragmentLength C.SSL_set_tlsext_max_fragment_length
 func (self *SSL) SetTlsextMaxFragmentLength(mode c.Uint8T) c.Int {
 	return 0
 }
 
-// llgo:link (*SSL).Servername C.SSL_get_servername
+//llgo:link (*SSL).Servername C.SSL_get_servername
 func (self *SSL) Servername(type_ c.Int) *c.Char {
 	return nil
 }
@@ -1259,7 +1259,7 @@ func (self *SSL) Servername(type_ c.Int) *c.Char {
 // flag controls whether a context is included.) It returns 1 on success and
 // 0 or -1 otherwise.
 //
-// llgo:link (*SSL).ServernameType C.SSL_get_servername_type
+//llgo:link (*SSL).ServernameType C.SSL_get_servername_type
 func (self *SSL) ServernameType() c.Int {
 	return 0
 }
@@ -1270,7 +1270,7 @@ func (self *SSL) ServernameType() c.Int {
 // flag controls whether a context is included.) It returns 1 on success and
 // 0 or -1 otherwise.
 //
-// llgo:link (*SSL).ExportKeyingMaterial C.SSL_export_keying_material
+//llgo:link (*SSL).ExportKeyingMaterial C.SSL_export_keying_material
 func (self *SSL) ExportKeyingMaterial(out *uint8, olen c.SizeT, label *c.Char, llen c.SizeT, context *uint8, contextlen c.SizeT, use_context c.Int) c.Int {
 	return 0
 }
@@ -1281,52 +1281,106 @@ func (self *SSL) ExportKeyingMaterial(out *uint8, olen c.SizeT, label *c.Char, l
 // |olen| bytes to |out| given a label and optional context. It
 // returns 1 on success and 0 otherwise.
 //
-// llgo:link (*SSL).ExportKeyingMaterialEarly C.SSL_export_keying_material_early
+//llgo:link (*SSL).ExportKeyingMaterialEarly C.SSL_export_keying_material_early
 func (self *SSL) ExportKeyingMaterialEarly(out *uint8, olen c.SizeT, label *c.Char, llen c.SizeT, context *uint8, contextlen c.SizeT) c.Int {
 	return 0
 }
 
-// llgo:link (*SSL).PeerSignatureTypeNid C.SSL_get_peer_signature_type_nid
+//llgo:link (*SSL).PeerSignatureTypeNid C.SSL_get_peer_signature_type_nid
 func (self *SSL) PeerSignatureTypeNid(pnid *c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*SSL).SignatureTypeNid C.SSL_get_signature_type_nid
+//llgo:link (*SSL).SignatureTypeNid C.SSL_get_signature_type_nid
 func (self *SSL) SignatureTypeNid(pnid *c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*SSL).Get0Sigalg C.SSL_get0_sigalg
+//llgo:link (*SSL).Get0Sigalg C.SSL_get0_sigalg
 func (self *SSL) Get0Sigalg(idx c.Int, codepoint *c.Uint, name **c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*SSL).Get0SharedSigalg C.SSL_get0_shared_sigalg
+//llgo:link (*SSL).Get0SharedSigalg C.SSL_get0_shared_sigalg
 func (self *SSL) Get0SharedSigalg(idx c.Int, codepoint *c.Uint, name **c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*SSL).Sigalgs C.SSL_get_sigalgs
+//llgo:link (*SSL).Sigalgs C.SSL_get_sigalgs
 func (self *SSL) Sigalgs(idx c.Int, psign *c.Int, phash *c.Int, psignandhash *c.Int, rsig *uint8, rhash *uint8) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_LIB_CTX).SSL_get1_builtin_sigalgs C.SSL_get1_builtin_sigalgs
+//llgo:link (*OSSL_LIB_CTX).SSL_get1_builtin_sigalgs C.SSL_get1_builtin_sigalgs
 func (self *OSSL_LIB_CTX) SSL_get1_builtin_sigalgs() *c.Char {
 	return nil
 }
 
-// llgo:link (*SSL).SharedSigalgs C.SSL_get_shared_sigalgs
+//llgo:link (*SSL).SharedSigalgs C.SSL_get_shared_sigalgs
 func (self *SSL) SharedSigalgs(idx c.Int, psign *c.Int, phash *c.Int, psignandhash *c.Int, rsig *uint8, rhash *uint8) c.Int {
 	return 0
 }
 
-// llgo:link (*SSL).CheckChain C.SSL_check_chain
+//llgo:link (*SSL).CheckChain C.SSL_check_chain
 func (self *SSL) CheckChain(x *X509, pk *EVP_PKEY, chain *Stack_st_X509) c.Int {
 	return 0
 }
 
-// llgo:link (*SSL_CTX).SetTlsextTicketKeyEvpCb C.SSL_CTX_set_tlsext_ticket_key_evp_cb
+//llgo:link (*SSL_CTX).SetTlsextTicketKeyEvpCb C.SSL_CTX_set_tlsext_ticket_key_evp_cb
 func (self *SSL_CTX) SetTlsextTicketKeyEvpCb(fp func(_llcppg_param1 *SSL, _llcppg_param2 *uint8, _llcppg_param3 *uint8, _llcppg_param4 *EVP_CIPHER_CTX, _llcppg_param5 *EVP_MAC_CTX, _llcppg_param6 c.Int) c.Int) c.Int {
 	return 0
+}
+func (self *SSL) SetTlsextDebugArg(arg unsafe.Pointer) c.Long {
+	return self.Ctrl(57, 0, arg)
+}
+func (self *SSL) TlsextStatusType() c.Long {
+	return self.Ctrl(127, 0, nil)
+}
+func (self *SSL) SetTlsextStatusType(type_ c.Long) c.Long {
+	return self.Ctrl(65, type_, nil)
+}
+func (self *SSL) TlsextStatusExts(arg unsafe.Pointer) c.Long {
+	return self.Ctrl(66, 0, arg)
+}
+func (self *SSL) SetTlsextStatusExts(arg unsafe.Pointer) c.Long {
+	return self.Ctrl(67, 0, arg)
+}
+func (self *SSL) TlsextStatusIds(arg unsafe.Pointer) c.Long {
+	return self.Ctrl(68, 0, arg)
+}
+func (self *SSL) SetTlsextStatusIds(arg unsafe.Pointer) c.Long {
+	return self.Ctrl(69, 0, arg)
+}
+func (self *SSL) TlsextStatusOcspResp(arg unsafe.Pointer) c.Long {
+	return self.Ctrl(70, 0, arg)
+}
+func (self *SSL) SetTlsextStatusOcspResp(arg unsafe.Pointer, arglen c.Long) c.Long {
+	return self.Ctrl(71, arglen, arg)
+}
+func (self *SSL) Get0TlsextStatusOcspRespEx(arg unsafe.Pointer) c.Long {
+	return self.Ctrl(142, 0, arg)
+}
+func (self *SSL) Set0TlsextStatusOcspRespEx(arg unsafe.Pointer) c.Long {
+	return self.Ctrl(143, 0, arg)
+}
+func (self *SSL_CTX) SetTlsextServernameArg(arg unsafe.Pointer) c.Long {
+	return self.Ctrl(54, 0, arg)
+}
+func (self *SSL_CTX) TlsextTicketKeys(keys unsafe.Pointer, keylen c.Long) c.Long {
+	return self.Ctrl(58, keylen, keys)
+}
+func (self *SSL_CTX) SetTlsextTicketKeys(keys unsafe.Pointer, keylen c.Long) c.Long {
+	return self.Ctrl(59, keylen, keys)
+}
+func (self *SSL_CTX) TlsextStatusArg(arg unsafe.Pointer) c.Long {
+	return self.Ctrl(129, 0, arg)
+}
+func (self *SSL_CTX) SetTlsextStatusArg(arg unsafe.Pointer) c.Long {
+	return self.Ctrl(64, 0, arg)
+}
+func (self *SSL_CTX) SetTlsextStatusType(type_ c.Long) c.Long {
+	return self.Ctrl(65, type_, nil)
+}
+func (self *SSL_CTX) TlsextStatusType() c.Long {
+	return self.Ctrl(127, 0, nil)
 }

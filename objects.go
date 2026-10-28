@@ -58,7 +58,7 @@ func OBJ_NAME_do_all(type_ c.Int, fn func(_llcppg_param1 *OBJ_NAME, _llcppg_para
 //go:linkname OBJ_NAME_do_all_sorted C.OBJ_NAME_do_all_sorted
 func OBJ_NAME_do_all_sorted(type_ c.Int, fn func(_llcppg_param1 *OBJ_NAME, _llcppg_param2 unsafe.Pointer), arg unsafe.Pointer)
 
-// llgo:link (*ASN1_OBJECT).Dup C.OBJ_dup
+//llgo:link (*ASN1_OBJECT).Dup C.OBJ_dup
 func (self *ASN1_OBJECT) Dup() *ASN1_OBJECT {
 	return self
 }
@@ -72,7 +72,7 @@ func OBJ_nid2ln(n c.Int) *c.Char
 //go:linkname OBJ_nid2sn C.OBJ_nid2sn
 func OBJ_nid2sn(n c.Int) *c.Char
 
-// llgo:link (*ASN1_OBJECT).Obj2nid C.OBJ_obj2nid
+//llgo:link (*ASN1_OBJECT).Obj2nid C.OBJ_obj2nid
 func (self *ASN1_OBJECT) Obj2nid() c.Int {
 	return 0
 }
@@ -104,7 +104,7 @@ func OBJ_bsearch_ex_(key unsafe.Pointer, base unsafe.Pointer, num c.Int, size c.
 //go:linkname OBJ_new_nid C.OBJ_new_nid
 func OBJ_new_nid(num c.Int) c.Int
 
-// llgo:link (*ASN1_OBJECT).AddObject C.OBJ_add_object
+//llgo:link (*ASN1_OBJECT).AddObject C.OBJ_add_object
 func (self *ASN1_OBJECT) AddObject() c.Int {
 	return 0
 }
@@ -112,17 +112,17 @@ func (self *ASN1_OBJECT) AddObject() c.Int {
 //go:linkname OBJ_create C.OBJ_create
 func OBJ_create(oid *c.Char, sn *c.Char, ln *c.Char) c.Int
 
-// llgo:link (*BIO).OBJ_create_objects C.OBJ_create_objects
+//llgo:link (*BIO).OBJ_create_objects C.OBJ_create_objects
 func (self *BIO) OBJ_create_objects() c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_OBJECT).Length C.OBJ_length
+//llgo:link (*ASN1_OBJECT).Length C.OBJ_length
 func (self *ASN1_OBJECT) Length() c.SizeT {
 	return 0
 }
 
-// llgo:link (*ASN1_OBJECT).Get0Data C.OBJ_get0_data
+//llgo:link (*ASN1_OBJECT).Get0Data C.OBJ_get0_data
 func (self *ASN1_OBJECT) Get0Data() *uint8 {
 	return nil
 }
@@ -138,3 +138,6 @@ func OBJ_add_sigid(signid c.Int, dig_id c.Int, pkey_id c.Int) c.Int
 
 //go:linkname OBJ_sigid_free C.OBJ_sigid_free
 func OBJ_sigid_free()
+func OBJ_create_and_add_object(a *c.Char, b *c.Char, c *c.Char) c.Int {
+	return OBJ_create(a, b, c)
+}

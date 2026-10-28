@@ -34,37 +34,37 @@ type DSA_SIG_st struct {
 }
 type DSA_SIG DSA_SIG_st
 
-// llgo:link (*EVP_PKEY_CTX).SetDsaParamgenBits C.EVP_PKEY_CTX_set_dsa_paramgen_bits
+//llgo:link (*EVP_PKEY_CTX).SetDsaParamgenBits C.EVP_PKEY_CTX_set_dsa_paramgen_bits
 func (self *EVP_PKEY_CTX) SetDsaParamgenBits(nbits c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*EVP_PKEY_CTX).SetDsaParamgenQBits C.EVP_PKEY_CTX_set_dsa_paramgen_q_bits
+//llgo:link (*EVP_PKEY_CTX).SetDsaParamgenQBits C.EVP_PKEY_CTX_set_dsa_paramgen_q_bits
 func (self *EVP_PKEY_CTX) SetDsaParamgenQBits(qbits c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*EVP_PKEY_CTX).SetDsaParamgenMdProps C.EVP_PKEY_CTX_set_dsa_paramgen_md_props
+//llgo:link (*EVP_PKEY_CTX).SetDsaParamgenMdProps C.EVP_PKEY_CTX_set_dsa_paramgen_md_props
 func (self *EVP_PKEY_CTX) SetDsaParamgenMdProps(md_name *c.Char, md_properties *c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*EVP_PKEY_CTX).SetDsaParamgenGindex C.EVP_PKEY_CTX_set_dsa_paramgen_gindex
+//llgo:link (*EVP_PKEY_CTX).SetDsaParamgenGindex C.EVP_PKEY_CTX_set_dsa_paramgen_gindex
 func (self *EVP_PKEY_CTX) SetDsaParamgenGindex(gindex c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*EVP_PKEY_CTX).SetDsaParamgenType C.EVP_PKEY_CTX_set_dsa_paramgen_type
+//llgo:link (*EVP_PKEY_CTX).SetDsaParamgenType C.EVP_PKEY_CTX_set_dsa_paramgen_type
 func (self *EVP_PKEY_CTX) SetDsaParamgenType(name *c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*EVP_PKEY_CTX).SetDsaParamgenSeed C.EVP_PKEY_CTX_set_dsa_paramgen_seed
+//llgo:link (*EVP_PKEY_CTX).SetDsaParamgenSeed C.EVP_PKEY_CTX_set_dsa_paramgen_seed
 func (self *EVP_PKEY_CTX) SetDsaParamgenSeed(seed *uint8, seedlen c.SizeT) c.Int {
 	return 0
 }
 
-// llgo:link (*EVP_PKEY_CTX).SetDsaParamgenMd C.EVP_PKEY_CTX_set_dsa_paramgen_md
+//llgo:link (*EVP_PKEY_CTX).SetDsaParamgenMd C.EVP_PKEY_CTX_set_dsa_paramgen_md
 func (self *EVP_PKEY_CTX) SetDsaParamgenMd(md *EVP_MD) c.Int {
 	return 0
 }
@@ -72,28 +72,28 @@ func (self *EVP_PKEY_CTX) SetDsaParamgenMd(md *EVP_MD) c.Int {
 //go:linkname DSA_SIG_new C.DSA_SIG_new
 func DSA_SIG_new() *DSA_SIG
 
-// llgo:link (*DSA_SIG).Free C.DSA_SIG_free
+//llgo:link (*DSA_SIG).Free C.DSA_SIG_free
 func (self *DSA_SIG) Free() {
 }
 
 //go:linkname D2i_DSA_SIG C.d2i_DSA_SIG
 func D2i_DSA_SIG(a **DSA_SIG, in **uint8, len c.Long) *DSA_SIG
 
-// llgo:link (*DSA_SIG).I2d C.i2d_DSA_SIG
+//llgo:link (*DSA_SIG).I2d C.i2d_DSA_SIG
 func (self *DSA_SIG) I2d(out **uint8) c.Int {
 	return 0
 }
 
-// llgo:link (*DSA_SIG).Get0 C.DSA_SIG_get0
+//llgo:link (*DSA_SIG).Get0 C.DSA_SIG_get0
 func (self *DSA_SIG) Get0(pr **BIGNUM, ps **BIGNUM) {
 }
 
-// llgo:link (*DSA_SIG).Set0 C.DSA_SIG_set0
+//llgo:link (*DSA_SIG).Set0 C.DSA_SIG_set0
 func (self *DSA_SIG) Set0(r *BIGNUM, s *BIGNUM) c.Int {
 	return 0
 }
 
-// llgo:link (*DSA).DSAparamsDup C.DSAparams_dup
+//llgo:link (*DSA).DSAparamsDup C.DSAparams_dup
 func (self *DSA) DSAparamsDup() *DSA {
 	return self
 }
@@ -107,19 +107,19 @@ func DSA_do_verify(dgst *uint8, dgst_len c.Int, sig *DSA_SIG, dsa *DSA) c.Int
 //go:linkname DSA_OpenSSL C.DSA_OpenSSL
 func DSA_OpenSSL() *DSA_METHOD
 
-// llgo:link (*DSA_METHOD).DSA_set_default_method C.DSA_set_default_method
+//llgo:link (*DSA_METHOD).DSA_set_default_method C.DSA_set_default_method
 func (self *DSA_METHOD) DSA_set_default_method() {
 }
 
 //go:linkname DSA_get_default_method C.DSA_get_default_method
 func DSA_get_default_method() *DSA_METHOD
 
-// llgo:link (*DSA).SetMethod C.DSA_set_method
+//llgo:link (*DSA).SetMethod C.DSA_set_method
 func (self *DSA) SetMethod(_llcppg_param2 *DSA_METHOD) c.Int {
 	return 0
 }
 
-// llgo:link (*DSA).Method C.DSA_get_method
+//llgo:link (*DSA).Method C.DSA_get_method
 func (self *DSA) Method() *DSA_METHOD {
 	return nil
 }
@@ -127,44 +127,44 @@ func (self *DSA) Method() *DSA_METHOD {
 //go:linkname DSA_new C.DSA_new
 func DSA_new() *DSA
 
-// llgo:link (*ENGINE).DSA_new_method C.DSA_new_method
+//llgo:link (*ENGINE).DSA_new_method C.DSA_new_method
 func (self *ENGINE) DSA_new_method() *DSA {
 	return nil
 }
 
 // "up" the DSA object's reference count
 //
-// llgo:link (*DSA).Free C.DSA_free
+//llgo:link (*DSA).Free C.DSA_free
 func (self *DSA) Free() {
 }
 
 // "up" the DSA object's reference count
 //
-// llgo:link (*DSA).UpRef C.DSA_up_ref
+//llgo:link (*DSA).UpRef C.DSA_up_ref
 func (self *DSA) UpRef() c.Int {
 	return 0
 }
 
-// llgo:link (*DSA).Size C.DSA_size
+//llgo:link (*DSA).Size C.DSA_size
 func (self *DSA) Size() c.Int {
 	return 0
 }
 
-// llgo:link (*DSA).Bits C.DSA_bits
+//llgo:link (*DSA).Bits C.DSA_bits
 func (self *DSA) Bits() c.Int {
 	return 0
 }
 
 // next 4 return -1 on error
 //
-// llgo:link (*DSA).SecurityBits C.DSA_security_bits
+//llgo:link (*DSA).SecurityBits C.DSA_security_bits
 func (self *DSA) SecurityBits() c.Int {
 	return 0
 }
 
 // next 4 return -1 on error
 //
-// llgo:link (*DSA).SignSetup C.DSA_sign_setup
+//llgo:link (*DSA).SignSetup C.DSA_sign_setup
 func (self *DSA) SignSetup(ctx_in *BN_CTX, kinvp **BIGNUM, rp **BIGNUM) c.Int {
 	return 0
 }
@@ -175,12 +175,12 @@ func DSA_sign(type_ c.Int, dgst *uint8, dlen c.Int, sig *uint8, siglen *c.Uint, 
 //go:linkname DSA_verify C.DSA_verify
 func DSA_verify(type_ c.Int, dgst *uint8, dgst_len c.Int, sigbuf *uint8, siglen c.Int, dsa *DSA) c.Int
 
-// llgo:link (*DSA).SetExData C.DSA_set_ex_data
+//llgo:link (*DSA).SetExData C.DSA_set_ex_data
 func (self *DSA) SetExData(idx c.Int, arg unsafe.Pointer) c.Int {
 	return 0
 }
 
-// llgo:link (*DSA).ExData C.DSA_get_ex_data
+//llgo:link (*DSA).ExData C.DSA_get_ex_data
 func (self *DSA) ExData(idx c.Int) unsafe.Pointer {
 	return nil
 }
@@ -188,7 +188,7 @@ func (self *DSA) ExData(idx c.Int) unsafe.Pointer {
 //go:linkname D2iDSAPublicKey C.d2i_DSAPublicKey
 func D2iDSAPublicKey(a **DSA, in **uint8, len c.Long) *DSA
 
-// llgo:link (*DSA).I2dDSAPublicKey C.i2d_DSAPublicKey
+//llgo:link (*DSA).I2dDSAPublicKey C.i2d_DSAPublicKey
 func (self *DSA) I2dDSAPublicKey(out **uint8) c.Int {
 	return 0
 }
@@ -196,7 +196,7 @@ func (self *DSA) I2dDSAPublicKey(out **uint8) c.Int {
 //go:linkname D2iDSAPrivateKey C.d2i_DSAPrivateKey
 func D2iDSAPrivateKey(a **DSA, in **uint8, len c.Long) *DSA
 
-// llgo:link (*DSA).I2dDSAPrivateKey C.i2d_DSAPrivateKey
+//llgo:link (*DSA).I2dDSAPrivateKey C.i2d_DSAPrivateKey
 func (self *DSA) I2dDSAPrivateKey(out **uint8) c.Int {
 	return 0
 }
@@ -204,7 +204,7 @@ func (self *DSA) I2dDSAPrivateKey(out **uint8) c.Int {
 //go:linkname D2iDSAparams C.d2i_DSAparams
 func D2iDSAparams(a **DSA, in **uint8, len c.Long) *DSA
 
-// llgo:link (*DSA).I2dDSAparams C.i2d_DSAparams
+//llgo:link (*DSA).I2dDSAparams C.i2d_DSAparams
 func (self *DSA) I2dDSAparams(out **uint8) c.Int {
 	return 0
 }
@@ -216,22 +216,22 @@ func DSA_generate_parameters(bits c.Int, seed *uint8, seed_len c.Int, counter_re
 
 // New version
 //
-// llgo:link (*DSA).GenerateParametersEx C.DSA_generate_parameters_ex
+//llgo:link (*DSA).GenerateParametersEx C.DSA_generate_parameters_ex
 func (self *DSA) GenerateParametersEx(bits c.Int, seed *uint8, seed_len c.Int, counter_ret *c.Int, h_ret *c.Ulong, cb *BN_GENCB) c.Int {
 	return 0
 }
 
-// llgo:link (*DSA).GenerateKey C.DSA_generate_key
+//llgo:link (*DSA).GenerateKey C.DSA_generate_key
 func (self *DSA) GenerateKey() c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).DSAparamsPrint C.DSAparams_print
+//llgo:link (*BIO).DSAparamsPrint C.DSAparams_print
 func (self *BIO) DSAparamsPrint(x *DSA) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).DSA_print C.DSA_print
+//llgo:link (*BIO).DSA_print C.DSA_print
 func (self *BIO) DSA_print(x *DSA, off c.Int) c.Int {
 	return 0
 }
@@ -245,195 +245,198 @@ func DSA_print_fp(bp *c.FILE, x *DSA, off c.Int) c.Int
 // Convert DSA structure (key or just parameters) into DH structure (be
 // careful to avoid small subgroup attacks when using this!)
 //
-// llgo:link (*DSA).Dup_DH C.DSA_dup_DH
+//llgo:link (*DSA).Dup_DH C.DSA_dup_DH
 func (self *DSA) Dup_DH() *DH {
 	return nil
 }
 
-// llgo:link (*DSA).Get0Pqg C.DSA_get0_pqg
+//llgo:link (*DSA).Get0Pqg C.DSA_get0_pqg
 func (self *DSA) Get0Pqg(p **BIGNUM, q **BIGNUM, g **BIGNUM) {
 }
 
-// llgo:link (*DSA).Set0Pqg C.DSA_set0_pqg
+//llgo:link (*DSA).Set0Pqg C.DSA_set0_pqg
 func (self *DSA) Set0Pqg(p *BIGNUM, q *BIGNUM, g *BIGNUM) c.Int {
 	return 0
 }
 
-// llgo:link (*DSA).Get0Key C.DSA_get0_key
+//llgo:link (*DSA).Get0Key C.DSA_get0_key
 func (self *DSA) Get0Key(pub_key **BIGNUM, priv_key **BIGNUM) {
 }
 
-// llgo:link (*DSA).Set0Key C.DSA_set0_key
+//llgo:link (*DSA).Set0Key C.DSA_set0_key
 func (self *DSA) Set0Key(pub_key *BIGNUM, priv_key *BIGNUM) c.Int {
 	return 0
 }
 
-// llgo:link (*DSA).Get0P C.DSA_get0_p
+//llgo:link (*DSA).Get0P C.DSA_get0_p
 func (self *DSA) Get0P() *BIGNUM {
 	return nil
 }
 
-// llgo:link (*DSA).Get0Q C.DSA_get0_q
+//llgo:link (*DSA).Get0Q C.DSA_get0_q
 func (self *DSA) Get0Q() *BIGNUM {
 	return nil
 }
 
-// llgo:link (*DSA).Get0G C.DSA_get0_g
+//llgo:link (*DSA).Get0G C.DSA_get0_g
 func (self *DSA) Get0G() *BIGNUM {
 	return nil
 }
 
-// llgo:link (*DSA).Get0PubKey C.DSA_get0_pub_key
+//llgo:link (*DSA).Get0PubKey C.DSA_get0_pub_key
 func (self *DSA) Get0PubKey() *BIGNUM {
 	return nil
 }
 
-// llgo:link (*DSA).Get0PrivKey C.DSA_get0_priv_key
+//llgo:link (*DSA).Get0PrivKey C.DSA_get0_priv_key
 func (self *DSA) Get0PrivKey() *BIGNUM {
 	return nil
 }
 
-// llgo:link (*DSA).ClearFlags C.DSA_clear_flags
+//llgo:link (*DSA).ClearFlags C.DSA_clear_flags
 func (self *DSA) ClearFlags(flags c.Int) {
 }
 
-// llgo:link (*DSA).TestFlags C.DSA_test_flags
+//llgo:link (*DSA).TestFlags C.DSA_test_flags
 func (self *DSA) TestFlags(flags c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*DSA).SetFlags C.DSA_set_flags
+//llgo:link (*DSA).SetFlags C.DSA_set_flags
 func (self *DSA) SetFlags(flags c.Int) {
 }
 
 //go:linkname DSA_meth_new C.DSA_meth_new
 func DSA_meth_new(name *c.Char, flags c.Int) *DSA_METHOD
 
-// llgo:link (*DSA_METHOD).Free C.DSA_meth_free
+//llgo:link (*DSA_METHOD).Free C.DSA_meth_free
 func (self *DSA_METHOD) Free() {
 }
 
-// llgo:link (*DSA_METHOD).Dup C.DSA_meth_dup
+//llgo:link (*DSA_METHOD).Dup C.DSA_meth_dup
 func (self *DSA_METHOD) Dup() *DSA_METHOD {
 	return self
 }
 
-// llgo:link (*DSA_METHOD).Get0Name C.DSA_meth_get0_name
+//llgo:link (*DSA_METHOD).Get0Name C.DSA_meth_get0_name
 func (self *DSA_METHOD) Get0Name() *c.Char {
 	return nil
 }
 
-// llgo:link (*DSA_METHOD).Set1Name C.DSA_meth_set1_name
+//llgo:link (*DSA_METHOD).Set1Name C.DSA_meth_set1_name
 func (self *DSA_METHOD) Set1Name(name *c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*DSA_METHOD).Flags C.DSA_meth_get_flags
+//llgo:link (*DSA_METHOD).Flags C.DSA_meth_get_flags
 func (self *DSA_METHOD) Flags() c.Int {
 	return 0
 }
 
-// llgo:link (*DSA_METHOD).SetFlags C.DSA_meth_set_flags
+//llgo:link (*DSA_METHOD).SetFlags C.DSA_meth_set_flags
 func (self *DSA_METHOD) SetFlags(flags c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*DSA_METHOD).Get0AppData C.DSA_meth_get0_app_data
+//llgo:link (*DSA_METHOD).Get0AppData C.DSA_meth_get0_app_data
 func (self *DSA_METHOD) Get0AppData() unsafe.Pointer {
 	return nil
 }
 
-// llgo:link (*DSA_METHOD).Set0AppData C.DSA_meth_set0_app_data
+//llgo:link (*DSA_METHOD).Set0AppData C.DSA_meth_set0_app_data
 func (self *DSA_METHOD) Set0AppData(app_data unsafe.Pointer) c.Int {
 	return 0
 }
 
-// llgo:link (*DSA_METHOD).Sign C.DSA_meth_get_sign
+//llgo:link (*DSA_METHOD).Sign C.DSA_meth_get_sign
 func (self *DSA_METHOD) Sign() func(_llcppg_param1 *uint8, _llcppg_param2 c.Int, _llcppg_param3 *DSA) *DSA_SIG {
 	return nil
 }
 
-// llgo:link (*DSA_METHOD).SetSign C.DSA_meth_set_sign
+//llgo:link (*DSA_METHOD).SetSign C.DSA_meth_set_sign
 func (self *DSA_METHOD) SetSign(sign func(_llcppg_param1 *uint8, _llcppg_param2 c.Int, _llcppg_param3 *DSA) *DSA_SIG) c.Int {
 	return 0
 }
 
-// llgo:link (*DSA_METHOD).SignSetup C.DSA_meth_get_sign_setup
+//llgo:link (*DSA_METHOD).SignSetup C.DSA_meth_get_sign_setup
 func (self *DSA_METHOD) SignSetup() func(_llcppg_param1 *DSA, _llcppg_param2 *BN_CTX, _llcppg_param3 **BIGNUM, _llcppg_param4 **BIGNUM) c.Int {
 	return nil
 }
 
-// llgo:link (*DSA_METHOD).SetSignSetup C.DSA_meth_set_sign_setup
+//llgo:link (*DSA_METHOD).SetSignSetup C.DSA_meth_set_sign_setup
 func (self *DSA_METHOD) SetSignSetup(sign_setup func(_llcppg_param1 *DSA, _llcppg_param2 *BN_CTX, _llcppg_param3 **BIGNUM, _llcppg_param4 **BIGNUM) c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*DSA_METHOD).Verify C.DSA_meth_get_verify
+//llgo:link (*DSA_METHOD).Verify C.DSA_meth_get_verify
 func (self *DSA_METHOD) Verify() func(_llcppg_param1 *uint8, _llcppg_param2 c.Int, _llcppg_param3 *DSA_SIG, _llcppg_param4 *DSA) c.Int {
 	return nil
 }
 
-// llgo:link (*DSA_METHOD).SetVerify C.DSA_meth_set_verify
+//llgo:link (*DSA_METHOD).SetVerify C.DSA_meth_set_verify
 func (self *DSA_METHOD) SetVerify(verify func(_llcppg_param1 *uint8, _llcppg_param2 c.Int, _llcppg_param3 *DSA_SIG, _llcppg_param4 *DSA) c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*DSA_METHOD).ModExp C.DSA_meth_get_mod_exp
+//llgo:link (*DSA_METHOD).ModExp C.DSA_meth_get_mod_exp
 func (self *DSA_METHOD) ModExp() func(_llcppg_param1 *DSA, _llcppg_param2 *BIGNUM, _llcppg_param3 *BIGNUM, _llcppg_param4 *BIGNUM, _llcppg_param5 *BIGNUM, _llcppg_param6 *BIGNUM, _llcppg_param7 *BIGNUM, _llcppg_param8 *BN_CTX, _llcppg_param9 *BN_MONT_CTX) c.Int {
 	return nil
 }
 
-// llgo:link (*DSA_METHOD).SetModExp C.DSA_meth_set_mod_exp
+//llgo:link (*DSA_METHOD).SetModExp C.DSA_meth_set_mod_exp
 func (self *DSA_METHOD) SetModExp(mod_exp func(_llcppg_param1 *DSA, _llcppg_param2 *BIGNUM, _llcppg_param3 *BIGNUM, _llcppg_param4 *BIGNUM, _llcppg_param5 *BIGNUM, _llcppg_param6 *BIGNUM, _llcppg_param7 *BIGNUM, _llcppg_param8 *BN_CTX, _llcppg_param9 *BN_MONT_CTX) c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*DSA_METHOD).BnModExp C.DSA_meth_get_bn_mod_exp
+//llgo:link (*DSA_METHOD).BnModExp C.DSA_meth_get_bn_mod_exp
 func (self *DSA_METHOD) BnModExp() func(_llcppg_param1 *DSA, _llcppg_param2 *BIGNUM, _llcppg_param3 *BIGNUM, _llcppg_param4 *BIGNUM, _llcppg_param5 *BIGNUM, _llcppg_param6 *BN_CTX, _llcppg_param7 *BN_MONT_CTX) c.Int {
 	return nil
 }
 
-// llgo:link (*DSA_METHOD).SetBnModExp C.DSA_meth_set_bn_mod_exp
+//llgo:link (*DSA_METHOD).SetBnModExp C.DSA_meth_set_bn_mod_exp
 func (self *DSA_METHOD) SetBnModExp(bn_mod_exp func(_llcppg_param1 *DSA, _llcppg_param2 *BIGNUM, _llcppg_param3 *BIGNUM, _llcppg_param4 *BIGNUM, _llcppg_param5 *BIGNUM, _llcppg_param6 *BN_CTX, _llcppg_param7 *BN_MONT_CTX) c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*DSA_METHOD).Init C.DSA_meth_get_init
+//llgo:link (*DSA_METHOD).Init C.DSA_meth_get_init
 func (self *DSA_METHOD) Init() func(_llcppg_param1 *DSA) c.Int {
 	return nil
 }
 
-// llgo:link (*DSA_METHOD).SetInit C.DSA_meth_set_init
+//llgo:link (*DSA_METHOD).SetInit C.DSA_meth_set_init
 func (self *DSA_METHOD) SetInit(init func(_llcppg_param1 *DSA) c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*DSA_METHOD).Finish C.DSA_meth_get_finish
+//llgo:link (*DSA_METHOD).Finish C.DSA_meth_get_finish
 func (self *DSA_METHOD) Finish() func(_llcppg_param1 *DSA) c.Int {
 	return nil
 }
 
-// llgo:link (*DSA_METHOD).SetFinish C.DSA_meth_set_finish
+//llgo:link (*DSA_METHOD).SetFinish C.DSA_meth_set_finish
 func (self *DSA_METHOD) SetFinish(finish func(_llcppg_param1 *DSA) c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*DSA_METHOD).Paramgen C.DSA_meth_get_paramgen
+//llgo:link (*DSA_METHOD).Paramgen C.DSA_meth_get_paramgen
 func (self *DSA_METHOD) Paramgen() func(_llcppg_param1 *DSA, _llcppg_param2 c.Int, _llcppg_param3 *uint8, _llcppg_param4 c.Int, _llcppg_param5 *c.Int, _llcppg_param6 *c.Ulong, _llcppg_param7 *BN_GENCB) c.Int {
 	return nil
 }
 
-// llgo:link (*DSA_METHOD).SetParamgen C.DSA_meth_set_paramgen
+//llgo:link (*DSA_METHOD).SetParamgen C.DSA_meth_set_paramgen
 func (self *DSA_METHOD) SetParamgen(paramgen func(_llcppg_param1 *DSA, _llcppg_param2 c.Int, _llcppg_param3 *uint8, _llcppg_param4 c.Int, _llcppg_param5 *c.Int, _llcppg_param6 *c.Ulong, _llcppg_param7 *BN_GENCB) c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*DSA_METHOD).Keygen C.DSA_meth_get_keygen
+//llgo:link (*DSA_METHOD).Keygen C.DSA_meth_get_keygen
 func (self *DSA_METHOD) Keygen() func(_llcppg_param1 *DSA) c.Int {
 	return nil
 }
 
-// llgo:link (*DSA_METHOD).SetKeygen C.DSA_meth_set_keygen
+//llgo:link (*DSA_METHOD).SetKeygen C.DSA_meth_set_keygen
 func (self *DSA_METHOD) SetKeygen(keygen func(_llcppg_param1 *DSA) c.Int) c.Int {
 	return 0
+}
+func DSA_get_ex_new_index(l c.Long, p unsafe.Pointer, newf *CRYPTO_EX_new, dupf *CRYPTO_EX_dup, freef *CRYPTO_EX_free) c.Int {
+	return CRYPTO_get_ex_new_index(7, l, p, newf, dupf, freef)
 }

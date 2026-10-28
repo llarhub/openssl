@@ -322,7 +322,7 @@ const (
 
 // This is used for a table of trust checking functions
 //
-// llgo:type C
+//llgo:cdecl
 type X509TrustSt struct {
 	Trust      c.Int
 	Flags      c.Int
@@ -346,46 +346,46 @@ type Stack_st_X509_TRUST struct {
 type Stack_st_X509_VERIFY_PARAM struct {
 }
 
-// llgo:type C
+//llgo:cdecl
 type Sk_OCSP_RESPONSE_compfunc = func(_llcppg_param1 **OCSP_RESPONSE, _llcppg_param2 **OCSP_RESPONSE) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type Sk_OCSP_RESPONSE_freefunc = func(_llcppg_param1 *OCSP_RESPONSE)
 
-// llgo:type C
+//llgo:cdecl
 type Sk_OCSP_RESPONSE_copyfunc = func(_llcppg_param1 *OCSP_RESPONSE) *OCSP_RESPONSE
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_X509_LOOKUP_compfunc = func(_llcppg_param1 **X509_LOOKUP, _llcppg_param2 **X509_LOOKUP) c.Int
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_X509_LOOKUP_freefunc = func(_llcppg_param1 *X509_LOOKUP)
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_X509_LOOKUP_copyfunc = func(_llcppg_param1 *X509_LOOKUP) *X509_LOOKUP
 
-// llgo:type C
+//llgo:cdecl
 type Sk_X509_OBJECT_compfunc = func(_llcppg_param1 **X509_OBJECT, _llcppg_param2 **X509_OBJECT) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type Sk_X509_OBJECT_freefunc = func(_llcppg_param1 *X509_OBJECT)
 
-// llgo:type C
+//llgo:cdecl
 type Sk_X509_OBJECT_copyfunc = func(_llcppg_param1 *X509_OBJECT) *X509_OBJECT
 
-// llgo:type C
+//llgo:cdecl
 type Sk_X509_VERIFY_PARAM_compfunc = func(_llcppg_param1 **X509_VERIFY_PARAM, _llcppg_param2 **X509_VERIFY_PARAM) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type Sk_X509_VERIFY_PARAM_freefunc = func(_llcppg_param1 *X509_VERIFY_PARAM)
 
-// llgo:type C
+//llgo:cdecl
 type Sk_X509_VERIFY_PARAM_copyfunc = func(_llcppg_param1 *X509_VERIFY_PARAM) *X509_VERIFY_PARAM
 
 // This is used for a table of trust checking functions
@@ -393,74 +393,74 @@ type X509_TRUST = X509TrustSt
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_X509_TRUST_compfunc = func(_llcppg_param1 **X509_TRUST, _llcppg_param2 **X509_TRUST) c.Int
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_X509_TRUST_freefunc = func(_llcppg_param1 *X509_TRUST)
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_X509_TRUST_copyfunc = func(_llcppg_param1 *X509_TRUST) *X509_TRUST
 
-// llgo:type C
+//llgo:cdecl
 type X509_STORE_CTX_verify_cb = func(_llcppg_param1 c.Int, _llcppg_param2 *X509_STORE_CTX) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type X509_STORE_CTX_verify_fn = func(_llcppg_param1 *X509_STORE_CTX) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type X509_STORE_CTX_get_issuer_fn = func(_llcppg_param1 **X509, _llcppg_param2 *X509_STORE_CTX, _llcppg_param3 *X509) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type X509_STORE_CTX_check_issued_fn = func(_llcppg_param1 *X509_STORE_CTX, _llcppg_param2 *X509, _llcppg_param3 *X509) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type X509_STORE_CTX_check_revocation_fn = func(_llcppg_param1 *X509_STORE_CTX) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type X509_STORE_CTX_get_crl_fn = func(_llcppg_param1 *X509_STORE_CTX, _llcppg_param2 **X509_CRL, _llcppg_param3 *X509) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type X509_STORE_CTX_check_crl_fn = func(_llcppg_param1 *X509_STORE_CTX, _llcppg_param2 *X509_CRL) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type X509_STORE_CTX_cert_crl_fn = func(_llcppg_param1 *X509_STORE_CTX, _llcppg_param2 *X509_CRL, _llcppg_param3 *X509) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type X509_STORE_CTX_check_policy_fn = func(_llcppg_param1 *X509_STORE_CTX) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type X509_STORE_CTX_lookup_certs_fn = func(_llcppg_param1 *X509_STORE_CTX, _llcppg_param2 *X509_NAME) *Stack_st_X509
 
-// llgo:type C
+//llgo:cdecl
 type X509_STORE_CTX_lookup_crls_fn = func(_llcppg_param1 *X509_STORE_CTX, _llcppg_param2 *X509_NAME) *Stack_st_X509_CRL
 
-// llgo:type C
+//llgo:cdecl
 type X509_STORE_CTX_cleanup_fn = func(_llcppg_param1 *X509_STORE_CTX) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type X509_LOOKUP_ctrl_fn = func(_llcppg_param1 *X509_LOOKUP, _llcppg_param2 c.Int, _llcppg_param3 *c.Char, _llcppg_param4 c.Long, _llcppg_param5 **c.Char) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type X509_LOOKUP_ctrl_ex_fn = func(_llcppg_param1 *X509_LOOKUP, _llcppg_param2 c.Int, _llcppg_param3 *c.Char, _llcppg_param4 c.Long, _llcppg_param5 **c.Char, _llcppg_param6 *OSSL_LIB_CTX, _llcppg_param7 *c.Char) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type X509_LOOKUP_get_by_subject_fn = func(_llcppg_param1 *X509_LOOKUP, _llcppg_param2 X509_LOOKUP_TYPE, _llcppg_param3 *X509_NAME, _llcppg_param4 *X509_OBJECT) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type X509_LOOKUP_get_by_subject_ex_fn = func(_llcppg_param1 *X509_LOOKUP, _llcppg_param2 X509_LOOKUP_TYPE, _llcppg_param3 *X509_NAME, _llcppg_param4 *X509_OBJECT, _llcppg_param5 *OSSL_LIB_CTX, _llcppg_param6 *c.Char) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type X509_LOOKUP_get_by_issuer_serial_fn = func(_llcppg_param1 *X509_LOOKUP, _llcppg_param2 X509_LOOKUP_TYPE, _llcppg_param3 *X509_NAME, _llcppg_param4 *ASN1_INTEGER, _llcppg_param5 *X509_OBJECT) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type X509_LOOKUP_get_by_fingerprint_fn = func(_llcppg_param1 *X509_LOOKUP, _llcppg_param2 X509_LOOKUP_TYPE, _llcppg_param3 *uint8, _llcppg_param4 c.Int, _llcppg_param5 *X509_OBJECT) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type X509_LOOKUP_get_by_alias_fn = func(_llcppg_param1 *X509_LOOKUP, _llcppg_param2 X509_LOOKUP_TYPE, _llcppg_param3 *c.Char, _llcppg_param4 c.Int, _llcppg_param5 *X509_OBJECT) c.Int
 
 //go:linkname X509_TRUST_set C.X509_TRUST_set
@@ -481,50 +481,50 @@ func X509_TRUST_add(id c.Int, flags c.Int, ck func(_llcppg_param1 *X509_TRUST, _
 //go:linkname X509_TRUST_cleanup C.X509_TRUST_cleanup
 func X509_TRUST_cleanup()
 
-// llgo:link (*X509_TRUST).GetFlags C.X509_TRUST_get_flags
+//llgo:link (*X509_TRUST).GetFlags C.X509_TRUST_get_flags
 func (self *X509_TRUST) GetFlags() c.Int {
 	return 0
 }
 
-// llgo:link (*X509_TRUST).Get0Name C.X509_TRUST_get0_name
+//llgo:link (*X509_TRUST).Get0Name C.X509_TRUST_get0_name
 func (self *X509_TRUST) Get0Name() *c.Char {
 	return nil
 }
 
-// llgo:link (*X509_TRUST).GetTrust C.X509_TRUST_get_trust
+//llgo:link (*X509_TRUST).GetTrust C.X509_TRUST_get_trust
 func (self *X509_TRUST) GetTrust() c.Int {
 	return 0
 }
 
-// llgo:link (*X509).Trusted C.X509_trusted
+//llgo:link (*X509).Trusted C.X509_trusted
 func (self *X509) Trusted() c.Int {
 	return 0
 }
 
-// llgo:link (*X509).Add1TrustObject C.X509_add1_trust_object
+//llgo:link (*X509).Add1TrustObject C.X509_add1_trust_object
 func (self *X509) Add1TrustObject(obj *ASN1_OBJECT) c.Int {
 	return 0
 }
 
-// llgo:link (*X509).Add1RejectObject C.X509_add1_reject_object
+//llgo:link (*X509).Add1RejectObject C.X509_add1_reject_object
 func (self *X509) Add1RejectObject(obj *ASN1_OBJECT) c.Int {
 	return 0
 }
 
-// llgo:link (*X509).TrustClear C.X509_trust_clear
+//llgo:link (*X509).TrustClear C.X509_trust_clear
 func (self *X509) TrustClear() {
 }
 
-// llgo:link (*X509).RejectClear C.X509_reject_clear
+//llgo:link (*X509).RejectClear C.X509_reject_clear
 func (self *X509) RejectClear() {
 }
 
-// llgo:link (*X509).Get0TrustObjects C.X509_get0_trust_objects
+//llgo:link (*X509).Get0TrustObjects C.X509_get0_trust_objects
 func (self *X509) Get0TrustObjects() *Stack_st_ASN1_OBJECT {
 	return nil
 }
 
-// llgo:link (*X509).Get0RejectObjects C.X509_get0_reject_objects
+//llgo:link (*X509).Get0RejectObjects C.X509_get0_reject_objects
 func (self *X509) Get0RejectObjects() *Stack_st_ASN1_OBJECT {
 	return nil
 }
@@ -532,27 +532,27 @@ func (self *X509) Get0RejectObjects() *Stack_st_ASN1_OBJECT {
 //go:linkname X509_TRUST_set_default C.X509_TRUST_set_default
 func X509_TRUST_set_default(trust func(_llcppg_param1 c.Int, _llcppg_param2 *X509, _llcppg_param3 c.Int) c.Int) func(_llcppg_param1 c.Int, _llcppg_param2 *X509, _llcppg_param3 c.Int) c.Int
 
-// llgo:link (*X509).CheckTrust C.X509_check_trust
+//llgo:link (*X509).CheckTrust C.X509_check_trust
 func (self *X509) CheckTrust(id c.Int, flags c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_STORE_CTX).X509_verify_cert C.X509_verify_cert
+//llgo:link (*X509_STORE_CTX).X509_verify_cert C.X509_verify_cert
 func (self *X509_STORE_CTX) X509_verify_cert() c.Int {
 	return 0
 }
 
-// llgo:link (*X509_STORE_CTX).Verify C.X509_STORE_CTX_verify
+//llgo:link (*X509_STORE_CTX).Verify C.X509_STORE_CTX_verify
 func (self *X509_STORE_CTX) Verify() c.Int {
 	return 0
 }
 
-// llgo:link (*X509).BuildChain C.X509_build_chain
+//llgo:link (*X509).BuildChain C.X509_build_chain
 func (self *X509) BuildChain(certs *Stack_st_X509, store *X509_STORE, with_self_signed c.Int, libctx *OSSL_LIB_CTX, propq *c.Char) *Stack_st_X509 {
 	return nil
 }
 
-// llgo:link (*X509_STORE).SetDepth C.X509_STORE_set_depth
+//llgo:link (*X509_STORE).SetDepth C.X509_STORE_set_depth
 func (self *X509_STORE) SetDepth(depth c.Int) c.Int {
 	return 0
 }
@@ -560,26 +560,26 @@ func (self *X509_STORE) SetDepth(depth c.Int) c.Int {
 //go:linkname X509_STORE_CTX_print_verify_cb C.X509_STORE_CTX_print_verify_cb
 func X509_STORE_CTX_print_verify_cb(ok c.Int, ctx *X509_STORE_CTX) c.Int
 
-// llgo:link (*X509_STORE_CTX).SetDepth C.X509_STORE_CTX_set_depth
+//llgo:link (*X509_STORE_CTX).SetDepth C.X509_STORE_CTX_set_depth
 func (self *X509_STORE_CTX) SetDepth(depth c.Int) {
 }
 
-// llgo:link (*Stack_st_X509_OBJECT).X509_OBJECT_idx_by_subject C.X509_OBJECT_idx_by_subject
+//llgo:link (*Stack_st_X509_OBJECT).X509_OBJECT_idx_by_subject C.X509_OBJECT_idx_by_subject
 func (self *Stack_st_X509_OBJECT) X509_OBJECT_idx_by_subject(type_ X509_LOOKUP_TYPE, name *X509_NAME) c.Int {
 	return 0
 }
 
-// llgo:link (*Stack_st_X509_OBJECT).X509_OBJECT_retrieve_by_subject C.X509_OBJECT_retrieve_by_subject
+//llgo:link (*Stack_st_X509_OBJECT).X509_OBJECT_retrieve_by_subject C.X509_OBJECT_retrieve_by_subject
 func (self *Stack_st_X509_OBJECT) X509_OBJECT_retrieve_by_subject(type_ X509_LOOKUP_TYPE, name *X509_NAME) *X509_OBJECT {
 	return nil
 }
 
-// llgo:link (*Stack_st_X509_OBJECT).X509_OBJECT_retrieve_match C.X509_OBJECT_retrieve_match
+//llgo:link (*Stack_st_X509_OBJECT).X509_OBJECT_retrieve_match C.X509_OBJECT_retrieve_match
 func (self *Stack_st_X509_OBJECT) X509_OBJECT_retrieve_match(x *X509_OBJECT) *X509_OBJECT {
 	return nil
 }
 
-// llgo:link (*X509_OBJECT).UpRefCount C.X509_OBJECT_up_ref_count
+//llgo:link (*X509_OBJECT).UpRefCount C.X509_OBJECT_up_ref_count
 func (self *X509_OBJECT) UpRefCount() c.Int {
 	return 0
 }
@@ -587,31 +587,31 @@ func (self *X509_OBJECT) UpRefCount() c.Int {
 //go:linkname X509_OBJECT_new C.X509_OBJECT_new
 func X509_OBJECT_new() *X509_OBJECT
 
-// llgo:link (*X509_OBJECT).Free C.X509_OBJECT_free
+//llgo:link (*X509_OBJECT).Free C.X509_OBJECT_free
 func (self *X509_OBJECT) Free() {
 }
 
-// llgo:link (*X509_OBJECT).Type C.X509_OBJECT_get_type
+//llgo:link (*X509_OBJECT).Type C.X509_OBJECT_get_type
 func (self *X509_OBJECT) Type() X509_LOOKUP_TYPE {
 	return 0
 }
 
-// llgo:link (*X509_OBJECT).Get0_X509 C.X509_OBJECT_get0_X509
+//llgo:link (*X509_OBJECT).Get0_X509 C.X509_OBJECT_get0_X509
 func (self *X509_OBJECT) Get0_X509() *X509 {
 	return nil
 }
 
-// llgo:link (*X509_OBJECT).Set1_X509 C.X509_OBJECT_set1_X509
+//llgo:link (*X509_OBJECT).Set1_X509 C.X509_OBJECT_set1_X509
 func (self *X509_OBJECT) Set1_X509(obj *X509) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_OBJECT).Get0_X509_CRL C.X509_OBJECT_get0_X509_CRL
+//llgo:link (*X509_OBJECT).Get0_X509_CRL C.X509_OBJECT_get0_X509_CRL
 func (self *X509_OBJECT) Get0_X509_CRL() *X509_CRL {
 	return nil
 }
 
-// llgo:link (*X509_OBJECT).Set1_X509_CRL C.X509_OBJECT_set1_X509_CRL
+//llgo:link (*X509_OBJECT).Set1_X509_CRL C.X509_OBJECT_set1_X509_CRL
 func (self *X509_OBJECT) Set1_X509_CRL(obj *X509_CRL) c.Int {
 	return 0
 }
@@ -619,198 +619,198 @@ func (self *X509_OBJECT) Set1_X509_CRL(obj *X509_CRL) c.Int {
 //go:linkname X509_STORE_new C.X509_STORE_new
 func X509_STORE_new() *X509_STORE
 
-// llgo:link (*X509_STORE).Free C.X509_STORE_free
+//llgo:link (*X509_STORE).Free C.X509_STORE_free
 func (self *X509_STORE) Free() {
 }
 
-// llgo:link (*X509_STORE).Lock C.X509_STORE_lock
+//llgo:link (*X509_STORE).Lock C.X509_STORE_lock
 func (self *X509_STORE) Lock() c.Int {
 	return 0
 }
 
-// llgo:link (*X509_STORE).Unlock C.X509_STORE_unlock
+//llgo:link (*X509_STORE).Unlock C.X509_STORE_unlock
 func (self *X509_STORE) Unlock() c.Int {
 	return 0
 }
 
-// llgo:link (*X509_STORE).UpRef C.X509_STORE_up_ref
+//llgo:link (*X509_STORE).UpRef C.X509_STORE_up_ref
 func (self *X509_STORE) UpRef() c.Int {
 	return 0
 }
 
-// llgo:link (*X509_STORE).Get0Objects C.X509_STORE_get0_objects
+//llgo:link (*X509_STORE).Get0Objects C.X509_STORE_get0_objects
 func (self *X509_STORE) Get0Objects() *Stack_st_X509_OBJECT {
 	return nil
 }
 
-// llgo:link (*X509_STORE).Get1Objects C.X509_STORE_get1_objects
+//llgo:link (*X509_STORE).Get1Objects C.X509_STORE_get1_objects
 func (self *X509_STORE) Get1Objects() *Stack_st_X509_OBJECT {
 	return nil
 }
 
-// llgo:link (*X509_STORE).Get1AllCerts C.X509_STORE_get1_all_certs
+//llgo:link (*X509_STORE).Get1AllCerts C.X509_STORE_get1_all_certs
 func (self *X509_STORE) Get1AllCerts() *Stack_st_X509 {
 	return nil
 }
 
-// llgo:link (*X509_STORE_CTX).Get1Certs C.X509_STORE_CTX_get1_certs
+//llgo:link (*X509_STORE_CTX).Get1Certs C.X509_STORE_CTX_get1_certs
 func (self *X509_STORE_CTX) Get1Certs(nm *X509_NAME) *Stack_st_X509 {
 	return nil
 }
 
-// llgo:link (*X509_STORE_CTX).Get1Crls C.X509_STORE_CTX_get1_crls
+//llgo:link (*X509_STORE_CTX).Get1Crls C.X509_STORE_CTX_get1_crls
 func (self *X509_STORE_CTX) Get1Crls(nm *X509_NAME) *Stack_st_X509_CRL {
 	return nil
 }
 
-// llgo:link (*X509_STORE).SetFlags C.X509_STORE_set_flags
+//llgo:link (*X509_STORE).SetFlags C.X509_STORE_set_flags
 func (self *X509_STORE) SetFlags(flags c.Ulong) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_STORE).SetPurpose C.X509_STORE_set_purpose
+//llgo:link (*X509_STORE).SetPurpose C.X509_STORE_set_purpose
 func (self *X509_STORE) SetPurpose(purpose c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_STORE).SetTrust C.X509_STORE_set_trust
+//llgo:link (*X509_STORE).SetTrust C.X509_STORE_set_trust
 func (self *X509_STORE) SetTrust(trust c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_STORE).Set1Param C.X509_STORE_set1_param
+//llgo:link (*X509_STORE).Set1Param C.X509_STORE_set1_param
 func (self *X509_STORE) Set1Param(pm *X509_VERIFY_PARAM) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_STORE).Get0Param C.X509_STORE_get0_param
+//llgo:link (*X509_STORE).Get0Param C.X509_STORE_get0_param
 func (self *X509_STORE) Get0Param() *X509_VERIFY_PARAM {
 	return nil
 }
 
-// llgo:link (*X509_STORE).SetVerify C.X509_STORE_set_verify
+//llgo:link (*X509_STORE).SetVerify C.X509_STORE_set_verify
 func (self *X509_STORE) SetVerify(verify X509_STORE_CTX_verify_fn) {
 }
 
-// llgo:link (*X509_STORE_CTX).SetVerify C.X509_STORE_CTX_set_verify
+//llgo:link (*X509_STORE_CTX).SetVerify C.X509_STORE_CTX_set_verify
 func (self *X509_STORE_CTX) SetVerify(verify X509_STORE_CTX_verify_fn) {
 }
 
-// llgo:link (*X509_STORE).Verify C.X509_STORE_get_verify
+//llgo:link (*X509_STORE).Verify C.X509_STORE_get_verify
 func (self *X509_STORE) Verify() X509_STORE_CTX_verify_fn {
 	return nil
 }
 
-// llgo:link (*X509_STORE).SetVerifyCb C.X509_STORE_set_verify_cb
+//llgo:link (*X509_STORE).SetVerifyCb C.X509_STORE_set_verify_cb
 func (self *X509_STORE) SetVerifyCb(verify_cb X509_STORE_CTX_verify_cb) {
 }
 
-// llgo:link (*X509_STORE).VerifyCb C.X509_STORE_get_verify_cb
+//llgo:link (*X509_STORE).VerifyCb C.X509_STORE_get_verify_cb
 func (self *X509_STORE) VerifyCb() X509_STORE_CTX_verify_cb {
 	return nil
 }
 
-// llgo:link (*X509_STORE).SetGetIssuer C.X509_STORE_set_get_issuer
+//llgo:link (*X509_STORE).SetGetIssuer C.X509_STORE_set_get_issuer
 func (self *X509_STORE) SetGetIssuer(get_issuer X509_STORE_CTX_get_issuer_fn) {
 }
 
-// llgo:link (*X509_STORE).GetIssuer C.X509_STORE_get_get_issuer
+//llgo:link (*X509_STORE).GetIssuer C.X509_STORE_get_get_issuer
 func (self *X509_STORE) GetIssuer() X509_STORE_CTX_get_issuer_fn {
 	return nil
 }
 
-// llgo:link (*X509_STORE).SetCheckIssued C.X509_STORE_set_check_issued
+//llgo:link (*X509_STORE).SetCheckIssued C.X509_STORE_set_check_issued
 func (self *X509_STORE) SetCheckIssued(check_issued X509_STORE_CTX_check_issued_fn) {
 }
 
-// llgo:link (*X509_STORE).CheckIssued C.X509_STORE_get_check_issued
+//llgo:link (*X509_STORE).CheckIssued C.X509_STORE_get_check_issued
 func (self *X509_STORE) CheckIssued() X509_STORE_CTX_check_issued_fn {
 	return nil
 }
 
-// llgo:link (*X509_STORE).SetCheckRevocation C.X509_STORE_set_check_revocation
+//llgo:link (*X509_STORE).SetCheckRevocation C.X509_STORE_set_check_revocation
 func (self *X509_STORE) SetCheckRevocation(check_revocation X509_STORE_CTX_check_revocation_fn) {
 }
 
-// llgo:link (*X509_STORE).CheckRevocation C.X509_STORE_get_check_revocation
+//llgo:link (*X509_STORE).CheckRevocation C.X509_STORE_get_check_revocation
 func (self *X509_STORE) CheckRevocation() X509_STORE_CTX_check_revocation_fn {
 	return nil
 }
 
-// llgo:link (*X509_STORE).SetGetCrl C.X509_STORE_set_get_crl
+//llgo:link (*X509_STORE).SetGetCrl C.X509_STORE_set_get_crl
 func (self *X509_STORE) SetGetCrl(get_crl X509_STORE_CTX_get_crl_fn) {
 }
 
-// llgo:link (*X509_STORE).GetCrl C.X509_STORE_get_get_crl
+//llgo:link (*X509_STORE).GetCrl C.X509_STORE_get_get_crl
 func (self *X509_STORE) GetCrl() X509_STORE_CTX_get_crl_fn {
 	return nil
 }
 
-// llgo:link (*X509_STORE).SetCheckCrl C.X509_STORE_set_check_crl
+//llgo:link (*X509_STORE).SetCheckCrl C.X509_STORE_set_check_crl
 func (self *X509_STORE) SetCheckCrl(check_crl X509_STORE_CTX_check_crl_fn) {
 }
 
-// llgo:link (*X509_STORE).CheckCrl C.X509_STORE_get_check_crl
+//llgo:link (*X509_STORE).CheckCrl C.X509_STORE_get_check_crl
 func (self *X509_STORE) CheckCrl() X509_STORE_CTX_check_crl_fn {
 	return nil
 }
 
-// llgo:link (*X509_STORE).SetCertCrl C.X509_STORE_set_cert_crl
+//llgo:link (*X509_STORE).SetCertCrl C.X509_STORE_set_cert_crl
 func (self *X509_STORE) SetCertCrl(cert_crl X509_STORE_CTX_cert_crl_fn) {
 }
 
-// llgo:link (*X509_STORE).CertCrl C.X509_STORE_get_cert_crl
+//llgo:link (*X509_STORE).CertCrl C.X509_STORE_get_cert_crl
 func (self *X509_STORE) CertCrl() X509_STORE_CTX_cert_crl_fn {
 	return nil
 }
 
-// llgo:link (*X509_STORE).SetCheckPolicy C.X509_STORE_set_check_policy
+//llgo:link (*X509_STORE).SetCheckPolicy C.X509_STORE_set_check_policy
 func (self *X509_STORE) SetCheckPolicy(check_policy X509_STORE_CTX_check_policy_fn) {
 }
 
-// llgo:link (*X509_STORE).CheckPolicy C.X509_STORE_get_check_policy
+//llgo:link (*X509_STORE).CheckPolicy C.X509_STORE_get_check_policy
 func (self *X509_STORE) CheckPolicy() X509_STORE_CTX_check_policy_fn {
 	return nil
 }
 
-// llgo:link (*X509_STORE).SetLookupCerts C.X509_STORE_set_lookup_certs
+//llgo:link (*X509_STORE).SetLookupCerts C.X509_STORE_set_lookup_certs
 func (self *X509_STORE) SetLookupCerts(lookup_certs X509_STORE_CTX_lookup_certs_fn) {
 }
 
-// llgo:link (*X509_STORE).LookupCerts C.X509_STORE_get_lookup_certs
+//llgo:link (*X509_STORE).LookupCerts C.X509_STORE_get_lookup_certs
 func (self *X509_STORE) LookupCerts() X509_STORE_CTX_lookup_certs_fn {
 	return nil
 }
 
-// llgo:link (*X509_STORE).SetLookupCrls C.X509_STORE_set_lookup_crls
+//llgo:link (*X509_STORE).SetLookupCrls C.X509_STORE_set_lookup_crls
 func (self *X509_STORE) SetLookupCrls(lookup_crls X509_STORE_CTX_lookup_crls_fn) {
 }
 
-// llgo:link (*X509_STORE).LookupCrls C.X509_STORE_get_lookup_crls
+//llgo:link (*X509_STORE).LookupCrls C.X509_STORE_get_lookup_crls
 func (self *X509_STORE) LookupCrls() X509_STORE_CTX_lookup_crls_fn {
 	return nil
 }
 
-// llgo:link (*X509_STORE).SetCleanup C.X509_STORE_set_cleanup
+//llgo:link (*X509_STORE).SetCleanup C.X509_STORE_set_cleanup
 func (self *X509_STORE) SetCleanup(cleanup X509_STORE_CTX_cleanup_fn) {
 }
 
-// llgo:link (*X509_STORE).Cleanup C.X509_STORE_get_cleanup
+//llgo:link (*X509_STORE).Cleanup C.X509_STORE_get_cleanup
 func (self *X509_STORE) Cleanup() X509_STORE_CTX_cleanup_fn {
 	return nil
 }
 
-// llgo:link (*X509_STORE).SetExData C.X509_STORE_set_ex_data
+//llgo:link (*X509_STORE).SetExData C.X509_STORE_set_ex_data
 func (self *X509_STORE) SetExData(idx c.Int, data unsafe.Pointer) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_STORE).ExData C.X509_STORE_get_ex_data
+//llgo:link (*X509_STORE).ExData C.X509_STORE_get_ex_data
 func (self *X509_STORE) ExData(idx c.Int) unsafe.Pointer {
 	return nil
 }
 
-// llgo:link (*OSSL_LIB_CTX).X509_STORE_CTX_new_ex C.X509_STORE_CTX_new_ex
+//llgo:link (*OSSL_LIB_CTX).X509_STORE_CTX_new_ex C.X509_STORE_CTX_new_ex
 func (self *OSSL_LIB_CTX) X509_STORE_CTX_new_ex(propq *c.Char) *X509_STORE_CTX {
 	return nil
 }
@@ -821,121 +821,121 @@ func X509_STORE_CTX_new() *X509_STORE_CTX
 //go:linkname X509_STORE_CTX_get1_issuer C.X509_STORE_CTX_get1_issuer
 func X509_STORE_CTX_get1_issuer(issuer **X509, ctx *X509_STORE_CTX, x *X509) c.Int
 
-// llgo:link (*X509_STORE_CTX).Free C.X509_STORE_CTX_free
+//llgo:link (*X509_STORE_CTX).Free C.X509_STORE_CTX_free
 func (self *X509_STORE_CTX) Free() {
 }
 
-// llgo:link (*X509_STORE_CTX).Init C.X509_STORE_CTX_init
+//llgo:link (*X509_STORE_CTX).Init C.X509_STORE_CTX_init
 func (self *X509_STORE_CTX) Init(trust_store *X509_STORE, target *X509, untrusted *Stack_st_X509) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_STORE_CTX).InitRpk C.X509_STORE_CTX_init_rpk
+//llgo:link (*X509_STORE_CTX).InitRpk C.X509_STORE_CTX_init_rpk
 func (self *X509_STORE_CTX) InitRpk(trust_store *X509_STORE, rpk *EVP_PKEY) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_STORE_CTX).Set0TrustedStack C.X509_STORE_CTX_set0_trusted_stack
+//llgo:link (*X509_STORE_CTX).Set0TrustedStack C.X509_STORE_CTX_set0_trusted_stack
 func (self *X509_STORE_CTX) Set0TrustedStack(sk *Stack_st_X509) {
 }
 
-// llgo:link (*X509_STORE_CTX).Cleanup C.X509_STORE_CTX_cleanup
+//llgo:link (*X509_STORE_CTX).Cleanup C.X509_STORE_CTX_cleanup
 func (self *X509_STORE_CTX) Cleanup() {
 }
 
-// llgo:link (*X509_STORE_CTX).Get0Store C.X509_STORE_CTX_get0_store
+//llgo:link (*X509_STORE_CTX).Get0Store C.X509_STORE_CTX_get0_store
 func (self *X509_STORE_CTX) Get0Store() *X509_STORE {
 	return nil
 }
 
-// llgo:link (*X509_STORE_CTX).Get0Cert C.X509_STORE_CTX_get0_cert
+//llgo:link (*X509_STORE_CTX).Get0Cert C.X509_STORE_CTX_get0_cert
 func (self *X509_STORE_CTX) Get0Cert() *X509 {
 	return nil
 }
 
-// llgo:link (*X509_STORE_CTX).Get0Rpk C.X509_STORE_CTX_get0_rpk
+//llgo:link (*X509_STORE_CTX).Get0Rpk C.X509_STORE_CTX_get0_rpk
 func (self *X509_STORE_CTX) Get0Rpk() *EVP_PKEY {
 	return nil
 }
 
-// llgo:link (*X509_STORE_CTX).Get0Untrusted C.X509_STORE_CTX_get0_untrusted
+//llgo:link (*X509_STORE_CTX).Get0Untrusted C.X509_STORE_CTX_get0_untrusted
 func (self *X509_STORE_CTX) Get0Untrusted() *Stack_st_X509 {
 	return nil
 }
 
-// llgo:link (*X509_STORE_CTX).Set0Untrusted C.X509_STORE_CTX_set0_untrusted
+//llgo:link (*X509_STORE_CTX).Set0Untrusted C.X509_STORE_CTX_set0_untrusted
 func (self *X509_STORE_CTX) Set0Untrusted(sk *Stack_st_X509) {
 }
 
-// llgo:link (*X509_STORE_CTX).SetVerifyCb C.X509_STORE_CTX_set_verify_cb
+//llgo:link (*X509_STORE_CTX).SetVerifyCb C.X509_STORE_CTX_set_verify_cb
 func (self *X509_STORE_CTX) SetVerifyCb(verify X509_STORE_CTX_verify_cb) {
 }
 
-// llgo:link (*X509_STORE_CTX).VerifyCb C.X509_STORE_CTX_get_verify_cb
+//llgo:link (*X509_STORE_CTX).VerifyCb C.X509_STORE_CTX_get_verify_cb
 func (self *X509_STORE_CTX) VerifyCb() X509_STORE_CTX_verify_cb {
 	return nil
 }
 
-// llgo:link (*X509_STORE_CTX).GetVerify C.X509_STORE_CTX_get_verify
+//llgo:link (*X509_STORE_CTX).GetVerify C.X509_STORE_CTX_get_verify
 func (self *X509_STORE_CTX) GetVerify() X509_STORE_CTX_verify_fn {
 	return nil
 }
 
-// llgo:link (*X509_STORE_CTX).GetIssuer C.X509_STORE_CTX_get_get_issuer
+//llgo:link (*X509_STORE_CTX).GetIssuer C.X509_STORE_CTX_get_get_issuer
 func (self *X509_STORE_CTX) GetIssuer() X509_STORE_CTX_get_issuer_fn {
 	return nil
 }
 
-// llgo:link (*X509_STORE_CTX).CheckIssued C.X509_STORE_CTX_get_check_issued
+//llgo:link (*X509_STORE_CTX).CheckIssued C.X509_STORE_CTX_get_check_issued
 func (self *X509_STORE_CTX) CheckIssued() X509_STORE_CTX_check_issued_fn {
 	return nil
 }
 
-// llgo:link (*X509_STORE_CTX).CheckRevocation C.X509_STORE_CTX_get_check_revocation
+//llgo:link (*X509_STORE_CTX).CheckRevocation C.X509_STORE_CTX_get_check_revocation
 func (self *X509_STORE_CTX) CheckRevocation() X509_STORE_CTX_check_revocation_fn {
 	return nil
 }
 
-// llgo:link (*X509_STORE_CTX).SetGetCrl C.X509_STORE_CTX_set_get_crl
+//llgo:link (*X509_STORE_CTX).SetGetCrl C.X509_STORE_CTX_set_get_crl
 func (self *X509_STORE_CTX) SetGetCrl(get_crl X509_STORE_CTX_get_crl_fn) {
 }
 
-// llgo:link (*X509_STORE_CTX).GetCrl C.X509_STORE_CTX_get_get_crl
+//llgo:link (*X509_STORE_CTX).GetCrl C.X509_STORE_CTX_get_get_crl
 func (self *X509_STORE_CTX) GetCrl() X509_STORE_CTX_get_crl_fn {
 	return nil
 }
 
-// llgo:link (*X509_STORE_CTX).CheckCrl C.X509_STORE_CTX_get_check_crl
+//llgo:link (*X509_STORE_CTX).CheckCrl C.X509_STORE_CTX_get_check_crl
 func (self *X509_STORE_CTX) CheckCrl() X509_STORE_CTX_check_crl_fn {
 	return nil
 }
 
-// llgo:link (*X509_STORE_CTX).CertCrl C.X509_STORE_CTX_get_cert_crl
+//llgo:link (*X509_STORE_CTX).CertCrl C.X509_STORE_CTX_get_cert_crl
 func (self *X509_STORE_CTX) CertCrl() X509_STORE_CTX_cert_crl_fn {
 	return nil
 }
 
-// llgo:link (*X509_STORE_CTX).CheckPolicy C.X509_STORE_CTX_get_check_policy
+//llgo:link (*X509_STORE_CTX).CheckPolicy C.X509_STORE_CTX_get_check_policy
 func (self *X509_STORE_CTX) CheckPolicy() X509_STORE_CTX_check_policy_fn {
 	return nil
 }
 
-// llgo:link (*X509_STORE_CTX).LookupCerts C.X509_STORE_CTX_get_lookup_certs
+//llgo:link (*X509_STORE_CTX).LookupCerts C.X509_STORE_CTX_get_lookup_certs
 func (self *X509_STORE_CTX) LookupCerts() X509_STORE_CTX_lookup_certs_fn {
 	return nil
 }
 
-// llgo:link (*X509_STORE_CTX).LookupCrls C.X509_STORE_CTX_get_lookup_crls
+//llgo:link (*X509_STORE_CTX).LookupCrls C.X509_STORE_CTX_get_lookup_crls
 func (self *X509_STORE_CTX) LookupCrls() X509_STORE_CTX_lookup_crls_fn {
 	return nil
 }
 
-// llgo:link (*X509_STORE_CTX).GetCleanup C.X509_STORE_CTX_get_cleanup
+//llgo:link (*X509_STORE_CTX).GetCleanup C.X509_STORE_CTX_get_cleanup
 func (self *X509_STORE_CTX) GetCleanup() X509_STORE_CTX_cleanup_fn {
 	return nil
 }
 
-// llgo:link (*X509_STORE).AddLookup C.X509_STORE_add_lookup
+//llgo:link (*X509_STORE).AddLookup C.X509_STORE_add_lookup
 func (self *X509_STORE) AddLookup(m *X509_LOOKUP_METHOD) *X509_LOOKUP {
 	return nil
 }
@@ -952,393 +952,393 @@ func X509_LOOKUP_store() *X509_LOOKUP_METHOD
 //go:linkname X509_LOOKUP_meth_new C.X509_LOOKUP_meth_new
 func X509_LOOKUP_meth_new(name *c.Char) *X509_LOOKUP_METHOD
 
-// llgo:link (*X509_LOOKUP_METHOD).Free C.X509_LOOKUP_meth_free
+//llgo:link (*X509_LOOKUP_METHOD).Free C.X509_LOOKUP_meth_free
 func (self *X509_LOOKUP_METHOD) Free() {
 }
 
-// llgo:link (*X509_LOOKUP_METHOD).SetNewItem C.X509_LOOKUP_meth_set_new_item
+//llgo:link (*X509_LOOKUP_METHOD).SetNewItem C.X509_LOOKUP_meth_set_new_item
 func (self *X509_LOOKUP_METHOD) SetNewItem(new_item func(_llcppg_param1 *X509_LOOKUP) c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_LOOKUP_METHOD).NewItem C.X509_LOOKUP_meth_get_new_item
+//llgo:link (*X509_LOOKUP_METHOD).NewItem C.X509_LOOKUP_meth_get_new_item
 func (self *X509_LOOKUP_METHOD) NewItem() func(_llcppg_param1 *X509_LOOKUP) c.Int {
 	return nil
 }
 
-// llgo:link (*X509_LOOKUP_METHOD).SetFree C.X509_LOOKUP_meth_set_free
+//llgo:link (*X509_LOOKUP_METHOD).SetFree C.X509_LOOKUP_meth_set_free
 func (self *X509_LOOKUP_METHOD) SetFree(free_fn func(_llcppg_param1 *X509_LOOKUP)) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_LOOKUP_METHOD).GetFree C.X509_LOOKUP_meth_get_free
+//llgo:link (*X509_LOOKUP_METHOD).GetFree C.X509_LOOKUP_meth_get_free
 func (self *X509_LOOKUP_METHOD) GetFree() func(_llcppg_param1 *X509_LOOKUP) {
 	return nil
 }
 
-// llgo:link (*X509_LOOKUP_METHOD).SetInit C.X509_LOOKUP_meth_set_init
+//llgo:link (*X509_LOOKUP_METHOD).SetInit C.X509_LOOKUP_meth_set_init
 func (self *X509_LOOKUP_METHOD) SetInit(init func(_llcppg_param1 *X509_LOOKUP) c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_LOOKUP_METHOD).Init C.X509_LOOKUP_meth_get_init
+//llgo:link (*X509_LOOKUP_METHOD).Init C.X509_LOOKUP_meth_get_init
 func (self *X509_LOOKUP_METHOD) Init() func(_llcppg_param1 *X509_LOOKUP) c.Int {
 	return nil
 }
 
-// llgo:link (*X509_LOOKUP_METHOD).SetShutdown C.X509_LOOKUP_meth_set_shutdown
+//llgo:link (*X509_LOOKUP_METHOD).SetShutdown C.X509_LOOKUP_meth_set_shutdown
 func (self *X509_LOOKUP_METHOD) SetShutdown(shutdown func(_llcppg_param1 *X509_LOOKUP) c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_LOOKUP_METHOD).Shutdown C.X509_LOOKUP_meth_get_shutdown
+//llgo:link (*X509_LOOKUP_METHOD).Shutdown C.X509_LOOKUP_meth_get_shutdown
 func (self *X509_LOOKUP_METHOD) Shutdown() func(_llcppg_param1 *X509_LOOKUP) c.Int {
 	return nil
 }
 
-// llgo:link (*X509_LOOKUP_METHOD).SetCtrl C.X509_LOOKUP_meth_set_ctrl
+//llgo:link (*X509_LOOKUP_METHOD).SetCtrl C.X509_LOOKUP_meth_set_ctrl
 func (self *X509_LOOKUP_METHOD) SetCtrl(ctrl_fn X509_LOOKUP_ctrl_fn) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_LOOKUP_METHOD).Ctrl C.X509_LOOKUP_meth_get_ctrl
+//llgo:link (*X509_LOOKUP_METHOD).Ctrl C.X509_LOOKUP_meth_get_ctrl
 func (self *X509_LOOKUP_METHOD) Ctrl() X509_LOOKUP_ctrl_fn {
 	return nil
 }
 
-// llgo:link (*X509_LOOKUP_METHOD).SetGetBySubject C.X509_LOOKUP_meth_set_get_by_subject
+//llgo:link (*X509_LOOKUP_METHOD).SetGetBySubject C.X509_LOOKUP_meth_set_get_by_subject
 func (self *X509_LOOKUP_METHOD) SetGetBySubject(fn X509_LOOKUP_get_by_subject_fn) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_LOOKUP_METHOD).GetBySubject C.X509_LOOKUP_meth_get_get_by_subject
+//llgo:link (*X509_LOOKUP_METHOD).GetBySubject C.X509_LOOKUP_meth_get_get_by_subject
 func (self *X509_LOOKUP_METHOD) GetBySubject() X509_LOOKUP_get_by_subject_fn {
 	return nil
 }
 
-// llgo:link (*X509_LOOKUP_METHOD).SetGetByIssuerSerial C.X509_LOOKUP_meth_set_get_by_issuer_serial
+//llgo:link (*X509_LOOKUP_METHOD).SetGetByIssuerSerial C.X509_LOOKUP_meth_set_get_by_issuer_serial
 func (self *X509_LOOKUP_METHOD) SetGetByIssuerSerial(fn X509_LOOKUP_get_by_issuer_serial_fn) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_LOOKUP_METHOD).GetByIssuerSerial C.X509_LOOKUP_meth_get_get_by_issuer_serial
+//llgo:link (*X509_LOOKUP_METHOD).GetByIssuerSerial C.X509_LOOKUP_meth_get_get_by_issuer_serial
 func (self *X509_LOOKUP_METHOD) GetByIssuerSerial() X509_LOOKUP_get_by_issuer_serial_fn {
 	return nil
 }
 
-// llgo:link (*X509_LOOKUP_METHOD).SetGetByFingerprint C.X509_LOOKUP_meth_set_get_by_fingerprint
+//llgo:link (*X509_LOOKUP_METHOD).SetGetByFingerprint C.X509_LOOKUP_meth_set_get_by_fingerprint
 func (self *X509_LOOKUP_METHOD) SetGetByFingerprint(fn X509_LOOKUP_get_by_fingerprint_fn) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_LOOKUP_METHOD).GetByFingerprint C.X509_LOOKUP_meth_get_get_by_fingerprint
+//llgo:link (*X509_LOOKUP_METHOD).GetByFingerprint C.X509_LOOKUP_meth_get_get_by_fingerprint
 func (self *X509_LOOKUP_METHOD) GetByFingerprint() X509_LOOKUP_get_by_fingerprint_fn {
 	return nil
 }
 
-// llgo:link (*X509_LOOKUP_METHOD).SetGetByAlias C.X509_LOOKUP_meth_set_get_by_alias
+//llgo:link (*X509_LOOKUP_METHOD).SetGetByAlias C.X509_LOOKUP_meth_set_get_by_alias
 func (self *X509_LOOKUP_METHOD) SetGetByAlias(fn X509_LOOKUP_get_by_alias_fn) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_LOOKUP_METHOD).GetByAlias C.X509_LOOKUP_meth_get_get_by_alias
+//llgo:link (*X509_LOOKUP_METHOD).GetByAlias C.X509_LOOKUP_meth_get_get_by_alias
 func (self *X509_LOOKUP_METHOD) GetByAlias() X509_LOOKUP_get_by_alias_fn {
 	return nil
 }
 
-// llgo:link (*X509_STORE).AddCert C.X509_STORE_add_cert
+//llgo:link (*X509_STORE).AddCert C.X509_STORE_add_cert
 func (self *X509_STORE) AddCert(x *X509) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_STORE).AddCrl C.X509_STORE_add_crl
+//llgo:link (*X509_STORE).AddCrl C.X509_STORE_add_crl
 func (self *X509_STORE) AddCrl(x *X509_CRL) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_STORE_CTX).BySubject C.X509_STORE_CTX_get_by_subject
+//llgo:link (*X509_STORE_CTX).BySubject C.X509_STORE_CTX_get_by_subject
 func (self *X509_STORE_CTX) BySubject(type_ X509_LOOKUP_TYPE, name *X509_NAME, ret *X509_OBJECT) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_STORE_CTX).ObjBySubject C.X509_STORE_CTX_get_obj_by_subject
+//llgo:link (*X509_STORE_CTX).ObjBySubject C.X509_STORE_CTX_get_obj_by_subject
 func (self *X509_STORE_CTX) ObjBySubject(type_ X509_LOOKUP_TYPE, name *X509_NAME) *X509_OBJECT {
 	return nil
 }
 
-// llgo:link (*X509_LOOKUP).Ctrl C.X509_LOOKUP_ctrl
+//llgo:link (*X509_LOOKUP).Ctrl C.X509_LOOKUP_ctrl
 func (self *X509_LOOKUP) Ctrl(cmd c.Int, argc *c.Char, argl c.Long, ret **c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_LOOKUP).CtrlEx C.X509_LOOKUP_ctrl_ex
+//llgo:link (*X509_LOOKUP).CtrlEx C.X509_LOOKUP_ctrl_ex
 func (self *X509_LOOKUP) CtrlEx(cmd c.Int, argc *c.Char, argl c.Long, ret **c.Char, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_LOOKUP).X509_load_cert_file C.X509_load_cert_file
+//llgo:link (*X509_LOOKUP).X509_load_cert_file C.X509_load_cert_file
 func (self *X509_LOOKUP) X509_load_cert_file(file *c.Char, type_ c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_LOOKUP).X509_load_cert_file_ex C.X509_load_cert_file_ex
+//llgo:link (*X509_LOOKUP).X509_load_cert_file_ex C.X509_load_cert_file_ex
 func (self *X509_LOOKUP) X509_load_cert_file_ex(file *c.Char, type_ c.Int, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_LOOKUP).X509_load_crl_file C.X509_load_crl_file
+//llgo:link (*X509_LOOKUP).X509_load_crl_file C.X509_load_crl_file
 func (self *X509_LOOKUP) X509_load_crl_file(file *c.Char, type_ c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_LOOKUP).X509_load_cert_crl_file C.X509_load_cert_crl_file
+//llgo:link (*X509_LOOKUP).X509_load_cert_crl_file C.X509_load_cert_crl_file
 func (self *X509_LOOKUP) X509_load_cert_crl_file(file *c.Char, type_ c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_LOOKUP).X509_load_cert_crl_file_ex C.X509_load_cert_crl_file_ex
+//llgo:link (*X509_LOOKUP).X509_load_cert_crl_file_ex C.X509_load_cert_crl_file_ex
 func (self *X509_LOOKUP) X509_load_cert_crl_file_ex(file *c.Char, type_ c.Int, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_LOOKUP_METHOD).X509_LOOKUP_new C.X509_LOOKUP_new
+//llgo:link (*X509_LOOKUP_METHOD).X509_LOOKUP_new C.X509_LOOKUP_new
 func (self *X509_LOOKUP_METHOD) X509_LOOKUP_new() *X509_LOOKUP {
 	return nil
 }
 
-// llgo:link (*X509_LOOKUP).Free C.X509_LOOKUP_free
+//llgo:link (*X509_LOOKUP).Free C.X509_LOOKUP_free
 func (self *X509_LOOKUP) Free() {
 }
 
-// llgo:link (*X509_LOOKUP).Init C.X509_LOOKUP_init
+//llgo:link (*X509_LOOKUP).Init C.X509_LOOKUP_init
 func (self *X509_LOOKUP) Init() c.Int {
 	return 0
 }
 
-// llgo:link (*X509_LOOKUP).BySubject C.X509_LOOKUP_by_subject
+//llgo:link (*X509_LOOKUP).BySubject C.X509_LOOKUP_by_subject
 func (self *X509_LOOKUP) BySubject(type_ X509_LOOKUP_TYPE, name *X509_NAME, ret *X509_OBJECT) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_LOOKUP).BySubjectEx C.X509_LOOKUP_by_subject_ex
+//llgo:link (*X509_LOOKUP).BySubjectEx C.X509_LOOKUP_by_subject_ex
 func (self *X509_LOOKUP) BySubjectEx(type_ X509_LOOKUP_TYPE, name *X509_NAME, ret *X509_OBJECT, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_LOOKUP).ByIssuerSerial C.X509_LOOKUP_by_issuer_serial
+//llgo:link (*X509_LOOKUP).ByIssuerSerial C.X509_LOOKUP_by_issuer_serial
 func (self *X509_LOOKUP) ByIssuerSerial(type_ X509_LOOKUP_TYPE, name *X509_NAME, serial *ASN1_INTEGER, ret *X509_OBJECT) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_LOOKUP).ByFingerprint C.X509_LOOKUP_by_fingerprint
+//llgo:link (*X509_LOOKUP).ByFingerprint C.X509_LOOKUP_by_fingerprint
 func (self *X509_LOOKUP) ByFingerprint(type_ X509_LOOKUP_TYPE, bytes *uint8, len c.Int, ret *X509_OBJECT) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_LOOKUP).ByAlias C.X509_LOOKUP_by_alias
+//llgo:link (*X509_LOOKUP).ByAlias C.X509_LOOKUP_by_alias
 func (self *X509_LOOKUP) ByAlias(type_ X509_LOOKUP_TYPE, str *c.Char, len c.Int, ret *X509_OBJECT) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_LOOKUP).SetMethodData C.X509_LOOKUP_set_method_data
+//llgo:link (*X509_LOOKUP).SetMethodData C.X509_LOOKUP_set_method_data
 func (self *X509_LOOKUP) SetMethodData(data unsafe.Pointer) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_LOOKUP).MethodData C.X509_LOOKUP_get_method_data
+//llgo:link (*X509_LOOKUP).MethodData C.X509_LOOKUP_get_method_data
 func (self *X509_LOOKUP) MethodData() unsafe.Pointer {
 	return nil
 }
 
-// llgo:link (*X509_LOOKUP).Store C.X509_LOOKUP_get_store
+//llgo:link (*X509_LOOKUP).Store C.X509_LOOKUP_get_store
 func (self *X509_LOOKUP) Store() *X509_STORE {
 	return nil
 }
 
-// llgo:link (*X509_LOOKUP).Shutdown C.X509_LOOKUP_shutdown
+//llgo:link (*X509_LOOKUP).Shutdown C.X509_LOOKUP_shutdown
 func (self *X509_LOOKUP) Shutdown() c.Int {
 	return 0
 }
 
-// llgo:link (*X509_STORE).LoadFile C.X509_STORE_load_file
+//llgo:link (*X509_STORE).LoadFile C.X509_STORE_load_file
 func (self *X509_STORE) LoadFile(file *c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_STORE).LoadPath C.X509_STORE_load_path
+//llgo:link (*X509_STORE).LoadPath C.X509_STORE_load_path
 func (self *X509_STORE) LoadPath(path *c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_STORE).LoadStore C.X509_STORE_load_store
+//llgo:link (*X509_STORE).LoadStore C.X509_STORE_load_store
 func (self *X509_STORE) LoadStore(store *c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_STORE).LoadLocations C.X509_STORE_load_locations
+//llgo:link (*X509_STORE).LoadLocations C.X509_STORE_load_locations
 func (self *X509_STORE) LoadLocations(file *c.Char, dir *c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_STORE).SetDefaultPaths C.X509_STORE_set_default_paths
+//llgo:link (*X509_STORE).SetDefaultPaths C.X509_STORE_set_default_paths
 func (self *X509_STORE) SetDefaultPaths() c.Int {
 	return 0
 }
 
-// llgo:link (*X509_STORE).LoadFileEx C.X509_STORE_load_file_ex
+//llgo:link (*X509_STORE).LoadFileEx C.X509_STORE_load_file_ex
 func (self *X509_STORE) LoadFileEx(file *c.Char, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_STORE).LoadStoreEx C.X509_STORE_load_store_ex
+//llgo:link (*X509_STORE).LoadStoreEx C.X509_STORE_load_store_ex
 func (self *X509_STORE) LoadStoreEx(store *c.Char, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_STORE).LoadLocationsEx C.X509_STORE_load_locations_ex
+//llgo:link (*X509_STORE).LoadLocationsEx C.X509_STORE_load_locations_ex
 func (self *X509_STORE) LoadLocationsEx(file *c.Char, dir *c.Char, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_STORE).SetDefaultPathsEx C.X509_STORE_set_default_paths_ex
+//llgo:link (*X509_STORE).SetDefaultPathsEx C.X509_STORE_set_default_paths_ex
 func (self *X509_STORE) SetDefaultPathsEx(libctx *OSSL_LIB_CTX, propq *c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_STORE_CTX).SetExData C.X509_STORE_CTX_set_ex_data
+//llgo:link (*X509_STORE_CTX).SetExData C.X509_STORE_CTX_set_ex_data
 func (self *X509_STORE_CTX) SetExData(idx c.Int, data unsafe.Pointer) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_STORE_CTX).ExData C.X509_STORE_CTX_get_ex_data
+//llgo:link (*X509_STORE_CTX).ExData C.X509_STORE_CTX_get_ex_data
 func (self *X509_STORE_CTX) ExData(idx c.Int) unsafe.Pointer {
 	return nil
 }
 
-// llgo:link (*X509_STORE_CTX).Error C.X509_STORE_CTX_get_error
+//llgo:link (*X509_STORE_CTX).Error C.X509_STORE_CTX_get_error
 func (self *X509_STORE_CTX) Error() c.Int {
 	return 0
 }
 
-// llgo:link (*X509_STORE_CTX).SetError C.X509_STORE_CTX_set_error
+//llgo:link (*X509_STORE_CTX).SetError C.X509_STORE_CTX_set_error
 func (self *X509_STORE_CTX) SetError(s c.Int) {
 }
 
-// llgo:link (*X509_STORE_CTX).ErrorDepth C.X509_STORE_CTX_get_error_depth
+//llgo:link (*X509_STORE_CTX).ErrorDepth C.X509_STORE_CTX_get_error_depth
 func (self *X509_STORE_CTX) ErrorDepth() c.Int {
 	return 0
 }
 
-// llgo:link (*X509_STORE_CTX).SetErrorDepth C.X509_STORE_CTX_set_error_depth
+//llgo:link (*X509_STORE_CTX).SetErrorDepth C.X509_STORE_CTX_set_error_depth
 func (self *X509_STORE_CTX) SetErrorDepth(depth c.Int) {
 }
 
-// llgo:link (*X509_STORE_CTX).CurrentCert C.X509_STORE_CTX_get_current_cert
+//llgo:link (*X509_STORE_CTX).CurrentCert C.X509_STORE_CTX_get_current_cert
 func (self *X509_STORE_CTX) CurrentCert() *X509 {
 	return nil
 }
 
-// llgo:link (*X509_STORE_CTX).SetCurrentCert C.X509_STORE_CTX_set_current_cert
+//llgo:link (*X509_STORE_CTX).SetCurrentCert C.X509_STORE_CTX_set_current_cert
 func (self *X509_STORE_CTX) SetCurrentCert(x *X509) {
 }
 
-// llgo:link (*X509_STORE_CTX).Get0CurrentIssuer C.X509_STORE_CTX_get0_current_issuer
+//llgo:link (*X509_STORE_CTX).Get0CurrentIssuer C.X509_STORE_CTX_get0_current_issuer
 func (self *X509_STORE_CTX) Get0CurrentIssuer() *X509 {
 	return nil
 }
 
-// llgo:link (*X509_STORE_CTX).Get0CurrentCrl C.X509_STORE_CTX_get0_current_crl
+//llgo:link (*X509_STORE_CTX).Get0CurrentCrl C.X509_STORE_CTX_get0_current_crl
 func (self *X509_STORE_CTX) Get0CurrentCrl() *X509_CRL {
 	return nil
 }
 
-// llgo:link (*X509_STORE_CTX).Get0ParentCtx C.X509_STORE_CTX_get0_parent_ctx
+//llgo:link (*X509_STORE_CTX).Get0ParentCtx C.X509_STORE_CTX_get0_parent_ctx
 func (self *X509_STORE_CTX) Get0ParentCtx() *X509_STORE_CTX {
 	return self
 }
 
-// llgo:link (*X509_STORE_CTX).Get0Chain C.X509_STORE_CTX_get0_chain
+//llgo:link (*X509_STORE_CTX).Get0Chain C.X509_STORE_CTX_get0_chain
 func (self *X509_STORE_CTX) Get0Chain() *Stack_st_X509 {
 	return nil
 }
 
-// llgo:link (*X509_STORE_CTX).Get1Chain C.X509_STORE_CTX_get1_chain
+//llgo:link (*X509_STORE_CTX).Get1Chain C.X509_STORE_CTX_get1_chain
 func (self *X509_STORE_CTX) Get1Chain() *Stack_st_X509 {
 	return nil
 }
 
-// llgo:link (*X509_STORE_CTX).SetCert C.X509_STORE_CTX_set_cert
+//llgo:link (*X509_STORE_CTX).SetCert C.X509_STORE_CTX_set_cert
 func (self *X509_STORE_CTX) SetCert(target *X509) {
 }
 
-// llgo:link (*X509_STORE_CTX).Set0Rpk C.X509_STORE_CTX_set0_rpk
+//llgo:link (*X509_STORE_CTX).Set0Rpk C.X509_STORE_CTX_set0_rpk
 func (self *X509_STORE_CTX) Set0Rpk(target *EVP_PKEY) {
 }
 
-// llgo:link (*X509_STORE_CTX).Set0VerifiedChain C.X509_STORE_CTX_set0_verified_chain
+//llgo:link (*X509_STORE_CTX).Set0VerifiedChain C.X509_STORE_CTX_set0_verified_chain
 func (self *X509_STORE_CTX) Set0VerifiedChain(sk *Stack_st_X509) {
 }
 
-// llgo:link (*X509_STORE_CTX).Set0Crls C.X509_STORE_CTX_set0_crls
+//llgo:link (*X509_STORE_CTX).Set0Crls C.X509_STORE_CTX_set0_crls
 func (self *X509_STORE_CTX) Set0Crls(sk *Stack_st_X509_CRL) {
 }
 
-// llgo:link (*X509_STORE_CTX).SetOcspResp C.X509_STORE_CTX_set_ocsp_resp
+//llgo:link (*X509_STORE_CTX).SetOcspResp C.X509_STORE_CTX_set_ocsp_resp
 func (self *X509_STORE_CTX) SetOcspResp(sk *Stack_st_OCSP_RESPONSE) {
 }
 
-// llgo:link (*X509_STORE_CTX).SetPurpose C.X509_STORE_CTX_set_purpose
+//llgo:link (*X509_STORE_CTX).SetPurpose C.X509_STORE_CTX_set_purpose
 func (self *X509_STORE_CTX) SetPurpose(purpose c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_STORE_CTX).SetTrust C.X509_STORE_CTX_set_trust
+//llgo:link (*X509_STORE_CTX).SetTrust C.X509_STORE_CTX_set_trust
 func (self *X509_STORE_CTX) SetTrust(trust c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_STORE_CTX).PurposeInherit C.X509_STORE_CTX_purpose_inherit
+//llgo:link (*X509_STORE_CTX).PurposeInherit C.X509_STORE_CTX_purpose_inherit
 func (self *X509_STORE_CTX) PurposeInherit(def_purpose c.Int, purpose c.Int, trust c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_STORE_CTX).SetFlags C.X509_STORE_CTX_set_flags
+//llgo:link (*X509_STORE_CTX).SetFlags C.X509_STORE_CTX_set_flags
 func (self *X509_STORE_CTX) SetFlags(flags c.Ulong) {
 }
 
-// llgo:link (*X509_STORE_CTX).SetTime C.X509_STORE_CTX_set_time
+//llgo:link (*X509_STORE_CTX).SetTime C.X509_STORE_CTX_set_time
 func (self *X509_STORE_CTX) SetTime(flags c.Ulong, t time.TimeT) {
 }
 
-// llgo:link (*X509_STORE_CTX).SetCurrentReasons C.X509_STORE_CTX_set_current_reasons
+//llgo:link (*X509_STORE_CTX).SetCurrentReasons C.X509_STORE_CTX_set_current_reasons
 func (self *X509_STORE_CTX) SetCurrentReasons(current_reasons c.Uint) {
 }
 
-// llgo:link (*X509_STORE_CTX).Get0PolicyTree C.X509_STORE_CTX_get0_policy_tree
+//llgo:link (*X509_STORE_CTX).Get0PolicyTree C.X509_STORE_CTX_get0_policy_tree
 func (self *X509_STORE_CTX) Get0PolicyTree() *X509_POLICY_TREE {
 	return nil
 }
 
-// llgo:link (*X509_STORE_CTX).ExplicitPolicy C.X509_STORE_CTX_get_explicit_policy
+//llgo:link (*X509_STORE_CTX).ExplicitPolicy C.X509_STORE_CTX_get_explicit_policy
 func (self *X509_STORE_CTX) ExplicitPolicy() c.Int {
 	return 0
 }
 
-// llgo:link (*X509_STORE_CTX).NumUntrusted C.X509_STORE_CTX_get_num_untrusted
+//llgo:link (*X509_STORE_CTX).NumUntrusted C.X509_STORE_CTX_get_num_untrusted
 func (self *X509_STORE_CTX) NumUntrusted() c.Int {
 	return 0
 }
 
-// llgo:link (*X509_STORE_CTX).Get0Param C.X509_STORE_CTX_get0_param
+//llgo:link (*X509_STORE_CTX).Get0Param C.X509_STORE_CTX_get0_param
 func (self *X509_STORE_CTX) Get0Param() *X509_VERIFY_PARAM {
 	return nil
 }
 
-// llgo:link (*X509_STORE_CTX).Set0Param C.X509_STORE_CTX_set0_param
+//llgo:link (*X509_STORE_CTX).Set0Param C.X509_STORE_CTX_set0_param
 func (self *X509_STORE_CTX) Set0Param(param *X509_VERIFY_PARAM) {
 }
 
-// llgo:link (*X509_STORE_CTX).SetDefault C.X509_STORE_CTX_set_default
+//llgo:link (*X509_STORE_CTX).SetDefault C.X509_STORE_CTX_set_default
 func (self *X509_STORE_CTX) SetDefault(name *c.Char) c.Int {
 	return 0
 }
@@ -1346,128 +1346,128 @@ func (self *X509_STORE_CTX) SetDefault(name *c.Char) c.Int {
 // Bridge opacity barrier between libcrypt and libssl, also needed to support
 // offline testing in test/danetest.c
 //
-// llgo:link (*X509_STORE_CTX).Set0Dane C.X509_STORE_CTX_set0_dane
+//llgo:link (*X509_STORE_CTX).Set0Dane C.X509_STORE_CTX_set0_dane
 func (self *X509_STORE_CTX) Set0Dane(dane *SSL_DANE) {
 }
 
 //go:linkname X509_VERIFY_PARAM_new C.X509_VERIFY_PARAM_new
 func X509_VERIFY_PARAM_new() *X509_VERIFY_PARAM
 
-// llgo:link (*X509_VERIFY_PARAM).Free C.X509_VERIFY_PARAM_free
+//llgo:link (*X509_VERIFY_PARAM).Free C.X509_VERIFY_PARAM_free
 func (self *X509_VERIFY_PARAM) Free() {
 }
 
-// llgo:link (*X509_VERIFY_PARAM).Inherit C.X509_VERIFY_PARAM_inherit
+//llgo:link (*X509_VERIFY_PARAM).Inherit C.X509_VERIFY_PARAM_inherit
 func (self *X509_VERIFY_PARAM) Inherit(from *X509_VERIFY_PARAM) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_VERIFY_PARAM).Set1 C.X509_VERIFY_PARAM_set1
+//llgo:link (*X509_VERIFY_PARAM).Set1 C.X509_VERIFY_PARAM_set1
 func (self *X509_VERIFY_PARAM) Set1(from *X509_VERIFY_PARAM) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_VERIFY_PARAM).Set1Name C.X509_VERIFY_PARAM_set1_name
+//llgo:link (*X509_VERIFY_PARAM).Set1Name C.X509_VERIFY_PARAM_set1_name
 func (self *X509_VERIFY_PARAM) Set1Name(name *c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_VERIFY_PARAM).SetFlags C.X509_VERIFY_PARAM_set_flags
+//llgo:link (*X509_VERIFY_PARAM).SetFlags C.X509_VERIFY_PARAM_set_flags
 func (self *X509_VERIFY_PARAM) SetFlags(flags c.Ulong) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_VERIFY_PARAM).ClearFlags C.X509_VERIFY_PARAM_clear_flags
+//llgo:link (*X509_VERIFY_PARAM).ClearFlags C.X509_VERIFY_PARAM_clear_flags
 func (self *X509_VERIFY_PARAM) ClearFlags(flags c.Ulong) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_VERIFY_PARAM).Flags C.X509_VERIFY_PARAM_get_flags
+//llgo:link (*X509_VERIFY_PARAM).Flags C.X509_VERIFY_PARAM_get_flags
 func (self *X509_VERIFY_PARAM) Flags() c.Ulong {
 	return 0
 }
 
-// llgo:link (*X509_VERIFY_PARAM).SetPurpose C.X509_VERIFY_PARAM_set_purpose
+//llgo:link (*X509_VERIFY_PARAM).SetPurpose C.X509_VERIFY_PARAM_set_purpose
 func (self *X509_VERIFY_PARAM) SetPurpose(purpose c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_VERIFY_PARAM).Purpose C.X509_VERIFY_PARAM_get_purpose
+//llgo:link (*X509_VERIFY_PARAM).Purpose C.X509_VERIFY_PARAM_get_purpose
 func (self *X509_VERIFY_PARAM) Purpose() c.Int {
 	return 0
 }
 
-// llgo:link (*X509_VERIFY_PARAM).SetTrust C.X509_VERIFY_PARAM_set_trust
+//llgo:link (*X509_VERIFY_PARAM).SetTrust C.X509_VERIFY_PARAM_set_trust
 func (self *X509_VERIFY_PARAM) SetTrust(trust c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_VERIFY_PARAM).SetDepth C.X509_VERIFY_PARAM_set_depth
+//llgo:link (*X509_VERIFY_PARAM).SetDepth C.X509_VERIFY_PARAM_set_depth
 func (self *X509_VERIFY_PARAM) SetDepth(depth c.Int) {
 }
 
-// llgo:link (*X509_VERIFY_PARAM).SetAuthLevel C.X509_VERIFY_PARAM_set_auth_level
+//llgo:link (*X509_VERIFY_PARAM).SetAuthLevel C.X509_VERIFY_PARAM_set_auth_level
 func (self *X509_VERIFY_PARAM) SetAuthLevel(auth_level c.Int) {
 }
 
-// llgo:link (*X509_VERIFY_PARAM).Time C.X509_VERIFY_PARAM_get_time
+//llgo:link (*X509_VERIFY_PARAM).Time C.X509_VERIFY_PARAM_get_time
 func (self *X509_VERIFY_PARAM) Time() time.TimeT {
 	return 0
 }
 
-// llgo:link (*X509_VERIFY_PARAM).SetTime C.X509_VERIFY_PARAM_set_time
+//llgo:link (*X509_VERIFY_PARAM).SetTime C.X509_VERIFY_PARAM_set_time
 func (self *X509_VERIFY_PARAM) SetTime(t time.TimeT) {
 }
 
-// llgo:link (*X509_VERIFY_PARAM).Add0Policy C.X509_VERIFY_PARAM_add0_policy
+//llgo:link (*X509_VERIFY_PARAM).Add0Policy C.X509_VERIFY_PARAM_add0_policy
 func (self *X509_VERIFY_PARAM) Add0Policy(policy *ASN1_OBJECT) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_VERIFY_PARAM).Set1Policies C.X509_VERIFY_PARAM_set1_policies
+//llgo:link (*X509_VERIFY_PARAM).Set1Policies C.X509_VERIFY_PARAM_set1_policies
 func (self *X509_VERIFY_PARAM) Set1Policies(policies *Stack_st_ASN1_OBJECT) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_VERIFY_PARAM).SetInhFlags C.X509_VERIFY_PARAM_set_inh_flags
+//llgo:link (*X509_VERIFY_PARAM).SetInhFlags C.X509_VERIFY_PARAM_set_inh_flags
 func (self *X509_VERIFY_PARAM) SetInhFlags(flags c.Uint32T) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_VERIFY_PARAM).InhFlags C.X509_VERIFY_PARAM_get_inh_flags
+//llgo:link (*X509_VERIFY_PARAM).InhFlags C.X509_VERIFY_PARAM_get_inh_flags
 func (self *X509_VERIFY_PARAM) InhFlags() c.Uint32T {
 	return 0
 }
 
-// llgo:link (*X509_VERIFY_PARAM).Get0Host C.X509_VERIFY_PARAM_get0_host
+//llgo:link (*X509_VERIFY_PARAM).Get0Host C.X509_VERIFY_PARAM_get0_host
 func (self *X509_VERIFY_PARAM) Get0Host(idx c.Int) *c.Char {
 	return nil
 }
 
-// llgo:link (*X509_VERIFY_PARAM).Set1Host C.X509_VERIFY_PARAM_set1_host
+//llgo:link (*X509_VERIFY_PARAM).Set1Host C.X509_VERIFY_PARAM_set1_host
 func (self *X509_VERIFY_PARAM) Set1Host(name *c.Char, namelen c.SizeT) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_VERIFY_PARAM).Add1Host C.X509_VERIFY_PARAM_add1_host
+//llgo:link (*X509_VERIFY_PARAM).Add1Host C.X509_VERIFY_PARAM_add1_host
 func (self *X509_VERIFY_PARAM) Add1Host(name *c.Char, namelen c.SizeT) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_VERIFY_PARAM).Set1HostInputValidation C.X509_VERIFY_PARAM_set1_host_input_validation
+//llgo:link (*X509_VERIFY_PARAM).Set1HostInputValidation C.X509_VERIFY_PARAM_set1_host_input_validation
 func (self *X509_VERIFY_PARAM) Set1HostInputValidation(validate_host func(_llcppg_param1 *c.Char, _llcppg_param2 c.SizeT) c.Int) {
 }
 
-// llgo:link (*X509_VERIFY_PARAM).SetHostflags C.X509_VERIFY_PARAM_set_hostflags
+//llgo:link (*X509_VERIFY_PARAM).SetHostflags C.X509_VERIFY_PARAM_set_hostflags
 func (self *X509_VERIFY_PARAM) SetHostflags(flags c.Uint) {
 }
 
-// llgo:link (*X509_VERIFY_PARAM).Hostflags C.X509_VERIFY_PARAM_get_hostflags
+//llgo:link (*X509_VERIFY_PARAM).Hostflags C.X509_VERIFY_PARAM_get_hostflags
 func (self *X509_VERIFY_PARAM) Hostflags() c.Uint {
 	return 0
 }
 
-// llgo:link (*X509_VERIFY_PARAM).Get0Peername C.X509_VERIFY_PARAM_get0_peername
+//llgo:link (*X509_VERIFY_PARAM).Get0Peername C.X509_VERIFY_PARAM_get0_peername
 func (self *X509_VERIFY_PARAM) Get0Peername() *c.Char {
 	return nil
 }
@@ -1475,89 +1475,89 @@ func (self *X509_VERIFY_PARAM) Get0Peername() *c.Char {
 //go:linkname X509_VERIFY_PARAM_move_peername C.X509_VERIFY_PARAM_move_peername
 func X509_VERIFY_PARAM_move_peername(_llcppg_param1 *X509_VERIFY_PARAM, _llcppg_param2 *X509_VERIFY_PARAM)
 
-// llgo:link (*X509_VERIFY_PARAM).Get0Email C.X509_VERIFY_PARAM_get0_email
+//llgo:link (*X509_VERIFY_PARAM).Get0Email C.X509_VERIFY_PARAM_get0_email
 func (self *X509_VERIFY_PARAM) Get0Email() *c.Char {
 	return nil
 }
 
-// llgo:link (*X509_VERIFY_PARAM).Set1Email C.X509_VERIFY_PARAM_set1_email
+//llgo:link (*X509_VERIFY_PARAM).Set1Email C.X509_VERIFY_PARAM_set1_email
 func (self *X509_VERIFY_PARAM) Set1Email(email *c.Char, emaillen c.SizeT) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_VERIFY_PARAM).Set1Rfc822 C.X509_VERIFY_PARAM_set1_rfc822
+//llgo:link (*X509_VERIFY_PARAM).Set1Rfc822 C.X509_VERIFY_PARAM_set1_rfc822
 func (self *X509_VERIFY_PARAM) Set1Rfc822(email *c.Char, emaillen c.SizeT) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_VERIFY_PARAM).Add1Rfc822 C.X509_VERIFY_PARAM_add1_rfc822
+//llgo:link (*X509_VERIFY_PARAM).Add1Rfc822 C.X509_VERIFY_PARAM_add1_rfc822
 func (self *X509_VERIFY_PARAM) Add1Rfc822(email *c.Char, len c.SizeT) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_VERIFY_PARAM).Set1Rfc822InputValidation C.X509_VERIFY_PARAM_set1_rfc822_input_validation
+//llgo:link (*X509_VERIFY_PARAM).Set1Rfc822InputValidation C.X509_VERIFY_PARAM_set1_rfc822_input_validation
 func (self *X509_VERIFY_PARAM) Set1Rfc822InputValidation(validate_rfc822 func(_llcppg_param1 *c.Char, _llcppg_param2 c.SizeT) c.Int) {
 }
 
-// llgo:link (*X509_VERIFY_PARAM).Set1Smtputf8 C.X509_VERIFY_PARAM_set1_smtputf8
+//llgo:link (*X509_VERIFY_PARAM).Set1Smtputf8 C.X509_VERIFY_PARAM_set1_smtputf8
 func (self *X509_VERIFY_PARAM) Set1Smtputf8(email *c.Char, emaillen c.SizeT) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_VERIFY_PARAM).Add1Smtputf8 C.X509_VERIFY_PARAM_add1_smtputf8
+//llgo:link (*X509_VERIFY_PARAM).Add1Smtputf8 C.X509_VERIFY_PARAM_add1_smtputf8
 func (self *X509_VERIFY_PARAM) Add1Smtputf8(email *c.Char, len c.SizeT) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_VERIFY_PARAM).Set1Smtputf8InputValidation C.X509_VERIFY_PARAM_set1_smtputf8_input_validation
+//llgo:link (*X509_VERIFY_PARAM).Set1Smtputf8InputValidation C.X509_VERIFY_PARAM_set1_smtputf8_input_validation
 func (self *X509_VERIFY_PARAM) Set1Smtputf8InputValidation(validate_smtputf8 func(_llcppg_param1 *c.Char, _llcppg_param2 c.SizeT) c.Int) {
 }
 
-// llgo:link (*X509_VERIFY_PARAM).Get1IpAsc C.X509_VERIFY_PARAM_get1_ip_asc
+//llgo:link (*X509_VERIFY_PARAM).Get1IpAsc C.X509_VERIFY_PARAM_get1_ip_asc
 func (self *X509_VERIFY_PARAM) Get1IpAsc() *c.Char {
 	return nil
 }
 
-// llgo:link (*X509_VERIFY_PARAM).Set1Ip C.X509_VERIFY_PARAM_set1_ip
+//llgo:link (*X509_VERIFY_PARAM).Set1Ip C.X509_VERIFY_PARAM_set1_ip
 func (self *X509_VERIFY_PARAM) Set1Ip(ip *c.Uint8T, iplen c.SizeT) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_VERIFY_PARAM).Set1IpInputValidation C.X509_VERIFY_PARAM_set1_ip_input_validation
+//llgo:link (*X509_VERIFY_PARAM).Set1IpInputValidation C.X509_VERIFY_PARAM_set1_ip_input_validation
 func (self *X509_VERIFY_PARAM) Set1IpInputValidation(validate_ip func(_llcppg_param1 *c.Uint8T, _llcppg_param2 c.SizeT) c.Int) {
 }
 
-// llgo:link (*X509_VERIFY_PARAM).Set1IpAsc C.X509_VERIFY_PARAM_set1_ip_asc
+//llgo:link (*X509_VERIFY_PARAM).Set1IpAsc C.X509_VERIFY_PARAM_set1_ip_asc
 func (self *X509_VERIFY_PARAM) Set1IpAsc(ipasc *c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_VERIFY_PARAM).Add1Ip C.X509_VERIFY_PARAM_add1_ip
+//llgo:link (*X509_VERIFY_PARAM).Add1Ip C.X509_VERIFY_PARAM_add1_ip
 func (self *X509_VERIFY_PARAM) Add1Ip(ip *c.Uint8T, len c.SizeT) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_VERIFY_PARAM).Add1IpAsc C.X509_VERIFY_PARAM_add1_ip_asc
+//llgo:link (*X509_VERIFY_PARAM).Add1IpAsc C.X509_VERIFY_PARAM_add1_ip_asc
 func (self *X509_VERIFY_PARAM) Add1IpAsc(ipasc *c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_VERIFY_PARAM).Depth C.X509_VERIFY_PARAM_get_depth
+//llgo:link (*X509_VERIFY_PARAM).Depth C.X509_VERIFY_PARAM_get_depth
 func (self *X509_VERIFY_PARAM) Depth() c.Int {
 	return 0
 }
 
-// llgo:link (*X509_VERIFY_PARAM).AuthLevel C.X509_VERIFY_PARAM_get_auth_level
+//llgo:link (*X509_VERIFY_PARAM).AuthLevel C.X509_VERIFY_PARAM_get_auth_level
 func (self *X509_VERIFY_PARAM) AuthLevel() c.Int {
 	return 0
 }
 
-// llgo:link (*X509_VERIFY_PARAM).Get0Name C.X509_VERIFY_PARAM_get0_name
+//llgo:link (*X509_VERIFY_PARAM).Get0Name C.X509_VERIFY_PARAM_get0_name
 func (self *X509_VERIFY_PARAM) Get0Name() *c.Char {
 	return nil
 }
 
-// llgo:link (*X509_VERIFY_PARAM).Add0Table C.X509_VERIFY_PARAM_add0_table
+//llgo:link (*X509_VERIFY_PARAM).Add0Table C.X509_VERIFY_PARAM_add0_table
 func (self *X509_VERIFY_PARAM) Add0Table() c.Int {
 	return 0
 }
@@ -1577,51 +1577,93 @@ func X509_VERIFY_PARAM_table_cleanup()
 //go:linkname X509_policy_check C.X509_policy_check
 func X509_policy_check(ptree **X509_POLICY_TREE, pexplicit_policy *c.Int, certs *Stack_st_X509, policy_oids *Stack_st_ASN1_OBJECT, flags c.Uint) c.Int
 
-// llgo:link (*X509_POLICY_TREE).Free C.X509_policy_tree_free
+//llgo:link (*X509_POLICY_TREE).Free C.X509_policy_tree_free
 func (self *X509_POLICY_TREE) Free() {
 }
 
-// llgo:link (*X509_POLICY_TREE).LevelCount C.X509_policy_tree_level_count
+//llgo:link (*X509_POLICY_TREE).LevelCount C.X509_policy_tree_level_count
 func (self *X509_POLICY_TREE) LevelCount() c.Int {
 	return 0
 }
 
-// llgo:link (*X509_POLICY_TREE).Get0Level C.X509_policy_tree_get0_level
+//llgo:link (*X509_POLICY_TREE).Get0Level C.X509_policy_tree_get0_level
 func (self *X509_POLICY_TREE) Get0Level(i c.Int) *X509_POLICY_LEVEL {
 	return nil
 }
 
-// llgo:link (*X509_POLICY_TREE).Get0Policies C.X509_policy_tree_get0_policies
+//llgo:link (*X509_POLICY_TREE).Get0Policies C.X509_policy_tree_get0_policies
 func (self *X509_POLICY_TREE) Get0Policies() *Stack_st_X509_POLICY_NODE {
 	return nil
 }
 
-// llgo:link (*X509_POLICY_TREE).Get0UserPolicies C.X509_policy_tree_get0_user_policies
+//llgo:link (*X509_POLICY_TREE).Get0UserPolicies C.X509_policy_tree_get0_user_policies
 func (self *X509_POLICY_TREE) Get0UserPolicies() *Stack_st_X509_POLICY_NODE {
 	return nil
 }
 
-// llgo:link (*X509_POLICY_LEVEL).X509_policy_level_node_count C.X509_policy_level_node_count
+//llgo:link (*X509_POLICY_LEVEL).X509_policy_level_node_count C.X509_policy_level_node_count
 func (self *X509_POLICY_LEVEL) X509_policy_level_node_count() c.Int {
 	return 0
 }
 
-// llgo:link (*X509_POLICY_LEVEL).X509_policy_level_get0_node C.X509_policy_level_get0_node
+//llgo:link (*X509_POLICY_LEVEL).X509_policy_level_get0_node C.X509_policy_level_get0_node
 func (self *X509_POLICY_LEVEL) X509_policy_level_get0_node(i c.Int) *X509_POLICY_NODE {
 	return nil
 }
 
-// llgo:link (*X509_POLICY_NODE).Get0Policy C.X509_policy_node_get0_policy
+//llgo:link (*X509_POLICY_NODE).Get0Policy C.X509_policy_node_get0_policy
 func (self *X509_POLICY_NODE) Get0Policy() *ASN1_OBJECT {
 	return nil
 }
 
-// llgo:link (*X509_POLICY_NODE).Get0Qualifiers C.X509_policy_node_get0_qualifiers
+//llgo:link (*X509_POLICY_NODE).Get0Qualifiers C.X509_policy_node_get0_qualifiers
 func (self *X509_POLICY_NODE) Get0Qualifiers() *Stack_st_POLICYQUALINFO {
 	return nil
 }
 
-// llgo:link (*X509_POLICY_NODE).Get0Parent C.X509_policy_node_get0_parent
+//llgo:link (*X509_POLICY_NODE).Get0Parent C.X509_policy_node_get0_parent
 func (self *X509_POLICY_NODE) Get0Parent() *X509_POLICY_NODE {
 	return self
+}
+func (self *X509_STORE_CTX) SetAppData(data unsafe.Pointer) c.Int {
+	return self.SetExData(0, data)
+}
+func (self *X509_STORE_CTX) AppData() unsafe.Pointer {
+	return self.ExData(0)
+}
+func (self *X509_LOOKUP) LoadFile(name *c.Char, type_ c.Long) c.Int {
+	return self.Ctrl(1, name, type_, nil)
+}
+func (self *X509_LOOKUP) AddDir(name *c.Char, type_ c.Long) c.Int {
+	return self.Ctrl(2, name, type_, nil)
+}
+func (self *X509_LOOKUP) AddStore(name *c.Char) c.Int {
+	return self.Ctrl(3, name, 0, nil)
+}
+func (self *X509_LOOKUP) LoadStore(name *c.Char) c.Int {
+	return self.Ctrl(4, name, 0, nil)
+}
+func (self *X509_LOOKUP) LoadFileEx(name *c.Char, type_ c.Long, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int {
+	return self.CtrlEx(1, name, type_, nil, libctx, propq)
+}
+func (self *X509_LOOKUP) LoadStoreEx(name *c.Char, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int {
+	return self.CtrlEx(4, name, 0, nil, libctx, propq)
+}
+func (self *X509_LOOKUP) AddStoreEx(name *c.Char, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int {
+	return self.CtrlEx(3, name, 0, nil, libctx, propq)
+}
+func (self *X509_STORE) SetVerifyFunc(func_ X509_STORE_CTX_verify_fn) {
+	self.SetVerify(func_)
+}
+func (self *X509_STORE) SetVerifyCbFunc(func_ X509_STORE_CTX_verify_cb) {
+	self.SetVerifyCb(func_)
+}
+func (self *X509_STORE) SetLookupCrlsCb(func_ X509_STORE_CTX_lookup_crls_fn) {
+	self.SetLookupCrls(func_)
+}
+func X509_STORE_get_ex_new_index(l c.Long, p unsafe.Pointer, newf *CRYPTO_EX_new, dupf *CRYPTO_EX_dup, freef *CRYPTO_EX_free) c.Int {
+	return CRYPTO_get_ex_new_index(4, l, p, newf, dupf, freef)
+}
+func X509_STORE_CTX_get_ex_new_index(l c.Long, p unsafe.Pointer, newf *CRYPTO_EX_new, dupf *CRYPTO_EX_dup, freef *CRYPTO_EX_free) c.Int {
+	return CRYPTO_get_ex_new_index(5, l, p, newf, dupf, freef)
 }

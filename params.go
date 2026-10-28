@@ -8,14 +8,16 @@ import (
 	"unsafe"
 )
 
+const OSSL_PARAM_UNMODIFIED = -1
+
 // Search an OSSL_PARAM array for a matching name
 //
-// llgo:link (*OSSL_PARAM).Locate C.OSSL_PARAM_locate
+//llgo:link (*OSSL_PARAM).Locate C.OSSL_PARAM_locate
 func (self *OSSL_PARAM) Locate(key *c.Char) *OSSL_PARAM {
 	return self
 }
 
-// llgo:link (*OSSL_PARAM).LocateConst C.OSSL_PARAM_locate_const
+//llgo:link (*OSSL_PARAM).LocateConst C.OSSL_PARAM_locate_const
 func (self *OSSL_PARAM) LocateConst(key *c.Char) *OSSL_PARAM {
 	return self
 }
@@ -73,196 +75,196 @@ func OSSL_PARAM_construct_octet_ptr(key *c.Char, buf *unsafe.Pointer, bsize c.Si
 //go:linkname OSSL_PARAM_construct_end C.OSSL_PARAM_construct_end
 func OSSL_PARAM_construct_end() OSSL_PARAM
 
-// llgo:link (*OSSL_PARAM).AllocateFromText C.OSSL_PARAM_allocate_from_text
+//llgo:link (*OSSL_PARAM).AllocateFromText C.OSSL_PARAM_allocate_from_text
 func (self *OSSL_PARAM) AllocateFromText(paramdefs *OSSL_PARAM, key *c.Char, value *c.Char, value_n c.SizeT, found *c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_PARAM).PrintToBio C.OSSL_PARAM_print_to_bio
+//llgo:link (*OSSL_PARAM).PrintToBio C.OSSL_PARAM_print_to_bio
 func (self *OSSL_PARAM) PrintToBio(bio *BIO, print_values c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_PARAM).Int C.OSSL_PARAM_get_int
+//llgo:link (*OSSL_PARAM).Int C.OSSL_PARAM_get_int
 func (self *OSSL_PARAM) Int(val *c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_PARAM).Uint C.OSSL_PARAM_get_uint
+//llgo:link (*OSSL_PARAM).Uint C.OSSL_PARAM_get_uint
 func (self *OSSL_PARAM) Uint(val *c.Uint) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_PARAM).Long C.OSSL_PARAM_get_long
+//llgo:link (*OSSL_PARAM).Long C.OSSL_PARAM_get_long
 func (self *OSSL_PARAM) Long(val *c.Long) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_PARAM).Ulong C.OSSL_PARAM_get_ulong
+//llgo:link (*OSSL_PARAM).Ulong C.OSSL_PARAM_get_ulong
 func (self *OSSL_PARAM) Ulong(val *c.Ulong) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_PARAM).Int32 C.OSSL_PARAM_get_int32
+//llgo:link (*OSSL_PARAM).Int32 C.OSSL_PARAM_get_int32
 func (self *OSSL_PARAM) Int32(val *c.Int32T) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_PARAM).Uint32 C.OSSL_PARAM_get_uint32
+//llgo:link (*OSSL_PARAM).Uint32 C.OSSL_PARAM_get_uint32
 func (self *OSSL_PARAM) Uint32(val *c.Uint32T) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_PARAM).Int64 C.OSSL_PARAM_get_int64
+//llgo:link (*OSSL_PARAM).Int64 C.OSSL_PARAM_get_int64
 func (self *OSSL_PARAM) Int64(val *c.Int64T) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_PARAM).Uint64 C.OSSL_PARAM_get_uint64
+//llgo:link (*OSSL_PARAM).Uint64 C.OSSL_PARAM_get_uint64
 func (self *OSSL_PARAM) Uint64(val *c.Uint64T) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_PARAM).SizeT C.OSSL_PARAM_get_size_t
+//llgo:link (*OSSL_PARAM).SizeT C.OSSL_PARAM_get_size_t
 func (self *OSSL_PARAM) SizeT(val *c.SizeT) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_PARAM).TimeT C.OSSL_PARAM_get_time_t
+//llgo:link (*OSSL_PARAM).TimeT C.OSSL_PARAM_get_time_t
 func (self *OSSL_PARAM) TimeT(val *time.TimeT) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_PARAM).SetInt C.OSSL_PARAM_set_int
+//llgo:link (*OSSL_PARAM).SetInt C.OSSL_PARAM_set_int
 func (self *OSSL_PARAM) SetInt(val c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_PARAM).SetUint C.OSSL_PARAM_set_uint
+//llgo:link (*OSSL_PARAM).SetUint C.OSSL_PARAM_set_uint
 func (self *OSSL_PARAM) SetUint(val c.Uint) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_PARAM).SetLong C.OSSL_PARAM_set_long
+//llgo:link (*OSSL_PARAM).SetLong C.OSSL_PARAM_set_long
 func (self *OSSL_PARAM) SetLong(val c.Long) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_PARAM).SetUlong C.OSSL_PARAM_set_ulong
+//llgo:link (*OSSL_PARAM).SetUlong C.OSSL_PARAM_set_ulong
 func (self *OSSL_PARAM) SetUlong(val c.Ulong) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_PARAM).SetInt32 C.OSSL_PARAM_set_int32
+//llgo:link (*OSSL_PARAM).SetInt32 C.OSSL_PARAM_set_int32
 func (self *OSSL_PARAM) SetInt32(val c.Int32T) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_PARAM).SetUint32 C.OSSL_PARAM_set_uint32
+//llgo:link (*OSSL_PARAM).SetUint32 C.OSSL_PARAM_set_uint32
 func (self *OSSL_PARAM) SetUint32(val c.Uint32T) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_PARAM).SetInt64 C.OSSL_PARAM_set_int64
+//llgo:link (*OSSL_PARAM).SetInt64 C.OSSL_PARAM_set_int64
 func (self *OSSL_PARAM) SetInt64(val c.Int64T) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_PARAM).SetUint64 C.OSSL_PARAM_set_uint64
+//llgo:link (*OSSL_PARAM).SetUint64 C.OSSL_PARAM_set_uint64
 func (self *OSSL_PARAM) SetUint64(val c.Uint64T) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_PARAM).SetSizeT C.OSSL_PARAM_set_size_t
+//llgo:link (*OSSL_PARAM).SetSizeT C.OSSL_PARAM_set_size_t
 func (self *OSSL_PARAM) SetSizeT(val c.SizeT) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_PARAM).SetTimeT C.OSSL_PARAM_set_time_t
+//llgo:link (*OSSL_PARAM).SetTimeT C.OSSL_PARAM_set_time_t
 func (self *OSSL_PARAM) SetTimeT(val time.TimeT) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_PARAM).Double C.OSSL_PARAM_get_double
+//llgo:link (*OSSL_PARAM).Double C.OSSL_PARAM_get_double
 func (self *OSSL_PARAM) Double(val *c.Double) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_PARAM).SetDouble C.OSSL_PARAM_set_double
+//llgo:link (*OSSL_PARAM).SetDouble C.OSSL_PARAM_set_double
 func (self *OSSL_PARAM) SetDouble(val c.Double) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_PARAM).Get_BN C.OSSL_PARAM_get_BN
+//llgo:link (*OSSL_PARAM).Get_BN C.OSSL_PARAM_get_BN
 func (self *OSSL_PARAM) Get_BN(val **BIGNUM) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_PARAM).Set_BN C.OSSL_PARAM_set_BN
+//llgo:link (*OSSL_PARAM).Set_BN C.OSSL_PARAM_set_BN
 func (self *OSSL_PARAM) Set_BN(val *BIGNUM) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_PARAM).Utf8String C.OSSL_PARAM_get_utf8_string
+//llgo:link (*OSSL_PARAM).Utf8String C.OSSL_PARAM_get_utf8_string
 func (self *OSSL_PARAM) Utf8String(val **c.Char, max_len c.SizeT) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_PARAM).SetUtf8String C.OSSL_PARAM_set_utf8_string
+//llgo:link (*OSSL_PARAM).SetUtf8String C.OSSL_PARAM_set_utf8_string
 func (self *OSSL_PARAM) SetUtf8String(val *c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_PARAM).OctetString C.OSSL_PARAM_get_octet_string
+//llgo:link (*OSSL_PARAM).OctetString C.OSSL_PARAM_get_octet_string
 func (self *OSSL_PARAM) OctetString(val *unsafe.Pointer, max_len c.SizeT, used_len *c.SizeT) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_PARAM).SetOctetString C.OSSL_PARAM_set_octet_string
+//llgo:link (*OSSL_PARAM).SetOctetString C.OSSL_PARAM_set_octet_string
 func (self *OSSL_PARAM) SetOctetString(val unsafe.Pointer, len c.SizeT) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_PARAM).Utf8Ptr C.OSSL_PARAM_get_utf8_ptr
+//llgo:link (*OSSL_PARAM).Utf8Ptr C.OSSL_PARAM_get_utf8_ptr
 func (self *OSSL_PARAM) Utf8Ptr(val **c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_PARAM).SetUtf8Ptr C.OSSL_PARAM_set_utf8_ptr
+//llgo:link (*OSSL_PARAM).SetUtf8Ptr C.OSSL_PARAM_set_utf8_ptr
 func (self *OSSL_PARAM) SetUtf8Ptr(val *c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_PARAM).OctetPtr C.OSSL_PARAM_get_octet_ptr
+//llgo:link (*OSSL_PARAM).OctetPtr C.OSSL_PARAM_get_octet_ptr
 func (self *OSSL_PARAM) OctetPtr(val *unsafe.Pointer, used_len *c.SizeT) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_PARAM).SetOctetPtr C.OSSL_PARAM_set_octet_ptr
+//llgo:link (*OSSL_PARAM).SetOctetPtr C.OSSL_PARAM_set_octet_ptr
 func (self *OSSL_PARAM) SetOctetPtr(val unsafe.Pointer, used_len c.SizeT) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_PARAM).Utf8StringPtr C.OSSL_PARAM_get_utf8_string_ptr
+//llgo:link (*OSSL_PARAM).Utf8StringPtr C.OSSL_PARAM_get_utf8_string_ptr
 func (self *OSSL_PARAM) Utf8StringPtr(val **c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_PARAM).OctetStringPtr C.OSSL_PARAM_get_octet_string_ptr
+//llgo:link (*OSSL_PARAM).OctetStringPtr C.OSSL_PARAM_get_octet_string_ptr
 func (self *OSSL_PARAM) OctetStringPtr(val *unsafe.Pointer, used_len *c.SizeT) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_PARAM).Modified C.OSSL_PARAM_modified
+//llgo:link (*OSSL_PARAM).Modified C.OSSL_PARAM_modified
 func (self *OSSL_PARAM) Modified() c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_PARAM).SetAllUnmodified C.OSSL_PARAM_set_all_unmodified
+//llgo:link (*OSSL_PARAM).SetAllUnmodified C.OSSL_PARAM_set_all_unmodified
 func (self *OSSL_PARAM) SetAllUnmodified() {
 }
 
-// llgo:link (*OSSL_PARAM).Dup C.OSSL_PARAM_dup
+//llgo:link (*OSSL_PARAM).Dup C.OSSL_PARAM_dup
 func (self *OSSL_PARAM) Dup() *OSSL_PARAM {
 	return self
 }
@@ -270,15 +272,15 @@ func (self *OSSL_PARAM) Dup() *OSSL_PARAM {
 //go:linkname OSSL_PARAM_merge C.OSSL_PARAM_merge
 func OSSL_PARAM_merge(p1 *OSSL_PARAM, p2 *OSSL_PARAM) *OSSL_PARAM
 
-// llgo:link (*OSSL_PARAM).Free C.OSSL_PARAM_free
+//llgo:link (*OSSL_PARAM).Free C.OSSL_PARAM_free
 func (self *OSSL_PARAM) Free() {
 }
 
-// llgo:link (*OSSL_PARAM).ClearFree C.OSSL_PARAM_clear_free
+//llgo:link (*OSSL_PARAM).ClearFree C.OSSL_PARAM_clear_free
 func (self *OSSL_PARAM) ClearFree() {
 }
 
-// llgo:link (*OSSL_PARAM).SetOctetStringOrPtr C.OSSL_PARAM_set_octet_string_or_ptr
+//llgo:link (*OSSL_PARAM).SetOctetStringOrPtr C.OSSL_PARAM_set_octet_string_or_ptr
 func (self *OSSL_PARAM) SetOctetStringOrPtr(val unsafe.Pointer, len c.SizeT) c.Int {
 	return 0
 }

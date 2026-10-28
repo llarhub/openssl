@@ -112,76 +112,76 @@ type OSSL_HPKE_CTX OsslHpkeCtxSt
 //go:linkname OSSL_HPKE_CTX_new C.OSSL_HPKE_CTX_new
 func OSSL_HPKE_CTX_new(mode c.Int, suite OSSL_HPKE_SUITE, role c.Int, libctx *OSSL_LIB_CTX, propq *c.Char) *OSSL_HPKE_CTX
 
-// llgo:link (*OSSL_HPKE_CTX).Free C.OSSL_HPKE_CTX_free
+//llgo:link (*OSSL_HPKE_CTX).Free C.OSSL_HPKE_CTX_free
 func (self *OSSL_HPKE_CTX) Free() {
 }
 
-// llgo:link (*OSSL_HPKE_CTX).Encap C.OSSL_HPKE_encap
+//llgo:link (*OSSL_HPKE_CTX).Encap C.OSSL_HPKE_encap
 func (self *OSSL_HPKE_CTX) Encap(enc *uint8, enclen *c.SizeT, pub *uint8, publen c.SizeT, info *uint8, infolen c.SizeT) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_HPKE_CTX).Seal C.OSSL_HPKE_seal
+//llgo:link (*OSSL_HPKE_CTX).Seal C.OSSL_HPKE_seal
 func (self *OSSL_HPKE_CTX) Seal(ct *uint8, ctlen *c.SizeT, aad *uint8, aadlen c.SizeT, pt *uint8, ptlen c.SizeT) c.Int {
 	return 0
 }
 
-// llgo:link OSSL_HPKE_SUITE.Keygen C.OSSL_HPKE_keygen
+//llgo:link OSSL_HPKE_SUITE.Keygen C.OSSL_HPKE_keygen
 func (self OSSL_HPKE_SUITE) Keygen(pub *uint8, publen *c.SizeT, priv **EVP_PKEY, ikm *uint8, ikmlen c.SizeT, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_HPKE_CTX).Decap C.OSSL_HPKE_decap
+//llgo:link (*OSSL_HPKE_CTX).Decap C.OSSL_HPKE_decap
 func (self *OSSL_HPKE_CTX) Decap(enc *uint8, enclen c.SizeT, recippriv *EVP_PKEY, info *uint8, infolen c.SizeT) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_HPKE_CTX).Open C.OSSL_HPKE_open
+//llgo:link (*OSSL_HPKE_CTX).Open C.OSSL_HPKE_open
 func (self *OSSL_HPKE_CTX) Open(pt *uint8, ptlen *c.SizeT, aad *uint8, aadlen c.SizeT, ct *uint8, ctlen c.SizeT) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_HPKE_CTX).Export C.OSSL_HPKE_export
+//llgo:link (*OSSL_HPKE_CTX).Export C.OSSL_HPKE_export
 func (self *OSSL_HPKE_CTX) Export(secret *uint8, secretlen c.SizeT, label *uint8, labellen c.SizeT) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_HPKE_CTX).Set1Authpriv C.OSSL_HPKE_CTX_set1_authpriv
+//llgo:link (*OSSL_HPKE_CTX).Set1Authpriv C.OSSL_HPKE_CTX_set1_authpriv
 func (self *OSSL_HPKE_CTX) Set1Authpriv(priv *EVP_PKEY) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_HPKE_CTX).Set1Authpub C.OSSL_HPKE_CTX_set1_authpub
+//llgo:link (*OSSL_HPKE_CTX).Set1Authpub C.OSSL_HPKE_CTX_set1_authpub
 func (self *OSSL_HPKE_CTX) Set1Authpub(pub *uint8, publen c.SizeT) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_HPKE_CTX).Set1Psk C.OSSL_HPKE_CTX_set1_psk
+//llgo:link (*OSSL_HPKE_CTX).Set1Psk C.OSSL_HPKE_CTX_set1_psk
 func (self *OSSL_HPKE_CTX) Set1Psk(pskid *c.Char, psk *uint8, psklen c.SizeT) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_HPKE_CTX).Set1Ikme C.OSSL_HPKE_CTX_set1_ikme
+//llgo:link (*OSSL_HPKE_CTX).Set1Ikme C.OSSL_HPKE_CTX_set1_ikme
 func (self *OSSL_HPKE_CTX) Set1Ikme(ikme *uint8, ikmelen c.SizeT) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_HPKE_CTX).SetSeq C.OSSL_HPKE_CTX_set_seq
+//llgo:link (*OSSL_HPKE_CTX).SetSeq C.OSSL_HPKE_CTX_set_seq
 func (self *OSSL_HPKE_CTX) SetSeq(seq c.Uint64T) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_HPKE_CTX).Seq C.OSSL_HPKE_CTX_get_seq
+//llgo:link (*OSSL_HPKE_CTX).Seq C.OSSL_HPKE_CTX_get_seq
 func (self *OSSL_HPKE_CTX) Seq(seq *c.Uint64T) c.Int {
 	return 0
 }
 
-// llgo:link OSSL_HPKE_SUITE.SuiteCheck C.OSSL_HPKE_suite_check
+//llgo:link OSSL_HPKE_SUITE.SuiteCheck C.OSSL_HPKE_suite_check
 func (self OSSL_HPKE_SUITE) SuiteCheck() c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_HPKE_SUITE).GreaseValue C.OSSL_HPKE_get_grease_value
+//llgo:link (*OSSL_HPKE_SUITE).GreaseValue C.OSSL_HPKE_get_grease_value
 func (self *OSSL_HPKE_SUITE) GreaseValue(suite *OSSL_HPKE_SUITE, enc *uint8, enclen *c.SizeT, ct *uint8, ctlen c.SizeT, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int {
 	return 0
 }
@@ -189,17 +189,17 @@ func (self *OSSL_HPKE_SUITE) GreaseValue(suite *OSSL_HPKE_SUITE, enc *uint8, enc
 //go:linkname OSSL_HPKE_str2suite C.OSSL_HPKE_str2suite
 func OSSL_HPKE_str2suite(str *c.Char, suite *OSSL_HPKE_SUITE) c.Int
 
-// llgo:link OSSL_HPKE_SUITE.CiphertextSize C.OSSL_HPKE_get_ciphertext_size
+//llgo:link OSSL_HPKE_SUITE.CiphertextSize C.OSSL_HPKE_get_ciphertext_size
 func (self OSSL_HPKE_SUITE) CiphertextSize(clearlen c.SizeT) c.SizeT {
 	return 0
 }
 
-// llgo:link OSSL_HPKE_SUITE.PublicEncapSize C.OSSL_HPKE_get_public_encap_size
+//llgo:link OSSL_HPKE_SUITE.PublicEncapSize C.OSSL_HPKE_get_public_encap_size
 func (self OSSL_HPKE_SUITE) PublicEncapSize() c.SizeT {
 	return 0
 }
 
-// llgo:link OSSL_HPKE_SUITE.RecommendedIkmelen C.OSSL_HPKE_get_recommended_ikmelen
+//llgo:link OSSL_HPKE_SUITE.RecommendedIkmelen C.OSSL_HPKE_get_recommended_ikmelen
 func (self OSSL_HPKE_SUITE) RecommendedIkmelen() c.SizeT {
 	return 0
 }

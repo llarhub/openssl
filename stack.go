@@ -13,29 +13,29 @@ type StackSt struct {
 // Use STACK_OF(...) instead
 type STACK StackSt
 
-// llgo:type C
+//llgo:cdecl
 type SkCompfunc = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type SkFreefunc = func(_llcppg_param1 unsafe.Pointer)
 
-// llgo:type C
+//llgo:cdecl
 type SkFreefuncThunk = func(_llcppg_param1 SkFreefunc, _llcppg_param2 unsafe.Pointer)
 
-// llgo:type C
+//llgo:cdecl
 type SkCopyfunc = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
-// llgo:link (*STACK).SkNum C.OPENSSL_sk_num
+//llgo:link (*STACK).SkNum C.OPENSSL_sk_num
 func (self *STACK) SkNum() c.Int {
 	return 0
 }
 
-// llgo:link (*STACK).SkValue C.OPENSSL_sk_value
+//llgo:link (*STACK).SkValue C.OPENSSL_sk_value
 func (self *STACK) SkValue(_llcppg_param2 c.Int) unsafe.Pointer {
 	return nil
 }
 
-// llgo:link (*STACK).SkSet C.OPENSSL_sk_set
+//llgo:link (*STACK).SkSet C.OPENSSL_sk_set
 func (self *STACK) SkSet(i c.Int, data unsafe.Pointer) unsafe.Pointer {
 	return nil
 }
@@ -49,103 +49,103 @@ func SkNewNull() *STACK
 //go:linkname SkNewReserve C.OPENSSL_sk_new_reserve
 func SkNewReserve(c SkCompfunc, n c.Int) *STACK
 
-// llgo:link (*STACK).SkSetThunks C.OPENSSL_sk_set_thunks
+//llgo:link (*STACK).SkSetThunks C.OPENSSL_sk_set_thunks
 func (self *STACK) SkSetThunks(f_thunk SkFreefuncThunk) *STACK {
 	return self
 }
 
-// llgo:link (*STACK).SkSetCmpThunks C.OPENSSL_sk_set_cmp_thunks
+//llgo:link (*STACK).SkSetCmpThunks C.OPENSSL_sk_set_cmp_thunks
 func (self *STACK) SkSetCmpThunks(c_thunk func(_llcppg_param1 func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) c.Int, _llcppg_param2 unsafe.Pointer, _llcppg_param3 unsafe.Pointer) c.Int) *STACK {
 	return self
 }
 
-// llgo:link (*STACK).SkReserve C.OPENSSL_sk_reserve
+//llgo:link (*STACK).SkReserve C.OPENSSL_sk_reserve
 func (self *STACK) SkReserve(n c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*STACK).SkFree C.OPENSSL_sk_free
+//llgo:link (*STACK).SkFree C.OPENSSL_sk_free
 func (self *STACK) SkFree() {
 }
 
-// llgo:link (*STACK).SkPopFree C.OPENSSL_sk_pop_free
+//llgo:link (*STACK).SkPopFree C.OPENSSL_sk_pop_free
 func (self *STACK) SkPopFree(func_ SkFreefunc) {
 }
 
-// llgo:link (*STACK).SkDeepCopy C.OPENSSL_sk_deep_copy
+//llgo:link (*STACK).SkDeepCopy C.OPENSSL_sk_deep_copy
 func (self *STACK) SkDeepCopy(c SkCopyfunc, f SkFreefunc) *STACK {
 	return self
 }
 
-// llgo:link (*STACK).SkInsert C.OPENSSL_sk_insert
+//llgo:link (*STACK).SkInsert C.OPENSSL_sk_insert
 func (self *STACK) SkInsert(data unsafe.Pointer, where c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*STACK).SkDelete C.OPENSSL_sk_delete
+//llgo:link (*STACK).SkDelete C.OPENSSL_sk_delete
 func (self *STACK) SkDelete(loc c.Int) unsafe.Pointer {
 	return nil
 }
 
-// llgo:link (*STACK).SkDeletePtr C.OPENSSL_sk_delete_ptr
+//llgo:link (*STACK).SkDeletePtr C.OPENSSL_sk_delete_ptr
 func (self *STACK) SkDeletePtr(p unsafe.Pointer) unsafe.Pointer {
 	return nil
 }
 
-// llgo:link (*STACK).SkFind C.OPENSSL_sk_find
+//llgo:link (*STACK).SkFind C.OPENSSL_sk_find
 func (self *STACK) SkFind(data unsafe.Pointer) c.Int {
 	return 0
 }
 
-// llgo:link (*STACK).SkFindEx C.OPENSSL_sk_find_ex
+//llgo:link (*STACK).SkFindEx C.OPENSSL_sk_find_ex
 func (self *STACK) SkFindEx(data unsafe.Pointer) c.Int {
 	return 0
 }
 
-// llgo:link (*STACK).SkFindAll C.OPENSSL_sk_find_all
+//llgo:link (*STACK).SkFindAll C.OPENSSL_sk_find_all
 func (self *STACK) SkFindAll(data unsafe.Pointer, pnum *c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*STACK).SkPush C.OPENSSL_sk_push
+//llgo:link (*STACK).SkPush C.OPENSSL_sk_push
 func (self *STACK) SkPush(data unsafe.Pointer) c.Int {
 	return 0
 }
 
-// llgo:link (*STACK).SkUnshift C.OPENSSL_sk_unshift
+//llgo:link (*STACK).SkUnshift C.OPENSSL_sk_unshift
 func (self *STACK) SkUnshift(data unsafe.Pointer) c.Int {
 	return 0
 }
 
-// llgo:link (*STACK).SkShift C.OPENSSL_sk_shift
+//llgo:link (*STACK).SkShift C.OPENSSL_sk_shift
 func (self *STACK) SkShift() unsafe.Pointer {
 	return nil
 }
 
-// llgo:link (*STACK).SkPop C.OPENSSL_sk_pop
+//llgo:link (*STACK).SkPop C.OPENSSL_sk_pop
 func (self *STACK) SkPop() unsafe.Pointer {
 	return nil
 }
 
-// llgo:link (*STACK).SkZero C.OPENSSL_sk_zero
+//llgo:link (*STACK).SkZero C.OPENSSL_sk_zero
 func (self *STACK) SkZero() {
 }
 
-// llgo:link (*STACK).SkSetCmpFunc C.OPENSSL_sk_set_cmp_func
+//llgo:link (*STACK).SkSetCmpFunc C.OPENSSL_sk_set_cmp_func
 func (self *STACK) SkSetCmpFunc(cmp SkCompfunc) SkCompfunc {
 	return nil
 }
 
-// llgo:link (*STACK).SkDup C.OPENSSL_sk_dup
+//llgo:link (*STACK).SkDup C.OPENSSL_sk_dup
 func (self *STACK) SkDup() *STACK {
 	return self
 }
 
-// llgo:link (*STACK).SkSort C.OPENSSL_sk_sort
+//llgo:link (*STACK).SkSort C.OPENSSL_sk_sort
 func (self *STACK) SkSort() {
 }
 
-// llgo:link (*STACK).SkIsSorted C.OPENSSL_sk_is_sorted
+//llgo:link (*STACK).SkIsSorted C.OPENSSL_sk_is_sorted
 func (self *STACK) SkIsSorted() c.Int {
 	return 0
 }

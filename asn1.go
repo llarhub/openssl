@@ -239,33 +239,33 @@ type Stack_st_X509_ALGOR struct {
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_X509_ALGOR_compfunc = func(_llcppg_param1 **X509_ALGOR, _llcppg_param2 **X509_ALGOR) c.Int
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_X509_ALGOR_freefunc = func(_llcppg_param1 *X509_ALGOR)
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_X509_ALGOR_copyfunc = func(_llcppg_param1 *X509_ALGOR) *X509_ALGOR
 type ASN1_ENCODING = ASN1_ENCODING_st
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_ASN1_STRING_TABLE_compfunc = func(_llcppg_param1 **ASN1_STRING_TABLE, _llcppg_param2 **ASN1_STRING_TABLE) c.Int
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_ASN1_STRING_TABLE_freefunc = func(_llcppg_param1 *ASN1_STRING_TABLE)
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_ASN1_STRING_TABLE_copyfunc = func(_llcppg_param1 *ASN1_STRING_TABLE) *ASN1_STRING_TABLE
 
 // Declarations for template structures: for full definitions see asn1t.h
@@ -277,18 +277,18 @@ type ASN1_TLC ASN1_TLC_st
 // This is just an opaque pointer
 type ASN1_VALUE ASN1_VALUE_st
 
-// llgo:type C
+//llgo:cdecl
 type D2iOfVoid = func(_llcppg_param1 *unsafe.Pointer, _llcppg_param2 **uint8, _llcppg_param3 c.Long) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type I2dOfVoid = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 **uint8) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type OSSL_i2d_of_void_ctx = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 **uint8, _llcppg_param3 unsafe.Pointer) c.Int
 
 // ASN1_ITEM pointer exported type
 //
-// llgo:type C
+//llgo:cdecl
 type ASN1_ITEM_EXP = func() *ASN1_ITEM
 type _llcppg_anon_1 struct {
 	_xgo_union [1]uint64
@@ -296,17 +296,17 @@ type _llcppg_anon_1 struct {
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_ASN1_TYPE_compfunc = func(_llcppg_param1 **ASN1_TYPE, _llcppg_param2 **ASN1_TYPE) c.Int
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_ASN1_TYPE_freefunc = func(_llcppg_param1 *ASN1_TYPE)
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_ASN1_TYPE_copyfunc = func(_llcppg_param1 *ASN1_TYPE) *ASN1_TYPE
 type ASN1_SEQUENCE_ANY Stack_st_ASN1_TYPE
 
@@ -315,62 +315,62 @@ type BIT_STRING_BITNAME = BIT_STRING_BITNAME_st
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_ASN1_OBJECT_compfunc = func(_llcppg_param1 **ASN1_OBJECT, _llcppg_param2 **ASN1_OBJECT) c.Int
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_ASN1_OBJECT_freefunc = func(_llcppg_param1 *ASN1_OBJECT)
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_ASN1_OBJECT_copyfunc = func(_llcppg_param1 *ASN1_OBJECT) *ASN1_OBJECT
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_ASN1_INTEGER_compfunc = func(_llcppg_param1 **ASN1_INTEGER, _llcppg_param2 **ASN1_INTEGER) c.Int
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_ASN1_INTEGER_freefunc = func(_llcppg_param1 *ASN1_INTEGER)
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_ASN1_INTEGER_copyfunc = func(_llcppg_param1 *ASN1_INTEGER) *ASN1_INTEGER
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_ASN1_UTF8STRING_compfunc = func(_llcppg_param1 **ASN1_UTF8STRING, _llcppg_param2 **ASN1_UTF8STRING) c.Int
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_ASN1_UTF8STRING_freefunc = func(_llcppg_param1 *ASN1_UTF8STRING)
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_ASN1_UTF8STRING_copyfunc = func(_llcppg_param1 *ASN1_UTF8STRING) *ASN1_UTF8STRING
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_ASN1_GENERALSTRING_compfunc = func(_llcppg_param1 **ASN1_GENERALSTRING, _llcppg_param2 **ASN1_GENERALSTRING) c.Int
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_ASN1_GENERALSTRING_freefunc = func(_llcppg_param1 *ASN1_GENERALSTRING)
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_ASN1_GENERALSTRING_copyfunc = func(_llcppg_param1 *ASN1_GENERALSTRING) *ASN1_GENERALSTRING
 
 func (p *_llcppg_anon_1) XGof_ref_ptr() **c.Char {
@@ -440,7 +440,7 @@ func (p *_llcppg_anon_1) XGof_ref_asn1_value() **ASN1_VALUE {
 //go:linkname D2i_ASN1_SEQUENCE_ANY C.d2i_ASN1_SEQUENCE_ANY
 func D2i_ASN1_SEQUENCE_ANY(a **ASN1_SEQUENCE_ANY, in **uint8, len c.Long) *ASN1_SEQUENCE_ANY
 
-// llgo:link (*ASN1_SEQUENCE_ANY).I2d C.i2d_ASN1_SEQUENCE_ANY
+//llgo:link (*ASN1_SEQUENCE_ANY).I2d C.i2d_ASN1_SEQUENCE_ANY
 func (self *ASN1_SEQUENCE_ANY) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -451,7 +451,7 @@ func ASN1_SEQUENCE_ANY_it() *ASN1_ITEM
 //go:linkname D2i_ASN1_SET_ANY C.d2i_ASN1_SET_ANY
 func D2i_ASN1_SET_ANY(a **ASN1_SEQUENCE_ANY, in **uint8, len c.Long) *ASN1_SEQUENCE_ANY
 
-// llgo:link (*ASN1_SEQUENCE_ANY).I2d_ASN1_SET_ANY C.i2d_ASN1_SET_ANY
+//llgo:link (*ASN1_SEQUENCE_ANY).I2d_ASN1_SET_ANY C.i2d_ASN1_SET_ANY
 func (self *ASN1_SEQUENCE_ANY) I2d_ASN1_SET_ANY(out **uint8) c.Int {
 	return 0
 }
@@ -462,14 +462,14 @@ func ASN1_SET_ANY_it() *ASN1_ITEM
 //go:linkname ASN1_TYPE_new C.ASN1_TYPE_new
 func ASN1_TYPE_new() *ASN1_TYPE
 
-// llgo:link (*ASN1_TYPE).Free C.ASN1_TYPE_free
+//llgo:link (*ASN1_TYPE).Free C.ASN1_TYPE_free
 func (self *ASN1_TYPE) Free() {
 }
 
 //go:linkname D2i_ASN1_TYPE C.d2i_ASN1_TYPE
 func D2i_ASN1_TYPE(a **ASN1_TYPE, in **uint8, len c.Long) *ASN1_TYPE
 
-// llgo:link (*ASN1_TYPE).I2d C.i2d_ASN1_TYPE
+//llgo:link (*ASN1_TYPE).I2d C.i2d_ASN1_TYPE
 func (self *ASN1_TYPE) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -477,16 +477,16 @@ func (self *ASN1_TYPE) I2d(out **uint8) c.Int {
 //go:linkname ASN1_ANY_it C.ASN1_ANY_it
 func ASN1_ANY_it() *ASN1_ITEM
 
-// llgo:link (*ASN1_TYPE).Get C.ASN1_TYPE_get
+//llgo:link (*ASN1_TYPE).Get C.ASN1_TYPE_get
 func (self *ASN1_TYPE) Get() c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_TYPE).Set C.ASN1_TYPE_set
+//llgo:link (*ASN1_TYPE).Set C.ASN1_TYPE_set
 func (self *ASN1_TYPE) Set(type_ c.Int, value unsafe.Pointer) {
 }
 
-// llgo:link (*ASN1_TYPE).Set1 C.ASN1_TYPE_set1
+//llgo:link (*ASN1_TYPE).Set1 C.ASN1_TYPE_set1
 func (self *ASN1_TYPE) Set1(type_ c.Int, value unsafe.Pointer) c.Int {
 	return 0
 }
@@ -494,12 +494,12 @@ func (self *ASN1_TYPE) Set1(type_ c.Int, value unsafe.Pointer) c.Int {
 //go:linkname ASN1_TYPE_cmp C.ASN1_TYPE_cmp
 func ASN1_TYPE_cmp(a *ASN1_TYPE, b *ASN1_TYPE) c.Int
 
-// llgo:link (*ASN1_ITEM).ASN1_TYPE_pack_sequence C.ASN1_TYPE_pack_sequence
+//llgo:link (*ASN1_ITEM).ASN1_TYPE_pack_sequence C.ASN1_TYPE_pack_sequence
 func (self *ASN1_ITEM) ASN1_TYPE_pack_sequence(s unsafe.Pointer, t **ASN1_TYPE) *ASN1_TYPE {
 	return nil
 }
 
-// llgo:link (*ASN1_ITEM).ASN1_TYPE_unpack_sequence C.ASN1_TYPE_unpack_sequence
+//llgo:link (*ASN1_ITEM).ASN1_TYPE_unpack_sequence C.ASN1_TYPE_unpack_sequence
 func (self *ASN1_ITEM) ASN1_TYPE_unpack_sequence(t *ASN1_TYPE) unsafe.Pointer {
 	return nil
 }
@@ -507,14 +507,14 @@ func (self *ASN1_ITEM) ASN1_TYPE_unpack_sequence(t *ASN1_TYPE) unsafe.Pointer {
 //go:linkname ASN1_OBJECT_new C.ASN1_OBJECT_new
 func ASN1_OBJECT_new() *ASN1_OBJECT
 
-// llgo:link (*ASN1_OBJECT).Free C.ASN1_OBJECT_free
+//llgo:link (*ASN1_OBJECT).Free C.ASN1_OBJECT_free
 func (self *ASN1_OBJECT) Free() {
 }
 
 //go:linkname D2i_ASN1_OBJECT C.d2i_ASN1_OBJECT
 func D2i_ASN1_OBJECT(a **ASN1_OBJECT, in **uint8, len c.Long) *ASN1_OBJECT
 
-// llgo:link (*ASN1_OBJECT).I2d C.i2d_ASN1_OBJECT
+//llgo:link (*ASN1_OBJECT).I2d C.i2d_ASN1_OBJECT
 func (self *ASN1_OBJECT) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -525,20 +525,20 @@ func ASN1_OBJECT_it() *ASN1_ITEM
 //go:linkname ASN1_STRING_new C.ASN1_STRING_new
 func ASN1_STRING_new() *ASN1_STRING
 
-// llgo:link (*ASN1_STRING).Free C.ASN1_STRING_free
+//llgo:link (*ASN1_STRING).Free C.ASN1_STRING_free
 func (self *ASN1_STRING) Free() {
 }
 
-// llgo:link (*ASN1_STRING).ClearFree C.ASN1_STRING_clear_free
+//llgo:link (*ASN1_STRING).ClearFree C.ASN1_STRING_clear_free
 func (self *ASN1_STRING) ClearFree() {
 }
 
-// llgo:link (*ASN1_STRING).Copy C.ASN1_STRING_copy
+//llgo:link (*ASN1_STRING).Copy C.ASN1_STRING_copy
 func (self *ASN1_STRING) Copy(str *ASN1_STRING) c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_STRING).Dup C.ASN1_STRING_dup
+//llgo:link (*ASN1_STRING).Dup C.ASN1_STRING_dup
 func (self *ASN1_STRING) Dup() *ASN1_STRING {
 	return self
 }
@@ -555,30 +555,30 @@ func ASN1_STRING_cmp(a *ASN1_STRING, b *ASN1_STRING) c.Int
 // Since this is used to store all sorts of things, via macros, for now,
 // make its data void *
 //
-// llgo:link (*ASN1_STRING).Set C.ASN1_STRING_set
+//llgo:link (*ASN1_STRING).Set C.ASN1_STRING_set
 func (self *ASN1_STRING) Set(data unsafe.Pointer, len c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_STRING).Set0 C.ASN1_STRING_set0
+//llgo:link (*ASN1_STRING).Set0 C.ASN1_STRING_set0
 func (self *ASN1_STRING) Set0(data unsafe.Pointer, len c.Int) {
 }
 
-// llgo:link (*ASN1_STRING).Length C.ASN1_STRING_length
+//llgo:link (*ASN1_STRING).Length C.ASN1_STRING_length
 func (self *ASN1_STRING) Length() c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_STRING).LengthSet C.ASN1_STRING_length_set
+//llgo:link (*ASN1_STRING).LengthSet C.ASN1_STRING_length_set
 func (self *ASN1_STRING) LengthSet(n c.Int) {
 }
 
-// llgo:link (*ASN1_STRING).Type C.ASN1_STRING_type
+//llgo:link (*ASN1_STRING).Type C.ASN1_STRING_type
 func (self *ASN1_STRING) Type() c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_STRING).Get0Data C.ASN1_STRING_get0_data
+//llgo:link (*ASN1_STRING).Get0Data C.ASN1_STRING_get0_data
 func (self *ASN1_STRING) Get0Data() *uint8 {
 	return nil
 }
@@ -586,14 +586,14 @@ func (self *ASN1_STRING) Get0Data() *uint8 {
 //go:linkname ASN1_BIT_STRING_new C.ASN1_BIT_STRING_new
 func ASN1_BIT_STRING_new() *ASN1_BIT_STRING
 
-// llgo:link (*ASN1_BIT_STRING).Free C.ASN1_BIT_STRING_free
+//llgo:link (*ASN1_BIT_STRING).Free C.ASN1_BIT_STRING_free
 func (self *ASN1_BIT_STRING) Free() {
 }
 
 //go:linkname D2i_ASN1_BIT_STRING C.d2i_ASN1_BIT_STRING
 func D2i_ASN1_BIT_STRING(a **ASN1_BIT_STRING, in **uint8, len c.Long) *ASN1_BIT_STRING
 
-// llgo:link (*ASN1_BIT_STRING).I2d C.i2d_ASN1_BIT_STRING
+//llgo:link (*ASN1_BIT_STRING).I2d C.i2d_ASN1_BIT_STRING
 func (self *ASN1_BIT_STRING) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -601,27 +601,27 @@ func (self *ASN1_BIT_STRING) I2d(out **uint8) c.Int {
 //go:linkname ASN1_BIT_STRING_it C.ASN1_BIT_STRING_it
 func ASN1_BIT_STRING_it() *ASN1_ITEM
 
-// llgo:link (*ASN1_BIT_STRING).Set C.ASN1_BIT_STRING_set
+//llgo:link (*ASN1_BIT_STRING).Set C.ASN1_BIT_STRING_set
 func (self *ASN1_BIT_STRING) Set(d *uint8, length c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_BIT_STRING).SetBit C.ASN1_BIT_STRING_set_bit
+//llgo:link (*ASN1_BIT_STRING).SetBit C.ASN1_BIT_STRING_set_bit
 func (self *ASN1_BIT_STRING) SetBit(n c.Int, value c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_BIT_STRING).Bit C.ASN1_BIT_STRING_get_bit
+//llgo:link (*ASN1_BIT_STRING).Bit C.ASN1_BIT_STRING_get_bit
 func (self *ASN1_BIT_STRING) Bit(n c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_BIT_STRING).Check C.ASN1_BIT_STRING_check
+//llgo:link (*ASN1_BIT_STRING).Check C.ASN1_BIT_STRING_check
 func (self *ASN1_BIT_STRING) Check(flags *uint8, flags_len c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).ASN1_BIT_STRING_name_print C.ASN1_BIT_STRING_name_print
+//llgo:link (*BIO).ASN1_BIT_STRING_name_print C.ASN1_BIT_STRING_name_print
 func (self *BIO) ASN1_BIT_STRING_name_print(bs *ASN1_BIT_STRING, tbl *BIT_STRING_BITNAME, indent c.Int) c.Int {
 	return 0
 }
@@ -629,17 +629,17 @@ func (self *BIO) ASN1_BIT_STRING_name_print(bs *ASN1_BIT_STRING, tbl *BIT_STRING
 //go:linkname ASN1_BIT_STRING_num_asc C.ASN1_BIT_STRING_num_asc
 func ASN1_BIT_STRING_num_asc(name *c.Char, tbl *BIT_STRING_BITNAME) c.Int
 
-// llgo:link (*ASN1_BIT_STRING).SetAsc C.ASN1_BIT_STRING_set_asc
+//llgo:link (*ASN1_BIT_STRING).SetAsc C.ASN1_BIT_STRING_set_asc
 func (self *ASN1_BIT_STRING) SetAsc(name *c.Char, value c.Int, tbl *BIT_STRING_BITNAME) c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_BIT_STRING).Length C.ASN1_BIT_STRING_get_length
+//llgo:link (*ASN1_BIT_STRING).Length C.ASN1_BIT_STRING_get_length
 func (self *ASN1_BIT_STRING) Length(length *c.SizeT, unused_bits *c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_BIT_STRING).Set1 C.ASN1_BIT_STRING_set1
+//llgo:link (*ASN1_BIT_STRING).Set1 C.ASN1_BIT_STRING_set1
 func (self *ASN1_BIT_STRING) Set1(data *c.Uint8T, length c.SizeT, unused_bits c.Int) c.Int {
 	return 0
 }
@@ -647,14 +647,14 @@ func (self *ASN1_BIT_STRING) Set1(data *c.Uint8T, length c.SizeT, unused_bits c.
 //go:linkname ASN1_INTEGER_new C.ASN1_INTEGER_new
 func ASN1_INTEGER_new() *ASN1_INTEGER
 
-// llgo:link (*ASN1_INTEGER).Free C.ASN1_INTEGER_free
+//llgo:link (*ASN1_INTEGER).Free C.ASN1_INTEGER_free
 func (self *ASN1_INTEGER) Free() {
 }
 
 //go:linkname D2i_ASN1_INTEGER C.d2i_ASN1_INTEGER
 func D2i_ASN1_INTEGER(a **ASN1_INTEGER, in **uint8, len c.Long) *ASN1_INTEGER
 
-// llgo:link (*ASN1_INTEGER).I2d C.i2d_ASN1_INTEGER
+//llgo:link (*ASN1_INTEGER).I2d C.i2d_ASN1_INTEGER
 func (self *ASN1_INTEGER) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -665,7 +665,7 @@ func ASN1_INTEGER_it() *ASN1_ITEM
 //go:linkname D2i_ASN1_UINTEGER C.d2i_ASN1_UINTEGER
 func D2i_ASN1_UINTEGER(a **ASN1_INTEGER, pp **uint8, length c.Long) *ASN1_INTEGER
 
-// llgo:link (*ASN1_INTEGER).Dup C.ASN1_INTEGER_dup
+//llgo:link (*ASN1_INTEGER).Dup C.ASN1_INTEGER_dup
 func (self *ASN1_INTEGER) Dup() *ASN1_INTEGER {
 	return self
 }
@@ -676,14 +676,14 @@ func ASN1_INTEGER_cmp(x *ASN1_INTEGER, y *ASN1_INTEGER) c.Int
 //go:linkname ASN1_ENUMERATED_new C.ASN1_ENUMERATED_new
 func ASN1_ENUMERATED_new() *ASN1_ENUMERATED
 
-// llgo:link (*ASN1_ENUMERATED).Free C.ASN1_ENUMERATED_free
+//llgo:link (*ASN1_ENUMERATED).Free C.ASN1_ENUMERATED_free
 func (self *ASN1_ENUMERATED) Free() {
 }
 
 //go:linkname D2i_ASN1_ENUMERATED C.d2i_ASN1_ENUMERATED
 func D2i_ASN1_ENUMERATED(a **ASN1_ENUMERATED, in **uint8, len c.Long) *ASN1_ENUMERATED
 
-// llgo:link (*ASN1_ENUMERATED).I2d C.i2d_ASN1_ENUMERATED
+//llgo:link (*ASN1_ENUMERATED).I2d C.i2d_ASN1_ENUMERATED
 func (self *ASN1_ENUMERATED) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -691,47 +691,47 @@ func (self *ASN1_ENUMERATED) I2d(out **uint8) c.Int {
 //go:linkname ASN1_ENUMERATED_it C.ASN1_ENUMERATED_it
 func ASN1_ENUMERATED_it() *ASN1_ITEM
 
-// llgo:link (*ASN1_UTCTIME).Check C.ASN1_UTCTIME_check
+//llgo:link (*ASN1_UTCTIME).Check C.ASN1_UTCTIME_check
 func (self *ASN1_UTCTIME) Check() c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_UTCTIME).Set C.ASN1_UTCTIME_set
+//llgo:link (*ASN1_UTCTIME).Set C.ASN1_UTCTIME_set
 func (self *ASN1_UTCTIME) Set(t time.TimeT) *ASN1_UTCTIME {
 	return self
 }
 
-// llgo:link (*ASN1_UTCTIME).Adj C.ASN1_UTCTIME_adj
+//llgo:link (*ASN1_UTCTIME).Adj C.ASN1_UTCTIME_adj
 func (self *ASN1_UTCTIME) Adj(t time.TimeT, offset_day c.Int, offset_sec c.Long) *ASN1_UTCTIME {
 	return self
 }
 
-// llgo:link (*ASN1_UTCTIME).SetString C.ASN1_UTCTIME_set_string
+//llgo:link (*ASN1_UTCTIME).SetString C.ASN1_UTCTIME_set_string
 func (self *ASN1_UTCTIME) SetString(str *c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_UTCTIME).CmpTimeT C.ASN1_UTCTIME_cmp_time_t
+//llgo:link (*ASN1_UTCTIME).CmpTimeT C.ASN1_UTCTIME_cmp_time_t
 func (self *ASN1_UTCTIME) CmpTimeT(t time.TimeT) c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_GENERALIZEDTIME).Check C.ASN1_GENERALIZEDTIME_check
+//llgo:link (*ASN1_GENERALIZEDTIME).Check C.ASN1_GENERALIZEDTIME_check
 func (self *ASN1_GENERALIZEDTIME) Check() c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_GENERALIZEDTIME).Set C.ASN1_GENERALIZEDTIME_set
+//llgo:link (*ASN1_GENERALIZEDTIME).Set C.ASN1_GENERALIZEDTIME_set
 func (self *ASN1_GENERALIZEDTIME) Set(t time.TimeT) *ASN1_GENERALIZEDTIME {
 	return self
 }
 
-// llgo:link (*ASN1_GENERALIZEDTIME).Adj C.ASN1_GENERALIZEDTIME_adj
+//llgo:link (*ASN1_GENERALIZEDTIME).Adj C.ASN1_GENERALIZEDTIME_adj
 func (self *ASN1_GENERALIZEDTIME) Adj(t time.TimeT, offset_day c.Int, offset_sec c.Long) *ASN1_GENERALIZEDTIME {
 	return self
 }
 
-// llgo:link (*ASN1_GENERALIZEDTIME).SetString C.ASN1_GENERALIZEDTIME_set_string
+//llgo:link (*ASN1_GENERALIZEDTIME).SetString C.ASN1_GENERALIZEDTIME_set_string
 func (self *ASN1_GENERALIZEDTIME) SetString(str *c.Char) c.Int {
 	return 0
 }
@@ -742,14 +742,14 @@ func ASN1_TIME_diff(pday *c.Int, psec *c.Int, from *ASN1_TIME, to *ASN1_TIME) c.
 //go:linkname ASN1_OCTET_STRING_new C.ASN1_OCTET_STRING_new
 func ASN1_OCTET_STRING_new() *ASN1_OCTET_STRING
 
-// llgo:link (*ASN1_OCTET_STRING).Free C.ASN1_OCTET_STRING_free
+//llgo:link (*ASN1_OCTET_STRING).Free C.ASN1_OCTET_STRING_free
 func (self *ASN1_OCTET_STRING) Free() {
 }
 
 //go:linkname D2i_ASN1_OCTET_STRING C.d2i_ASN1_OCTET_STRING
 func D2i_ASN1_OCTET_STRING(a **ASN1_OCTET_STRING, in **uint8, len c.Long) *ASN1_OCTET_STRING
 
-// llgo:link (*ASN1_OCTET_STRING).I2d C.i2d_ASN1_OCTET_STRING
+//llgo:link (*ASN1_OCTET_STRING).I2d C.i2d_ASN1_OCTET_STRING
 func (self *ASN1_OCTET_STRING) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -757,7 +757,7 @@ func (self *ASN1_OCTET_STRING) I2d(out **uint8) c.Int {
 //go:linkname ASN1_OCTET_STRING_it C.ASN1_OCTET_STRING_it
 func ASN1_OCTET_STRING_it() *ASN1_ITEM
 
-// llgo:link (*ASN1_OCTET_STRING).Dup C.ASN1_OCTET_STRING_dup
+//llgo:link (*ASN1_OCTET_STRING).Dup C.ASN1_OCTET_STRING_dup
 func (self *ASN1_OCTET_STRING) Dup() *ASN1_OCTET_STRING {
 	return self
 }
@@ -765,7 +765,7 @@ func (self *ASN1_OCTET_STRING) Dup() *ASN1_OCTET_STRING {
 //go:linkname ASN1_OCTET_STRING_cmp C.ASN1_OCTET_STRING_cmp
 func ASN1_OCTET_STRING_cmp(a *ASN1_OCTET_STRING, b *ASN1_OCTET_STRING) c.Int
 
-// llgo:link (*ASN1_OCTET_STRING).Set C.ASN1_OCTET_STRING_set
+//llgo:link (*ASN1_OCTET_STRING).Set C.ASN1_OCTET_STRING_set
 func (self *ASN1_OCTET_STRING) Set(data *uint8, len c.Int) c.Int {
 	return 0
 }
@@ -773,14 +773,14 @@ func (self *ASN1_OCTET_STRING) Set(data *uint8, len c.Int) c.Int {
 //go:linkname ASN1_VISIBLESTRING_new C.ASN1_VISIBLESTRING_new
 func ASN1_VISIBLESTRING_new() *ASN1_VISIBLESTRING
 
-// llgo:link (*ASN1_VISIBLESTRING).Free C.ASN1_VISIBLESTRING_free
+//llgo:link (*ASN1_VISIBLESTRING).Free C.ASN1_VISIBLESTRING_free
 func (self *ASN1_VISIBLESTRING) Free() {
 }
 
 //go:linkname D2i_ASN1_VISIBLESTRING C.d2i_ASN1_VISIBLESTRING
 func D2i_ASN1_VISIBLESTRING(a **ASN1_VISIBLESTRING, in **uint8, len c.Long) *ASN1_VISIBLESTRING
 
-// llgo:link (*ASN1_VISIBLESTRING).I2d C.i2d_ASN1_VISIBLESTRING
+//llgo:link (*ASN1_VISIBLESTRING).I2d C.i2d_ASN1_VISIBLESTRING
 func (self *ASN1_VISIBLESTRING) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -791,14 +791,14 @@ func ASN1_VISIBLESTRING_it() *ASN1_ITEM
 //go:linkname ASN1_UNIVERSALSTRING_new C.ASN1_UNIVERSALSTRING_new
 func ASN1_UNIVERSALSTRING_new() *ASN1_UNIVERSALSTRING
 
-// llgo:link (*ASN1_UNIVERSALSTRING).Free C.ASN1_UNIVERSALSTRING_free
+//llgo:link (*ASN1_UNIVERSALSTRING).Free C.ASN1_UNIVERSALSTRING_free
 func (self *ASN1_UNIVERSALSTRING) Free() {
 }
 
 //go:linkname D2i_ASN1_UNIVERSALSTRING C.d2i_ASN1_UNIVERSALSTRING
 func D2i_ASN1_UNIVERSALSTRING(a **ASN1_UNIVERSALSTRING, in **uint8, len c.Long) *ASN1_UNIVERSALSTRING
 
-// llgo:link (*ASN1_UNIVERSALSTRING).I2d C.i2d_ASN1_UNIVERSALSTRING
+//llgo:link (*ASN1_UNIVERSALSTRING).I2d C.i2d_ASN1_UNIVERSALSTRING
 func (self *ASN1_UNIVERSALSTRING) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -809,14 +809,14 @@ func ASN1_UNIVERSALSTRING_it() *ASN1_ITEM
 //go:linkname ASN1_UTF8STRING_new C.ASN1_UTF8STRING_new
 func ASN1_UTF8STRING_new() *ASN1_UTF8STRING
 
-// llgo:link (*ASN1_UTF8STRING).Free C.ASN1_UTF8STRING_free
+//llgo:link (*ASN1_UTF8STRING).Free C.ASN1_UTF8STRING_free
 func (self *ASN1_UTF8STRING) Free() {
 }
 
 //go:linkname D2i_ASN1_UTF8STRING C.d2i_ASN1_UTF8STRING
 func D2i_ASN1_UTF8STRING(a **ASN1_UTF8STRING, in **uint8, len c.Long) *ASN1_UTF8STRING
 
-// llgo:link (*ASN1_UTF8STRING).I2d C.i2d_ASN1_UTF8STRING
+//llgo:link (*ASN1_UTF8STRING).I2d C.i2d_ASN1_UTF8STRING
 func (self *ASN1_UTF8STRING) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -842,14 +842,14 @@ func ASN1_NULL_it() *ASN1_ITEM
 //go:linkname ASN1_BMPSTRING_new C.ASN1_BMPSTRING_new
 func ASN1_BMPSTRING_new() *ASN1_BMPSTRING
 
-// llgo:link (*ASN1_BMPSTRING).Free C.ASN1_BMPSTRING_free
+//llgo:link (*ASN1_BMPSTRING).Free C.ASN1_BMPSTRING_free
 func (self *ASN1_BMPSTRING) Free() {
 }
 
 //go:linkname D2i_ASN1_BMPSTRING C.d2i_ASN1_BMPSTRING
 func D2i_ASN1_BMPSTRING(a **ASN1_BMPSTRING, in **uint8, len c.Long) *ASN1_BMPSTRING
 
-// llgo:link (*ASN1_BMPSTRING).I2d C.i2d_ASN1_BMPSTRING
+//llgo:link (*ASN1_BMPSTRING).I2d C.i2d_ASN1_BMPSTRING
 func (self *ASN1_BMPSTRING) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -866,14 +866,14 @@ func UTF8_putc(str *uint8, len c.Int, value c.Ulong) c.Int
 //go:linkname ASN1_PRINTABLE_new C.ASN1_PRINTABLE_new
 func ASN1_PRINTABLE_new() *ASN1_STRING
 
-// llgo:link (*ASN1_STRING).ASN1_PRINTABLE_free C.ASN1_PRINTABLE_free
+//llgo:link (*ASN1_STRING).ASN1_PRINTABLE_free C.ASN1_PRINTABLE_free
 func (self *ASN1_STRING) ASN1_PRINTABLE_free() {
 }
 
 //go:linkname D2i_ASN1_PRINTABLE C.d2i_ASN1_PRINTABLE
 func D2i_ASN1_PRINTABLE(a **ASN1_STRING, in **uint8, len c.Long) *ASN1_STRING
 
-// llgo:link (*ASN1_STRING).I2d_ASN1_PRINTABLE C.i2d_ASN1_PRINTABLE
+//llgo:link (*ASN1_STRING).I2d_ASN1_PRINTABLE C.i2d_ASN1_PRINTABLE
 func (self *ASN1_STRING) I2d_ASN1_PRINTABLE(out **uint8) c.Int {
 	return 0
 }
@@ -884,14 +884,14 @@ func ASN1_PRINTABLE_it() *ASN1_ITEM
 //go:linkname DIRECTORYSTRING_new C.DIRECTORYSTRING_new
 func DIRECTORYSTRING_new() *ASN1_STRING
 
-// llgo:link (*ASN1_STRING).DIRECTORYSTRING_free C.DIRECTORYSTRING_free
+//llgo:link (*ASN1_STRING).DIRECTORYSTRING_free C.DIRECTORYSTRING_free
 func (self *ASN1_STRING) DIRECTORYSTRING_free() {
 }
 
 //go:linkname D2i_DIRECTORYSTRING C.d2i_DIRECTORYSTRING
 func D2i_DIRECTORYSTRING(a **ASN1_STRING, in **uint8, len c.Long) *ASN1_STRING
 
-// llgo:link (*ASN1_STRING).I2d_DIRECTORYSTRING C.i2d_DIRECTORYSTRING
+//llgo:link (*ASN1_STRING).I2d_DIRECTORYSTRING C.i2d_DIRECTORYSTRING
 func (self *ASN1_STRING) I2d_DIRECTORYSTRING(out **uint8) c.Int {
 	return 0
 }
@@ -902,14 +902,14 @@ func DIRECTORYSTRING_it() *ASN1_ITEM
 //go:linkname DISPLAYTEXT_new C.DISPLAYTEXT_new
 func DISPLAYTEXT_new() *ASN1_STRING
 
-// llgo:link (*ASN1_STRING).DISPLAYTEXT_free C.DISPLAYTEXT_free
+//llgo:link (*ASN1_STRING).DISPLAYTEXT_free C.DISPLAYTEXT_free
 func (self *ASN1_STRING) DISPLAYTEXT_free() {
 }
 
 //go:linkname D2i_DISPLAYTEXT C.d2i_DISPLAYTEXT
 func D2i_DISPLAYTEXT(a **ASN1_STRING, in **uint8, len c.Long) *ASN1_STRING
 
-// llgo:link (*ASN1_STRING).I2d_DISPLAYTEXT C.i2d_DISPLAYTEXT
+//llgo:link (*ASN1_STRING).I2d_DISPLAYTEXT C.i2d_DISPLAYTEXT
 func (self *ASN1_STRING) I2d_DISPLAYTEXT(out **uint8) c.Int {
 	return 0
 }
@@ -920,14 +920,14 @@ func DISPLAYTEXT_it() *ASN1_ITEM
 //go:linkname ASN1_PRINTABLESTRING_new C.ASN1_PRINTABLESTRING_new
 func ASN1_PRINTABLESTRING_new() *ASN1_PRINTABLESTRING
 
-// llgo:link (*ASN1_PRINTABLESTRING).Free C.ASN1_PRINTABLESTRING_free
+//llgo:link (*ASN1_PRINTABLESTRING).Free C.ASN1_PRINTABLESTRING_free
 func (self *ASN1_PRINTABLESTRING) Free() {
 }
 
 //go:linkname D2i_ASN1_PRINTABLESTRING C.d2i_ASN1_PRINTABLESTRING
 func D2i_ASN1_PRINTABLESTRING(a **ASN1_PRINTABLESTRING, in **uint8, len c.Long) *ASN1_PRINTABLESTRING
 
-// llgo:link (*ASN1_PRINTABLESTRING).I2d C.i2d_ASN1_PRINTABLESTRING
+//llgo:link (*ASN1_PRINTABLESTRING).I2d C.i2d_ASN1_PRINTABLESTRING
 func (self *ASN1_PRINTABLESTRING) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -938,14 +938,14 @@ func ASN1_PRINTABLESTRING_it() *ASN1_ITEM
 //go:linkname ASN1_T61STRING_new C.ASN1_T61STRING_new
 func ASN1_T61STRING_new() *ASN1_T61STRING
 
-// llgo:link (*ASN1_T61STRING).Free C.ASN1_T61STRING_free
+//llgo:link (*ASN1_T61STRING).Free C.ASN1_T61STRING_free
 func (self *ASN1_T61STRING) Free() {
 }
 
 //go:linkname D2i_ASN1_T61STRING C.d2i_ASN1_T61STRING
 func D2i_ASN1_T61STRING(a **ASN1_T61STRING, in **uint8, len c.Long) *ASN1_T61STRING
 
-// llgo:link (*ASN1_T61STRING).I2d C.i2d_ASN1_T61STRING
+//llgo:link (*ASN1_T61STRING).I2d C.i2d_ASN1_T61STRING
 func (self *ASN1_T61STRING) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -956,14 +956,14 @@ func ASN1_T61STRING_it() *ASN1_ITEM
 //go:linkname ASN1_IA5STRING_new C.ASN1_IA5STRING_new
 func ASN1_IA5STRING_new() *ASN1_IA5STRING
 
-// llgo:link (*ASN1_IA5STRING).Free C.ASN1_IA5STRING_free
+//llgo:link (*ASN1_IA5STRING).Free C.ASN1_IA5STRING_free
 func (self *ASN1_IA5STRING) Free() {
 }
 
 //go:linkname D2i_ASN1_IA5STRING C.d2i_ASN1_IA5STRING
 func D2i_ASN1_IA5STRING(a **ASN1_IA5STRING, in **uint8, len c.Long) *ASN1_IA5STRING
 
-// llgo:link (*ASN1_IA5STRING).I2d C.i2d_ASN1_IA5STRING
+//llgo:link (*ASN1_IA5STRING).I2d C.i2d_ASN1_IA5STRING
 func (self *ASN1_IA5STRING) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -974,14 +974,14 @@ func ASN1_IA5STRING_it() *ASN1_ITEM
 //go:linkname ASN1_GENERALSTRING_new C.ASN1_GENERALSTRING_new
 func ASN1_GENERALSTRING_new() *ASN1_GENERALSTRING
 
-// llgo:link (*ASN1_GENERALSTRING).Free C.ASN1_GENERALSTRING_free
+//llgo:link (*ASN1_GENERALSTRING).Free C.ASN1_GENERALSTRING_free
 func (self *ASN1_GENERALSTRING) Free() {
 }
 
 //go:linkname D2i_ASN1_GENERALSTRING C.d2i_ASN1_GENERALSTRING
 func D2i_ASN1_GENERALSTRING(a **ASN1_GENERALSTRING, in **uint8, len c.Long) *ASN1_GENERALSTRING
 
-// llgo:link (*ASN1_GENERALSTRING).I2d C.i2d_ASN1_GENERALSTRING
+//llgo:link (*ASN1_GENERALSTRING).I2d C.i2d_ASN1_GENERALSTRING
 func (self *ASN1_GENERALSTRING) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -992,14 +992,14 @@ func ASN1_GENERALSTRING_it() *ASN1_ITEM
 //go:linkname ASN1_UTCTIME_new C.ASN1_UTCTIME_new
 func ASN1_UTCTIME_new() *ASN1_UTCTIME
 
-// llgo:link (*ASN1_UTCTIME).Free C.ASN1_UTCTIME_free
+//llgo:link (*ASN1_UTCTIME).Free C.ASN1_UTCTIME_free
 func (self *ASN1_UTCTIME) Free() {
 }
 
 //go:linkname D2i_ASN1_UTCTIME C.d2i_ASN1_UTCTIME
 func D2i_ASN1_UTCTIME(a **ASN1_UTCTIME, in **uint8, len c.Long) *ASN1_UTCTIME
 
-// llgo:link (*ASN1_UTCTIME).I2d C.i2d_ASN1_UTCTIME
+//llgo:link (*ASN1_UTCTIME).I2d C.i2d_ASN1_UTCTIME
 func (self *ASN1_UTCTIME) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -1010,14 +1010,14 @@ func ASN1_UTCTIME_it() *ASN1_ITEM
 //go:linkname ASN1_GENERALIZEDTIME_new C.ASN1_GENERALIZEDTIME_new
 func ASN1_GENERALIZEDTIME_new() *ASN1_GENERALIZEDTIME
 
-// llgo:link (*ASN1_GENERALIZEDTIME).Free C.ASN1_GENERALIZEDTIME_free
+//llgo:link (*ASN1_GENERALIZEDTIME).Free C.ASN1_GENERALIZEDTIME_free
 func (self *ASN1_GENERALIZEDTIME) Free() {
 }
 
 //go:linkname D2i_ASN1_GENERALIZEDTIME C.d2i_ASN1_GENERALIZEDTIME
 func D2i_ASN1_GENERALIZEDTIME(a **ASN1_GENERALIZEDTIME, in **uint8, len c.Long) *ASN1_GENERALIZEDTIME
 
-// llgo:link (*ASN1_GENERALIZEDTIME).I2d C.i2d_ASN1_GENERALIZEDTIME
+//llgo:link (*ASN1_GENERALIZEDTIME).I2d C.i2d_ASN1_GENERALIZEDTIME
 func (self *ASN1_GENERALIZEDTIME) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -1028,14 +1028,14 @@ func ASN1_GENERALIZEDTIME_it() *ASN1_ITEM
 //go:linkname ASN1_TIME_new C.ASN1_TIME_new
 func ASN1_TIME_new() *ASN1_TIME
 
-// llgo:link (*ASN1_TIME).Free C.ASN1_TIME_free
+//llgo:link (*ASN1_TIME).Free C.ASN1_TIME_free
 func (self *ASN1_TIME) Free() {
 }
 
 //go:linkname D2i_ASN1_TIME C.d2i_ASN1_TIME
 func D2i_ASN1_TIME(a **ASN1_TIME, in **uint8, len c.Long) *ASN1_TIME
 
-// llgo:link (*ASN1_TIME).I2d C.i2d_ASN1_TIME
+//llgo:link (*ASN1_TIME).I2d C.i2d_ASN1_TIME
 func (self *ASN1_TIME) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -1043,17 +1043,17 @@ func (self *ASN1_TIME) I2d(out **uint8) c.Int {
 //go:linkname ASN1_TIME_it C.ASN1_TIME_it
 func ASN1_TIME_it() *ASN1_ITEM
 
-// llgo:link (*ASN1_TIME).Dup C.ASN1_TIME_dup
+//llgo:link (*ASN1_TIME).Dup C.ASN1_TIME_dup
 func (self *ASN1_TIME) Dup() *ASN1_TIME {
 	return self
 }
 
-// llgo:link (*ASN1_UTCTIME).Dup C.ASN1_UTCTIME_dup
+//llgo:link (*ASN1_UTCTIME).Dup C.ASN1_UTCTIME_dup
 func (self *ASN1_UTCTIME) Dup() *ASN1_UTCTIME {
 	return self
 }
 
-// llgo:link (*ASN1_GENERALIZEDTIME).Dup C.ASN1_GENERALIZEDTIME_dup
+//llgo:link (*ASN1_GENERALIZEDTIME).Dup C.ASN1_GENERALIZEDTIME_dup
 func (self *ASN1_GENERALIZEDTIME) Dup() *ASN1_GENERALIZEDTIME {
 	return self
 }
@@ -1061,47 +1061,47 @@ func (self *ASN1_GENERALIZEDTIME) Dup() *ASN1_GENERALIZEDTIME {
 //go:linkname ASN1_OCTET_STRING_NDEF_it C.ASN1_OCTET_STRING_NDEF_it
 func ASN1_OCTET_STRING_NDEF_it() *ASN1_ITEM
 
-// llgo:link (*ASN1_TIME).Set C.ASN1_TIME_set
+//llgo:link (*ASN1_TIME).Set C.ASN1_TIME_set
 func (self *ASN1_TIME) Set(t time.TimeT) *ASN1_TIME {
 	return self
 }
 
-// llgo:link (*ASN1_TIME).Adj C.ASN1_TIME_adj
+//llgo:link (*ASN1_TIME).Adj C.ASN1_TIME_adj
 func (self *ASN1_TIME) Adj(t time.TimeT, offset_day c.Int, offset_sec c.Long) *ASN1_TIME {
 	return self
 }
 
-// llgo:link (*ASN1_TIME).Check C.ASN1_TIME_check
+//llgo:link (*ASN1_TIME).Check C.ASN1_TIME_check
 func (self *ASN1_TIME) Check() c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_TIME).ToGeneralizedtime C.ASN1_TIME_to_generalizedtime
+//llgo:link (*ASN1_TIME).ToGeneralizedtime C.ASN1_TIME_to_generalizedtime
 func (self *ASN1_TIME) ToGeneralizedtime(out **ASN1_GENERALIZEDTIME) *ASN1_GENERALIZEDTIME {
 	return nil
 }
 
-// llgo:link (*ASN1_TIME).SetString C.ASN1_TIME_set_string
+//llgo:link (*ASN1_TIME).SetString C.ASN1_TIME_set_string
 func (self *ASN1_TIME) SetString(str *c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_TIME).Set_string_X509 C.ASN1_TIME_set_string_X509
+//llgo:link (*ASN1_TIME).Set_string_X509 C.ASN1_TIME_set_string_X509
 func (self *ASN1_TIME) Set_string_X509(str *c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_TIME).ToTm C.ASN1_TIME_to_tm
+//llgo:link (*ASN1_TIME).ToTm C.ASN1_TIME_to_tm
 func (self *ASN1_TIME) ToTm(tm *time.Tm) c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_TIME).Normalize C.ASN1_TIME_normalize
+//llgo:link (*ASN1_TIME).Normalize C.ASN1_TIME_normalize
 func (self *ASN1_TIME) Normalize() c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_TIME).CmpTimeT C.ASN1_TIME_cmp_time_t
+//llgo:link (*ASN1_TIME).CmpTimeT C.ASN1_TIME_cmp_time_t
 func (self *ASN1_TIME) CmpTimeT(t time.TimeT) c.Int {
 	return 0
 }
@@ -1109,37 +1109,37 @@ func (self *ASN1_TIME) CmpTimeT(t time.TimeT) c.Int {
 //go:linkname ASN1_TIME_compare C.ASN1_TIME_compare
 func ASN1_TIME_compare(a *ASN1_TIME, b *ASN1_TIME) c.Int
 
-// llgo:link (*BIO).I2a_ASN1_INTEGER C.i2a_ASN1_INTEGER
+//llgo:link (*BIO).I2a_ASN1_INTEGER C.i2a_ASN1_INTEGER
 func (self *BIO) I2a_ASN1_INTEGER(a *ASN1_INTEGER) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).A2i_ASN1_INTEGER C.a2i_ASN1_INTEGER
+//llgo:link (*BIO).A2i_ASN1_INTEGER C.a2i_ASN1_INTEGER
 func (self *BIO) A2i_ASN1_INTEGER(bs *ASN1_INTEGER, buf *c.Char, size c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).I2a_ASN1_ENUMERATED C.i2a_ASN1_ENUMERATED
+//llgo:link (*BIO).I2a_ASN1_ENUMERATED C.i2a_ASN1_ENUMERATED
 func (self *BIO) I2a_ASN1_ENUMERATED(a *ASN1_ENUMERATED) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).A2i_ASN1_ENUMERATED C.a2i_ASN1_ENUMERATED
+//llgo:link (*BIO).A2i_ASN1_ENUMERATED C.a2i_ASN1_ENUMERATED
 func (self *BIO) A2i_ASN1_ENUMERATED(bs *ASN1_ENUMERATED, buf *c.Char, size c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).I2a_ASN1_OBJECT C.i2a_ASN1_OBJECT
+//llgo:link (*BIO).I2a_ASN1_OBJECT C.i2a_ASN1_OBJECT
 func (self *BIO) I2a_ASN1_OBJECT(a *ASN1_OBJECT) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).A2i_ASN1_STRING C.a2i_ASN1_STRING
+//llgo:link (*BIO).A2i_ASN1_STRING C.a2i_ASN1_STRING
 func (self *BIO) A2i_ASN1_STRING(bs *ASN1_STRING, buf *c.Char, size c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).I2a_ASN1_STRING C.i2a_ASN1_STRING
+//llgo:link (*BIO).I2a_ASN1_STRING C.i2a_ASN1_STRING
 func (self *BIO) I2a_ASN1_STRING(a *ASN1_STRING, type_ c.Int) c.Int {
 	return 0
 }
@@ -1156,7 +1156,7 @@ func ASN1_OBJECT_create(nid c.Int, data *uint8, len c.Int, sn *c.Char, ln *c.Cha
 //go:linkname ASN1_INTEGER_get_int64 C.ASN1_INTEGER_get_int64
 func ASN1_INTEGER_get_int64(pr *c.Int64T, a *ASN1_INTEGER) c.Int
 
-// llgo:link (*ASN1_INTEGER).SetInt64 C.ASN1_INTEGER_set_int64
+//llgo:link (*ASN1_INTEGER).SetInt64 C.ASN1_INTEGER_set_int64
 func (self *ASN1_INTEGER) SetInt64(r c.Int64T) c.Int {
 	return 0
 }
@@ -1164,27 +1164,27 @@ func (self *ASN1_INTEGER) SetInt64(r c.Int64T) c.Int {
 //go:linkname ASN1_INTEGER_get_uint64 C.ASN1_INTEGER_get_uint64
 func ASN1_INTEGER_get_uint64(pr *c.Uint64T, a *ASN1_INTEGER) c.Int
 
-// llgo:link (*ASN1_INTEGER).SetUint64 C.ASN1_INTEGER_set_uint64
+//llgo:link (*ASN1_INTEGER).SetUint64 C.ASN1_INTEGER_set_uint64
 func (self *ASN1_INTEGER) SetUint64(r c.Uint64T) c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_INTEGER).Set C.ASN1_INTEGER_set
+//llgo:link (*ASN1_INTEGER).Set C.ASN1_INTEGER_set
 func (self *ASN1_INTEGER) Set(v c.Long) c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_INTEGER).Get C.ASN1_INTEGER_get
+//llgo:link (*ASN1_INTEGER).Get C.ASN1_INTEGER_get
 func (self *ASN1_INTEGER) Get() c.Long {
 	return 0
 }
 
-// llgo:link (*BIGNUM).To_ASN1_INTEGER C.BN_to_ASN1_INTEGER
+//llgo:link (*BIGNUM).To_ASN1_INTEGER C.BN_to_ASN1_INTEGER
 func (self *BIGNUM) To_ASN1_INTEGER(ai *ASN1_INTEGER) *ASN1_INTEGER {
 	return nil
 }
 
-// llgo:link (*ASN1_INTEGER).To_BN C.ASN1_INTEGER_to_BN
+//llgo:link (*ASN1_INTEGER).To_BN C.ASN1_INTEGER_to_BN
 func (self *ASN1_INTEGER) To_BN(bn *BIGNUM) *BIGNUM {
 	return nil
 }
@@ -1192,27 +1192,27 @@ func (self *ASN1_INTEGER) To_BN(bn *BIGNUM) *BIGNUM {
 //go:linkname ASN1_ENUMERATED_get_int64 C.ASN1_ENUMERATED_get_int64
 func ASN1_ENUMERATED_get_int64(pr *c.Int64T, a *ASN1_ENUMERATED) c.Int
 
-// llgo:link (*ASN1_ENUMERATED).SetInt64 C.ASN1_ENUMERATED_set_int64
+//llgo:link (*ASN1_ENUMERATED).SetInt64 C.ASN1_ENUMERATED_set_int64
 func (self *ASN1_ENUMERATED) SetInt64(r c.Int64T) c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_ENUMERATED).Set C.ASN1_ENUMERATED_set
+//llgo:link (*ASN1_ENUMERATED).Set C.ASN1_ENUMERATED_set
 func (self *ASN1_ENUMERATED) Set(v c.Long) c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_ENUMERATED).Get C.ASN1_ENUMERATED_get
+//llgo:link (*ASN1_ENUMERATED).Get C.ASN1_ENUMERATED_get
 func (self *ASN1_ENUMERATED) Get() c.Long {
 	return 0
 }
 
-// llgo:link (*BIGNUM).To_ASN1_ENUMERATED C.BN_to_ASN1_ENUMERATED
+//llgo:link (*BIGNUM).To_ASN1_ENUMERATED C.BN_to_ASN1_ENUMERATED
 func (self *BIGNUM) To_ASN1_ENUMERATED(ai *ASN1_ENUMERATED) *ASN1_ENUMERATED {
 	return nil
 }
 
-// llgo:link (*ASN1_ENUMERATED).To_BN C.ASN1_ENUMERATED_to_BN
+//llgo:link (*ASN1_ENUMERATED).To_BN C.ASN1_ENUMERATED_to_BN
 func (self *ASN1_ENUMERATED) To_BN(bn *BIGNUM) *BIGNUM {
 	return nil
 }
@@ -1250,17 +1250,17 @@ func ASN1_object_size(constructed c.Int, length c.Int, tag c.Int) c.Int
 //go:linkname ASN1_dup C.ASN1_dup
 func ASN1_dup(i2d *I2dOfVoid, d2i *D2iOfVoid, x unsafe.Pointer) unsafe.Pointer
 
-// llgo:link (*ASN1_ITEM).Dup C.ASN1_item_dup
+//llgo:link (*ASN1_ITEM).Dup C.ASN1_item_dup
 func (self *ASN1_ITEM) Dup(x unsafe.Pointer) unsafe.Pointer {
 	return nil
 }
 
-// llgo:link (*ASN1_ITEM).SignEx C.ASN1_item_sign_ex
+//llgo:link (*ASN1_ITEM).SignEx C.ASN1_item_sign_ex
 func (self *ASN1_ITEM) SignEx(algor1 *X509_ALGOR, algor2 *X509_ALGOR, signature *ASN1_BIT_STRING, data unsafe.Pointer, id *ASN1_OCTET_STRING, pkey *EVP_PKEY, md *EVP_MD, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_ITEM).VerifyEx C.ASN1_item_verify_ex
+//llgo:link (*ASN1_ITEM).VerifyEx C.ASN1_item_verify_ex
 func (self *ASN1_ITEM) VerifyEx(alg *X509_ALGOR, signature *ASN1_BIT_STRING, data unsafe.Pointer, id *ASN1_OCTET_STRING, pkey *EVP_PKEY, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int {
 	return 0
 }
@@ -1268,12 +1268,12 @@ func (self *ASN1_ITEM) VerifyEx(alg *X509_ALGOR, signature *ASN1_BIT_STRING, dat
 //go:linkname ASN1_d2i_fp C.ASN1_d2i_fp
 func ASN1_d2i_fp(xnew func() unsafe.Pointer, d2i *D2iOfVoid, in *c.FILE, x *unsafe.Pointer) unsafe.Pointer
 
-// llgo:link (*ASN1_ITEM).D2iFpEx C.ASN1_item_d2i_fp_ex
+//llgo:link (*ASN1_ITEM).D2iFpEx C.ASN1_item_d2i_fp_ex
 func (self *ASN1_ITEM) D2iFpEx(in *c.FILE, x unsafe.Pointer, libctx *OSSL_LIB_CTX, propq *c.Char) unsafe.Pointer {
 	return nil
 }
 
-// llgo:link (*ASN1_ITEM).D2iFp C.ASN1_item_d2i_fp
+//llgo:link (*ASN1_ITEM).D2iFp C.ASN1_item_d2i_fp
 func (self *ASN1_ITEM) D2iFp(in *c.FILE, x unsafe.Pointer) unsafe.Pointer {
 	return nil
 }
@@ -1281,7 +1281,7 @@ func (self *ASN1_ITEM) D2iFp(in *c.FILE, x unsafe.Pointer) unsafe.Pointer {
 //go:linkname ASN1_i2d_fp C.ASN1_i2d_fp
 func ASN1_i2d_fp(i2d *I2dOfVoid, out *c.FILE, x unsafe.Pointer) c.Int
 
-// llgo:link (*ASN1_ITEM).I2dFp C.ASN1_item_i2d_fp
+//llgo:link (*ASN1_ITEM).I2dFp C.ASN1_item_i2d_fp
 func (self *ASN1_ITEM) I2dFp(out *c.FILE, x unsafe.Pointer) c.Int {
 	return 0
 }
@@ -1295,12 +1295,12 @@ func ASN1_STRING_to_UTF8(out **uint8, in *ASN1_STRING) c.Int
 //go:linkname ASN1_d2i_bio C.ASN1_d2i_bio
 func ASN1_d2i_bio(xnew func() unsafe.Pointer, d2i *D2iOfVoid, in *BIO, x *unsafe.Pointer) unsafe.Pointer
 
-// llgo:link (*ASN1_ITEM).D2iBioEx C.ASN1_item_d2i_bio_ex
+//llgo:link (*ASN1_ITEM).D2iBioEx C.ASN1_item_d2i_bio_ex
 func (self *ASN1_ITEM) D2iBioEx(in *BIO, pval unsafe.Pointer, libctx *OSSL_LIB_CTX, propq *c.Char) unsafe.Pointer {
 	return nil
 }
 
-// llgo:link (*ASN1_ITEM).D2iBio C.ASN1_item_d2i_bio
+//llgo:link (*ASN1_ITEM).D2iBio C.ASN1_item_d2i_bio
 func (self *ASN1_ITEM) D2iBio(in *BIO, pval unsafe.Pointer) unsafe.Pointer {
 	return nil
 }
@@ -1308,62 +1308,62 @@ func (self *ASN1_ITEM) D2iBio(in *BIO, pval unsafe.Pointer) unsafe.Pointer {
 //go:linkname ASN1_i2d_bio C.ASN1_i2d_bio
 func ASN1_i2d_bio(i2d *I2dOfVoid, out *BIO, x unsafe.Pointer) c.Int
 
-// llgo:link (*ASN1_ITEM).I2dBio C.ASN1_item_i2d_bio
+//llgo:link (*ASN1_ITEM).I2dBio C.ASN1_item_i2d_bio
 func (self *ASN1_ITEM) I2dBio(out *BIO, x unsafe.Pointer) c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_ITEM).I2dMemBio C.ASN1_item_i2d_mem_bio
+//llgo:link (*ASN1_ITEM).I2dMemBio C.ASN1_item_i2d_mem_bio
 func (self *ASN1_ITEM) I2dMemBio(val *ASN1_VALUE) *BIO {
 	return nil
 }
 
-// llgo:link (*BIO).ASN1_UTCTIME_print C.ASN1_UTCTIME_print
+//llgo:link (*BIO).ASN1_UTCTIME_print C.ASN1_UTCTIME_print
 func (self *BIO) ASN1_UTCTIME_print(a *ASN1_UTCTIME) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).ASN1_GENERALIZEDTIME_print C.ASN1_GENERALIZEDTIME_print
+//llgo:link (*BIO).ASN1_GENERALIZEDTIME_print C.ASN1_GENERALIZEDTIME_print
 func (self *BIO) ASN1_GENERALIZEDTIME_print(a *ASN1_GENERALIZEDTIME) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).ASN1_TIME_print C.ASN1_TIME_print
+//llgo:link (*BIO).ASN1_TIME_print C.ASN1_TIME_print
 func (self *BIO) ASN1_TIME_print(tm *ASN1_TIME) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).ASN1_TIME_print_ex C.ASN1_TIME_print_ex
+//llgo:link (*BIO).ASN1_TIME_print_ex C.ASN1_TIME_print_ex
 func (self *BIO) ASN1_TIME_print_ex(tm *ASN1_TIME, flags c.Ulong) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).ASN1_STRING_print C.ASN1_STRING_print
+//llgo:link (*BIO).ASN1_STRING_print C.ASN1_STRING_print
 func (self *BIO) ASN1_STRING_print(v *ASN1_STRING) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).ASN1_STRING_print_ex C.ASN1_STRING_print_ex
+//llgo:link (*BIO).ASN1_STRING_print_ex C.ASN1_STRING_print_ex
 func (self *BIO) ASN1_STRING_print_ex(str *ASN1_STRING, flags c.Ulong) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).ASN1_buf_print C.ASN1_buf_print
+//llgo:link (*BIO).ASN1_buf_print C.ASN1_buf_print
 func (self *BIO) ASN1_buf_print(buf *uint8, buflen c.SizeT, off c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).ASN1_bn_print C.ASN1_bn_print
+//llgo:link (*BIO).ASN1_bn_print C.ASN1_bn_print
 func (self *BIO) ASN1_bn_print(number *c.Char, num *BIGNUM, buf *uint8, off c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).ASN1_parse C.ASN1_parse
+//llgo:link (*BIO).ASN1_parse C.ASN1_parse
 func (self *BIO) ASN1_parse(pp *uint8, len c.Long, indent c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).ASN1_parse_dump C.ASN1_parse_dump
+//llgo:link (*BIO).ASN1_parse_dump C.ASN1_parse_dump
 func (self *BIO) ASN1_parse_dump(pp *uint8, len c.Long, indent c.Int, dump c.Int) c.Int {
 	return 0
 }
@@ -1371,37 +1371,37 @@ func (self *BIO) ASN1_parse_dump(pp *uint8, len c.Long, indent c.Int, dump c.Int
 //go:linkname ASN1_tag2str C.ASN1_tag2str
 func ASN1_tag2str(tag c.Int) *c.Char
 
-// llgo:link (*ASN1_UNIVERSALSTRING).ToString C.ASN1_UNIVERSALSTRING_to_string
+//llgo:link (*ASN1_UNIVERSALSTRING).ToString C.ASN1_UNIVERSALSTRING_to_string
 func (self *ASN1_UNIVERSALSTRING) ToString() c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_TYPE).SetOctetstring C.ASN1_TYPE_set_octetstring
+//llgo:link (*ASN1_TYPE).SetOctetstring C.ASN1_TYPE_set_octetstring
 func (self *ASN1_TYPE) SetOctetstring(data *uint8, len c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_TYPE).Octetstring C.ASN1_TYPE_get_octetstring
+//llgo:link (*ASN1_TYPE).Octetstring C.ASN1_TYPE_get_octetstring
 func (self *ASN1_TYPE) Octetstring(data *uint8, max_len c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_TYPE).SetIntOctetstring C.ASN1_TYPE_set_int_octetstring
+//llgo:link (*ASN1_TYPE).SetIntOctetstring C.ASN1_TYPE_set_int_octetstring
 func (self *ASN1_TYPE) SetIntOctetstring(num c.Long, data *uint8, len c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_TYPE).IntOctetstring C.ASN1_TYPE_get_int_octetstring
+//llgo:link (*ASN1_TYPE).IntOctetstring C.ASN1_TYPE_get_int_octetstring
 func (self *ASN1_TYPE) IntOctetstring(num *c.Long, data *uint8, max_len c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_STRING).ASN1_item_unpack C.ASN1_item_unpack
+//llgo:link (*ASN1_STRING).ASN1_item_unpack C.ASN1_item_unpack
 func (self *ASN1_STRING) ASN1_item_unpack(it *ASN1_ITEM) unsafe.Pointer {
 	return nil
 }
 
-// llgo:link (*ASN1_STRING).ASN1_item_unpack_ex C.ASN1_item_unpack_ex
+//llgo:link (*ASN1_STRING).ASN1_item_unpack_ex C.ASN1_item_unpack_ex
 func (self *ASN1_STRING) ASN1_item_unpack_ex(it *ASN1_ITEM, libctx *OSSL_LIB_CTX, propq *c.Char) unsafe.Pointer {
 	return nil
 }
@@ -1438,17 +1438,17 @@ func ASN1_STRING_TABLE_cleanup()
 
 // Old API compatible functions
 //
-// llgo:link (*ASN1_ITEM).New C.ASN1_item_new
+//llgo:link (*ASN1_ITEM).New C.ASN1_item_new
 func (self *ASN1_ITEM) New() *ASN1_VALUE {
 	return nil
 }
 
-// llgo:link (*ASN1_ITEM).NewEx C.ASN1_item_new_ex
+//llgo:link (*ASN1_ITEM).NewEx C.ASN1_item_new_ex
 func (self *ASN1_ITEM) NewEx(libctx *OSSL_LIB_CTX, propq *c.Char) *ASN1_VALUE {
 	return nil
 }
 
-// llgo:link (*ASN1_VALUE).ASN1_item_free C.ASN1_item_free
+//llgo:link (*ASN1_VALUE).ASN1_item_free C.ASN1_item_free
 func (self *ASN1_VALUE) ASN1_item_free(it *ASN1_ITEM) {
 }
 
@@ -1458,12 +1458,12 @@ func ASN1_item_d2i_ex(val **ASN1_VALUE, in **uint8, len c.Long, it *ASN1_ITEM, l
 //go:linkname ASN1_item_d2i C.ASN1_item_d2i
 func ASN1_item_d2i(val **ASN1_VALUE, in **uint8, len c.Long, it *ASN1_ITEM) *ASN1_VALUE
 
-// llgo:link (*ASN1_VALUE).ASN1_item_i2d C.ASN1_item_i2d
+//llgo:link (*ASN1_VALUE).ASN1_item_i2d C.ASN1_item_i2d
 func (self *ASN1_VALUE) ASN1_item_i2d(out **uint8, it *ASN1_ITEM) c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_VALUE).ASN1_item_ndef_i2d C.ASN1_item_ndef_i2d
+//llgo:link (*ASN1_VALUE).ASN1_item_ndef_i2d C.ASN1_item_ndef_i2d
 func (self *ASN1_VALUE) ASN1_item_ndef_i2d(out **uint8, it *ASN1_ITEM) c.Int {
 	return 0
 }
@@ -1483,7 +1483,7 @@ func ASN1_generate_v3(str *c.Char, cnf *X509V3_CTX) *ASN1_TYPE
 //go:linkname ASN1_str2mask C.ASN1_str2mask
 func ASN1_str2mask(str *c.Char, pmask *c.Ulong) c.Int
 
-// llgo:link (*BIO).ASN1_item_print C.ASN1_item_print
+//llgo:link (*BIO).ASN1_item_print C.ASN1_item_print
 func (self *BIO) ASN1_item_print(ifld *ASN1_VALUE, indent c.Int, it *ASN1_ITEM, pctx *ASN1_PCTX) c.Int {
 	return 0
 }
@@ -1491,82 +1491,82 @@ func (self *BIO) ASN1_item_print(ifld *ASN1_VALUE, indent c.Int, it *ASN1_ITEM, 
 //go:linkname ASN1_PCTX_new C.ASN1_PCTX_new
 func ASN1_PCTX_new() *ASN1_PCTX
 
-// llgo:link (*ASN1_PCTX).Free C.ASN1_PCTX_free
+//llgo:link (*ASN1_PCTX).Free C.ASN1_PCTX_free
 func (self *ASN1_PCTX) Free() {
 }
 
-// llgo:link (*ASN1_PCTX).Flags C.ASN1_PCTX_get_flags
+//llgo:link (*ASN1_PCTX).Flags C.ASN1_PCTX_get_flags
 func (self *ASN1_PCTX) Flags() c.Ulong {
 	return 0
 }
 
-// llgo:link (*ASN1_PCTX).SetFlags C.ASN1_PCTX_set_flags
+//llgo:link (*ASN1_PCTX).SetFlags C.ASN1_PCTX_set_flags
 func (self *ASN1_PCTX) SetFlags(flags c.Ulong) {
 }
 
-// llgo:link (*ASN1_PCTX).NmFlags C.ASN1_PCTX_get_nm_flags
+//llgo:link (*ASN1_PCTX).NmFlags C.ASN1_PCTX_get_nm_flags
 func (self *ASN1_PCTX) NmFlags() c.Ulong {
 	return 0
 }
 
-// llgo:link (*ASN1_PCTX).SetNmFlags C.ASN1_PCTX_set_nm_flags
+//llgo:link (*ASN1_PCTX).SetNmFlags C.ASN1_PCTX_set_nm_flags
 func (self *ASN1_PCTX) SetNmFlags(flags c.Ulong) {
 }
 
-// llgo:link (*ASN1_PCTX).CertFlags C.ASN1_PCTX_get_cert_flags
+//llgo:link (*ASN1_PCTX).CertFlags C.ASN1_PCTX_get_cert_flags
 func (self *ASN1_PCTX) CertFlags() c.Ulong {
 	return 0
 }
 
-// llgo:link (*ASN1_PCTX).SetCertFlags C.ASN1_PCTX_set_cert_flags
+//llgo:link (*ASN1_PCTX).SetCertFlags C.ASN1_PCTX_set_cert_flags
 func (self *ASN1_PCTX) SetCertFlags(flags c.Ulong) {
 }
 
-// llgo:link (*ASN1_PCTX).OidFlags C.ASN1_PCTX_get_oid_flags
+//llgo:link (*ASN1_PCTX).OidFlags C.ASN1_PCTX_get_oid_flags
 func (self *ASN1_PCTX) OidFlags() c.Ulong {
 	return 0
 }
 
-// llgo:link (*ASN1_PCTX).SetOidFlags C.ASN1_PCTX_set_oid_flags
+//llgo:link (*ASN1_PCTX).SetOidFlags C.ASN1_PCTX_set_oid_flags
 func (self *ASN1_PCTX) SetOidFlags(flags c.Ulong) {
 }
 
-// llgo:link (*ASN1_PCTX).StrFlags C.ASN1_PCTX_get_str_flags
+//llgo:link (*ASN1_PCTX).StrFlags C.ASN1_PCTX_get_str_flags
 func (self *ASN1_PCTX) StrFlags() c.Ulong {
 	return 0
 }
 
-// llgo:link (*ASN1_PCTX).SetStrFlags C.ASN1_PCTX_set_str_flags
+//llgo:link (*ASN1_PCTX).SetStrFlags C.ASN1_PCTX_set_str_flags
 func (self *ASN1_PCTX) SetStrFlags(flags c.Ulong) {
 }
 
 //go:linkname ASN1_SCTX_new C.ASN1_SCTX_new
 func ASN1_SCTX_new(scan_cb func(_llcppg_param1 *ASN1_SCTX) c.Int) *ASN1_SCTX
 
-// llgo:link (*ASN1_SCTX).Free C.ASN1_SCTX_free
+//llgo:link (*ASN1_SCTX).Free C.ASN1_SCTX_free
 func (self *ASN1_SCTX) Free() {
 }
 
-// llgo:link (*ASN1_SCTX).Item C.ASN1_SCTX_get_item
+//llgo:link (*ASN1_SCTX).Item C.ASN1_SCTX_get_item
 func (self *ASN1_SCTX) Item() *ASN1_ITEM {
 	return nil
 }
 
-// llgo:link (*ASN1_SCTX).Template C.ASN1_SCTX_get_template
+//llgo:link (*ASN1_SCTX).Template C.ASN1_SCTX_get_template
 func (self *ASN1_SCTX) Template() *ASN1_TEMPLATE {
 	return nil
 }
 
-// llgo:link (*ASN1_SCTX).Flags C.ASN1_SCTX_get_flags
+//llgo:link (*ASN1_SCTX).Flags C.ASN1_SCTX_get_flags
 func (self *ASN1_SCTX) Flags() c.Ulong {
 	return 0
 }
 
-// llgo:link (*ASN1_SCTX).SetAppData C.ASN1_SCTX_set_app_data
+//llgo:link (*ASN1_SCTX).SetAppData C.ASN1_SCTX_set_app_data
 func (self *ASN1_SCTX) SetAppData(data unsafe.Pointer) {
 }
 
-// llgo:link (*ASN1_SCTX).AppData C.ASN1_SCTX_get_app_data
+//llgo:link (*ASN1_SCTX).AppData C.ASN1_SCTX_get_app_data
 func (self *ASN1_SCTX) AppData() unsafe.Pointer {
 	return nil
 }
@@ -1576,46 +1576,46 @@ func BIO_f_asn1() *BIO_METHOD
 
 // cannot constify val because of CMS_stream()
 //
-// llgo:link (*BIO).New_NDEF C.BIO_new_NDEF
+//llgo:link (*BIO).New_NDEF C.BIO_new_NDEF
 func (self *BIO) New_NDEF(val *ASN1_VALUE, it *ASN1_ITEM) *BIO {
 	return self
 }
 
-// llgo:link (*BIO).I2dASN1BioStream C.i2d_ASN1_bio_stream
+//llgo:link (*BIO).I2dASN1BioStream C.i2d_ASN1_bio_stream
 func (self *BIO) I2dASN1BioStream(val *ASN1_VALUE, in *BIO, flags c.Int, it *ASN1_ITEM) c.Int {
 	return 0
 }
 
 // cannot constify val because of CMS_dataFinal()
 //
-// llgo:link (*BIO).PEM_write_bio_ASN1_stream C.PEM_write_bio_ASN1_stream
+//llgo:link (*BIO).PEM_write_bio_ASN1_stream C.PEM_write_bio_ASN1_stream
 func (self *BIO) PEM_write_bio_ASN1_stream(val *ASN1_VALUE, in *BIO, flags c.Int, hdr *c.Char, it *ASN1_ITEM) c.Int {
 	return 0
 }
 
 // cannot constify val because of CMS_dataFinal()
 //
-// llgo:link (*BIO).SMIME_write_ASN1 C.SMIME_write_ASN1
+//llgo:link (*BIO).SMIME_write_ASN1 C.SMIME_write_ASN1
 func (self *BIO) SMIME_write_ASN1(val *ASN1_VALUE, data *BIO, flags c.Int, ctype_nid c.Int, econt_nid c.Int, mdalgs *Stack_st_X509_ALGOR, it *ASN1_ITEM) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).SMIME_write_ASN1_ex C.SMIME_write_ASN1_ex
+//llgo:link (*BIO).SMIME_write_ASN1_ex C.SMIME_write_ASN1_ex
 func (self *BIO) SMIME_write_ASN1_ex(val *ASN1_VALUE, data *BIO, flags c.Int, ctype_nid c.Int, econt_nid c.Int, mdalgs *Stack_st_X509_ALGOR, it *ASN1_ITEM, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).SMIME_read_ASN1 C.SMIME_read_ASN1
+//llgo:link (*BIO).SMIME_read_ASN1 C.SMIME_read_ASN1
 func (self *BIO) SMIME_read_ASN1(bcont **BIO, it *ASN1_ITEM) *ASN1_VALUE {
 	return nil
 }
 
-// llgo:link (*BIO).SMIME_read_ASN1_ex C.SMIME_read_ASN1_ex
+//llgo:link (*BIO).SMIME_read_ASN1_ex C.SMIME_read_ASN1_ex
 func (self *BIO) SMIME_read_ASN1_ex(flags c.Int, bcont **BIO, it *ASN1_ITEM, x **ASN1_VALUE, libctx *OSSL_LIB_CTX, propq *c.Char) *ASN1_VALUE {
 	return nil
 }
 
-// llgo:link (*BIO).SMIME_crlf_copy C.SMIME_crlf_copy
+//llgo:link (*BIO).SMIME_crlf_copy C.SMIME_crlf_copy
 func (self *BIO) SMIME_crlf_copy(out *BIO, flags c.Int) c.Int {
 	return 0
 }

@@ -15,54 +15,54 @@ type SSL_COMP SslCompSt
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_SSL_COMP_compfunc = func(_llcppg_param1 **SSL_COMP, _llcppg_param2 **SSL_COMP) c.Int
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_SSL_COMP_freefunc = func(_llcppg_param1 *SSL_COMP)
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_SSL_COMP_copyfunc = func(_llcppg_param1 *SSL_COMP) *SSL_COMP
 
-// llgo:link (*COMP_METHOD).CTX_new C.COMP_CTX_new
+//llgo:link (*COMP_METHOD).CTX_new C.COMP_CTX_new
 func (self *COMP_METHOD) CTX_new() *COMP_CTX {
 	return nil
 }
 
-// llgo:link (*COMP_CTX).Method C.COMP_CTX_get_method
+//llgo:link (*COMP_CTX).Method C.COMP_CTX_get_method
 func (self *COMP_CTX) Method() *COMP_METHOD {
 	return nil
 }
 
-// llgo:link (*COMP_CTX).Type C.COMP_CTX_get_type
+//llgo:link (*COMP_CTX).Type C.COMP_CTX_get_type
 func (self *COMP_CTX) Type() c.Int {
 	return 0
 }
 
-// llgo:link (*COMP_METHOD).Type C.COMP_get_type
+//llgo:link (*COMP_METHOD).Type C.COMP_get_type
 func (self *COMP_METHOD) Type() c.Int {
 	return 0
 }
 
-// llgo:link (*COMP_METHOD).Name C.COMP_get_name
+//llgo:link (*COMP_METHOD).Name C.COMP_get_name
 func (self *COMP_METHOD) Name() *c.Char {
 	return nil
 }
 
-// llgo:link (*COMP_CTX).Free C.COMP_CTX_free
+//llgo:link (*COMP_CTX).Free C.COMP_CTX_free
 func (self *COMP_CTX) Free() {
 }
 
-// llgo:link (*COMP_CTX).CompressBlock C.COMP_compress_block
+//llgo:link (*COMP_CTX).CompressBlock C.COMP_compress_block
 func (self *COMP_CTX) CompressBlock(out *uint8, olen c.Int, in *uint8, ilen c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*COMP_CTX).ExpandBlock C.COMP_expand_block
+//llgo:link (*COMP_CTX).ExpandBlock C.COMP_expand_block
 func (self *COMP_CTX) ExpandBlock(out *uint8, olen c.Int, in *uint8, ilen c.Int) c.Int {
 	return 0
 }

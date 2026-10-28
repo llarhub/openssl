@@ -32,26 +32,26 @@ type CSTRING = *c.Char
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_OPENSSL_STRING_compfunc = func(_llcppg_param1 **c.Char, _llcppg_param2 **c.Char) c.Int
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_OPENSSL_STRING_freefunc = func(_llcppg_param1 *c.Char)
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_OPENSSL_STRING_copyfunc = func(_llcppg_param1 *c.Char) *c.Char
 
-// llgo:type C
+//llgo:cdecl
 type Sk_OPENSSL_CSTRING_compfunc = func(_llcppg_param1 **c.Char, _llcppg_param2 **c.Char) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type Sk_OPENSSL_CSTRING_freefunc = func(_llcppg_param1 *c.Char)
 
-// llgo:type C
+//llgo:cdecl
 type Sk_OPENSSL_CSTRING_copyfunc = func(_llcppg_param1 *c.Char) *c.Char
 
 // This is not used by OpenSSL.  A block of bytes,  NOT nul-terminated.
@@ -60,15 +60,15 @@ type BLOCK uintptr
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_OPENSSL_BLOCK_compfunc = func(_llcppg_param1 *unsafe.Pointer, _llcppg_param2 *unsafe.Pointer) c.Int
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_OPENSSL_BLOCK_freefunc = func(_llcppg_param1 unsafe.Pointer)
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_OPENSSL_BLOCK_copyfunc = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer

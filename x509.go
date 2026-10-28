@@ -218,44 +218,44 @@ type X509CinfSt struct {
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_X509_NAME_compfunc = func(_llcppg_param1 **X509_NAME, _llcppg_param2 **X509_NAME) c.Int
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_X509_NAME_freefunc = func(_llcppg_param1 *X509_NAME)
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_X509_NAME_copyfunc = func(_llcppg_param1 *X509_NAME) *X509_NAME
 
-// llgo:type C
+//llgo:cdecl
 type SkX509Compfunc = func(_llcppg_param1 **X509, _llcppg_param2 **X509) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type SkX509Freefunc = func(_llcppg_param1 *X509)
 
-// llgo:type C
+//llgo:cdecl
 type SkX509Copyfunc = func(_llcppg_param1 *X509) *X509
 
-// llgo:type C
+//llgo:cdecl
 type Sk_X509_REVOKED_compfunc = func(_llcppg_param1 **X509_REVOKED, _llcppg_param2 **X509_REVOKED) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type Sk_X509_REVOKED_freefunc = func(_llcppg_param1 *X509_REVOKED)
 
-// llgo:type C
+//llgo:cdecl
 type Sk_X509_REVOKED_copyfunc = func(_llcppg_param1 *X509_REVOKED) *X509_REVOKED
 
-// llgo:type C
+//llgo:cdecl
 type Sk_X509_CRL_compfunc = func(_llcppg_param1 **X509_CRL, _llcppg_param2 **X509_CRL) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type Sk_X509_CRL_freefunc = func(_llcppg_param1 *X509_CRL)
 
-// llgo:type C
+//llgo:cdecl
 type Sk_X509_CRL_copyfunc = func(_llcppg_param1 *X509_CRL) *X509_CRL
 type X509_ALGORS Stack_st_X509_ALGOR
 type X509_VAL = X509_val_st
@@ -264,17 +264,17 @@ type X509_NAME_ENTRY X509_name_entry_st
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_X509_NAME_ENTRY_compfunc = func(_llcppg_param1 **X509_NAME_ENTRY, _llcppg_param2 **X509_NAME_ENTRY) c.Int
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_X509_NAME_ENTRY_freefunc = func(_llcppg_param1 *X509_NAME_ENTRY)
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_X509_NAME_ENTRY_copyfunc = func(_llcppg_param1 *X509_NAME_ENTRY) *X509_NAME_ENTRY
 
 // clang-format off
@@ -282,17 +282,17 @@ type X509_EXTENSION X509_extension_st
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_X509_EXTENSION_compfunc = func(_llcppg_param1 **X509_EXTENSION, _llcppg_param2 **X509_EXTENSION) c.Int
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_X509_EXTENSION_freefunc = func(_llcppg_param1 *X509_EXTENSION)
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_X509_EXTENSION_copyfunc = func(_llcppg_param1 *X509_EXTENSION) *X509_EXTENSION
 
 // clang-format on
@@ -303,17 +303,17 @@ type X509_ATTRIBUTE X509AttributesSt
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_X509_ATTRIBUTE_compfunc = func(_llcppg_param1 **X509_ATTRIBUTE, _llcppg_param2 **X509_ATTRIBUTE) c.Int
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_X509_ATTRIBUTE_freefunc = func(_llcppg_param1 *X509_ATTRIBUTE)
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_X509_ATTRIBUTE_copyfunc = func(_llcppg_param1 *X509_ATTRIBUTE) *X509_ATTRIBUTE
 
 // clang-format on
@@ -329,17 +329,17 @@ type X509_INFO = X509_info_st
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_X509_INFO_compfunc = func(_llcppg_param1 **X509_INFO, _llcppg_param2 **X509_INFO) c.Int
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_X509_INFO_freefunc = func(_llcppg_param1 *X509_INFO)
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Sk_X509_INFO_copyfunc = func(_llcppg_param1 *X509_INFO) *X509_INFO
 
 // The next 2 structures and their 8 routines are used to manipulate Netscape's
@@ -354,22 +354,22 @@ type PBE2PARAM = PBE2PARAM_st
 type PBKDF2PARAM = PBKDF2PARAM_st
 type SCRYPT_PARAMS = SCRYPT_PARAMS_st
 
-// llgo:link (*X509_CRL_METHOD).X509_CRL_set_default_method C.X509_CRL_set_default_method
+//llgo:link (*X509_CRL_METHOD).X509_CRL_set_default_method C.X509_CRL_set_default_method
 func (self *X509_CRL_METHOD) X509_CRL_set_default_method() {
 }
 
 //go:linkname X509_CRL_METHOD_new C.X509_CRL_METHOD_new
 func X509_CRL_METHOD_new(crl_init func(_llcppg_param1 *X509_CRL) c.Int, crl_free func(_llcppg_param1 *X509_CRL) c.Int, crl_lookup func(_llcppg_param1 *X509_CRL, _llcppg_param2 **X509_REVOKED, _llcppg_param3 *ASN1_INTEGER, _llcppg_param4 *X509_NAME) c.Int, crl_verify func(_llcppg_param1 *X509_CRL, _llcppg_param2 *EVP_PKEY) c.Int) *X509_CRL_METHOD
 
-// llgo:link (*X509_CRL_METHOD).Free C.X509_CRL_METHOD_free
+//llgo:link (*X509_CRL_METHOD).Free C.X509_CRL_METHOD_free
 func (self *X509_CRL_METHOD) Free() {
 }
 
-// llgo:link (*X509_CRL).SetMethData C.X509_CRL_set_meth_data
+//llgo:link (*X509_CRL).SetMethData C.X509_CRL_set_meth_data
 func (self *X509_CRL) SetMethData(dat unsafe.Pointer) {
 }
 
-// llgo:link (*X509_CRL).MethData C.X509_CRL_get_meth_data
+//llgo:link (*X509_CRL).MethData C.X509_CRL_get_meth_data
 func (self *X509_CRL) MethData() unsafe.Pointer {
 	return nil
 }
@@ -377,32 +377,32 @@ func (self *X509_CRL) MethData() unsafe.Pointer {
 //go:linkname X509_verify_cert_error_string C.X509_verify_cert_error_string
 func X509_verify_cert_error_string(n c.Long) *c.Char
 
-// llgo:link (*X509).Verify C.X509_verify
+//llgo:link (*X509).Verify C.X509_verify
 func (self *X509) Verify(r *EVP_PKEY) c.Int {
 	return 0
 }
 
-// llgo:link (*X509).SelfSigned C.X509_self_signed
+//llgo:link (*X509).SelfSigned C.X509_self_signed
 func (self *X509) SelfSigned(verify_signature c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_REQ).VerifyEx C.X509_REQ_verify_ex
+//llgo:link (*X509_REQ).VerifyEx C.X509_REQ_verify_ex
 func (self *X509_REQ) VerifyEx(r *EVP_PKEY, libctx *OSSL_LIB_CTX, propq *c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_REQ).Verify C.X509_REQ_verify
+//llgo:link (*X509_REQ).Verify C.X509_REQ_verify
 func (self *X509_REQ) Verify(r *EVP_PKEY) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_CRL).Verify C.X509_CRL_verify
+//llgo:link (*X509_CRL).Verify C.X509_CRL_verify
 func (self *X509_CRL) Verify(r *EVP_PKEY) c.Int {
 	return 0
 }
 
-// llgo:link (*NETSCAPE_SPKI).Verify C.NETSCAPE_SPKI_verify
+//llgo:link (*NETSCAPE_SPKI).Verify C.NETSCAPE_SPKI_verify
 func (self *NETSCAPE_SPKI) Verify(r *EVP_PKEY) c.Int {
 	return 0
 }
@@ -410,97 +410,97 @@ func (self *NETSCAPE_SPKI) Verify(r *EVP_PKEY) c.Int {
 //go:linkname NETSCAPE_SPKI_b64_decode C.NETSCAPE_SPKI_b64_decode
 func NETSCAPE_SPKI_b64_decode(str *c.Char, len c.Int) *NETSCAPE_SPKI
 
-// llgo:link (*NETSCAPE_SPKI).B64Encode C.NETSCAPE_SPKI_b64_encode
+//llgo:link (*NETSCAPE_SPKI).B64Encode C.NETSCAPE_SPKI_b64_encode
 func (self *NETSCAPE_SPKI) B64Encode() *c.Char {
 	return nil
 }
 
-// llgo:link (*NETSCAPE_SPKI).Pubkey C.NETSCAPE_SPKI_get_pubkey
+//llgo:link (*NETSCAPE_SPKI).Pubkey C.NETSCAPE_SPKI_get_pubkey
 func (self *NETSCAPE_SPKI) Pubkey() *EVP_PKEY {
 	return nil
 }
 
-// llgo:link (*NETSCAPE_SPKI).SetPubkey C.NETSCAPE_SPKI_set_pubkey
+//llgo:link (*NETSCAPE_SPKI).SetPubkey C.NETSCAPE_SPKI_set_pubkey
 func (self *NETSCAPE_SPKI) SetPubkey(pkey *EVP_PKEY) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).NETSCAPE_SPKI_print C.NETSCAPE_SPKI_print
+//llgo:link (*BIO).NETSCAPE_SPKI_print C.NETSCAPE_SPKI_print
 func (self *BIO) NETSCAPE_SPKI_print(spki *NETSCAPE_SPKI) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).X509_signature_dump C.X509_signature_dump
+//llgo:link (*BIO).X509_signature_dump C.X509_signature_dump
 func (self *BIO) X509_signature_dump(sig *ASN1_STRING, indent c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).X509_signature_print C.X509_signature_print
+//llgo:link (*BIO).X509_signature_print C.X509_signature_print
 func (self *BIO) X509_signature_print(alg *X509_ALGOR, sig *ASN1_STRING) c.Int {
 	return 0
 }
 
-// llgo:link (*X509).Sign C.X509_sign
+//llgo:link (*X509).Sign C.X509_sign
 func (self *X509) Sign(pkey *EVP_PKEY, md *EVP_MD) c.Int {
 	return 0
 }
 
-// llgo:link (*X509).SignCtx C.X509_sign_ctx
+//llgo:link (*X509).SignCtx C.X509_sign_ctx
 func (self *X509) SignCtx(ctx *EVP_MD_CTX) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_REQ).Sign C.X509_REQ_sign
+//llgo:link (*X509_REQ).Sign C.X509_REQ_sign
 func (self *X509_REQ) Sign(pkey *EVP_PKEY, md *EVP_MD) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_REQ).SignCtx C.X509_REQ_sign_ctx
+//llgo:link (*X509_REQ).SignCtx C.X509_REQ_sign_ctx
 func (self *X509_REQ) SignCtx(ctx *EVP_MD_CTX) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_CRL).Sign C.X509_CRL_sign
+//llgo:link (*X509_CRL).Sign C.X509_CRL_sign
 func (self *X509_CRL) Sign(pkey *EVP_PKEY, md *EVP_MD) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_CRL).SignCtx C.X509_CRL_sign_ctx
+//llgo:link (*X509_CRL).SignCtx C.X509_CRL_sign_ctx
 func (self *X509_CRL) SignCtx(ctx *EVP_MD_CTX) c.Int {
 	return 0
 }
 
-// llgo:link (*NETSCAPE_SPKI).Sign C.NETSCAPE_SPKI_sign
+//llgo:link (*NETSCAPE_SPKI).Sign C.NETSCAPE_SPKI_sign
 func (self *NETSCAPE_SPKI) Sign(pkey *EVP_PKEY, md *EVP_MD) c.Int {
 	return 0
 }
 
-// llgo:link (*X509).PubkeyDigest C.X509_pubkey_digest
+//llgo:link (*X509).PubkeyDigest C.X509_pubkey_digest
 func (self *X509) PubkeyDigest(type_ *EVP_MD, md *uint8, len *c.Uint) c.Int {
 	return 0
 }
 
-// llgo:link (*X509).Digest C.X509_digest
+//llgo:link (*X509).Digest C.X509_digest
 func (self *X509) Digest(type_ *EVP_MD, md *uint8, len *c.Uint) c.Int {
 	return 0
 }
 
-// llgo:link (*X509).DigestSig C.X509_digest_sig
+//llgo:link (*X509).DigestSig C.X509_digest_sig
 func (self *X509) DigestSig(md_used **EVP_MD, md_is_fallback *c.Int) *ASN1_OCTET_STRING {
 	return nil
 }
 
-// llgo:link (*X509_CRL).Digest C.X509_CRL_digest
+//llgo:link (*X509_CRL).Digest C.X509_CRL_digest
 func (self *X509_CRL) Digest(type_ *EVP_MD, md *uint8, len *c.Uint) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_REQ).Digest C.X509_REQ_digest
+//llgo:link (*X509_REQ).Digest C.X509_REQ_digest
 func (self *X509_REQ) Digest(type_ *EVP_MD, md *uint8, len *c.Uint) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_NAME).Digest C.X509_NAME_digest
+//llgo:link (*X509_NAME).Digest C.X509_NAME_digest
 func (self *X509_NAME) Digest(type_ *EVP_MD, md *uint8, len *c.Uint) c.Int {
 	return 0
 }
@@ -610,212 +610,212 @@ func D2i_PUBKEY_ex_fp(fp *c.FILE, a **EVP_PKEY, libctx *OSSL_LIB_CTX, propq *c.C
 //go:linkname D2i_PUBKEY_fp C.d2i_PUBKEY_fp
 func D2i_PUBKEY_fp(fp *c.FILE, a **EVP_PKEY) *EVP_PKEY
 
-// llgo:link (*BIO).D2iX509Bio C.d2i_X509_bio
+//llgo:link (*BIO).D2iX509Bio C.d2i_X509_bio
 func (self *BIO) D2iX509Bio(x509 **X509) *X509 {
 	return nil
 }
 
-// llgo:link (*BIO).I2dX509Bio C.i2d_X509_bio
+//llgo:link (*BIO).I2dX509Bio C.i2d_X509_bio
 func (self *BIO) I2dX509Bio(x509 *X509) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).D2i_X509_CRL_bio C.d2i_X509_CRL_bio
+//llgo:link (*BIO).D2i_X509_CRL_bio C.d2i_X509_CRL_bio
 func (self *BIO) D2i_X509_CRL_bio(crl **X509_CRL) *X509_CRL {
 	return nil
 }
 
-// llgo:link (*BIO).I2d_X509_CRL_bio C.i2d_X509_CRL_bio
+//llgo:link (*BIO).I2d_X509_CRL_bio C.i2d_X509_CRL_bio
 func (self *BIO) I2d_X509_CRL_bio(crl *X509_CRL) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).D2i_X509_REQ_bio C.d2i_X509_REQ_bio
+//llgo:link (*BIO).D2i_X509_REQ_bio C.d2i_X509_REQ_bio
 func (self *BIO) D2i_X509_REQ_bio(req **X509_REQ) *X509_REQ {
 	return nil
 }
 
-// llgo:link (*BIO).I2d_X509_REQ_bio C.i2d_X509_REQ_bio
+//llgo:link (*BIO).I2d_X509_REQ_bio C.i2d_X509_REQ_bio
 func (self *BIO) I2d_X509_REQ_bio(req *X509_REQ) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).D2iRSAPrivateKeyBio C.d2i_RSAPrivateKey_bio
+//llgo:link (*BIO).D2iRSAPrivateKeyBio C.d2i_RSAPrivateKey_bio
 func (self *BIO) D2iRSAPrivateKeyBio(rsa **RSA) *RSA {
 	return nil
 }
 
-// llgo:link (*BIO).I2dRSAPrivateKeyBio C.i2d_RSAPrivateKey_bio
+//llgo:link (*BIO).I2dRSAPrivateKeyBio C.i2d_RSAPrivateKey_bio
 func (self *BIO) I2dRSAPrivateKeyBio(rsa *RSA) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).D2iRSAPublicKeyBio C.d2i_RSAPublicKey_bio
+//llgo:link (*BIO).D2iRSAPublicKeyBio C.d2i_RSAPublicKey_bio
 func (self *BIO) D2iRSAPublicKeyBio(rsa **RSA) *RSA {
 	return nil
 }
 
-// llgo:link (*BIO).I2dRSAPublicKeyBio C.i2d_RSAPublicKey_bio
+//llgo:link (*BIO).I2dRSAPublicKeyBio C.i2d_RSAPublicKey_bio
 func (self *BIO) I2dRSAPublicKeyBio(rsa *RSA) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).D2i_RSA_PUBKEY_bio C.d2i_RSA_PUBKEY_bio
+//llgo:link (*BIO).D2i_RSA_PUBKEY_bio C.d2i_RSA_PUBKEY_bio
 func (self *BIO) D2i_RSA_PUBKEY_bio(rsa **RSA) *RSA {
 	return nil
 }
 
-// llgo:link (*BIO).I2d_RSA_PUBKEY_bio C.i2d_RSA_PUBKEY_bio
+//llgo:link (*BIO).I2d_RSA_PUBKEY_bio C.i2d_RSA_PUBKEY_bio
 func (self *BIO) I2d_RSA_PUBKEY_bio(rsa *RSA) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).D2i_DSA_PUBKEY_bio C.d2i_DSA_PUBKEY_bio
+//llgo:link (*BIO).D2i_DSA_PUBKEY_bio C.d2i_DSA_PUBKEY_bio
 func (self *BIO) D2i_DSA_PUBKEY_bio(dsa **DSA) *DSA {
 	return nil
 }
 
-// llgo:link (*BIO).I2d_DSA_PUBKEY_bio C.i2d_DSA_PUBKEY_bio
+//llgo:link (*BIO).I2d_DSA_PUBKEY_bio C.i2d_DSA_PUBKEY_bio
 func (self *BIO) I2d_DSA_PUBKEY_bio(dsa *DSA) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).D2iDSAPrivateKeyBio C.d2i_DSAPrivateKey_bio
+//llgo:link (*BIO).D2iDSAPrivateKeyBio C.d2i_DSAPrivateKey_bio
 func (self *BIO) D2iDSAPrivateKeyBio(dsa **DSA) *DSA {
 	return nil
 }
 
-// llgo:link (*BIO).I2dDSAPrivateKeyBio C.i2d_DSAPrivateKey_bio
+//llgo:link (*BIO).I2dDSAPrivateKeyBio C.i2d_DSAPrivateKey_bio
 func (self *BIO) I2dDSAPrivateKeyBio(dsa *DSA) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).D2i_EC_PUBKEY_bio C.d2i_EC_PUBKEY_bio
+//llgo:link (*BIO).D2i_EC_PUBKEY_bio C.d2i_EC_PUBKEY_bio
 func (self *BIO) D2i_EC_PUBKEY_bio(eckey **EC_KEY) *EC_KEY {
 	return nil
 }
 
-// llgo:link (*BIO).I2d_EC_PUBKEY_bio C.i2d_EC_PUBKEY_bio
+//llgo:link (*BIO).I2d_EC_PUBKEY_bio C.i2d_EC_PUBKEY_bio
 func (self *BIO) I2d_EC_PUBKEY_bio(eckey *EC_KEY) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).D2iECPrivateKeyBio C.d2i_ECPrivateKey_bio
+//llgo:link (*BIO).D2iECPrivateKeyBio C.d2i_ECPrivateKey_bio
 func (self *BIO) D2iECPrivateKeyBio(eckey **EC_KEY) *EC_KEY {
 	return nil
 }
 
-// llgo:link (*BIO).I2dECPrivateKeyBio C.i2d_ECPrivateKey_bio
+//llgo:link (*BIO).I2dECPrivateKeyBio C.i2d_ECPrivateKey_bio
 func (self *BIO) I2dECPrivateKeyBio(eckey *EC_KEY) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).D2iPKCS8Bio C.d2i_PKCS8_bio
+//llgo:link (*BIO).D2iPKCS8Bio C.d2i_PKCS8_bio
 func (self *BIO) D2iPKCS8Bio(p8 **X509_SIG) *X509_SIG {
 	return nil
 }
 
-// llgo:link (*BIO).I2dPKCS8Bio C.i2d_PKCS8_bio
+//llgo:link (*BIO).I2dPKCS8Bio C.i2d_PKCS8_bio
 func (self *BIO) I2dPKCS8Bio(p8 *X509_SIG) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).D2i_X509_PUBKEY_bio C.d2i_X509_PUBKEY_bio
+//llgo:link (*BIO).D2i_X509_PUBKEY_bio C.d2i_X509_PUBKEY_bio
 func (self *BIO) D2i_X509_PUBKEY_bio(xpk **X509_PUBKEY) *X509_PUBKEY {
 	return nil
 }
 
-// llgo:link (*BIO).I2d_X509_PUBKEY_bio C.i2d_X509_PUBKEY_bio
+//llgo:link (*BIO).I2d_X509_PUBKEY_bio C.i2d_X509_PUBKEY_bio
 func (self *BIO) I2d_X509_PUBKEY_bio(xpk *X509_PUBKEY) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).D2i_PKCS8_PRIV_KEY_INFO_bio C.d2i_PKCS8_PRIV_KEY_INFO_bio
+//llgo:link (*BIO).D2i_PKCS8_PRIV_KEY_INFO_bio C.d2i_PKCS8_PRIV_KEY_INFO_bio
 func (self *BIO) D2i_PKCS8_PRIV_KEY_INFO_bio(p8inf **PKCS8_PRIV_KEY_INFO) *PKCS8_PRIV_KEY_INFO {
 	return nil
 }
 
-// llgo:link (*BIO).I2d_PKCS8_PRIV_KEY_INFO_bio C.i2d_PKCS8_PRIV_KEY_INFO_bio
+//llgo:link (*BIO).I2d_PKCS8_PRIV_KEY_INFO_bio C.i2d_PKCS8_PRIV_KEY_INFO_bio
 func (self *BIO) I2d_PKCS8_PRIV_KEY_INFO_bio(p8inf *PKCS8_PRIV_KEY_INFO) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).I2dPKCS8PrivateKeyInfoBio C.i2d_PKCS8PrivateKeyInfo_bio
+//llgo:link (*BIO).I2dPKCS8PrivateKeyInfoBio C.i2d_PKCS8PrivateKeyInfo_bio
 func (self *BIO) I2dPKCS8PrivateKeyInfoBio(key *EVP_PKEY) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).I2dPrivateKeyBio C.i2d_PrivateKey_bio
+//llgo:link (*BIO).I2dPrivateKeyBio C.i2d_PrivateKey_bio
 func (self *BIO) I2dPrivateKeyBio(pkey *EVP_PKEY) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).D2iPrivateKeyExBio C.d2i_PrivateKey_ex_bio
+//llgo:link (*BIO).D2iPrivateKeyExBio C.d2i_PrivateKey_ex_bio
 func (self *BIO) D2iPrivateKeyExBio(a **EVP_PKEY, libctx *OSSL_LIB_CTX, propq *c.Char) *EVP_PKEY {
 	return nil
 }
 
-// llgo:link (*BIO).D2iPrivateKeyBio C.d2i_PrivateKey_bio
+//llgo:link (*BIO).D2iPrivateKeyBio C.d2i_PrivateKey_bio
 func (self *BIO) D2iPrivateKeyBio(a **EVP_PKEY) *EVP_PKEY {
 	return nil
 }
 
-// llgo:link (*BIO).I2d_PUBKEY_bio C.i2d_PUBKEY_bio
+//llgo:link (*BIO).I2d_PUBKEY_bio C.i2d_PUBKEY_bio
 func (self *BIO) I2d_PUBKEY_bio(pkey *EVP_PKEY) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).D2i_PUBKEY_ex_bio C.d2i_PUBKEY_ex_bio
+//llgo:link (*BIO).D2i_PUBKEY_ex_bio C.d2i_PUBKEY_ex_bio
 func (self *BIO) D2i_PUBKEY_ex_bio(a **EVP_PKEY, libctx *OSSL_LIB_CTX, propq *c.Char) *EVP_PKEY {
 	return nil
 }
 
-// llgo:link (*BIO).D2i_PUBKEY_bio C.d2i_PUBKEY_bio
+//llgo:link (*BIO).D2i_PUBKEY_bio C.d2i_PUBKEY_bio
 func (self *BIO) D2i_PUBKEY_bio(a **EVP_PKEY) *EVP_PKEY {
 	return nil
 }
 
-// llgo:link (*X509).Dup C.X509_dup
+//llgo:link (*X509).Dup C.X509_dup
 func (self *X509) Dup() *X509 {
 	return self
 }
 
-// llgo:link (*X509_ALGOR).Dup C.X509_ALGOR_dup
+//llgo:link (*X509_ALGOR).Dup C.X509_ALGOR_dup
 func (self *X509_ALGOR) Dup() *X509_ALGOR {
 	return self
 }
 
-// llgo:link (*X509_ATTRIBUTE).Dup C.X509_ATTRIBUTE_dup
+//llgo:link (*X509_ATTRIBUTE).Dup C.X509_ATTRIBUTE_dup
 func (self *X509_ATTRIBUTE) Dup() *X509_ATTRIBUTE {
 	return self
 }
 
-// llgo:link (*X509_CRL).Dup C.X509_CRL_dup
+//llgo:link (*X509_CRL).Dup C.X509_CRL_dup
 func (self *X509_CRL) Dup() *X509_CRL {
 	return self
 }
 
-// llgo:link (*X509_EXTENSION).Dup C.X509_EXTENSION_dup
+//llgo:link (*X509_EXTENSION).Dup C.X509_EXTENSION_dup
 func (self *X509_EXTENSION) Dup() *X509_EXTENSION {
 	return self
 }
 
-// llgo:link (*X509_PUBKEY).Dup C.X509_PUBKEY_dup
+//llgo:link (*X509_PUBKEY).Dup C.X509_PUBKEY_dup
 func (self *X509_PUBKEY) Dup() *X509_PUBKEY {
 	return self
 }
 
-// llgo:link (*X509_REQ).Dup C.X509_REQ_dup
+//llgo:link (*X509_REQ).Dup C.X509_REQ_dup
 func (self *X509_REQ) Dup() *X509_REQ {
 	return self
 }
 
-// llgo:link (*X509_REVOKED).Dup C.X509_REVOKED_dup
+//llgo:link (*X509_REVOKED).Dup C.X509_REVOKED_dup
 func (self *X509_REVOKED) Dup() *X509_REVOKED {
 	return self
 }
 
-// llgo:link (*X509_ALGOR).Set0 C.X509_ALGOR_set0
+//llgo:link (*X509_ALGOR).Set0 C.X509_ALGOR_set0
 func (self *X509_ALGOR) Set0(aobj *ASN1_OBJECT, ptype c.Int, pval unsafe.Pointer) c.Int {
 	return 0
 }
@@ -823,7 +823,7 @@ func (self *X509_ALGOR) Set0(aobj *ASN1_OBJECT, ptype c.Int, pval unsafe.Pointer
 //go:linkname X509_ALGOR_get0 C.X509_ALGOR_get0
 func X509_ALGOR_get0(paobj **ASN1_OBJECT, pptype *c.Int, ppval *unsafe.Pointer, algor *X509_ALGOR)
 
-// llgo:link (*X509_ALGOR).SetMd C.X509_ALGOR_set_md
+//llgo:link (*X509_ALGOR).SetMd C.X509_ALGOR_set_md
 func (self *X509_ALGOR) SetMd(md *EVP_MD) c.Int {
 	return 0
 }
@@ -831,52 +831,52 @@ func (self *X509_ALGOR) SetMd(md *EVP_MD) c.Int {
 //go:linkname X509_ALGOR_cmp C.X509_ALGOR_cmp
 func X509_ALGOR_cmp(a *X509_ALGOR, b *X509_ALGOR) c.Int
 
-// llgo:link (*X509_ALGOR).Copy C.X509_ALGOR_copy
+//llgo:link (*X509_ALGOR).Copy C.X509_ALGOR_copy
 func (self *X509_ALGOR) Copy(src *X509_ALGOR) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_NAME).Dup C.X509_NAME_dup
+//llgo:link (*X509_NAME).Dup C.X509_NAME_dup
 func (self *X509_NAME) Dup() *X509_NAME {
 	return self
 }
 
-// llgo:link (*X509_NAME_ENTRY).Dup C.X509_NAME_ENTRY_dup
+//llgo:link (*X509_NAME_ENTRY).Dup C.X509_NAME_ENTRY_dup
 func (self *X509_NAME_ENTRY) Dup() *X509_NAME_ENTRY {
 	return self
 }
 
-// llgo:link (*ASN1_TIME).X509_cmp_time C.X509_cmp_time
+//llgo:link (*ASN1_TIME).X509_cmp_time C.X509_cmp_time
 func (self *ASN1_TIME) X509_cmp_time(t *time.TimeT) c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_TIME).X509_cmp_current_time C.X509_cmp_current_time
+//llgo:link (*ASN1_TIME).X509_cmp_current_time C.X509_cmp_current_time
 func (self *ASN1_TIME) X509_cmp_current_time() c.Int {
 	return 0
 }
 
-// llgo:link (*X509_VERIFY_PARAM).X509_cmp_timeframe C.X509_cmp_timeframe
+//llgo:link (*X509_VERIFY_PARAM).X509_cmp_timeframe C.X509_cmp_timeframe
 func (self *X509_VERIFY_PARAM) X509_cmp_timeframe(start *ASN1_TIME, end *ASN1_TIME) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_VERIFY_PARAM).X509_check_certificate_times C.X509_check_certificate_times
+//llgo:link (*X509_VERIFY_PARAM).X509_check_certificate_times C.X509_check_certificate_times
 func (self *X509_VERIFY_PARAM) X509_check_certificate_times(x *X509, error *c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_TIME).X509_time_adj C.X509_time_adj
+//llgo:link (*ASN1_TIME).X509_time_adj C.X509_time_adj
 func (self *ASN1_TIME) X509_time_adj(adj c.Long, t *time.TimeT) *ASN1_TIME {
 	return self
 }
 
-// llgo:link (*ASN1_TIME).X509_time_adj_ex C.X509_time_adj_ex
+//llgo:link (*ASN1_TIME).X509_time_adj_ex C.X509_time_adj_ex
 func (self *ASN1_TIME) X509_time_adj_ex(offset_day c.Int, offset_sec c.Long, t *time.TimeT) *ASN1_TIME {
 	return self
 }
 
-// llgo:link (*ASN1_TIME).X509_gmtime_adj C.X509_gmtime_adj
+//llgo:link (*ASN1_TIME).X509_gmtime_adj C.X509_gmtime_adj
 func (self *ASN1_TIME) X509_gmtime_adj(adj c.Long) *ASN1_TIME {
 	return self
 }
@@ -899,12 +899,12 @@ func X509_get_default_cert_file_env() *c.Char
 //go:linkname X509_get_default_private_dir C.X509_get_default_private_dir
 func X509_get_default_private_dir() *c.Char
 
-// llgo:link (*X509).To_X509_REQ C.X509_to_X509_REQ
+//llgo:link (*X509).To_X509_REQ C.X509_to_X509_REQ
 func (self *X509) To_X509_REQ(pkey *EVP_PKEY, md *EVP_MD) *X509_REQ {
 	return nil
 }
 
-// llgo:link (*X509_REQ).To_X509 C.X509_REQ_to_X509
+//llgo:link (*X509_REQ).To_X509 C.X509_REQ_to_X509
 func (self *X509_REQ) To_X509(days c.Int, pkey *EVP_PKEY) *X509 {
 	return nil
 }
@@ -912,14 +912,14 @@ func (self *X509_REQ) To_X509(days c.Int, pkey *EVP_PKEY) *X509 {
 //go:linkname X509_ALGOR_new C.X509_ALGOR_new
 func X509_ALGOR_new() *X509_ALGOR
 
-// llgo:link (*X509_ALGOR).Free C.X509_ALGOR_free
+//llgo:link (*X509_ALGOR).Free C.X509_ALGOR_free
 func (self *X509_ALGOR) Free() {
 }
 
 //go:linkname D2i_X509_ALGOR C.d2i_X509_ALGOR
 func D2i_X509_ALGOR(a **X509_ALGOR, in **uint8, len c.Long) *X509_ALGOR
 
-// llgo:link (*X509_ALGOR).I2d C.i2d_X509_ALGOR
+//llgo:link (*X509_ALGOR).I2d C.i2d_X509_ALGOR
 func (self *X509_ALGOR) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -930,7 +930,7 @@ func X509_ALGOR_it() *ASN1_ITEM
 //go:linkname D2i_X509_ALGORS C.d2i_X509_ALGORS
 func D2i_X509_ALGORS(a **X509_ALGORS, in **uint8, len c.Long) *X509_ALGORS
 
-// llgo:link (*X509_ALGORS).I2d C.i2d_X509_ALGORS
+//llgo:link (*X509_ALGORS).I2d C.i2d_X509_ALGORS
 func (self *X509_ALGORS) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -941,14 +941,14 @@ func X509_ALGORS_it() *ASN1_ITEM
 //go:linkname X509_VAL_new C.X509_VAL_new
 func X509_VAL_new() *X509_VAL
 
-// llgo:link (*X509_VAL).Free C.X509_VAL_free
+//llgo:link (*X509_VAL).Free C.X509_VAL_free
 func (self *X509_VAL) Free() {
 }
 
 //go:linkname D2i_X509_VAL C.d2i_X509_VAL
 func D2i_X509_VAL(a **X509_VAL, in **uint8, len c.Long) *X509_VAL
 
-// llgo:link (*X509_VAL).I2d C.i2d_X509_VAL
+//llgo:link (*X509_VAL).I2d C.i2d_X509_VAL
 func (self *X509_VAL) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -959,14 +959,14 @@ func X509_VAL_it() *ASN1_ITEM
 //go:linkname X509_PUBKEY_new C.X509_PUBKEY_new
 func X509_PUBKEY_new() *X509_PUBKEY
 
-// llgo:link (*X509_PUBKEY).Free C.X509_PUBKEY_free
+//llgo:link (*X509_PUBKEY).Free C.X509_PUBKEY_free
 func (self *X509_PUBKEY) Free() {
 }
 
 //go:linkname D2i_X509_PUBKEY C.d2i_X509_PUBKEY
 func D2i_X509_PUBKEY(a **X509_PUBKEY, in **uint8, len c.Long) *X509_PUBKEY
 
-// llgo:link (*X509_PUBKEY).I2d C.i2d_X509_PUBKEY
+//llgo:link (*X509_PUBKEY).I2d C.i2d_X509_PUBKEY
 func (self *X509_PUBKEY) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -974,7 +974,7 @@ func (self *X509_PUBKEY) I2d(out **uint8) c.Int {
 //go:linkname X509_PUBKEY_it C.X509_PUBKEY_it
 func X509_PUBKEY_it() *ASN1_ITEM
 
-// llgo:link (*OSSL_LIB_CTX).X509_PUBKEY_new_ex C.X509_PUBKEY_new_ex
+//llgo:link (*OSSL_LIB_CTX).X509_PUBKEY_new_ex C.X509_PUBKEY_new_ex
 func (self *OSSL_LIB_CTX) X509_PUBKEY_new_ex(propq *c.Char) *X509_PUBKEY {
 	return nil
 }
@@ -982,22 +982,22 @@ func (self *OSSL_LIB_CTX) X509_PUBKEY_new_ex(propq *c.Char) *X509_PUBKEY {
 //go:linkname X509_PUBKEY_set C.X509_PUBKEY_set
 func X509_PUBKEY_set(x **X509_PUBKEY, pkey *EVP_PKEY) c.Int
 
-// llgo:link (*X509_PUBKEY).Get0 C.X509_PUBKEY_get0
+//llgo:link (*X509_PUBKEY).Get0 C.X509_PUBKEY_get0
 func (self *X509_PUBKEY) Get0() *EVP_PKEY {
 	return nil
 }
 
-// llgo:link (*X509_PUBKEY).Get C.X509_PUBKEY_get
+//llgo:link (*X509_PUBKEY).Get C.X509_PUBKEY_get
 func (self *X509_PUBKEY) Get() *EVP_PKEY {
 	return nil
 }
 
-// llgo:link (*EVP_PKEY).X509_get_pubkey_parameters C.X509_get_pubkey_parameters
+//llgo:link (*EVP_PKEY).X509_get_pubkey_parameters C.X509_get_pubkey_parameters
 func (self *EVP_PKEY) X509_get_pubkey_parameters(chain *Stack_st_X509) c.Int {
 	return 0
 }
 
-// llgo:link (*X509).Pathlen C.X509_get_pathlen
+//llgo:link (*X509).Pathlen C.X509_get_pathlen
 func (self *X509) Pathlen() c.Long {
 	return 0
 }
@@ -1005,7 +1005,7 @@ func (self *X509) Pathlen() c.Long {
 //go:linkname D2i_PUBKEY C.d2i_PUBKEY
 func D2i_PUBKEY(a **EVP_PKEY, in **uint8, len c.Long) *EVP_PKEY
 
-// llgo:link (*EVP_PKEY).I2d_PUBKEY C.i2d_PUBKEY
+//llgo:link (*EVP_PKEY).I2d_PUBKEY C.i2d_PUBKEY
 func (self *EVP_PKEY) I2d_PUBKEY(out **uint8) c.Int {
 	return 0
 }
@@ -1016,7 +1016,7 @@ func D2i_PUBKEY_ex(a **EVP_PKEY, pp **uint8, length c.Long, libctx *OSSL_LIB_CTX
 //go:linkname D2i_RSA_PUBKEY C.d2i_RSA_PUBKEY
 func D2i_RSA_PUBKEY(a **RSA, in **uint8, len c.Long) *RSA
 
-// llgo:link (*RSA).I2d_RSA_PUBKEY C.i2d_RSA_PUBKEY
+//llgo:link (*RSA).I2d_RSA_PUBKEY C.i2d_RSA_PUBKEY
 func (self *RSA) I2d_RSA_PUBKEY(out **uint8) c.Int {
 	return 0
 }
@@ -1024,7 +1024,7 @@ func (self *RSA) I2d_RSA_PUBKEY(out **uint8) c.Int {
 //go:linkname D2i_DSA_PUBKEY C.d2i_DSA_PUBKEY
 func D2i_DSA_PUBKEY(a **DSA, in **uint8, len c.Long) *DSA
 
-// llgo:link (*DSA).I2d_DSA_PUBKEY C.i2d_DSA_PUBKEY
+//llgo:link (*DSA).I2d_DSA_PUBKEY C.i2d_DSA_PUBKEY
 func (self *DSA) I2d_DSA_PUBKEY(out **uint8) c.Int {
 	return 0
 }
@@ -1032,7 +1032,7 @@ func (self *DSA) I2d_DSA_PUBKEY(out **uint8) c.Int {
 //go:linkname D2i_EC_PUBKEY C.d2i_EC_PUBKEY
 func D2i_EC_PUBKEY(a **EC_KEY, in **uint8, len c.Long) *EC_KEY
 
-// llgo:link (*EC_KEY).I2d_EC_PUBKEY C.i2d_EC_PUBKEY
+//llgo:link (*EC_KEY).I2d_EC_PUBKEY C.i2d_EC_PUBKEY
 func (self *EC_KEY) I2d_EC_PUBKEY(out **uint8) c.Int {
 	return 0
 }
@@ -1040,14 +1040,14 @@ func (self *EC_KEY) I2d_EC_PUBKEY(out **uint8) c.Int {
 //go:linkname X509_SIG_new C.X509_SIG_new
 func X509_SIG_new() *X509_SIG
 
-// llgo:link (*X509_SIG).Free C.X509_SIG_free
+//llgo:link (*X509_SIG).Free C.X509_SIG_free
 func (self *X509_SIG) Free() {
 }
 
 //go:linkname D2i_X509_SIG C.d2i_X509_SIG
 func D2i_X509_SIG(a **X509_SIG, in **uint8, len c.Long) *X509_SIG
 
-// llgo:link (*X509_SIG).I2d C.i2d_X509_SIG
+//llgo:link (*X509_SIG).I2d C.i2d_X509_SIG
 func (self *X509_SIG) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -1055,25 +1055,25 @@ func (self *X509_SIG) I2d(out **uint8) c.Int {
 //go:linkname X509_SIG_it C.X509_SIG_it
 func X509_SIG_it() *ASN1_ITEM
 
-// llgo:link (*X509_SIG).Get0 C.X509_SIG_get0
+//llgo:link (*X509_SIG).Get0 C.X509_SIG_get0
 func (self *X509_SIG) Get0(palg **X509_ALGOR, pdigest **ASN1_OCTET_STRING) {
 }
 
-// llgo:link (*X509_SIG).Getm C.X509_SIG_getm
+//llgo:link (*X509_SIG).Getm C.X509_SIG_getm
 func (self *X509_SIG) Getm(palg **X509_ALGOR, pdigest **ASN1_OCTET_STRING) {
 }
 
 //go:linkname X509_REQ_INFO_new C.X509_REQ_INFO_new
 func X509_REQ_INFO_new() *X509_REQ_INFO
 
-// llgo:link (*X509_REQ_INFO).Free C.X509_REQ_INFO_free
+//llgo:link (*X509_REQ_INFO).Free C.X509_REQ_INFO_free
 func (self *X509_REQ_INFO) Free() {
 }
 
 //go:linkname D2i_X509_REQ_INFO C.d2i_X509_REQ_INFO
 func D2i_X509_REQ_INFO(a **X509_REQ_INFO, in **uint8, len c.Long) *X509_REQ_INFO
 
-// llgo:link (*X509_REQ_INFO).I2d C.i2d_X509_REQ_INFO
+//llgo:link (*X509_REQ_INFO).I2d C.i2d_X509_REQ_INFO
 func (self *X509_REQ_INFO) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -1084,14 +1084,14 @@ func X509_REQ_INFO_it() *ASN1_ITEM
 //go:linkname X509_REQ_new C.X509_REQ_new
 func X509_REQ_new() *X509_REQ
 
-// llgo:link (*X509_REQ).Free C.X509_REQ_free
+//llgo:link (*X509_REQ).Free C.X509_REQ_free
 func (self *X509_REQ) Free() {
 }
 
 //go:linkname D2i_X509_REQ C.d2i_X509_REQ
 func D2i_X509_REQ(a **X509_REQ, in **uint8, len c.Long) *X509_REQ
 
-// llgo:link (*X509_REQ).I2d C.i2d_X509_REQ
+//llgo:link (*X509_REQ).I2d C.i2d_X509_REQ
 func (self *X509_REQ) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -1099,7 +1099,7 @@ func (self *X509_REQ) I2d(out **uint8) c.Int {
 //go:linkname X509_REQ_it C.X509_REQ_it
 func X509_REQ_it() *ASN1_ITEM
 
-// llgo:link (*OSSL_LIB_CTX).X509_REQ_new_ex C.X509_REQ_new_ex
+//llgo:link (*OSSL_LIB_CTX).X509_REQ_new_ex C.X509_REQ_new_ex
 func (self *OSSL_LIB_CTX) X509_REQ_new_ex(propq *c.Char) *X509_REQ {
 	return nil
 }
@@ -1107,14 +1107,14 @@ func (self *OSSL_LIB_CTX) X509_REQ_new_ex(propq *c.Char) *X509_REQ {
 //go:linkname X509_ATTRIBUTE_new C.X509_ATTRIBUTE_new
 func X509_ATTRIBUTE_new() *X509_ATTRIBUTE
 
-// llgo:link (*X509_ATTRIBUTE).Free C.X509_ATTRIBUTE_free
+//llgo:link (*X509_ATTRIBUTE).Free C.X509_ATTRIBUTE_free
 func (self *X509_ATTRIBUTE) Free() {
 }
 
 //go:linkname D2i_X509_ATTRIBUTE C.d2i_X509_ATTRIBUTE
 func D2i_X509_ATTRIBUTE(a **X509_ATTRIBUTE, in **uint8, len c.Long) *X509_ATTRIBUTE
 
-// llgo:link (*X509_ATTRIBUTE).I2d C.i2d_X509_ATTRIBUTE
+//llgo:link (*X509_ATTRIBUTE).I2d C.i2d_X509_ATTRIBUTE
 func (self *X509_ATTRIBUTE) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -1128,14 +1128,14 @@ func X509_ATTRIBUTE_create(nid c.Int, atrtype c.Int, value unsafe.Pointer) *X509
 //go:linkname X509_EXTENSION_new C.X509_EXTENSION_new
 func X509_EXTENSION_new() *X509_EXTENSION
 
-// llgo:link (*X509_EXTENSION).Free C.X509_EXTENSION_free
+//llgo:link (*X509_EXTENSION).Free C.X509_EXTENSION_free
 func (self *X509_EXTENSION) Free() {
 }
 
 //go:linkname D2i_X509_EXTENSION C.d2i_X509_EXTENSION
 func D2i_X509_EXTENSION(a **X509_EXTENSION, in **uint8, len c.Long) *X509_EXTENSION
 
-// llgo:link (*X509_EXTENSION).I2d C.i2d_X509_EXTENSION
+//llgo:link (*X509_EXTENSION).I2d C.i2d_X509_EXTENSION
 func (self *X509_EXTENSION) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -1146,7 +1146,7 @@ func X509_EXTENSION_it() *ASN1_ITEM
 //go:linkname D2i_X509_EXTENSIONS C.d2i_X509_EXTENSIONS
 func D2i_X509_EXTENSIONS(a **X509_EXTENSIONS, in **uint8, len c.Long) *X509_EXTENSIONS
 
-// llgo:link (*X509_EXTENSIONS).I2d C.i2d_X509_EXTENSIONS
+//llgo:link (*X509_EXTENSIONS).I2d C.i2d_X509_EXTENSIONS
 func (self *X509_EXTENSIONS) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -1157,14 +1157,14 @@ func X509_EXTENSIONS_it() *ASN1_ITEM
 //go:linkname X509_NAME_ENTRY_new C.X509_NAME_ENTRY_new
 func X509_NAME_ENTRY_new() *X509_NAME_ENTRY
 
-// llgo:link (*X509_NAME_ENTRY).Free C.X509_NAME_ENTRY_free
+//llgo:link (*X509_NAME_ENTRY).Free C.X509_NAME_ENTRY_free
 func (self *X509_NAME_ENTRY) Free() {
 }
 
 //go:linkname D2i_X509_NAME_ENTRY C.d2i_X509_NAME_ENTRY
 func D2i_X509_NAME_ENTRY(a **X509_NAME_ENTRY, in **uint8, len c.Long) *X509_NAME_ENTRY
 
-// llgo:link (*X509_NAME_ENTRY).I2d C.i2d_X509_NAME_ENTRY
+//llgo:link (*X509_NAME_ENTRY).I2d C.i2d_X509_NAME_ENTRY
 func (self *X509_NAME_ENTRY) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -1175,14 +1175,14 @@ func X509_NAME_ENTRY_it() *ASN1_ITEM
 //go:linkname X509_NAME_new C.X509_NAME_new
 func X509_NAME_new() *X509_NAME
 
-// llgo:link (*X509_NAME).Free C.X509_NAME_free
+//llgo:link (*X509_NAME).Free C.X509_NAME_free
 func (self *X509_NAME) Free() {
 }
 
 //go:linkname D2i_X509_NAME C.d2i_X509_NAME
 func D2i_X509_NAME(a **X509_NAME, in **uint8, len c.Long) *X509_NAME
 
-// llgo:link (*X509_NAME).I2d C.i2d_X509_NAME
+//llgo:link (*X509_NAME).I2d C.i2d_X509_NAME
 func (self *X509_NAME) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -1196,14 +1196,14 @@ func X509_NAME_set(xn **X509_NAME, name *X509_NAME) c.Int
 //go:linkname X509_CINF_new C.X509_CINF_new
 func X509_CINF_new() *X509_CINF
 
-// llgo:link (*X509_CINF).Free C.X509_CINF_free
+//llgo:link (*X509_CINF).Free C.X509_CINF_free
 func (self *X509_CINF) Free() {
 }
 
 //go:linkname D2i_X509_CINF C.d2i_X509_CINF
 func D2i_X509_CINF(a **X509_CINF, in **uint8, len c.Long) *X509_CINF
 
-// llgo:link (*X509_CINF).I2d C.i2d_X509_CINF
+//llgo:link (*X509_CINF).I2d C.i2d_X509_CINF
 func (self *X509_CINF) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -1214,14 +1214,14 @@ func X509_CINF_it() *ASN1_ITEM
 //go:linkname X509_new C.X509_new
 func X509_new() *X509
 
-// llgo:link (*X509).Free C.X509_free
+//llgo:link (*X509).Free C.X509_free
 func (self *X509) Free() {
 }
 
 //go:linkname D2i_X509 C.d2i_X509
 func D2i_X509(a **X509, in **uint8, len c.Long) *X509
 
-// llgo:link (*X509).I2d C.i2d_X509
+//llgo:link (*X509).I2d C.i2d_X509
 func (self *X509) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -1229,7 +1229,7 @@ func (self *X509) I2d(out **uint8) c.Int {
 //go:linkname X509_it C.X509_it
 func X509_it() *ASN1_ITEM
 
-// llgo:link (*OSSL_LIB_CTX).X509_new_ex C.X509_new_ex
+//llgo:link (*OSSL_LIB_CTX).X509_new_ex C.X509_new_ex
 func (self *OSSL_LIB_CTX) X509_new_ex(propq *c.Char) *X509 {
 	return nil
 }
@@ -1237,14 +1237,14 @@ func (self *OSSL_LIB_CTX) X509_new_ex(propq *c.Char) *X509 {
 //go:linkname X509_CERT_AUX_new C.X509_CERT_AUX_new
 func X509_CERT_AUX_new() *X509_CERT_AUX
 
-// llgo:link (*X509_CERT_AUX).Free C.X509_CERT_AUX_free
+//llgo:link (*X509_CERT_AUX).Free C.X509_CERT_AUX_free
 func (self *X509_CERT_AUX) Free() {
 }
 
 //go:linkname D2i_X509_CERT_AUX C.d2i_X509_CERT_AUX
 func D2i_X509_CERT_AUX(a **X509_CERT_AUX, in **uint8, len c.Long) *X509_CERT_AUX
 
-// llgo:link (*X509_CERT_AUX).I2d C.i2d_X509_CERT_AUX
+//llgo:link (*X509_CERT_AUX).I2d C.i2d_X509_CERT_AUX
 func (self *X509_CERT_AUX) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -1252,12 +1252,12 @@ func (self *X509_CERT_AUX) I2d(out **uint8) c.Int {
 //go:linkname X509_CERT_AUX_it C.X509_CERT_AUX_it
 func X509_CERT_AUX_it() *ASN1_ITEM
 
-// llgo:link (*X509).SetExData C.X509_set_ex_data
+//llgo:link (*X509).SetExData C.X509_set_ex_data
 func (self *X509) SetExData(idx c.Int, arg unsafe.Pointer) c.Int {
 	return 0
 }
 
-// llgo:link (*X509).ExData C.X509_get_ex_data
+//llgo:link (*X509).ExData C.X509_get_ex_data
 func (self *X509) ExData(idx c.Int) unsafe.Pointer {
 	return nil
 }
@@ -1265,26 +1265,26 @@ func (self *X509) ExData(idx c.Int) unsafe.Pointer {
 //go:linkname D2i_X509_AUX C.d2i_X509_AUX
 func D2i_X509_AUX(a **X509, in **uint8, len c.Long) *X509
 
-// llgo:link (*X509).I2d_X509_AUX C.i2d_X509_AUX
+//llgo:link (*X509).I2d_X509_AUX C.i2d_X509_AUX
 func (self *X509) I2d_X509_AUX(out **uint8) c.Int {
 	return 0
 }
 
-// llgo:link (*X509).I2dReX509Tbs C.i2d_re_X509_tbs
+//llgo:link (*X509).I2dReX509Tbs C.i2d_re_X509_tbs
 func (self *X509) I2dReX509Tbs(pp **uint8) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_SIG_INFO).Get C.X509_SIG_INFO_get
+//llgo:link (*X509_SIG_INFO).Get C.X509_SIG_INFO_get
 func (self *X509_SIG_INFO) Get(mdnid *c.Int, pknid *c.Int, secbits *c.Int, flags *c.Uint32T) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_SIG_INFO).Set C.X509_SIG_INFO_set
+//llgo:link (*X509_SIG_INFO).Set C.X509_SIG_INFO_set
 func (self *X509_SIG_INFO) Set(mdnid c.Int, pknid c.Int, secbits c.Int, flags c.Uint32T) {
 }
 
-// llgo:link (*X509).SignatureInfo C.X509_get_signature_info
+//llgo:link (*X509).SignatureInfo C.X509_get_signature_info
 func (self *X509) SignatureInfo(mdnid *c.Int, pknid *c.Int, secbits *c.Int, flags *c.Uint32T) c.Int {
 	return 0
 }
@@ -1292,45 +1292,45 @@ func (self *X509) SignatureInfo(mdnid *c.Int, pknid *c.Int, secbits *c.Int, flag
 //go:linkname X509_get0_signature C.X509_get0_signature
 func X509_get0_signature(psig **ASN1_BIT_STRING, palg **X509_ALGOR, x *X509)
 
-// llgo:link (*X509).SignatureNid C.X509_get_signature_nid
+//llgo:link (*X509).SignatureNid C.X509_get_signature_nid
 func (self *X509) SignatureNid() c.Int {
 	return 0
 }
 
-// llgo:link (*X509).Set0DistinguishingId C.X509_set0_distinguishing_id
+//llgo:link (*X509).Set0DistinguishingId C.X509_set0_distinguishing_id
 func (self *X509) Set0DistinguishingId(d_id *ASN1_OCTET_STRING) {
 }
 
-// llgo:link (*X509).Get0DistinguishingId C.X509_get0_distinguishing_id
+//llgo:link (*X509).Get0DistinguishingId C.X509_get0_distinguishing_id
 func (self *X509) Get0DistinguishingId() *ASN1_OCTET_STRING {
 	return nil
 }
 
-// llgo:link (*X509_REQ).Set0DistinguishingId C.X509_REQ_set0_distinguishing_id
+//llgo:link (*X509_REQ).Set0DistinguishingId C.X509_REQ_set0_distinguishing_id
 func (self *X509_REQ) Set0DistinguishingId(d_id *ASN1_OCTET_STRING) {
 }
 
-// llgo:link (*X509_REQ).Get0DistinguishingId C.X509_REQ_get0_distinguishing_id
+//llgo:link (*X509_REQ).Get0DistinguishingId C.X509_REQ_get0_distinguishing_id
 func (self *X509_REQ) Get0DistinguishingId() *ASN1_OCTET_STRING {
 	return nil
 }
 
-// llgo:link (*X509).AliasSet1 C.X509_alias_set1
+//llgo:link (*X509).AliasSet1 C.X509_alias_set1
 func (self *X509) AliasSet1(name *uint8, len c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509).KeyidSet1 C.X509_keyid_set1
+//llgo:link (*X509).KeyidSet1 C.X509_keyid_set1
 func (self *X509) KeyidSet1(id *uint8, len c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509).AliasGet0 C.X509_alias_get0
+//llgo:link (*X509).AliasGet0 C.X509_alias_get0
 func (self *X509) AliasGet0(len *c.Int) *uint8 {
 	return nil
 }
 
-// llgo:link (*X509).KeyidGet0 C.X509_keyid_get0
+//llgo:link (*X509).KeyidGet0 C.X509_keyid_get0
 func (self *X509) KeyidGet0(len *c.Int) *uint8 {
 	return nil
 }
@@ -1338,14 +1338,14 @@ func (self *X509) KeyidGet0(len *c.Int) *uint8 {
 //go:linkname X509_REVOKED_new C.X509_REVOKED_new
 func X509_REVOKED_new() *X509_REVOKED
 
-// llgo:link (*X509_REVOKED).Free C.X509_REVOKED_free
+//llgo:link (*X509_REVOKED).Free C.X509_REVOKED_free
 func (self *X509_REVOKED) Free() {
 }
 
 //go:linkname D2i_X509_REVOKED C.d2i_X509_REVOKED
 func D2i_X509_REVOKED(a **X509_REVOKED, in **uint8, len c.Long) *X509_REVOKED
 
-// llgo:link (*X509_REVOKED).I2d C.i2d_X509_REVOKED
+//llgo:link (*X509_REVOKED).I2d C.i2d_X509_REVOKED
 func (self *X509_REVOKED) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -1356,14 +1356,14 @@ func X509_REVOKED_it() *ASN1_ITEM
 //go:linkname X509_CRL_INFO_new C.X509_CRL_INFO_new
 func X509_CRL_INFO_new() *X509_CRL_INFO
 
-// llgo:link (*X509_CRL_INFO).Free C.X509_CRL_INFO_free
+//llgo:link (*X509_CRL_INFO).Free C.X509_CRL_INFO_free
 func (self *X509_CRL_INFO) Free() {
 }
 
 //go:linkname D2i_X509_CRL_INFO C.d2i_X509_CRL_INFO
 func D2i_X509_CRL_INFO(a **X509_CRL_INFO, in **uint8, len c.Long) *X509_CRL_INFO
 
-// llgo:link (*X509_CRL_INFO).I2d C.i2d_X509_CRL_INFO
+//llgo:link (*X509_CRL_INFO).I2d C.i2d_X509_CRL_INFO
 func (self *X509_CRL_INFO) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -1374,14 +1374,14 @@ func X509_CRL_INFO_it() *ASN1_ITEM
 //go:linkname X509_CRL_new C.X509_CRL_new
 func X509_CRL_new() *X509_CRL
 
-// llgo:link (*X509_CRL).Free C.X509_CRL_free
+//llgo:link (*X509_CRL).Free C.X509_CRL_free
 func (self *X509_CRL) Free() {
 }
 
 //go:linkname D2i_X509_CRL C.d2i_X509_CRL
 func D2i_X509_CRL(a **X509_CRL, in **uint8, len c.Long) *X509_CRL
 
-// llgo:link (*X509_CRL).I2d C.i2d_X509_CRL
+//llgo:link (*X509_CRL).I2d C.i2d_X509_CRL
 func (self *X509_CRL) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -1389,22 +1389,22 @@ func (self *X509_CRL) I2d(out **uint8) c.Int {
 //go:linkname X509_CRL_it C.X509_CRL_it
 func X509_CRL_it() *ASN1_ITEM
 
-// llgo:link (*OSSL_LIB_CTX).X509_CRL_new_ex C.X509_CRL_new_ex
+//llgo:link (*OSSL_LIB_CTX).X509_CRL_new_ex C.X509_CRL_new_ex
 func (self *OSSL_LIB_CTX) X509_CRL_new_ex(propq *c.Char) *X509_CRL {
 	return nil
 }
 
-// llgo:link (*X509_CRL).Add0Revoked C.X509_CRL_add0_revoked
+//llgo:link (*X509_CRL).Add0Revoked C.X509_CRL_add0_revoked
 func (self *X509_CRL) Add0Revoked(rev *X509_REVOKED) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_CRL).Get0BySerial C.X509_CRL_get0_by_serial
+//llgo:link (*X509_CRL).Get0BySerial C.X509_CRL_get0_by_serial
 func (self *X509_CRL) Get0BySerial(ret **X509_REVOKED, serial *ASN1_INTEGER) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_CRL).Get0ByCert C.X509_CRL_get0_by_cert
+//llgo:link (*X509_CRL).Get0ByCert C.X509_CRL_get0_by_cert
 func (self *X509_CRL) Get0ByCert(ret **X509_REVOKED, x *X509) c.Int {
 	return 0
 }
@@ -1412,21 +1412,21 @@ func (self *X509_CRL) Get0ByCert(ret **X509_REVOKED, x *X509) c.Int {
 //go:linkname X509_PKEY_new C.X509_PKEY_new
 func X509_PKEY_new() *X509_PKEY
 
-// llgo:link (*X509_PKEY).Free C.X509_PKEY_free
+//llgo:link (*X509_PKEY).Free C.X509_PKEY_free
 func (self *X509_PKEY) Free() {
 }
 
 //go:linkname NETSCAPE_SPKI_new C.NETSCAPE_SPKI_new
 func NETSCAPE_SPKI_new() *NETSCAPE_SPKI
 
-// llgo:link (*NETSCAPE_SPKI).Free C.NETSCAPE_SPKI_free
+//llgo:link (*NETSCAPE_SPKI).Free C.NETSCAPE_SPKI_free
 func (self *NETSCAPE_SPKI) Free() {
 }
 
 //go:linkname D2i_NETSCAPE_SPKI C.d2i_NETSCAPE_SPKI
 func D2i_NETSCAPE_SPKI(a **NETSCAPE_SPKI, in **uint8, len c.Long) *NETSCAPE_SPKI
 
-// llgo:link (*NETSCAPE_SPKI).I2d C.i2d_NETSCAPE_SPKI
+//llgo:link (*NETSCAPE_SPKI).I2d C.i2d_NETSCAPE_SPKI
 func (self *NETSCAPE_SPKI) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -1437,14 +1437,14 @@ func NETSCAPE_SPKI_it() *ASN1_ITEM
 //go:linkname NETSCAPE_SPKAC_new C.NETSCAPE_SPKAC_new
 func NETSCAPE_SPKAC_new() *NETSCAPE_SPKAC
 
-// llgo:link (*NETSCAPE_SPKAC).Free C.NETSCAPE_SPKAC_free
+//llgo:link (*NETSCAPE_SPKAC).Free C.NETSCAPE_SPKAC_free
 func (self *NETSCAPE_SPKAC) Free() {
 }
 
 //go:linkname D2i_NETSCAPE_SPKAC C.d2i_NETSCAPE_SPKAC
 func D2i_NETSCAPE_SPKAC(a **NETSCAPE_SPKAC, in **uint8, len c.Long) *NETSCAPE_SPKAC
 
-// llgo:link (*NETSCAPE_SPKAC).I2d C.i2d_NETSCAPE_SPKAC
+//llgo:link (*NETSCAPE_SPKAC).I2d C.i2d_NETSCAPE_SPKAC
 func (self *NETSCAPE_SPKAC) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -1455,14 +1455,14 @@ func NETSCAPE_SPKAC_it() *ASN1_ITEM
 //go:linkname NETSCAPE_CERT_SEQUENCE_new C.NETSCAPE_CERT_SEQUENCE_new
 func NETSCAPE_CERT_SEQUENCE_new() *NETSCAPE_CERT_SEQUENCE
 
-// llgo:link (*NETSCAPE_CERT_SEQUENCE).Free C.NETSCAPE_CERT_SEQUENCE_free
+//llgo:link (*NETSCAPE_CERT_SEQUENCE).Free C.NETSCAPE_CERT_SEQUENCE_free
 func (self *NETSCAPE_CERT_SEQUENCE) Free() {
 }
 
 //go:linkname D2i_NETSCAPE_CERT_SEQUENCE C.d2i_NETSCAPE_CERT_SEQUENCE
 func D2i_NETSCAPE_CERT_SEQUENCE(a **NETSCAPE_CERT_SEQUENCE, in **uint8, len c.Long) *NETSCAPE_CERT_SEQUENCE
 
-// llgo:link (*NETSCAPE_CERT_SEQUENCE).I2d C.i2d_NETSCAPE_CERT_SEQUENCE
+//llgo:link (*NETSCAPE_CERT_SEQUENCE).I2d C.i2d_NETSCAPE_CERT_SEQUENCE
 func (self *NETSCAPE_CERT_SEQUENCE) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -1473,11 +1473,11 @@ func NETSCAPE_CERT_SEQUENCE_it() *ASN1_ITEM
 //go:linkname X509_INFO_new C.X509_INFO_new
 func X509_INFO_new() *X509_INFO
 
-// llgo:link (*X509_INFO).Free C.X509_INFO_free
+//llgo:link (*X509_INFO).Free C.X509_INFO_free
 func (self *X509_INFO) Free() {
 }
 
-// llgo:link (*X509_NAME).Oneline C.X509_NAME_oneline
+//llgo:link (*X509_NAME).Oneline C.X509_NAME_oneline
 func (self *X509_NAME) Oneline(buf *c.Char, size c.Int) *c.Char {
 	return nil
 }
@@ -1491,124 +1491,124 @@ func ASN1_digest(i2d *I2dOfVoid, type_ *EVP_MD, data *c.Char, md *uint8, len *c.
 //go:linkname ASN1_sign C.ASN1_sign
 func ASN1_sign(i2d *I2dOfVoid, algor1 *X509_ALGOR, algor2 *X509_ALGOR, signature *ASN1_BIT_STRING, data *c.Char, pkey *EVP_PKEY, type_ *EVP_MD) c.Int
 
-// llgo:link (*ASN1_ITEM).Digest C.ASN1_item_digest
+//llgo:link (*ASN1_ITEM).Digest C.ASN1_item_digest
 func (self *ASN1_ITEM) Digest(type_ *EVP_MD, data unsafe.Pointer, md *uint8, len *c.Uint) c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_ITEM).Verify C.ASN1_item_verify
+//llgo:link (*ASN1_ITEM).Verify C.ASN1_item_verify
 func (self *ASN1_ITEM) Verify(alg *X509_ALGOR, signature *ASN1_BIT_STRING, data unsafe.Pointer, pkey *EVP_PKEY) c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_ITEM).VerifyCtx C.ASN1_item_verify_ctx
+//llgo:link (*ASN1_ITEM).VerifyCtx C.ASN1_item_verify_ctx
 func (self *ASN1_ITEM) VerifyCtx(alg *X509_ALGOR, signature *ASN1_BIT_STRING, data unsafe.Pointer, ctx *EVP_MD_CTX) c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_ITEM).Sign C.ASN1_item_sign
+//llgo:link (*ASN1_ITEM).Sign C.ASN1_item_sign
 func (self *ASN1_ITEM) Sign(algor1 *X509_ALGOR, algor2 *X509_ALGOR, signature *ASN1_BIT_STRING, data unsafe.Pointer, pkey *EVP_PKEY, md *EVP_MD) c.Int {
 	return 0
 }
 
-// llgo:link (*ASN1_ITEM).SignCtx C.ASN1_item_sign_ctx
+//llgo:link (*ASN1_ITEM).SignCtx C.ASN1_item_sign_ctx
 func (self *ASN1_ITEM) SignCtx(algor1 *X509_ALGOR, algor2 *X509_ALGOR, signature *ASN1_BIT_STRING, data unsafe.Pointer, ctx *EVP_MD_CTX) c.Int {
 	return 0
 }
 
-// llgo:link (*X509).Version C.X509_get_version
+//llgo:link (*X509).Version C.X509_get_version
 func (self *X509) Version() c.Long {
 	return 0
 }
 
-// llgo:link (*X509).SetVersion C.X509_set_version
+//llgo:link (*X509).SetVersion C.X509_set_version
 func (self *X509) SetVersion(version c.Long) c.Int {
 	return 0
 }
 
-// llgo:link (*X509).SetSerialNumber C.X509_set_serialNumber
+//llgo:link (*X509).SetSerialNumber C.X509_set_serialNumber
 func (self *X509) SetSerialNumber(serial *ASN1_INTEGER) c.Int {
 	return 0
 }
 
-// llgo:link (*X509).SerialNumber C.X509_get_serialNumber
+//llgo:link (*X509).SerialNumber C.X509_get_serialNumber
 func (self *X509) SerialNumber() *ASN1_INTEGER {
 	return nil
 }
 
-// llgo:link (*X509).Get0SerialNumber C.X509_get0_serialNumber
+//llgo:link (*X509).Get0SerialNumber C.X509_get0_serialNumber
 func (self *X509) Get0SerialNumber() *ASN1_INTEGER {
 	return nil
 }
 
-// llgo:link (*X509).SetIssuerName C.X509_set_issuer_name
+//llgo:link (*X509).SetIssuerName C.X509_set_issuer_name
 func (self *X509) SetIssuerName(name *X509_NAME) c.Int {
 	return 0
 }
 
-// llgo:link (*X509).IssuerName C.X509_get_issuer_name
+//llgo:link (*X509).IssuerName C.X509_get_issuer_name
 func (self *X509) IssuerName() *X509_NAME {
 	return nil
 }
 
-// llgo:link (*X509).SetSubjectName C.X509_set_subject_name
+//llgo:link (*X509).SetSubjectName C.X509_set_subject_name
 func (self *X509) SetSubjectName(name *X509_NAME) c.Int {
 	return 0
 }
 
-// llgo:link (*X509).SubjectName C.X509_get_subject_name
+//llgo:link (*X509).SubjectName C.X509_get_subject_name
 func (self *X509) SubjectName() *X509_NAME {
 	return nil
 }
 
-// llgo:link (*X509).Get0NotBefore C.X509_get0_notBefore
+//llgo:link (*X509).Get0NotBefore C.X509_get0_notBefore
 func (self *X509) Get0NotBefore() *ASN1_TIME {
 	return nil
 }
 
-// llgo:link (*X509).GetmNotBefore C.X509_getm_notBefore
+//llgo:link (*X509).GetmNotBefore C.X509_getm_notBefore
 func (self *X509) GetmNotBefore() *ASN1_TIME {
 	return nil
 }
 
-// llgo:link (*X509).Set1NotBefore C.X509_set1_notBefore
+//llgo:link (*X509).Set1NotBefore C.X509_set1_notBefore
 func (self *X509) Set1NotBefore(tm *ASN1_TIME) c.Int {
 	return 0
 }
 
-// llgo:link (*X509).Get0NotAfter C.X509_get0_notAfter
+//llgo:link (*X509).Get0NotAfter C.X509_get0_notAfter
 func (self *X509) Get0NotAfter() *ASN1_TIME {
 	return nil
 }
 
-// llgo:link (*X509).GetmNotAfter C.X509_getm_notAfter
+//llgo:link (*X509).GetmNotAfter C.X509_getm_notAfter
 func (self *X509) GetmNotAfter() *ASN1_TIME {
 	return nil
 }
 
-// llgo:link (*X509).Set1NotAfter C.X509_set1_notAfter
+//llgo:link (*X509).Set1NotAfter C.X509_set1_notAfter
 func (self *X509) Set1NotAfter(tm *ASN1_TIME) c.Int {
 	return 0
 }
 
-// llgo:link (*X509).UpRef C.X509_up_ref
+//llgo:link (*X509).UpRef C.X509_up_ref
 func (self *X509) UpRef() c.Int {
 	return 0
 }
 
-// llgo:link (*X509).SignatureType C.X509_get_signature_type
+//llgo:link (*X509).SignatureType C.X509_get_signature_type
 func (self *X509) SignatureType() c.Int {
 	return 0
 }
 
-// llgo:link (*X509).SetPubkey C.X509_set_pubkey
+//llgo:link (*X509).SetPubkey C.X509_set_pubkey
 func (self *X509) SetPubkey(pkey *EVP_PKEY) c.Int {
 	return 0
 }
 
 // deprecated
 //
-// llgo:link (*X509).Pubkey C.X509_get_pubkey
+//llgo:link (*X509).Pubkey C.X509_get_pubkey
 func (self *X509) Pubkey() *EVP_PKEY {
 	return nil
 }
@@ -1616,7 +1616,7 @@ func (self *X509) Pubkey() *EVP_PKEY {
 // This one is only used so that a binary form can output, as in
 // i2d_X509_PUBKEY(X509_get_X509_PUBKEY(x), &buf)
 //
-// llgo:link (*X509).Get0Pubkey C.X509_get0_pubkey
+//llgo:link (*X509).Get0Pubkey C.X509_get0_pubkey
 func (self *X509) Get0Pubkey() *EVP_PKEY {
 	return nil
 }
@@ -1624,91 +1624,91 @@ func (self *X509) Get0Pubkey() *EVP_PKEY {
 // This one is only used so that a binary form can output, as in
 // i2d_X509_PUBKEY(X509_get_X509_PUBKEY(x), &buf)
 //
-// llgo:link (*X509).Get_X509_PUBKEY C.X509_get_X509_PUBKEY
+//llgo:link (*X509).Get_X509_PUBKEY C.X509_get_X509_PUBKEY
 func (self *X509) Get_X509_PUBKEY() *X509_PUBKEY {
 	return nil
 }
 
-// llgo:link (*X509).Get0Extensions C.X509_get0_extensions
+//llgo:link (*X509).Get0Extensions C.X509_get0_extensions
 func (self *X509) Get0Extensions() *Stack_st_X509_EXTENSION {
 	return nil
 }
 
-// llgo:link (*X509).Get0Uids C.X509_get0_uids
+//llgo:link (*X509).Get0Uids C.X509_get0_uids
 func (self *X509) Get0Uids(piuid **ASN1_BIT_STRING, psuid **ASN1_BIT_STRING) {
 }
 
-// llgo:link (*X509).Get0TbsSigalg C.X509_get0_tbs_sigalg
+//llgo:link (*X509).Get0TbsSigalg C.X509_get0_tbs_sigalg
 func (self *X509) Get0TbsSigalg() *X509_ALGOR {
 	return nil
 }
 
-// llgo:link (*X509).Get0PubkeyBitstr C.X509_get0_pubkey_bitstr
+//llgo:link (*X509).Get0PubkeyBitstr C.X509_get0_pubkey_bitstr
 func (self *X509) Get0PubkeyBitstr() *ASN1_BIT_STRING {
 	return nil
 }
 
-// llgo:link (*X509_REQ).Version C.X509_REQ_get_version
+//llgo:link (*X509_REQ).Version C.X509_REQ_get_version
 func (self *X509_REQ) Version() c.Long {
 	return 0
 }
 
-// llgo:link (*X509_REQ).SetVersion C.X509_REQ_set_version
+//llgo:link (*X509_REQ).SetVersion C.X509_REQ_set_version
 func (self *X509_REQ) SetVersion(version c.Long) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_REQ).SubjectName C.X509_REQ_get_subject_name
+//llgo:link (*X509_REQ).SubjectName C.X509_REQ_get_subject_name
 func (self *X509_REQ) SubjectName() *X509_NAME {
 	return nil
 }
 
-// llgo:link (*X509_REQ).SetSubjectName C.X509_REQ_set_subject_name
+//llgo:link (*X509_REQ).SetSubjectName C.X509_REQ_set_subject_name
 func (self *X509_REQ) SetSubjectName(name *X509_NAME) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_REQ).Get0Signature C.X509_REQ_get0_signature
+//llgo:link (*X509_REQ).Get0Signature C.X509_REQ_get0_signature
 func (self *X509_REQ) Get0Signature(psig **ASN1_BIT_STRING, palg **X509_ALGOR) {
 }
 
-// llgo:link (*X509_REQ).Set0Signature C.X509_REQ_set0_signature
+//llgo:link (*X509_REQ).Set0Signature C.X509_REQ_set0_signature
 func (self *X509_REQ) Set0Signature(psig *ASN1_BIT_STRING) {
 }
 
-// llgo:link (*X509_REQ).Set1SignatureAlgo C.X509_REQ_set1_signature_algo
+//llgo:link (*X509_REQ).Set1SignatureAlgo C.X509_REQ_set1_signature_algo
 func (self *X509_REQ) Set1SignatureAlgo(palg *X509_ALGOR) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_REQ).SignatureNid C.X509_REQ_get_signature_nid
+//llgo:link (*X509_REQ).SignatureNid C.X509_REQ_get_signature_nid
 func (self *X509_REQ) SignatureNid() c.Int {
 	return 0
 }
 
-// llgo:link (*X509_REQ).I2d_re_X509_REQ_tbs C.i2d_re_X509_REQ_tbs
+//llgo:link (*X509_REQ).I2d_re_X509_REQ_tbs C.i2d_re_X509_REQ_tbs
 func (self *X509_REQ) I2d_re_X509_REQ_tbs(pp **uint8) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_REQ).SetPubkey C.X509_REQ_set_pubkey
+//llgo:link (*X509_REQ).SetPubkey C.X509_REQ_set_pubkey
 func (self *X509_REQ) SetPubkey(pkey *EVP_PKEY) c.Int {
 	return 0
 }
 
 // deprecated
 //
-// llgo:link (*X509_REQ).Pubkey C.X509_REQ_get_pubkey
+//llgo:link (*X509_REQ).Pubkey C.X509_REQ_get_pubkey
 func (self *X509_REQ) Pubkey() *EVP_PKEY {
 	return nil
 }
 
-// llgo:link (*X509_REQ).Get0Pubkey C.X509_REQ_get0_pubkey
+//llgo:link (*X509_REQ).Get0Pubkey C.X509_REQ_get0_pubkey
 func (self *X509_REQ) Get0Pubkey() *EVP_PKEY {
 	return nil
 }
 
-// llgo:link (*X509_REQ).Get_X509_PUBKEY C.X509_REQ_get_X509_PUBKEY
+//llgo:link (*X509_REQ).Get_X509_PUBKEY C.X509_REQ_get_X509_PUBKEY
 func (self *X509_REQ) Get_X509_PUBKEY() *X509_PUBKEY {
 	return nil
 }
@@ -1722,191 +1722,191 @@ func X509_REQ_get_extension_nids() *c.Int
 //go:linkname X509_REQ_set_extension_nids C.X509_REQ_set_extension_nids
 func X509_REQ_set_extension_nids(nids *c.Int)
 
-// llgo:link (*X509_REQ).Extensions C.X509_REQ_get_extensions
+//llgo:link (*X509_REQ).Extensions C.X509_REQ_get_extensions
 func (self *X509_REQ) Extensions() *Stack_st_X509_EXTENSION {
 	return nil
 }
 
-// llgo:link (*X509_REQ).AddExtensionsNid C.X509_REQ_add_extensions_nid
+//llgo:link (*X509_REQ).AddExtensionsNid C.X509_REQ_add_extensions_nid
 func (self *X509_REQ) AddExtensionsNid(exts *Stack_st_X509_EXTENSION, nid c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_REQ).AddExtensions C.X509_REQ_add_extensions
+//llgo:link (*X509_REQ).AddExtensions C.X509_REQ_add_extensions
 func (self *X509_REQ) AddExtensions(ext *Stack_st_X509_EXTENSION) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_REQ).AttrCount C.X509_REQ_get_attr_count
+//llgo:link (*X509_REQ).AttrCount C.X509_REQ_get_attr_count
 func (self *X509_REQ) AttrCount() c.Int {
 	return 0
 }
 
-// llgo:link (*X509_REQ).Get_attr_by_NID C.X509_REQ_get_attr_by_NID
+//llgo:link (*X509_REQ).Get_attr_by_NID C.X509_REQ_get_attr_by_NID
 func (self *X509_REQ) Get_attr_by_NID(nid c.Int, lastpos c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_REQ).Get_attr_by_OBJ C.X509_REQ_get_attr_by_OBJ
+//llgo:link (*X509_REQ).Get_attr_by_OBJ C.X509_REQ_get_attr_by_OBJ
 func (self *X509_REQ) Get_attr_by_OBJ(obj *ASN1_OBJECT, lastpos c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_REQ).Attr C.X509_REQ_get_attr
+//llgo:link (*X509_REQ).Attr C.X509_REQ_get_attr
 func (self *X509_REQ) Attr(loc c.Int) *X509_ATTRIBUTE {
 	return nil
 }
 
-// llgo:link (*X509_REQ).DeleteAttr C.X509_REQ_delete_attr
+//llgo:link (*X509_REQ).DeleteAttr C.X509_REQ_delete_attr
 func (self *X509_REQ) DeleteAttr(loc c.Int) *X509_ATTRIBUTE {
 	return nil
 }
 
-// llgo:link (*X509_REQ).Add1Attr C.X509_REQ_add1_attr
+//llgo:link (*X509_REQ).Add1Attr C.X509_REQ_add1_attr
 func (self *X509_REQ) Add1Attr(attr *X509_ATTRIBUTE) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_REQ).Add1_attr_by_OBJ C.X509_REQ_add1_attr_by_OBJ
+//llgo:link (*X509_REQ).Add1_attr_by_OBJ C.X509_REQ_add1_attr_by_OBJ
 func (self *X509_REQ) Add1_attr_by_OBJ(obj *ASN1_OBJECT, type_ c.Int, bytes *uint8, len c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_REQ).Add1_attr_by_NID C.X509_REQ_add1_attr_by_NID
+//llgo:link (*X509_REQ).Add1_attr_by_NID C.X509_REQ_add1_attr_by_NID
 func (self *X509_REQ) Add1_attr_by_NID(nid c.Int, type_ c.Int, bytes *uint8, len c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_REQ).Add1AttrByTxt C.X509_REQ_add1_attr_by_txt
+//llgo:link (*X509_REQ).Add1AttrByTxt C.X509_REQ_add1_attr_by_txt
 func (self *X509_REQ) Add1AttrByTxt(attrname *c.Char, type_ c.Int, bytes *uint8, len c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_CRL).SetVersion C.X509_CRL_set_version
+//llgo:link (*X509_CRL).SetVersion C.X509_CRL_set_version
 func (self *X509_CRL) SetVersion(version c.Long) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_CRL).SetIssuerName C.X509_CRL_set_issuer_name
+//llgo:link (*X509_CRL).SetIssuerName C.X509_CRL_set_issuer_name
 func (self *X509_CRL) SetIssuerName(name *X509_NAME) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_CRL).Set1LastUpdate C.X509_CRL_set1_lastUpdate
+//llgo:link (*X509_CRL).Set1LastUpdate C.X509_CRL_set1_lastUpdate
 func (self *X509_CRL) Set1LastUpdate(tm *ASN1_TIME) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_CRL).Set1NextUpdate C.X509_CRL_set1_nextUpdate
+//llgo:link (*X509_CRL).Set1NextUpdate C.X509_CRL_set1_nextUpdate
 func (self *X509_CRL) Set1NextUpdate(tm *ASN1_TIME) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_CRL).Sort C.X509_CRL_sort
+//llgo:link (*X509_CRL).Sort C.X509_CRL_sort
 func (self *X509_CRL) Sort() c.Int {
 	return 0
 }
 
-// llgo:link (*X509_CRL).UpRef C.X509_CRL_up_ref
+//llgo:link (*X509_CRL).UpRef C.X509_CRL_up_ref
 func (self *X509_CRL) UpRef() c.Int {
 	return 0
 }
 
-// llgo:link (*X509_CRL).Version C.X509_CRL_get_version
+//llgo:link (*X509_CRL).Version C.X509_CRL_get_version
 func (self *X509_CRL) Version() c.Long {
 	return 0
 }
 
-// llgo:link (*X509_CRL).Get0LastUpdate C.X509_CRL_get0_lastUpdate
+//llgo:link (*X509_CRL).Get0LastUpdate C.X509_CRL_get0_lastUpdate
 func (self *X509_CRL) Get0LastUpdate() *ASN1_TIME {
 	return nil
 }
 
-// llgo:link (*X509_CRL).Get0NextUpdate C.X509_CRL_get0_nextUpdate
+//llgo:link (*X509_CRL).Get0NextUpdate C.X509_CRL_get0_nextUpdate
 func (self *X509_CRL) Get0NextUpdate() *ASN1_TIME {
 	return nil
 }
 
-// llgo:link (*X509_CRL).LastUpdate C.X509_CRL_get_lastUpdate
+//llgo:link (*X509_CRL).LastUpdate C.X509_CRL_get_lastUpdate
 func (self *X509_CRL) LastUpdate() *ASN1_TIME {
 	return nil
 }
 
-// llgo:link (*X509_CRL).NextUpdate C.X509_CRL_get_nextUpdate
+//llgo:link (*X509_CRL).NextUpdate C.X509_CRL_get_nextUpdate
 func (self *X509_CRL) NextUpdate() *ASN1_TIME {
 	return nil
 }
 
-// llgo:link (*X509_CRL).Issuer C.X509_CRL_get_issuer
+//llgo:link (*X509_CRL).Issuer C.X509_CRL_get_issuer
 func (self *X509_CRL) Issuer() *X509_NAME {
 	return nil
 }
 
-// llgo:link (*X509_CRL).Get0Extensions C.X509_CRL_get0_extensions
+//llgo:link (*X509_CRL).Get0Extensions C.X509_CRL_get0_extensions
 func (self *X509_CRL) Get0Extensions() *Stack_st_X509_EXTENSION {
 	return nil
 }
 
-// llgo:link (*X509_CRL).Get_REVOKED C.X509_CRL_get_REVOKED
+//llgo:link (*X509_CRL).Get_REVOKED C.X509_CRL_get_REVOKED
 func (self *X509_CRL) Get_REVOKED() *Stack_st_X509_REVOKED {
 	return nil
 }
 
-// llgo:link (*X509_CRL).Get0TbsSigalg C.X509_CRL_get0_tbs_sigalg
+//llgo:link (*X509_CRL).Get0TbsSigalg C.X509_CRL_get0_tbs_sigalg
 func (self *X509_CRL) Get0TbsSigalg() *X509_ALGOR {
 	return nil
 }
 
-// llgo:link (*X509_CRL).Get0Signature C.X509_CRL_get0_signature
+//llgo:link (*X509_CRL).Get0Signature C.X509_CRL_get0_signature
 func (self *X509_CRL) Get0Signature(psig **ASN1_BIT_STRING, palg **X509_ALGOR) {
 }
 
-// llgo:link (*X509_CRL).SignatureNid C.X509_CRL_get_signature_nid
+//llgo:link (*X509_CRL).SignatureNid C.X509_CRL_get_signature_nid
 func (self *X509_CRL) SignatureNid() c.Int {
 	return 0
 }
 
-// llgo:link (*X509_CRL).I2d_re_X509_CRL_tbs C.i2d_re_X509_CRL_tbs
+//llgo:link (*X509_CRL).I2d_re_X509_CRL_tbs C.i2d_re_X509_CRL_tbs
 func (self *X509_CRL) I2d_re_X509_CRL_tbs(pp **uint8) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_REVOKED).Get0SerialNumber C.X509_REVOKED_get0_serialNumber
+//llgo:link (*X509_REVOKED).Get0SerialNumber C.X509_REVOKED_get0_serialNumber
 func (self *X509_REVOKED) Get0SerialNumber() *ASN1_INTEGER {
 	return nil
 }
 
-// llgo:link (*X509_REVOKED).SetSerialNumber C.X509_REVOKED_set_serialNumber
+//llgo:link (*X509_REVOKED).SetSerialNumber C.X509_REVOKED_set_serialNumber
 func (self *X509_REVOKED) SetSerialNumber(serial *ASN1_INTEGER) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_REVOKED).Get0RevocationDate C.X509_REVOKED_get0_revocationDate
+//llgo:link (*X509_REVOKED).Get0RevocationDate C.X509_REVOKED_get0_revocationDate
 func (self *X509_REVOKED) Get0RevocationDate() *ASN1_TIME {
 	return nil
 }
 
-// llgo:link (*X509_REVOKED).SetRevocationDate C.X509_REVOKED_set_revocationDate
+//llgo:link (*X509_REVOKED).SetRevocationDate C.X509_REVOKED_set_revocationDate
 func (self *X509_REVOKED) SetRevocationDate(tm *ASN1_TIME) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_REVOKED).Get0Extensions C.X509_REVOKED_get0_extensions
+//llgo:link (*X509_REVOKED).Get0Extensions C.X509_REVOKED_get0_extensions
 func (self *X509_REVOKED) Get0Extensions() *Stack_st_X509_EXTENSION {
 	return nil
 }
 
-// llgo:link (*X509_CRL).Diff C.X509_CRL_diff
+//llgo:link (*X509_CRL).Diff C.X509_CRL_diff
 func (self *X509_CRL) Diff(newer *X509_CRL, skey *EVP_PKEY, md *EVP_MD, flags c.Uint) *X509_CRL {
 	return self
 }
 
-// llgo:link (*X509_REQ).CheckPrivateKey C.X509_REQ_check_private_key
+//llgo:link (*X509_REQ).CheckPrivateKey C.X509_REQ_check_private_key
 func (self *X509_REQ) CheckPrivateKey(pkey *EVP_PKEY) c.Int {
 	return 0
 }
 
-// llgo:link (*X509).CheckPrivateKey C.X509_check_private_key
+//llgo:link (*X509).CheckPrivateKey C.X509_check_private_key
 func (self *X509) CheckPrivateKey(pkey *EVP_PKEY) c.Int {
 	return 0
 }
@@ -1914,16 +1914,16 @@ func (self *X509) CheckPrivateKey(pkey *EVP_PKEY) c.Int {
 //go:linkname X509_chain_check_suiteb C.X509_chain_check_suiteb
 func X509_chain_check_suiteb(perror_depth *c.Int, x *X509, chain *Stack_st_X509, flags c.Ulong) c.Int
 
-// llgo:link (*X509_CRL).CheckSuiteb C.X509_CRL_check_suiteb
+//llgo:link (*X509_CRL).CheckSuiteb C.X509_CRL_check_suiteb
 func (self *X509_CRL) CheckSuiteb(pk *EVP_PKEY, flags c.Ulong) c.Int {
 	return 0
 }
 
-// llgo:link (*Stack_st_X509).OSSL_STACK_OF_X509_free C.OSSL_STACK_OF_X509_free
+//llgo:link (*Stack_st_X509).OSSL_STACK_OF_X509_free C.OSSL_STACK_OF_X509_free
 func (self *Stack_st_X509) OSSL_STACK_OF_X509_free() {
 }
 
-// llgo:link (*Stack_st_X509).X509_chain_up_ref C.X509_chain_up_ref
+//llgo:link (*Stack_st_X509).X509_chain_up_ref C.X509_chain_up_ref
 func (self *Stack_st_X509) X509_chain_up_ref() *Stack_st_X509 {
 	return self
 }
@@ -1931,7 +1931,7 @@ func (self *Stack_st_X509) X509_chain_up_ref() *Stack_st_X509 {
 //go:linkname X509_issuer_and_serial_cmp C.X509_issuer_and_serial_cmp
 func X509_issuer_and_serial_cmp(a *X509, b *X509) c.Int
 
-// llgo:link (*X509).IssuerAndSerialHash C.X509_issuer_and_serial_hash
+//llgo:link (*X509).IssuerAndSerialHash C.X509_issuer_and_serial_hash
 func (self *X509) IssuerAndSerialHash() c.Ulong {
 	return 0
 }
@@ -1939,7 +1939,7 @@ func (self *X509) IssuerAndSerialHash() c.Ulong {
 //go:linkname X509_issuer_name_cmp C.X509_issuer_name_cmp
 func X509_issuer_name_cmp(a *X509, b *X509) c.Int
 
-// llgo:link (*X509).IssuerNameHash C.X509_issuer_name_hash
+//llgo:link (*X509).IssuerNameHash C.X509_issuer_name_hash
 func (self *X509) IssuerNameHash() c.Ulong {
 	return 0
 }
@@ -1947,27 +1947,27 @@ func (self *X509) IssuerNameHash() c.Ulong {
 //go:linkname X509_subject_name_cmp C.X509_subject_name_cmp
 func X509_subject_name_cmp(a *X509, b *X509) c.Int
 
-// llgo:link (*X509).SubjectNameHash C.X509_subject_name_hash
+//llgo:link (*X509).SubjectNameHash C.X509_subject_name_hash
 func (self *X509) SubjectNameHash() c.Ulong {
 	return 0
 }
 
-// llgo:link (*X509).IssuerNameHashOld C.X509_issuer_name_hash_old
+//llgo:link (*X509).IssuerNameHashOld C.X509_issuer_name_hash_old
 func (self *X509) IssuerNameHashOld() c.Ulong {
 	return 0
 }
 
-// llgo:link (*X509).SubjectNameHashOld C.X509_subject_name_hash_old
+//llgo:link (*X509).SubjectNameHashOld C.X509_subject_name_hash_old
 func (self *X509) SubjectNameHashOld() c.Ulong {
 	return 0
 }
 
-// llgo:link (*Stack_st_X509).X509_add_cert C.X509_add_cert
+//llgo:link (*Stack_st_X509).X509_add_cert C.X509_add_cert
 func (self *Stack_st_X509) X509_add_cert(cert *X509, flags c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*Stack_st_X509).X509_add_certs C.X509_add_certs
+//llgo:link (*Stack_st_X509).X509_add_certs C.X509_add_certs
 func (self *Stack_st_X509) X509_add_certs(certs *Stack_st_X509, flags c.Int) c.Int {
 	return 0
 }
@@ -1978,17 +1978,17 @@ func X509_cmp(a *X509, b *X509) c.Int
 //go:linkname X509_NAME_cmp C.X509_NAME_cmp
 func X509_NAME_cmp(a *X509_NAME, b *X509_NAME) c.Int
 
-// llgo:link (*X509).CertificateType C.X509_certificate_type
+//llgo:link (*X509).CertificateType C.X509_certificate_type
 func (self *X509) CertificateType(pubkey *EVP_PKEY) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_NAME).HashEx C.X509_NAME_hash_ex
+//llgo:link (*X509_NAME).HashEx C.X509_NAME_hash_ex
 func (self *X509_NAME) HashEx(libctx *OSSL_LIB_CTX, propq *c.Char, ok *c.Int) c.Ulong {
 	return 0
 }
 
-// llgo:link (*X509_NAME).HashOld C.X509_NAME_hash_old
+//llgo:link (*X509_NAME).HashOld C.X509_NAME_hash_old
 func (self *X509_NAME) HashOld() c.Ulong {
 	return 0
 }
@@ -1999,7 +1999,7 @@ func X509_CRL_cmp(a *X509_CRL, b *X509_CRL) c.Int
 //go:linkname X509_CRL_match C.X509_CRL_match
 func X509_CRL_match(a *X509_CRL, b *X509_CRL) c.Int
 
-// llgo:link (*BIO).X509_aux_print C.X509_aux_print
+//llgo:link (*BIO).X509_aux_print C.X509_aux_print
 func (self *BIO) X509_aux_print(x *X509, indent c.Int) c.Int {
 	return 0
 }
@@ -2019,62 +2019,62 @@ func X509_REQ_print_fp(bp *c.FILE, req *X509_REQ) c.Int
 //go:linkname X509_NAME_print_ex_fp C.X509_NAME_print_ex_fp
 func X509_NAME_print_ex_fp(fp *c.FILE, nm *X509_NAME, indent c.Int, flags c.Ulong) c.Int
 
-// llgo:link (*BIO).X509_NAME_print C.X509_NAME_print
+//llgo:link (*BIO).X509_NAME_print C.X509_NAME_print
 func (self *BIO) X509_NAME_print(name *X509_NAME, obase c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).X509_NAME_print_ex C.X509_NAME_print_ex
+//llgo:link (*BIO).X509_NAME_print_ex C.X509_NAME_print_ex
 func (self *BIO) X509_NAME_print_ex(nm *X509_NAME, indent c.Int, flags c.Ulong) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).X509_print_ex C.X509_print_ex
+//llgo:link (*BIO).X509_print_ex C.X509_print_ex
 func (self *BIO) X509_print_ex(x *X509, nmflag c.Ulong, cflag c.Ulong) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).X509_print C.X509_print
+//llgo:link (*BIO).X509_print C.X509_print
 func (self *BIO) X509_print(x *X509) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).X509_ocspid_print C.X509_ocspid_print
+//llgo:link (*BIO).X509_ocspid_print C.X509_ocspid_print
 func (self *BIO) X509_ocspid_print(x *X509) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).X509_CRL_print_ex C.X509_CRL_print_ex
+//llgo:link (*BIO).X509_CRL_print_ex C.X509_CRL_print_ex
 func (self *BIO) X509_CRL_print_ex(x *X509_CRL, nmflag c.Ulong) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).X509_CRL_print C.X509_CRL_print
+//llgo:link (*BIO).X509_CRL_print C.X509_CRL_print
 func (self *BIO) X509_CRL_print(x *X509_CRL) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).X509_REQ_print_ex C.X509_REQ_print_ex
+//llgo:link (*BIO).X509_REQ_print_ex C.X509_REQ_print_ex
 func (self *BIO) X509_REQ_print_ex(x *X509_REQ, nmflag c.Ulong, cflag c.Ulong) c.Int {
 	return 0
 }
 
-// llgo:link (*BIO).X509_REQ_print C.X509_REQ_print
+//llgo:link (*BIO).X509_REQ_print C.X509_REQ_print
 func (self *BIO) X509_REQ_print(req *X509_REQ) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_NAME).EntryCount C.X509_NAME_entry_count
+//llgo:link (*X509_NAME).EntryCount C.X509_NAME_entry_count
 func (self *X509_NAME) EntryCount() c.Int {
 	return 0
 }
 
-// llgo:link (*X509_NAME).Get_text_by_NID C.X509_NAME_get_text_by_NID
+//llgo:link (*X509_NAME).Get_text_by_NID C.X509_NAME_get_text_by_NID
 func (self *X509_NAME) Get_text_by_NID(nid c.Int, buf *c.Char, len c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_NAME).Get_text_by_OBJ C.X509_NAME_get_text_by_OBJ
+//llgo:link (*X509_NAME).Get_text_by_OBJ C.X509_NAME_get_text_by_OBJ
 func (self *X509_NAME) Get_text_by_OBJ(obj *ASN1_OBJECT, buf *c.Char, len c.Int) c.Int {
 	return 0
 }
@@ -2082,37 +2082,37 @@ func (self *X509_NAME) Get_text_by_OBJ(obj *ASN1_OBJECT, buf *c.Char, len c.Int)
 // NOTE: you should be passing -1, not 0 as lastpos. The functions that use
 // lastpos, search after that position on.
 //
-// llgo:link (*X509_NAME).Get_index_by_NID C.X509_NAME_get_index_by_NID
+//llgo:link (*X509_NAME).Get_index_by_NID C.X509_NAME_get_index_by_NID
 func (self *X509_NAME) Get_index_by_NID(nid c.Int, lastpos c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_NAME).Get_index_by_OBJ C.X509_NAME_get_index_by_OBJ
+//llgo:link (*X509_NAME).Get_index_by_OBJ C.X509_NAME_get_index_by_OBJ
 func (self *X509_NAME) Get_index_by_OBJ(obj *ASN1_OBJECT, lastpos c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_NAME).Entry C.X509_NAME_get_entry
+//llgo:link (*X509_NAME).Entry C.X509_NAME_get_entry
 func (self *X509_NAME) Entry(loc c.Int) *X509_NAME_ENTRY {
 	return nil
 }
 
-// llgo:link (*X509_NAME).DeleteEntry C.X509_NAME_delete_entry
+//llgo:link (*X509_NAME).DeleteEntry C.X509_NAME_delete_entry
 func (self *X509_NAME) DeleteEntry(loc c.Int) *X509_NAME_ENTRY {
 	return nil
 }
 
-// llgo:link (*X509_NAME).AddEntry C.X509_NAME_add_entry
+//llgo:link (*X509_NAME).AddEntry C.X509_NAME_add_entry
 func (self *X509_NAME) AddEntry(ne *X509_NAME_ENTRY, loc c.Int, set c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_NAME).Add_entry_by_OBJ C.X509_NAME_add_entry_by_OBJ
+//llgo:link (*X509_NAME).Add_entry_by_OBJ C.X509_NAME_add_entry_by_OBJ
 func (self *X509_NAME) Add_entry_by_OBJ(obj *ASN1_OBJECT, type_ c.Int, bytes *uint8, len c.Int, loc c.Int, set c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_NAME).Add_entry_by_NID C.X509_NAME_add_entry_by_NID
+//llgo:link (*X509_NAME).Add_entry_by_NID C.X509_NAME_add_entry_by_NID
 func (self *X509_NAME) Add_entry_by_NID(nid c.Int, type_ c.Int, bytes *uint8, len c.Int, loc c.Int, set c.Int) c.Int {
 	return 0
 }
@@ -2123,7 +2123,7 @@ func X509_NAME_ENTRY_create_by_txt(ne **X509_NAME_ENTRY, field *c.Char, type_ c.
 //go:linkname X509_NAME_ENTRY_create_by_NID C.X509_NAME_ENTRY_create_by_NID
 func X509_NAME_ENTRY_create_by_NID(ne **X509_NAME_ENTRY, nid c.Int, type_ c.Int, bytes *uint8, len c.Int) *X509_NAME_ENTRY
 
-// llgo:link (*X509_NAME).AddEntryByTxt C.X509_NAME_add_entry_by_txt
+//llgo:link (*X509_NAME).AddEntryByTxt C.X509_NAME_add_entry_by_txt
 func (self *X509_NAME) AddEntryByTxt(field *c.Char, type_ c.Int, bytes *uint8, len c.Int, loc c.Int, set c.Int) c.Int {
 	return 0
 }
@@ -2131,62 +2131,62 @@ func (self *X509_NAME) AddEntryByTxt(field *c.Char, type_ c.Int, bytes *uint8, l
 //go:linkname X509_NAME_ENTRY_create_by_OBJ C.X509_NAME_ENTRY_create_by_OBJ
 func X509_NAME_ENTRY_create_by_OBJ(ne **X509_NAME_ENTRY, obj *ASN1_OBJECT, type_ c.Int, bytes *uint8, len c.Int) *X509_NAME_ENTRY
 
-// llgo:link (*X509_NAME_ENTRY).SetObject C.X509_NAME_ENTRY_set_object
+//llgo:link (*X509_NAME_ENTRY).SetObject C.X509_NAME_ENTRY_set_object
 func (self *X509_NAME_ENTRY) SetObject(obj *ASN1_OBJECT) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_NAME_ENTRY).SetData C.X509_NAME_ENTRY_set_data
+//llgo:link (*X509_NAME_ENTRY).SetData C.X509_NAME_ENTRY_set_data
 func (self *X509_NAME_ENTRY) SetData(type_ c.Int, bytes *uint8, len c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_NAME_ENTRY).Object C.X509_NAME_ENTRY_get_object
+//llgo:link (*X509_NAME_ENTRY).Object C.X509_NAME_ENTRY_get_object
 func (self *X509_NAME_ENTRY) Object() *ASN1_OBJECT {
 	return nil
 }
 
-// llgo:link (*X509_NAME_ENTRY).Data C.X509_NAME_ENTRY_get_data
+//llgo:link (*X509_NAME_ENTRY).Data C.X509_NAME_ENTRY_get_data
 func (self *X509_NAME_ENTRY) Data() *ASN1_STRING {
 	return nil
 }
 
-// llgo:link (*X509_NAME_ENTRY).Set C.X509_NAME_ENTRY_set
+//llgo:link (*X509_NAME_ENTRY).Set C.X509_NAME_ENTRY_set
 func (self *X509_NAME_ENTRY) Set() c.Int {
 	return 0
 }
 
-// llgo:link (*X509_NAME).Get0Der C.X509_NAME_get0_der
+//llgo:link (*X509_NAME).Get0Der C.X509_NAME_get0_der
 func (self *X509_NAME) Get0Der(pder **uint8, pderlen *c.SizeT) c.Int {
 	return 0
 }
 
-// llgo:link (*Stack_st_X509_EXTENSION).X509v3GetExtCount C.X509v3_get_ext_count
+//llgo:link (*Stack_st_X509_EXTENSION).X509v3GetExtCount C.X509v3_get_ext_count
 func (self *Stack_st_X509_EXTENSION) X509v3GetExtCount() c.Int {
 	return 0
 }
 
-// llgo:link (*Stack_st_X509_EXTENSION).X509v3_get_ext_by_NID C.X509v3_get_ext_by_NID
+//llgo:link (*Stack_st_X509_EXTENSION).X509v3_get_ext_by_NID C.X509v3_get_ext_by_NID
 func (self *Stack_st_X509_EXTENSION) X509v3_get_ext_by_NID(nid c.Int, lastpos c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*Stack_st_X509_EXTENSION).X509v3_get_ext_by_OBJ C.X509v3_get_ext_by_OBJ
+//llgo:link (*Stack_st_X509_EXTENSION).X509v3_get_ext_by_OBJ C.X509v3_get_ext_by_OBJ
 func (self *Stack_st_X509_EXTENSION) X509v3_get_ext_by_OBJ(obj *ASN1_OBJECT, lastpos c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*Stack_st_X509_EXTENSION).X509v3GetExtByCritical C.X509v3_get_ext_by_critical
+//llgo:link (*Stack_st_X509_EXTENSION).X509v3GetExtByCritical C.X509v3_get_ext_by_critical
 func (self *Stack_st_X509_EXTENSION) X509v3GetExtByCritical(crit c.Int, lastpos c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*Stack_st_X509_EXTENSION).X509v3GetExt C.X509v3_get_ext
+//llgo:link (*Stack_st_X509_EXTENSION).X509v3GetExt C.X509v3_get_ext
 func (self *Stack_st_X509_EXTENSION) X509v3GetExt(loc c.Int) *X509_EXTENSION {
 	return nil
 }
 
-// llgo:link (*Stack_st_X509_EXTENSION).X509v3DeleteExt C.X509v3_delete_ext
+//llgo:link (*Stack_st_X509_EXTENSION).X509v3DeleteExt C.X509v3_delete_ext
 func (self *Stack_st_X509_EXTENSION) X509v3DeleteExt(loc c.Int) *X509_EXTENSION {
 	return nil
 }
@@ -2200,137 +2200,137 @@ func X509v3AddExt(x **Stack_st_X509_EXTENSION, ex *X509_EXTENSION, loc c.Int) *S
 //go:linkname X509v3AddExtensions C.X509v3_add_extensions
 func X509v3AddExtensions(target **Stack_st_X509_EXTENSION, exts *Stack_st_X509_EXTENSION) *Stack_st_X509_EXTENSION
 
-// llgo:link (*X509).ExtCount C.X509_get_ext_count
+//llgo:link (*X509).ExtCount C.X509_get_ext_count
 func (self *X509) ExtCount() c.Int {
 	return 0
 }
 
-// llgo:link (*X509).Get_ext_by_NID C.X509_get_ext_by_NID
+//llgo:link (*X509).Get_ext_by_NID C.X509_get_ext_by_NID
 func (self *X509) Get_ext_by_NID(nid c.Int, lastpos c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509).Get_ext_by_OBJ C.X509_get_ext_by_OBJ
+//llgo:link (*X509).Get_ext_by_OBJ C.X509_get_ext_by_OBJ
 func (self *X509) Get_ext_by_OBJ(obj *ASN1_OBJECT, lastpos c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509).ExtByCritical C.X509_get_ext_by_critical
+//llgo:link (*X509).ExtByCritical C.X509_get_ext_by_critical
 func (self *X509) ExtByCritical(crit c.Int, lastpos c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509).Ext C.X509_get_ext
+//llgo:link (*X509).Ext C.X509_get_ext
 func (self *X509) Ext(loc c.Int) *X509_EXTENSION {
 	return nil
 }
 
-// llgo:link (*X509).DeleteExt C.X509_delete_ext
+//llgo:link (*X509).DeleteExt C.X509_delete_ext
 func (self *X509) DeleteExt(loc c.Int) *X509_EXTENSION {
 	return nil
 }
 
-// llgo:link (*X509).AddExt C.X509_add_ext
+//llgo:link (*X509).AddExt C.X509_add_ext
 func (self *X509) AddExt(ex *X509_EXTENSION, loc c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509).ExtD2i C.X509_get_ext_d2i
+//llgo:link (*X509).ExtD2i C.X509_get_ext_d2i
 func (self *X509) ExtD2i(nid c.Int, crit *c.Int, idx *c.Int) unsafe.Pointer {
 	return nil
 }
 
-// llgo:link (*X509).Add1ExtI2d C.X509_add1_ext_i2d
+//llgo:link (*X509).Add1ExtI2d C.X509_add1_ext_i2d
 func (self *X509) Add1ExtI2d(nid c.Int, value unsafe.Pointer, crit c.Int, flags c.Ulong) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_CRL).ExtCount C.X509_CRL_get_ext_count
+//llgo:link (*X509_CRL).ExtCount C.X509_CRL_get_ext_count
 func (self *X509_CRL) ExtCount() c.Int {
 	return 0
 }
 
-// llgo:link (*X509_CRL).Get_ext_by_NID C.X509_CRL_get_ext_by_NID
+//llgo:link (*X509_CRL).Get_ext_by_NID C.X509_CRL_get_ext_by_NID
 func (self *X509_CRL) Get_ext_by_NID(nid c.Int, lastpos c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_CRL).Get_ext_by_OBJ C.X509_CRL_get_ext_by_OBJ
+//llgo:link (*X509_CRL).Get_ext_by_OBJ C.X509_CRL_get_ext_by_OBJ
 func (self *X509_CRL) Get_ext_by_OBJ(obj *ASN1_OBJECT, lastpos c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_CRL).ExtByCritical C.X509_CRL_get_ext_by_critical
+//llgo:link (*X509_CRL).ExtByCritical C.X509_CRL_get_ext_by_critical
 func (self *X509_CRL) ExtByCritical(crit c.Int, lastpos c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_CRL).Ext C.X509_CRL_get_ext
+//llgo:link (*X509_CRL).Ext C.X509_CRL_get_ext
 func (self *X509_CRL) Ext(loc c.Int) *X509_EXTENSION {
 	return nil
 }
 
-// llgo:link (*X509_CRL).DeleteExt C.X509_CRL_delete_ext
+//llgo:link (*X509_CRL).DeleteExt C.X509_CRL_delete_ext
 func (self *X509_CRL) DeleteExt(loc c.Int) *X509_EXTENSION {
 	return nil
 }
 
-// llgo:link (*X509_CRL).AddExt C.X509_CRL_add_ext
+//llgo:link (*X509_CRL).AddExt C.X509_CRL_add_ext
 func (self *X509_CRL) AddExt(ex *X509_EXTENSION, loc c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_CRL).ExtD2i C.X509_CRL_get_ext_d2i
+//llgo:link (*X509_CRL).ExtD2i C.X509_CRL_get_ext_d2i
 func (self *X509_CRL) ExtD2i(nid c.Int, crit *c.Int, idx *c.Int) unsafe.Pointer {
 	return nil
 }
 
-// llgo:link (*X509_CRL).Add1ExtI2d C.X509_CRL_add1_ext_i2d
+//llgo:link (*X509_CRL).Add1ExtI2d C.X509_CRL_add1_ext_i2d
 func (self *X509_CRL) Add1ExtI2d(nid c.Int, value unsafe.Pointer, crit c.Int, flags c.Ulong) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_REVOKED).ExtCount C.X509_REVOKED_get_ext_count
+//llgo:link (*X509_REVOKED).ExtCount C.X509_REVOKED_get_ext_count
 func (self *X509_REVOKED) ExtCount() c.Int {
 	return 0
 }
 
-// llgo:link (*X509_REVOKED).Get_ext_by_NID C.X509_REVOKED_get_ext_by_NID
+//llgo:link (*X509_REVOKED).Get_ext_by_NID C.X509_REVOKED_get_ext_by_NID
 func (self *X509_REVOKED) Get_ext_by_NID(nid c.Int, lastpos c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_REVOKED).Get_ext_by_OBJ C.X509_REVOKED_get_ext_by_OBJ
+//llgo:link (*X509_REVOKED).Get_ext_by_OBJ C.X509_REVOKED_get_ext_by_OBJ
 func (self *X509_REVOKED) Get_ext_by_OBJ(obj *ASN1_OBJECT, lastpos c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_REVOKED).ExtByCritical C.X509_REVOKED_get_ext_by_critical
+//llgo:link (*X509_REVOKED).ExtByCritical C.X509_REVOKED_get_ext_by_critical
 func (self *X509_REVOKED) ExtByCritical(crit c.Int, lastpos c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_REVOKED).Ext C.X509_REVOKED_get_ext
+//llgo:link (*X509_REVOKED).Ext C.X509_REVOKED_get_ext
 func (self *X509_REVOKED) Ext(loc c.Int) *X509_EXTENSION {
 	return nil
 }
 
-// llgo:link (*X509_REVOKED).DeleteExt C.X509_REVOKED_delete_ext
+//llgo:link (*X509_REVOKED).DeleteExt C.X509_REVOKED_delete_ext
 func (self *X509_REVOKED) DeleteExt(loc c.Int) *X509_EXTENSION {
 	return nil
 }
 
-// llgo:link (*X509_REVOKED).AddExt C.X509_REVOKED_add_ext
+//llgo:link (*X509_REVOKED).AddExt C.X509_REVOKED_add_ext
 func (self *X509_REVOKED) AddExt(ex *X509_EXTENSION, loc c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_REVOKED).ExtD2i C.X509_REVOKED_get_ext_d2i
+//llgo:link (*X509_REVOKED).ExtD2i C.X509_REVOKED_get_ext_d2i
 func (self *X509_REVOKED) ExtD2i(nid c.Int, crit *c.Int, idx *c.Int) unsafe.Pointer {
 	return nil
 }
 
-// llgo:link (*X509_REVOKED).Add1ExtI2d C.X509_REVOKED_add1_ext_i2d
+//llgo:link (*X509_REVOKED).Add1ExtI2d C.X509_REVOKED_add1_ext_i2d
 func (self *X509_REVOKED) Add1ExtI2d(nid c.Int, value unsafe.Pointer, crit c.Int, flags c.Ulong) c.Int {
 	return 0
 }
@@ -2341,57 +2341,57 @@ func X509_EXTENSION_create_by_NID(ex **X509_EXTENSION, nid c.Int, crit c.Int, da
 //go:linkname X509_EXTENSION_create_by_OBJ C.X509_EXTENSION_create_by_OBJ
 func X509_EXTENSION_create_by_OBJ(ex **X509_EXTENSION, obj *ASN1_OBJECT, crit c.Int, data *ASN1_OCTET_STRING) *X509_EXTENSION
 
-// llgo:link (*X509_EXTENSION).SetObject C.X509_EXTENSION_set_object
+//llgo:link (*X509_EXTENSION).SetObject C.X509_EXTENSION_set_object
 func (self *X509_EXTENSION) SetObject(obj *ASN1_OBJECT) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_EXTENSION).SetCritical C.X509_EXTENSION_set_critical
+//llgo:link (*X509_EXTENSION).SetCritical C.X509_EXTENSION_set_critical
 func (self *X509_EXTENSION) SetCritical(crit c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_EXTENSION).SetData C.X509_EXTENSION_set_data
+//llgo:link (*X509_EXTENSION).SetData C.X509_EXTENSION_set_data
 func (self *X509_EXTENSION) SetData(data *ASN1_OCTET_STRING) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_EXTENSION).Object C.X509_EXTENSION_get_object
+//llgo:link (*X509_EXTENSION).Object C.X509_EXTENSION_get_object
 func (self *X509_EXTENSION) Object() *ASN1_OBJECT {
 	return nil
 }
 
-// llgo:link (*X509_EXTENSION).Data C.X509_EXTENSION_get_data
+//llgo:link (*X509_EXTENSION).Data C.X509_EXTENSION_get_data
 func (self *X509_EXTENSION) Data() *ASN1_OCTET_STRING {
 	return nil
 }
 
-// llgo:link (*X509_EXTENSION).Critical C.X509_EXTENSION_get_critical
+//llgo:link (*X509_EXTENSION).Critical C.X509_EXTENSION_get_critical
 func (self *X509_EXTENSION) Critical() c.Int {
 	return 0
 }
 
-// llgo:link (*Stack_st_X509_ATTRIBUTE).X509atGetAttrCount C.X509at_get_attr_count
+//llgo:link (*Stack_st_X509_ATTRIBUTE).X509atGetAttrCount C.X509at_get_attr_count
 func (self *Stack_st_X509_ATTRIBUTE) X509atGetAttrCount() c.Int {
 	return 0
 }
 
-// llgo:link (*Stack_st_X509_ATTRIBUTE).X509at_get_attr_by_NID C.X509at_get_attr_by_NID
+//llgo:link (*Stack_st_X509_ATTRIBUTE).X509at_get_attr_by_NID C.X509at_get_attr_by_NID
 func (self *Stack_st_X509_ATTRIBUTE) X509at_get_attr_by_NID(nid c.Int, lastpos c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*Stack_st_X509_ATTRIBUTE).X509at_get_attr_by_OBJ C.X509at_get_attr_by_OBJ
+//llgo:link (*Stack_st_X509_ATTRIBUTE).X509at_get_attr_by_OBJ C.X509at_get_attr_by_OBJ
 func (self *Stack_st_X509_ATTRIBUTE) X509at_get_attr_by_OBJ(obj *ASN1_OBJECT, lastpos c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*Stack_st_X509_ATTRIBUTE).X509atGetAttr C.X509at_get_attr
+//llgo:link (*Stack_st_X509_ATTRIBUTE).X509atGetAttr C.X509at_get_attr
 func (self *Stack_st_X509_ATTRIBUTE) X509atGetAttr(loc c.Int) *X509_ATTRIBUTE {
 	return nil
 }
 
-// llgo:link (*Stack_st_X509_ATTRIBUTE).X509atDeleteAttr C.X509at_delete_attr
+//llgo:link (*Stack_st_X509_ATTRIBUTE).X509atDeleteAttr C.X509at_delete_attr
 func (self *Stack_st_X509_ATTRIBUTE) X509atDeleteAttr(loc c.Int) *X509_ATTRIBUTE {
 	return nil
 }
@@ -2408,7 +2408,7 @@ func X509at_add1_attr_by_NID(x **Stack_st_X509_ATTRIBUTE, nid c.Int, type_ c.Int
 //go:linkname X509atAdd1AttrByTxt C.X509at_add1_attr_by_txt
 func X509atAdd1AttrByTxt(x **Stack_st_X509_ATTRIBUTE, attrname *c.Char, type_ c.Int, bytes *uint8, len c.Int) *Stack_st_X509_ATTRIBUTE
 
-// llgo:link (*Stack_st_X509_ATTRIBUTE).X509at_get0_data_by_OBJ C.X509at_get0_data_by_OBJ
+//llgo:link (*Stack_st_X509_ATTRIBUTE).X509at_get0_data_by_OBJ C.X509at_get0_data_by_OBJ
 func (self *Stack_st_X509_ATTRIBUTE) X509at_get0_data_by_OBJ(obj *ASN1_OBJECT, lastpos c.Int, type_ c.Int) unsafe.Pointer {
 	return nil
 }
@@ -2422,89 +2422,89 @@ func X509_ATTRIBUTE_create_by_OBJ(attr **X509_ATTRIBUTE, obj *ASN1_OBJECT, atrty
 //go:linkname X509_ATTRIBUTE_create_by_txt C.X509_ATTRIBUTE_create_by_txt
 func X509_ATTRIBUTE_create_by_txt(attr **X509_ATTRIBUTE, atrname *c.Char, type_ c.Int, bytes *uint8, len c.Int) *X509_ATTRIBUTE
 
-// llgo:link (*X509_ATTRIBUTE).Set1Object C.X509_ATTRIBUTE_set1_object
+//llgo:link (*X509_ATTRIBUTE).Set1Object C.X509_ATTRIBUTE_set1_object
 func (self *X509_ATTRIBUTE) Set1Object(obj *ASN1_OBJECT) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_ATTRIBUTE).Set1Data C.X509_ATTRIBUTE_set1_data
+//llgo:link (*X509_ATTRIBUTE).Set1Data C.X509_ATTRIBUTE_set1_data
 func (self *X509_ATTRIBUTE) Set1Data(attrtype c.Int, data unsafe.Pointer, len c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_ATTRIBUTE).Get0Data C.X509_ATTRIBUTE_get0_data
+//llgo:link (*X509_ATTRIBUTE).Get0Data C.X509_ATTRIBUTE_get0_data
 func (self *X509_ATTRIBUTE) Get0Data(idx c.Int, atrtype c.Int, data unsafe.Pointer) unsafe.Pointer {
 	return nil
 }
 
-// llgo:link (*X509_ATTRIBUTE).Count C.X509_ATTRIBUTE_count
+//llgo:link (*X509_ATTRIBUTE).Count C.X509_ATTRIBUTE_count
 func (self *X509_ATTRIBUTE) Count() c.Int {
 	return 0
 }
 
-// llgo:link (*X509_ATTRIBUTE).Get0Object C.X509_ATTRIBUTE_get0_object
+//llgo:link (*X509_ATTRIBUTE).Get0Object C.X509_ATTRIBUTE_get0_object
 func (self *X509_ATTRIBUTE) Get0Object() *ASN1_OBJECT {
 	return nil
 }
 
-// llgo:link (*X509_ATTRIBUTE).Get0Type C.X509_ATTRIBUTE_get0_type
+//llgo:link (*X509_ATTRIBUTE).Get0Type C.X509_ATTRIBUTE_get0_type
 func (self *X509_ATTRIBUTE) Get0Type(idx c.Int) *ASN1_TYPE {
 	return nil
 }
 
-// llgo:link (*EVP_PKEY).AttrCount C.EVP_PKEY_get_attr_count
+//llgo:link (*EVP_PKEY).AttrCount C.EVP_PKEY_get_attr_count
 func (self *EVP_PKEY) AttrCount() c.Int {
 	return 0
 }
 
-// llgo:link (*EVP_PKEY).Get_attr_by_NID C.EVP_PKEY_get_attr_by_NID
+//llgo:link (*EVP_PKEY).Get_attr_by_NID C.EVP_PKEY_get_attr_by_NID
 func (self *EVP_PKEY) Get_attr_by_NID(nid c.Int, lastpos c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*EVP_PKEY).Get_attr_by_OBJ C.EVP_PKEY_get_attr_by_OBJ
+//llgo:link (*EVP_PKEY).Get_attr_by_OBJ C.EVP_PKEY_get_attr_by_OBJ
 func (self *EVP_PKEY) Get_attr_by_OBJ(obj *ASN1_OBJECT, lastpos c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*EVP_PKEY).Attr C.EVP_PKEY_get_attr
+//llgo:link (*EVP_PKEY).Attr C.EVP_PKEY_get_attr
 func (self *EVP_PKEY) Attr(loc c.Int) *X509_ATTRIBUTE {
 	return nil
 }
 
-// llgo:link (*EVP_PKEY).DeleteAttr C.EVP_PKEY_delete_attr
+//llgo:link (*EVP_PKEY).DeleteAttr C.EVP_PKEY_delete_attr
 func (self *EVP_PKEY) DeleteAttr(loc c.Int) *X509_ATTRIBUTE {
 	return nil
 }
 
-// llgo:link (*EVP_PKEY).Add1Attr C.EVP_PKEY_add1_attr
+//llgo:link (*EVP_PKEY).Add1Attr C.EVP_PKEY_add1_attr
 func (self *EVP_PKEY) Add1Attr(attr *X509_ATTRIBUTE) c.Int {
 	return 0
 }
 
-// llgo:link (*EVP_PKEY).Add1_attr_by_OBJ C.EVP_PKEY_add1_attr_by_OBJ
+//llgo:link (*EVP_PKEY).Add1_attr_by_OBJ C.EVP_PKEY_add1_attr_by_OBJ
 func (self *EVP_PKEY) Add1_attr_by_OBJ(obj *ASN1_OBJECT, type_ c.Int, bytes *uint8, len c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*EVP_PKEY).Add1_attr_by_NID C.EVP_PKEY_add1_attr_by_NID
+//llgo:link (*EVP_PKEY).Add1_attr_by_NID C.EVP_PKEY_add1_attr_by_NID
 func (self *EVP_PKEY) Add1_attr_by_NID(nid c.Int, type_ c.Int, bytes *uint8, len c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*EVP_PKEY).Add1AttrByTxt C.EVP_PKEY_add1_attr_by_txt
+//llgo:link (*EVP_PKEY).Add1AttrByTxt C.EVP_PKEY_add1_attr_by_txt
 func (self *EVP_PKEY) Add1AttrByTxt(attrname *c.Char, type_ c.Int, bytes *uint8, len c.Int) c.Int {
 	return 0
 }
 
 // lookup a cert from a X509 STACK
 //
-// llgo:link (*Stack_st_X509).X509_find_by_issuer_and_serial C.X509_find_by_issuer_and_serial
+//llgo:link (*Stack_st_X509).X509_find_by_issuer_and_serial C.X509_find_by_issuer_and_serial
 func (self *Stack_st_X509) X509_find_by_issuer_and_serial(name *X509_NAME, serial *ASN1_INTEGER) *X509 {
 	return nil
 }
 
-// llgo:link (*Stack_st_X509).X509_find_by_subject C.X509_find_by_subject
+//llgo:link (*Stack_st_X509).X509_find_by_subject C.X509_find_by_subject
 func (self *Stack_st_X509) X509_find_by_subject(name *X509_NAME) *X509 {
 	return nil
 }
@@ -2512,14 +2512,14 @@ func (self *Stack_st_X509) X509_find_by_subject(name *X509_NAME) *X509 {
 //go:linkname PBEPARAM_new C.PBEPARAM_new
 func PBEPARAM_new() *PBEPARAM
 
-// llgo:link (*PBEPARAM).Free C.PBEPARAM_free
+//llgo:link (*PBEPARAM).Free C.PBEPARAM_free
 func (self *PBEPARAM) Free() {
 }
 
 //go:linkname D2i_PBEPARAM C.d2i_PBEPARAM
 func D2i_PBEPARAM(a **PBEPARAM, in **uint8, len c.Long) *PBEPARAM
 
-// llgo:link (*PBEPARAM).I2d C.i2d_PBEPARAM
+//llgo:link (*PBEPARAM).I2d C.i2d_PBEPARAM
 func (self *PBEPARAM) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -2530,14 +2530,14 @@ func PBEPARAM_it() *ASN1_ITEM
 //go:linkname PBE2PARAM_new C.PBE2PARAM_new
 func PBE2PARAM_new() *PBE2PARAM
 
-// llgo:link (*PBE2PARAM).Free C.PBE2PARAM_free
+//llgo:link (*PBE2PARAM).Free C.PBE2PARAM_free
 func (self *PBE2PARAM) Free() {
 }
 
 //go:linkname D2i_PBE2PARAM C.d2i_PBE2PARAM
 func D2i_PBE2PARAM(a **PBE2PARAM, in **uint8, len c.Long) *PBE2PARAM
 
-// llgo:link (*PBE2PARAM).I2d C.i2d_PBE2PARAM
+//llgo:link (*PBE2PARAM).I2d C.i2d_PBE2PARAM
 func (self *PBE2PARAM) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -2548,14 +2548,14 @@ func PBE2PARAM_it() *ASN1_ITEM
 //go:linkname PBKDF2PARAM_new C.PBKDF2PARAM_new
 func PBKDF2PARAM_new() *PBKDF2PARAM
 
-// llgo:link (*PBKDF2PARAM).Free C.PBKDF2PARAM_free
+//llgo:link (*PBKDF2PARAM).Free C.PBKDF2PARAM_free
 func (self *PBKDF2PARAM) Free() {
 }
 
 //go:linkname D2i_PBKDF2PARAM C.d2i_PBKDF2PARAM
 func D2i_PBKDF2PARAM(a **PBKDF2PARAM, in **uint8, len c.Long) *PBKDF2PARAM
 
-// llgo:link (*PBKDF2PARAM).I2d C.i2d_PBKDF2PARAM
+//llgo:link (*PBKDF2PARAM).I2d C.i2d_PBKDF2PARAM
 func (self *PBKDF2PARAM) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -2566,14 +2566,14 @@ func PBKDF2PARAM_it() *ASN1_ITEM
 //go:linkname PBMAC1PARAM_new C.PBMAC1PARAM_new
 func PBMAC1PARAM_new() *PBMAC1PARAM
 
-// llgo:link (*PBMAC1PARAM).Free C.PBMAC1PARAM_free
+//llgo:link (*PBMAC1PARAM).Free C.PBMAC1PARAM_free
 func (self *PBMAC1PARAM) Free() {
 }
 
 //go:linkname D2i_PBMAC1PARAM C.d2i_PBMAC1PARAM
 func D2i_PBMAC1PARAM(a **PBMAC1PARAM, in **uint8, len c.Long) *PBMAC1PARAM
 
-// llgo:link (*PBMAC1PARAM).I2d C.i2d_PBMAC1PARAM
+//llgo:link (*PBMAC1PARAM).I2d C.i2d_PBMAC1PARAM
 func (self *PBMAC1PARAM) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -2584,14 +2584,14 @@ func PBMAC1PARAM_it() *ASN1_ITEM
 //go:linkname SCRYPT_PARAMS_new C.SCRYPT_PARAMS_new
 func SCRYPT_PARAMS_new() *SCRYPT_PARAMS
 
-// llgo:link (*SCRYPT_PARAMS).Free C.SCRYPT_PARAMS_free
+//llgo:link (*SCRYPT_PARAMS).Free C.SCRYPT_PARAMS_free
 func (self *SCRYPT_PARAMS) Free() {
 }
 
 //go:linkname D2i_SCRYPT_PARAMS C.d2i_SCRYPT_PARAMS
 func D2i_SCRYPT_PARAMS(a **SCRYPT_PARAMS, in **uint8, len c.Long) *SCRYPT_PARAMS
 
-// llgo:link (*SCRYPT_PARAMS).I2d C.i2d_SCRYPT_PARAMS
+//llgo:link (*SCRYPT_PARAMS).I2d C.i2d_SCRYPT_PARAMS
 func (self *SCRYPT_PARAMS) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -2599,12 +2599,12 @@ func (self *SCRYPT_PARAMS) I2d(out **uint8) c.Int {
 //go:linkname SCRYPT_PARAMS_it C.SCRYPT_PARAMS_it
 func SCRYPT_PARAMS_it() *ASN1_ITEM
 
-// llgo:link (*X509_ALGOR).PKCS5_pbe_set0_algor C.PKCS5_pbe_set0_algor
+//llgo:link (*X509_ALGOR).PKCS5_pbe_set0_algor C.PKCS5_pbe_set0_algor
 func (self *X509_ALGOR) PKCS5_pbe_set0_algor(alg c.Int, iter c.Int, salt *uint8, saltlen c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_ALGOR).PKCS5_pbe_set0_algor_ex C.PKCS5_pbe_set0_algor_ex
+//llgo:link (*X509_ALGOR).PKCS5_pbe_set0_algor_ex C.PKCS5_pbe_set0_algor_ex
 func (self *X509_ALGOR) PKCS5_pbe_set0_algor_ex(alg c.Int, iter c.Int, salt *uint8, saltlen c.Int, libctx *OSSL_LIB_CTX) c.Int {
 	return 0
 }
@@ -2615,22 +2615,22 @@ func PKCS5_pbe_set(alg c.Int, iter c.Int, salt *uint8, saltlen c.Int) *X509_ALGO
 //go:linkname PKCS5_pbe_set_ex C.PKCS5_pbe_set_ex
 func PKCS5_pbe_set_ex(alg c.Int, iter c.Int, salt *uint8, saltlen c.Int, libctx *OSSL_LIB_CTX) *X509_ALGOR
 
-// llgo:link (*EVP_CIPHER).PKCS5_pbe2_set C.PKCS5_pbe2_set
+//llgo:link (*EVP_CIPHER).PKCS5_pbe2_set C.PKCS5_pbe2_set
 func (self *EVP_CIPHER) PKCS5_pbe2_set(iter c.Int, salt *uint8, saltlen c.Int) *X509_ALGOR {
 	return nil
 }
 
-// llgo:link (*EVP_CIPHER).PKCS5_pbe2_set_iv C.PKCS5_pbe2_set_iv
+//llgo:link (*EVP_CIPHER).PKCS5_pbe2_set_iv C.PKCS5_pbe2_set_iv
 func (self *EVP_CIPHER) PKCS5_pbe2_set_iv(iter c.Int, salt *uint8, saltlen c.Int, aiv *uint8, prf_nid c.Int) *X509_ALGOR {
 	return nil
 }
 
-// llgo:link (*EVP_CIPHER).PKCS5_pbe2_set_iv_ex C.PKCS5_pbe2_set_iv_ex
+//llgo:link (*EVP_CIPHER).PKCS5_pbe2_set_iv_ex C.PKCS5_pbe2_set_iv_ex
 func (self *EVP_CIPHER) PKCS5_pbe2_set_iv_ex(iter c.Int, salt *uint8, saltlen c.Int, aiv *uint8, prf_nid c.Int, libctx *OSSL_LIB_CTX) *X509_ALGOR {
 	return nil
 }
 
-// llgo:link (*EVP_CIPHER).PKCS5_pbe2_set_scrypt C.PKCS5_pbe2_set_scrypt
+//llgo:link (*EVP_CIPHER).PKCS5_pbe2_set_scrypt C.PKCS5_pbe2_set_scrypt
 func (self *EVP_CIPHER) PKCS5_pbe2_set_scrypt(salt *uint8, saltlen c.Int, aiv *uint8, N c.Uint64T, r c.Uint64T, p c.Uint64T) *X509_ALGOR {
 	return nil
 }
@@ -2643,7 +2643,7 @@ func PKCS5_pbkdf2_set_ex(iter c.Int, salt *uint8, saltlen c.Int, prf_nid c.Int, 
 
 // PKCS#8 utilities
 //
-// llgo:link (*X509_ALGOR).PBMAC1_get1_pbkdf2_param C.PBMAC1_get1_pbkdf2_param
+//llgo:link (*X509_ALGOR).PBMAC1_get1_pbkdf2_param C.PBMAC1_get1_pbkdf2_param
 func (self *X509_ALGOR) PBMAC1_get1_pbkdf2_param() *PBKDF2PARAM {
 	return nil
 }
@@ -2651,14 +2651,14 @@ func (self *X509_ALGOR) PBMAC1_get1_pbkdf2_param() *PBKDF2PARAM {
 //go:linkname PKCS8_PRIV_KEY_INFO_new C.PKCS8_PRIV_KEY_INFO_new
 func PKCS8_PRIV_KEY_INFO_new() *PKCS8_PRIV_KEY_INFO
 
-// llgo:link (*PKCS8_PRIV_KEY_INFO).Free C.PKCS8_PRIV_KEY_INFO_free
+//llgo:link (*PKCS8_PRIV_KEY_INFO).Free C.PKCS8_PRIV_KEY_INFO_free
 func (self *PKCS8_PRIV_KEY_INFO) Free() {
 }
 
 //go:linkname D2i_PKCS8_PRIV_KEY_INFO C.d2i_PKCS8_PRIV_KEY_INFO
 func D2i_PKCS8_PRIV_KEY_INFO(a **PKCS8_PRIV_KEY_INFO, in **uint8, len c.Long) *PKCS8_PRIV_KEY_INFO
 
-// llgo:link (*PKCS8_PRIV_KEY_INFO).I2d C.i2d_PKCS8_PRIV_KEY_INFO
+//llgo:link (*PKCS8_PRIV_KEY_INFO).I2d C.i2d_PKCS8_PRIV_KEY_INFO
 func (self *PKCS8_PRIV_KEY_INFO) I2d(out **uint8) c.Int {
 	return 0
 }
@@ -2666,22 +2666,22 @@ func (self *PKCS8_PRIV_KEY_INFO) I2d(out **uint8) c.Int {
 //go:linkname PKCS8_PRIV_KEY_INFO_it C.PKCS8_PRIV_KEY_INFO_it
 func PKCS8_PRIV_KEY_INFO_it() *ASN1_ITEM
 
-// llgo:link (*PKCS8_PRIV_KEY_INFO).PKCS82PKEY C.EVP_PKCS82PKEY
+//llgo:link (*PKCS8_PRIV_KEY_INFO).PKCS82PKEY C.EVP_PKCS82PKEY
 func (self *PKCS8_PRIV_KEY_INFO) PKCS82PKEY() *EVP_PKEY {
 	return nil
 }
 
-// llgo:link (*PKCS8_PRIV_KEY_INFO).PKCS82PKEY_ex C.EVP_PKCS82PKEY_ex
+//llgo:link (*PKCS8_PRIV_KEY_INFO).PKCS82PKEY_ex C.EVP_PKCS82PKEY_ex
 func (self *PKCS8_PRIV_KEY_INFO) PKCS82PKEY_ex(libctx *OSSL_LIB_CTX, propq *c.Char) *EVP_PKEY {
 	return nil
 }
 
-// llgo:link (*EVP_PKEY).To_PKCS8 C.EVP_PKEY2PKCS8
+//llgo:link (*EVP_PKEY).To_PKCS8 C.EVP_PKEY2PKCS8
 func (self *EVP_PKEY) To_PKCS8() *PKCS8_PRIV_KEY_INFO {
 	return nil
 }
 
-// llgo:link (*PKCS8_PRIV_KEY_INFO).PkeySet0 C.PKCS8_pkey_set0
+//llgo:link (*PKCS8_PRIV_KEY_INFO).PkeySet0 C.PKCS8_pkey_set0
 func (self *PKCS8_PRIV_KEY_INFO) PkeySet0(aobj *ASN1_OBJECT, version c.Int, ptype c.Int, pval unsafe.Pointer, penc *uint8, penclen c.Int) c.Int {
 	return 0
 }
@@ -2689,31 +2689,31 @@ func (self *PKCS8_PRIV_KEY_INFO) PkeySet0(aobj *ASN1_OBJECT, version c.Int, ptyp
 //go:linkname PKCS8_pkey_get0 C.PKCS8_pkey_get0
 func PKCS8_pkey_get0(ppkalg **ASN1_OBJECT, pk **uint8, ppklen *c.Int, pa **X509_ALGOR, p8 *PKCS8_PRIV_KEY_INFO) c.Int
 
-// llgo:link (*PKCS8_PRIV_KEY_INFO).PkeyGet0Attrs C.PKCS8_pkey_get0_attrs
+//llgo:link (*PKCS8_PRIV_KEY_INFO).PkeyGet0Attrs C.PKCS8_pkey_get0_attrs
 func (self *PKCS8_PRIV_KEY_INFO) PkeyGet0Attrs() *Stack_st_X509_ATTRIBUTE {
 	return nil
 }
 
-// llgo:link (*PKCS8_PRIV_KEY_INFO).PkeyAdd1Attr C.PKCS8_pkey_add1_attr
+//llgo:link (*PKCS8_PRIV_KEY_INFO).PkeyAdd1Attr C.PKCS8_pkey_add1_attr
 func (self *PKCS8_PRIV_KEY_INFO) PkeyAdd1Attr(attr *X509_ATTRIBUTE) c.Int {
 	return 0
 }
 
-// llgo:link (*PKCS8_PRIV_KEY_INFO).Pkey_add1_attr_by_NID C.PKCS8_pkey_add1_attr_by_NID
+//llgo:link (*PKCS8_PRIV_KEY_INFO).Pkey_add1_attr_by_NID C.PKCS8_pkey_add1_attr_by_NID
 func (self *PKCS8_PRIV_KEY_INFO) Pkey_add1_attr_by_NID(nid c.Int, type_ c.Int, bytes *uint8, len c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*PKCS8_PRIV_KEY_INFO).Pkey_add1_attr_by_OBJ C.PKCS8_pkey_add1_attr_by_OBJ
+//llgo:link (*PKCS8_PRIV_KEY_INFO).Pkey_add1_attr_by_OBJ C.PKCS8_pkey_add1_attr_by_OBJ
 func (self *PKCS8_PRIV_KEY_INFO) Pkey_add1_attr_by_OBJ(obj *ASN1_OBJECT, type_ c.Int, bytes *uint8, len c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*X509_PUBKEY).Set0PublicKey C.X509_PUBKEY_set0_public_key
+//llgo:link (*X509_PUBKEY).Set0PublicKey C.X509_PUBKEY_set0_public_key
 func (self *X509_PUBKEY) Set0PublicKey(penc *uint8, penclen c.Int) {
 }
 
-// llgo:link (*X509_PUBKEY).Set0Param C.X509_PUBKEY_set0_param
+//llgo:link (*X509_PUBKEY).Set0Param C.X509_PUBKEY_set0_param
 func (self *X509_PUBKEY) Set0Param(aobj *ASN1_OBJECT, ptype c.Int, pval unsafe.Pointer, penc *uint8, penclen c.Int) c.Int {
 	return 0
 }
@@ -2723,3 +2723,20 @@ func X509_PUBKEY_get0_param(ppkalg **ASN1_OBJECT, pk **uint8, ppklen *c.Int, pa 
 
 //go:linkname X509_PUBKEY_eq C.X509_PUBKEY_eq
 func X509_PUBKEY_eq(a *X509_PUBKEY, b *X509_PUBKEY) c.Int
+
+// /
+func (self *X509) ExtractKey() *EVP_PKEY {
+	return self.Pubkey()
+}
+func (self *X509_REQ) ExtractKey() *EVP_PKEY {
+	return self.Pubkey()
+}
+func X509_name_cmp(a *X509_NAME, b *X509_NAME) c.Int {
+	return X509_NAME_cmp(a, b)
+}
+func X509_get_ex_new_index(l c.Long, p unsafe.Pointer, newf *CRYPTO_EX_new, dupf *CRYPTO_EX_dup, freef *CRYPTO_EX_free) c.Int {
+	return CRYPTO_get_ex_new_index(3, l, p, newf, dupf, freef)
+}
+func (self *X509_NAME) Hash() c.Ulong {
+	return self.HashEx(nil, nil, nil)
+}

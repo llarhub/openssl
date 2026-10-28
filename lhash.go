@@ -22,28 +22,28 @@ type LhashSt struct {
 }
 type LH_NODE LhashNodeSt
 
-// llgo:type C
+//llgo:cdecl
 type LH_COMPFUNC = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type LH_COMPFUNCTHUNK = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 LH_COMPFUNC) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type LH_HASHFUNC = func(_llcppg_param1 unsafe.Pointer) c.Ulong
 
-// llgo:type C
+//llgo:cdecl
 type LH_HASHFUNCTHUNK = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 LH_HASHFUNC) c.Ulong
 
-// llgo:type C
+//llgo:cdecl
 type LH_DOALL_FUNC = func(_llcppg_param1 unsafe.Pointer)
 
-// llgo:type C
+//llgo:cdecl
 type LH_DOALL_FUNC_THUNK = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 LH_DOALL_FUNC)
 
-// llgo:type C
+//llgo:cdecl
 type LH_DOALL_FUNCARG = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer)
 
-// llgo:type C
+//llgo:cdecl
 type LH_DOALL_FUNCARG_THUNK = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 LH_DOALL_FUNCARG)
 type LHASH LhashSt
 type Lh_OPENSSL_STRING_dummy struct {
@@ -52,32 +52,32 @@ type Lh_OPENSSL_STRING_dummy struct {
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Lh_OPENSSL_STRING_compfunc = func(_llcppg_param1 *STRING, _llcppg_param2 *STRING) c.Int
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Lh_OPENSSL_STRING_hashfunc = func(_llcppg_param1 *STRING) c.Ulong
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type Lh_OPENSSL_STRING_doallfunc = func(_llcppg_param1 *STRING)
 type Lh_OPENSSL_CSTRING_dummy struct {
 	_xgo_union [1]uint64
 }
 
-// llgo:type C
+//llgo:cdecl
 type Lh_OPENSSL_CSTRING_compfunc = func(_llcppg_param1 *CSTRING, _llcppg_param2 *CSTRING) c.Int
 
-// llgo:type C
+//llgo:cdecl
 type Lh_OPENSSL_CSTRING_hashfunc = func(_llcppg_param1 *CSTRING) c.Ulong
 
-// llgo:type C
+//llgo:cdecl
 type Lh_OPENSSL_CSTRING_doallfunc = func(_llcppg_param1 *CSTRING)
 
-// llgo:link (*LHASH).Error C.OPENSSL_LH_error
+//llgo:link (*LHASH).Error C.OPENSSL_LH_error
 func (self *LHASH) Error() c.Int {
 	return 0
 }
@@ -85,84 +85,84 @@ func (self *LHASH) Error() c.Int {
 //go:linkname LH_new C.OPENSSL_LH_new
 func LH_new(h LH_HASHFUNC, c LH_COMPFUNC) *LHASH
 
-// llgo:link (*LHASH).SetThunks C.OPENSSL_LH_set_thunks
+//llgo:link (*LHASH).SetThunks C.OPENSSL_LH_set_thunks
 func (self *LHASH) SetThunks(hw LH_HASHFUNCTHUNK, cw LH_COMPFUNCTHUNK, daw LH_DOALL_FUNC_THUNK, daaw LH_DOALL_FUNCARG_THUNK) *LHASH {
 	return self
 }
 
-// llgo:link (*LHASH).Free C.OPENSSL_LH_free
+//llgo:link (*LHASH).Free C.OPENSSL_LH_free
 func (self *LHASH) Free() {
 }
 
-// llgo:link (*LHASH).Flush C.OPENSSL_LH_flush
+//llgo:link (*LHASH).Flush C.OPENSSL_LH_flush
 func (self *LHASH) Flush() {
 }
 
-// llgo:link (*LHASH).Insert C.OPENSSL_LH_insert
+//llgo:link (*LHASH).Insert C.OPENSSL_LH_insert
 func (self *LHASH) Insert(data unsafe.Pointer) unsafe.Pointer {
 	return nil
 }
 
-// llgo:link (*LHASH).Delete C.OPENSSL_LH_delete
+//llgo:link (*LHASH).Delete C.OPENSSL_LH_delete
 func (self *LHASH) Delete(data unsafe.Pointer) unsafe.Pointer {
 	return nil
 }
 
-// llgo:link (*LHASH).Retrieve C.OPENSSL_LH_retrieve
+//llgo:link (*LHASH).Retrieve C.OPENSSL_LH_retrieve
 func (self *LHASH) Retrieve(data unsafe.Pointer) unsafe.Pointer {
 	return nil
 }
 
-// llgo:link (*LHASH).Doall C.OPENSSL_LH_doall
+//llgo:link (*LHASH).Doall C.OPENSSL_LH_doall
 func (self *LHASH) Doall(func_ LH_DOALL_FUNC) {
 }
 
-// llgo:link (*LHASH).DoallArg C.OPENSSL_LH_doall_arg
+//llgo:link (*LHASH).DoallArg C.OPENSSL_LH_doall_arg
 func (self *LHASH) DoallArg(func_ LH_DOALL_FUNCARG, arg unsafe.Pointer) {
 }
 
-// llgo:link (*LHASH).DoallArgThunk C.OPENSSL_LH_doall_arg_thunk
+//llgo:link (*LHASH).DoallArgThunk C.OPENSSL_LH_doall_arg_thunk
 func (self *LHASH) DoallArgThunk(daaw LH_DOALL_FUNCARG_THUNK, fn LH_DOALL_FUNCARG, arg unsafe.Pointer) {
 }
 
 //go:linkname LH_strhash C.OPENSSL_LH_strhash
 func LH_strhash(c *c.Char) c.Ulong
 
-// llgo:link (*LHASH).NumItems C.OPENSSL_LH_num_items
+//llgo:link (*LHASH).NumItems C.OPENSSL_LH_num_items
 func (self *LHASH) NumItems() c.Ulong {
 	return 0
 }
 
-// llgo:link (*LHASH).DownLoad C.OPENSSL_LH_get_down_load
+//llgo:link (*LHASH).DownLoad C.OPENSSL_LH_get_down_load
 func (self *LHASH) DownLoad() c.Ulong {
 	return 0
 }
 
-// llgo:link (*LHASH).SetDownLoad C.OPENSSL_LH_set_down_load
+//llgo:link (*LHASH).SetDownLoad C.OPENSSL_LH_set_down_load
 func (self *LHASH) SetDownLoad(down_load c.Ulong) {
 }
 
-// llgo:link (*LHASH).Stats C.OPENSSL_LH_stats
+//llgo:link (*LHASH).Stats C.OPENSSL_LH_stats
 func (self *LHASH) Stats(fp *c.FILE) {
 }
 
-// llgo:link (*LHASH).NodeStats C.OPENSSL_LH_node_stats
+//llgo:link (*LHASH).NodeStats C.OPENSSL_LH_node_stats
 func (self *LHASH) NodeStats(fp *c.FILE) {
 }
 
-// llgo:link (*LHASH).NodeUsageStats C.OPENSSL_LH_node_usage_stats
+//llgo:link (*LHASH).NodeUsageStats C.OPENSSL_LH_node_usage_stats
 func (self *LHASH) NodeUsageStats(fp *c.FILE) {
 }
 
-// llgo:link (*LHASH).StatsBio C.OPENSSL_LH_stats_bio
+//llgo:link (*LHASH).StatsBio C.OPENSSL_LH_stats_bio
 func (self *LHASH) StatsBio(out *BIO) {
 }
 
-// llgo:link (*LHASH).NodeStatsBio C.OPENSSL_LH_node_stats_bio
+//llgo:link (*LHASH).NodeStatsBio C.OPENSSL_LH_node_stats_bio
 func (self *LHASH) NodeStatsBio(out *BIO) {
 }
 
-// llgo:link (*LHASH).NodeUsageStatsBio C.OPENSSL_LH_node_usage_stats_bio
+//llgo:link (*LHASH).NodeUsageStatsBio C.OPENSSL_LH_node_usage_stats_bio
 func (self *LHASH) NodeUsageStatsBio(out *BIO) {
 }
 func (p *Lh_OPENSSL_STRING_dummy) XGof_ref_d1() *unsafe.Pointer {

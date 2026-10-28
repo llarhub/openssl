@@ -83,7 +83,7 @@ const OSSL_PARAM_OCTET_PTR = 7
 //
 // An array of these is always terminated by function_id == 0
 //
-// llgo:type C
+//llgo:cdecl
 type OsslDispatchSt struct {
 	FunctionId c.Int
 	Function   func()
@@ -148,7 +148,7 @@ type OSSL_CORE_BIO OsslCoreBioSt
 // table passed to OSSL_provider_init(). The arg passed back to a provider will
 // be the provider side context object.
 //
-// llgo:type C
+//llgo:cdecl
 type OSSL_thread_stop_handler_fn = func(_llcppg_param1 unsafe.Pointer)
 
 // -
@@ -161,7 +161,7 @@ type OSSL_thread_stop_handler_fn = func(_llcppg_param1 unsafe.Pointer)
 //              provider needs it.  This value is passed to other provider
 //              functions, notably other context constructors.
 //
-// llgo:type C
+//llgo:cdecl
 type OSSL_provider_init_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_param2 *OSSL_DISPATCH, _llcppg_param3 **OSSL_DISPATCH, _llcppg_param4 *unsafe.Pointer) c.Int
 
 // Generic callback function signature.
@@ -176,7 +176,7 @@ type OSSL_provider_init_fn = func(_llcppg_param1 *OSSL_CORE_HANDLE, _llcppg_para
 // libcrypto may use the OSSL_PARAM array to create arguments for an
 // application callback it knows about.
 //
-// llgo:type C
+//llgo:cdecl
 type OSSL_CALLBACK = func(_llcppg_param1 *OSSL_PARAM, _llcppg_param2 unsafe.Pointer) c.Int
 
 // Passphrase callback function signature
@@ -184,7 +184,7 @@ type OSSL_CALLBACK = func(_llcppg_param1 *OSSL_PARAM, _llcppg_param2 unsafe.Poin
 // This is similar to the generic callback function above, but adds a
 // result parameter.
 //
-// llgo:type C
+//llgo:cdecl
 type OSSL_INOUT_CALLBACK = func(_llcppg_param1 *OSSL_PARAM, _llcppg_param2 *OSSL_PARAM, _llcppg_param3 unsafe.Pointer) c.Int
 
 // Passphrase callback function signature
@@ -192,10 +192,10 @@ type OSSL_INOUT_CALLBACK = func(_llcppg_param1 *OSSL_PARAM, _llcppg_param2 *OSSL
 // This is similar to the generic callback function above, but adds a
 // result parameter.
 //
-// llgo:type C
+//llgo:cdecl
 type OSSL_PASSPHRASE_CALLBACK = func(_llcppg_param1 *c.Char, _llcppg_param2 c.SizeT, _llcppg_param3 *c.SizeT, _llcppg_param4 *OSSL_PARAM, _llcppg_param5 unsafe.Pointer) c.Int
 
-// llgo:link (*OSSL_CORE_HANDLE).ProviderInit C.OSSL_provider_init
+//llgo:link (*OSSL_CORE_HANDLE).ProviderInit C.OSSL_provider_init
 func (self *OSSL_CORE_HANDLE) ProviderInit(_llcppg_param2 *OSSL_DISPATCH, _llcppg_param3 **OSSL_DISPATCH, _llcppg_param4 *unsafe.Pointer) c.Int {
 	return 0
 }

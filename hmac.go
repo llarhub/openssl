@@ -10,7 +10,7 @@ import (
 // Deprecated
 const HMAC_MAX_MD_CBLOCK = 200
 
-// llgo:link (*HMAC_CTX).Size C.HMAC_size
+//llgo:link (*HMAC_CTX).Size C.HMAC_size
 func (self *HMAC_CTX) Size() c.SizeT {
 	return 0
 }
@@ -18,31 +18,31 @@ func (self *HMAC_CTX) Size() c.SizeT {
 //go:linkname HMAC_CTX_new C.HMAC_CTX_new
 func HMAC_CTX_new() *HMAC_CTX
 
-// llgo:link (*HMAC_CTX).Reset C.HMAC_CTX_reset
+//llgo:link (*HMAC_CTX).Reset C.HMAC_CTX_reset
 func (self *HMAC_CTX) Reset() c.Int {
 	return 0
 }
 
-// llgo:link (*HMAC_CTX).Free C.HMAC_CTX_free
+//llgo:link (*HMAC_CTX).Free C.HMAC_CTX_free
 func (self *HMAC_CTX) Free() {
 }
 
-// llgo:link (*HMAC_CTX).Init C.HMAC_Init
+//llgo:link (*HMAC_CTX).Init C.HMAC_Init
 func (self *HMAC_CTX) Init(key unsafe.Pointer, len c.Int, md *EVP_MD) c.Int {
 	return 0
 }
 
-// llgo:link (*HMAC_CTX).InitEx C.HMAC_Init_ex
+//llgo:link (*HMAC_CTX).InitEx C.HMAC_Init_ex
 func (self *HMAC_CTX) InitEx(key unsafe.Pointer, len c.Int, md *EVP_MD, impl *ENGINE) c.Int {
 	return 0
 }
 
-// llgo:link (*HMAC_CTX).Update C.HMAC_Update
+//llgo:link (*HMAC_CTX).Update C.HMAC_Update
 func (self *HMAC_CTX) Update(data *uint8, len c.SizeT) c.Int {
 	return 0
 }
 
-// llgo:link (*HMAC_CTX).Final C.HMAC_Final
+//llgo:link (*HMAC_CTX).Final C.HMAC_Final
 func (self *HMAC_CTX) Final(md *uint8, len *c.Uint) c.Int {
 	return 0
 }
@@ -50,16 +50,16 @@ func (self *HMAC_CTX) Final(md *uint8, len *c.Uint) c.Int {
 //go:linkname HMAC_CTX_copy C.HMAC_CTX_copy
 func HMAC_CTX_copy(dctx *HMAC_CTX, sctx *HMAC_CTX) c.Int
 
-// llgo:link (*HMAC_CTX).SetFlags C.HMAC_CTX_set_flags
+//llgo:link (*HMAC_CTX).SetFlags C.HMAC_CTX_set_flags
 func (self *HMAC_CTX) SetFlags(flags c.Ulong) {
 }
 
-// llgo:link (*HMAC_CTX).Md C.HMAC_CTX_get_md
+//llgo:link (*HMAC_CTX).Md C.HMAC_CTX_get_md
 func (self *HMAC_CTX) Md() *EVP_MD {
 	return nil
 }
 
-// llgo:link (*EVP_MD).HMAC C.HMAC
+//llgo:link (*EVP_MD).HMAC C.HMAC
 func (self *EVP_MD) HMAC(key unsafe.Pointer, key_len c.Int, data *uint8, data_len c.SizeT, md *uint8, md_len *c.Uint) *uint8 {
 	return nil
 }

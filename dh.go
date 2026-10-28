@@ -90,102 +90,102 @@ const (
 // backward compatibility:
 const DH_CHECK_P_NOT_STRONG_PRIME = 2
 
-// llgo:link (*EVP_PKEY_CTX).SetDhParamgenType C.EVP_PKEY_CTX_set_dh_paramgen_type
+//llgo:link (*EVP_PKEY_CTX).SetDhParamgenType C.EVP_PKEY_CTX_set_dh_paramgen_type
 func (self *EVP_PKEY_CTX) SetDhParamgenType(typ c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*EVP_PKEY_CTX).SetDhParamgenGindex C.EVP_PKEY_CTX_set_dh_paramgen_gindex
+//llgo:link (*EVP_PKEY_CTX).SetDhParamgenGindex C.EVP_PKEY_CTX_set_dh_paramgen_gindex
 func (self *EVP_PKEY_CTX) SetDhParamgenGindex(gindex c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*EVP_PKEY_CTX).SetDhParamgenSeed C.EVP_PKEY_CTX_set_dh_paramgen_seed
+//llgo:link (*EVP_PKEY_CTX).SetDhParamgenSeed C.EVP_PKEY_CTX_set_dh_paramgen_seed
 func (self *EVP_PKEY_CTX) SetDhParamgenSeed(seed *uint8, seedlen c.SizeT) c.Int {
 	return 0
 }
 
-// llgo:link (*EVP_PKEY_CTX).SetDhParamgenPrimeLen C.EVP_PKEY_CTX_set_dh_paramgen_prime_len
+//llgo:link (*EVP_PKEY_CTX).SetDhParamgenPrimeLen C.EVP_PKEY_CTX_set_dh_paramgen_prime_len
 func (self *EVP_PKEY_CTX) SetDhParamgenPrimeLen(pbits c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*EVP_PKEY_CTX).SetDhParamgenSubprimeLen C.EVP_PKEY_CTX_set_dh_paramgen_subprime_len
+//llgo:link (*EVP_PKEY_CTX).SetDhParamgenSubprimeLen C.EVP_PKEY_CTX_set_dh_paramgen_subprime_len
 func (self *EVP_PKEY_CTX) SetDhParamgenSubprimeLen(qlen c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*EVP_PKEY_CTX).SetDhParamgenGenerator C.EVP_PKEY_CTX_set_dh_paramgen_generator
+//llgo:link (*EVP_PKEY_CTX).SetDhParamgenGenerator C.EVP_PKEY_CTX_set_dh_paramgen_generator
 func (self *EVP_PKEY_CTX) SetDhParamgenGenerator(gen c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*EVP_PKEY_CTX).SetDhNid C.EVP_PKEY_CTX_set_dh_nid
+//llgo:link (*EVP_PKEY_CTX).SetDhNid C.EVP_PKEY_CTX_set_dh_nid
 func (self *EVP_PKEY_CTX) SetDhNid(nid c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*EVP_PKEY_CTX).SetDhRfc5114 C.EVP_PKEY_CTX_set_dh_rfc5114
+//llgo:link (*EVP_PKEY_CTX).SetDhRfc5114 C.EVP_PKEY_CTX_set_dh_rfc5114
 func (self *EVP_PKEY_CTX) SetDhRfc5114(gen c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*EVP_PKEY_CTX).SetDhxRfc5114 C.EVP_PKEY_CTX_set_dhx_rfc5114
+//llgo:link (*EVP_PKEY_CTX).SetDhxRfc5114 C.EVP_PKEY_CTX_set_dhx_rfc5114
 func (self *EVP_PKEY_CTX) SetDhxRfc5114(gen c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*EVP_PKEY_CTX).SetDhPad C.EVP_PKEY_CTX_set_dh_pad
+//llgo:link (*EVP_PKEY_CTX).SetDhPad C.EVP_PKEY_CTX_set_dh_pad
 func (self *EVP_PKEY_CTX) SetDhPad(pad c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*EVP_PKEY_CTX).SetDhKdfType C.EVP_PKEY_CTX_set_dh_kdf_type
+//llgo:link (*EVP_PKEY_CTX).SetDhKdfType C.EVP_PKEY_CTX_set_dh_kdf_type
 func (self *EVP_PKEY_CTX) SetDhKdfType(kdf c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*EVP_PKEY_CTX).DhKdfType C.EVP_PKEY_CTX_get_dh_kdf_type
+//llgo:link (*EVP_PKEY_CTX).DhKdfType C.EVP_PKEY_CTX_get_dh_kdf_type
 func (self *EVP_PKEY_CTX) DhKdfType() c.Int {
 	return 0
 }
 
-// llgo:link (*EVP_PKEY_CTX).Set0DhKdfOid C.EVP_PKEY_CTX_set0_dh_kdf_oid
+//llgo:link (*EVP_PKEY_CTX).Set0DhKdfOid C.EVP_PKEY_CTX_set0_dh_kdf_oid
 func (self *EVP_PKEY_CTX) Set0DhKdfOid(oid *ASN1_OBJECT) c.Int {
 	return 0
 }
 
-// llgo:link (*EVP_PKEY_CTX).Get0DhKdfOid C.EVP_PKEY_CTX_get0_dh_kdf_oid
+//llgo:link (*EVP_PKEY_CTX).Get0DhKdfOid C.EVP_PKEY_CTX_get0_dh_kdf_oid
 func (self *EVP_PKEY_CTX) Get0DhKdfOid(oid **ASN1_OBJECT) c.Int {
 	return 0
 }
 
-// llgo:link (*EVP_PKEY_CTX).SetDhKdfMd C.EVP_PKEY_CTX_set_dh_kdf_md
+//llgo:link (*EVP_PKEY_CTX).SetDhKdfMd C.EVP_PKEY_CTX_set_dh_kdf_md
 func (self *EVP_PKEY_CTX) SetDhKdfMd(md *EVP_MD) c.Int {
 	return 0
 }
 
-// llgo:link (*EVP_PKEY_CTX).DhKdfMd C.EVP_PKEY_CTX_get_dh_kdf_md
+//llgo:link (*EVP_PKEY_CTX).DhKdfMd C.EVP_PKEY_CTX_get_dh_kdf_md
 func (self *EVP_PKEY_CTX) DhKdfMd(md **EVP_MD) c.Int {
 	return 0
 }
 
-// llgo:link (*EVP_PKEY_CTX).SetDhKdfOutlen C.EVP_PKEY_CTX_set_dh_kdf_outlen
+//llgo:link (*EVP_PKEY_CTX).SetDhKdfOutlen C.EVP_PKEY_CTX_set_dh_kdf_outlen
 func (self *EVP_PKEY_CTX) SetDhKdfOutlen(len c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*EVP_PKEY_CTX).DhKdfOutlen C.EVP_PKEY_CTX_get_dh_kdf_outlen
+//llgo:link (*EVP_PKEY_CTX).DhKdfOutlen C.EVP_PKEY_CTX_get_dh_kdf_outlen
 func (self *EVP_PKEY_CTX) DhKdfOutlen(len *c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*EVP_PKEY_CTX).Set0DhKdfUkm C.EVP_PKEY_CTX_set0_dh_kdf_ukm
+//llgo:link (*EVP_PKEY_CTX).Set0DhKdfUkm C.EVP_PKEY_CTX_set0_dh_kdf_ukm
 func (self *EVP_PKEY_CTX) Set0DhKdfUkm(ukm *uint8, len c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*EVP_PKEY_CTX).Get0DhKdfUkm C.EVP_PKEY_CTX_get0_dh_kdf_ukm
+//llgo:link (*EVP_PKEY_CTX).Get0DhKdfUkm C.EVP_PKEY_CTX_get0_dh_kdf_ukm
 func (self *EVP_PKEY_CTX) Get0DhKdfUkm(ukm **uint8) c.Int {
 	return 0
 }
@@ -193,7 +193,7 @@ func (self *EVP_PKEY_CTX) Get0DhKdfUkm(ukm **uint8) c.Int {
 //go:linkname DHparamsIt C.DHparams_it
 func DHparamsIt() *ASN1_ITEM
 
-// llgo:link (*DH).DHparamsDup C.DHparams_dup
+//llgo:link (*DH).DHparamsDup C.DHparams_dup
 func (self *DH) DHparamsDup() *DH {
 	return self
 }
@@ -201,19 +201,19 @@ func (self *DH) DHparamsDup() *DH {
 //go:linkname DH_OpenSSL C.DH_OpenSSL
 func DH_OpenSSL() *DH_METHOD
 
-// llgo:link (*DH_METHOD).SetDefaultMethod C.DH_set_default_method
+//llgo:link (*DH_METHOD).SetDefaultMethod C.DH_set_default_method
 func (self *DH_METHOD) SetDefaultMethod() {
 }
 
 //go:linkname DH_get_default_method C.DH_get_default_method
 func DH_get_default_method() *DH_METHOD
 
-// llgo:link (*DH).SetMethod C.DH_set_method
+//llgo:link (*DH).SetMethod C.DH_set_method
 func (self *DH) SetMethod(meth *DH_METHOD) c.Int {
 	return 0
 }
 
-// llgo:link (*ENGINE).DH_new_method C.DH_new_method
+//llgo:link (*ENGINE).DH_new_method C.DH_new_method
 func (self *ENGINE) DH_new_method() *DH {
 	return nil
 }
@@ -221,76 +221,76 @@ func (self *ENGINE) DH_new_method() *DH {
 //go:linkname DH_new C.DH_new
 func DH_new() *DH
 
-// llgo:link (*DH).Free C.DH_free
+//llgo:link (*DH).Free C.DH_free
 func (self *DH) Free() {
 }
 
-// llgo:link (*DH).UpRef C.DH_up_ref
+//llgo:link (*DH).UpRef C.DH_up_ref
 func (self *DH) UpRef() c.Int {
 	return 0
 }
 
-// llgo:link (*DH).Bits C.DH_bits
+//llgo:link (*DH).Bits C.DH_bits
 func (self *DH) Bits() c.Int {
 	return 0
 }
 
-// llgo:link (*DH).Size C.DH_size
+//llgo:link (*DH).Size C.DH_size
 func (self *DH) Size() c.Int {
 	return 0
 }
 
-// llgo:link (*DH).SecurityBits C.DH_security_bits
+//llgo:link (*DH).SecurityBits C.DH_security_bits
 func (self *DH) SecurityBits() c.Int {
 	return 0
 }
 
-// llgo:link (*DH).SetExData C.DH_set_ex_data
+//llgo:link (*DH).SetExData C.DH_set_ex_data
 func (self *DH) SetExData(idx c.Int, arg unsafe.Pointer) c.Int {
 	return 0
 }
 
-// llgo:link (*DH).ExData C.DH_get_ex_data
+//llgo:link (*DH).ExData C.DH_get_ex_data
 func (self *DH) ExData(idx c.Int) unsafe.Pointer {
 	return nil
 }
 
-// llgo:link (*DH).GenerateParametersEx C.DH_generate_parameters_ex
+//llgo:link (*DH).GenerateParametersEx C.DH_generate_parameters_ex
 func (self *DH) GenerateParametersEx(prime_len c.Int, generator c.Int, cb *BN_GENCB) c.Int {
 	return 0
 }
 
-// llgo:link (*DH).CheckParamsEx C.DH_check_params_ex
+//llgo:link (*DH).CheckParamsEx C.DH_check_params_ex
 func (self *DH) CheckParamsEx() c.Int {
 	return 0
 }
 
-// llgo:link (*DH).CheckEx C.DH_check_ex
+//llgo:link (*DH).CheckEx C.DH_check_ex
 func (self *DH) CheckEx() c.Int {
 	return 0
 }
 
-// llgo:link (*DH).CheckPubKeyEx C.DH_check_pub_key_ex
+//llgo:link (*DH).CheckPubKeyEx C.DH_check_pub_key_ex
 func (self *DH) CheckPubKeyEx(pub_key *BIGNUM) c.Int {
 	return 0
 }
 
-// llgo:link (*DH).CheckParams C.DH_check_params
+//llgo:link (*DH).CheckParams C.DH_check_params
 func (self *DH) CheckParams(ret *c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*DH).Check C.DH_check
+//llgo:link (*DH).Check C.DH_check
 func (self *DH) Check(codes *c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*DH).CheckPubKey C.DH_check_pub_key
+//llgo:link (*DH).CheckPubKey C.DH_check_pub_key
 func (self *DH) CheckPubKey(pub_key *BIGNUM, codes *c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*DH).GenerateKey C.DH_generate_key
+//llgo:link (*DH).GenerateKey C.DH_generate_key
 func (self *DH) GenerateKey() c.Int {
 	return 0
 }
@@ -304,7 +304,7 @@ func DH_compute_key_padded(key *uint8, pub_key *BIGNUM, dh *DH) c.Int
 //go:linkname D2iDHparams C.d2i_DHparams
 func D2iDHparams(a **DH, in **uint8, len c.Long) *DH
 
-// llgo:link (*DH).I2dDHparams C.i2d_DHparams
+//llgo:link (*DH).I2dDHparams C.i2d_DHparams
 func (self *DH) I2dDHparams(out **uint8) c.Int {
 	return 0
 }
@@ -312,7 +312,7 @@ func (self *DH) I2dDHparams(out **uint8) c.Int {
 //go:linkname D2iDHxparams C.d2i_DHxparams
 func D2iDHxparams(a **DH, in **uint8, len c.Long) *DH
 
-// llgo:link (*DH).I2dDHxparams C.i2d_DHxparams
+//llgo:link (*DH).I2dDHxparams C.i2d_DHxparams
 func (self *DH) I2dDHxparams(out **uint8) c.Int {
 	return 0
 }
@@ -320,7 +320,7 @@ func (self *DH) I2dDHxparams(out **uint8) c.Int {
 //go:linkname DHparamsPrintFp C.DHparams_print_fp
 func DHparamsPrintFp(fp *c.FILE, x *DH) c.Int
 
-// llgo:link (*BIO).DHparamsPrint C.DHparams_print
+//llgo:link (*BIO).DHparamsPrint C.DHparams_print
 func (self *BIO) DHparamsPrint(x *DH) c.Int {
 	return 0
 }
@@ -341,7 +341,7 @@ func DH_get_2048_256() *DH
 //go:linkname DH_new_by_nid C.DH_new_by_nid
 func DH_new_by_nid(nid c.Int) *DH
 
-// llgo:link (*DH).Nid C.DH_get_nid
+//llgo:link (*DH).Nid C.DH_get_nid
 func (self *DH) Nid() c.Int {
 	return 0
 }
@@ -351,68 +351,68 @@ func (self *DH) Nid() c.Int {
 //go:linkname DH_KDF_X9_42 C.DH_KDF_X9_42
 func DH_KDF_X9_42(out *uint8, outlen c.SizeT, Z *uint8, Zlen c.SizeT, key_oid *ASN1_OBJECT, ukm *uint8, ukmlen c.SizeT, md *EVP_MD) c.Int
 
-// llgo:link (*DH).Get0Pqg C.DH_get0_pqg
+//llgo:link (*DH).Get0Pqg C.DH_get0_pqg
 func (self *DH) Get0Pqg(p **BIGNUM, q **BIGNUM, g **BIGNUM) {
 }
 
-// llgo:link (*DH).Set0Pqg C.DH_set0_pqg
+//llgo:link (*DH).Set0Pqg C.DH_set0_pqg
 func (self *DH) Set0Pqg(p *BIGNUM, q *BIGNUM, g *BIGNUM) c.Int {
 	return 0
 }
 
-// llgo:link (*DH).Get0Key C.DH_get0_key
+//llgo:link (*DH).Get0Key C.DH_get0_key
 func (self *DH) Get0Key(pub_key **BIGNUM, priv_key **BIGNUM) {
 }
 
-// llgo:link (*DH).Set0Key C.DH_set0_key
+//llgo:link (*DH).Set0Key C.DH_set0_key
 func (self *DH) Set0Key(pub_key *BIGNUM, priv_key *BIGNUM) c.Int {
 	return 0
 }
 
-// llgo:link (*DH).Get0P C.DH_get0_p
+//llgo:link (*DH).Get0P C.DH_get0_p
 func (self *DH) Get0P() *BIGNUM {
 	return nil
 }
 
-// llgo:link (*DH).Get0Q C.DH_get0_q
+//llgo:link (*DH).Get0Q C.DH_get0_q
 func (self *DH) Get0Q() *BIGNUM {
 	return nil
 }
 
-// llgo:link (*DH).Get0G C.DH_get0_g
+//llgo:link (*DH).Get0G C.DH_get0_g
 func (self *DH) Get0G() *BIGNUM {
 	return nil
 }
 
-// llgo:link (*DH).Get0PrivKey C.DH_get0_priv_key
+//llgo:link (*DH).Get0PrivKey C.DH_get0_priv_key
 func (self *DH) Get0PrivKey() *BIGNUM {
 	return nil
 }
 
-// llgo:link (*DH).Get0PubKey C.DH_get0_pub_key
+//llgo:link (*DH).Get0PubKey C.DH_get0_pub_key
 func (self *DH) Get0PubKey() *BIGNUM {
 	return nil
 }
 
-// llgo:link (*DH).ClearFlags C.DH_clear_flags
+//llgo:link (*DH).ClearFlags C.DH_clear_flags
 func (self *DH) ClearFlags(flags c.Int) {
 }
 
-// llgo:link (*DH).TestFlags C.DH_test_flags
+//llgo:link (*DH).TestFlags C.DH_test_flags
 func (self *DH) TestFlags(flags c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*DH).SetFlags C.DH_set_flags
+//llgo:link (*DH).SetFlags C.DH_set_flags
 func (self *DH) SetFlags(flags c.Int) {
 }
 
-// llgo:link (*DH).Length C.DH_get_length
+//llgo:link (*DH).Length C.DH_get_length
 func (self *DH) Length() c.Long {
 	return 0
 }
 
-// llgo:link (*DH).SetLength C.DH_set_length
+//llgo:link (*DH).SetLength C.DH_set_length
 func (self *DH) SetLength(length c.Long) c.Int {
 	return 0
 }
@@ -420,104 +420,107 @@ func (self *DH) SetLength(length c.Long) c.Int {
 //go:linkname DH_meth_new C.DH_meth_new
 func DH_meth_new(name *c.Char, flags c.Int) *DH_METHOD
 
-// llgo:link (*DH_METHOD).Free C.DH_meth_free
+//llgo:link (*DH_METHOD).Free C.DH_meth_free
 func (self *DH_METHOD) Free() {
 }
 
-// llgo:link (*DH_METHOD).Dup C.DH_meth_dup
+//llgo:link (*DH_METHOD).Dup C.DH_meth_dup
 func (self *DH_METHOD) Dup() *DH_METHOD {
 	return self
 }
 
-// llgo:link (*DH_METHOD).Get0Name C.DH_meth_get0_name
+//llgo:link (*DH_METHOD).Get0Name C.DH_meth_get0_name
 func (self *DH_METHOD) Get0Name() *c.Char {
 	return nil
 }
 
-// llgo:link (*DH_METHOD).Set1Name C.DH_meth_set1_name
+//llgo:link (*DH_METHOD).Set1Name C.DH_meth_set1_name
 func (self *DH_METHOD) Set1Name(name *c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*DH_METHOD).Flags C.DH_meth_get_flags
+//llgo:link (*DH_METHOD).Flags C.DH_meth_get_flags
 func (self *DH_METHOD) Flags() c.Int {
 	return 0
 }
 
-// llgo:link (*DH_METHOD).SetFlags C.DH_meth_set_flags
+//llgo:link (*DH_METHOD).SetFlags C.DH_meth_set_flags
 func (self *DH_METHOD) SetFlags(flags c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*DH_METHOD).Get0AppData C.DH_meth_get0_app_data
+//llgo:link (*DH_METHOD).Get0AppData C.DH_meth_get0_app_data
 func (self *DH_METHOD) Get0AppData() unsafe.Pointer {
 	return nil
 }
 
-// llgo:link (*DH_METHOD).Set0AppData C.DH_meth_set0_app_data
+//llgo:link (*DH_METHOD).Set0AppData C.DH_meth_set0_app_data
 func (self *DH_METHOD) Set0AppData(app_data unsafe.Pointer) c.Int {
 	return 0
 }
 
-// llgo:link (*DH_METHOD).GenerateKey C.DH_meth_get_generate_key
+//llgo:link (*DH_METHOD).GenerateKey C.DH_meth_get_generate_key
 func (self *DH_METHOD) GenerateKey() func(_llcppg_param1 *DH) c.Int {
 	return nil
 }
 
-// llgo:link (*DH_METHOD).SetGenerateKey C.DH_meth_set_generate_key
+//llgo:link (*DH_METHOD).SetGenerateKey C.DH_meth_set_generate_key
 func (self *DH_METHOD) SetGenerateKey(generate_key func(_llcppg_param1 *DH) c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*DH_METHOD).ComputeKey C.DH_meth_get_compute_key
+//llgo:link (*DH_METHOD).ComputeKey C.DH_meth_get_compute_key
 func (self *DH_METHOD) ComputeKey() func(_llcppg_param1 *uint8, _llcppg_param2 *BIGNUM, _llcppg_param3 *DH) c.Int {
 	return nil
 }
 
-// llgo:link (*DH_METHOD).SetComputeKey C.DH_meth_set_compute_key
+//llgo:link (*DH_METHOD).SetComputeKey C.DH_meth_set_compute_key
 func (self *DH_METHOD) SetComputeKey(compute_key func(_llcppg_param1 *uint8, _llcppg_param2 *BIGNUM, _llcppg_param3 *DH) c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*DH_METHOD).BnModExp C.DH_meth_get_bn_mod_exp
+//llgo:link (*DH_METHOD).BnModExp C.DH_meth_get_bn_mod_exp
 func (self *DH_METHOD) BnModExp() func(_llcppg_param1 *DH, _llcppg_param2 *BIGNUM, _llcppg_param3 *BIGNUM, _llcppg_param4 *BIGNUM, _llcppg_param5 *BIGNUM, _llcppg_param6 *BN_CTX, _llcppg_param7 *BN_MONT_CTX) c.Int {
 	return nil
 }
 
-// llgo:link (*DH_METHOD).SetBnModExp C.DH_meth_set_bn_mod_exp
+//llgo:link (*DH_METHOD).SetBnModExp C.DH_meth_set_bn_mod_exp
 func (self *DH_METHOD) SetBnModExp(bn_mod_exp func(_llcppg_param1 *DH, _llcppg_param2 *BIGNUM, _llcppg_param3 *BIGNUM, _llcppg_param4 *BIGNUM, _llcppg_param5 *BIGNUM, _llcppg_param6 *BN_CTX, _llcppg_param7 *BN_MONT_CTX) c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*DH_METHOD).Init C.DH_meth_get_init
+//llgo:link (*DH_METHOD).Init C.DH_meth_get_init
 func (self *DH_METHOD) Init() func(_llcppg_param1 *DH) c.Int {
 	return nil
 }
 
-// llgo:link (*DH_METHOD).SetInit C.DH_meth_set_init
+//llgo:link (*DH_METHOD).SetInit C.DH_meth_set_init
 func (self *DH_METHOD) SetInit(init func(_llcppg_param1 *DH) c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*DH_METHOD).Finish C.DH_meth_get_finish
+//llgo:link (*DH_METHOD).Finish C.DH_meth_get_finish
 func (self *DH_METHOD) Finish() func(_llcppg_param1 *DH) c.Int {
 	return nil
 }
 
-// llgo:link (*DH_METHOD).SetFinish C.DH_meth_set_finish
+//llgo:link (*DH_METHOD).SetFinish C.DH_meth_set_finish
 func (self *DH_METHOD) SetFinish(finish func(_llcppg_param1 *DH) c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*DH_METHOD).GenerateParams C.DH_meth_get_generate_params
+//llgo:link (*DH_METHOD).GenerateParams C.DH_meth_get_generate_params
 func (self *DH_METHOD) GenerateParams() func(_llcppg_param1 *DH, _llcppg_param2 c.Int, _llcppg_param3 c.Int, _llcppg_param4 *BN_GENCB) c.Int {
 	return nil
 }
 
-// llgo:link (*DH_METHOD).SetGenerateParams C.DH_meth_set_generate_params
+//llgo:link (*DH_METHOD).SetGenerateParams C.DH_meth_set_generate_params
 func (self *DH_METHOD) SetGenerateParams(generate_params func(_llcppg_param1 *DH, _llcppg_param2 c.Int, _llcppg_param3 c.Int, _llcppg_param4 *BN_GENCB) c.Int) c.Int {
 	return 0
 }
 
 //go:linkname DH_generate_parameters C.DH_generate_parameters
 func DH_generate_parameters(prime_len c.Int, generator c.Int, callback func(_llcppg_param1 c.Int, _llcppg_param2 c.Int, _llcppg_param3 unsafe.Pointer), cb_arg unsafe.Pointer) *DH
+func DH_get_ex_new_index(l c.Long, p unsafe.Pointer, newf *CRYPTO_EX_new, dupf *CRYPTO_EX_dup, freef *CRYPTO_EX_free) c.Int {
+	return CRYPTO_get_ex_new_index(6, l, p, newf, dupf, freef)
+}

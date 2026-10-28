@@ -9,7 +9,7 @@ import (
 
 // The contents of this file are deprecated and will be made opaque
 //
-// llgo:type C
+//llgo:cdecl
 type ConfMethodSt struct {
 	Name        *c.Char
 	Create      func(_llcppg_param1 *CONF_METHOD) *CONF

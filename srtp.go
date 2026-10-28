@@ -35,22 +35,22 @@ const (
 	SRTP_AEAD_ARIA_256_GCM         = 16
 )
 
-// llgo:link (*SSL_CTX).SetTlsextUseSrtp C.SSL_CTX_set_tlsext_use_srtp
+//llgo:link (*SSL_CTX).SetTlsextUseSrtp C.SSL_CTX_set_tlsext_use_srtp
 func (self *SSL_CTX) SetTlsextUseSrtp(profiles *c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*SSL).SetTlsextUseSrtp C.SSL_set_tlsext_use_srtp
+//llgo:link (*SSL).SetTlsextUseSrtp C.SSL_set_tlsext_use_srtp
 func (self *SSL) SetTlsextUseSrtp(profiles *c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*SSL).SrtpProfiles C.SSL_get_srtp_profiles
+//llgo:link (*SSL).SrtpProfiles C.SSL_get_srtp_profiles
 func (self *SSL) SrtpProfiles() *Stack_st_SRTP_PROTECTION_PROFILE {
 	return nil
 }
 
-// llgo:link (*SSL).SelectedSrtpProfile C.SSL_get_selected_srtp_profile
+//llgo:link (*SSL).SelectedSrtpProfile C.SSL_get_selected_srtp_profile
 func (self *SSL) SelectedSrtpProfile() *SRTP_PROTECTION_PROFILE {
 	return nil
 }

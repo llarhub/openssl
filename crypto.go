@@ -95,38 +95,38 @@ type CRYPTO_RWLOCK = c.Void
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type SkVoidCompfunc = func(_llcppg_param1 *unsafe.Pointer, _llcppg_param2 *unsafe.Pointer) c.Int
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type SkVoidFreefunc = func(_llcppg_param1 unsafe.Pointer)
 
 // clang-format off
 //
-// llgo:type C
+//llgo:cdecl
 type SkVoidCopyfunc = func(_llcppg_param1 unsafe.Pointer) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type CRYPTO_EX_new = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *CRYPTO_EX_DATA, _llcppg_param4 c.Int, _llcppg_param5 c.Long, _llcppg_param6 unsafe.Pointer)
 
-// llgo:type C
+//llgo:cdecl
 type CRYPTO_EX_free = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 *CRYPTO_EX_DATA, _llcppg_param4 c.Int, _llcppg_param5 c.Long, _llcppg_param6 unsafe.Pointer)
 
-// llgo:type C
+//llgo:cdecl
 type CRYPTO_EX_dup = func(_llcppg_param1 *CRYPTO_EX_DATA, _llcppg_param2 *CRYPTO_EX_DATA, _llcppg_param3 *unsafe.Pointer, _llcppg_param4 c.Int, _llcppg_param5 c.Long, _llcppg_param6 unsafe.Pointer) c.Int
 
 // This structure is no longer used
 type CRYPTO_THREADID = CryptoThreadidSt
 
-// llgo:type C
+//llgo:cdecl
 type CRYPTO_malloc_fn = func(_llcppg_param1 c.SizeT, _llcppg_param2 *c.Char, _llcppg_param3 c.Int) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type CRYPTO_realloc_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.SizeT, _llcppg_param3 *c.Char, _llcppg_param4 c.Int) unsafe.Pointer
 
-// llgo:type C
+//llgo:cdecl
 type CRYPTO_free_fn = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char, _llcppg_param3 c.Int)
 type CRYPTO_ONCE = sync.Once
 type CRYPTO_THREAD_LOCAL = pthread.Key
@@ -268,12 +268,12 @@ func CRYPTO_alloc_ex_data(class_index c.Int, obj unsafe.Pointer, ad *CRYPTO_EX_D
 // Get/set data in a CRYPTO_EX_DATA variable corresponding to a particular
 // index (relative to the class type involved)
 //
-// llgo:link (*CRYPTO_EX_DATA).SetExData C.CRYPTO_set_ex_data
+//llgo:link (*CRYPTO_EX_DATA).SetExData C.CRYPTO_set_ex_data
 func (self *CRYPTO_EX_DATA) SetExData(idx c.Int, val unsafe.Pointer) c.Int {
 	return 0
 }
 
-// llgo:link (*CRYPTO_EX_DATA).ExData C.CRYPTO_get_ex_data
+//llgo:link (*CRYPTO_EX_DATA).ExData C.CRYPTO_get_ex_data
 func (self *CRYPTO_EX_DATA) ExData(idx c.Int) unsafe.Pointer {
 	return nil
 }
@@ -417,7 +417,7 @@ func InitCrypto(opts c.Uint64T, settings *INIT_SETTINGS) c.Int
 //go:linkname ThreadStop C.OPENSSL_thread_stop
 func ThreadStop()
 
-// llgo:link (*OSSL_LIB_CTX).ThreadStopEx C.OPENSSL_thread_stop_ex
+//llgo:link (*OSSL_LIB_CTX).ThreadStopEx C.OPENSSL_thread_stop_ex
 func (self *OSSL_LIB_CTX) ThreadStopEx() {
 }
 
@@ -426,21 +426,21 @@ func (self *OSSL_LIB_CTX) ThreadStopEx() {
 //go:linkname INIT_new C.OPENSSL_INIT_new
 func INIT_new() *INIT_SETTINGS
 
-// llgo:link (*INIT_SETTINGS).SetConfigFilename C.OPENSSL_INIT_set_config_filename
+//llgo:link (*INIT_SETTINGS).SetConfigFilename C.OPENSSL_INIT_set_config_filename
 func (self *INIT_SETTINGS) SetConfigFilename(config_filename *c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*INIT_SETTINGS).SetConfigFileFlags C.OPENSSL_INIT_set_config_file_flags
+//llgo:link (*INIT_SETTINGS).SetConfigFileFlags C.OPENSSL_INIT_set_config_file_flags
 func (self *INIT_SETTINGS) SetConfigFileFlags(flags c.Ulong) {
 }
 
-// llgo:link (*INIT_SETTINGS).SetConfigAppname C.OPENSSL_INIT_set_config_appname
+//llgo:link (*INIT_SETTINGS).SetConfigAppname C.OPENSSL_INIT_set_config_appname
 func (self *INIT_SETTINGS) SetConfigAppname(config_appname *c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*INIT_SETTINGS).Free C.OPENSSL_INIT_free
+//llgo:link (*INIT_SETTINGS).Free C.OPENSSL_INIT_free
 func (self *INIT_SETTINGS) Free() {
 }
 
@@ -468,46 +468,52 @@ func CRYPTO_THREAD_compare_id(a CRYPTO_THREAD_ID, b CRYPTO_THREAD_ID) c.Int
 //go:linkname OSSL_LIB_CTX_new C.OSSL_LIB_CTX_new
 func OSSL_LIB_CTX_new() *OSSL_LIB_CTX
 
-// llgo:link (*OSSL_CORE_HANDLE).LIB_CTX_new_from_dispatch C.OSSL_LIB_CTX_new_from_dispatch
+//llgo:link (*OSSL_CORE_HANDLE).LIB_CTX_new_from_dispatch C.OSSL_LIB_CTX_new_from_dispatch
 func (self *OSSL_CORE_HANDLE) LIB_CTX_new_from_dispatch(in *OSSL_DISPATCH) *OSSL_LIB_CTX {
 	return nil
 }
 
-// llgo:link (*OSSL_CORE_HANDLE).LIB_CTX_new_child C.OSSL_LIB_CTX_new_child
+//llgo:link (*OSSL_CORE_HANDLE).LIB_CTX_new_child C.OSSL_LIB_CTX_new_child
 func (self *OSSL_CORE_HANDLE) LIB_CTX_new_child(in *OSSL_DISPATCH) *OSSL_LIB_CTX {
 	return nil
 }
 
-// llgo:link (*OSSL_LIB_CTX).LoadConfig C.OSSL_LIB_CTX_load_config
+//llgo:link (*OSSL_LIB_CTX).LoadConfig C.OSSL_LIB_CTX_load_config
 func (self *OSSL_LIB_CTX) LoadConfig(config_file *c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_LIB_CTX).Free C.OSSL_LIB_CTX_free
+//llgo:link (*OSSL_LIB_CTX).Free C.OSSL_LIB_CTX_free
 func (self *OSSL_LIB_CTX) Free() {
 }
 
 //go:linkname OSSL_LIB_CTX_get0_global_default C.OSSL_LIB_CTX_get0_global_default
 func OSSL_LIB_CTX_get0_global_default() *OSSL_LIB_CTX
 
-// llgo:link (*OSSL_LIB_CTX).Set0Default C.OSSL_LIB_CTX_set0_default
+//llgo:link (*OSSL_LIB_CTX).Set0Default C.OSSL_LIB_CTX_set0_default
 func (self *OSSL_LIB_CTX) Set0Default() *OSSL_LIB_CTX {
 	return self
 }
 
-// llgo:link (*OSSL_LIB_CTX).ConfDiagnostics C.OSSL_LIB_CTX_get_conf_diagnostics
+//llgo:link (*OSSL_LIB_CTX).ConfDiagnostics C.OSSL_LIB_CTX_get_conf_diagnostics
 func (self *OSSL_LIB_CTX) ConfDiagnostics() c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_LIB_CTX).SetConfDiagnostics C.OSSL_LIB_CTX_set_conf_diagnostics
+//llgo:link (*OSSL_LIB_CTX).SetConfDiagnostics C.OSSL_LIB_CTX_set_conf_diagnostics
 func (self *OSSL_LIB_CTX) SetConfDiagnostics(value c.Int) {
 }
 
 //go:linkname OSSL_sleep C.OSSL_sleep
 func OSSL_sleep(millis c.Uint64T)
 
-// llgo:link (*OSSL_LIB_CTX).Data C.OSSL_LIB_CTX_get_data
+//llgo:link (*OSSL_LIB_CTX).Data C.OSSL_LIB_CTX_get_data
 func (self *OSSL_LIB_CTX) Data(index c.Int) unsafe.Pointer {
 	return nil
+}
+func SecureActualSize(ptr unsafe.Pointer) c.SizeT {
+	return CRYPTO_secure_actual_size(ptr)
+}
+func OpenSSLDie(f *c.Char, l c.Int, a *c.Char) {
+	Die(a, f, l)
 }

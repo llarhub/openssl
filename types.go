@@ -328,7 +328,7 @@ type OSSL_ALGORITHM = OsslAlgorithmSt
 type OSSL_PARAM = OsslParamSt
 type OSSL_PARAM_BLD OsslParamBldSt
 
-// llgo:type C
+//llgo:cdecl
 type PemPasswordCb = func(_llcppg_param1 *c.Char, _llcppg_param2 c.Int, _llcppg_param3 c.Int, _llcppg_param4 unsafe.Pointer) c.Int
 type OSSL_ENCODER OsslEncoderSt
 type OSSL_ENCODER_CTX OsslEncoderCtxSt

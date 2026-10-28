@@ -73,93 +73,93 @@ const (
 	OSSL_ECH_NO_RETRY  = 0
 )
 
-// llgo:type C
+//llgo:cdecl
 type SSL_ech_cb_func = func(_llcppg_param1 *SSL, _llcppg_param2 *c.Char) c.Uint
 
 // API calls built around OSSL_ECHSTORE
 //
-// llgo:link (*OSSL_LIB_CTX).OSSL_ECHSTORE_new C.OSSL_ECHSTORE_new
+//llgo:link (*OSSL_LIB_CTX).OSSL_ECHSTORE_new C.OSSL_ECHSTORE_new
 func (self *OSSL_LIB_CTX) OSSL_ECHSTORE_new(propq *c.Char) *OSSL_ECHSTORE {
 	return nil
 }
 
-// llgo:link (*OSSL_ECHSTORE).Free C.OSSL_ECHSTORE_free
+//llgo:link (*OSSL_ECHSTORE).Free C.OSSL_ECHSTORE_free
 func (self *OSSL_ECHSTORE) Free() {
 }
 
-// llgo:link (*OSSL_ECHSTORE).NewConfig C.OSSL_ECHSTORE_new_config
+//llgo:link (*OSSL_ECHSTORE).NewConfig C.OSSL_ECHSTORE_new_config
 func (self *OSSL_ECHSTORE) NewConfig(echversion c.Uint16T, max_name_length c.Uint8T, public_name *c.Char, suite OSSL_HPKE_SUITE) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_ECHSTORE).WritePem C.OSSL_ECHSTORE_write_pem
+//llgo:link (*OSSL_ECHSTORE).WritePem C.OSSL_ECHSTORE_write_pem
 func (self *OSSL_ECHSTORE) WritePem(index c.Int, out *BIO) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_ECHSTORE).ReadEchconfiglist C.OSSL_ECHSTORE_read_echconfiglist
+//llgo:link (*OSSL_ECHSTORE).ReadEchconfiglist C.OSSL_ECHSTORE_read_echconfiglist
 func (self *OSSL_ECHSTORE) ReadEchconfiglist(in *BIO) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_ECHSTORE).Get1Info C.OSSL_ECHSTORE_get1_info
+//llgo:link (*OSSL_ECHSTORE).Get1Info C.OSSL_ECHSTORE_get1_info
 func (self *OSSL_ECHSTORE) Get1Info(index c.Int, loaded_secs *time.TimeT, public_name **c.Char, echconfig **c.Char, has_private *c.Int, for_retry *c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_ECHSTORE).Downselect C.OSSL_ECHSTORE_downselect
+//llgo:link (*OSSL_ECHSTORE).Downselect C.OSSL_ECHSTORE_downselect
 func (self *OSSL_ECHSTORE) Downselect(index c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_ECHSTORE).Set1KeyAndReadPem C.OSSL_ECHSTORE_set1_key_and_read_pem
+//llgo:link (*OSSL_ECHSTORE).Set1KeyAndReadPem C.OSSL_ECHSTORE_set1_key_and_read_pem
 func (self *OSSL_ECHSTORE) Set1KeyAndReadPem(priv *EVP_PKEY, in *BIO, for_retry c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_ECHSTORE).ReadPem C.OSSL_ECHSTORE_read_pem
+//llgo:link (*OSSL_ECHSTORE).ReadPem C.OSSL_ECHSTORE_read_pem
 func (self *OSSL_ECHSTORE) ReadPem(in *BIO, for_retry c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_ECHSTORE).NumEntries C.OSSL_ECHSTORE_num_entries
+//llgo:link (*OSSL_ECHSTORE).NumEntries C.OSSL_ECHSTORE_num_entries
 func (self *OSSL_ECHSTORE) NumEntries(numentries *c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_ECHSTORE).NumKeys C.OSSL_ECHSTORE_num_keys
+//llgo:link (*OSSL_ECHSTORE).NumKeys C.OSSL_ECHSTORE_num_keys
 func (self *OSSL_ECHSTORE) NumKeys(numkeys *c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*OSSL_ECHSTORE).FlushKeys C.OSSL_ECHSTORE_flush_keys
+//llgo:link (*OSSL_ECHSTORE).FlushKeys C.OSSL_ECHSTORE_flush_keys
 func (self *OSSL_ECHSTORE) FlushKeys(age time.TimeT) c.Int {
 	return 0
 }
 
 // APIs relating OSSL_ECHSTORE to SSL/SSL_CTX
 //
-// llgo:link (*SSL_CTX).Set1Echstore C.SSL_CTX_set1_echstore
+//llgo:link (*SSL_CTX).Set1Echstore C.SSL_CTX_set1_echstore
 func (self *SSL_CTX) Set1Echstore(es *OSSL_ECHSTORE) c.Int {
 	return 0
 }
 
-// llgo:link (*SSL).Set1Echstore C.SSL_set1_echstore
+//llgo:link (*SSL).Set1Echstore C.SSL_set1_echstore
 func (self *SSL) Set1Echstore(es *OSSL_ECHSTORE) c.Int {
 	return 0
 }
 
-// llgo:link (*SSL_CTX).Get1Echstore C.SSL_CTX_get1_echstore
+//llgo:link (*SSL_CTX).Get1Echstore C.SSL_CTX_get1_echstore
 func (self *SSL_CTX) Get1Echstore() *OSSL_ECHSTORE {
 	return nil
 }
 
-// llgo:link (*SSL).Get1Echstore C.SSL_get1_echstore
+//llgo:link (*SSL).Get1Echstore C.SSL_get1_echstore
 func (self *SSL) Get1Echstore() *OSSL_ECHSTORE {
 	return nil
 }
 
-// llgo:link (*SSL).EchSet1ServerNames C.SSL_ech_set1_server_names
+//llgo:link (*SSL).EchSet1ServerNames C.SSL_ech_set1_server_names
 func (self *SSL) EchSet1ServerNames(inner_name *c.Char, outer_name *c.Char, no_outer c.Int) c.Int {
 	return 0
 }
@@ -168,7 +168,7 @@ func (self *SSL) EchSet1ServerNames(inner_name *c.Char, outer_name *c.Char, no_o
 // contrasts with SSL_set1_alpn_protos() which (unusually for OpenSSL)
 // returns 0 for success and 1 on error.
 //
-// llgo:link (*SSL).EchSet1OuterServerName C.SSL_ech_set1_outer_server_name
+//llgo:link (*SSL).EchSet1OuterServerName C.SSL_ech_set1_outer_server_name
 func (self *SSL) EchSet1OuterServerName(outer_name *c.Char, no_outer c.Int) c.Int {
 	return 0
 }
@@ -177,31 +177,31 @@ func (self *SSL) EchSet1OuterServerName(outer_name *c.Char, no_outer c.Int) c.In
 // contrasts with SSL_set1_alpn_protos() which (unusually for OpenSSL)
 // returns 0 for success and 1 on error.
 //
-// llgo:link (*SSL).EchSet1OuterAlpnProtos C.SSL_ech_set1_outer_alpn_protos
+//llgo:link (*SSL).EchSet1OuterAlpnProtos C.SSL_ech_set1_outer_alpn_protos
 func (self *SSL) EchSet1OuterAlpnProtos(protos *uint8, protos_len c.SizeT) c.Int {
 	return 0
 }
 
-// llgo:link (*SSL).EchGet1Status C.SSL_ech_get1_status
+//llgo:link (*SSL).EchGet1Status C.SSL_ech_get1_status
 func (self *SSL) EchGet1Status(inner_sni **c.Char, outer_sni **c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*SSL).EchSet1GreaseSuite C.SSL_ech_set1_grease_suite
+//llgo:link (*SSL).EchSet1GreaseSuite C.SSL_ech_set1_grease_suite
 func (self *SSL) EchSet1GreaseSuite(suite *c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*SSL).EchSetGreaseType C.SSL_ech_set_grease_type
+//llgo:link (*SSL).EchSetGreaseType C.SSL_ech_set_grease_type
 func (self *SSL) EchSetGreaseType(type_ c.Uint16T) c.Int {
 	return 0
 }
 
-// llgo:link (*SSL).EchSetCallback C.SSL_ech_set_callback
+//llgo:link (*SSL).EchSetCallback C.SSL_ech_set_callback
 func (self *SSL) EchSetCallback(f SSL_ech_cb_func) {
 }
 
-// llgo:link (*SSL).EchGet1RetryConfig C.SSL_ech_get1_retry_config
+//llgo:link (*SSL).EchGet1RetryConfig C.SSL_ech_get1_retry_config
 func (self *SSL) EchGet1RetryConfig(ec **uint8, eclen *c.SizeT) c.Int {
 	return 0
 }
@@ -210,16 +210,16 @@ func (self *SSL) EchGet1RetryConfig(ec **uint8, eclen *c.SizeT) c.Int {
 // contrasts with SSL_set1_alpn_protos() which (unusually for OpenSSL)
 // returns 0 for success and 1 on error.
 //
-// llgo:link (*SSL_CTX).EchSet1OuterAlpnProtos C.SSL_CTX_ech_set1_outer_alpn_protos
+//llgo:link (*SSL_CTX).EchSet1OuterAlpnProtos C.SSL_CTX_ech_set1_outer_alpn_protos
 func (self *SSL_CTX) EchSet1OuterAlpnProtos(protos *uint8, protos_len c.SizeT) c.Int {
 	return 0
 }
 
-// llgo:link (*SSL_CTX).EchSetCallback C.SSL_CTX_ech_set_callback
+//llgo:link (*SSL_CTX).EchSetCallback C.SSL_CTX_ech_set_callback
 func (self *SSL_CTX) EchSetCallback(f SSL_ech_cb_func) {
 }
 
-// llgo:link (*SSL).Set1EchConfigList C.SSL_set1_ech_config_list
+//llgo:link (*SSL).Set1EchConfigList C.SSL_set1_ech_config_list
 func (self *SSL) Set1EchConfigList(ecl *c.Uint8T, ecl_len c.SizeT) c.Int {
 	return 0
 }
