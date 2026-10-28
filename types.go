@@ -161,8 +161,6 @@ type OsslStoreSearchSt struct {
 }
 type Pkcs8PrivKeyInfoSt struct {
 }
-type RandMethSt struct {
-}
 type RsaMethSt struct {
 }
 type RsaSt struct {
@@ -274,7 +272,7 @@ type RSA_PSS_PARAMS = RsaPssParamsSt
 type RSA_OAEP_PARAMS = RsaOaepParamsSt
 type EC_KEY EcKeySt
 type EC_KEY_METHOD EcKeyMethodSt
-type RAND_METHOD RandMethSt
+type RAND_METHOD = RandMethSt
 type SSL_DANE SslDaneSt
 type X509 X509St
 type X509_ALGOR = X509_algor_st

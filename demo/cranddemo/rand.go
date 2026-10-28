@@ -3,15 +3,15 @@ package main
 import (
 	"fmt"
 
-	"github.com/goplus/lib/c/openssl"
+	"github.com/llarhub/openssl"
 )
 
 func main() {
 	b := make([]byte, 10)
 
-	openssl.RANDBytes(b)
+	openssl.RAND_Bytes(b)
 	fmt.Printf("%x\n", b)
 
-	openssl.RANDPrivBytes(b)
+	openssl.RAND_PrivBytes(b)
 	fmt.Printf("%x\n", b)
 }

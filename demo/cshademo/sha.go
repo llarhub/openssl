@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"unsafe"
 
-	"github.com/goplus/lib/c/openssl"
+	"github.com/llarhub/openssl"
 )
 
 func main() {
@@ -19,7 +19,7 @@ func main() {
 	fmt.Printf("%x\n", h1)
 
 	h2 := make([]byte, openssl.SHA_DIGEST_LENGTH)
-	openssl.SHA1String(str, unsafe.SliceData(h2))
+	openssl.SHA1_String(str, unsafe.SliceData(h2))
 	fmt.Printf("%x\n", h2)
 
 	var sha256 openssl.SHA256_CTX
@@ -30,7 +30,7 @@ func main() {
 	fmt.Printf("%x\n", h3)
 
 	h4 := make([]byte, openssl.SHA256_DIGEST_LENGTH)
-	openssl.SHA256String(str, unsafe.SliceData(h4))
+	openssl.SHA256_String(str, unsafe.SliceData(h4))
 	fmt.Printf("%x\n", h4)
 
 	var sha512 openssl.SHA512_CTX
@@ -42,9 +42,9 @@ func main() {
 	fmt.Printf("%x\n", h5)
 
 	h6 := make([]byte, openssl.SHA512_DIGEST_LENGTH)
-	openssl.SHA512String(str, unsafe.SliceData(h6))
+	openssl.SHA512_String(str, unsafe.SliceData(h6))
 	fmt.Printf("%x\n", h6)
-
+	/* TODO(xsw):
 	var sha224 openssl.SHA224_CTX
 	sha224.Init()
 	sha224.UpdateString(str)
@@ -64,5 +64,5 @@ func main() {
 	fmt.Printf("%x\n", h9)
 	h10 := make([]byte, openssl.SHA384_DIGEST_LENGTH)
 	openssl.SHA384String(str, unsafe.SliceData(h10))
-	fmt.Printf("%x\n", h10)
+	fmt.Printf("%x\n", h10) */
 }
