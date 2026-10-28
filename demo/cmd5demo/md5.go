@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"unsafe"
 
-	"github.com/goplus/lib/c/openssl"
+	"github.com/llarhub/openssl"
 )
 
 func main() {
