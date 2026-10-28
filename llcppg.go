@@ -147,5 +147,9 @@ func (self *BIGNUM) Cmp(b *BIGNUM) c.Int {
 	return 0
 }
 
+// call FreeCStr to free.
+//
 // llgo:link (*BIGNUM).ToCStr C.BN_bn2dec
-func (*BIGNUM) ToCStr() *c.Char { return nil }
+func (*BIGNUM) ToCStr() *c.Char {
+	return nil
+}
