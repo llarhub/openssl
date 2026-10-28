@@ -147,5 +147,5 @@ func (self *BIGNUM) Cmp(b *BIGNUM) c.Int {
 	return 0
 }
 
-// llgo:link (*BIGNUM).CStr C.BN_bn2dec
-func (*BIGNUM) CStr() *c.Char { return nil }
+// llgo:link (*BIGNUM).ToCStr C.BN_bn2dec
+func (*BIGNUM) ToCStr() *c.Char { return nil }
