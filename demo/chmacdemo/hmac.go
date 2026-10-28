@@ -5,7 +5,7 @@ import (
 	"unsafe"
 
 	"github.com/goplus/lib/c"
-	"github.com/goplus/lib/c/openssl"
+	"github.com/llarhub/openssl"
 )
 
 func main() {
@@ -15,7 +15,7 @@ func main() {
 
 	var digest = make([]byte, openssl.EVP_MAX_MD_SIZE)
 	var digestLen c.Uint
-	ctx := openssl.NewHMAC_CTX()
+	ctx := openssl.HMAC_CTX_new()
 	if ctx == nil {
 		c.Fprintf(c.Stderr, c.Str("%s\n"), c.Str("Error creating HMAC_CTX"))
 		return
